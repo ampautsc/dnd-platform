@@ -1,0 +1,20 @@
+{
+  "name": "dnd-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered D&D virtual world platform — monorepo",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "dev": "echo 'Run individual package dev servers — see package READMEs'",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ampautsc/dnd-platform.git"
+  },
+  "author": "ampautsc",
+  "license": "UNLICENSED"
+}
