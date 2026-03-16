@@ -1,0 +1,37 @@
+{
+  "name": "@dnd-platform/combat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "D&D 5e combat engine — dice, mechanics, AoE geometry, spell resolution, AI tactics, encounter runner",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./dice": "./src/engine/dice.js",
+    "./mechanics": "./src/engine/mechanics.js",
+    "./aoe": "./src/engine/aoeGeometry.js",
+    "./target": "./src/engine/targetResolver.js",
+    "./spells": "./src/engine/spellResolver.js",
+    "./tactics": "./src/ai/tactics.js",
+    "./encounter": "./src/engine/encounterRunner.js",
+    "./v2/game-state": "./src/engine-v2/GameState.js",
+    "./v2/turn-menu": "./src/engine-v2/TurnMenu.js",
+    "./v2/action-resolver": "./src/engine-v2/ActionResolver.js",
+    "./v2/tactics-adapter": "./src/engine-v2/TacticsAdapter.js",
+    "./v2/step-resolver": "./src/engine-v2/StepResolver.js",
+    "./v2/encounter-runner": "./src/engine-v2/EncounterRunner.js",
+    "./scenario": "./src/scenarioHarness.js",
+    "./scenario-v2": "./src/scenarioHarnessV2.js"
+  },
+  "dependencies": {
+    "@dnd-platform/content": "^0.1.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.1"
+  }
+}

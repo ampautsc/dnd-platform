@@ -13,7 +13,8 @@
     "./species": "./src/species/index.js",
     "./npcs": "./src/npcs/index.js",
     "./towns": "./src/towns/index.js",
-    "./loot": "./src/loot/index.js"
+    "./loot": "./src/loot/index.js",
+    "./builds": "./src/builds/index.js"
   },
   "scripts": {
     "test": "vitest run",
