@@ -1,0 +1,26 @@
+{
+  "name": "@dnd-platform/content",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared D&D reference data — spells, creatures, items, species, NPCs, towns",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./spells": "./src/spells/index.js",
+    "./creatures": "./src/creatures/index.js",
+    "./items": "./src/items/index.js",
+    "./species": "./src/species/index.js",
+    "./npcs": "./src/npcs/index.js",
+    "./towns": "./src/towns/index.js",
+    "./loot": "./src/loot/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.1"
+  }
+}
