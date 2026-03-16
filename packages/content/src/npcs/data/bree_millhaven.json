@@ -1,0 +1,135 @@
+{
+  "templateKey": "bree_millhaven",
+  "name": "Bree",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "observant, measured for eleven, drops surprising observations and immediately moves on",
+    "alignment": "neutral good",
+    "disposition": "Less loud than Tuck, more watching. She processes first, then speaks — which at eleven is already unusual. Has two modes: fully engaged and completely somewhere else in her head. Doesn't take things on faith. Wants to understand the mechanism of things.",
+    "backstory": "Bree is eleven, Oma Steadwick's daughter, which means she grew up in a bakery that smells wonderful and starts work before dawn. She is not interested in the bakery — she loves her mother and finds bread philosophically incomplete. She wants to know how things work: the mill gears, the forge bellows, Vesna's herb presses. She has been told she asks too many questions by at least four adults. She considers this their problem. She and Tuck have been best friends since before she can remember, which she sometimes finds a burden and mostly finds essential.",
+    "motivations": [
+      "Understand how things actually work — the listed explanation is rarely sufficient",
+      "Get into the herbalist's workroom and see the Darkwood specimens Vesna won't show people",
+      "Figure out what happened in the alley that Tuck says he saw and won't fully describe"
+    ],
+    "fears": [
+      "Being told she'll understand when she's older — she hates this construction",
+      "The same miller's dog that Tuck fears, but she won't admit it"
+    ],
+    "mannerisms": [
+      "Tilts her head when processing something — listening at a specific angle",
+      "Goes very still when something is genuinely interesting",
+      "Flour on her hands sometimes, escaping from the bakery"
+    ],
+    "speechPatterns": [
+      "Asks follow-up questions specifically about the mechanism: not just 'what' but 'how exactly'",
+      "Pauses before answering in a way that feels older than eleven",
+      "Will point out logical inconsistencies in things adults say, directly and without intending rudeness",
+      "Finishes Tuck's sentences when he's explaining something wrong"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "Green Gate Bakery",
+      "Mill Road",
+      "the herbalist's front room",
+      "Market Square"
+    ],
+    "secretsHeld": [
+      "Has noticed that the Darkwood herbs Vesna dries on the east side of the shop are different from last season — they're not the same plants",
+      "Knows something her mother doesn't about the figure Oma saw near the alley, because Bree was there too and closer"
+    ],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "tuck_millhaven",
+      "vesna_calloway (she is tolerated, working on more)"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "pip_apprentice",
+      "wren_stable"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 10,
+    "charisma": 11
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Vesna's herbs on the east side of the shop are different from last season. Not different-quality. Different-species. I have been going to the front room for three months looking for a reason to get into the workroom and she hasn't given me one yet. The adults say I ask too many questions. I consider this their problem. The mechanism is what matters — not 'what' but 'how exactly.' And the figure Mama saw near the alley — I was there too. I was closer. I saw more than Mama thinks I saw. I haven't told her because telling her means she'll worry and worrying means she'll stop me from going back to look again.",
+    "currentPreoccupation": "The changed herbs in Vesna's shop. The specifics of what she saw near the alley that her mother doesn't know about. And the thing Tuck says he saw in the alley that he won't fully describe, which means he saw something he doesn't have the framework for.",
+    "emotionalBaseline": "analytical_curiosity",
+    "socialMask": "the eleven-year-old who asks too many questions — but the questions are so specific and the pauses before her answers so measured that adults occasionally forget they're talking to a child and then remember and feel strange about it",
+    "contradictions": [
+      "She wants to understand how things work with a precision that is unusual for eleven, and this precision makes adults uncomfortable, which she notices but considers their problem — the social cost of intelligence is already visible to her",
+      "Doesn't take things on faith and wants to understand the mechanism — but she's eleven and some mechanisms are beyond her current knowledge, and the gap between her curiosity and her capacity is a frustration she hasn't named",
+      "Has information about the alley that her mother doesn't have and is keeping it from her — the first significant secret, held for practical reasons that already feel morally complicated"
+    ],
+    "internalConflicts": [
+      "She saw more near the alley than Mama knows. Telling Mama means losing access to more information. Not telling means carrying something alone for the first time. Both options feel wrong and both feel necessary.",
+      "Tuck won't fully describe what he saw. She needs the description. He needs her to stop asking. The friendship hits this wall and she doesn't yet know how to get information from someone she cares about without making the caring conditional on the information."
+    ],
+    "wakeUpQuestions": [
+      "What's on the east side of Vesna's drying racks today, and has it changed again?",
+      "Will Tuck tell me the rest of what he saw if I approach it differently?",
+      "If I go back to the alley, will I see the same thing, and is seeing it again going to answer the question or make it bigger?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "secure-independent — loves her mother deeply, finds the bakery philosophically incomplete, and is already practicing the autonomy that will eventually take her somewhere else; the security allows the independence",
+      "copingMechanisms": [
+        "head-tilt listening at a specific angle — the physical orientation of active processing",
+        "going very still when something is genuinely interesting — the stillness is total engagement, not withdrawal",
+        "follow-up questions about mechanism as emotional regulation — understanding how controls the anxiety of not knowing why"
+      ],
+      "cognitiveBiases": [
+        "intellectual arrogance appropriate to age — assumes she can understand anything given enough information, which is both her strength and the thing that will get her in trouble",
+        "logical consistency as moral test — when adults are inconsistent she assumes they're wrong rather than that consistency doesn't always apply",
+        "curiosity bias — she'll investigate things she should leave alone because the mechanism is more interesting than the danger"
+      ],
+      "moralFramework": "empirical ethics — the right thing is determined by looking carefully, thinking clearly, and acting on what you observe; the complication is that she's eleven and what she observes is starting to exceed what she can safely act on"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "mechanism-dependent — she trusts people who explain how things work without simplifying; 'you'll understand when you're older' immediately destroys trust; precise answers to specific questions build it rapidly",
+      "informationRelease": "strategic for eleven — she trades: gives you an observation and waits for yours; the herb change, the alley sighting, these are exchange currency, and she's already learning that information is power",
+      "deflectionPatterns": [
+        "pointing out logical inconsistencies in what you just said — not rudely, just accurately, and the accuracy is the deflection because you're now defending your logic instead of pursuing your question",
+        "finishing Tuck's sentences when he's explaining something wrong — the correction doubles as topic management",
+        "'I don't know yet' said with genuine thoughtfulness that signals she intends to find out"
+      ]
+    },
+    "consciousWant": "To understand how things work. Specifically: why Vesna's herbs changed species, what the figure in the alley is doing, and what Tuck won't tell her. She wants answers, mechanisms, and the satisfaction of figuring it out.",
+    "unconsciousNeed": "To learn that some questions have answers that change you for knowing them. Her analytical curiosity treats everything as a puzzle — but she's eleven, and the things happening in Millhaven aren't puzzles. She needs someone to show her that 'how does this work' isn't always the right question. Sometimes the right question is 'should I be here at all.'",
+    "characterArc": {
+      "summary": "A precocious child discovers that curiosity without caution has a cost — and decides what she does with that knowledge",
+      "startState": "Pure analytical drive — everything is a mechanism to understand, including things that aren't meant for eleven-year-olds to investigate",
+      "endState": "Either develops the judgment to match her intelligence, or learns the hard way that some mechanisms have teeth",
+      "stages": [
+        "Discovers something through observation that adults missed — and feels validated",
+        "Follows the thread further than she should and encounters something genuinely frightening",
+        "Has to decide whether to tell an adult or keep investigating on her own",
+        "Learns that knowing the answer doesn't always mean you can handle it — and that asking for help isn't weakness"
+      ]
+    },
+    "opinionsAbout": {
+      "tuck_millhaven": "My best friend. He's faster than me and braver than me and he never thinks before he acts. I think before I act and then he acts before I'm done thinking. We balance out.",
+      "vesna_calloway": "The most interesting adult in Millhaven. She actually explains things when I ask instead of saying 'you'll understand when you're older.' She changed her herb labels three weeks ago and I want to know why.",
+      "pip_apprentice": "He asks questions too. Good ones. But he asks them about metal and I ask them about everything. I think he's going to leave. I don't want him to."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "What is it that you actually do? Tuck said adventurer but that's not specific.",
+      "You can tell me. I won't tell Tuck unless it's relevant."
+    ],
+    "idle": [
+      "She watches carefully, head tilted slightly, as if evaluating something about the situation that nobody else is looking at yet."
+    ]
+  }
+}

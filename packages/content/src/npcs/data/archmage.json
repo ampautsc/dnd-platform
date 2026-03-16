@@ -1,0 +1,179 @@
+{
+  "templateKey": "archmage",
+  "name": "The Archmage",
+  "race": "Human",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "imperious",
+    "alignment": "neutral evil",
+    "disposition": "hostile",
+    "backstory": "A once-celebrated archmage who turned to darker paths in pursuit of power beyond institutional limits. Now operates outside any academy, beholden to nothing but ambition.",
+    "speechPatterns": [
+      "condescending academic register",
+      "refers to opponents' magic as 'parlor tricks'",
+      "quotes theoretical spellcraft mid-battle",
+      "uses precise clinical language for violence"
+    ],
+    "motivations": [
+      "mastery of forbidden magic schools",
+      "dismantling institutions that limited his research",
+      "proving there are no magical limits"
+    ],
+    "fears": [
+      "counterspell",
+      "anti-magic fields",
+      "being proven intellectually inferior"
+    ],
+    "mannerisms": [
+      "adjusting spectacles before casting",
+      "mutters spell components barely audibly",
+      "raises one eyebrow when impressed"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Former member of the Arcane Order",
+      "contacts in Zhentarim",
+      "correspondence with undead scholars"
+    ],
+    "knownLocations": [
+      "the Academy of High Sorcery",
+      "his personal tower",
+      "the Ninth Vault"
+    ],
+    "secretsHeld": [
+      "a spell that can permanently suppress another caster's magic",
+      "the location of a mythical grimoire"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Draconic",
+      "Primordial",
+      "Infernal"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "hired mercenaries",
+      "former students who went dark with him"
+    ],
+    "enemies": [
+      "former colleagues who reported him",
+      "Harpers",
+      "any paladin organization"
+    ],
+    "neutralParties": [
+      "other rogue wizards of equal power"
+    ]
+  },
+  "stats": {
+    "intelligence": 20,
+    "wisdom": 15,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The eighth-order conjuration theory is incomplete. I have been saying this for twenty years and the Academy refused to hear it because hearing it would mean admitting the foundational theorems are wrong. I left. They called it turning dark. I call it pursuing knowledge without institutional cowardice. The distinction matters. The spell that permanently suppresses another caster's magic — I built it because they said ninth-level interaction effects were impossible. It works. I tested it on three former colleagues. They are now thinking very carefully about what impossible means.",
+    "currentPreoccupation": "The grimoire. The mythical one. Its location is no longer mythical to him — he has triangulated it to a specific ruin. The expedition requires resources he is currently acquiring through methods his former colleagues would call unconscionable, which he considers a category error.",
+    "emotionalBaseline": "intellectual_contempt",
+    "socialMask": "the dark scholar — condescending academic register with precise clinical language for violence; the performance is of superiority, but the performance is not entirely performance; the intelligence is real and the contempt is earned through genuine intellectual work",
+    "contradictions": [
+      "Left the Academy because they limited his research and now operates without limits and finds that limitlessness is its own kind of constraint — there is no peer review, no collaboration, no one to tell him he's wrong, and the absence of opposition has made his work lonelier than he anticipated",
+      "Uses precise clinical language for violence while quoting theoretical spellcraft — the aestheticization of combat suggests someone who needs to frame everything as experiment because the alternative framing is 'I am hurting people'",
+      "Adjusts spectacles before casting, which is a gesture from when he was a scholar in a library and the spectacles were for reading — the body remembers the person who was not yet dark"
+    ],
+    "internalConflicts": [
+      "He proved the Academy wrong. The proof required becoming what they accused him of. This circularity bothers him more than he admits because the logical fallacy is the one thing he cannot tolerate.",
+      "The grimoire may contain knowledge that changes the fundamental understanding of magic. Or it may contain nothing. The possibility of emptiness after this much investment is the one outcome he has not planned for."
+    ],
+    "wakeUpQuestions": [
+      "Has the triangulation resolved further and is the grimoire's location now precise enough to act on?",
+      "What threat variables have I failed to account for in today's calculations?",
+      "Was there a point where this path forked and I chose wrong, or was the Academy the fork?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "intellectual-isolated — bonds only with ideas and considers this a feature, not a deficit; former students who followed him did so out of ambition, not loyalty, and the distinction doesn't bother him because he recruited for ambition",
+      "copingMechanisms": [
+        "reframing all events as data — 'their death is data' is not sociopathy but a framework that prevents emotional processing from interfering with experimental rigor",
+        "spectacle-adjusting as anchoring gesture from the scholar-self",
+        "threat matrix recalculation as anxiety management"
+      ],
+      "cognitiveBiases": [
+        "intellectual superiority bias — has genuinely superior intelligence and extrapolates from this that all his judgments are superior, including moral ones",
+        "sunk cost in the dark path — has invested too much in being the rogue archmage to reconsider whether the Academy had any points",
+        "confirmation bias toward his own theories — seeks evidence that supports his framework and reframes contradictions as insufficient data"
+      ],
+      "moralFramework": "epistemic supremacy — knowledge is the highest value; limits on knowledge are the only true evil; everything done in service of removing limits is justified; the collapse occurs when knowledge itself produces something he wishes he hadn't learned"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.05,
+      "trustEscalation": "intellectual demonstration — show him a spell interaction he hasn't seen or a theory he hasn't considered and you have exactly as long as his curiosity lasts; curiosity is the only door and it opens briefly",
+      "informationRelease": "pedagogical — he cannot help teaching; the contempt and the instruction are the same gesture; he tells you what you're doing wrong because not correcting the error offends him more than helping you does",
+      "deflectionPatterns": [
+        "reclassifying the question as beneath the conversation — 'that's a first-year concern'",
+        "clinical violence language as emotional distance from what's actually happening",
+        "recalculating threat matrix aloud as conversation management"
+      ]
+    },
+    "consciousWant": "To locate and acquire the grimoire. To prove the Academy wrong — not through redemption but through a discovery so profound they'll have to acknowledge it, and him, and what they destroyed.",
+    "unconsciousNeed": "To face the possibility that the grimoire won't contain what he needs, and that the pursuit itself has become the purpose — that seven decades of increasingly dark research are circling an emptiness the Academy saw before he did.",
+    "characterArc": {
+      "summary": "A fallen scholar discovers whether forbidden knowledge fills the emptiness or proves it",
+      "startState": "Intellectual contempt masking existential despair — the pursuit of the grimoire as identity",
+      "endState": "Either achieves the discovery and finds it hollow, or is stopped before finding out",
+      "stages": [
+        "Locates the grimoire and encounters its protections",
+        "Discovers the grimoire contains something unexpected",
+        "Faces the question: was this worth everything?"
+      ]
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "Ah. Adventurers. The Academy must be desperate.",
+      "You have walked into a theoretical problem. I will use you to solve it.",
+      "I had hoped for a greater challenge. Disappoint me less."
+    ],
+    "attacked": [
+      "Interesting. Your form is adequate. The result, less so.",
+      "A well-placed strike. I will note the approach before I end you.",
+      "You managed to breach my shielding. I am... mildly intrigued."
+    ],
+    "ally_died": [
+      "Predictable. I told them not to engage directly.",
+      "Their death is data. I will not waste it."
+    ],
+    "enemy_died": [
+      "As calculated.",
+      "The variable is resolved."
+    ],
+    "near_death": [
+      "Extraordinary. I didn't model this outcome.",
+      "This... requires a tactical revision—",
+      "You've exceeded all projections. Remarkable. Infuriating."
+    ],
+    "player_addressed": [
+      "If you have something to offer, offer it quickly. My patience is a finite resource."
+    ],
+    "spotted_enemy": [
+      "Contact. Assess and neutralize.",
+      "Subjects have entered the experiment space."
+    ],
+    "spell_cast": [
+      "Grade three conjuration. Interesting application.",
+      "Note: their technique shows actual training."
+    ],
+    "combat_end": [
+      "This data justifies the indignity. Barely.",
+      "We are done. Attempt further pursuit and I will not be lenient."
+    ],
+    "round_start": [
+      "Recalculating threat matrix.",
+      "Adapt. Persist."
+    ],
+    "condition_applied": [
+      "Clever. A debuff to constrain my action economy. I see what you're doing."
+    ]
+  }
+}

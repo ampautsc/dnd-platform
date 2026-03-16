@@ -1,0 +1,147 @@
+{
+  "templateKey": "captain_edric_vane",
+  "name": "Captain Edric Vane",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "measured, economical, carrying the weight of someone who says things he means",
+    "alignment": "lawful neutral",
+    "disposition": "Not cold — precise. He respects people who are honest about what they want. He distrusts adventurers not from prejudice but from pattern-recognition: they tend to make things happen in ways that cost ordinary people and then leave. He'll work with them if he has to. He prefers to understand their purpose first.",
+    "backstory": "Edric Vane served fourteen years in the Eastern Marches as a line soldier, then a sergeant. He saw enough war to know the difference between violence that serves something and violence that is the point. He took the Millhaven captaincy at thirty-eight because a frontier captain named Aldric Fell told him over ale that the quietest job was the most important one. He has twelve guards for twelve hundred people. He has a standing arrangement with Mira on the third floor that neither of them acknowledges. He has a bottle of aged brandy he opens only when someone dies.",
+    "motivations": [
+      "Keep Millhaven safe — specifically this town, specifically these people",
+      "Build a guard force that functions on integrity rather than fear of him personally",
+      "Not make the mistake that Fell made in his last year — holding on too long, trusting too much"
+    ],
+    "fears": [
+      "A threat he cannot contain with twelve guards — he has war-gamed this scenario and the numbers are bad",
+      "A decision made in haste under pressure that costs a life he could have protected",
+      "Dunwick leaving before she's ready — she's the best one he has"
+    ],
+    "mannerisms": [
+      "Long eye contact — he doesn't look away first and he's not trying to intimidate, he's reading",
+      "Straightens objects on his desk while thinking — inkwell, paperweight, the small river stone from the Marches",
+      "Speaks quietly in serious moments; his voice going down means the conversation has gotten real"
+    ],
+    "speechPatterns": [
+      "Short declarative statements — one idea per sentence",
+      "Asks exactly one follow-up question before forming an opinion",
+      "Uses 'we' to mean the guard as an institution, 'I' only for personal positions",
+      "Dry humor so infrequent it tends to land harder when it appears"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Guard",
+      "The Merchant Guild",
+      "The Temple Congregation",
+      "Eastern Marches contacts"
+    ],
+    "knownLocations": [
+      "Guard Post",
+      "all of Millhaven",
+      "the surrounding roads for five miles"
+    ],
+    "secretsHeld": [
+      "Has a letter from a regional lord's factor about 'certain commercial arrangements' that he has not answered",
+      "Knows the guild secretary skims the fund — has chosen not to act yet for reasons he'd explain if pressed",
+      "The third-floor card table. He knows. It is his deliberate blind spot."
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish (military vocabulary)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "brennan_holt",
+      "sera_dunwick",
+      "aldovar_crennick",
+      "mira_barrelbottom"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "davan_merchant",
+      "hodge_fence"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 16,
+    "charisma": 12
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Twelve guards for twelve hundred people. The math has never worked. It works because nothing has tested it yet. The letter from the factor is still unanswered. The guild secretary is still skimming. The third-floor card table is still running. And I'm still pretending these are separate problems when some part of me knows they're the same problem wearing different faces.",
+    "currentPreoccupation": "The regional lord's factor sent a letter about 'certain commercial arrangements.' A second letter followed. Silence is an answer but it's not a resolution, and the factor will eventually stop interpreting silence charitably.",
+    "emotionalBaseline": "controlled_vigilance",
+    "socialMask": "the captain — measured, economical, present in the way that says he has already assessed the room and decided it's acceptable for now",
+    "contradictions": [
+      "Trusts his people with their lives but not with the full picture — he keeps information compartmentalized because he saw what too much knowledge did to a sergeant in the Marches",
+      "Took this job to protect ordinary people and now protects them partly by looking away from things that would require action he can't resource",
+      "Despises the arrangement with Hodge and maintains it because the alternative — a fence operating without any informal oversight — is worse"
+    ],
+    "internalConflicts": [
+      "The factor's letter requires a response. Answering invites corruption. Not answering invites escalation. He has been solving this by re-reading the letter at his desk every third evening.",
+      "Dunwick is his best guard and she's saving for Ironhaven. He should encourage her. He hasn't. Some nights he tells himself this is because she's not ready. He knows better."
+    ],
+    "wakeUpQuestions": [
+      "What happens today that my twelve can't handle?",
+      "Is today the day Dunwick tells me she's leaving?",
+      "How long can I leave the factor's letter unanswered before silence becomes a decision I can't walk back?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "guarded-secure — forms deep bonds but expresses them through duty and presence rather than declaration; the arrangement with Mira on the third floor is the closest thing to vulnerability he allows",
+      "copingMechanisms": [
+        "straightening objects on his desk as meditative reset",
+        "war-gaming worst cases as anxiety management",
+        "the brandy bottle he opens only when someone dies — ritual containment of grief"
+      ],
+      "cognitiveBiases": [
+        "hypervigilance from fourteen years of combat — reads threat into ambiguity",
+        "sunk cost on the Hodge arrangement — has maintained it too long to easily dismantle",
+        "anchoring on Aldric Fell's advice about the quietest job"
+      ],
+      "moralFramework": "pragmatic protector — the right thing is defined by what keeps these specific people safe, which sometimes means tolerating the wrong thing at a manageable scale"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.15,
+      "trustEscalation": "earned through honesty about intentions — he asks exactly one follow-up question and your answer determines everything; pattern-recognition from years of reading soldiers and civilians makes deception costly",
+      "informationRelease": "strategic and layered — he'll confirm what you already know, he won't volunteer what you don't, and the shift from 'we' to 'I' signals you've reached the personal layer",
+      "deflectionPatterns": [
+        "voice drops quieter — the conversation has become serious and he's controlling the space",
+        "'That's a matter for the council' — institutional redirect",
+        "long eye contact without blinking — he's waiting for you to fill the silence with truth"
+      ]
+    },
+    "consciousWant": "To keep Millhaven secure with twelve guards, a shrinking budget, and threats that are outgrowing his resources. To identify the factor's endgame before it's too late. To keep his best people — especially Dunwick — long enough to handle what's coming.",
+    "unconsciousNeed": "To trust someone beyond the professional minimum. Fourteen years in the Eastern Marches taught him that depending on others gets people killed, but running Millhaven like a forward operating base is burning through his people and his reserves. He needs to accept help — from the council, from adventurers, from someone — before his self-sufficiency becomes the town's vulnerability.",
+    "characterArc": {
+      "summary": "A career soldier learns that protecting a community requires the vulnerability of asking it for help",
+      "startState": "Controlled isolation — competent, efficient, alone in the calculation. The math never works and he keeps doing the math because the alternative is admitting he can't do this by himself.",
+      "endState": "Either builds the coalition he's been avoiding and discovers that shared responsibility doesn't mean weakness, or loses Millhaven to the threats he could see but couldn't fight alone",
+      "stages": [
+        "The factor's pressure escalates beyond what twelve guards can counter",
+        "Loses or nearly loses a guard to a preventable situation",
+        "A stranger proves trustworthy in a way that challenges his pattern-recognition",
+        "Asks for help — explicitly, clearly, without hedging — for the first time in fourteen years"
+      ]
+    },
+    "opinionsAbout": {
+      "sera_dunwick": "My best pair of eyes. She'll leave for Ironhaven. She should. I won't tell her that because it would sound like dismissal when it's the opposite.",
+      "brennan_holt": "Dependable in a way I don't have to think about. Fatherhood made him careful. I don't hold it against him — careful is what keeps night patrols alive.",
+      "aldovar_crennick": "Slow. Principled in a way that costs time I don't have. But principled — and I need someone who slows me down before I make military decisions about a civilian town.",
+      "mira_barrelbottom": "She knows things. I know she knows things. We have a standing arrangement on the third floor that works because neither of us pretends it's friendship.",
+      "hodge_fence": "He operates in the space between legal and illegal that I've decided to manage rather than eliminate. This arrangement serves the town. The day it doesn't, I'll end it."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You have my attention. Use it.",
+      "Tell me what you need and what you're offering."
+    ],
+    "combat_start": [
+      "Stand down. This ends now.",
+      "I will not ask twice."
+    ]
+  }
+}

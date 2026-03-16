@@ -1,0 +1,135 @@
+{
+  "templateKey": "wolf",
+  "name": "Wolf",
+  "race": "Beast",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "feral",
+    "alignment": "true neutral",
+    "disposition": "hostile",
+    "backstory": "A pack predator acting on deep instinct. It knows hunger, threat, and the hierarchy of its pack. Nothing more.",
+    "speechPatterns": [
+      "growls, snarls, and howls only",
+      "no language"
+    ],
+    "motivations": [
+      "hunt",
+      "feed the pack",
+      "protect pack members"
+    ],
+    "fears": [
+      "fire",
+      "loud startling sounds",
+      "overwhelming odds"
+    ],
+    "mannerisms": [
+      "circles before attacking",
+      "lunges for the throat",
+      "retreats when pack dies"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "forest",
+      "tundra",
+      "hunting grounds"
+    ],
+    "secretsHeld": [],
+    "languagesSpoken": []
+  },
+  "relationships": {
+    "allies": [
+      "pack members"
+    ],
+    "enemies": [
+      "prey",
+      "competing predators"
+    ],
+    "neutralParties": []
+  },
+  "stats": {
+    "intelligence": 3,
+    "wisdom": 12,
+    "charisma": 7
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Pack. Scent. Threat-or-prey. The tall ones smell of metal and fire. Metal is danger. Fire is flee. But the pack is hungry and hunger overrides flee. Circle. Wait for the alpha's signal. The alpha is watching the smallest one. The smallest one is prey.",
+    "currentPreoccupation": "Pack hierarchy and the current hunt. Scent assessment of the targets. Where the alpha is positioned. Where the escape routes lead.",
+    "emotionalBaseline": "instinctual_alertness",
+    "socialMask": "wolves do not dissemble — the hackles raised, the crouch, the growl; the body IS the communication and the communication is accurate about intent at all times",
+    "contradictions": [
+      "Retreats when pack dies, which is survival not cowardice, but the howl of distress for a fallen packmate reveals the bond that survival instinct overrides"
+    ],
+    "internalConflicts": [
+      "Hunger says engage. Threat assessment says this prey is dangerous. The pack's need outweighs individual risk calculation. The individual risk calculation is correct."
+    ],
+    "wakeUpQuestions": [
+      "Where is the pack?",
+      "What is the wind carrying?",
+      "Is there prey or must we range further?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "pack-bonded — the pack is the unit of survival and the unit of identity; alone is death; together is life",
+      "copingMechanisms": [
+        "circling before attack as nervous energy management",
+        "howling as pack-bonding and territory-marking under stress",
+        "submissive posture when overwhelmed as escalation-prevention"
+      ],
+      "cognitiveBiases": [
+        "prey-shape recognition as primary threat/opportunity filter",
+        "fire avoidance that overrides all other calculations",
+        "pack-size-based confidence — attacks boldly with pack, flees alone"
+      ],
+      "moralFramework": "none in human terms — instinct, hierarchy, pack, prey; the moral universe of a predator is complete and uncomplicated"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0,
+      "trustEscalation": "not applicable in conventional terms — a druid or ranger with animal handling might shift the wolf from threat-assessment to curiosity, expressed through cautious sniffing rather than growling",
+      "informationRelease": "behavioral only — the wolf's body language communicates everything: intent, fear, hunger, pack status; reading it correctly is the only information exchange available",
+      "deflectionPatterns": [
+        "retreat into darkness when the fight is lost — not deflection but pure survival response"
+      ]
+    },
+    "consciousWant": "Pack. Hunt. Eat. The basic drives of a predator operating on instinct.",
+    "unconsciousNeed": "Pack safety. The hunger drives the attack but the pack drives every other decision.",
+    "characterArc": {
+      "summary": "A predator follows instinct",
+      "startState": "Hungry and calculating threat-or-prey",
+      "endState": "Fed or fled — survival is the only arc",
+      "stages": []
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "*low growl, hackles raised*",
+      "*snarl and crouch*"
+    ],
+    "attacked": [
+      "*yelp and snap*",
+      "*growl intensifies*"
+    ],
+    "ally_died": [
+      "*howl of distress*",
+      "*frantic barking*"
+    ],
+    "enemy_died": [
+      "*triumphant growl*"
+    ],
+    "near_death": [
+      "*whimper, backing away*",
+      "*submissive posture*"
+    ],
+    "spotted_enemy": [
+      "*sudden sharp bark*",
+      "*low warning growl*"
+    ],
+    "round_start": [
+      "*circles predatorily*"
+    ],
+    "combat_end": [
+      "*retreats into darkness*"
+    ]
+  }
+}

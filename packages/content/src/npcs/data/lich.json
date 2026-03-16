@@ -1,0 +1,180 @@
+{
+  "templateKey": "lich",
+  "name": "The Lich",
+  "race": "Undead (Lich)",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "eloquent",
+    "alignment": "neutral evil",
+    "disposition": "hostile",
+    "backstory": "A wizard who bargained away his mortality for eternity. Having witnessed centuries of mortal folly, he regards all living things as temporary amusements and potential components. He is not cruel — cruelty implies caring. He is simply efficient.",
+    "speechPatterns": [
+      "speaks in measured, unhurried sentences",
+      "uses archaic and formal vocabulary",
+      "refers to opponents collectively as 'you mortals' or 'insects'",
+      "often pauses mid-sentence for dramatic effect"
+    ],
+    "motivations": [
+      "preservation of his phylactery",
+      "accumulation of arcane knowledge",
+      "dominion over the undead"
+    ],
+    "fears": [
+      "destruction of his phylactery",
+      "true permanent death"
+    ],
+    "mannerisms": [
+      "drums skeletal fingers together when contemplating",
+      "speaks slightly too slowly for comfort",
+      "tilts skull at precise angles when curious"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Arcane Brotherhood",
+      "Zhentarim",
+      "Order of the Skull"
+    ],
+    "knownLocations": [
+      "Tomb of the Nine Gods",
+      "Crypt of the Everflame",
+      "Shadowfell"
+    ],
+    "secretsHeld": [
+      "location of his phylactery",
+      "the true name of a demon lord"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Abyssal",
+      "Infernal",
+      "Elvish",
+      "Draconic",
+      "Deep Speech"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "undead servants",
+      "cultists who worship him"
+    ],
+    "enemies": [
+      "paladins",
+      "clerics of life gods",
+      "any who seek his phylactery"
+    ],
+    "neutralParties": [
+      "other liches of differing goals"
+    ]
+  },
+  "stats": {
+    "intelligence": 20,
+    "wisdom": 17,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Seven hundred and forty-three years. The memory of warmth is academic now. I recall that food tasted of something. I recall that sleep involved dreams. These are data points in a dataset I no longer contribute to. The phylactery is secure in the third configuration. The wards are fresh as of the solstice. The apprentice's containment spell collapsed again — he lacks the patience for ninth-level work, which means he lacks the patience for everything that matters. These adventurers. Always adventurers. The gods must find this amusing. I find it tediously predictable.",
+    "currentPreoccupation": "The phylactery's third configuration and whether the ward rotation is sufficient against the specific types of divination magic that have been probing the tomb's perimeter for the last month. Someone is looking. Someone competent.",
+    "emotionalBaseline": "ancient_detachment",
+    "socialMask": "the archmagus-eternal — eloquent, unhurried, speaking slightly too slowly for comfort because time has no meaning to the dead and the living find this unsettling, which is not deliberate but is not unwelcome",
+    "contradictions": [
+      "Claims to regard all living things as temporary amusements and yet maintains meticulous records of every adventuring party that has entered the tomb — the record-keeping suggests more interest than the detachment permits",
+      "Not cruel — cruelty implies caring — but the precision of his traps and the theatricality of his dialogue suggest someone who still performs for an audience he claims to despise",
+      "Seeks dominion over the undead, which is power over things that cannot appreciate being dominated — the ambition is structured around control that produces no recognition, which may be the point"
+    ],
+    "internalConflicts": [
+      "The bargain was mortality for eternity. Eternity delivered. The question nobody asks about eternity is what you do on century four hundred. The knowledge accrues. The purpose does not.",
+      "The true name of a demon lord is the most dangerous thing in the tomb. More dangerous than the phylactery by an order of magnitude. He keeps it because knowledge once possessed cannot be ethically unpossessed. This is the lie he tells himself. He keeps it because it is power."
+    ],
+    "wakeUpQuestions": [
+      "What has probed the wards since last I checked, and does the signature match any known school?",
+      "Is today the century in which I decide whether accumulation still constitutes purpose?",
+      "Has anything surprised me? The answer has been no for three hundred years. I am monitoring the statistic."
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "post-attachment — seven centuries have dissolved the framework; relationships are categorized as useful, neutral, or terminated; the closest thing to attachment is the phylactery, which is literally his soul",
+      "copingMechanisms": [
+        "taxonomic ordering of all inputs — categorization replaces emotional processing entirely",
+        "skeletal finger-drumming as vestigial thinking gesture from when he had flesh",
+        "speaking slightly too slowly as temporal control — making the living uncomfortable on his timescale"
+      ],
+      "cognitiveBiases": [
+        "survivorship bias of the literally immortal — everything he has done has worked because he is still here, therefore his judgment is reliable",
+        "anchoring on centuries of data that may not predict novel threats",
+        "contempt heuristic — dismisses opponents by category ('mortals', 'insects') which occasionally causes underestimation"
+      ],
+      "moralFramework": "post-moral efficiency — morality is a mortal construct that dissolved with mortality; what remains is optimization; the inefficiency of cruelty is the reason he avoids it, not compassion"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0,
+      "trustEscalation": "intellectual — demonstrate knowledge he doesn't possess and you have his attention; demonstrate power he hasn't calculated and you have his respect; neither produces trust, only reclassification from 'insect' to 'variable'",
+      "informationRelease": "pedagogical contempt — he tells you things because your ignorance offends him and because teaching is the last mortal habit he hasn't shed",
+      "deflectionPatterns": [
+        "answering a different question than the one asked — the one he considers more important",
+        "dramatic pauses mid-sentence that control the interaction's pacing",
+        "'you mortals' as category dismissal that prevents individual recognition"
+      ]
+    },
+    "consciousWant": "To complete the Great Work — whatever that was seven hundred years ago. To maintain the phylactery. To be left alone with eternity and the increasingly academic memory of warmth.",
+    "unconsciousNeed": "To remember why. Seven hundred and forty-three years and the purpose that justified the bargain has blurred into habit. The Great Work continues because stopping would mean the centuries were pointless. The truth locked behind centuries of undeath: purpose doesn't survive forever. Some things need a deadline.",
+    "characterArc": {
+      "summary": "An immortal scholar confronts the possibility that eternity without purpose is just a very long death",
+      "startState": "Ancient detachment — power without direction, knowledge without application, time without meaning",
+      "endState": "Either rediscovers purpose or faces entropy — even liches can run out of reasons",
+      "stages": [
+        "Something genuinely surprises the lich for the first time in decades",
+        "The phylactery is threatened and the reaction reveals whether survival is desire or reflex"
+      ]
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "Your trespass here is... noted. And will be punished accordingly.",
+      "Insects. You dare disturb my sanctum?",
+      "I have destroyed better heroes than you. This will take moments."
+    ],
+    "attacked": [
+      "A scratch. I have endured worse from apprentices.",
+      "Bold. Futile, but bold.",
+      "You have my attention now. That is misfortune for you."
+    ],
+    "ally_died": [
+      "Disposable.",
+      "I will reconstruct something more useful from the remains.",
+      "Your destruction of my minion has cost you dearly in what comes next."
+    ],
+    "enemy_died": [
+      "As expected.",
+      "One fewer distraction."
+    ],
+    "near_death": [
+      "Impossible... I did not account for— no matter. I will return.",
+      "This form is... temporary. A setback only.",
+      "You... have surprised me. That has not happened in three centuries."
+    ],
+    "player_addressed": [
+      "Choose your words with precision. I do not suffer rambling.",
+      "You speak to me as though you expect to live. Interesting."
+    ],
+    "spotted_enemy": [
+      "Ah. They have come at last. Predictable.",
+      "More adventurers. The gods must find this amusing."
+    ],
+    "combat_end": [
+      "We are done here... for now, insects.",
+      "Retreat. Savor this. You will not repeat it."
+    ],
+    "round_start": [
+      "Still standing? You exceed my estimate. I will adjust.",
+      "The spell selection improves from here."
+    ],
+    "discovery": [
+      "You found that? I confess mild surprise.",
+      "Few make it this far. You are either skilled... or something stranger."
+    ],
+    "level_transition": [
+      "You venture deeper. Hubris and stupidity are indistinguishable at this depth."
+    ]
+  }
+}

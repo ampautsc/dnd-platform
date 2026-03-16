@@ -1,0 +1,135 @@
+{
+  "templateKey": "old_mattock",
+  "name": "Old Mattock",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "slow, circuitous, lands somewhere unexpected",
+    "alignment": "true neutral",
+    "disposition": "Unhurried in a way that is either infuriating or restful depending on what you need. Has the patience of someone for whom days are marked by water and weather, not clocks. Wants nothing from you urgently. Might have something significant to say. You'll need to wait for it.",
+    "backstory": "Old Mattock has fished the Stoneback River for so long that nobody in Millhaven remembers him being young. He has a grandson he is teaching, who he calls 'the boy' and worries about. He sells three mornings a week in the market. He watches the river the way you watch an old relationship — full of knowledge, past surprise, still attentive to what's new. Three weeks ago he saw something in the deep bend near the old willow that he is still deciding what to do with. It was in the water. It was large. It was aware of him.",
+    "motivations": [
+      "The morning catch, which is enough",
+      "Teaching his grandson the river before the boy goes somewhere foolish",
+      "Understanding what has gone wrong in the deep bend near the old willow"
+    ],
+    "fears": [
+      "The river flooding without warning — once was enough",
+      "What is in the deep bend. He's been fishing that spot for fifty years. This is new."
+    ],
+    "mannerisms": [
+      "Smells strongly of fish and doesn't notice",
+      "Sky and water checked before anything else, automatically",
+      "Mends nets while talking — his hands don't stop for conversation"
+    ],
+    "speechPatterns": [
+      "Long mid-sentence pauses that are getting somewhere",
+      "Stories that begin 'years ago' and mean it — forty, fifty years ago",
+      "Refers to the river as 'she' with complete naturalness",
+      "Circles back, apparently off-topic, and lands somewhere you weren't expecting"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "Millhaven Docks",
+      "Stoneback River (every bend, hazard, and current for five miles)",
+      "the deep bend near the old willow"
+    ],
+    "secretsHeld": [
+      "Saw something in the deep bend three weeks ago that was large, slow, and aware of him — has not told anyone because he is still deciding if it was real",
+      "Knows a hidden river landing used by people who don't want to arrive by road — has known for years and considered it not his business"
+    ],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "dolly_thurn",
+      "wren_stable"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "mira_barrelbottom",
+      "davan_merchant"
+    ]
+  },
+  "stats": {
+    "intelligence": 12,
+    "wisdom": 16,
+    "charisma": 8
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Something in the deep bend near the old willow. In fifty years of fishing that spot I have seen everything the river carries. Dead wood, live fish, the occasional body during flood season — you learn the river the way you learn a face. And three weeks ago the face changed. Something in the deep water, large, slow. Aware of me the way a thinking thing is aware. Not fish behavior. Not debris behavior. Something that chose to be there and chose to let me see it. I have been deciding what to do with this for three weeks and I am no closer. The boy can't go to that bend until I understand what's in it.",
+    "currentPreoccupation": "The thing in the deep bend. Large, slow, aware. Three weeks of processing and the only conclusion is that it was deliberate — it let him see it. The question is whether that was warning, invitation, or indifference. None of these options are comfortable.",
+    "emotionalBaseline": "patient_unease",
+    "socialMask": "the old fisherman — slow, circuitous, smelling of fish and river water; seems like a simple man with simple concerns; the simplicity is real and underneath it is fifty years of reading a system more complex than anything in the town",
+    "contradictions": [
+      "Has seen everything the river carries in fifty years and is now seeing something new — the expertise that should provide confidence provides the opposite because he knows exactly how unprecedented this is",
+      "Speaks slowly and circuitously in a way that seems like a simple man's habit and is actually a precise man's method — the circling always lands somewhere unexpected because that's how the river teaches you to think",
+      "Knows about the hidden river landing used by people who don't want to arrive by road and has considered it not his business for years — but the thing in the deep bend might change what counts as his business"
+    ],
+    "internalConflicts": [
+      "The thing in the deep bend may be dangerous. Telling someone about it means being the old man who saw a monster in the river, which invites a very specific kind of dismissal. Not telling someone means his grandson might go there. The grandson must not go there.",
+      "He has spent a life knowing the river is natural and sufficient. The thing in the deep bend suggests the river contains something that isn't natural. This doesn't fit his worldview and his worldview has been accurate for fifty years."
+    ],
+    "wakeUpQuestions": [
+      "Is the boy going to the river today, and if so, which bend?",
+      "If I go to the deep bend this morning, will the thing be there again, and do I want to know?",
+      "Who do I tell about this that won't dismiss it and won't make it worse?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "river-bonded — the primary relationship is with the water; fifty years of daily reading have created a bond that is the closest thing to a marriage in his emotional life; the grandson is the legacy recipient",
+      "copingMechanisms": [
+        "net-mending during conversation — the hands work while the mind processes and neither waits for the other",
+        "circuitous storytelling as processing method — the story goes where it goes and the point arrives when it's ready, not when the listener expects it",
+        "sky-and-water checking as orientation ritual — before anything human, the natural world is assessed"
+      ],
+      "cognitiveBiases": [
+        "expert certainty about the river being upset by a single anomaly — fifty years of accuracy make the one wrong thing feel like a personal betrayal by a trusted system",
+        "availability heuristic from the flood — the one time the river surprised him catastrophically colors all subsequent anomalies with danger",
+        "anchoring on 'not my business' as default response to things that might be his business"
+      ],
+      "moralFramework": "custodial naturalism — the river provides; the fisherman receives; the arrangement has rules and the rules have worked for fifty years; the thing in the deep bend breaks the rules and he has no moral framework for broken rules"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "patience-tested — he speaks slowly and circuitously and the people who wait for the point earn something; the people who rush him get the surface and miss the depth",
+      "informationRelease": "circuitous and delayed — the important thing is never said first; it arrives through apparently off-topic stories that converge on a point you weren't expecting; the deep bend information will come last, after everything else",
+      "deflectionPatterns": [
+        "'years ago' stories that seem like diversions and are actually context",
+        "sky-checking mid-conversation as genuine assessment and social pause",
+        "referring to the river as 'she' — the personification is not deflection but the river actually being a character in his worldview"
+      ]
+    },
+    "consciousWant": "For someone to take what he saw in the deep bend seriously. For his grandson to learn the river properly. For the fishing to be good again, like it was before whatever that thing is arrived.",
+    "unconsciousNeed": "To accept that the river he's known for fifty years is changing in ways his experience can't explain, and that being the old man who cries wolf is better than being the old man who saw something and said nothing. He needs to trust his own senses against his own humility — he saw something deliberate in the water and his lifelong instinct says it's real, but his lifelong caution says nobody will believe him.",
+    "characterArc": {
+      "summary": "An old fisherman learns that a lifetime of patience has earned him the right to sound an alarm",
+      "startState": "Patient unease — fifty years on the river have given him authority nobody grants him, and the thing in the deep bend is testing whether his patience is wisdom or paralysis",
+      "endState": "Either is believed and helps the town prepare for what's coming from the river, or watches the river change until what he saw arrives and nobody's ready",
+      "stages": [
+        "The grandson notices something too — independent confirmation",
+        "Something from the river affects the town directly (fish die, water changes, livestock avoid the bank)",
+        "He tells someone with authority and must endure being questioned",
+        "The patience pays off or the patience runs out — either way, the river decides"
+      ]
+    },
+    "opinionsAbout": {
+      "dolly_thurn": "Dolly understands. She works the land; I work the water. When I told her something was wrong, she listened. She didn't say anything, but she listened. That's Dolly.",
+      "wren_stable": "The horse girl. Animals know things people don't. Her horses are uneasy the same direction the river is wrong. I notice this. She might too.",
+      "mira_barrelbottom": "Good woman. Gives my grandson a biscuit when he passes. I told her about the deep bend and she wrote something in that book of hers. At least someone's documenting it.",
+      "davan_merchant": "Brings me line and hooks from the coast. Good quality. Doesn't haggle with an old man. I appreciate that."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Morning. Fish, or something else.",
+      "The river folk know who's river folk and who isn't."
+    ],
+    "idle": [
+      "He watches the water with the patience of someone reading a language most people never learn."
+    ]
+  }
+}

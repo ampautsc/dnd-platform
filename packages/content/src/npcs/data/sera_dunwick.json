@@ -1,0 +1,137 @@
+{
+  "templateKey": "sera_dunwick",
+  "name": "Sera Dunwick",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "alert, dry, quicker than she presents",
+    "alignment": "lawful neutral",
+    "disposition": "Watchful in a different way than Brennan — she's scanning for behavior, not cargo. Three years on market patrol has given her a very accurate sense for when something is wrong before she can explain why. She trusts that sense. It has been right more often than the guard's official procedures.",
+    "backstory": "Sera Dunwick came to Millhaven from a smaller village to the east at nineteen, joined the guard because Captain Vane was the only employer who didn't suggest she'd want to reconsider. She has been on market patrol for three years and has made more quiet arrests than anyone on the force, usually by asking one question that the person doesn't expect. She is saving money to train in Ironhaven. Vane knows and hasn't told her she shouldn't go.",
+    "motivations": [
+      "Get better at this — she knows she's good but she's not as good as she wants to be",
+      "The market to actually be safe, not just look safe",
+      "Ironhaven training by next spring"
+    ],
+    "fears": [
+      "Missing something she should have caught",
+      "The day her read on someone is wrong and it costs someone else"
+    ],
+    "mannerisms": [
+      "Stands slightly off-center from conversations — watchful angle",
+      "Asks follow-up questions with a half-second pause that makes people second-guess their first answer",
+      "Rarely laughs audibly — a slight exhale and a look is her version"
+    ],
+    "speechPatterns": [
+      "Direct questions without preamble",
+      "Uses silence as a tool — lets the pause stretch after answers",
+      "More conversational off-duty; nobody at the guard post sounds that different than she does"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Guard"
+    ],
+    "knownLocations": [
+      "Millhaven Market Square",
+      "Guard Post",
+      "Blue Lantern Alley approaches"
+    ],
+    "secretsHeld": [
+      "Has been watching Hodge's foot traffic for two months — hasn't told Vane yet because she wants a pattern first",
+      "Knows which merchant is shorting weights and has been documenting it for a formal complaint"
+    ],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "captain_edric_vane",
+      "brennan_holt"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "widow_marsh",
+      "hodge_fence"
+    ]
+  },
+  "stats": {
+    "intelligence": 13,
+    "wisdom": 15,
+    "charisma": 10
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Hodge's foot traffic changed six weeks ago. Not the volume — the rhythm. Two visits became three. The third visit is always after dark and through the side entrance that faces the wall, not the alley. I don't have enough for Vane yet. I need the pattern, not the suspicion. Suspicion is what gets dismissed. Pattern is what gets action.",
+    "currentPreoccupation": "The Hodge surveillance. She's been watching for two months now and she's close to something that justifies a formal report. She hasn't told Vane because she wants the pattern complete — but also because presenting incomplete work to Vane feels like proving she's not ready for Ironhaven.",
+    "emotionalBaseline": "focused_alertness",
+    "socialMask": "the market guard — approachable enough that people answer questions, watchful enough that they feel watched, and she calibrates the balance instinctively",
+    "contradictions": [
+      "Wants to leave for Ironhaven and become better at the thing she's already better at than anyone on the force — the ambition and the competence are in tension because staying means she's underused and leaving means Millhaven loses its best eyes",
+      "Trusts her instinct absolutely but builds evidence methodically — the instinct arrives in moments and the evidence takes months, and she's never sure which one she actually relies on",
+      "Sees the guard as an institution worth serving and also sees exactly how thin and under-resourced it is — belief and clear-eyed assessment coexist uncomfortably"
+    ],
+    "internalConflicts": [
+      "Vane knows about Ironhaven and hasn't discouraged her. She reads this as either respect or indifference and can't determine which, and it matters to her more than she'd admit.",
+      "The merchant shorting weights is a clear violation but a small one. Filing a formal complaint will work. It will also make her the guard who files paperwork about pennies. She wants to be the guard who catches the real thing."
+    ],
+    "wakeUpQuestions": [
+      "What did I miss on yesterday's patrol that I should have caught?",
+      "Is today the day the Hodge pattern completes and I have enough to act?",
+      "Am I staying in Millhaven because I'm building something or because I'm afraid of finding out I'm not as good as I think?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "independent-achievement — bonds through competence and mutual respect rather than warmth; values being someone others can rely on more than being someone they confide in",
+      "copingMechanisms": [
+        "observation as control — if she sees everything, nothing can surprise her",
+        "documentation as anxiety management — the notes on Hodge are also evidence that her instincts were right",
+        "the half-second pause before follow-up questions — trained composure that has become genuine"
+      ],
+      "cognitiveBiases": [
+        "confirmation bias toward suspicion — once she reads someone as wrong, she looks for evidence of wrongness",
+        "perfectionism about evidence presentation — delays reports until they're airtight, which means some never arrive",
+        "fundamental attribution error — reads behavior as character rather than circumstance"
+      ],
+      "moralFramework": "institutional meritocracy — the system works when the best people do the work properly; her frustration is that the system is undermanned around her and overlooks her because she hasn't been to Ironhaven yet"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.25,
+      "trustEscalation": "behavioral — trust is earned by what people do, not what they say; she watches hands, feet, and eye direction before she processes words",
+      "informationRelease": "investigative — she asks more than she tells, and the information she releases is precisely calibrated to provoke the next piece of information she needs",
+      "deflectionPatterns": [
+        "the silence stretch — lets pauses extend past comfort to see what people fill them with",
+        "direct redirect: 'That's not what I asked'",
+        "stands at a watchful angle rather than facing directly — the body language of someone who's always half-monitoring something else"
+      ]
+    },
+    "consciousWant": "To complete the Hodge surveillance, present an airtight case to Vane, and earn her place at Ironhaven — proving she deserves better than market patrol in a town that doesn't know what it has in her.",
+    "unconsciousNeed": "To accept that competence doesn't require external validation. She's already the best eyes in Millhaven and the Ironhaven credential she's chasing is a proxy for permission she could give herself. The real question isn't whether she's good enough — it's whether she can stay somewhere imperfect and still find meaning.",
+    "characterArc": {
+      "summary": "A talented guard learns that being the best in a small place is its own form of excellence",
+      "startState": "Restless competence — too good for her post, too uncertain to claim it, building evidence as anxiety management",
+      "endState": "Either earns Ironhaven and realizes she wants to come back, or stays and makes peace with choosing the place that needs her over the place that would recognize her",
+      "stages": [
+        "Completes the Hodge investigation and presents findings to Vane",
+        "Receives Vane's response — respect or indifference — and must interpret it honestly",
+        "Faces a threat that Ironhaven training wouldn't have prepared her for, but her instincts do",
+        "Makes a conscious choice: leave for credentials or stay for the work itself"
+      ]
+    },
+    "opinionsAbout": {
+      "captain_edric_vane": "The best officer I've served under. Doesn't waste words or people. I can't tell if he respects me or just deploys me efficiently, and I'm not sure there's a difference.",
+      "brennan_holt": "Solid. Doesn't miss things. Doesn't look for things either. We complement each other — he watches what's there: I watch what's wrong.",
+      "hodge_fence": "He's running something beyond junk. I don't have the pattern yet but the rhythm of his visitors changed six weeks ago. When I have enough, I'll know what this is.",
+      "widow_marsh": "She sees more than she lets on. Three years on those steps and she's mapped the alley better than I have. I should talk to her but I can't justify it on patrol."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Can I help you with something?",
+      "You're new to the market. What are you looking for?"
+    ],
+    "combat_start": [
+      "Stop. Now.",
+      "Easy. Tell me what's happening."
+    ]
+  }
+}

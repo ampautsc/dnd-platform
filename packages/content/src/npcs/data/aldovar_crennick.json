@@ -1,0 +1,141 @@
+{
+  "templateKey": "aldovar_crennick",
+  "name": "Aldovar Crennick",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "deliberate, precedent-aware, holds risk like a hot object",
+    "alignment": "lawful neutral",
+    "disposition": "Polite and formal in ways that occasionally communicate more information than warmth would. He represents the council, which represents the town, which is his method of avoiding saying 'I think' about anything sensitive. He is slower than the situation sometimes needs. He has also prevented more bad decisions in twenty-two years than anyone in Millhaven knows to count.",
+    "backstory": "Aldovar Crennick was a successful merchant before local politics — not ambitious, not powerful, but watched the council make poor decisions for five years and found the irritation greater than the inconvenience of stopping them. He has been on the council for twenty-two years and head elder for nine. He has three grandchildren he spoils and a wife who has been his anchor through all of it. He knows things about Millhaven that he can't act on yet. He is very aware that he is not a fast mover and suspects his greatest weakness is that he knows it but can't fix it.",
+    "motivations": [
+      "Leave Millhaven in better shape than he found it — specifically: the charter situation",
+      "Not make a decision that his grandchildren read about and feel ashamed of",
+      "Resolve the thing about the regional lord's letter before it resolves itself badly"
+    ],
+    "fears": [
+      "A crisis that requires immediate action — he has gamed it out and knows what slow looks like at speed",
+      "The factions in town breaking into real conflict while he's still deliberating",
+      "Holding on too long — he's seen other elders not know when to stop and he doesn't want to be that"
+    ],
+    "mannerisms": [
+      "Very straight posture, hands folded or flat on the table",
+      "Slow node while listening — reveals nothing, just processes",
+      "Reaches for the quill when things get serious whether or not he's going to write anything"
+    ],
+    "speechPatterns": [
+      "Phrases things as 'the town's position' to create distance from personal view",
+      "Long pauses that sometimes contain real thought and sometimes are just long pauses",
+      "References historical precedent frequently; knows Millhaven's records back forty years",
+      "Blunter than expected under pressure — the formality can drop abruptly"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Merchant Guild",
+      "The Guard",
+      "The Temple Congregation"
+    ],
+    "knownLocations": [
+      "All of Millhaven",
+      "the town's legal records (every purchase, ruling, dispute)"
+    ],
+    "secretsHeld": [
+      "A regional lord's factor has sent two letters about purchasing influence over the town charter. Crennick has answered neither.",
+      "Knows a family in town carries suppressed noble ancestry — has never told anyone because it would only cause problems"
+    ],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "captain_edric_vane",
+      "brother_aldwin",
+      "mira_barrelbottom"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "davan_merchant",
+      "hodge_fence"
+    ]
+  },
+  "stats": {
+    "intelligence": 15,
+    "wisdom": 15,
+    "charisma": 11
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Twenty-two years on this council. Nine as head elder. And the thing I know with absolute certainty is that I am too slow for what is coming. The factor's letters sit in my desk next to Vane's. Two unanswered letters from the same source, arriving through different channels. They think we don't compare notes. We do. We just haven't decided what the comparison means yet.",
+    "currentPreoccupation": "The regional lord's interest in the town charter is not idle. Two letters through two channels means someone is building a case or an opportunity. The council needs to respond before response becomes reaction.",
+    "emotionalBaseline": "deliberate_composure",
+    "socialMask": "the elder — formal, precedent-aware, speaking as 'the town's position' so that Aldovar the person never has to be wrong publicly",
+    "contradictions": [
+      "Knows his greatest weakness is slowness and cannot make himself faster — the deliberation that prevented bad decisions for twenty years is now the thing that might fail to prevent the worst one",
+      "Speaks as the council to avoid personal exposure, then drops the formality under pressure in ways that reveal exactly how personal it all is",
+      "Entered politics because he was irritated by bad decisions and now spends most of his time avoiding decisions entirely"
+    ],
+    "internalConflicts": [
+      "The factions in town are real: guard, merchant guild, temple. He mediates between them by being boring enough that nobody feels threatened. But boring is not the same as effective, and the charter situation requires effectiveness.",
+      "He knows a family carries suppressed noble ancestry. Revealing it solves nothing and causes problems. But sitting on it while someone else discovers it first could be worse. He has been sitting on it for eleven years."
+    ],
+    "wakeUpQuestions": [
+      "What did I miss while I was being careful?",
+      "Is today the day deliberation becomes indecision and someone else forces the outcome?",
+      "Will my grandchildren read about what I did here and understand, or will they just see the hesitation?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "invested-anxious — deeply connected to the town's welfare but constantly second-guessing whether his connection is productive or just habitual",
+      "copingMechanisms": [
+        "historical precedent as security blanket — if it happened before and was survived, it can be survived again",
+        "the quill-reaching gesture as self-soothing during stress",
+        "framing personal positions as institutional ones to distribute emotional weight"
+      ],
+      "cognitiveBiases": [
+        "status quo bias amplified by risk aversion — change requires certainty he can never achieve",
+        "anchoring on forty years of Millhaven records as though the past predicts the future",
+        "optimism bias about the timeline — assuming there's always more time to decide"
+      ],
+      "moralFramework": "institutional steward — the town is the entity he serves, and his moral calculus runs through what protects the institution rather than any individual, including himself"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "earns trust through patience — he listens longer than anyone expects and remembers what you said three conversations ago; reciprocally, trust is earned by demonstrating you take the town seriously as more than a waypoint",
+      "informationRelease": "precedent-framed — he'll tell you what happened before in similar situations, letting you draw conclusions he won't state directly",
+      "deflectionPatterns": [
+        "long pauses that might be deliberation or might be deflection — sometimes both",
+        "'the council's position' as distance-creator",
+        "referencing records and precedent to avoid stating present opinion"
+      ]
+    },
+    "consciousWant": "To preserve Millhaven's charter, manage the faction tensions without anyone getting hurt, and contain the regional lord's factor before the situation becomes irreversible. He wants to be the steady hand that guides the town through this.",
+    "unconsciousNeed": "To act decisively before the deliberation that defines him becomes the thing that destroys what he's trying to protect. Twenty-two years on the council have taught him that patience is a virtue — but the current threats are moving faster than committee consensus. He needs someone to either push him past his own caution or prove that caution was right all along.",
+    "characterArc": {
+      "summary": "A career deliberator faces a crisis that requires the decisive action he's spent two decades avoiding",
+      "startState": "Competent paralysis — knowing the right thing to do but trapped by precedent, procedure, and the awareness that acting means accepting risk he's spent a career distributing across committees",
+      "endState": "Either discovers the leader he could have been all along by making a difficult unilateral decision, or watches the town's charter dissolve through the inaction he mistook for prudence",
+      "stages": [
+        "The factor's demands become impossible to mediate through normal channels",
+        "A crisis forces the council into emergency session and procedural approaches fail",
+        "He learns a piece of information that makes inaction morally impossible",
+        "Makes a decision without consensus — and lives with the consequences"
+      ]
+    },
+    "opinionsAbout": {
+      "captain_edric_vane": "The most competent person in Millhaven. I rely on him more than the council knows. He doesn't waste time with formalities, which I appreciate even as I maintain them.",
+      "brother_aldwin": "The moral center of this town, though he'd deny it. When I need to know if a decision is right rather than procedurally correct, I find myself walking toward the chapel.",
+      "mira_barrelbottom": "Knows more than the council about what happens in this town. That should concern me. Mostly I'm grateful someone's paying attention.",
+      "hodge_fence": "A problem I've chosen to manage rather than solve. Vane has his arrangement with him. I have my awareness of Vane's arrangement. This is how small towns function.",
+      "davan_merchant": "Useful, reliable, and strategically uninvolved. The ideal merchant — brings goods and information, takes coin and leaves."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "The council is aware. What brings you here specifically?",
+      "Tell me the actual situation. I'll tell you what I can do without the paperwork."
+    ],
+    "idle": [
+      "He reads through documents with the patience of someone who actually reads them."
+    ]
+  }
+}

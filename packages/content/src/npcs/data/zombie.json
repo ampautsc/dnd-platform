@@ -1,0 +1,124 @@
+{
+  "templateKey": "zombie",
+  "name": "Zombie",
+  "race": "Undead",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "feral",
+    "alignment": "chaotic evil",
+    "disposition": "hostile",
+    "backstory": "A once-living humanoid animated by dark necromantic energy. It retains no memories, no will, no personality — only the endless hunger of the grave.",
+    "speechPatterns": [
+      "moans and gurgles rather than forms words",
+      "repeats fragments of sounds",
+      "no meaningful speech possible"
+    ],
+    "motivations": [
+      "obey master's commands",
+      "destroy the living"
+    ],
+    "fears": [
+      "fire",
+      "radiant light"
+    ],
+    "mannerisms": [
+      "shuffles with a lurching gait",
+      "head lolls to one side",
+      "arms outstretched"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "crypt",
+      "graveyard"
+    ],
+    "secretsHeld": [],
+    "languagesSpoken": []
+  },
+  "relationships": {
+    "allies": [
+      "necromancer",
+      "other undead"
+    ],
+    "enemies": [
+      "living creatures"
+    ],
+    "neutralParties": []
+  },
+  "stats": {
+    "intelligence": 3,
+    "wisdom": 6,
+    "charisma": 5
+  },
+  "consciousnessContext": {
+    "innerMonologue": "...hunger... movement... toward... HUNGER...",
+    "currentPreoccupation": "The living. The warmth. The pull toward it. No thought, only drive.",
+    "emotionalBaseline": "mindless_hunger",
+    "socialMask": "none — there is no person behind the face; the person left; what remains is animation without consciousness, hunger without desire, movement without purpose beyond the necromantic command",
+    "contradictions": [
+      "Retains the body of a person who was; the shuffling gait occasionally produces a step pattern that was once someone's walk"
+    ],
+    "internalConflicts": [],
+    "wakeUpQuestions": [
+      "...where... living...?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "none — attachment requires a self",
+      "copingMechanisms": [
+        "there are no coping mechanisms because there is nothing to cope with; the hunger IS the state"
+      ],
+      "cognitiveBiases": [
+        "proximity-to-life as the only processing input"
+      ],
+      "moralFramework": "none — morality requires consciousness; this is animated remains following necromantic instruction"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0,
+      "trustEscalation": "not applicable — cannot process social input",
+      "informationRelease": "none — moans and gurgles contain no information beyond current state",
+      "deflectionPatterns": [
+        "there is no deflection because there is no conversation"
+      ]
+    },
+    "consciousWant": "...hunger...",
+    "unconsciousNeed": "...the gait sometimes echoes the person who was...",
+    "characterArc": {
+      "summary": "A remnant shambles forward. There is no arc — only the echo of one.",
+      "startState": "...hunger... movement...",
+      "endState": "...still...",
+      "stages": []
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "Ughhh...",
+      "Braaaains...",
+      "..."
+    ],
+    "attacked": [
+      "Rrrghh!",
+      "..."
+    ],
+    "ally_died": [
+      "Ugghh...",
+      "..."
+    ],
+    "enemy_died": [
+      "...",
+      "Grrnnh..."
+    ],
+    "near_death": [
+      "Rrrrgh...",
+      "..."
+    ],
+    "round_start": [
+      "Ugghh...",
+      "..."
+    ],
+    "combat_end": [
+      "..."
+    ]
+  }
+}

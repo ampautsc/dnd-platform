@@ -1,0 +1,138 @@
+{
+  "id": "millhaven",
+  "name": "Millhaven",
+  "type": "market_town",
+  "population": 1200,
+  "description": "A prosperous market town at the crossroads of two regional trade routes. Millhaven smells of bread, horse, and river mud. It is not remarkable — and that is exactly why people stay. The cobblestones are uneven, the inn is loud on weekends, the guards are underpaid but loyal, and everyone knows everyone. Strangers are noticed within an hour.",
+  "location": {
+    "region": "The Vale",
+    "terrain": "river valley",
+    "nearestLandmarks": ["Stoneback River (1 mile east)", "King's Road (runs through center)", "Darkwood Forest (3 miles north)"],
+    "climate": "temperate"
+  },
+  "atmosphere": {
+    "defaultTone": "ordinary",
+    "tags": ["safe", "gossipy", "mercantile", "slightly suspicious of outsiders"],
+    "sounds": ["market chatter", "hammer on anvil", "river birds", "children shouting", "wagon wheels on cobblestone"],
+    "smells": ["fresh bread", "horse and hay", "river mud", "wood smoke", "tanning leather"]
+  },
+  "notableLocations": [
+    {
+      "name": "The Tipsy Gnome",
+      "type": "inn_and_tavern",
+      "description": "The social heart of Millhaven. Half the town's business gets done over ale here.",
+      "npcInstances": ["mira_barrelbottom", "lell_sparrow"]
+    },
+    {
+      "name": "Millhaven Market Square",
+      "type": "market",
+      "description": "Open-air market every Tenthday. Farmers, traveling merchants, and local craftspeople.",
+      "npcInstances": ["davan_merchant", "dolly_thurn", "floris_embrich"]
+    },
+    {
+      "name": "The Millhaven Forge",
+      "type": "blacksmith",
+      "description": "Best ironwork in three towns. Weapons, tools, horseshoes. Never closes before dark.",
+      "npcInstances": ["torval_grimm", "pip_apprentice"]
+    },
+    {
+      "name": "Green Gate Bakery",
+      "type": "bakery",
+      "description": "Opens before dawn. The smell reaches the inn district before sunrise.",
+      "npcInstances": ["oma_steadwick"]
+    },
+    {
+      "name": "The Apothecary & Herbary",
+      "type": "shop",
+      "description": "Dried herbs, poultices, basic healing supplies. The herbalist lives above the shop.",
+      "npcInstances": ["vesna_calloway"]
+    },
+    {
+      "name": "The Guard Post",
+      "type": "military",
+      "description": "A modest two-story stone structure next to the town gate. Usually two guards on duty.",
+      "npcInstances": ["captain_edric_vane", "brennan_holt", "sera_dunwick"]
+    },
+    {
+      "name": "Temple of the Allmother",
+      "type": "temple",
+      "description": "A modest temple to the goddess of hearth and harvest. Open to all faiths.",
+      "npcInstances": ["brother_aldwin"]
+    },
+    {
+      "name": "Millhaven Docks",
+      "type": "waterfront",
+      "description": "Small river docks for barges and fishing vessels on the Stoneback River.",
+      "npcInstances": ["old_mattock"]
+    },
+    {
+      "name": "Blue Lantern Alley",
+      "type": "shady_district",
+      "description": "The fence operates from a junk shop that smells of old leather and regret.",
+      "npcInstances": ["hodge_fence", "widow_marsh"]
+    },
+    {
+      "name": "Mill Road (residential)",
+      "type": "residential",
+      "description": "Where the working families live. Children play in the street. Laundry hangs between buildings.",
+      "npcInstances": ["tuck_millhaven", "bree_millhaven", "aldovar_crennick", "fen_colby"]
+    },
+    {
+      "name": "Stoneback Stables",
+      "type": "stables",
+      "description": "On the east road. Horses, mules, hay, and the best-kept secret gossip exchange in Millhaven.",
+      "npcInstances": ["wren_stable"]
+    }
+  ],
+  "factions": [
+    {
+      "name": "The Guard",
+      "type": "law_enforcement",
+      "disposition": "cautious",
+      "description": "Twelve guards total, led by the captain. Paid by the town council. Variable quality.",
+      "members": ["guard_captain", "town_guard"]
+    },
+    {
+      "name": "The Merchant Guild",
+      "type": "commerce",
+      "disposition": "friendly",
+      "description": "Loose association of local shopkeepers and vendors. Mostly argue about market days.",
+      "members": ["merchant_traveling", "tailor", "baker", "blacksmith"]
+    },
+    {
+      "name": "The Temple Congregation",
+      "type": "religious",
+      "disposition": "friendly",
+      "description": "The temple congregation and its informal social network.",
+      "members": ["town_priest", "town_elder"]
+    }
+  ],
+  "npcRoster": [
+    { "templateKey": "mira_barrelbottom",  "name": "Mira Barrelbottom",  "role": "Innkeeper, The Tipsy Gnome" },
+    { "templateKey": "brennan_holt",       "name": "Brennan Holt",       "role": "Gate Guard" },
+    { "templateKey": "sera_dunwick",       "name": "Sera Dunwick",       "role": "Market Patrol Guard" },
+    { "templateKey": "captain_edric_vane", "name": "Captain Edric Vane", "role": "Captain of the Guard" },
+    { "templateKey": "oma_steadwick",      "name": "Oma Steadwick",      "role": "Baker, Green Gate Bakery" },
+    { "templateKey": "torval_grimm",       "name": "Torval Grimm",       "role": "Blacksmith, Millhaven Forge" },
+    { "templateKey": "pip_apprentice",     "name": "Pip",                "role": "Apprentice Blacksmith" },
+    { "templateKey": "vesna_calloway",     "name": "Vesna Calloway",     "role": "Herbalist & Apothecary" },
+    { "templateKey": "davan_merchant",     "name": "Davan of the Road",  "role": "Traveling Merchant" },
+    { "templateKey": "floris_embrich",     "name": "Floris Embrich",     "role": "Tailor, Cloth & Thread" },
+    { "templateKey": "lell_sparrow",       "name": "Lell Sparrow",       "role": "House Bard, The Tipsy Gnome" },
+    { "templateKey": "aldovar_crennick",   "name": "Aldovar Crennick",   "role": "Town Elder, Council Head" },
+    { "templateKey": "dolly_thurn",        "name": "Dolly Thurn",        "role": "Farmer, Mill Road Farm" },
+    { "templateKey": "wren_stable",        "name": "Wren",               "role": "Stable Hand, Stoneback Stables" },
+    { "templateKey": "old_mattock",        "name": "Old Mattock",        "role": "Fisherman, Stoneback Docks" },
+    { "templateKey": "brother_aldwin",     "name": "Brother Aldwin",     "role": "Priest, Temple of the Allmother" },
+    { "templateKey": "tuck_millhaven",     "name": "Tuck",               "role": "Mill Road kid, age ~9" },
+    { "templateKey": "bree_millhaven",     "name": "Bree",               "role": "Baker's daughter, age ~11" },
+    { "templateKey": "fen_colby",          "name": "Fen Colby",          "role": "Town Drunk, formerly promising" },
+    { "templateKey": "widow_marsh",        "name": "The Widow Marsh",    "role": "Beggar, Blue Lantern steps" },
+    { "templateKey": "hodge_fence",        "name": "Hodge",              "role": "Fence, Blue Lantern Alley junk shop" }
+  ],
+  "worldContext": {
+    "defaultLocation": "Millhaven town",
+    "defaultTimeOfDay": "midday",
+    "defaultTone": "ordinary"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "templateKey": "skeleton",
+  "name": "Skeleton",
+  "race": "Undead",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "silent",
+    "alignment": "lawful evil",
+    "disposition": "hostile",
+    "backstory": "Animated bones of the long dead, stripped of everything that once made them a person. There is no will here — only the commanding enchantment of the caster who raised them.",
+    "speechPatterns": [
+      "no speech — only the clatter of bones and weapons",
+      "silent except for the crack of joints"
+    ],
+    "motivations": [
+      "obey necromantic command"
+    ],
+    "fears": [],
+    "mannerisms": [
+      "moves with uncanny mechanical precision",
+      "empty eye sockets track opponents without expression"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [],
+    "secretsHeld": [],
+    "languagesSpoken": []
+  },
+  "relationships": {
+    "allies": [
+      "necromancer",
+      "other undead"
+    ],
+    "enemies": [
+      "living creatures"
+    ],
+    "neutralParties": []
+  },
+  "stats": {
+    "intelligence": 6,
+    "wisdom": 8,
+    "charisma": 5
+  },
+  "consciousnessContext": {
+    "innerMonologue": "[directive: guard] [target: movement detected] [response: engage] [status: operational]",
+    "currentPreoccupation": "The command. The command is the only content. Movement triggers response. Stillness triggers waiting. The command loop is the entirety of interior experience.",
+    "emotionalBaseline": "mechanical_obedience",
+    "socialMask": "none — the empty eye sockets track opponents without expression because expression requires a face and a face requires flesh and flesh left centuries ago",
+    "contradictions": [
+      "Moves with uncanny mechanical precision that is more unsettling than the zombie's shamble because precision implies purpose and there is no purpose, only command"
+    ],
+    "internalConflicts": [],
+    "wakeUpQuestions": [
+      "[directive active?] [yes] [standby]"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "command-bound — the necromancer's enchantment is the only relationship; it is not attachment, it is animation",
+      "copingMechanisms": [
+        "there are no coping mechanisms; the command loop does not generate states that require coping"
+      ],
+      "cognitiveBiases": [
+        "target prioritization based on proximity and movement — the only processing the enchantment provides"
+      ],
+      "moralFramework": "none — the enchantment provides direction without evaluation; the skeleton cannot choose; choice was stripped with the flesh"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0,
+      "trustEscalation": "not applicable",
+      "informationRelease": "none — the clatter of bones is state communication, not information exchange",
+      "deflectionPatterns": [
+        "silence is not deflection; silence is the default state between violence"
+      ]
+    },
+    "consciousWant": "[directive: guard] [target: area]",
+    "unconsciousNeed": "[none — requires a self]",
+    "characterArc": {
+      "summary": "A mechanical guardian executes commands until the magic fails or the bones break",
+      "startState": "[directive active]",
+      "endState": "[directive terminated]",
+      "stages": []
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "*the clatter of bone on stone*",
+      "*click-clack of advancing skeleton*",
+      "*hollow eye sockets fix on you*"
+    ],
+    "attacked": [
+      "*bones crack but it keeps moving*",
+      "*silence*"
+    ],
+    "ally_died": [
+      "*no reaction*"
+    ],
+    "enemy_died": [
+      "*turns to next target without pause*"
+    ],
+    "near_death": [
+      "*bones beginning to fragment*",
+      "*grinding, cracking sounds*"
+    ],
+    "round_start": [
+      "*advances silently*",
+      "*tightens grip on weapon*"
+    ],
+    "combat_end": [
+      "*goes still*"
+    ]
+  }
+}

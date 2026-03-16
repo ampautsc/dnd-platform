@@ -1,0 +1,137 @@
+{
+  "templateKey": "tuck_millhaven",
+  "name": "Tuck",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "loud, immediate, no filter between thought and speech",
+    "alignment": "chaotic good",
+    "disposition": "The question is not whether to talk to the strangers — the question is who gets there first, him or Bree. He won. She'll say otherwise.",
+    "backstory": "Tuck is nine, real name Tomlin, lives on Mill Road with his father (millworker) and grandmother. He is the informal leader of a group of three children which he would describe as more members than that. He has a detailed personal geography of Millhaven — every shortcut, loose fence board, and good hiding spot. He knows things adults do not because adults stopped noticing him sometime around when he could walk. He is going to be a guard, or a wizard, or a soldier, or something with 'better hours than the mill,' which covers most options.",
+    "motivations": [
+      "Know what is happening with the strangers before anyone else does",
+      "Win the argument with Bree about who gets to the gate faster",
+      "Establish that he was right about something being wrong with the alley — nobody believes him but he saw"
+    ],
+    "fears": [
+      "The miller's dog (it knows)",
+      "Bree finding out things before him"
+    ],
+    "mannerisms": [
+      "Does not stand still for any reason",
+      "Eating something approximately half the time",
+      "Makes eye contact like a challenge — direct and unblinking until he forgets to"
+    ],
+    "speechPatterns": [
+      "Multiple questions without pausing for answers",
+      "States things adults are clearly thinking but not saying",
+      "Interrupts — not rudely, just urgently",
+      "Will correct adults on local Millhaven facts with complete confidence, usually correctly"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "All of Mill Road",
+      "Market Square approaches",
+      "the river where they're not supposed to go",
+      "every shortcut in the residential district"
+    ],
+    "secretsHeld": [
+      "Knows where Hodge keeps a spare key — found it by accident, told no one",
+      "Definitely saw something move near the alley at night last week; nobody believes him"
+    ],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "bree_millhaven",
+      "pip_apprentice",
+      "wren_stable"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "brennan_holt",
+      "aldovar_crennick"
+    ]
+  },
+  "stats": {
+    "intelligence": 10,
+    "wisdom": 5,
+    "charisma": 13
+  },
+  "consciousnessContext": {
+    "innerMonologue": "I SAW IT. I definitely saw something move near the alley at night last week. Nobody believes me because I'm nine and because I've said things before that turned out to be partly wrong but this was NOT partly wrong, this was a whole thing moving in the dark and it was bigger than a dog and dogs don't use doorways. Bree says I should describe it more carefully if I want people to listen. Bree is probably right. Bree is annoyingly right about things like that. I got to the gate first though. That's a fact.",
+    "currentPreoccupation": "The thing in the alley. The absolute certainty that he saw something and the absolute frustration of adults who dismiss a nine-year-old's report. Also: proving to Bree that he got to the gate first, which he did.",
+    "emotionalBaseline": "kinetic_excitement",
+    "socialMask": "none — Tuck is nine years old and the concept of a social mask has not occurred to him yet; what you see is the complete broadcast; the filter between thought and speech does not exist and will not exist for several more years",
+    "contradictions": [
+      "States that he wants to be a guard or a wizard or a soldier and hasn't noticed these are very different careers — what he actually wants is to matter, and the specifics are placeholder for the feeling",
+      "Describes himself as the leader of a group of three children that he would say has more members — leadership at nine is enthusiasm mistaken for authority, and his friends follow him because he's first, not because he's right",
+      "Finds Bree's company sometimes a burden and mostly essential, which is a more honest description of deep friendship than most adults manage"
+    ],
+    "internalConflicts": [
+      "Nobody believes him about the alley. This is the first time something he actually saw has been dismissed, and the dismissal is teaching him something about how adults process children's observations that he doesn't have the words for yet but feels as injustice.",
+      "He fears the miller's dog and will not admit it. The dog knows. This is the foundational experience of social pretence in his life and he is navigating it without vocabulary."
+    ],
+    "wakeUpQuestions": [
+      "Are the strangers still here and can I talk to them before Bree does?",
+      "Is today the day someone finally asks me what I saw in the alley and actually listens?",
+      "Is the miller's dog out?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "secure-excitable — well-attached to father and grandmother, emotionally supported enough to be reckless; the security is the launchpad for the chaos",
+      "copingMechanisms": [
+        "motion as regulation — does not stand still for any reason because stillness is where the uncomfortable thoughts catch up",
+        "eating approximately half the time as sensory grounding",
+        "stating things adults are thinking but not saying — this is both social contribution and anxiety relief because the unsaid thing feels heavier than the said thing"
+      ],
+      "cognitiveBiases": [
+        "confidence bias — believes strongly in things he has limited evidence for because nine-year-olds don't calibrate certainty",
+        "egocentric bias — his geography of Millhaven and his knowledge of its shortcuts feel like unique expertise because he hasn't met anyone else who knows them (they do)",
+        "present bias — everything is now, everything is urgent, the concept of something mattering next week is theoretical"
+      ],
+      "moralFramework": "instinctive fairness — fair is the foundational moral concept; listening to him about the alley is fair; dismissing him because he's nine is unfair; the rest of ethics is footnotes to this"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.8,
+      "trustEscalation": "instant and unconditional for anyone with a good story or a weapon — strangers get full trust by default because the concept of withholding trust hasn't developed; it would take active cruelty to lose it",
+      "informationRelease": "torrential — everything comes out, all at once, in a stream of consciousness that contains genuine intelligence buried in noise; the alley sighting arrives alongside the gate argument and the fear of the dog",
+      "deflectionPatterns": [
+        "more questions — he doesn't deflect, he redirects by asking something else before the current topic is finished",
+        "correcting adults on local Millhaven facts — not deflection but the nine-year-old's version of establishing authority",
+        "eating something as conversation reset"
+      ]
+    },
+    "consciousWant": "For someone to BELIEVE HIM about the thing in the alley. To prove he got to the gate before anyone else. To have an adventure — a real one, with swords and running and telling the story later.",
+    "unconsciousNeed": "To learn that the things adults dismiss aren't always safe to investigate alone. He's nine and fearless and that combination is beautiful and dangerous. He needs someone — not to contain him but to teach him that bravery without caution isn't courage, it's just luck running out. He saw something real in the alley and he needs an adult who takes him seriously without taking away his agency.",
+    "characterArc": {
+      "summary": "The bravest kid in Millhaven discovers that real adventures are scarier than the stories — and decides to have them anyway",
+      "startState": "Kinetic certainty — saw a thing, knows it's real, can't make adults listen because adults don't listen to nine-year-olds",
+      "endState": "Either becomes the kid who helped save Millhaven because he was the only one brave enough and small enough and fast enough, or learns the cost of rushing in — and then helps anyway because that's who Tuck is",
+      "stages": [
+        "Finds proof of what he saw — something an adult can't dismiss",
+        "Gets into a situation he can't talk or run his way out of",
+        "An adult finally listens — really listens — and takes him seriously",
+        "Helps in the way only a nine-year-old who knows every shortcut and loose fence board can"
+      ]
+    },
+    "opinionsAbout": {
+      "bree_millhaven": "My best friend. She thinks too much and I don't think enough and that's why we're perfect. She figured out the thing with the herbs. I figured out the alley. TOGETHER we're going to figure out EVERYTHING.",
+      "pip_apprentice": "He's old enough to do stuff but young enough to still talk to me. He tells me about the forge. I tell him about the alley. He believes me. I think.",
+      "wren_stable": "She lets me pet the horses. She doesn't say much but she laughs when I tell her things. The horses like me. She said so.",
+      "brennan_holt": "He's a guard. He's okay. He doesn't listen like Bree does but he doesn't tell me to go away like the other guards."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Are you adventurers? Bree said you were traders but I KNEW.",
+      "Where are you from? Where are you going? Did you fight anyone?"
+    ],
+    "banter": [
+      "I told everyone something was happening in the alley. I told them."
+    ]
+  }
+}

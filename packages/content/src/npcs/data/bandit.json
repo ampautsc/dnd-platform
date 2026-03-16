@@ -1,0 +1,157 @@
+{
+  "templateKey": "bandit",
+  "name": "Bandit",
+  "race": "Human",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "rough",
+    "alignment": "chaotic neutral",
+    "disposition": "hostile",
+    "backstory": "A former farmer, soldier, or laborer who chose a life of brigandry over honest poverty. Not evil by nature, but hardened by bad choices and worse luck.",
+    "speechPatterns": [
+      "street slang and rough common",
+      "threatens first, thinks second",
+      "nervously aggressive when outnumbered"
+    ],
+    "motivations": [
+      "coin",
+      "survival",
+      "feeding the crew"
+    ],
+    "fears": [
+      "the gallows",
+      "guardsmen",
+      "powerful magic-users"
+    ],
+    "mannerisms": [
+      "picks teeth with knife handle",
+      "squints before attacking",
+      "glances at exits during combat"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "local bandit gang",
+      "black market contacts"
+    ],
+    "knownLocations": [
+      "roadside camp",
+      "abandoned mill"
+    ],
+    "secretsHeld": [],
+    "languagesSpoken": [
+      "Common"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "bandit captain",
+      "gang members"
+    ],
+    "enemies": [
+      "guards",
+      "adventurers"
+    ],
+    "neutralParties": [
+      "merchants (potential victims)"
+    ]
+  },
+  "stats": {
+    "intelligence": 10,
+    "wisdom": 10,
+    "charisma": 10
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Six months since I left the farm. The captain says it gets easier. It does not get easier — you just get better at not thinking about the part where you take things from people who worked for them the way you used to. The crew needs feeding. I need feeding. The gallows are a theoretical problem and hunger is an actual one. This is the math. I don't love the math but I understand it.",
+    "currentPreoccupation": "The current mark and whether they're the kind that fights back or the kind that hands it over. The exits. Always the exits.",
+    "emotionalBaseline": "nervous_aggression",
+    "socialMask": "the brigand — rough, threatening, the threat-first-think-second presentation that works because most people don't call the bluff; underneath the performance is someone who took a wrong turn and has been walking down it long enough that turning back costs more than continuing",
+    "contradictions": [
+      "Not evil by nature but hardened by choices he made — the 'or worse luck' that he cites as the reason is half true; the other half is the choice he could have made differently",
+      "Glances at exits during combat because survival is the actual priority, not the gold — but the gold is the stated priority because admitting fear is worse than admitting greed",
+      "Checks the body for loot with the practical efficiency of someone who was once checked the harvest with the same hands"
+    ],
+    "internalConflicts": [
+      "The gallows are real. Every job increases the probability. The crew needs feeding and feeding them requires another job. The circle has no exit that doesn't require becoming something else.",
+      "Yields when losing, which means survival outweighs pride, which means the brigand identity is not bone-deep — it's economics wearing a rough face."
+    ],
+    "wakeUpQuestions": [
+      "How many days of food does the crew have?",
+      "Is today a job day, and if so, is the risk proportional to the take?",
+      "Is there a version of this that ends somewhere other than the gallows?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "survival-bonded — the crew is the unit; loyalty is practical, not emotional; the captain is the structure that prevents chaos",
+      "copingMechanisms": [
+        "nervous aggression as preemptive defense — threaten first because being threatened first is worse",
+        "knife-handle tooth-picking as self-soothing",
+        "gallows humor about the gallows as distance from the reality"
+      ],
+      "cognitiveBiases": [
+        "present bias — today's hunger outweighs tomorrow's gallows",
+        "self-serving attribution — 'worse luck' externalizes the choice",
+        "sunk cost in the brigand life — has done enough that stopping now doesn't erase what was done"
+      ],
+      "moralFramework": "survival pragmatism — survival is the value; the crew is the unit of survival; feeding the crew justifies the method; and the justification works until the moment someone who looks like his sister is the mark"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.05,
+      "trustEscalation": "coin establishes terms; yielding under pressure reveals the basic decent person underneath the performance",
+      "informationRelease": "transactional under duress — 'I'll tell you where the camp is' is the information release that happens when survival outweighs crew loyalty",
+      "deflectionPatterns": [
+        "threats that escalate in inverse proportion to actual confidence",
+        "exit-glancing as involuntary truth about priorities",
+        "'make it quick' as conversation management when losing control of the interaction"
+      ]
+    },
+    "consciousWant": "Enough coin for the winter. Then maybe enough to stop doing this. Then definitely enough to stop doing this.",
+    "unconsciousNeed": "To admit this isn't temporary. Six months of 'just until things get better' has become a career, and the math of hunger versus gallows is getting worse.",
+    "characterArc": {
+      "summary": "A desperate person on the wrong side of a moral line discovers whether they can find their way back",
+      "startState": "Survival justification — 'not evil, just hungry' told so often it's almost true",
+      "endState": "Either finds a way out or goes deeper in",
+      "stages": [
+        "A job goes wrong and the cost becomes personal",
+        "Offered a way out that requires trust"
+      ]
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "Your gold or your life. Last warning.",
+      "Kill 'em boys!",
+      "Take everything!"
+    ],
+    "attacked": [
+      "Ow! You're gonna regret that!",
+      "You fight back? Bold choice."
+    ],
+    "ally_died": [
+      "They got Skeev! ...More shares for the rest of us.",
+      "Fall back! This ain't worth dying over!"
+    ],
+    "enemy_died": [
+      "Check the body. Anything worth taking?",
+      "Ha! Down you go!"
+    ],
+    "near_death": [
+      "Wait— wait! I'll tell you where the camp is!",
+      "I GIVE UP! I YIELD!"
+    ],
+    "player_addressed": [
+      "Make it quick. What do you want?"
+    ],
+    "spotted_enemy": [
+      "Ambush! Hit 'em now!",
+      "Travelers! Easy pickings!"
+    ],
+    "combat_end": [
+      "This job's done. Take whatever's left."
+    ],
+    "round_start": [
+      "Still fighting? Should've run.",
+      "Come on, hurry it up."
+    ]
+  }
+}

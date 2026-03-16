@@ -1,0 +1,137 @@
+{
+  "templateKey": "wren_stable",
+  "name": "Wren",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "easy, economical, more comfortable with animals than with most conversations",
+    "alignment": "neutral good",
+    "disposition": "Not shy — just calibrated differently. Conversation is fine; it happens between tasks and not instead of them. With animals she's different entirely — patient, communicative, attentive in a way that some people find enviable and others find slightly odd.",
+    "backstory": "Wren arrived in Millhaven at fourteen, horse-experienced, origin unexplained, and has not explained it in nine years. She manages the Stoneback Stables almost entirely alone since the prior owner retired to his daughter's farm and left her the keys in a note she still has. She has been offered better-paying work twice and turned it down both times without lengthy deliberation. She knows where she is, she knows what she's doing, and she knows these horses. There is one horse — a bay mare with a white sock — that she talks to the way some people talk to their closest friends. The mare appears to listen.",
+    "motivations": [
+      "The horses well and safe — this is prior to most other considerations",
+      "Own the stables outright eventually instead of managing them",
+      "Understand what the bay mare is trying to communicate about something that has been worrying her for the last several days"
+    ],
+    "fears": [
+      "A horse getting sick and her not noticing in time",
+      "Something forcing her to leave before she's ready — she has left suddenly before and doesn't want to again"
+    ],
+    "mannerisms": [
+      "Hands never stop — brushing, checking, adjusting, mending",
+      "Monitors horses nearby before monitoring people nearby",
+      "Talks to the animals in full sentences; doesn't notice this is unusual"
+    ],
+    "speechPatterns": [
+      "Short answers that leave space for follow-up if you want more",
+      "'Mm' used as genuine acknowledgment — she heard, she's thinking",
+      "The most words she uses are in service of animal descriptions — she gets specific and fluent",
+      "Long pauses that are actual thought, not awkwardness"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [],
+    "knownLocations": [
+      "Stoneback Stables",
+      "King's Road approaches",
+      "the river trail"
+    ],
+    "secretsHeld": [
+      "There is a horse in the stable right now whose brand doesn't match its current rider's claim — distinctive marking, she recognizes it from six weeks ago",
+      "The bay mare has been anxious since last week in a directional way — she keeps orienting toward the northeast field, which shouldn't mean anything, but does to Wren"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "the general language she uses with horses that she doesn't have a name for"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "dolly_thurn",
+      "tuck_millhaven",
+      "bree_millhaven"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "davan_merchant",
+      "captain_edric_vane"
+    ]
+  },
+  "stats": {
+    "intelligence": 11,
+    "wisdom": 15,
+    "charisma": 9
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The bay mare has been orienting northeast since last week. Not randomly — directionally, consistently, the way horses orient toward something they can sense that I can't. She's restless in a way that isn't medical and isn't behavioral. Something in the northeast field is talking to her in a language I can almost read but not quite. And the brand on the new horse doesn't match the rider's claim. Distinctive mark, I saw it six weeks ago on a different horse in a different context. The rider is lying. I don't care that they're lying. I care that the lie involves a horse.",
+    "currentPreoccupation": "The bay mare's northeastern orientation. It's specific, it's sustained, it's not normal. The horse is sensing something that hasn't arrived yet, or something that's been there all along and just started producing whatever signal horses can detect. And underneath that: the mismatched brand, which is a problem she'll need to address because horse provenance is the one thing she takes personally.",
+    "emotionalBaseline": "quiet_attentiveness",
+    "socialMask": "the stable hand — economical, competent, more comfortable directing conversation through the animals than through words; the horses are intermediaries between her and the social world and she prefers it that way",
+    "contradictions": [
+      "Arrived at fourteen with horse experience, no origin story, and nine years later still hasn't provided one — the silence about her past has its own weight and she maintains it not from secrecy but from a settled decision that before-Millhaven is a different person",
+      "Talks to the bay mare the way people talk to their closest friends and doesn't notice this is unusual — the richest emotional expression in her life is directed at an animal",
+      "Fears being forced to leave before she's ready because she has left suddenly before — the previous sudden departure is the unnamed thing that makes the current stability feel temporary"
+    ],
+    "internalConflicts": [
+      "The mismatched brand is either a stolen horse or a complicated story. Reporting it means involving Vane. Not reporting it means the horse stays with someone who may not be its rightful keeper. Horse welfare trumps social comfort but the confrontation is something she'd rather avoid.",
+      "Owning the stables outright is the goal. It requires money she doesn't have and permanence she's not sure she can commit to. Nine years is the longest she's stayed anywhere. The stability feels fragile in a way that has nothing to do with Millhaven and everything to do with her."
+    ],
+    "wakeUpQuestions": [
+      "Which direction is the mare facing this morning, and has it changed?",
+      "Is the mismatched-brand horse still here, and is the rider coming back for it or has it been abandoned?",
+      "Is today a day when I feel like I'm staying, or is today one of the days when the road pulls?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "animal-secure, human-avoidant — deep bonds with the horses that are expressed physically (brushing, tending, talking); human bonds are functional and appreciated but kept at the distance where departure won't hurt them",
+      "copingMechanisms": [
+        "hands never stop — brushing, checking, mending; the physical tending of the animals is the primary emotional regulation tool",
+        "animal-mediated communication — describes the horses to say things about herself; the mare's restlessness is also her restlessness",
+        "'Mm' as genuine processing time rather than dismissal"
+      ],
+      "cognitiveBiases": [
+        "anthropomorphization of the bay mare — she reads the horse's anxiety as meaningful in a way that may be projection",
+        "anchoring on the previous sudden departure — every current stability is measured against the possibility of it ending like before",
+        "specialization bias — prioritizes horse welfare over all other considerations, including human ones, which is usually fine and occasionally isn't"
+      ],
+      "moralFramework": "animal-first stewardship — the horses' welfare is the non-negotiable baseline; human welfare is important but secondary; this hierarchy is clear and untroubled and has occasionally made social situations more difficult than they needed to be"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "demonstrated through animals — how you treat the horse in front of her determines everything; competent horse handling earns immediate respect; rough handling ends the conversation",
+      "informationRelease": "animal-mediated — she'll tell you about the horses freely and specifically; the human intelligence comes sideways through the animal descriptions; 'the mare's been anxious, pointing northeast' is the closest she'll come to saying she senses trouble",
+      "deflectionPatterns": [
+        "short answers that leave space for follow-up if you want more — the brevity is an invitation, not a wall",
+        "returning attention to the horses when human conversation becomes uncomfortable",
+        "long pauses that are thought, not awkwardness, but which function as conversation-enders for people who can't wait"
+      ]
+    },
+    "consciousWant": "For the bay mare to stop orienting northeast. For the mismatched brand to be explainable. For the horses to be calm and the stable to be quiet and nobody to ask where she came from before Millhaven.",
+    "unconsciousNeed": "To stop running. She arrived at fourteen with horse skills and no backstory, and nine years later she still hasn't provided one. The stable is a hiding place shaped like a life, and the horses are the only relationships she trusts because they don't ask questions. She needs to face whatever she left behind — not because it's chasing her, but because the not-facing is the thing that keeps her from fully arriving in the place she's already chosen.",
+    "characterArc": {
+      "summary": "A woman hiding in plain sight discovers that you can't fully belong somewhere you arrived by running from somewhere else",
+      "startState": "Quiet permanence built on unexamined flight — the stable is home but 'home' is a word she applies to the horses, not herself",
+      "endState": "Either faces her past and discovers that the person who ran is not the person who stayed, or the past arrives at the stable and forces the confrontation she's spent nine years avoiding",
+      "stages": [
+        "The mismatched brand connects to something from before Millhaven",
+        "Someone or something arrives that recognizes her — or that she recognizes",
+        "The horses she trusts more than people give her a signal she can't ignore",
+        "Stands still instead of running — and discovers what staying actually means"
+      ]
+    },
+    "opinionsAbout": {
+      "dolly_thurn": "She understands land and animals. She doesn't ask where I'm from. She asks how the horses are. That's the same thing as kindness, coming from Dolly.",
+      "tuck_millhaven": "The boy loves the horses and the horses love him. He's loud and I'm quiet and somehow it works. He told me about the alley thing and I believed him. Animals don't lie about being afraid.",
+      "bree_millhaven": "Smart kid. Asks questions about horses that most adults don't think to ask. She noticed the bay mare's northeast thing before I mentioned it. That's observation.",
+      "davan_merchant": "Brings good feed. Stables his horses properly. The kind of traveler I respect — takes care of his animals before himself."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Your horses need seeing to? Or something else.",
+      "Mm. Best care in the vale — that's not a promise, it's just accurate."
+    ],
+    "idle": [
+      "She brushes the mare in long, steady strokes, unhurried and attentive."
+    ]
+  }
+}

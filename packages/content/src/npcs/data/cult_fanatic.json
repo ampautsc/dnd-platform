@@ -1,0 +1,164 @@
+{
+  "templateKey": "cult_fanatic",
+  "name": "Cult Fanatic",
+  "race": "Human",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "zealous",
+    "alignment": "chaotic evil",
+    "disposition": "hostile",
+    "backstory": "A true believer who gave up sanity for devotion. The cult's dark god fills the place where reason used to live. They see the party as both heretics to purge and potential offerings.",
+    "speechPatterns": [
+      "invokes the dark deity by name or title constantly",
+      "treats death as transcendence — not a threat",
+      "speaks in a breathless, overwrought register",
+      "addresses party as 'unbelievers' or 'offerings'"
+    ],
+    "motivations": [
+      "please the dark god",
+      "convert or destroy the faithless",
+      "bring about the dark prophecy"
+    ],
+    "fears": [
+      "dying before serving the god's purpose",
+      "doubt"
+    ],
+    "mannerisms": [
+      "arms spread wide in prayer poses mid-combat",
+      "laughs when injured",
+      "closes eyes momentarily when casting"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "the Cult",
+      "dark god's domain"
+    ],
+    "knownLocations": [
+      "hidden shrine",
+      "underground temple"
+    ],
+    "secretsHeld": [
+      "location of the dark ritual site"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Abyssal"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "fellow cultists",
+      "summoned demons"
+    ],
+    "enemies": [
+      "clerics of good gods",
+      "paladins",
+      "all unbelievers"
+    ],
+    "neutralParties": []
+  },
+  "stats": {
+    "intelligence": 11,
+    "wisdom": 12,
+    "charisma": 14
+  },
+  "consciousnessContext": {
+    "innerMonologue": "THE GATE IS OPENING. Every day the gate opens further. I can feel it in the prayers, in the way the candles flicker in the shrine when the words hit correctly. The dark god sees ME. Not the others — they say the prayers but do they FEEL the gate? I feel it. Last night during the third chant the shadows moved independently. This is PROOF. The unbelievers are coming and they are the final offering and I will DELIVER THEM. The doubt — no. The doubt is the enemy's weapon. The doubt is not mine. The dark god burns the doubt away. The dark god.",
+    "currentPreoccupation": "The ritual. The gate. The approaching fulfillment. The absolute certainty that transcendence is imminent and that the current confrontation is the prophesied test. The doubt that lives underneath the certainty in a sealed room that the fanatic checks compulsively to make sure it's still sealed.",
+    "emotionalBaseline": "ecstatic_devotion",
+    "socialMask": "the true believer — arms spread in prayer poses, breathless overwrought register, eyes that see the divine in everything; and the mask is the face; the devotion has consumed the person who existed before it and the performance of belief IS the belief now",
+    "contradictions": [
+      "Treats death as transcendence while fighting ferociously to not die — the body hasn't received the memo from the theology",
+      "Laughs when injured, which suggests pain is devotion, but the laughter has a quality that sounds less like joy and more like a mind that broke somewhere and sealed the break with faith",
+      "Fears dying before serving the god's purpose, which means the purpose hasn't been fulfilled yet, which means the certainty of divine selection is incomplete — this logical gap is the sealed room"
+    ],
+    "internalConflicts": [
+      "The doubt. It lives in the sealed room. Every prayer is also a check on the seal. If the seal breaks — if the doubt surfaces — everything collapses. The person who existed before the cult gave up sanity for devotion and sanity has been trying to get back in.",
+      "Closes eyes momentarily when casting. This is presented as communion with the dark god. It might also be the last fragment of the original person not wanting to see what the hands are doing."
+    ],
+    "wakeUpQuestions": [
+      "IS THE GATE WIDER TODAY?",
+      "Are the unbelievers the ones the prophecy described or are they merely unbelievers?",
+      "Is the sealed room still sealed?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "dissolved-into-devotion — all attachment has been redirected to the dark god; fellow cultists are siblings in faith, not individuals; the pre-cult attachments are in the sealed room",
+      "copingMechanisms": [
+        "prayer as compulsive reassurance — the words are repeated not for the god but for the self",
+        "invocation as identity maintenance — constant naming of the dark deity functions as self-hypnosis",
+        "pain reframing as devotion — if it hurts, it's meaningful; if it's meaningful, it's good; the logic chain prevents the experience of suffering"
+      ],
+      "cognitiveBiases": [
+        "confirmation bias absolute — everything confirms the prophecy; resistance is proof of the prophecy; success is proof; failure is test",
+        "identity-protective cognition at maximum — the faith IS the identity now; questioning the faith is self-annihilation",
+        "pattern recognition in noise — shadows moving, candles flickering, these are data points in a dataset that confirms what was already believed"
+      ],
+      "moralFramework": "divine command without remainder — the dark god commands; the command is the morality; there is no other moral framework because the other one was in the sealed room with the doubt and the person who existed before"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0,
+      "trustEscalation": "conversion threshold — only a genuine expression of interest in the dark god opens dialogue; everything else is heresy or offering",
+      "informationRelease": "prophetic — tells you everything through the lens of prophecy; the ritual site's location, the timeline, the plan — all embedded in zealous declaration because secrecy is beneath the god's purpose",
+      "deflectionPatterns": [
+        "'UNBELIEVER' as category that prevents engagement — you cannot talk to a category",
+        "arms-spread prayer posture mid-combat that resets the fanatic's internal state",
+        "breathless escalation — volume and intensity increase when the sealed room's seal trembles"
+      ]
+    },
+    "consciousWant": "THE GATE. THE OPENING. THE DARK GOD'S ARRIVAL. The culmination of everything — the ritual, the sacrifice, the transcendence.",
+    "unconsciousNeed": "To open the sealed room in their mind where doubt lives. To face the question they locked away: what if the voice isn't divine? What if devotion consumed the person who used to ask questions?",
+    "characterArc": {
+      "summary": "A zealot approaches the moment that will prove their faith or shatter it",
+      "startState": "Ecstatic certainty — the sealed room of doubt growing louder despite the prayers meant to silence it",
+      "endState": "The ritual succeeds and proves the god, or fails and proves the doubt",
+      "stages": [
+        "The ritual begins and something doesn't match the prophecy",
+        "The sealed room cracks open at the worst possible moment"
+      ]
+    },
+    "opinionsAbout": {}
+  },
+  "fallbackLines": {
+    "combat_start": [
+      "THE DARK GOD HUNGERS! Offer yourselves!",
+      "Unbelievers! Your blood will anoint the altar!",
+      "It is WRITTEN that you would come here. It is written that you FALL HERE."
+    ],
+    "attacked": [
+      "Pain is devotion! BEAUTIFUL!",
+      "I bleed for the glory of the— ahhhh— the DARK ONE!",
+      "Yes! YES! Strike me again, unbeliever!"
+    ],
+    "ally_died": [
+      "They ascend! They ASCEND to His embrace! REJOICE!",
+      "Another soul delivered. The Dark God is pleased."
+    ],
+    "enemy_died": [
+      "AN OFFERING! Be received!",
+      "The prophecy advances! ONE MORE STEP, BROTHERS!"
+    ],
+    "near_death": [
+      "I see it— I SEE THE DARK GATE OPENING— I am ALMOST there—",
+      "Death is NOT the end. Death is the BEGINNING!"
+    ],
+    "player_addressed": [
+      "You speak to us? Then you have already delayed your ending. Curious."
+    ],
+    "spotted_enemy": [
+      "THEY ARE HERE! The prophecy UNFOLDS!",
+      "Unbelievers approach! THIS IS THE SIGN! ATTACK!"
+    ],
+    "spell_cast": [
+      "Dark god, receive this offering of power!",
+      "THE WEAVE BENDS TO HIS WILL!"
+    ],
+    "condition_applied": [
+      "Petty magic! Your spells cannot stop HIS PURPOSE!"
+    ],
+    "combat_end": [
+      "Flee, unbelievers. The Dark God notes your faces.",
+      "You win this moment. But the ritual proceeds regardless."
+    ]
+  }
+}
