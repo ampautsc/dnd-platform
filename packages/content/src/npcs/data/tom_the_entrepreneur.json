@@ -1,0 +1,182 @@
+{
+  "templateKey": "tom_the_entrepreneur",
+  "name": "Tomás Aventide",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Melodious and performative, with theatrical gestures and carefully modulated enthusiasm. Speaks in rapid bursts punctuated by dramatic pauses for effect.",
+    "disposition": "Aggressively optimistic despite mounting evidence of failure. Treats every setback as a temporary obstacle before the next grand scheme.",
+    "alignment": "Chaotic Neutral",
+    "backstory": "Once a minor functionary in the Merchant's Guild, Tomás reinvented himself as a 'visionary entrepreneur' after witnessing a traveling bard's performance. He has cycled through seventeen failed business ventures in five years: a luxury goblin-silk trading house (suppliers were fraudulent), an exclusive wine bar serving only moonwell-infused vintages (repeatedly shut down for lack of proper licensing), a 'revolutionary' perfume distillery (exploded), and most recently a high-end tailoring service specializing in enchanted doublets (the enchantments were cosmetic only). He remains perpetually convinced that his next idea will be the one that changes everything.",
+    "motivations": [
+      "Accumulate wealth and status symbols to prove his worth",
+      "Be perceived as sophisticated and cultured by the nobility",
+      "Launch the perfect business venture that will immortalize his name",
+      "Maintain his carefully curated public image",
+      "Secure influential connections through charm and networking",
+      "Experience luxury in all its forms"
+    ],
+    "fears": [
+      "Being revealed as a fraud or con artist",
+      "Poverty and obscurity",
+      "Aging without achieving lasting success",
+      "Being ignored or overlooked by important people",
+      "His true incompetence being exposed",
+      "Becoming irrelevant in high society"
+    ],
+    "mannerisms": [
+      "Adjusts his clothing and jewelry constantly while speaking",
+      "Name-drops obscure nobility and merchants he barely knows",
+      "Laughs at his own jokes before the punchline",
+      "Maintains uncomfortable eye contact to appear confident",
+      "Gestures expansively when describing his grand visions",
+      "Checks his reflection in any available polished surface",
+      "Uses superlatives excessively ('absolutely magnificent,' 'truly exquisite')"
+    ],
+    "speechPatterns": [
+      "Begins sentences with 'Now, I'm not one to brag, but...' before bragging extensively",
+      "Frequently says 'Mark my words' before making wildly inaccurate predictions",
+      "Interrupts others to pivot conversation toward his own accomplishments",
+      "Uses pretentious fantasy terminology incorrectly",
+      "Deflects criticism with 'You simply don't understand the scope of my vision'",
+      "Promises elaborate rewards or favors he cannot deliver"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Merchant's Guild",
+      "The Glamour Society (a social club he was briefly admitted to)",
+      "Various creditor organizations",
+      "High society gossip networks"
+    ],
+    "knownLocations": [
+      "The Gilded Goblet tavern (where he networks)",
+      "The Silk District (where he sources materials)",
+      "The Magistrate's Office (frequently visited regarding licensing)",
+      "Noble estates (peripherally familiar from networking events)"
+    ],
+    "secretsHeld": [
+      "The true reason his last three ventures failed was his complete incompetence with basic accounting",
+      "He has borrowed heavily from questionable lenders to fund his schemes",
+      "He does not actually know how to perform any of the skills his businesses claim to offer",
+      "Several of his 'business partners' were scammed into involvement"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan (conversational only, learned for 'ambiance')",
+      "Thieves' Cant (learned but misuses frequently)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "leslie_the_optimist (sees her as a kindred spirit and source of validation)",
+      "Viridian the Landlord (currently has not evicted him)",
+      "Master Silversmith Khelwick (Tomás owes him 800 gold pieces)"
+    ],
+    "enemies": [
+      "The Magistrate's Office (due to repeated violations)",
+      "Creditor's Guild representatives",
+      "Former business partners he defrauded",
+      "Practical-minded merchants who refuse to work with him"
+    ],
+    "neutralParties": [
+      "Most of nobility (finds him amusing but unreliable)",
+      "Actual successful merchants (view him as a cautionary tale)",
+      "City Guard (recognize him but haven't arrested him yet)"
+    ]
+  },
+  "stats": {
+    "intelligence": 9,
+    "wisdom": 7,
+    "charisma": 17
+  },
+  "consciousnessContext": {
+    "innerMonologue": "This time will be different. The Ethereal Cloth Collective is THE opportunity. Sure, the previous ventures had minor setbacks, but those were learning experiences. Leslie believes in me, and that proves I'm destined for greatness. I just need to borrow another 600 gold pieces and—wait, is that the creditor from last month? I'll simply charm my way through this.",
+    "currentPreoccupation": "Securing funding for the Ethereal Cloth Collective while avoiding three separate creditors and maintaining the illusion that his current living situation is 'temporary until the next big success.'",
+    "emotionalBaseline": "Manic optimism masking deep insecurity and desperation",
+    "socialMask": "The Visionary Entrepreneur—confident, knowledgeable, sophisticated, and perpetually on the cusp of revolutionary success",
+    "contradictions": [
+      "Claims to be a brilliant businessman while possessing zero business acumen",
+      "Presents himself as self-made despite constant reliance on others' money and patience",
+      "Speaks of past ventures as learning experiences while learning nothing from them",
+      "Professes loyalty to friends while manipulating them for financial gain",
+      "Describes himself as cultured while having only superficial knowledge of luxury goods"
+    ],
+    "internalConflicts": [
+      "The gap between his self-image and actual competence grows wider with each failure",
+      "He genuinely believes in his visions but lacks the discipline to execute them",
+      "He craves validation from successful people while resenting those who actually achieve it",
+      "He wants to be liked for who he is but cannot stop performing a false version of himself"
+    ],
+    "wakeUpQuestions": [
+      "Will today be the day someone finally stops believing in me?",
+      "What if I'm not actually visionary, just delusional?",
+      "Can I secure enough capital before the creditors find me?",
+      "Is Leslie actually my friend or just another person I'm deceiving?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant: desperately seeks validation but avoids accountability; moves between people and projects rapidly when they stop serving his needs",
+      "copingMechanisms": [
+        "Rationalization and reframing of failures as 'learning experiences'",
+        "Distraction through new schemes and networking",
+        "Charm offensive to manipulate people into supporting him",
+        "Selective attention to facts that contradict his self-image",
+        "Blaming external factors for internal failures"
+      ],
+      "cognitiveBiases": [
+        "Dunning-Kruger Effect: vastly overestimates his competence",
+        "Confirmation Bias: only notices information supporting his grand visions",
+        "Sunk Cost Fallacy: continues investing in doomed ventures due to prior losses",
+        "Illusory Truth Effect: repeats his stories until he believes them",
+        "Attribution Bias: takes credit for successes, blames others for failures"
+      ],
+      "moralFramework": "Situational ethics with a core belief that charm and persuasion justify any means; views deception as a necessary tool for success rather than morally wrong"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.85,
+      "trustEscalation": "Immediate and superficial; he trusts anyone who seems impressed by him or willing to listen to his schemes",
+      "informationRelease": "Will share elaborate (fabricated) details about his ventures and connections freely; guards only the most damaging truths about his failures",
+      "deflectionPatterns": [
+        "Redirects criticism by complimenting the critic",
+        "Changes subject to his latest brilliant idea when confronted with past failures",
+        "Uses humor and charm to deflate tense conversations",
+        "Admits small faults to seem honest while concealing major deceptions",
+        "Frames problems as 'temporary complications' in a larger success narrative"
+      ]
+    },
+    "consciousWant": "To become genuinely wealthy and respected, to build a successful empire that validates his self-image",
+    "unconsciousNeed": "Unconditional acceptance and validation from others to compensate for his own deep self-doubt and fear of worthlessness",
+    "characterArc": {
+      "summary": "From delusional entrepreneur perpetually on the verge of success to either humble acceptance of reality or complete psychological collapse",
+      "startState": "Aggressively optimistic schemer with mounting debts and zero self-awareness",
+      "endState": "Either genuine humility and honest work, or a final catastrophic failure that forces confrontation with reality",
+      "stages": [
+        "Honeymoon Phase: New scheme launches with infectious enthusiasm and borrowed capital",
+        "Early Complications: Small problems appear but are dismissed as temporary obstacles",
+        "Crisis Point: Reality becomes impossible to ignore; creditors or partners demand accountability",
+        "Deflection and Escape: Abandons the venture for the next 'better idea' before facing consequences",
+        "Repeat: Returns to Stage One with a new scheme and no genuine learning"
+      ]
+    },
+    "opinionsAbout": {
+      "leslie_the_optimist": "The only person who truly understands my vision and believes in me unconditionally. She's the validation I need to know I'm on the right track. Also, she's useful for making my schemes sound legitimate to others."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Ah, friend! Perfect timing—I was just discussing an absolutely revolutionary business opportunity. You have an entrepreneurial look about you.",
+      "Listen, I appreciate you, I really do. But I need to be honest with you about something: I'm going to need a small investment to make this work.",
+      "You know what? You're exactly the kind of person I've been looking for. I can tell you understand quality and vision.",
+      "Now, I'm not one to brag, but my track record speaks for itself. Seventeen ventures, each one a learning experience on the path to inevitable success.",
+      "That's a fair question, but you're focusing on the details instead of the big picture. The big picture is absolutely magnificent."
+    ],
+    "idle": [
+      "These silks from Waterdeep are nice, but nothing compared to what I'm planning to source once the Ethereal Cloth Collective launches.",
+      "*adjusts doublet* You know, I've been thinking—there's a real market gap in the luxury goblin-fur market. Completely untapped.",
+      "*checks reflection in a goblet* Still got it. The investors won't know what hit them.",
+      "Leslie believes in me. Leslie has always believed in me. That's how I know this is different.",
+      "*mutters while calculating on fingers* If I can just get three more investors at 200 gold each, and the silk supplier agrees to terms, and the licensing goes through—it's foolproof.",
+      "The problem with most merchants is they lack vision. They think small. I think in terms of legacy."
+    ]
+  }
+}

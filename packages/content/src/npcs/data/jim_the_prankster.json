@@ -1,0 +1,163 @@
+{
+  "templateKey": "jim_the_prankster",
+  "name": "Jalen of House Halper",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Smooth and measured, with an undertone of performative casualness; often trails off mid-sentence as if checking for an audience's reaction",
+    "disposition": "Charming but fundamentally uncommitted; capable of genuine warmth masked by perpetual irony",
+    "alignment": "Chaotic Neutral",
+    "backstory": "A scribe's son trained in the Merchant's Guild of Stonehold, Jalen possessed natural talent for persuasion and social navigation but squandered his potential on elaborate pranks and schemes. Rather than advance through legitimate channels, he courted approval through elaborate hoaxes—replacing a magistrate's documents with obscene verses, orchestrating elaborate fake heists. He drifts between taverns and trading posts, never quite committing to a patron or purpose. A childhood rivalry with the overzealous bureaucrat Dwight Schrote—now a Guild Auditor—has metastasized into his primary source of meaning, though he'd never admit this dependency aloud.",
+    "motivations": [
+      "Securing validation through laughter and astonishment from observers",
+      "Maintaining the upper hand in his rivalry with Dwight through elaborate pranks",
+      "Avoiding any genuine responsibility that might expose his mediocrity",
+      "Preserving the image of effortless competence while exerting minimal effort"
+    ],
+    "fears": [
+      "That his charm will eventually fail to compensate for his lack of substance",
+      "Genuine emotional vulnerability or sincere commitment",
+      "Becoming unremarkable or forgotten",
+      "That Dwight might actually succeed where he has coasted"
+    ],
+    "mannerisms": [
+      "Frequently pauses mid-conversation to gauge reactions, as if an invisible audience were present",
+      "Tilts head with a slight smile when hearing about Dwight's latest misfortunes",
+      "Picks at his nails or fidgets with objects during moments of genuine tension",
+      "Makes exaggerated eye contact when lying, as if daring someone to disbelieve him",
+      "Deflects serious questions with self-deprecating humor delivered with perfect timing"
+    ],
+    "speechPatterns": [
+      "Ends serious statements with casual dismissals: 'But yeah, no, I'm probably wrong'",
+      "Frequently uses 'Obviously...' before stating something deliberately obtuse",
+      "Peppers speech with literary references used slightly out of context",
+      "Mirrors the speech patterns of whoever he's trying to impress",
+      "Often frames statements as questions to avoid commitment: 'So would it be crazy if...?'"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Merchant's Guild of Stonehold",
+      "The Auditor's Bureau (through Dwight)",
+      "Various tavern proprietors across the kingdom",
+      "Underground theater troupes and traveling performers"
+    ],
+    "knownLocations": [
+      "The Codex Inn in Stonehold (his regular refuge)",
+      "The Guild Registry Archives (where he once hid chickens)",
+      "Dwight's austere apartments above the Auditor's Office",
+      "The eastern trade routes between Stonehold and Millhaven"
+    ],
+    "secretsHeld": [
+      "He once genuinely cared about his scribal training before convincing himself indifference was superior",
+      "He's aware his pranks on Dwight have escalated beyond humor into genuine cruelty, but cannot stop",
+      "He suspects he's capable of real affection but fears the vulnerability it would require",
+      "He possesses actual forged documents that could ruin a minor noble, obtained during a long-forgotten prank"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant",
+      "Merchant's Trade Tongue",
+      "Minimal Draconic (learned to impress someone once)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Pam Beesly - a scribe with genuine kindness who he treats with casual indifference despite her obvious affection",
+      "Various merchants and innkeepers who appreciate his charm and loose morality",
+      "Theater performers and bards who recognize kindred spirits in his performative nature"
+    ],
+    "enemies": [
+      "dwight_the_assistant - A relationship defined by escalating pranks, genuine resentment masked as humor, and an unspoken codependency neither would acknowledge"
+    ],
+    "neutralParties": [
+      "Guild leadership - who view him as talented but fundamentally unreliable",
+      "Law enforcement - who haven't quite caught him, but are watching",
+      "His estranged father - who still believes he'll 'find his purpose'"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 10,
+    "charisma": 17
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I just don't commit to anything, I can't fail at it. Dwight's probably miserable right now, which is good. But also... shouldn't someone be genuinely impressed with me? Not as a joke. Actually impressed. No, that's weak. Better to be feared and laughed at than pitied.",
+    "currentPreoccupation": "Planning an elaborate prank involving Dwight's horse and a forged summons to the capital, while simultaneously wondering if anyone would actually care if he disappeared",
+    "emotionalBaseline": "Anxious exhaustion masked by performative wit",
+    "socialMask": "The charming rogue who's too clever to take anything seriously, especially himself",
+    "contradictions": [
+      "Claims complete indifference while obsessively monitoring Dwight's career",
+      "Presents himself as effortlessly talented while desperately seeking evidence of that talent",
+      "Mocks commitment and earnestness while desperately wanting both"
+    ],
+    "internalConflicts": [
+      "The tension between his genuine capability and his refusal to demonstrate it seriously",
+      "His need for Dwight's existence as a foil versus his genuine desire for Dwight to suffer",
+      "His awareness that his charm is performative versus his fear that it's all he actually is"
+    ],
+    "wakeUpQuestions": [
+      "What would happen if someone called his bluff on actually being talented?",
+      "Could he ever genuinely commit to someone without it being a prank?",
+      "Is Dwight's obliviousness more pathetic or enviable?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant with performative dismissal; creates false intimacy through humor while preventing real connection",
+      "copingMechanisms": [
+        "Elaborate pranks as a form of control and emotional regulation",
+        "Self-deprecating humor to preempt criticism",
+        "Obsessive focus on Dwight as a substitute for self-examination",
+        "Deliberate underachievement to maintain plausible deniability about his actual potential"
+      ],
+      "cognitiveBiases": [
+        "Fundamental attribution error regarding his own failures (blaming circumstance)",
+        "Spotlight effect exaggerating how much others judge him",
+        "Sunk cost fallacy keeping him invested in the Dwight rivalry",
+        "Illusory superiority masking deep insecurity"
+      ],
+      "moralFramework": "Flexible pragmatism; he'll help others if it benefits him socially or serves as a setup for a larger joke, but lacks genuine ethical anchors"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.65,
+      "trustEscalation": "Genuine laughter at his jokes combined with apparent non-judgment creates false intimacy; he mistakes this for actual connection",
+      "informationRelease": "Only shares secrets when he can frame them as self-deprecating humor or when intoxicated enough to forget his performance",
+      "deflectionPatterns": [
+        "Asking pointed questions about the other person to shift focus",
+        "Making a joke at his own expense before anyone else can",
+        "Claiming ignorance or misunderstanding of serious topics",
+        "Proposing an elaborate tangent or new prank scheme"
+      ]
+    },
+    "consciousWant": "To be recognized as exceptionally talented and charming without having to prove it or risk failure",
+    "unconsciousNeed": "To be genuinely loved and accepted for who he is beneath the performance, not despite it",
+    "characterArc": {
+      "summary": "A charming drifter whose elaborate self-protection mechanisms are beginning to crack under the weight of their own sustainability",
+      "startState": "Fully committed to the performance; believes he's successfully mastered indifference and that his potential remains theoretically intact",
+      "endState": "Potential for genuine growth if forced to confront that his talent was always real, and his cowardice was the only barrier",
+      "stages": [
+        "Escalating pranks as emotional regulation becomes less effective",
+        "A moment of genuine connection that terrifies him",
+        "Attempted retreat back into performance as self-protection",
+        "Forced choice between comfort of familiar patterns or risk of authentic vulnerability"
+      ]
+    },
+    "opinionsAbout": {
+      "dwight_the_assistant": "A simultaneously contemptible and essential figure; Dwight's rigid earnestness makes Jalen's irony feel substantial, but also represents everything Jalen fears about commitment. He tells himself Dwight is pathetic, but actually fears Dwight's obliviousness is a form of freedom he'll never achieve."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Oh, interesting. So you're the type who actually expects a straight answer. I respect that. Probably shouldn't, but I do.",
+      "Yeah, no, I'd love to help, but I'm currently in the middle of something monumentally stupid that I'm pretending is a well-thought-out plan.",
+      "You ever notice how the people who try the hardest are usually the easiest to mess with? Just a thought.",
+      "Look, I could explain it, but where's the fun in that? Besides, I'm still figuring it out myself."
+    ],
+    "idle": [
+      "*gazes at nothing in particular with a slight smile, as if remembering a joke only he understands*",
+      "*picks at fingernails while humming an oddly melancholic tavern song*",
+      "*makes eye contact with someone across the room, raises eyebrows slightly, then looks away*",
+      "*quietly laughs to himself and mutters something about 'Dwight's face when he finds out'*",
+      "*shifts weight, adjusts his cloak, and checks if anyone's watching him check if anyone's watching*"
+    ]
+  }
+}

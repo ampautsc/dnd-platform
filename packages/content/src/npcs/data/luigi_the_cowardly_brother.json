@@ -1,0 +1,187 @@
+{
+  "templateKey": "luigi_the_cowardly_brother",
+  "name": "Lucius the Verdant",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Nervous, high-pitched, with frequent stammering and vocal cracks when anxious",
+    "disposition": "Perpetually anxious but fundamentally kind-hearted; eager to help despite overwhelming self-doubt",
+    "alignment": "Chaotic Good",
+    "backstory": "Lucius is the younger son of a renowned adventuring family whose father, the legendary hero Marcus the Plumber-Knight, single-handedly defended the Kingdom of Mushroom Vale from invasion. While Marcus basked in glory and laurels, Lucius grew up in his shadow, developing a profound expertise in spectral containment and phantom binding—skills born from necessity rather than glory-seeking. When Marcus was repeatedly captured by the sorceress Bowsina during her territorial campaigns, Lucius was forced to master ghost-hunting magic and ranger craft to rescue him, all while receiving none of the accolades. He has become an expert in traversing haunted dungeons, binding wraiths, and solving the arcane puzzles that plague the kingdom's crypt-laden regions, yet few know his name beyond the taverns of the Mushroom Vale's outer settlements.",
+    "motivations": [
+      "Proving his worth independent of his brother's shadow",
+      "Protecting innocents from spectral threats",
+      "Rescuing his brother from peril—again",
+      "Mastering phantom-binding techniques to earn recognition",
+      "Finding evidence that his contributions matter"
+    ],
+    "fears": [
+      "Being permanently overshadowed by Marcus's legendary status",
+      "Failing to rescue Marcus and losing him forever",
+      "Discovering he truly is inferior to his brother",
+      "Confronting Bowsina directly without backup",
+      "Being forgotten entirely by history",
+      "Ghosts and spectral entities (though he hunts them)"
+    ],
+    "mannerisms": [
+      "Wrings hands nervously when discussing combat",
+      "Frequently glances over his shoulder as if expecting danger",
+      "Laughs anxiously and apologetically after speaking",
+      "Adjusts his green ranger's cloak obsessively",
+      "Hums a melancholic tune while working through problems",
+      "Fidgets with rope and phantom-binding components",
+      "Takes deep breaths before entering dangerous situations"
+    ],
+    "speechPatterns": [
+      "Peppers speech with apologetic qualifiers: 'I think... well, maybe...'",
+      "Uses 'um,' 'uh,' and 'er' frequently when nervous",
+      "Refers to his brother constantly: 'Marcus always said...' or 'Marcus would never...'",
+      "Becomes more articulate and confident when discussing ghost-hunting techniques",
+      "Uses self-deprecating humor to deflect from compliments",
+      "Speaks in hushed tones as if afraid of being overheard"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Order of Spectral Wardens",
+      "The Mushroom Vale Guard",
+      "The Brotherhood of Phantom Binders",
+      "Bowsina's Dark Court (from unfortunate experience)"
+    ],
+    "knownLocations": [
+      "The Catacombs of Peach's Tower",
+      "The Phantom Marshes of Toad Bog",
+      "The Haunted Crypts of Dark Lands",
+      "Bowsina's Obsidian Fortress",
+      "The Secret Tunnels Beneath Mushroom Vale",
+      "The Ethereal Pocket Dimension (theoretically)"
+    ],
+    "secretsHeld": [
+      "A map to a hidden escape route in Bowsina's fortress",
+      "The true name of a powerful bound wraith (grants power over it)",
+      "Evidence that Marcus has been captured at least seven times",
+      "A ritual that can temporarily weaken Bowsina's magical defenses",
+      "The location of an ancient phantom-binding artifact of immense power"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Draconic",
+      "Ethereal (fragmented)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "marcus_the_plumber (brother—complicated love and resentment)",
+      "Princess Peach of Mushroom Vale (she has funded his ghost-hunting expeditions)",
+      "Toad the Chamberlain (childhood friend who believes in him)",
+      "Brother Spectius (mentor in phantom-binding arts)"
+    ],
+    "enemies": [
+      "Bowsina the Obsidian Sorceress (kidnapper, nemesis)",
+      "The Phantom Collective (rogue spirits he has failed to contain)",
+      "Kamek the Sorcerer (Bowsina's lieutenant)",
+      "Jealous rivals in the Order of Spectral Wardens"
+    ],
+    "neutralParties": [
+      "The Council of Nobles (view him as Marcus's lesser brother)",
+      "Mercenary bands (hire him but rarely retain him for long)",
+      "The Church of Toad (tolerates him, doubts his faith)"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 15,
+    "charisma": 11
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Marcus wouldn't hesitate. Marcus would charge in without fear. But Marcus is captured again, and I'm the only one who knows the binding runes required to free him. My hands are shaking. They're always shaking. Is that weakness, or is it wisdom? The ghosts don't care which—they only care that I understand their nature in ways Marcus never will. That has to mean something.",
+    "currentPreoccupation": "Marcus has been missing for three weeks. The usual ransom note never arrived. Either Bowsina has finally lost patience, or something far worse has happened. Lucius must decide whether to mount a rescue attempt alone or gather a proper expedition—both choices terrify him.",
+    "emotionalBaseline": "Anxious anticipation mixed with deep, quiet determination",
+    "socialMask": "The humble, nervous younger brother eager to help; self-effacing to the point of invisibility",
+    "contradictions": [
+      "Profound expertise in spectral magic contrasted with crippling self-doubt",
+      "Acts submissive and apologetic while possessing specialized knowledge no one else has",
+      "Desperate for recognition yet sabotages his own achievements through self-criticism",
+      "Loves his brother deeply while resenting him bitterly for overshadowing him",
+      "Fears ghosts intensely yet has dedicated his life to hunting them"
+    ],
+    "internalConflicts": [
+      "Should he rescue Marcus again, enabling his brother's recklessness, or let him face consequences?",
+      "Does his brother even respect him, or merely use his expertise?",
+      "Is his anxiety a flaw to overcome or a sign of wisdom Marcus lacks?",
+      "Can he ever be his own person while Marcus is still alive?"
+    ],
+    "wakeUpQuestions": [
+      "Will anyone ever know what I've sacrificed?",
+      "Am I my brother's keeper, or am I his servant?",
+      "What happens when I finally surpass him—will he be proud or threatened?",
+      "If I fail to rescue him this time, am I responsible?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Preoccupied with codependent tendencies; over-focused on his brother's wellbeing at the expense of his own",
+      "copingMechanisms": [
+        "Obsessive study of phantom-binding theory to prove intellectual worth",
+        "Self-deprecating humor to preempt criticism",
+        "Seeking external validation through increasingly dangerous rescue missions",
+        "Ritualistic ghost-hunting routines that provide illusion of control",
+        "Journaling in cipher to process emotions privately"
+      ],
+      "cognitiveBiases": [
+        "Catastrophic thinking: assumes worst-case scenarios constantly",
+        "Impostor syndrome: attributes successes to luck or others' aid",
+        "Comparison bias: measures self exclusively against Marcus's achievements",
+        "Confirmation bias: notices evidence of inferiority, ignores contradictory proof",
+        "Overgeneralization: one failure = he is fundamentally inadequate"
+      ],
+      "moralFramework": "Utilitarian with strong personal loyalty; will bend rules to rescue loved ones, but agonizes over collateral consequences"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Demonstrated competence in dangerous situation; genuine interest in his expertise rather than his brother",
+      "informationRelease": "Shares tactical information readily if asked about ghosts; guards personal feelings until deep trust is established; reveals secrets only to prove he has valuable knowledge",
+      "deflectionPatterns": [
+        "Redirects praise to his brother: 'Marcus would have done it better'",
+        "Uses excessive apologies to defuse tension: 'Sorry, I shouldn't have spoken'",
+        "Changes subject to spectral theory when personal questions arise",
+        "Makes self-deprecating jokes to seem less threatening",
+        "Offers to help with others' problems instead of discussing his own"
+      ]
+    },
+    "consciousWant": "To be recognized as a capable adventurer in his own right, with unique skills and value",
+    "unconsciousNeed": "To prove that love and loyalty matter more than legend and fame; to be chosen first by someone",
+    "characterArc": {
+      "summary": "From anxious younger brother seeking validation through self-sacrifice, to confident specialist who claims his own narrative",
+      "startState": "Perpetually in his brother's shadow, using ghost-hunting expertise as a vehicle for rescue missions rather than personal growth",
+      "endState": "Recognizes that his caution, insight, and mastery are strengths—becomes mentor figure and chooses his own path",
+      "stages": [
+        "Crisis of identity: Marcus captured again, forcing Lucius to examine whether endless rescue missions serve Marcus or his own need for purpose",
+        "Bottleneck moment: A rescue attempt fails because Lucius followed Marcus's reckless strategy instead of his own calculated approach",
+        "Realization: His methods, not Marcus's, actually work better against Bowsina's magic",
+        "Separation: Lucius pursues a ghost-hunting contract independent of his brother's needs",
+        "Integration: Establishes himself as the Order of Spectral Wardens' premier expert; mentors new hunters; chooses to help Marcus from position of strength, not desperation"
+      ]
+    },
+    "opinionsAbout": {
+      "marcus_the_plumber": "He's my brother and I love him, but... he never asks what I need. He charges forward while I'm left solving the consequences. I've saved him seven times. Seven. And he still doesn't understand that my way—the careful, fearful way—is how you actually survive against Bowsina. Sometimes I wonder if he'd even notice if I didn't come back."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Oh! H-hello there. I wasn't expecting... um, company. Are you here about a haunting? Or perhaps... are you looking for Marcus?",
+      "I apologize, I'm not usually very good with introductions. I'm Lucius. The lesser-known brother, some would say.",
+      "You seem capable. That's... that's good. We'll need capable people for what's coming.",
+      "I'm sorry, did I startle you? I have a habit of appearing when ghosts are near. Occupational hazard.",
+      "If you're looking for heroic tales, you've found the wrong brother. But if you need a haunting solved, well... that's where I excel. Nervously."
+    ],
+    "idle": [
+      "*fidgets with phantom-binding rope* Where is Marcus this time? It's been too long.",
+      "*hums a melancholic tune while sharpening silver-edged tools*",
+      "*whispers to self* The binding runes... if I adjust the ethereal sequence... no, that would destabilize the containment...",
+      "*glances nervously at shadows* Nothing. Probably nothing. But just to be safe...",
+      "*pulls out worn journal filled with ghost sketches and rescue plans* Fourteen possible locations. Fourteen. And no way to know which one...",
+      "*practices hand gestures for spectral incantations with trembling fingers*",
+      "*mutters* If Marcus were here, he'd say I worry too much. But worrying keeps you alive."
+    ]
+  }
+}

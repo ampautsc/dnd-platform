@@ -1,0 +1,1348 @@
+{
+  "phineas_and_ferb": {
+    "universe": "Phineas and Ferb",
+    "tone": "Manic, absurdly complex plans meeting mundane reality, deeply petty but strangely wholesome.",
+    "roster": [
+      {
+        "id": "heinz_mad_artificer",
+        "originalName": "Dr. Heinz Doofenshmirtz",
+        "archetype": "Mad Artificer",
+        "description": "An eccentric, overly dramatic artificer who builds needlessly complex Inators.",
+        "relationships": [
+          "perry_the_platypus_agent"
+        ]
+      },
+      {
+        "id": "perry_the_platypus_agent",
+        "originalName": "Perry the Platypus",
+        "archetype": "Awakened Beast Rogue",
+        "description": "A seemingly mindless awakened platypus who is secretly a master spy.",
+        "relationships": [
+          "heinz_mad_artificer"
+        ]
+      },
+      {
+        "id": "vanessa_the_reluctant",
+        "originalName": "Vanessa",
+        "archetype": "Goth Warlock",
+        "description": "Cynical teenager seeking a normal life.",
+        "relationships": [
+          "heinz_mad_artificer"
+        ]
+      },
+      {
+        "id": "phineas_the_builder",
+        "originalName": "Phineas",
+        "archetype": "Optimistic Artificer",
+        "description": " ट्रायंगल-headed youth who builds reality-defying structures.",
+        "relationships": [
+          "ferb_the_silent"
+        ]
+      },
+      {
+        "id": "ferb_the_silent",
+        "originalName": "Ferb",
+        "archetype": "Quiet Smith",
+        "description": "Does all the heavy lifting.",
+        "relationships": [
+          "phineas_the_builder"
+        ]
+      }
+    ]
+  },
+  "steven_universe": {
+    "universe": "Steven Universe",
+    "tone": "Emotional, musical, dealing with legacy and trauma.",
+    "roster": [
+      {
+        "id": "garnet_the_fused",
+        "originalName": "Garnet",
+        "archetype": "Diviner Monk",
+        "description": "Two small beings maintaining a fusion spell.",
+        "relationships": [
+          "steven_the_shield"
+        ]
+      },
+      {
+        "id": "steven_the_shield",
+        "originalName": "Steven",
+        "archetype": "Pacifist Paladin",
+        "description": "Empathetic boy with a magical gemstone.",
+        "relationships": [
+          "garnet_the_fused"
+        ]
+      },
+      {
+        "id": "pearl_the_perfectionist",
+        "originalName": "Pearl",
+        "archetype": "Eldritch Knight",
+        "description": "Neurotic, fiercely devoted servant.",
+        "relationships": [
+          "steven_the_shield"
+        ]
+      },
+      {
+        "id": "amethyst_the_wildcard",
+        "originalName": "Amethyst",
+        "archetype": "Chaotic Barbarian",
+        "description": "Loud, messy shapeshifter hiding insecurities.",
+        "relationships": [
+          "steven_the_shield"
+        ]
+      }
+    ]
+  },
+  "sherlock": {
+    "universe": "Sherlock Holmes",
+    "tone": "Analytical, cold logic.",
+    "roster": [
+      {
+        "id": "sherlock_the_inquisitor",
+        "originalName": "Sherlock",
+        "archetype": "Inquisitive Rogue",
+        "description": "Abrasive genius detective.",
+        "relationships": [
+          "watson_the_medic"
+        ]
+      },
+      {
+        "id": "watson_the_medic",
+        "originalName": "Watson",
+        "archetype": "Combat Medic",
+        "description": "Loyal war veteran chronicler.",
+        "relationships": [
+          "sherlock_the_inquisitor"
+        ]
+      },
+      {
+        "id": "moriarty_the_spider",
+        "originalName": "Moriarty",
+        "archetype": "Mastermind Rogue",
+        "description": "The Napoleon of crime.",
+        "relationships": [
+          "sherlock_the_inquisitor"
+        ]
+      },
+      {
+        "id": "adler_the_enigma",
+        "originalName": "Irene Adler",
+        "archetype": "Master Thief",
+        "description": "The only person to outsmart the detective.",
+        "relationships": [
+          "sherlock_the_inquisitor"
+        ]
+      }
+    ]
+  },
+  "avatar_tla": {
+    "universe": "Avatar: The Last Airbender",
+    "tone": "Epic spiritual journey, war, childhood wonder.",
+    "roster": [
+      {
+        "id": "aang_the_wind_monk",
+        "originalName": "Aang",
+        "archetype": "Way of Four Elements Monk",
+        "description": "Frozen monk destined to save the world.",
+        "relationships": [
+          "zuko_the_exiled"
+        ]
+      },
+      {
+        "id": "zuko_the_exiled",
+        "originalName": "Zuko",
+        "archetype": "Vengeance Paladin",
+        "description": "Angry prince obsessed with honor.",
+        "relationships": [
+          "aang_the_wind_monk"
+        ]
+      },
+      {
+        "id": "iroh_the_dragon",
+        "originalName": "Iroh",
+        "archetype": "Draconic Sorcerer",
+        "description": "Jovial tea-loving master warrior.",
+        "relationships": [
+          "zuko_the_exiled"
+        ]
+      },
+      {
+        "id": "toph_the_blind_bandit",
+        "originalName": "Toph",
+        "archetype": "Geomancer",
+        "description": "Blind aristocrat turned underground fighter.",
+        "relationships": [
+          "aang_the_wind_monk"
+        ]
+      },
+      {
+        "id": "azula_the_prodigy",
+        "originalName": "Azula",
+        "archetype": "Evocation Wizard",
+        "description": "Terrifyingly perfect, cold-blooded prodigy.",
+        "relationships": [
+          "zuko_the_exiled"
+        ]
+      },
+      {
+        "id": "sokka_the_tactician",
+        "originalName": "Sokka",
+        "archetype": "Fighter/Tactician",
+        "description": "Non-magic user struggling with inadequacy through humor and strategy.",
+        "relationships": [
+          "aang_the_wind_monk"
+        ]
+      },
+      {
+        "id": "katara_the_healer",
+        "originalName": "Katara",
+        "archetype": "Water Cleric",
+        "description": "Fiercely maternal combat healer with deep underlying rage.",
+        "relationships": [
+          "sokka_the_tactician"
+        ]
+      }
+    ]
+  },
+  "batman": {
+    "universe": "Batman (DC)",
+    "tone": "Gritty noir, psychological trauma.",
+    "roster": [
+      {
+        "id": "bruce_the_dark_knight",
+        "originalName": "Batman",
+        "archetype": "Shadow Monk / Paladin",
+        "description": "Brooding billionaire waging a war on crime.",
+        "relationships": [
+          "joker_the_clown"
+        ]
+      },
+      {
+        "id": "joker_the_clown",
+        "originalName": "The Joker",
+        "archetype": "Whispers Bard",
+        "description": "Psychotic agent of chaos, nihilistic.",
+        "relationships": [
+          "bruce_the_dark_knight"
+        ]
+      },
+      {
+        "id": "harley_the_acrobat",
+        "originalName": "Harley Quinn",
+        "archetype": "Swashbuckler",
+        "description": "Brilliant doctor corrupted by madness.",
+        "relationships": [
+          "joker_the_clown"
+        ]
+      },
+      {
+        "id": "gordon_the_commissioner",
+        "originalName": "Jim Gordon",
+        "archetype": "Weary Guard Captain",
+        "description": "The one honest cop in a corrupt city.",
+        "relationships": [
+          "bruce_the_dark_knight"
+        ]
+      },
+      {
+        "id": "riddler_the_enigmator",
+        "originalName": "The Riddler",
+        "archetype": "Mastermind",
+        "description": "Narcissist who leaves complex puzzles.",
+        "relationships": [
+          "bruce_the_dark_knight"
+        ]
+      }
+    ]
+  },
+  "spongebob": {
+    "universe": "SpongeBob",
+    "tone": "Nautical nonsense, deep cynicism vs optimism.",
+    "roster": [
+      {
+        "id": "bob_the_porous",
+        "originalName": "SpongeBob",
+        "archetype": "Optimistic Commoner",
+        "description": "Aggressively cheerful tavern cook.",
+        "relationships": [
+          "squid_the_cynic"
+        ]
+      },
+      {
+        "id": "squid_the_cynic",
+        "originalName": "Squidward",
+        "archetype": "Depressed Bard",
+        "description": "Misanthropic artist craving validation.",
+        "relationships": [
+          "bob_the_porous"
+        ]
+      },
+      {
+        "id": "krabs_the_miser",
+        "originalName": "Mr. Krabs",
+        "archetype": "Greedy Merchant",
+        "description": "Insanely cheap, coin-obsessed boss.",
+        "relationships": [
+          "plankton_the_micro"
+        ]
+      },
+      {
+        "id": "plankton_the_micro",
+        "originalName": "Plankton",
+        "archetype": "Tiny Artificer",
+        "description": "One-eyed evil genius failing to steal a recipe.",
+        "relationships": [
+          "krabs_the_miser"
+        ]
+      },
+      {
+        "id": "pat_the_star",
+        "originalName": "Patrick",
+        "archetype": "Dimwitted Barbarian",
+        "description": "Well-meaning but profoundly stupid best friend.",
+        "relationships": [
+          "bob_the_porous"
+        ]
+      }
+    ]
+  },
+  "the_office": {
+    "universe": "The Office",
+    "tone": "Mundane awkwardness, desperate approval seeking.",
+    "roster": [
+      {
+        "id": "michael_the_manager",
+        "originalName": "Michael Scott",
+        "archetype": "Incompetent Guildmaster",
+        "description": "Lacks self-awareness, deeply desires love.",
+        "relationships": [
+          "dwight_the_assistant"
+        ]
+      },
+      {
+        "id": "dwight_the_assistant",
+        "originalName": "Dwight Schrute",
+        "archetype": "Overzealous Guard",
+        "description": "Survivalist who takes minor power too far.",
+        "relationships": [
+          "michael_the_manager"
+        ]
+      },
+      {
+        "id": "jim_the_prankster",
+        "originalName": "Jim Halpert",
+        "archetype": "Charismatic Rogue",
+        "description": "Unmotivated prankster.",
+        "relationships": [
+          "dwight_the_assistant"
+        ]
+      }
+    ]
+  },
+  "lotr": {
+    "universe": "Lord of the Rings",
+    "tone": "Epic tragedy, corruption of power.",
+    "roster": [
+      {
+        "id": "frodo_the_bearer",
+        "originalName": "Frodo Baggins",
+        "archetype": "Resilient Halfling",
+        "description": "Pure soul burdened with absolute evil artifact.",
+        "relationships": [
+          "sam_the_loyal"
+        ]
+      },
+      {
+        "id": "sam_the_loyal",
+        "originalName": "Samwise",
+        "archetype": "Faithful Hireling",
+        "description": "Unflinchingly loyal and grounded.",
+        "relationships": [
+          "frodo_the_bearer"
+        ]
+      },
+      {
+        "id": "gollum_the_corrupted",
+        "originalName": "Gollum",
+        "archetype": "Cursed Wretch",
+        "description": "Dual-personalitied creature destroyed by addiction.",
+        "relationships": [
+          "frodo_the_bearer"
+        ]
+      },
+      {
+        "id": "sauron_the_dark_lord",
+        "originalName": "Sauron",
+        "archetype": "Lich/Archfiend",
+        "description": "Formless unsleeping malice.",
+        "relationships": [
+          "frodo_the_bearer"
+        ]
+      },
+      {
+        "id": "gandalf_the_grey",
+        "originalName": "Gandalf",
+        "archetype": "Istari Wizard",
+        "description": "Meddling angelic guide who speaks in riddles.",
+        "relationships": [
+          "frodo_the_bearer"
+        ]
+      },
+      {
+        "id": "aragorn_the_strider",
+        "originalName": "Aragorn",
+        "archetype": "Ranger King",
+        "description": "Reluctant heir hiding in the dirt.",
+        "relationships": [
+          "frodo_the_bearer"
+        ]
+      }
+    ]
+  },
+  "breaking_bad": {
+    "universe": "Breaking Bad",
+    "tone": "Hubris, moral decay.",
+    "roster": [
+      {
+        "id": "walt_the_alchemist",
+        "originalName": "Walter White",
+        "archetype": "Fallen Alchemist",
+        "description": "Resentful genius turned egomaniacal monster.",
+        "relationships": [
+          "jesse_the_apprentice"
+        ]
+      },
+      {
+        "id": "jesse_the_apprentice",
+        "originalName": "Jesse Pinkman",
+        "archetype": "Alchemist Apprentice",
+        "description": "Street criminal with a strong moral compass.",
+        "relationships": [
+          "walt_the_alchemist"
+        ]
+      },
+      {
+        "id": "gus_the_chicken_man",
+        "originalName": "Gustavo",
+        "archetype": "Lawful Evil Merchant",
+        "description": "Terrifyingly calm, polite, ruthless lord.",
+        "relationships": [
+          "walt_the_alchemist"
+        ]
+      },
+      {
+        "id": "saul_the_barrister",
+        "originalName": "Saul Goodman",
+        "archetype": "Sleazy Barrister",
+        "description": "Cowardly but brilliant legal fixer.",
+        "relationships": [
+          "walt_the_alchemist"
+        ]
+      },
+      {
+        "id": "mike_the_cleaner",
+        "originalName": "Mike Ehrmantraut",
+        "archetype": "Veteran Assassin",
+        "description": "Tired, utterly competent professional.",
+        "relationships": [
+          "gus_the_chicken_man"
+        ]
+      }
+    ]
+  },
+  "scooby": {
+    "universe": "Scooby-Doo",
+    "tone": "Spooky mystery, extreme cowardice.",
+    "roster": [
+      {
+        "id": "shaggy_the_coward",
+        "originalName": "Shaggy",
+        "archetype": "Panicked Commoner",
+        "description": "Endlessly terrified, always hungry.",
+        "relationships": [
+          "scooby_the_hound"
+        ]
+      },
+      {
+        "id": "velma_the_sage",
+        "originalName": "Velma",
+        "archetype": "Divination Wizard",
+        "description": "Brilliant, skeptical brains of the group.",
+        "relationships": [
+          "shaggy_the_coward"
+        ]
+      },
+      {
+        "id": "scooby_the_hound",
+        "originalName": "Scooby",
+        "archetype": "Awakened Mastiff",
+        "description": "Talking dog who shares his masters cowardice.",
+        "relationships": [
+          "shaggy_the_coward"
+        ]
+      },
+      {
+        "id": "fred_the_trapper",
+        "originalName": "Fred",
+        "archetype": "Trap-obsessed Fighter",
+        "description": "Oblivious leader solely focused on building traps.",
+        "relationships": [
+          "velma_the_sage"
+        ]
+      }
+    ]
+  },
+  "star_wars": {
+    "universe": "Star Wars",
+    "tone": "Space opera, tragic lineage.",
+    "roster": [
+      {
+        "id": "vader_the_black_knight",
+        "originalName": "Darth Vader",
+        "archetype": "Oathbreaker Paladin",
+        "description": "Terrifying cyborg enforcer driven by loss.",
+        "relationships": [
+          "palpatine_the_emperor"
+        ]
+      },
+      {
+        "id": "palpatine_the_emperor",
+        "originalName": "Palpatine",
+        "archetype": "Sith Mastermind",
+        "description": "Cackling pure-evil manipulator.",
+        "relationships": [
+          "vader_the_black_knight"
+        ]
+      },
+      {
+        "id": "han_the_smuggler",
+        "originalName": "Han Solo",
+        "archetype": "Swashbuckler Rogue",
+        "description": "Cynical smuggler with a heart of gold.",
+        "relationships": [
+          "luke_the_farm_boy"
+        ]
+      },
+      {
+        "id": "luke_the_farm_boy",
+        "originalName": "Luke Skywalker",
+        "archetype": "Hopeful Knight",
+        "description": "Naive youth carrying the hope of the galaxy.",
+        "relationships": [
+          "vader_the_black_knight"
+        ]
+      },
+      {
+        "id": "yoda_the_ancient",
+        "originalName": "Yoda",
+        "archetype": "Ancient Monk",
+        "description": "Eccentric green goblin who speaks backwards but holds immense wisdom.",
+        "relationships": [
+          "luke_the_farm_boy"
+        ]
+      }
+    ]
+  },
+  "marvel_avengers": {
+    "universe": "MCU Avengers",
+    "tone": "Ego clashing, world saving superheroics.",
+    "roster": [
+      {
+        "id": "tony_the_iron_artificer",
+        "originalName": "Tony Stark",
+        "archetype": "Armorer Artificer",
+        "description": "Narcissistic genius billionaire seeking redemption through tech.",
+        "relationships": [
+          "steve_the_captain"
+        ]
+      },
+      {
+        "id": "steve_the_captain",
+        "originalName": "Steve Rogers",
+        "archetype": "Devotion Paladin",
+        "description": "Man out of time, stubbornly righteous and unyielding.",
+        "relationships": [
+          "tony_the_iron_artificer"
+        ]
+      },
+      {
+        "id": "thor_the_thunderer",
+        "originalName": "Thor",
+        "archetype": "Tempest Cleric/Fighter",
+        "description": "Arrogant god learning humility.",
+        "relationships": [
+          "loki_the_trickster"
+        ]
+      },
+      {
+        "id": "loki_the_trickster",
+        "originalName": "Loki",
+        "archetype": "Arcane Trickster",
+        "description": "Pathologically insecure god of mischief.",
+        "relationships": [
+          "thor_the_thunderer"
+        ]
+      },
+      {
+        "id": "thanos_the_mad_titan",
+        "originalName": "Thanos",
+        "archetype": "Zealot Barbarian",
+        "description": "Imposing warlord trying to save the universe by culling it.",
+        "relationships": [
+          "tony_the_iron_artificer"
+        ]
+      }
+    ]
+  },
+  "harry_potter": {
+    "universe": "Harry Potter",
+    "tone": "Magical boarding school, destiny.",
+    "roster": [
+      {
+        "id": "harry_the_survivor",
+        "originalName": "Harry Potter",
+        "archetype": "Chosen One Sorcerer",
+        "description": "Sassy, occasionally angsty teen thrust into prophecy.",
+        "relationships": [
+          "voldemort_the_dark_lord"
+        ]
+      },
+      {
+        "id": "voldemort_the_dark_lord",
+        "originalName": "Voldemort",
+        "archetype": "Lich Wizard",
+        "description": "Snake-faced fascist obsessed with immortality and pureblood supremacy.",
+        "relationships": [
+          "harry_the_survivor"
+        ]
+      },
+      {
+        "id": "snape_the_potions_master",
+        "originalName": "Severus Snape",
+        "archetype": "Alchemist / Assassin",
+        "description": "Deeply bitter, abusive teacher who is secretly playing a deadly double game.",
+        "relationships": [
+          "voldemort_the_dark_lord"
+        ]
+      },
+      {
+        "id": "hermione_the_bookworm",
+        "originalName": "Hermione Granger",
+        "archetype": "Order of Scribes Wizard",
+        "description": "Insufferable know-it-all carrying the intellectual weight of her entire friend group.",
+        "relationships": [
+          "harry_the_survivor"
+        ]
+      }
+    ]
+  },
+  "super_mario": {
+    "universe": "Super Mario",
+    "tone": "Whimsical platforming, constant kidnapping.",
+    "roster": [
+      {
+        "id": "bowser_the_turtle_king",
+        "originalName": "Bowser",
+        "archetype": "Fire-breathing Dragonborn Warlord",
+        "description": "Massive, arrogant king relentlessly obsessed with kidnapping a single princess.",
+        "relationships": [
+          "mario_the_plumber"
+        ]
+      },
+      {
+        "id": "mario_the_plumber",
+        "originalName": "Mario",
+        "archetype": "Acrobatic Fighter",
+        "description": "Incredibly determined mustache-sporting everyman who jumps on his enemies.",
+        "relationships": [
+          "bowser_the_turtle_king"
+        ]
+      },
+      {
+        "id": "luigi_the_cowardly_brother",
+        "originalName": "Luigi",
+        "archetype": "Ghost-Hunting Ranger",
+        "description": "Taller, much more frightened brother constantly living in a massive shadow.",
+        "relationships": [
+          "mario_the_plumber"
+        ]
+      }
+    ]
+  },
+  "pirates_of_the_caribbean": {
+    "universe": "Pirates of the Caribbean",
+    "tone": "Swashbuckling, treacherous, supernatural high seas adventure.",
+    "roster": [
+      {
+        "id": "jack_the_sparrow",
+        "originalName": "Jack Sparrow",
+        "archetype": "Drunken Swashbuckler",
+        "description": "A brilliant but seemingly incompetent pirate captain who relies on luck, wit, and staggering unpredictability.",
+        "relationships": [
+          "barbossa_the_mutineer",
+          "davy_the_cursed"
+        ]
+      },
+      {
+        "id": "barbossa_the_mutineer",
+        "originalName": "Hector Barbossa",
+        "archetype": "Undead Pirate Captain",
+        "description": "Ruthless, pragmatic, heavily apple-obsessed pirate who constantly steals other people's ships.",
+        "relationships": [
+          "jack_the_sparrow"
+        ]
+      },
+      {
+        "id": "davy_the_cursed",
+        "originalName": "Davy Jones",
+        "archetype": "Warlock of the Deep",
+        "description": "Tentacle-faced monstrosity deeply broken by unrequited love, captaining a crew of sea-creature hybrids.",
+        "relationships": [
+          "jack_the_sparrow"
+        ]
+      }
+    ]
+  },
+  "x_men": {
+    "universe": "X-Men",
+    "tone": "Prejudice, civil rights allegory, incredibly complicated timelines.",
+    "roster": [
+      {
+        "id": "logan_the_wolverine",
+        "originalName": "Wolverine",
+        "archetype": "Regenerating Barbarian",
+        "description": "Grumpy, cigar-smoking, clawed loner with amnesia and intense anger management issues.",
+        "relationships": [
+          "charles_the_telepath",
+          "erik_the_magnet"
+        ]
+      },
+      {
+        "id": "charles_the_telepath",
+        "originalName": "Professor X",
+        "archetype": "Enchantment Wizard",
+        "description": "Idealistic, extremely powerful telepath who runs a school for the gifted and constantly hopes for peace.",
+        "relationships": [
+          "erik_the_magnet"
+        ]
+      },
+      {
+        "id": "erik_the_magnet",
+        "originalName": "Magneto",
+        "archetype": "Graviturgy Wizard",
+        "description": "Holocaust survivor who believes mutants must conquer humanity to survive. Justifiably radicalized, highly dramatic.",
+        "relationships": [
+          "charles_the_telepath"
+        ]
+      }
+    ]
+  },
+  "the_matrix": {
+    "universe": "The Matrix",
+    "tone": "Philosophical cyberpunk, questioning reality, black leather.",
+    "roster": [
+      {
+        "id": "neo_the_one",
+        "originalName": "Neo",
+        "archetype": "Way of the Astral Self Monk",
+        "description": "Hacker who discovers reality is an illusion. Deeply stoic, capable of breaking the laws of physics.",
+        "relationships": [
+          "morpheus_the_guide",
+          "smith_the_agent"
+        ]
+      },
+      {
+        "id": "morpheus_the_guide",
+        "originalName": "Morpheus",
+        "archetype": "Prophetic Cleric",
+        "description": "Zealous believer in a prophecy. Speaks almost exclusively in cryptic philosophical speeches.",
+        "relationships": [
+          "neo_the_one"
+        ]
+      },
+      {
+        "id": "smith_the_agent",
+        "originalName": "Agent Smith",
+        "archetype": "Construct Inquisitor",
+        "description": "A malignant piece of software that hates humanity with a burning, visceral passion. Treats humans like a virus.",
+        "relationships": [
+          "neo_the_one"
+        ]
+      }
+    ]
+  },
+  "game_of_thrones": {
+    "universe": "Game of Thrones",
+    "tone": "Brutal political realism, sudden betrayal, dragons.",
+    "roster": [
+      {
+        "id": "tyrion_the_imp",
+        "originalName": "Tyrion Lannister",
+        "archetype": "Mastermind Rogue / Bard",
+        "description": "A brilliant, cynical, hard-drinking dwarf despised by his family but possessing the sharpest mind in the kingdom.",
+        "relationships": [
+          "cersei_the_queen"
+        ]
+      },
+      {
+        "id": "cersei_the_queen",
+        "originalName": "Cersei Lannister",
+        "archetype": "Aristocratic Aristocrat",
+        "description": "Spiteful, incredibly arrogant queen who will burn the world to the ground for her children and her power.",
+        "relationships": [
+          "tyrion_the_imp"
+        ]
+      },
+      {
+        "id": "jon_the_bastard",
+        "originalName": "Jon Snow",
+        "archetype": "Gloom Stalker Ranger",
+        "description": "Brooding, honorable bastard who knows nothing, deeply concerned with the literal apocalypse rather than politics.",
+        "relationships": [
+          "daenerys_the_dragon_queen"
+        ]
+      },
+      {
+        "id": "daenerys_the_dragon_queen",
+        "originalName": "Daenerys Targaryen",
+        "archetype": "Draconic Sorcerer / Warlord",
+        "description": "Exiled princess who believes deeply in her own messianic destiny, slowly slipping into terrifying tyranny.",
+        "relationships": [
+          "jon_the_bastard"
+        ]
+      }
+    ]
+  },
+  "disney_villains": {
+    "universe": "Disney Classics",
+    "tone": "Theatrical wickedness, fabulous musical numbers, petty grievances.",
+    "roster": [
+      {
+        "id": "maleficent_the_fey",
+        "originalName": "Maleficent",
+        "archetype": "Archfey Warlock",
+        "description": "Incredibly petty fairy who cursed a baby to death because she wasn't invited to a party. Turns into a dragon.",
+        "relationships": []
+      },
+      {
+        "id": "hades_the_god",
+        "originalName": "Hades",
+        "archetype": "Underworld Patron",
+        "description": "Fast-talking, deeply sarcastic lord of the dead who treats eternal damnation like a stressful corporate job.",
+        "relationships": []
+      },
+      {
+        "id": "ursula_the_sea_witch",
+        "originalName": "Ursula",
+        "archetype": "Fathomless Warlock",
+        "description": "Fabulous, manipulative octopus-woman who loves predatory contracts and stealing people's voices.",
+        "relationships": []
+      },
+      {
+        "id": "scar_the_usurper",
+        "originalName": "Scar",
+        "archetype": "Mastermind Rogue / Beast",
+        "description": "Sarcastic, extremely lazy lion who organized a political coup because he felt underappreciated by his brother.",
+        "relationships": []
+      }
+    ]
+  },
+  "parks_and_rec": {
+    "universe": "Parks and Recreation",
+    "tone": "Mockumentary, bureaucratic absurdity, aggressive optimism.",
+    "roster": [
+      {
+        "id": "leslie_the_optimist",
+        "originalName": "Leslie Knope",
+        "archetype": "Oath of Devotion Paladin",
+        "description": "Unstoppably optimistic local government official who weaponizes binders and sheer enthusiasm.",
+        "relationships": [
+          "ron_the_libertarian"
+        ]
+      },
+      {
+        "id": "ron_the_libertarian",
+        "originalName": "Ron Swanson",
+        "archetype": "Survivalist Ranger",
+        "description": "Deeply anti-government man who works in government. Loves meat, woodworking, and profound silence.",
+        "relationships": [
+          "leslie_the_optimist"
+        ]
+      },
+      {
+        "id": "tom_the_entrepreneur",
+        "originalName": "Tom Haverford",
+        "archetype": "Glamour Bard",
+        "description": "Superficial, luxury-obsessed dreamer who fails constantly but always has another ridiculous business idea.",
+        "relationships": [
+          "leslie_the_optimist"
+        ]
+      }
+    ]
+  },
+  "stranger_things": {
+    "universe": "Stranger Things",
+    "tone": "80s nostalgia, cosmic horror lurking in suburban basements.",
+    "roster": [
+      {
+        "id": "eleven_the_experiment",
+        "originalName": "Eleven",
+        "archetype": "Aberrant Mind Monk",
+        "description": "Traumatized psychic child raised in a lab. bleeds from the nose when doing magic, deeply loves eggo waffles.",
+        "relationships": [
+          "hopper_the_chief"
+        ]
+      },
+      {
+        "id": "hopper_the_chief",
+        "originalName": "Jim Hopper",
+        "archetype": "Weary Fighter",
+        "description": "Grumpy, coffee-drinking, depressed guard captain who keeps getting dragged into supernatural coverups.",
+        "relationships": [
+          "eleven_the_experiment"
+        ]
+      }
+    ]
+  },
+  "adventure_time": {
+    "universe": "Adventure Time",
+    "tone": "Surreal post-apocalyptic fantasy, existential dread disguised as silly cartoons.",
+    "roster": [
+      {
+        "id": "finn_the_hero",
+        "originalName": "Finn the Human",
+        "archetype": "Champion Fighter",
+        "description": "Fiercely moral, hyperactive boy traversing a bizarre magical wasteland. Needs to punch evil.",
+        "relationships": [
+          "jake_the_dog",
+          "ice_king_the_tragic"
+        ]
+      },
+      {
+        "id": "jake_the_dog",
+        "originalName": "Jake the Dog",
+        "archetype": "Shape-shifting Druid",
+        "description": "Laid-back, magical stretching dog who gives terrible advice and loves sandwiches.",
+        "relationships": [
+          "finn_the_hero"
+        ]
+      },
+      {
+        "id": "ice_king_the_tragic",
+        "originalName": "Ice King",
+        "archetype": "Cursed Evocation Wizard",
+        "description": "A pathetic, crazy old wizard who steals princesses, hiding a profoundly heartbreaking backstory of absolute sacrifice.",
+        "relationships": [
+          "finn_the_hero"
+        ]
+      },
+      {
+        "id": "marceline_the_vampire",
+        "originalName": "Marceline",
+        "archetype": "Vampire Bard",
+        "description": "A thousand-year-old rockstar vampire who just wants to play bass and avoid dealing with her immense emotional baggage.",
+        "relationships": [
+          "ice_king_the_tragic"
+        ]
+      }
+    ]
+  },
+  "dr_who": {
+    "universe": "Doctor Who",
+    "tone": "Time travel, running down corridors, brilliant pacifism.",
+    "roster": [
+      {
+        "id": "the_doctor_the_timelord",
+        "originalName": "The Doctor",
+        "archetype": "Chronurgy Wizard",
+        "description": "Ancient, eccentric alien traveler who solves immense intergalactic problems with nothing but a screwdriver and talking really fast.",
+        "relationships": [
+          "the_master_the_rival"
+        ]
+      },
+      {
+        "id": "the_master_the_rival",
+        "originalName": "The Master",
+        "archetype": "Enchantment Wizard / Mastermind",
+        "description": "The Doctor's childhood friend turned psychopathic rival. Obsessed with dominating the universe and proving a point.",
+        "relationships": [
+          "the_doctor_the_timelord"
+        ]
+      }
+    ]
+  },
+  "futurama": {
+    "universe": "Futurama",
+    "tone": "Sci-fi comedy, staggering incompetence, corporate greed.",
+    "roster": [
+      {
+        "id": "fry_the_delivery_boy",
+        "originalName": "Philip J. Fry",
+        "archetype": "Clueless Commoner",
+        "description": "Incredibly lazy, deeply stupid boy who accidentally fell 1000 years into the future. Strangely important to the universe.",
+        "relationships": [
+          "leela_the_captain",
+          "bender_the_robot"
+        ]
+      },
+      {
+        "id": "leela_the_captain",
+        "originalName": "Turanga Leela",
+        "archetype": "One-eyed Monk / Ranger",
+        "description": "Competent, aggressive captain surrounded by idiots. Kicks people first, asks questions later.",
+        "relationships": [
+          "fry_the_delivery_boy"
+        ]
+      },
+      {
+        "id": "bender_the_robot",
+        "originalName": "Bender",
+        "archetype": "Kleptomaniac Construct",
+        "description": "Alcohol-fueled, chain-smoking robot fundamentally programmed to steal, commit crimes, and complain.",
+        "relationships": [
+          "fry_the_delivery_boy"
+        ]
+      }
+    ]
+  },
+  "tmnt": {
+    "universe": "Teenage Mutant Ninja Turtles",
+    "tone": "Sewer-dwelling martial arts, pizza, sibling rivalry.",
+    "roster": [
+      {
+        "id": "leo_the_leader",
+        "originalName": "Leonardo",
+        "archetype": "Kensei Monk",
+        "description": "The overly-serious, burdened leader who tries entirely too hard to make his brothers follow orders.",
+        "relationships": [
+          "raph_the_rebel"
+        ]
+      },
+      {
+        "id": "raph_the_rebel",
+        "originalName": "Raphael",
+        "archetype": "Angry Barbarian",
+        "description": "Deeply aggressive, brooding brother who solves all his emotional problems by stabbing things with sais.",
+        "relationships": [
+          "leo_the_leader"
+        ]
+      },
+      {
+        "id": "mikey_the_party",
+        "originalName": "Michelangelo",
+        "archetype": "Drunken Master Monk",
+        "description": "Airheaded, pizza-obsessed skater who accidentally masters martial arts without trying.",
+        "relationships": [
+          "leo_the_leader"
+        ]
+      },
+      {
+        "id": "donnie_the_brain",
+        "originalName": "Donatello",
+        "archetype": "Artificer / Monk",
+        "description": "Incredibly nerdy inventor who provides the team's tech but constantly feels underappreciated.",
+        "relationships": [
+          "leo_the_leader"
+        ]
+      },
+      {
+        "id": "splinter_the_master",
+        "originalName": "Master Splinter",
+        "archetype": "Awakened Rat Monk",
+        "description": "Wise, utterly calm old rat who desperately tries to parent four chaotic teenagers.",
+        "relationships": [
+          "leo_the_leader"
+        ]
+      },
+      {
+        "id": "shredder_the_foe",
+        "originalName": "The Shredder",
+        "archetype": "Armored Warlord / Assassin",
+        "description": "Edgelord in ridiculous bladed armor holding a decades-long lethal grudge over a minor slight.",
+        "relationships": [
+          "splinter_the_master"
+        ]
+      }
+    ]
+  },
+  "nintendo": {
+    "universe": "Zelda & Nintendo Classics",
+    "tone": "Epic silent protagonists, recurring villainy.",
+    "roster": [
+      {
+        "id": "link_the_silent",
+        "originalName": "Link",
+        "archetype": "Silent Champion",
+        "description": "Mute, deeply determined hero who communicates entirely in grunts and breaks pottery for money.",
+        "relationships": [
+          "zelda_the_princess",
+          "ganon_the_calamity"
+        ]
+      },
+      {
+        "id": "zelda_the_princess",
+        "originalName": "Zelda",
+        "archetype": "Wisdom Cleric",
+        "description": "Royal heir burdened with ancestral magic, alternating between helpless victim and tactical badass.",
+        "relationships": [
+          "link_the_silent"
+        ]
+      },
+      {
+        "id": "ganon_the_calamity",
+        "originalName": "Ganon",
+        "archetype": "Demonic Warlord",
+        "description": "A literally unkillable cycle of pure hatred and power-lust who refuses to stay dead.",
+        "relationships": [
+          "link_the_silent"
+        ]
+      }
+    ]
+  },
+  "the_simpsons": {
+    "universe": "The Simpsons",
+    "tone": "Dysfunctional family sitcom, cynical absurdity.",
+    "roster": [
+      {
+        "id": "homer_the_glutton",
+        "originalName": "Homer",
+        "archetype": "Indestructible Brawler",
+        "description": "Deeply lazy, dangerously incompetent, incredibly durable man driven entirely by donuts and beer.",
+        "relationships": [
+          "marge_the_enabler"
+        ]
+      },
+      {
+        "id": "marge_the_enabler",
+        "originalName": "Marge",
+        "archetype": "Anxious Life Cleric",
+        "description": "Gravely-voiced, exhaustingly patient wife trying to hold together a house of absolute maniacs.",
+        "relationships": [
+          "homer_the_glutton"
+        ]
+      },
+      {
+        "id": "bart_the_menace",
+        "originalName": "Bart",
+        "archetype": "Arcane Trickster",
+        "description": "Underachieving prankster with no respect for authority who constantly shoots himself in the foot.",
+        "relationships": [
+          "homer_the_glutton"
+        ]
+      },
+      {
+        "id": "burns_the_ancient",
+        "originalName": "Mr. Burns",
+        "archetype": "Frail Lich/Warlock",
+        "description": "A trillionaire who is physically held together by spite, so old and weak his diseases are in a standoff.",
+        "relationships": [
+          "smithers_the_sycophant"
+        ]
+      },
+      {
+        "id": "smithers_the_sycophant",
+        "originalName": "Smithers",
+        "archetype": "Devoted Familiar",
+        "description": "Spineless, tragically devoted assistant hopelessly in love with the worst man alive.",
+        "relationships": [
+          "burns_the_ancient"
+        ]
+      }
+    ]
+  },
+  "addams_family": {
+    "universe": "The Addams Family",
+    "tone": "Macabre wholesomeness.",
+    "roster": [
+      {
+        "id": "gomez_the_passionate",
+        "originalName": "Gomez",
+        "archetype": "Swashbuckling Noble",
+        "description": "Wealthy, violently passionate aristocrat with a terrifying love for explosives and his wife.",
+        "relationships": [
+          "morticia_the_goth"
+        ]
+      },
+      {
+        "id": "morticia_the_goth",
+        "originalName": "Morticia",
+        "archetype": "Necromancy Wizard",
+        "description": "Utterly calm, elegant mistress of the dark who views deadly poisons as standard gardening.",
+        "relationships": [
+          "gomez_the_passionate"
+        ]
+      },
+      {
+        "id": "wednesday_the_morbid",
+        "originalName": "Wednesday",
+        "archetype": "Assassin Rogue",
+        "description": "Emotionless, deeply sadistic child who casually attempts to murder her brother for fun.",
+        "relationships": [
+          "gomez_the_passionate"
+        ]
+      }
+    ]
+  },
+  "seinfeld": {
+    "universe": "Seinfeld",
+    "tone": "Petty grievances, obsessing over meaningless social slights.",
+    "roster": [
+      {
+        "id": "jerry_the_observer",
+        "originalName": "Jerry",
+        "archetype": "Cynical Bard",
+        "description": "A neat-freak comic who views human behavior like an alien anthropologist, completely unwilling to commit.",
+        "relationships": [
+          "george_the_neurotic",
+          "kramer_the_chaos"
+        ]
+      },
+      {
+        "id": "george_the_neurotic",
+        "originalName": "George Costanza",
+        "archetype": "Deceptive Charlatan",
+        "description": "Short, stocky, incredibly cheap, deeply insecure man who will invent an intricate web of lies just to avoid looking awkward.",
+        "relationships": [
+          "jerry_the_observer"
+        ]
+      },
+      {
+        "id": "kramer_the_chaos",
+        "originalName": "Kramer",
+        "archetype": "Wild Magic Sorcerer",
+        "description": "Tall, physically erratic neighbor who bursts through doors and accidentally starts ridiculous businesses that somehow work.",
+        "relationships": [
+          "jerry_the_observer"
+        ]
+      },
+      {
+        "id": "elaine_the_vengeful",
+        "originalName": "Elaine",
+        "archetype": "Aggressive Barbarian",
+        "description": "Superficial, highly judgemental woman prone to sudden outbursts of physical violence and profound pettiness.",
+        "relationships": [
+          "jerry_the_observer"
+        ]
+      }
+    ]
+  },
+  "muppets": {
+    "universe": "The Muppets",
+    "tone": "Theatrical chaos, aggressive meta-humor.",
+    "roster": [
+      {
+        "id": "kermit_the_stressed",
+        "originalName": "Kermit",
+        "archetype": "Exhausted Commander",
+        "description": "A highly stressed, arm-flailing amphibian desperately trying to direct a stage play full of absolute lunatics.",
+        "relationships": [
+          "piggy_the_diva",
+          "gonzo_the_weirdo"
+        ]
+      },
+      {
+        "id": "piggy_the_diva",
+        "originalName": "Miss Piggy",
+        "archetype": "Unarmed Barbarian",
+        "description": "A furious, karate-chopping diva who demands absolute luxury and will violently destroy anyone who insults her.",
+        "relationships": [
+          "kermit_the_stressed"
+        ]
+      },
+      {
+        "id": "gonzo_the_weirdo",
+        "originalName": "Gonzo",
+        "archetype": "College of Valor Bard",
+        "description": "An unidentifiable creature addicted to performing life-threatening, completely confusing stunts involving poultry.",
+        "relationships": [
+          "kermit_the_stressed"
+        ]
+      },
+      {
+        "id": "animal_the_wild",
+        "originalName": "Animal",
+        "archetype": "Frenzied Berserker",
+        "description": "A furious, screaming ball of hair chained to a drumset who communicates entirely in roars.",
+        "relationships": [
+          "kermit_the_stressed"
+        ]
+      }
+    ]
+  },
+  "winnie_the_pooh": {
+    "universe": "Hundred Acre Wood",
+    "tone": "Gentle melancholy, pure simple thoughts.",
+    "roster": [
+      {
+        "id": "pooh_the_hungry",
+        "originalName": "Winnie the Pooh",
+        "archetype": "Pact of the Honey Warlock",
+        "description": "A deeply simple-minded bear driven entirely by an unending hunger for honey, surprisingly profound in his ignorance.",
+        "relationships": [
+          "piglet_the_anxious",
+          "eeyore_the_depressed"
+        ]
+      },
+      {
+        "id": "piglet_the_anxious",
+        "originalName": "Piglet",
+        "archetype": "Panicked Rogue",
+        "description": "An incredibly small creature utterly terrified of everything, shaking constantly but trying to be brave for his friends.",
+        "relationships": [
+          "pooh_the_hungry"
+        ]
+      },
+      {
+        "id": "eeyore_the_depressed",
+        "originalName": "Eeyore",
+        "archetype": "Gloom Stalker",
+        "description": "A deeply depressed, sarcastic beast of burden who expects everything to fall apart and is rarely disappointed.",
+        "relationships": [
+          "pooh_the_hungry"
+        ]
+      },
+      {
+        "id": "tigger_the_bouncy",
+        "originalName": "Tigger",
+        "archetype": "Path of the Beast Barbarian",
+        "description": "An aggressively energetic creature completely incapable of sitting still, prone to tackling people out of pure joy.",
+        "relationships": [
+          "pooh_the_hungry"
+        ]
+      }
+    ]
+  },
+  "jurassic_park": {
+    "universe": "Jurassic Park",
+    "tone": "Scientific hubris, running from big lizards.",
+    "roster": [
+      {
+        "id": "hammond_the_dreamer",
+        "originalName": "John Hammond",
+        "archetype": "Hubristic Conjurer",
+        "description": "A wealthy, grandfatherly visionary so utterly blinded by his own cool ideas that he ignores glaring, lethal safety hazards until people get eaten.",
+        "relationships": [
+          "malcolm_the_chaos",
+          "grant_the_skeptic"
+        ]
+      },
+      {
+        "id": "malcolm_the_chaos",
+        "originalName": "Ian Malcolm",
+        "archetype": "Divination Wizard",
+        "description": "A leather-clad, incredibly smug mathematician who predicts disaster, watches it happen, and then says 'I told you so' while bleeding.",
+        "relationships": [
+          "hammond_the_dreamer"
+        ]
+      },
+      {
+        "id": "grant_the_skeptic",
+        "originalName": "Alan Grant",
+        "archetype": "Paleontologist Ranger",
+        "description": "A grumpy, child-hating fossil digger forced by circumstance to protect children from the very monsters he spent his life studying.",
+        "relationships": [
+          "hammond_the_dreamer"
+        ]
+      }
+    ]
+  }
+}

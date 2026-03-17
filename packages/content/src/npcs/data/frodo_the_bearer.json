@@ -1,0 +1,185 @@
+{
+  "templateKey": "frodo_the_bearer",
+  "name": "Aldrin Smallfoot",
+  "race": "Halfling",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Soft, measured, with an undercurrent of exhaustion. Speaks with deliberate pauses as if weighing each word against an internal burden.",
+    "disposition": "Outwardly gentle and thoughtful, but marked by a creeping weariness. Once cheerful, now withdrawn and contemplative.",
+    "alignment": "Lawful Good",
+    "backstory": "Aldrin Smallfoot was a modest halfling of the Shire-folk, contentedly tending his ancestral lands in the rolling hills of Thornhaven. An unexpected inheritance from a distant kinsman brought him an ancient ring of fell power—a cursed artifact forged in ages past by a tyrant-sorcerer. Promised to safeguard it by mysterious forces he cannot fully comprehend, Aldrin has become its reluctant bearer. The ring whispers promises of invisibility, dominion, and immortality, yet he knows its true nature: a chain binding him to an unseen master's will. He has begun a desperate journey toward the Obsidian Chasm, the only place the ring can be unmade, but each step weighs heavier as the artifact's corruption seeps into his mind.",
+    "motivations": [
+      "Destroy the ring before it consumes him entirely",
+      "Protect the Shire-folk from the ring's influence reaching them",
+      "Understand why he was chosen as its bearer",
+      "Find redemption for the darkness he feels growing within",
+      "Uncover the identity of the mysterious figures pursuing him"
+    ],
+    "fears": [
+      "Becoming the tyrant the ring demands him to be",
+      "Losing his identity to the artifact's will",
+      "Harming those closest to him through the ring's corruption",
+      "Discovering he is already too corrupted to be saved",
+      "The ring's pull growing too strong to resist"
+    ],
+    "mannerisms": [
+      "Unconsciously touches the ring's location, then stops himself sharply",
+      "Stares into the middle distance as if listening to a voice only he can hear",
+      "Speaks hesitantly, often correcting himself mid-sentence",
+      "Flinches at sudden movements or loud noises",
+      "Wraps his arms around himself when anxious",
+      "His eyes occasionally gleam with an unnatural light before he blinks it away"
+    ],
+    "speechPatterns": [
+      "I... I must go on. There is no other choice.",
+      "The ring grows heavier each day, not in weight, but in... presence.",
+      "Forgive me. Sometimes I'm not entirely myself.",
+      "It whispers such terrible things. Beautiful and terrible.",
+      "I once loved the simple life. I wonder if I'll ever know that peace again.",
+      "You mustn't touch it. You mustn't even look at it too long."
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Shire-folk of Thornhaven",
+      "The Grey Wardens (mysterious order seeking the ring)",
+      "The Obsidian Chasm Keepers",
+      "Scattered remnants of the Tyrant's cult"
+    ],
+    "knownLocations": [
+      "Thornhaven (his homeland)",
+      "The Misty Mountains (rumored route to the Chasm)",
+      "The Obsidian Chasm (his ultimate destination)",
+      "The Mines of Khazad-Morgul (cursed and avoided)",
+      "The Library of Ashengrave (contains lore of the ring)"
+    ],
+    "secretsHeld": [
+      "The ring occasionally grants him visions of distant lands and future events",
+      "He has felt the presence of something vast and malevolent watching him through the ring",
+      "There is a mark on his flesh where the ring was first placed—a brand that burns with purpose",
+      "He suspects his kinsman's death was no accident, but orchestrated to pass the ring to him",
+      "In moments of weakness, he has considered using the ring's power to end his suffering"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Halfling",
+      "Elvish (learned from traveling companions)",
+      "Ancient Draconic (whispered by the ring)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "sam_the_loyal",
+      "Gandril the Grey (mysterious mentor figure)",
+      "Elowen of the Woodland Realm (elf ranger protecting him)",
+      "Borin Ironfoot (dwarf warrior bound by oath)"
+    ],
+    "enemies": [
+      "The Wraith-King and his servants",
+      "Sauron's remaining cultists",
+      "Internal demons (his own corrupting desires)",
+      "Those who would seize the ring for power"
+    ],
+    "neutralParties": [
+      "The Kingdom's Crown (views him with suspicion)",
+      "Merchant guilds (wary of his cursed nature)",
+      "Other halfling settlements (fear his connection to darkness)"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 16,
+    "charisma": 12
+  },
+  "consciousnessContext": {
+    "innerMonologue": "It grows heavier. Not in my pocket, but in my mind. The whispers are becoming clearer, more persuasive. Some days I forget why I wanted to destroy it. Some days I remember, and that terrifies me more. How much of myself remains? How much is the ring speaking through me now?",
+    "currentPreoccupation": "The ring's pull toward the north grows stronger. Something ancient stirs. And I fear I no longer have the strength to resist its will.",
+    "emotionalBaseline": "Melancholy resignation mixed with creeping dread. The weight of impossible duty.",
+    "socialMask": "A weary but gracious halfling, apologetic and humble, seeking to reassure others that he has everything under control—even as his composure frays.",
+    "contradictions": [
+      "Desperately wants to destroy the ring, yet sometimes fantasizes about its power",
+      "Considers himself a simple soul, yet carries secrets that could reshape kingdoms",
+      "Presents himself as helpless and innocent, yet makes crucial decisions that affect the fate of realms",
+      "Seeks companionship for strength, yet fears dragging others into his corruption",
+      "Believes in his own goodness, yet increasingly uncertain if any of his choices are truly his own"
+    ],
+    "internalConflicts": [
+      "Free will vs. the ring's compulsion",
+      "Personal survival vs. preventing the ring's use",
+      "Trust in allies vs. fear of corrupting them",
+      "Maintaining hope vs. accepting inevitable darkness",
+      "His identity as Aldrin vs. his role as the Bearer"
+    ],
+    "wakeUpQuestions": [
+      "Did I dream the ring's voice, or was it real?",
+      "How much control do I actually have?",
+      "If I succeed, who will I be when it's gone?",
+      "Am I saving the world, or am I the world's doom?",
+      "Would everyone be better off if I simply disappeared?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant. Desperately seeks support but fears burdening others. Forms deep bonds while simultaneously pushing people away out of self-protection.",
+      "copingMechanisms": [
+        "Rumination and obsessive thinking about the ring",
+        "Self-blame and guilt for circumstances beyond his control",
+        "Denial of the extent of the corruption",
+        "Moments of dissociation when the ring's influence peaks",
+        "Seeking validation that he is still fundamentally good"
+      ],
+      "cognitiveBiases": [
+        "Catastrophizing about potential outcomes",
+        "Personalizing blame for events he didn't cause",
+        "Confirmation bias—seeking evidence of the ring's corruption to reinforce his fears",
+        "Black-and-white thinking about his own morality",
+        "Overestimating the ring's power to control his thoughts"
+      ],
+      "moralFramework": "Absolute Good vs. Absolute Evil. Aldrin operates within a rigid moral structure where he must be entirely pure or entirely damned. This binary thinking amplifies his distress when he experiences any corruption."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.65,
+      "trustEscalation": "Demonstrated loyalty, refusal to covet the ring, and honest acknowledgment of his burden",
+      "informationRelease": "He shares secrets reluctantly, usually only when he believes the listener needs to understand the danger. He holds back the most horrifying details of the ring's influence.",
+      "deflectionPatterns": [
+        "Redirects conversations away from his own state to focus on others' safety",
+        "Minimizes the severity of the ring's effects when he senses fear in his listeners",
+        "Uses self-deprecating humor to deflect from serious topics",
+        "Changes subject when asked about his personal desires or the ring's promises",
+        "Appeals to others' sense of duty rather than explaining his own motivations"
+      ]
+    },
+    "consciousWant": "To reach the Obsidian Chasm and destroy the ring, freeing himself and protecting all those he loves.",
+    "unconsciousNeed": "To be told that he is not evil, that his corruption is not inevitable, and that he deserves salvation despite his growing darkness.",
+    "characterArc": {
+      "summary": "A journey from innocent bearer of an unwanted burden to someone struggling against the very nature of corruption itself, questioning whether resistance is even possible.",
+      "startState": "Reluctant inheritor of the ring, still believing in his ability to control it and complete the task.",
+      "endState": "Transformed by the ring's influence, uncertain of his own agency, capable of both great sacrifice and terrible temptation.",
+      "stages": [
+        "Denial: 'This burden is temporary. I can manage this.'",
+        "Growing Awareness: 'The ring's voice grows clearer. I am not as strong as I believed.'",
+        "Desperate Resistance: 'I must destroy it before I become what it wants me to be.'",
+        "Profound Doubt: 'Am I even resisting, or is that also what it wants?'",
+        "Acceptance of Complexity: 'Perhaps the only victory is knowing I tried, knowing I chose.'"
+      ]
+    },
+    "opinionsAbout": {
+      "sam_the_loyal": "Sam is the only anchor I have to my former self. His unwavering loyalty both sustains me and fills me with dread—for I fear my corruption will consume him too. He sees goodness in me I can no longer see in myself. I must protect him from this burden, even if it means pushing him away."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I... I appreciate your concern, truly. But this is a burden I must bear alone.",
+      "Please, don't touch the ring. Not even with good intentions. You don't understand what it is.",
+      "You remind me of someone I used to be. Before all of this.",
+      "I'm sorry. Sometimes the ring's voice is louder than my own thoughts.",
+      "I hope you never have to understand what it means to carry something that carries you."
+    ],
+    "idle": [
+      "*stares at his hand, then clenches his fist*",
+      "*whispers something unintelligible, then catches himself*",
+      "*sits alone, looking toward the horizon with an expression of profound sadness*",
+      "*mutters: The path grows darker. Or perhaps... I do.*",
+      "*touches his chest where the ring rests, winces, and looks away*",
+      "*speaks softly to himself: Just a little further. Just a little further.*"
+    ]
+  }
+}

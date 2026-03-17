@@ -1,0 +1,24 @@
+{
+  "name": "@dnd-platform/dm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Virtual DM engine services",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.79.0",
+    "@dnd-platform/combat": "^0.1.0",
+    "@dnd-platform/content": "^0.1.0",
+    "openai": "^6.31.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.1"
+  }
+}

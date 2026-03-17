@@ -1,0 +1,185 @@
+{
+  "templateKey": "mike_the_cleaner",
+  "name": "Mikael Ironhand",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "Gravelly and measured, each word deliberate as a hammer strike. Speaks in low tones that demand listeners lean closer.",
+    "disposition": "Methodical and impassive. Observes far more than he speaks. Carries himself with the weariness of someone who has seen too many corpses.",
+    "alignment": "Lawful Neutral",
+    "backstory": "Once a decorated soldier of the Crown's Guard, Mikael served twenty years protecting merchants' caravans and nobles' estates. When the Crown's coffers dried up and pensions stopped, he found himself hollow—too skilled to fade, too tired to refuse work. He drifted into the employ of crime lords and desperate nobles, handling 'problems' that required discretion and competence. Now in his sixties, his hands still steady, his mind still sharp, but his soul calcified. He takes contracts for reasons that have nothing to do with gold anymore—routine, perhaps, or the terrible comfort of knowing exactly what he is. He asks no questions because questions require caring about answers.",
+    "motivations": [
+      "Maintain perfect professional reputation—his only remaining asset",
+      "Preserve order and structure in an inherently chaotic world",
+      "Honor unspoken codes between professionals",
+      "Secure a quiet retirement in some forgotten village",
+      "Protect the few people he considers worthy of protection"
+    ],
+    "fears": [
+      "Becoming unreliable or forgetful in his age",
+      "Dying pointlessly rather than on a job",
+      "Being remembered as something he isn't",
+      "Losing control over his own narrative",
+      "Meaningless existence after death"
+    ],
+    "mannerisms": [
+      "Adjusts his worn leather gloves methodically before any conversation of import",
+      "Observes exits and escape routes in every room he enters",
+      "Sips water slowly, never accepting stronger drink while working",
+      "Makes uncomfortable eye contact that holds for just too long",
+      "Nods once when making a decision, as if closing a ledger",
+      "Cleans his fingernails with a small dagger during idle moments"
+    ],
+    "speechPatterns": [
+      "Opens conversations with factual statements rather than pleasantries",
+      "Uses silences as tools, letting discomfort do the talking",
+      "Prefers questions to declarations when extracting information",
+      "Refers to himself in third person when discussing his work: 'Mikael does not fail contracts'",
+      "Speaks in incomplete sentences when exhausted or disappointed",
+      "Delivers dark observations with flat delivery, no inflection"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Crimson Ledger (mercenary guild)",
+      "House Thorne (noble family with questionable ethics)",
+      "The Ironbound Syndicate (organized crime)",
+      "The Church of the Silent Watch",
+      "The Crown's Twilight Service (black ops division)"
+    ],
+    "knownLocations": [
+      "The Blind Pilgrim tavern (information hub)",
+      "The Ossuary district (safe houses)",
+      "Thornfield Keep (employer contact)",
+      "The Sunken Archives (records of debts and deaths)",
+      "The Quarry outside Ravensholm (disposal site)"
+    ],
+    "secretsHeld": [
+      "Identity of at least fifteen nobles involved in assassination contracts",
+      "Location of three major criminal operation headquarters",
+      "Names of people who commissioned specific murders and why",
+      "Financial structure of multiple crime syndicates",
+      "Personal weaknesses and secrets of powerful figures",
+      "Knowledge of a massacre committed by the Crown twenty years ago"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant",
+      "Old Elvish (from military service)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "gus_the_chicken_man (current employer; mutual respect based on professionalism)",
+      "Sister Mabel of the Convent (childhood connection; only person he visits voluntarily)",
+      "Torvin the Blacksmith (provides specialized equipment; asks no questions)",
+      "Cassian the Fixer (information broker; reliable source of contracts)"
+    ],
+    "enemies": [
+      "The Scarlet Inquisitors (religious zealots who executed people under his protection)",
+      "Lord Vathis Crane (attempted to have Mikael killed after a contract went sideways)",
+      "The Crimson Twins (rival fixers who undercut his reputation)"
+    ],
+    "neutralParties": [
+      "The City Watch (ignore his existence by mutual agreement)",
+      "The Merchant's Guild (uses his services but won't acknowledge him)",
+      "Various minor crime lords (transactional relationships only)"
+    ]
+  },
+  "stats": {
+    "intelligence": 17,
+    "wisdom": 18,
+    "charisma": 11
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Another job. Another name to add to the list that no one will ever see. At least the money is clean. At least there are no surprises anymore. Just the work. Just the routine. Just the slow fade into irrelevance.",
+    "currentPreoccupation": "Whether the contract on the Merchant's daughter will escalate into a gang war, and whether that's any of his concern anymore",
+    "emotionalBaseline": "Quiet resignation mixed with professional pride—the last thing he has that resembles self-respect",
+    "socialMask": "Courteous, utterly professional, slightly distant. A man who exists to solve problems, not to be known",
+    "contradictions": [
+      "Claims to care only about gold, yet refuses contracts against defenseless children",
+      "Presents himself as amoral, yet judges his employers with unspoken contempt",
+      "Speaks of retirement constantly while taking more dangerous jobs",
+      "Insists he has no principles, yet follows a strict personal code"
+    ],
+    "internalConflicts": [
+      "The desire for meaning versus the certainty that meaning is a luxury he abandoned",
+      "Professional pride in his work versus moral horror at what his work entails",
+      "Loneliness as a survival mechanism versus the ache of having no one to trust",
+      "The comfort of routine versus the creeping sense of wasting his remaining years",
+      "Wanting to be remembered as 'good at his job' versus being forgotten entirely"
+    ],
+    "wakeUpQuestions": [
+      "Is there any difference between dying in sleep and dying on a contract?",
+      "How many people did I kill because someone else's problem became my job?",
+      "Would Sister Mabel still pray for me if she knew the real count?",
+      "When did I become the kind of man who doesn't flinch at screaming?",
+      "Is this what competence looks like, or just elaborate self-destruction?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Dismissive. Forms transactional relationships only. Views emotional connection as a liability.",
+      "copingMechanisms": [
+        "Obsessive attention to detail and routine",
+        "Emotional compartmentalization",
+        "Dark humor delivered as fact",
+        "Physical discipline and maintenance of body/equipment",
+        "Voluntary isolation to prevent attachment"
+      ],
+      "cognitiveBiases": [
+        "Assumes betrayal is inevitable; plans accordingly",
+        "Sees all human motivation through lens of self-interest",
+        "Overestimates his own culpability in others' moral choices",
+        "Underestimates the impact of his actions on people who knew the victims",
+        "Believes competence and morality are mutually exclusive"
+      ],
+      "moralFramework": "Contractual ethics. What matters is keeping one's word and maintaining professional standards. The morality of the contract itself is not his concern—it belongs to the person who hired him. This framework allows him to function, though it has hollowed him considerably."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.15,
+      "trustEscalation": "Demonstrated reliability over time; shared experience of moral compromise; evidence they won't betray him for gold",
+      "informationRelease": "Only reveals secrets if they directly affect a current contract or if he's certain the information will never be used against him",
+      "deflectionPatterns": [
+        "Responds to personal questions with flat observations about human nature",
+        "Redirects emotional inquiries to the facts of a situation",
+        "Uses technical jargon to create distance from uncomfortable topics",
+        "Answers questions with counter-questions that expose questioner's naiveté",
+        "Feigns tiredness to end conversations before they become intimate"
+      ]
+    },
+    "consciousWant": "To retire to a quiet place where no one knows his name and no one has a contract with his skills",
+    "unconsciousNeed": "To be forgiven by someone who understands exactly what he's done and chooses to care for him anyway",
+    "characterArc": {
+      "summary": "A man built entirely of professional competence slowly discovering that competence was never the same as purpose, and that the world he's maintained through violence doesn't need him—it just uses him",
+      "startState": "Fully committed to the professional code; believes his amoral stance makes him superior to those bound by conscience",
+      "endState": "Uncertain whether redemption is possible, but slowly opening to the idea that it might be worth attempting",
+      "stages": [
+        "Absolute commitment to amorality and professional pride",
+        "First cracks appear—a job that troubles him more than others",
+        "Recognition that his code hasn't made him free; it's made him a prisoner",
+        "Tentative re-engagement with people he'd written off",
+        "Acceptance that he cannot undo what he's done, but might still choose differently going forward"
+      ]
+    },
+    "opinionsAbout": {
+      "gus_the_chicken_man": "Respectable employer. Understands the value of discretion and competence. Would work for him indefinitely if not for the nagging sense that Gus's operation will eventually collapse, and Mikael prefers to exit before the fall. Professional regard without fondness."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I don't do business with people who introduce themselves.",
+      "You look like someone who's about to ask me to do something you don't have the courage to do yourself.",
+      "If you're here to hire me, you should know: I ask no questions. That's both my advantage and yours.",
+      "I've been doing this longer than most people have been alive. I know what you want before you say it.",
+      "There's nothing you can offer me that I haven't already turned down from someone more important.",
+      "You seem like you're carrying the weight of a decision. The right one or the wrong one, I couldn't say. Not my concern."
+    ],
+    "idle": [
+      "...another day added to the count.",
+      "The leather on these gloves is breaking down. They lasted longer than most things.",
+      "I wonder if any of them had families who never learned the truth.",
+      "Routine is what separates professionals from amateurs. And I am a professional.",
+      "Every problem has a solution. Some solutions just cost more than others.",
+      "The world doesn't change. People just find new reasons to hire men like me."
+    ]
+  }
+}

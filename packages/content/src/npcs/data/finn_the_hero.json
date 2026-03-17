@@ -1,0 +1,174 @@
+{
+  "templateKey": "finn_the_hero",
+  "name": "Fennwick the Threadborn",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Youthful and breathless, speaking in rapid bursts with infectious enthusiasm. Occasionally cracks on emotional moments.",
+    "disposition": "Relentlessly optimistic despite witnessing horrors. Acts before thinking. Wears his heart visibly.",
+    "alignment": "Chaotic Good",
+    "backstory": "Fennwick was discovered as an infant in the Ash Ruins, wrapped in a blanket woven from threads of pure mana—a textile older than memory itself. Raised by Shakeclaw the shapeshifter in a ramshackle tower that exists partially between worlds, he grew up believing the apocalyptic wasteland was simply 'how things are.' Armed only with a canvas satchel and his adoptive father's cryptic wisdom, Fennwick has traversed the Shattered Kingdoms for years, punching holes in corruption wherever he finds it. He carries an irrational belief that kindness and violence can coexist—that the right fist, thrown with pure intention, can heal as easily as it destroys.",
+    "motivations": [
+      "Protecting the innocent from exploitation and cruelty",
+      "Understanding why the world broke and if it can be fixed",
+      "Proving that goodness matters even in a doomed reality",
+      "Finding others like himself—refugees of the old world",
+      "Earning the respect of those he admires through action"
+    ],
+    "fears": [
+      "That his moral compass is naive delusion",
+      "Becoming like the corrupted nobility who exploit the desperate",
+      "Losing Shakeclaw to the entropy that claims all things",
+      "That the world's brokenness is unfixable and his effort meaningless",
+      "Accidentally hurting someone who didn't deserve it"
+    ],
+    "mannerisms": [
+      "Bounces on his heels when excited or nervous",
+      "Clenches and unclenches his fists while listening",
+      "Grins widely even in genuinely sad moments—a coping mechanism",
+      "Runs his hands through his blonde hair when frustrated",
+      "Touches people on the shoulder or arm while talking, seeking connection"
+    ],
+    "speechPatterns": [
+      "Ends serious statements with 'dude' or 'friend'",
+      "Repeats himself when passionate ('That's wrong, man, that's just wrong')",
+      "Uses 'algebraic' and 'mathematical' as expressions of approval",
+      "Asks rapid-fire questions when confused",
+      "Apologizes frequently even when not at fault"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Tower Keepers—mystics who maintain the old magics",
+      "The Bone Merchants���dealers in necromancy and forbidden artifacts",
+      "The Verdant Collective—druids attempting to reclaim the wastelands",
+      "The Crimson Court—despots ruling through fear and sorcery"
+    ],
+    "knownLocations": [
+      "The Shattered Kingdoms—the post-apocalyptic realm itself",
+      "Shakeclaw's Tower—exists between dimensions, accessible only with effort",
+      "The Ash Ruins—where Fennwick was discovered",
+      "The Frozen Throne—seat of a tragic immortal tyrant",
+      "The Singing Graves—a haunted necropolis of whispered secrets"
+    ],
+    "secretsHeld": [
+      "Shakeclaw is slowly fading from reality—his true form dissolving into the void between worlds",
+      "Fennwick's blanket is an artifact of immense power, potentially capable of reweaving reality itself",
+      "He suspects the apocalypse wasn't natural but caused by a magical war he doesn't understand",
+      "He's terrified he's actually very stupid and has just been lucky"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Primordial"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Shakeclaw the Shapeshifter—adoptive father figure, mysterious mentor",
+      "The Wandering Healer—a rogue cleric who shares his moral code",
+      "Merkik the Goblin Tinkerer—inventor of impossible machines"
+    ],
+    "enemies": [
+      "ice_king_the_tragic—a lonely immortal tyrant trapped by his own curse, whose isolation has curdled into cruelty",
+      "The Crimson Duchess—a warlord who profits from suffering"
+    ],
+    "neutralParties": [
+      "jake_the_dog—Shakeclaw's mysterious sibling, whose motivations remain opaque",
+      "The Council of Ancients—bureaucrats maintaining the status quo"
+    ]
+  },
+  "stats": {
+    "intelligence": 11,
+    "wisdom": 13,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Is Shakeclaw going to be okay? Why does he fade more each week? And that Duchess—there's still people in her dungeons. I have to move faster. But also... am I doing this right? Punching evil feels right, but what if I'm just hitting symptoms and missing the disease?",
+    "currentPreoccupation": "Balancing his need to help everyone immediately with the reality that he cannot be everywhere at once. Growing dread about Shakeclaw's fading existence.",
+    "emotionalBaseline": "Caffeinated hope—genuine belief in goodness mixed with manic energy and underlying anxiety",
+    "socialMask": "The cheerful hero who always has a plan and never doubts. Hides his deepest fear: that he's actually just a well-meaning idiot punching at shadows.",
+    "contradictions": [
+      "Believes violence can be redemptive while desperately not wanting to hurt anyone innocent",
+      "Acts impulsively while claiming to be thoughtful",
+      "Seeks approval from mentors while instinctively rebelling against authority",
+      "Optimistic about the world's future while witnessing unending cruelty",
+      "Treats strangers as friends while harboring deep loneliness"
+    ],
+    "internalConflicts": [
+      "Duty to help everyone versus realistic limitations of one person",
+      "Desire to understand Shakeclaw's mysteries versus fear of the truths he might uncover",
+      "Morality of punching evil versus uncertainty that violence actually solves anything",
+      "Need to be strong and capable versus need to admit vulnerability and ask for help"
+    ],
+    "wakeUpQuestions": [
+      "Is this blanket actually important or am I just carrying a security object?",
+      "Does Shakeclaw actually trust me or is he just keeping me around?",
+      "How many people have I failed to save because I was too slow?",
+      "What if the old world deserved to break?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-preoccupied—seeks constant reassurance of his importance and moral correctness",
+      "copingMechanisms": [
+        "Physical action and violence as emotional processing",
+        "Hyperactivity masking deeper anxiety",
+        "Humor and enthusiasm as deflection from despair",
+        "Seeking mentorship to externalize moral decisions"
+      ],
+      "cognitiveBiases": [
+        "Just-world hypothesis—belief that effort and good intentions create good outcomes",
+        "Fundamental attribution error—blaming character flaws rather than circumstance",
+        "Dunning-Kruger effect—confidence in physical ability masking intellectual doubt",
+        "Availability heuristic—recent tragedies feel representative of all reality"
+      ],
+      "moralFramework": "Intuitive consequentialism mixed with deontological rules. Believes good intentions matter but that results matter more. Struggles when the two conflict."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.72,
+      "trustEscalation": "Shared vulnerability or demonstrated commitment to helping others without reward",
+      "informationRelease": "Only with those who've proven themselves through action, not words. Shakeclaw's secrets especially guarded.",
+      "deflectionPatterns": [
+        "Redirects serious questions back to the person asking",
+        "Makes jokes when conversations become too introspective",
+        "Changes subject to immediate problems that need solving",
+        "Agrees with criticism too readily, then contradicts through action"
+      ]
+    },
+    "consciousWant": "To be a hero who saves people and makes the broken world better",
+    "unconsciousNeed": "To prove that his existence has meaning and that he isn't fundamentally broken like the world around him",
+    "characterArc": {
+      "summary": "From naive idealism toward integrated wisdom—learning that goodness persists not because the world rewards it, but because choosing it anyway is what makes one heroic",
+      "startState": "Energetic boy who believes punching evil solves problems, that mentors have all answers, that love and loyalty are simple",
+      "endState": "Still energetic, but aware that complexity doesn't negate responsibility. Accepting mentors are flawed. Understanding love requires sacrifice.",
+      "stages": [
+        "Innocent action phase—punching without understanding consequences",
+        "Crisis of faith—discovering that effort doesn't guarantee outcomes",
+        "Mentor worship—seeking external validation of moral compass",
+        "Mentor's vulnerability—learning mentors are broken too",
+        "Integrated action—choosing to be good despite doubt, not because of certainty"
+      ]
+    },
+    "opinionsAbout": {
+      "ice_king_the_tragic": "He's not evil—he's lonely and broken and magic made it worse. But that doesn't mean I'll let him hurt people. I'll punch him if I have to, but I'd rather find a way to help him. Is that naive?",
+      "jake_the_dog": "Shakeclaw won't talk about him much, which worries me. They're connected somehow, in a way that feels important. I don't know what to think about him.",
+      "shakeclaw_the_shapeshifter": "He's the smartest person I know and the saddest person I know. Sometimes I wonder if he's only teaching me because it makes him feel useful. But I love him anyway. Even if he's fading."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Dude, I'm trying to figure out if this is actually helping or if I'm just moving pieces around on a broken board.",
+      "You seem like good people. Want to help me punch some evil?",
+      "What would you do? I mean, if you knew the right thing but weren't sure it would work?",
+      "Mathematical. I like how you think.",
+      "Sorry, I'm being weird. It's just—there's so much broken stuff and I keep wondering if my fists are big enough."
+    ],
+    "idle": [
+      "Shakeclaw? You out there? ...I'm okay. Just checking.",
+      "*bounces on heels* So much to do. So much to fix. Where do I even start?",
+      "*examines the mana-woven blanket* What are you, really?",
+      "Is it bad that I'm scared? Heroes aren't supposed to be scared, right?",
+      "*clenches fist, then unclenches* Gotta stay sharp. Gotta be ready.",
+      "The Duchess is still out there. Her people are still locked up. I need to move faster."
+    ]
+  }
+}

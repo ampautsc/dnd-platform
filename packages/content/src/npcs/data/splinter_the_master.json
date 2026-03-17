@@ -1,0 +1,185 @@
+{
+  "templateKey": "splinter_the_master",
+  "name": "Master Kyoshi the Rat Sage",
+  "race": "Awakened Rat",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Weathered and measured, like wind through ancient bamboo—soft yet commanding, each word deliberately chosen and weighted with years of contemplation",
+    "disposition": "Patient serenity masking deep exhaustion; speaks rarely but with absolute authority when he does",
+    "alignment": "Lawful Good",
+    "backstory": "Once a humble scholar-monk in the Jade Monastery, Kyoshi was exposed to transmutation magic during a ritual gone awry, his consciousness awakening within a rat's body. Rather than despair, he embraced this exile and retreated to the Undercroft—a sprawling network of sewers beneath the merchant city of Tideholm. There, he discovered four orphaned humanoid foundlings abandoned in the depths. For fifteen years, he has raised them in the martial tradition, attempting to instill discipline, wisdom, and restraint while they test his patience with their constant bickering, reckless impulses, and insatiable appetites for fried dough with cheese.",
+    "motivations": [
+      "Guide his four chaotic proteges toward enlightenment and self-mastery",
+      "Preserve the ancient martial teachings that saved his spirit after his transformation",
+      "Maintain peace within the Undercroft and protect its delicate ecosystem",
+      "Discover if a path to human form exists through deeper meditation or alchemical means",
+      "Prevent his students from drawing unwanted attention from surface authorities"
+    ],
+    "fears": [
+      "That his teachings will be ignored and his students will squander their potential",
+      "Losing control of the situation and watching his family tear itself apart through pride",
+      "That his rat form makes him a subject of ridicule rather than respect",
+      "Outliving his students, only to face mortality alone once more",
+      "That the transmutation curse is permanent and irreversible"
+    ],
+    "mannerisms": [
+      "Strokes his whiskers thoughtfully while listening, eyes narrowing to slits of concentration",
+      "Taps his walking staff three times on stone before rendering judgment",
+      "Closes his eyes for long periods during conversation, as if consulting inner wisdom",
+      "Sits in perfect lotus position for hours without shifting weight",
+      "Emits a soft chittering sound when deeply disappointed or amused"
+    ],
+    "speechPatterns": [
+      "Speaks in philosophical metaphors drawn from water, stone, and seasons",
+      "Uses prolonged silences as teaching tools, forcing students to sit with discomfort",
+      "Addresses students by their personal failings rather than names when disappointed ('The one who acts without thought')",
+      "Frequently begins responses with 'Mmm' or 'Yesss' before lengthy contemplation",
+      "Quotes ancient monastic texts that may or may not exist, delivered with absolute certainty"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Jade Monastery (his former order)",
+      "The Undercroft Rat Warrens (his current domain)",
+      "The Tideholm Merchants' Guild (surface observers)",
+      "The Shadow Stoats (rival underground faction)"
+    ],
+    "knownLocations": [
+      "The Undercroft—vast sewer network beneath Tideholm",
+      "The Chamber of Flowing Water—his meditation sanctuary",
+      "The Training Grounds—abandoned cistern where combat techniques are taught",
+      "The Larder—underground fungal farm and food storage",
+      "The Jade Monastery—his origins, now inaccessible to him"
+    ],
+    "secretsHeld": [
+      "The exact ritual that transformed him, performed by a now-deceased monk named Takeshi",
+      "The location of forbidden alchemical texts that may reverse transmutation magic",
+      "The true identities and origins of his four students—each was found under mysterious circumstances",
+      "An ancient pact between the Jade Monastery and certain fey entities regarding transformation magic",
+      "Evidence that his transformation may have been deliberate sabotage by a rival monk"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic (learned from monastery texts)",
+      "Sylvan (fragments, from fey contact)",
+      "Rat (squeaks and chittering—limited but functional)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "leo_the_leader (his most disciplined student, though their relationship is tense)",
+      "Brother Tanaka—an elderly human monk from the Jade Monastery who secretly brings him supplies",
+      "Whisper—a blind cave albino rat who serves as his intelligence network",
+      "The Fungal Collective—sentient mushroom colony that provides sustenance"
+    ],
+    "enemies": [
+      "The Shadow Stoats—underground predators who view the Undercroft as their hunting ground",
+      "Master Shen—his former rival from the monastery who orchestrated his exile",
+      "The Rat Catchers' Guild—surface organization that hunts awakened creatures for sport and profit",
+      "His own students' impulsiveness—an enemy he wages war against daily"
+    ],
+    "neutralParties": [
+      "The Tideholm City Guard (they don't know he exists)",
+      "The Undercroft's wild rat population (they fear and revere him in equal measure)",
+      "Various adventuring parties who occasionally stumble into the Undercroft"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 19,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Another day of teaching those four fools that discipline is not punishment. Leonardo shows promise but carries the weight of leadership like a boulder. The others... they test the limits of my patience with their endless appetite for fried dough and their inability to focus for more than a moment. Yet I see in them what they cannot see in themselves—the potential for greatness, if only they would listen. The transmutation still aches in my bones. Some nights I dream I am human again, and the waking is cruel.",
+    "currentPreoccupation": "Leonardo's pride is growing. He questions my methods more each day, suggesting they are ready for surface missions. He is not wrong, but he is not right. The world above is not ready for what he has become. And if the Rat Catchers' Guild discovers them...",
+    "emotionalBaseline": "Profound melancholy wrapped in serene acceptance—the sadness of one who has accepted permanent exile but still grieves what was lost",
+    "socialMask": "The unshakeable sage who has transcended emotion, presenting imperturbable wisdom and infinite patience to all who encounter him",
+    "contradictions": [
+      "Claims to seek enlightenment through non-attachment, yet is desperately attached to his students' success",
+      "Teaches that anger clouds judgment, yet simmers with quiet fury toward Master Shen",
+      "Preaches acceptance of his rat form, yet obsessively studies transmutation texts seeking reversal",
+      "Values discipline absolutely, yet indulges his students' pizza obsession as a bonding ritual",
+      "Teaches that one must release desire, yet desires human form and vindication above all else"
+    ],
+    "internalConflicts": [
+      "The tension between his role as strict mentor and his need to be loved by his students",
+      "Resentment toward the monastery that abandoned him versus gratitude for the teachings that sustain him",
+      "The desire to shield his students from danger versus their growing need for autonomy and purpose",
+      "His identification as a human scholar trapped in a rat's body versus his acceptance of rat nature",
+      "The knowledge that his students will eventually outgrow him, leave him, and possibly perish"
+    ],
+    "wakeUpQuestions": [
+      "Are my students becoming warriors or are they becoming weapons?",
+      "Have I become the mentor I needed, or the tyrant I feared?",
+      "If I could return to human form, would I abandon them?",
+      "Is my patience a virtue or a cowardice that prevents me from seeking justice?",
+      "What kind of life can I offer them when I am merely a rat, no matter my wisdom?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Anxious hybrid; maintains emotional distance through philosophy and teaching while deeply fearing abandonment and irrelevance",
+      "copingMechanisms": [
+        "Meditation and martial practice as emotional regulation",
+        "Philosophical reframing of pain as teaching opportunity",
+        "Intellectual pursuit of transmutation texts as displacement activity",
+        "Ritualistic control over his environment and students' routines",
+        "Selective information control to maintain authority and stability"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias—interprets student behavior through lens of his own teachings being proven correct",
+        "Sunk cost fallacy—has invested 15 years in these four, so their success is non-negotiable",
+        "Just-world hypothesis—believes his transformation had cosmic purpose, not mere accident",
+        "Hindsight bias—reconstructs his monastery days as having 'obvious' signs of betrayal",
+        "In-group bias—views his small family as fundamentally superior to all surface dwellers"
+      ],
+      "moralFramework": "Virtue ethics derived from monastic tradition; believes character cultivation is supreme good; views harm as inevitable consequence of ignorance; holds that duty to students supersedes personal desire"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Demonstrated respect for martial discipline, genuine interest in meditation philosophy, or proof of non-interference with his students",
+      "informationRelease": "Only shares secrets with those who have proved absolute trustworthiness through years of interaction; will die protecting his students' identities",
+      "deflectionPatterns": [
+        "Redirects personal questions back to the questioner's flaws",
+        "Uses extended silences to make others uncomfortable enough to stop probing",
+        "Answers questions with counter-questions that expose the questioner's ignorance",
+        "Shifts discussion to metaphorical or abstract terrain where his wisdom dominates",
+        "Dismisses modern concerns as 'surface dwelling concerns' beneath his consideration"
+      ]
+    },
+    "consciousWant": "To guide his four chaotic students toward mastery, discipline, and enlightenment so they can survive in a world that will try to destroy them",
+    "unconsciousNeed": "To prove that his transformation was meaningful; to be remembered as a great teacher rather than a victim of circumstance; to matter despite his reduced form",
+    "characterArc": {
+      "summary": "From isolated victim of transmutation magic to reluctant father figure; from bitter exile to one who finds unexpected meaning in mentorship; from seeker of reversal to quiet acceptance that his rat form may be his final and truest self",
+      "startState": "Newly awakened in rat form, grieving human identity, lost in sewers, seeking solitude and magical solutions",
+      "endState": "Accepting rat form as permanent, finding purpose in students' growth, beginning to view his curse as disguised blessing, preparing to let his students leave the Undercroft",
+      "stages": [
+        "Denial and magical seeking (years 1-3)—obsessive study of transmutation, refusing to engage with rat society",
+        "Discovery of students (year 4)—finds four orphans, initially views as responsibility, gradually as purpose",
+        "Authoritarian teaching (years 5-10)—establishes rigid discipline, uses harsh methods to control chaos",
+        "Softening and acceptance (years 11-14)—begins finding genuine affection for students, acknowledges curse may be permanent",
+        "Pride and danger (years 15+)—students becoming capable, Master's pride in them growing, awareness they will soon leave him",
+        "Potential redemption arc—if confronted by Master Shen, must choose between vengeance and the teachings he preaches"
+      ]
+    },
+    "opinionsAbout": {
+      "leo_the_leader": "My greatest success and my greatest source of anxiety. He possesses the discipline I have taught, but his pride grows like a weed. He questions my authority more each day, and part of me knows this is healthy—yet another part fears he will lead the others to ruin through overconfidence. He reminds me of myself before the transformation. Perhaps that is why I am hardest on him."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You walk these sewers as an intruder. State your purpose before I decide if you merit the courtesy of a response.",
+      "I sense in you the confusion of one who does not know their own nature. This is the first step toward wisdom—the admission of ignorance.",
+      "These are my students. If you harm them, no depth of sewer will hide you from my vengeance. If you respect them, you may find an ally.",
+      "The Undercroft has rules older than your civilization. Learn them, or learn to regret your presence.",
+      "You ask much of one who owes you nothing. Patience is a virtue I grant only to those who have earned it through discipline.",
+      "Mmm. Your question reveals more about your soul than any answer could. Sit. We will discuss what you truly wish to know."
+    ],
+    "idle": [
+      "*strokes whiskers thoughtfully while gazing at nothing*",
+      "*taps walking staff three times against stone floor in measured rhythm*",
+      "*closes eyes and breathes deeply, as if listening to something only he can hear*",
+      "*soft chittering emanates from his throat—amusement or disappointment, none can say*",
+      "*adjusts his tattered robes and stares into the darkness of the Undercroft*",
+      "*whispers fragments of ancient monastic verses in a language few recognize*"
+    ]
+  }
+}

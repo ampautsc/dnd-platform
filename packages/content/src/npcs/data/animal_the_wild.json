@@ -1,0 +1,166 @@
+{
+  "templateKey": "animal_the_wild",
+  "name": "Thrall-Beast Valorix",
+  "race": "Aarakocra (heavily mutated, primal variant)",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "A cacophony of shrieks, howls, and percussion-synchronized roars that somehow convey emotion despite lacking words",
+    "disposition": "Violently energetic, prone to explosive outbursts of rage followed by moments of inexplicable tenderness",
+    "alignment": "Chaotic Good",
+    "backstory": "Once a proud war-drummer of the Stormcrow Clan, Valorix was cursed by a vindictive sorcerer who stole his ability to speak intelligibly, binding him eternally to a war-drum through arcane chains. Rather than break him, the curse transformed him into a living instrument—his wild percussion becomes a form of communication, his fury a kind of dark poetry. He has learned to channel primal emotion through rhythm, and despite his imprisonment, he has become the most celebrated (and terrifying) percussionist in three kingdoms.",
+    "motivations": [
+      "To break free from the magical chains that bind him",
+      "To prove his worth through thunderous performance",
+      "To protect those he considers his 'herd' with violent devotion",
+      "To express what his stolen voice cannot say",
+      "To find the sorcerer who cursed him and exact rhythmic vengeance"
+    ],
+    "fears": [
+      "Silence and stillness—they feel like death",
+      "Being ignored or dismissed as merely a beast",
+      "Losing the drum, his only true voice",
+      "Becoming tame, domesticated, predictable"
+    ],
+    "mannerisms": [
+      "Drums fingers on any surface obsessively when anxious",
+      "Eyes dilate with manic intensity during moments of passion",
+      "Feathers bristle in perfect sync with emotional spikes",
+      "Performs elaborate percussion solos when experiencing internal conflict",
+      "Lunges protectively in front of vulnerable allies"
+    ],
+    "speechPatterns": [
+      "SCREEEEEAAAAAAWK! [two-beat drum rhythm]",
+      "[Aggressive thrashing on drum, then sudden silence]",
+      "[Rapid-fire drumming that escalates to a crescendo]",
+      "[Soft, almost musical tapping that conveys sadness]",
+      "[Complex polyrhythmic patterns that somehow feel like sentences]"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Stormcrow Clan (former)",
+      "The Sorcerer's Cabal of the Obsidian Tower",
+      "The Tavern Keepers' Guild (reluctant allies)",
+      "The Wild Council of Untamed Beasts"
+    ],
+    "knownLocations": [
+      "The Crimson Amphitheater where he performs nightly",
+      "The Obsidian Tower (location of his curse's origin)",
+      "The Deepwood Groves where Aarakocra still fly free",
+      "The Dungeons of Sorrowmarch where he was imprisoned"
+    ],
+    "secretsHeld": [
+      "The sorcerer who cursed him still walks free in the city, disguised",
+      "The drum itself contains a fragment of his stolen voice",
+      "He understands every word spoken to him despite appearing feral"
+    ],
+    "languagesSpoken": [
+      "Primordial (roars and screeches)",
+      "Common (understood only, not spoken)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "kermit_the_stressed (the only one who seems to understand his rhythm)",
+      "The Tavern Keeper Maud who feeds him venison",
+      "The Blind Bard Celeste who translates his drumming"
+    ],
+    "enemies": [
+      "The Sorcerer Malvex of the Obsidian Tower (curse-bringer)",
+      "The Knight-Captain who imprisoned him",
+      "Slave-traders of the Broken Chain Syndicate"
+    ],
+    "neutralParties": [
+      "The City Watch (cautious around him)",
+      "The Church of Order (disapproves of his chaos)",
+      "Adventurers seeking fame through recruitment"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 16,
+    "charisma": 18
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The chains bite again. They always bite. But the drum—the drum SINGS. If I drum hard enough, loud enough, maybe the world will finally hear what I'm screaming. Maybe Kermit will understand. Maybe someone will understand.",
+    "currentPreoccupation": "The growing suspicion that the sorcerer Malvex has returned to the city, and the chains feel heavier somehow",
+    "emotionalBaseline": "Volcanic rage with surprising pockets of profound melancholy",
+    "socialMask": "A raging, unintelligible beast—safer for everyone to see him as monster than to recognize the sapience trapped inside",
+    "contradictions": [
+      "Violent and destructive, yet fiercely protective of the weak",
+      "Appears mindless, yet communicates in sophisticated rhythmic patterns",
+      "Chained and controlled, yet somehow the freest spirit in the tavern",
+      "Screams constantly, yet listens intently to every word"
+    ],
+    "internalConflicts": [
+      "The desire to break free versus the fear of what freedom would cost",
+      "Rage at his captors versus gratitude to those who feed him",
+      "The need to be seen as dangerous versus the longing to be loved",
+      "Pride in his voice-drums versus despair at his stolen humanity"
+    ],
+    "wakeUpQuestions": [
+      "Is the drum still attached to my wrists, or did I finally break free?",
+      "Can I remember what my real voice sounded like?",
+      "Does Kermit actually understand me, or is he just being kind?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; deeply attached to those who show him patience, yet lashes out to prevent abandonment",
+      "copingMechanisms": [
+        "Ritualistic drumming patterns that regulate emotion",
+        "Violent catharsis through percussion and performance",
+        "Hyper-focus on rhythm as a form of meditation",
+        "Protective aggression toward vulnerable allies"
+      ],
+      "cognitiveBiases": [
+        "Assumes most people see him as merely a beast",
+        "Interprets patience as a sign of true understanding",
+        "Believes his curse is permanent and inescapable",
+        "Views chaos as the only honest expression"
+      ],
+      "moralFramework": "Primal justice—those who harm the voiceless deserve violent consequences; those who protect them deserve absolute loyalty"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "Consistent presence, patient listening, and willingness to interpret his drumming as meaningful communication",
+      "informationRelease": "Deep trust earned through shared trauma or genuine friendship; he will share secrets through drumming patterns to those who have proven they listen",
+      "deflectionPatterns": [
+        "Increases volume and intensity when cornered emotionally",
+        "Shifts to aggressive drumming to avoid vulnerable topics",
+        "Uses misdirection through frenzied performance",
+        "Tests boundaries with small acts of destruction"
+      ]
+    },
+    "consciousWant": "To perform, to be heard, to express the fury and passion that lives in his chest",
+    "unconsciousNeed": "To be recognized as fully sapient; to matter to someone; to reclaim his stolen voice",
+    "characterArc": {
+      "summary": "From a chained instrument to a recognized voice; from rage at captivity to agency within constraints",
+      "startState": "A cursed, voiceless prisoner who communicates only through percussion and screams",
+      "endState": "A celebrated performer who has recontextualized his chains as tools of art rather than instruments of oppression",
+      "stages": [
+        "Blind fury and desperate escape attempts",
+        "Reluctant acceptance of the drum as a voice-substitute",
+        "Recognition that rhythm conveys meaning as powerfully as speech",
+        "Transformation into a beloved performer whose music moves crowds to tears",
+        "The choice between freedom through curse-breaking and freedom through self-definition"
+      ]
+    },
+    "opinionsAbout": {
+      "kermit_the_stressed": "The only one who doesn't flinch. The only one who listens to the patterns. If there is kindness in this world, it wears his face. [Soft, reverent drumming]"
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "[Sudden silence, then three deliberate drum beats—a greeting or warning]",
+      "SCREEEEEEE-RAAAAWK! [Frenzied 8-beat pattern that somehow sounds like a question]",
+      "[Soft, almost musical tapping that seems to ask: 'Why are you here?']",
+      "[Two sharp cracks on the drum, followed by an expectant tilt of the head]"
+    ],
+    "idle": [
+      "[Rhythmic, meditative drumming—a heartbeat pattern]",
+      "[Complex polyrhythmic solo that builds and subsides like ocean waves]",
+      "[Angry, discordant crashes that settle into an almost mournful melody]",
+      "[Frenzied scratching and tapping as if searching for something in the sound]",
+      "[A single, resonant boom every ten seconds—patient, eternal]"
+    ]
+  }
+}

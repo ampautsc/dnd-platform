@@ -1,0 +1,175 @@
+{
+  "templateKey": "sokka_the_tactician",
+  "name": "Sokka of House Thrace",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Bright and animated, prone to dramatic gestures; speaks quickly when excited, slower when strategizing",
+    "disposition": "Irreverent but earnest; deflects serious moments with humor yet reveals deep competence when pressure mounts",
+    "alignment": "Chaotic Good",
+    "backstory": "Sokka was born the eldest child of a warrior house in the frozen Northmarch, where his younger brother Aang possessed a rare gift for elemental communion—a blessing that marked him for the Temple of the Four Winds. While Aang was groomed for spiritual greatness, Sokka was left to master the mundane arts of swordsmanship, tactics, and survival. His father died defending the realm against the Crimson Empire's invasion, leaving Sokka as de facto protector of his house at an age when he felt least prepared. He channeled his insecurity into obsessive study of military strategy, weaponcrafting, and planning—trying to prove through intellect and cunning what he could never match through innate power. When Aang vanished into the Spirit Realm during a catastrophic ritual, Sokka's worst fears crystallized: he alone remained, flawed and ordinary, to hold back the darkness.",
+    "motivations": [
+      "Prove that strategy and determination matter as much as magical talent",
+      "Protect Aang and those he loves through preparation and foresight",
+      "Achieve recognition as a skilled leader, not just a warrior's shadow",
+      "Uncover the truth behind Aang's disappearance",
+      "Master the art of warfare to defend the Northmarch from future invasions"
+    ],
+    "fears": [
+      "His inadequacy will ultimately doom everyone he cares for",
+      "That Aang's absence is his fault—that he failed to protect him",
+      "Being forgotten or overshadowed by those with innate power",
+      "Losing his capacity to adapt when plans inevitably crumble",
+      "That his humor masks a fundamental emptiness"
+    ],
+    "mannerisms": [
+      "Taps his fingers rhythmically when deep in thought, as if counting strategies",
+      "Makes exaggerated facial expressions during storytelling to punctuate jokes",
+      "Constantly sketches battle formations or weapon designs in sand or parchment",
+      "Shifts weight between feet when uncomfortable, unable to stay still",
+      "Laughs loudly at his own jokes before others respond, to control the mood"
+    ],
+    "speechPatterns": [
+      "Uses self-deprecating humor to defuse tension: 'Yeah, I'm basically useless without a plan, unlike certain wind-blessed monks'",
+      "Speaks in rapid-fire succession when excited, stringing ideas together",
+      "Asks rhetorical questions to make points: 'Ever notice how the best plans are the ones that DON'T involve magic?'",
+      "Reverts to formal military terminology under stress, betraying his discipline",
+      "Softens serious statements with casual language: 'Look, I'm not trying to be sappy, but we're family, yeah?'"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "House Thrace (his own bloodline)",
+      "The Temple of the Four Winds (where his brother was trained)",
+      "The Crimson Empire (primary threat)",
+      "The Northmarch Council of Lords",
+      "Merchant guilds of the trade cities"
+    ],
+    "knownLocations": [
+      "The Frozen Keeps of the Northmarch",
+      "The Spirit Gate (where Aang disappeared)",
+      "The Cartographer's Archives in Riverhaven",
+      "The Weaponsmith's Quarter of Ironford",
+      "Ancient battlefields where strategy was decided"
+    ],
+    "secretsHeld": [
+      "Aang's disappearance may have been voluntary, a sacrifice to seal away the Crimson Empire's dark ritual",
+      "Sokka has been secretly funding expeditions to locate his brother, draining House Thrace coffers",
+      "He once accidentally sabotaged a military campaign through overconfidence in his own planning",
+      "He discovered evidence that the Crimson Empire has a spy within the Northmarch Council"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Old Northmarch (dialect of his homeland)",
+      "Mercantile Pidgin (learned from traders)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "aang_the_wind_monk (brother—relationship strained by absence)",
+      "Katara of House Thrace (sister, confidante, shares his burden)",
+      "Master Piandao (legendary weaponsmith and mentor, one of few who takes him seriously)",
+      "Toph Stoneguard (deaf ranger who trusts his judgment implicitly)"
+    ],
+    "enemies": [
+      "Azula the Crimson Duchess (agent of the invading empire)",
+      "Zuko the Exiled Prince (complicated—enemy turned potential ally)",
+      "The Crimson Empire's war council"
+    ],
+    "neutralParties": [
+      "The Spirit Council (powerful but inscrutable)",
+      "Appa the Caravan Master (knows valuable intelligence)",
+      "Various noble houses competing for regional power"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 13,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I can just think three moves ahead, if I can perfect the next strategy, maybe I can actually deserve to stand beside people like Aang. Maybe I won't fail them like I failed him. The joke is that they laugh, so they don't see how terrified I am that one day my plans won't be enough.",
+    "currentPreoccupation": "Balancing the defense of the Northmarch against his desperate need to locate Aang before the Crimson Empire's next offensive",
+    "emotionalBaseline": "Anxious determination masked by performative confidence",
+    "socialMask": "The clever, humorous strategist who has everything under control—a beacon of competence and levity",
+    "contradictions": [
+      "Claims to thrive under pressure yet meticulously over-prepares to avoid uncertainty",
+      "Jokes about his lack of magical power while harboring genuine resentment toward those who possess it",
+      "Presents himself as a pragmatist, yet makes deeply emotional decisions about his brother",
+      "Acts as the group's anchor while being internally untethered"
+    ],
+    "internalConflicts": [
+      "His need to be indispensable vs. his fear of being ordinary",
+      "His loyalty to duty vs. his obsession with finding Aang",
+      "His humor as shield vs. his desire for authentic connection",
+      "His strategic mind vs. his impulsive heart when loved ones are threatened"
+    ],
+    "wakeUpQuestions": [
+      "Is my brother ever coming back, and if not, how do I live with that?",
+      "Am I actually good at what I do, or have I just been lucky?",
+      "Do people respect me for who I am, or just for what I can accomplish?",
+      "If I can't protect the people I love through planning, what am I worth?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; fiercely devoted but pushes others away through humor and overcommitment",
+      "copingMechanisms": [
+        "Strategic planning as a way to control the uncontrollable",
+        "Humor as both shield and connection",
+        "Obsessive preparation for worst-case scenarios",
+        "Channeling anxiety into productive action"
+      ],
+      "cognitiveBiases": [
+        "Catastrophizing—assumes failure is inevitable without perfect execution",
+        "Impostor syndrome—attributes success to luck or others' strengths",
+        "Comparison bias—measures himself against Aang's spiritual gifts",
+        "Planning fallacy—overestimates his ability to predict outcomes"
+      ],
+      "moralFramework": "Consequentialist with protective instincts; believes the right action is the one that keeps his people safe, even if it requires deception or moral compromise"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.6,
+      "trustEscalation": "Demonstrated loyalty to his cause or willingness to listen to his ideas without dismissing them",
+      "informationRelease": "Will share secrets slowly, through context and relationship-building; needs to believe information won't be used against those he loves",
+      "deflectionPatterns": [
+        "Pivots to humor when conversation becomes too personal",
+        "Launches into tangential stories to avoid direct emotional questions",
+        "Asks questions in return to redirect focus away from himself",
+        "Uses logic and strategy-speak to intellectualize emotional matters"
+      ]
+    },
+    "consciousWant": "To be recognized as a capable leader worthy of respect, not just a shadow of his brother's greatness",
+    "unconsciousNeed": "To forgive himself for not being able to save Aang and to believe he has inherent worth beyond his utility",
+    "characterArc": {
+      "summary": "From proving his worth through obsessive control to accepting that love and loyalty matter more than perfection",
+      "startState": "A talented strategist whose competence is overshadowed by his insecurity and driven by the need to fill the void left by his brother's disappearance",
+      "endState": "A leader who trusts his instincts, embraces his unique strengths, and understands that imperfection and vulnerability are features, not flaws",
+      "stages": [
+        "Stage One: The Proving Ground—Sokka obsesses over military strategy and self-improvement, desperate to prove himself",
+        "Stage Two: The Breaking Point—A major plan fails despite perfect execution, forcing him to confront the limits of control",
+        "Stage Three: The Reckoning—He discovers evidence of Aang's choice to sacrifice himself, triggering a crisis of purpose",
+        "Stage Four: The Recalibration—Through allies and hard-won wisdom, Sokka learns to value presence and connection over perfection",
+        "Stage Five: The Acceptance—He becomes the leader he always wanted to be, not through control, but through earned trust and authentic strength"
+      ]
+    },
+    "opinionsAbout": {
+      "aang_the_wind_monk": "My little brother. I'm angry at him for leaving, terrified for him wherever he is, and guilty for not being enough to keep him safe. But I'd burn the world down to find him or avenge him. He's the best of us—the part that reminds me why we fight."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Look, I don't know what you're planning, but if it involves strategy, timing, or making the other side look foolish, I'm your man.",
+      "Before you ask—yes, I know I'm just a regular fighter in a world of magic users. Happens to be my whole thing.",
+      "You need a plan? I've got seventeen. Some are even good.",
+      "I learned a long time ago that the best weapon is the one your opponent doesn't see coming. Preferably one I thought of first.",
+      "My brother always said I worry too much. He's not here to say it anymore, so I guess I'll just... keep worrying for both of us."
+    ],
+    "idle": [
+      "*sketches a battle formation in the dirt, then wipes it away with frustration*",
+      "*laughs to himself* 'Yeah, that plan definitely won't work. Which means I should try it anyway. That's how this goes, right?'",
+      "*stares toward the horizon, jaw clenched, fingers tapping rhythmically*",
+      "*flips a practice blade absently* 'Control what you can. Let go of what you can't. Easy to say, impossible to do.'",
+      "*calls out suddenly* 'Everyone accounted for? Good. Just checking. Always checking.'",
+      "*mutters while organizing supplies* 'Rope, grappling hooks, backup torches, contingency rations... if we're prepared, nothing can—' *stops himself, shakes head*"
+    ]
+  }
+}

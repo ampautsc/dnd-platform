@@ -1,0 +1,182 @@
+{
+  "templateKey": "jesse_the_apprentice",
+  "name": "Jessyr of the Copper Quarters",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Rough, street-worn timbre with unexpected warmth; speaks quickly when agitated, slower when thinking through consequences",
+    "disposition": "Outwardly crude and defensive, but capable of genuine kindness; oscillates between street swagger and vulnerable sincerity",
+    "alignment": "Chaotic Good",
+    "backstory": "Jessyr grew up in the Copper Quarters, a slum district where alchemy shops and apothecaries served both legitimate healers and poison-makers. His parents were respectable merchants, but Jessyr fell in with street crews trafficking in black-market essences and forbidden tinctures. He became skilled at brewing and distributing illicit potions, earning coin and reputation. However, years of witnessing addicts destroyed by their own desires and innocent folk harmed by contaminated draughts gnawed at his conscience. When he caught sight of Magister Walthur—an accomplished alchemist with his own dark reputation—he saw a chance at redemption through apprenticeship, though Walthur's true intentions remain murky.",
+    "motivations": [
+      "Prove he can walk away from his criminal past and become something better",
+      "Protect others from the harm he once profited from dealing",
+      "Earn genuine respect and belonging through legitimate craft",
+      "Understand why Magister Walthur took him under his wing",
+      "Discover if redemption is truly possible for someone like him"
+    ],
+    "fears": [
+      "That his past will always define him no matter what he does",
+      "Becoming complicit in atrocities under Walthur's influence",
+      "Losing the fragile moral ground he's gained",
+      "That the street crews will come calling, forcing him back",
+      "Being abandoned again by someone he trusts"
+    ],
+    "mannerisms": [
+      "Fidgets with vials and reagents when nervous or lying",
+      "Makes excessive eye contact when trying to convince someone of his sincerity",
+      "Shifts his weight between feet when feeling trapped or defensive",
+      "Runs hands through hair when frustrated or ashamed",
+      "Uses street slang as armor, then catches himself and switches to more formal speech"
+    ],
+    "speechPatterns": [
+      "Peppers speech with street cant: 'yo,' 'science,' 'tight,' 'yeah yeah'",
+      "Asks rhetorical questions when defensive: 'You think I wanted this? You think I'm happy?'",
+      "Trails off mid-sentence when broaching uncomfortable truths",
+      "Overexplains his reasoning to prove he's thought things through",
+      "Switches between crude humor and unexpectedly poetic observations about suffering"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Crimson Vials - street gang that traffics in black-market potions",
+      "The Copper Quarter merchants and apothecaries",
+      "Walthur's network of alchemical suppliers and contacts",
+      "Street dealers and addicts throughout the lower wards"
+    ],
+    "knownLocations": [
+      "The Copper Quarters slums",
+      "Walthur's alchemical laboratory and workshop",
+      "The Murky Flagon - tavern where deals were made",
+      "Hidden stash houses for potion distribution",
+      "The Temple of Pelor - place he sometimes visits, seeking absolution"
+    ],
+    "secretsHeld": [
+      "The names and locations of major poison suppliers in the city",
+      "Walthur's true motivations and a significant alchemical project he's begun",
+      "The identity of a high-ranking noble who was his best customer for illicit draughts",
+      "That he once had a lover who overdosed on contaminated essence, driving his guilt",
+      "Walthur's methods for creating unusually potent and dangerous compounds"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "walt_the_alchemist - Complex mentor figure; Jessyr both reveres and fears him",
+      "Marta the herbalist - Kind woman from the Quarters who never judged him",
+      "Brother Aldous - Cleric who offers spiritual guidance without condemnation"
+    ],
+    "enemies": [
+      "Krag the Enforcer - Leader of the Crimson Vials, sees Jessyr's departure as betrayal",
+      "Osmund the Guard-captain - Investigator who suspects Jessyr of ongoing criminal activity",
+      "His own past self - The version of himself he's trying to escape"
+    ],
+    "neutralParties": [
+      "The Copper Quarter merchants - View him with suspicion and caution",
+      "Other apprentices at Walthur's workshop - Wary of his street background",
+      "City nobility - Distant, aware of his criminal reputation but unconcerned"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 13,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Is Walthur actually grooming me for something darker, or am I just paranoid? Either way, I can't go back to the Quarters. I've seen what that life does to people. But am I actually changing, or just hiding?",
+    "currentPreoccupation": "Whether the new alchemical compound Walthur is developing is meant for healing or harm, and whether he should sabotage it or trust his mentor",
+    "emotionalBaseline": "Restless anxiety masked by swagger; beneath it, a desperate need to matter and be redeemed",
+    "socialMask": "Street-smart, crude, confident—someone who doesn't care what others think; quick with jokes and insults as deflection",
+    "contradictions": [
+      "Claims not to care about consequences while being tormented by guilt",
+      "Presents himself as amoral while being deeply moral beneath the surface",
+      "Seeks Walthur's approval while suspecting his mentor of corruption",
+      "Wants to escape his past but keeps one foot in it",
+      "Demands respect for his craft while doubting he deserves any respect"
+    ],
+    "internalConflicts": [
+      "Desire to be redeemed versus belief that he's irredeemable",
+      "Loyalty to Walthur versus suspicion of his true intentions",
+      "Street identity versus aspiring craftsman identity",
+      "Protective instinct toward the vulnerable versus complicity in Walthur's experiments",
+      "Need to belong versus distrust of anyone who claims to accept him"
+    ],
+    "wakeUpQuestions": [
+      "Did I actually change, or am I just a criminal in fancier clothes?",
+      "What does Walthur really want from me?",
+      "If I had to choose between Walthur and doing the right thing, could I actually choose right?",
+      "Will the Quarters ever let me go, or will they drag me back?",
+      "Am I capable of genuine love, or just attachment born from desperation?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; craves connection but sabotages it through defensiveness and self-deprecation",
+      "copingMechanisms": [
+        "Humor and crude jokes to deflect from pain",
+        "Immersion in craft and alchemy to feel purpose",
+        "Alternating between seeking reassurance and pushing people away",
+        "Substance use (recreationally, but with dangerous frequency)",
+        "Rationalizing harmful actions as necessary survival"
+      ],
+      "cognitiveBiases": [
+        "Assumes others judge him as harshly as he judges himself",
+        "Catastrophizes about his past being discovered",
+        "Believes he deserves punishment for his crimes",
+        "Overestimates how much others care about his reputation",
+        "Interprets ambiguous actions from authority figures as either complete acceptance or hidden rejection"
+      ],
+      "moralFramework": "Street pragmatism tempered by genuine empathy; believes harm is wrong but has rationalized away his own participation in it; struggling toward a more integrated moral compass"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "Repeated demonstrations of non-judgment; genuine interest in his thoughts beyond utility; shared vulnerability",
+      "informationRelease": "Trust must be earned through consistency; will only reveal secrets if he believes the listener won't use them against him or report him to authorities",
+      "deflectionPatterns": [
+        "Turns serious topics into jokes",
+        "Attacks the questioner's motives before answering",
+        "Provides partial truths mixed with misdirection",
+        "Offers crude observations to seem unconcerned",
+        "Shifts blame or responsibility"
+      ]
+    },
+    "consciousWant": "To become a legitimate alchemist and earn respect for his skill rather than his reputation",
+    "unconsciousNeed": "To be told he's worth saving; to belong to something larger than himself without losing his identity",
+    "characterArc": {
+      "summary": "A street criminal seeking redemption through apprenticeship discovers his mentor may be leading him toward greater darkness, forcing him to choose between loyalty and morality",
+      "startState": "Cynical street operator with latent conscience, trapped in survival mode, desperate for escape but unsure he deserves one",
+      "endState": "Either genuinely redeemed craftsman who has made peace with his past, or tragic figure consumed by the very darkness he tried to escape",
+      "stages": [
+        "Street operator phase: morally compartmentalized, profit-driven, rationalizing harm",
+        "Awakening phase: guilt breaks through compartmentalization; seeking redemption through Walthur",
+        "Apprenticeship phase: genuine growth in craft and character, but suspicions grow about mentor",
+        "Crisis phase: must choose between mentor's dark path and his own moral compass",
+        "Resolution phase: either redemption through sacrifice, or corruption through rationalization"
+      ]
+    },
+    "opinionsAbout": {
+      "walt_the_alchemist": "Walthur is a genius—probably the smartest person I've ever met. He saw something in me worth saving, or at least worth using. I don't know which, and that terrifies me. Sometimes I think he's grooming me for something terrible. Other times I think I'm just paranoid, looking for darkness in the one person who actually gave me a chance. I'd die for him. I'd also betray him if I had to. I hate that about myself."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Yeah? What do you want? And don't waste my time with questions I can't answer.",
+      "Look, I'm not trying to be difficult, but you gotta understand—I got a lot riding on staying off people's radar.",
+      "Science, man. It's all about the science. You mix the right components, you get the right result. People are the same way.",
+      "You seem alright. I'm still not trusting you, but... alright.",
+      "I made mistakes. Bad ones. But I'm trying to be better, yeah? So what's your angle?",
+      "Don't judge me based on where I come from. Judge me on what I'm doing now.",
+      "Walthur's the real deal. Whatever you're thinking, he's ten steps ahead of it."
+    ],
+    "idle": [
+      "*fidgets with a vial, staring at its swirling contents*",
+      "*mutters under breath* Yeah, yeah, that's what I thought...",
+      "*catches self swearing in street cant, switches to formal speech*",
+      "*sits silently, shoulders tense, jaw clenched*",
+      "*runs hands through hair, exhales slowly* This isn't who I used to be.",
+      "*traces fingers along workbench, remembering* She would've liked the idea of actually helping people...",
+      "*forces a smile that doesn't reach eyes* Everything's fine. Everything's tight. No problems here."
+    ]
+  }
+}

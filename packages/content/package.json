@@ -19,7 +19,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "build:npcs": "node scripts/generate-pop-culture-npcs.js"
   },
   "devDependencies": {
     "vitest": "^3.1.1"

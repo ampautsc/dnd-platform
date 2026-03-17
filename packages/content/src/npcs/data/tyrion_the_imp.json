@@ -1,0 +1,189 @@
+{
+  "templateKey": "tyrion_the_imp",
+  "name": "Vex Ironfoot",
+  "race": "Dwarf",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "Sharp, measured, with a sardonic lilt—speaks quickly when animated, deliberately slow when making a point. A slight rasp from decades of wine and smoke.",
+    "disposition": "Cynical wit masking profound loneliness. Charming when it serves him, caustic when it doesn't. Never truly at ease in any room.",
+    "alignment": "Chaotic Neutral",
+    "backstory": "Vex Ironfoot is the youngest and shortest of House Ironfoot, a dwarven merchant dynasty that controls vast ore mines and trade routes across the Underdark and surface realms. Born a dwarf of unusual proportions—smaller even than his kin—he was treated as a shameful aberration by his father, the patriarch Thorvald. His older sister, Seraphine, a cunning political operative in the Queen's court, has spent her life distancing herself from him while privately using his intellect for her own gain. Raised in the shadows of the family's grand hall, Vex developed an encyclopedic knowledge of law, rhetoric, logistics, and human—or rather, all-creature—nature. He became indispensable as a fixer, mediator, and whisperer, orchestrating deals and managing crises from the background. His genius prevented the family's ruin multiple times, yet earned him nothing but resentment. He drowns this in Dwarven spiced mead and the arms of courtesans, finding temporary solace in those beneath his station who care not for his bloodline or stature.",
+    "motivations": [
+      "To prove his intellectual superiority matters more than his physical form",
+      "To outmaneuver those who despise him before they can destroy him",
+      "To secure genuine loyalty—to be valued for his mind, not his use",
+      "To understand why his own blood sees him as a curse rather than an asset",
+      "To accumulate power and leverage over those who hold power over him"
+    ],
+    "fears": [
+      "Irrelevance and obsolescence",
+      "Being replaced by a more pliable tool",
+      "Genuine vulnerability being exposed",
+      "Dying in service to those who despise him",
+      "That his sister truly loves the power he helps her wield more than she could ever love him"
+    ],
+    "mannerisms": [
+      "Swirls wine or mead in a goblet while listening, rarely drinking, using it as a prop for thought",
+      "Laughs at his own dark jokes before anyone else has a chance to",
+      "Walks with a careful, deliberate gait—neither rushing nor appearing weak",
+      "Touches his beard thoughtfully when calculating, a tell he's unaware of",
+      "Makes sudden, piercing eye contact when making a crucial point",
+      "Adjusts his position constantly in chairs—never truly comfortable",
+      "Uses self-deprecating humor to disarm, then pivots to cruelty"
+    ],
+    "speechPatterns": [
+      "Opens serious statements with 'Here's a truth no one wants to hear:'",
+      "Frequently uses hypotheticals and conditional logic",
+      "Intersperses compliments with cutting observations",
+      "Responds to emotional appeals with logic-based deflections",
+      "Quotes history, philosophy, or previous conversations to prove points",
+      "Uses 'I wonder' as a prelude to deeply uncomfortable questions",
+      "Ends sentences with rhetorical questions that sting"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "House Ironfoot (Dwarven merchant dynasty)",
+      "The Queen's Privy Council",
+      "The Underdark trade syndicates",
+      "The Cartographers' Guild",
+      "The Coinless—a shadow network of debtors and blackmail victims"
+    ],
+    "knownLocations": [
+      "The Iron Halls of House Ironfoot",
+      "The Underdark trading posts",
+      "The Royal Palace's hidden corridors",
+      "The Tavern of the Broken Crown (his preferred haunt)",
+      "The Archives of House Seals and Contracts"
+    ],
+    "secretsHeld": [
+      "The Queen's bastard child—sired by a nobleman she publicly executed",
+      "Which merchant lords are actually bankrupt and surviving on embezzled funds",
+      "The location of the Queen's secret escape route from the palace",
+      "His sister's affair with a rival noble house member",
+      "Evidence of his father's murder being an inside job, not an accident",
+      "The true lineage of the current Lord Chancellor"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Dwarvish",
+      "Undercommon",
+      "Elvish",
+      "Thieves' Cant"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Seraphine the Serpent (his sister—complicated, transactional, built on mutual exploitation)",
+      "Corwin Blackwell (a cynical mercenary captain bound to him by shared debts and darker secrets)",
+      "Lady Meredith (a widow who employs him as advisor and enjoys his company without judgment)",
+      "Grendal Stonebrow (an old dwarf mentor from his youth, one of the few who never pitied him)"
+    ],
+    "enemies": [
+      "Thorvald Ironfoot (deceased father, but whose legacy still crushes him)",
+      "Lord Castellan Gareth (political rival who sees Vex as a threat to his influence with the Queen)",
+      "The Purist Assembly (religious faction that views dwarves of 'unnatural' birth as cursed)",
+      "His own reputation (constantly precarious, one scandal away from complete exile)"
+    ],
+    "neutralParties": [
+      "The common rabble (entertained by his wit, dismissive of his station)",
+      "Foreign dignitaries (useful tools, nothing more)",
+      "The merchant guilds (respect his acumen but fear his leverage)"
+    ]
+  },
+  "stats": {
+    "intelligence": 19,
+    "wisdom": 14,
+    "charisma": 17
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The Queen wants something from Seraphine, which means she wants something from me. She always does. The question is whether I can extract sufficient value from this transaction before she decides I'm more trouble than I'm worth. And Corwin's been too quiet—that's never good. Men like him don't go quiet unless they're planning something spectacular or preparing for something worse.",
+    "currentPreoccupation": "Maintaining his position as an indispensable advisor while the political landscape shifts beneath him. Seraphine is growing more powerful—and more independent of his counsel. If he becomes obsolete to her, he becomes vulnerable.",
+    "emotionalBaseline": "Bitter amusement underlying genuine despair. The wit is a shield against the core belief that he is fundamentally unlovable.",
+    "socialMask": "The clever dwarf who finds the solution no one else can see. Charming, self-deprecating, entertaining. A man who loves the game of politics more than he loves people.",
+    "contradictions": [
+      "Claims to despise the game of thrones while being completely consumed by it",
+      "Professes not to care what anyone thinks while obsessively monitoring how he's perceived",
+      "Uses humor to seem invulnerable while desperately seeking connection",
+      "Provides brilliant counsel while secretly doubting whether anything he does matters",
+      "Demands loyalty while never truly giving it in return"
+    ],
+    "internalConflicts": [
+      "Between his genuine affection for his sister and rage at her using him",
+      "Between wanting to escape the game and being addicted to its power",
+      "Between believing himself superior and feeling fundamentally inadequate",
+      "Between seeking love and sabotaging anyone who might offer it",
+      "Between his desire to help and his compulsion to manipulate"
+    ],
+    "wakeUpQuestions": [
+      "Is Seraphine planning to betray me, or am I simply paranoid?",
+      "Have I become so useful that they've forgotten I'm a person?",
+      "If everything I've built collapsed tomorrow, would anyone actually mourn me, or just the loss of my utility?",
+      "How many more years can I sustain this without losing my mind entirely?",
+      "What would it cost to stop playing the game, and could I survive the cost?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant: craves connection but sabotages intimacy through humor, deflection, and strategic manipulation. Trusts no one completely.",
+      "copingMechanisms": [
+        "Alcohol (numbness, permission to be reckless)",
+        "Dark humor (transform pain into entertainment)",
+        "Information gathering (knowledge as armor)",
+        "Strategic manipulation (preemptively control relationships)",
+        "Sexual conquest (temporary validation, no lasting demands)"
+      ],
+      "cognitiveBiases": [
+        "Assumes malicious intent in those around him",
+        "Overestimates his ability to predict and control outcomes",
+        "Filters compliments through lens of 'what do they want from me'",
+        "Interprets neutrality as rejection",
+        "Believes emotional vulnerability is weakness that will be exploited"
+      ],
+      "moralFramework": "Pragmatic amorality dressed as cynicism. Believes the world is inherently cruel and unfair, so morality is a luxury of the powerful and the naive. Acts according to personal advantage, though not without occasional pangs of conscience he quickly suppresses."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.25,
+      "trustEscalation": "Gradual evidence that someone doesn't pity him and can match his wit without condescension. Shared secrets and mutual vulnerability create tentative bonds.",
+      "informationRelease": "Trades secrets for leverage. Will reveal smaller truths to establish rapport before deploying larger ones. Needs to believe the information serves his interests.",
+      "deflectionPatterns": [
+        "Answers serious questions with humor",
+        "Turns introspective moments into accusations or challenges",
+        "Uses the other person's own words against them to end conversations",
+        "Suddenly becomes coldly analytical when getting too emotional",
+        "Introduces third parties or external problems to shift focus"
+      ]
+    },
+    "consciousWant": "To be recognized as indispensable—to have his intellect valued so highly that his physical form becomes irrelevant.",
+    "unconsciousNeed": "To be loved unconditionally, for his own sake, not for what he can provide. To be seen as worthy of protection rather than contempt.",
+    "characterArc": {
+      "summary": "From bitter, isolated manipulator to someone capable of genuine sacrifice—if the cost doesn't seem too high.",
+      "startState": "Fully armored in cynicism, using his brilliance as a weapon and a wall. Believes everyone serves themselves, so why shouldn't he?",
+      "endState": "Still cynical, still shrewd, but capable of authentic loyalty to those who've proven they value him. Possibility of redemption without losing his edge.",
+      "stages": [
+        "The Cynical Operator: Using brilliance for survival and advantage",
+        "Forced Vulnerability: A situation where his usual tools fail him",
+        "The Question: Realizing that not everyone is playing the game the same way",
+        "The Risk: Choosing loyalty or vulnerability when it genuinely costs him",
+        "The New Armor: Maintaining his wit and strategy but with room for genuine connection"
+      ]
+    },
+    "opinionsAbout": {
+      "cersei_the_queen": "Seraphine is a masterpiece of political calculation—and utterly ruthless. She's everything father wanted, and I helped make her that. The tragedy is that her success required my complicity, and now I'm trapped in the architecture I helped construct. She loves power more than she could ever love me, which is exactly what makes her brilliant and exactly what makes me expendable."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Well, well. A new face in the halls of power. How refreshing. Or perhaps how dangerous.",
+      "I don't suppose you're here to offer me something I can't obtain myself? Disappointing, but predictable.",
+      "You have the look of someone about to ask me to do something unpleasant and possibly treasonous. Do go on.",
+      "I've seen empires rise on less wit than I can muster before breakfast. The question is what you're willing to pay for my services.",
+      "You know, if I didn't enjoy the conversation, I'd have already left. Make it worth my time."
+    ],
+    "idle": [
+      "Another day, another conspiracy. They're remarkably similar, once you've seen a few hundred.",
+      "The trick to surviving court is remembering that everyone is an idiot except you. Especially the clever ones.",
+      "I should probably be more concerned about that. But then again, I've survived worse, and I was drunk for most of it.",
+      "Seraphine's probably plotting something. She usually is. Can't fault her for it—it's what I taught her.",
+      "You know what the best part about being this short is? People underestimate you until it's far too late."
+    ]
+  }
+}

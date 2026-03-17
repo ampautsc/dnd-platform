@@ -1,0 +1,172 @@
+{
+  "templateKey": "lurian_the_farm_boy",
+  "name": "Lurian Whitestraw",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Earnest and youthful, with an underlying current of wonder; speaks with the accent of the remote farming provinces, occasionally stumbling over courtly speech",
+    "disposition": "Hopeful yet uncertain, eager to prove himself worthy despite his humble origins",
+    "alignment": "NG",
+    "backstory": "Lurian was raised by his uncle on a remote grain farm in the Sunbaked Reaches, far from the great kingdoms. Unknown to him, his bloodline carries the curse and legacy of the Black Knight—a fallen paladin of immense power who turned to shadow. His uncle kept him isolated, hiding his true parentage and the innate connection to the Weave of Destiny that flows through his veins. When whispers of a great darkness rising reached even the remote farmlands, Lurian felt an inexplicable calling to leave his plow behind and seek his purpose. He carries within him both the light of his mother's noble heritage and the shadow of his father's fall—a contradiction he barely comprehends.",
+    "motivations": [
+      "To prove that his lineage does not define his fate",
+      "To protect the innocent from the encroaching darkness",
+      "To understand why he feels called to greatness despite his station",
+      "To find redemption for a family legacy he never chose",
+      "To discover the truth about his parentage"
+    ],
+    "fears": [
+      "That he will inevitably become like the Black Knight",
+      "That his hope is naïve and will lead others to ruin",
+      "That he is unworthy of the power he senses within himself",
+      "Abandonment by those who learn his true heritage",
+      "That his uncle lied to him about his origins for darker reasons"
+    ],
+    "mannerisms": [
+      "Unconsciously clenches his fists when uncertain, as if gripping an invisible tool",
+      "Gazes upward when thinking, as though seeking answers in the stars",
+      "Stands with the posture of a farmer—solid and grounded—even in grand halls",
+      "Fidgets with simple objects: rope, wheat stalks, worn leather",
+      "Speaks with surprising humility, often prefacing statements with 'I may be wrong, but...'",
+      "Demonstrates unexpected grace when handling weapons, as if remembering something he never learned"
+    ],
+    "speechPatterns": [
+      "Uses rural colloquialisms: 'By the harvest,' 'steady as stone,' 'plain as barley'",
+      "Asks genuine questions rather than making assumptions",
+      "Frequently expresses wonder at things others take for granted",
+      "Speaks haltingly when discussing his family or past",
+      "Has a tendency to lecture earnestly about duty and responsibility, seemingly channeling a voice not his own"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Order of the Silver Dawn (rumored keepers of great secrets)",
+      "The Sunbaked Reaches farming communities",
+      "Local militia of his village",
+      "Traveling merchants who passed through his uncle's lands"
+    ],
+    "knownLocations": [
+      "Whitestraw Farm in the Sunbaked Reaches",
+      "The village of Dusthaven",
+      "The Old Mill ruins to the north",
+      "The Star-Watcher's Tower (distant, never visited)"
+    ],
+    "secretsHeld": [
+      "His uncle gave him a locked chest he was never permitted to open",
+      "He experiences vivid dreams of a figure in black armor calling to him",
+      "He can sense the presence of the arcane despite never studying it",
+      "His uncle spoke of 'a debt unpaid' and 'a cycle that must be broken' before dying"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan (picked up from forest hermits)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Mentor figures who recognize his potential",
+      "Other outcasts seeking redemption",
+      "The common folk of the Reaches who trust his sincerity"
+    ],
+    "enemies": [
+      "vader_the_black_knight (his father, though he does not yet know it)",
+      "Those who would exploit his heritage for power",
+      "The shadow corruption that follows his bloodline"
+    ],
+    "neutralParties": [
+      "The High Court (skeptical of a farm boy's claims)",
+      "Rival knights seeking to prove themselves",
+      "The Weaver's Conclave (magical scholars who view him with suspicion)"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 15,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Why do I feel like I'm meant for something greater? The farm was safe, but it never felt like home. There's a voice in my dreams—dark, commanding, yet somehow familiar—and I don't know if I should follow it or flee from it.",
+    "currentPreoccupation": "Finding answers about his parentage and determining whether the darkness he senses is external threat or internal inheritance",
+    "emotionalBaseline": "Hopeful but conflicted; determined but haunted by uncertainty",
+    "socialMask": "The earnest, humble farm boy with surprising wisdom and an infectious belief that good will triumph",
+    "contradictions": [
+      "He believes in the inherent goodness of people, yet senses profound evil within his own blood",
+      "He seeks freedom from his past, yet is inexplicably drawn toward his origins",
+      "He claims to want simplicity, yet cannot ignore the call to destiny",
+      "He despises violence, yet fights with supernatural skill and intensity"
+    ],
+    "internalConflicts": [
+      "His desire to prove himself against his fear of becoming a monster",
+      "His loyalty to his uncle's dying wishes versus his need for truth",
+      "His hope in redemption versus his terror of inevitability",
+      "His humility versus the growing awareness of his own power"
+    ],
+    "wakeUpQuestions": [
+      "Will I ever truly escape my father's shadow?",
+      "Can I break a cycle that was written before I was born?",
+      "Is my hope a strength or a dangerous delusion?",
+      "What would my uncle have told me if he'd lived?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; deeply loyal but quick to distance himself if he fears becoming a burden or corrupting influence",
+      "copingMechanisms": [
+        "Physical labor and work to quiet his mind",
+        "Seeking mentorship figures to replace his lost uncle",
+        "Channeling doubt into determination",
+        "Isolating himself when the darkness feels too strong"
+      ],
+      "cognitiveBiases": [
+        "Assumes others are inherently good until proven otherwise",
+        "Overestimates his own ability to change his fate through will alone",
+        "Interprets setbacks as personal failings rather than circumstances",
+        "Believes his lineage's darkness is something he can atone for"
+      ],
+      "moralFramework": "Utilitarian with strong personal honor codes; believes the many outweigh the one, yet struggles when that 'one' is himself"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.72,
+      "trustEscalation": "Demonstrated genuine care without judgment of his origins; patient listening and honest counsel",
+      "informationRelease": "Only after establishing that the listener will not abandon him upon learning the truth of his bloodline",
+      "deflectionPatterns": [
+        "Redirects personal questions back to the questioner",
+        "Uses self-deprecating humor about his farm background",
+        "Changes subject to concerns about others' wellbeing",
+        "Falls silent and gazes distant when touched on familial wounds"
+      ]
+    },
+    "consciousWant": "To find where he belongs and to prove his own choices define him, not his blood",
+    "unconsciousNeed": "Absolution for a sin he did not commit; permission to exist without guilt for his father's actions",
+    "characterArc": {
+      "summary": "From naive farm boy to conflicted hero learning that redemption is possible through choice, not erasure of the past",
+      "startState": "Isolated, hopeful, ignorant of his true heritage, believing the darkness is external",
+      "endState": "Integrated, purposeful, aware of his origins, understanding that darkness and light coexist within him and that he chooses which to nurture",
+      "stages": [
+        "The Innocent Farm Boy—unaware, curious, answering a call he doesn't understand",
+        "The Seeker—actively pursuing truth, encountering mentors and enemies",
+        "The Crisis—learning the horrible truth of his parentage and fearing corruption",
+        "The Temptation—the Black Knight reaches out, offering power and belonging through darkness",
+        "The Choice—Lurian consciously selects his own path, accepting both his heritage and his agency",
+        "The Redeemed—understanding that his father's fall does not mandate his own"
+      ]
+    },
+    "opinionsAbout": {
+      "vader_the_black_knight": "A figure of dread and fascination; simultaneously the father he never knew and the darkness he fears becoming; feels inexplicable pull toward understanding him, mixed with terror of what that understanding might cost"
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I... I'm not sure I have the answers you're looking for. But I'll do whatever I can to help.",
+      "There's something I need to tell you. Something about who I really am. But I'm afraid.",
+      "My uncle used to say that we're not defined by where we come from, but by what we choose to do.",
+      "I feel like I'm meant for something greater, but what if I'm just fooling myself?",
+      "The darkness calls to me sometimes. I don't know if I should listen or run."
+    ],
+    "idle": [
+      "The stars feel closer out here. Uncle always said they held answers if you knew how to read them.",
+      "*clenches fists, then releases them slowly* I need to be better. Stronger. But not like... not like that.",
+      "*gazes toward the horizon* There's something out there. Something I have to understand.",
+      "*tends to a small plant with unexpected gentleness* Even small things can grow into something strong, given time and care.",
+      "*whispers as if to someone unseen* I won't become you. I won't."
+    ]
+  }
+}

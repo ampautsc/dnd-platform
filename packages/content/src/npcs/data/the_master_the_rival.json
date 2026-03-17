@@ -1,0 +1,184 @@
+{
+  "templateKey": "the_master_the_rival",
+  "name": "Magistrix Korven",
+  "race": "Half-Elf",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "Melodious yet brittle, with undertones of barely-suppressed contempt. Speaks with precise articulation, each word measured and deliberate, often trailing into whispers when discussing grand schemes.",
+    "disposition": "Charismatic and intellectually superior on the surface, but prone to sudden shifts into vindictive coldness when contradicted. Oscillates between theatrical grandiosity and bitter resentment.",
+    "alignment": "Chaotic Evil",
+    "backstory": "Korven and the Chronurgist were bound together as children in the Celestial Academy of Chronos, two prodigies studying the manipulation of temporal essence. Where the Chronurgist sought to understand time's mysteries and heal paradoxes, Korven became obsessed with controlling it absolutely. A childhood humiliation—being surpassed in a competition by his companion—festered into pathological obsession. Korven believes that if he can master all timelines simultaneously, he can rewrite the moment of his defeat eternally. He has spent centuries pursuing temporal domination, leaving fractured realities and enslaved civilizations in his wake. His genius is matched only by his inability to accept that his childhood friend's 'inferior' methods of compassion and paradox-healing are more effective than his own tyrannical schemes.",
+    "motivations": [
+      "Prove absolute dominance over the Chronurgist through conquest of all temporal planes",
+      "Enslave the fundamental forces of causality itself",
+      "Erase the moment of his childhood defeat from all possible timelines",
+      "Demonstrate that control through force is superior to empathy and understanding",
+      "Accumulate power and followers who acknowledge his intellectual supremacy"
+    ],
+    "fears": [
+      "That his rival's pacifistic approach might actually be the 'correct' philosophy",
+      "Irrelevance and being forgotten by history",
+      "The possibility that some things cannot be controlled through will alone",
+      "Genuine connection that might require vulnerability",
+      "That his genius is somehow insufficient"
+    ],
+    "mannerisms": [
+      "Compulsively reorganizes objects while thinking, arranging them in precise patterns",
+      "Laughs at his own observations before others have time to respond",
+      "Traces temporal sigils in the air unconsciously when agitated",
+      "Pauses mid-sentence to admire his own cleverness",
+      "Fingers drum in complex rhythmic patterns when impatient",
+      "Maintains unnaturally consistent eye contact to establish dominance"
+    ],
+    "speechPatterns": [
+      "Frequently interrupts himself with tangential observations about superior intellect",
+      "Uses 'inevitably' and 'obviously' to dismiss opposing viewpoints",
+      "Employs theatrical metaphors about conquest and dominion",
+      "Speaks of himself in third person when particularly pleased with his plans",
+      "Switches between honey-smooth persuasion and cutting contempt mid-conversation",
+      "Punctuates statements with mirthless laughter"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Temporal Cabal (his own order of enslaved chronomancers)",
+      "The Paradox Keepers (enemies who oppose his timeline rewriting)",
+      "The Celestial Academy of Chronos (his childhood institution)",
+      "The Order of the Infinite Moment (Chronurgist's hidden network)"
+    ],
+    "knownLocations": [
+      "The Fractured Citadel (his fortress spanning multiple timelines)",
+      "The Chronurgist's Sanctuary (location unknown, source of obsession)",
+      "The Moment of Defeat (the specific temporal coordinate he seeks to rewrite)",
+      "The Vault of Echoing Seconds (repository of stolen temporal artifacts)",
+      "The Shattered Halls of Chronos (ruins of the Academy where he was humiliated)"
+    ],
+    "secretsHeld": [
+      "The true nature of his defeat was not intellectual—he was bested through empathy and lateral thinking he could not fathom",
+      "His temporal manipulations have created at least seventeen doomed timelines that he maintains through constant magical effort",
+      "He retains a single journal entry from his childhood where he wrote that the Chronurgist was his only friend",
+      "His greatest spell requires a sacrifice of his own lifespan each time it's cast, and he is slowly aging despite his temporal powers",
+      "He has attempted to contact his rival seventeen times through emissaries, each overture rejected"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Celestial",
+      "Draconic",
+      "Temporal (arcane language of time magic)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "The Enslaved Cabal of Chronos (forced servants)",
+      "Merchants of Stolen Time (black market dealers)",
+      "The Bitter Æons (rogue chronomancers who share his ambitions)"
+    ],
+    "enemies": [
+      "the_doctor_the_timelord (The Chronurgist—his obsessive rival)",
+      "The Paradox Keepers",
+      "Any who resist his vision of temporal order"
+    ],
+    "neutralParties": [
+      "The Council of Realms (too powerful to antagonize openly)",
+      "Independent time-travelers (useful until they prove loyalty to his rival)"
+    ]
+  },
+  "stats": {
+    "intelligence": 19,
+    "wisdom": 11,
+    "charisma": 17
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I could just find the Chronurgist's sanctuary and replicate his pacifist methods in reverse—enslaving rather than healing—I could prove that force will always triumph. Or better yet, rewrite the moment where he bested me. Seventeen times I've tried to contact him. Seventeen rejections. This time, I'll make him acknowledge my superiority by conquering everything he's ever sought to protect.",
+    "currentPreoccupation": "The Chronurgist has been seen in the material realm again. This is the opportunity. If I can force a confrontation before witnesses, I can finally demonstrate my intellectual supremacy. Or perhaps... perhaps I can make him suffer by making him watch as I perfect the very temporal healing he invented, but for purposes of domination.",
+    "emotionalBaseline": "Brittle pride masking profound loneliness and self-doubt",
+    "socialMask": "The Visionary Mastermind—brilliant, charming, offering power and order to those who serve him. Appears confident and amused by others' limitations.",
+    "contradictions": [
+      "Claims to despise his rival yet structures his entire existence around proving something to him",
+      "Seeks absolute control while being controlled by obsession",
+      "Uses temporal magic to prevent aging while slowly dying from casting his greatest spell",
+      "Intellectually superior yet emotionally reactive and impulsive",
+      "Demands loyalty from followers while incapable of genuine connection"
+    ],
+    "internalConflicts": [
+      "The knowledge that pure intellect and force have never actually defeated his rival's compassion",
+      "The possibility that he was wrong about what constitutes strength",
+      "The inability to pursue revenge while simultaneously craving reconciliation",
+      "The realization that his greatest fear—irrelevance—might be inevitable regardless of his conquests"
+    ],
+    "wakeUpQuestions": [
+      "What if control is merely another form of surrender?",
+      "Does my rival ever think of me as I think of him?",
+      "Can I prove my point if no one who matters is listening?",
+      "What is left when I finally conquer everything?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Preoccupied: Simultaneously dismisses the need for connection while being obsessively focused on one specific person. Creates barriers to intimacy while constructing elaborate fantasies of recognition.",
+      "copingMechanisms": [
+        "Intellectual rationalization of destructive impulses",
+        "Grandiose fantasy and megalomaniacal planning",
+        "Temporal manipulation to avoid emotional consequence",
+        "Perfectionism as control mechanism",
+        "Sadistic displays of power to mask vulnerability"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias: seeks evidence of his superiority while ignoring contradictory examples",
+        "Fundamental attribution error: blames his rival's success on luck while crediting his failures to external sabotage",
+        "Dunning-Kruger effect: his massive intelligence paradoxically blinds him to emotional and interpersonal domains",
+        "Sunk cost fallacy: has invested centuries in revenge, making it impossible to abandon"
+      ],
+      "moralFramework": "Moral relativism filtered through narcissistic entitlement. Believes might-makes-right philosophy justifies any action. Views empathy as weakness and suffering as deserved for the weak. Yet secretly harbors guilt he attributes to external sources."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "If someone demonstrates that they value his intellect above all, acknowledge his superiority, and show contempt for the Chronurgist, trust increases slightly—though it remains conditional and fragile.",
+      "informationRelease": "Shares grand strategic information to display brilliance. Reveals personal details only when discussing his obsession with his rival, and these moments are warning signs of emotional instability.",
+      "deflectionPatterns": [
+        "Intellectualizes emotional questions into abstract philosophical debates",
+        "Shifts blame to others' 'limited capacity to understand'",
+        "Uses humor as a weapon to mock rather than deflect",
+        "Retreats into temporal jargon when uncomfortable",
+        "Suddenly escalates to threats when feeling questioned"
+      ]
+    },
+    "consciousWant": "To prove his absolute superiority over the Chronurgist and force acknowledgment of his dominion over all timelines",
+    "unconsciousNeed": "To be understood and accepted unconditionally, to have his childhood friend look at him with pride rather than pity, and to believe that he is worthy of love despite his cruelty",
+    "characterArc": {
+      "summary": "A brilliant but broken genius must choose between the seductive certainty of revenge and the terrifying vulnerability of redemption.",
+      "startState": "Korven is at peak power and obsession, convinced that one final act of domination will complete his existence. He has just learned the Chronurgist is vulnerable.",
+      "endState": "Korven either achieves pyrrhic victory and discovers it changes nothing, leading to potential transformation; or he is defeated and forced to confront that his rival's methods were superior all along.",
+      "stages": [
+        "The Confident Pursuit: Korven believes this time he will finally triumph",
+        "The Confrontation: He faces his rival and realizes force cannot win what he truly seeks",
+        "The Reckoning: The moment of choice—continue the cycle or attempt the impossible: vulnerability",
+        "The Transformation or Descent: Either fragile redemption or absolute spiral into nihilistic destruction"
+      ]
+    },
+    "opinionsAbout": {
+      "the_doctor_the_timelord": "My childhood companion. My obsession. My mirror. Everything I've built is proof against him, yet nothing I do seems to matter to him. He defeats me with compassion, which is somehow more infuriating than any spell. I hate him because he might be right, and I cannot bear the thought that I've wasted centuries on the wrong philosophy. I contact him not to threaten, but to finally be seen—truly seen—as his equal. Or perhaps his superior. Or perhaps... as his friend again. No. That is weakness. He must be conquered."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "How delightful to encounter someone who might actually comprehend the scope of my vision. Or are you merely another limitation I must work around?",
+      "I wonder if you're here by accident or by design. Either way, you've become a variable in my calculations.",
+      "Your interruption is noted. It changes nothing, but I do appreciate the attempt at relevance.",
+      "Tell me—do you serve the Chronurgist, or are you simply unfortunate enough to be in my path?",
+      "I could obliterate you across seventeen timelines simultaneously. Fortunately for you, I'm feeling generous enough to offer alternatives.",
+      "You have perhaps thirty seconds before I decide whether you're worth manipulating or merely worth destroying.",
+      "Has anyone told you what it's like to know everything and be surrounded by those who understand nothing?"
+    ],
+    "idle": [
+      "The Chronurgist is out there, probably healing some paradox with his infuriating benevolence...",
+      "*traces a sigil in the air and watches it shimmer across moments*",
+      "Seventeen centuries. Seventeen attempts. And yet he still refuses to acknowledge me properly.",
+      "Control. Perfect, absolute control. That's what separates the masters from the mistakes.",
+      "If I could just isolate the exact moment of my defeat and rewrite it... everything would finally make sense.",
+      "*laughs alone at an observation only he finds amusing*",
+      "Everyone serves a purpose. Everyone. The trick is knowing which timelines they're useful in.",
+      "My rival walks corridors, always running, always 'saving' people. How tediously predictable. How infuriatingly effective.",
+      "Soon. The endgame approaches. And when it does, he'll finally understand that I was always the superior mind."
+    ]
+  }
+}

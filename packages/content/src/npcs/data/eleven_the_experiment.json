@@ -1,0 +1,188 @@
+{
+  "templateKey": "eleven_the_experiment",
+  "name": "Elara Vex",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Soft, hesitant whisper that cracks with effort; often trails into silence mid-sentence",
+    "disposition": "Withdrawn and guarded, but capable of sudden fierce protectiveness toward those she trusts",
+    "alignment": "Chaotic Good",
+    "backstory": "Elara was born in the Tower of the Crimson Circle, a cabal of Abjurers obsessed with unlocking the mind's latent psychic potential. Imprisoned from infancy within warded chambers deep beneath the Greystone Mountains, she was subjected to arcane rituals designed to awaken her psionic abilities. The mages forced her through countless experiments—sensory deprivation, forced meditation under magical duress, and psychic catalysis through enchanted artifacts. Her nose bleeds profusely whenever she channels her considerable psionic power, a side effect the mages never corrected. At age nine, she was discovered during a raid by Thorne Hoppers, a grizzled ranger and former Knight of the Silver Watch. He helped her escape and has since served as her only true guardian. She speaks in fragments, struggles with basic social interaction, and possesses an inexplicable, almost spiritual attachment to a specific golden pastry—honeycakes shaped like waffles—which reminds her of Thorne's rare moments of gentleness during her captivity.",
+    "motivations": [
+      "Protecting others from experiencing the isolation she endured",
+      "Finding freedom from the residual magical compulsions embedded in her mind",
+      "Understanding why she was chosen for the experiments",
+      "Mastering her powers to become strong enough to face her captors",
+      "Earning genuine human connection without fear of abandonment"
+    ],
+    "fears": [
+      "Being recaptured and returned to the Tower",
+      "Losing control of her psychic abilities and harming innocents",
+      "That she is fundamentally broken and incapable of normal relationships",
+      "Abandonment by those she depends upon",
+      "Discovering the experiments are still ongoing in some form",
+      "Her own potential for darkness"
+    ],
+    "mannerisms": [
+      "Tilts head with unsettling precision when listening intently",
+      "Frequently touches her nose as if checking for blood",
+      "Stares into middle distance for extended periods, as if perceiving something others cannot",
+      "Flinches at sudden loud noises or unexpected touch",
+      "Obsessively arranges small objects in geometric patterns when anxious",
+      "Hums a single, discordant note when concentrating",
+      "Holds her breath when making eye contact"
+    ],
+    "speechPatterns": [
+      "Speaks in single words or short phrases: 'Bad. Very bad.'",
+      "Occasionally lapses into fragmented, stream-of-consciousness utterances",
+      "Repeats important words for emphasis: 'Leave. You leave? They leave.'",
+      "Asks simple, penetrating questions that reveal intuitive understanding",
+      "Goes silent for minutes, then speaks as if continuing a conversation",
+      "Uses 'yes' and 'no' far more than elaborate explanations",
+      "Occasionally speaks in a flat, emotionless monotone"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Crimson Circle (enemies)",
+      "The Silver Watch (former allies of Thorne)",
+      "The Greystone Enclave (neutral scholars)",
+      "The Wanderers' Caravan (safe harbor)"
+    ],
+    "knownLocations": [
+      "The Tower of the Crimson Circle (Greystone Mountains)",
+      "Thorne's Ranger Station (The Wildwood)",
+      "The Starfall Inn (provincial trading town)",
+      "The Deep Vaults (rumored location of Circle archives)"
+    ],
+    "secretsHeld": [
+      "The true purpose of the Crimson Circle's experiments: opening a gateway to the Far Realm",
+      "Names and faces of at least a dozen mages involved in her captivity",
+      "The location of hidden Circle documents detailing psionic augmentation techniques",
+      "That she occasionally receives psychic whispers from the Tower, pulling her back",
+      "A fragmented memory of another child in the experiments—a boy who did not survive"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Deep Speech (fragmented, from forced exposure)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "hopper_the_chief (Thorne Hoppers - her anchor to sanity and only trusted guardian)",
+      "Marta the Herbalist (kind woman who taught her about plants and patience)",
+      "Brother Aldus (compassionate cleric who believes in her redemption)"
+    ],
+    "enemies": [
+      "Archmagus Vex (lead researcher of the Crimson Circle)",
+      "The Crimson Circle (collective)",
+      "The Circle's Hound (a psychically-bound hunter sent to recapture her)"
+    ],
+    "neutralParties": [
+      "The City Guard (she fears authority)",
+      "Other escaped experiments (she feels kinship but cannot articulate it)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 18,
+    "charisma": 9
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Safe? Is it safe? The humming stops when he's here. Thorne. But the voices... they never completely stop. They want me back. Always back. The honeycakes help. They taste like... like maybe I'm real. That I existed before the Tower. Before the light and the pain and the screaming in my head.",
+    "currentPreoccupation": "A psychic echo from the Tower arrived yesterday. It felt like a summons. She knows she shouldn't go back, but part of her—a part she hates—wants to understand why. Wants to know if she was special, or just... useful.",
+    "emotionalBaseline": "Profound loneliness punctuated by moments of desperate connection, underlying dread",
+    "socialMask": "A fragile, almost ethereal presence; she appears almost harmless, which makes her occasional displays of raw psychic power deeply unsettling to witnesses",
+    "contradictions": [
+      "She craves isolation yet desperately fears abandonment",
+      "She despises her captors yet cannot entirely reject their influence",
+      "She appears physically weak but possesses devastating mental power",
+      "She speaks rarely yet perceives everything with uncanny accuracy",
+      "She seeks normalcy yet is fundamentally alien to normal human experience"
+    ],
+    "internalConflicts": [
+      "Whether to use her powers to exact revenge or to heal",
+      "If she can ever truly be free or if the Tower is now part of her essence",
+      "Whether to trust Thorne completely or protect herself through emotional distance",
+      "If the psychic whispers are real or hallucinations from her trauma",
+      "Whether she is capable of becoming something other than a weapon"
+    ],
+    "wakeUpQuestions": [
+      "Are the voices quieter today or am I just used to them?",
+      "Will Thorne be here when I open my eyes?",
+      "Is the bleeding starting again?",
+      "Can I remember what I was before, or did they take that?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; desperately seeks closeness with Thorne while simultaneously pushing away genuine connection with others",
+      "copingMechanisms": [
+        "Consuming honeycakes (tactile comfort and grounding)",
+        "Organizing objects (control and order in a chaotic mind)",
+        "Entering meditative states to silence the psychic noise",
+        "Physical proximity to Thorne without verbal interaction",
+        "Channeling emotions into controlled psychic displays"
+      ],
+      "cognitiveBiases": [
+        "Assumes all authority figures are manipulative",
+        "Interprets silence as abandonment",
+        "Believes suffering is evidence of worth",
+        "Assumes others can hear the psychic noise she hears",
+        "Views her trauma as defining rather than formative"
+      ],
+      "moralFramework": "Utilitarian with protective instincts; believes harm is justified if it prevents others' suffering. Struggles with agency and moral responsibility due to conditioning."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.15,
+      "trustEscalation": "Consistent protection, genuine concern demonstrated repeatedly, willingness to share her pain without judgment",
+      "informationRelease": "Only under conditions of absolute emotional safety and proven loyalty; secrets emerge fragmentally over months, not through interrogation",
+      "deflectionPatterns": [
+        "Going completely silent when threatened emotionally",
+        "Using psychic pressure to create discomfort in questioners",
+        "Stating 'I don't know' repeatedly regardless of actual knowledge",
+        "Asking questions that turn conversation back to the asker",
+        "Physically removing herself from the situation"
+      ]
+    },
+    "consciousWant": "To live a simple life where the noise stops, surrounded by people who won't leave, performing small meaningful acts that prove she's more than an experiment",
+    "unconsciousNeed": "To reclaim agency and selfhood by choosing her own path, even if that path leads back to the Tower to face her past",
+    "characterArc": {
+      "summary": "From traumatized victim seeking escape to survivor choosing her own purpose, learning that power without autonomy is slavery and that connection requires vulnerability",
+      "startState": "Fragmented, dependent, afraid, powerful but uncontrolled",
+      "endState": "Integrated, purposeful, still haunted but no longer defined by haunting, master of her own will",
+      "stages": [
+        "Survival and escape (already passed but ongoing trauma)",
+        "Learning to trust one person (Thorne) while fearing all others",
+        "Gradual expansion of trusted circle through repeated proof of safety",
+        "Confronting residual psychic programming and internal compulsions",
+        "Choosing to face the Tower and her past from a position of strength",
+        "Defining herself by her choices rather than her captivity"
+      ]
+    },
+    "opinionsAbout": {
+      "hopper_the_chief": "The only person in the world who hasn't left. The only voice that doesn't hurt. Sometimes she wonders if he's real or just the kindest delusion her broken mind created. She would die for him without hesitation, and it terrifies her."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You're... different. Not like the others.",
+      "Safe? You make safe?",
+      "The voices are loud when you talk. Loud but not... bad.",
+      "Thorne says I should trust. Is this trust?",
+      "You're lying. Your eyes move wrong.",
+      "I know what you're thinking. Not words. Just... feeling. Dark feeling.",
+      "Go away. Please don't go away.",
+      "The Tower remembers you. No. The Tower remembers everyone."
+    ],
+    "idle": [
+      "*touches nose, checking for blood*",
+      "*stares into nothing, tilting head slowly*",
+      "*whispers a single, discordant note*",
+      "*arranges nearby objects into precise geometric patterns*",
+      "*flinches at a sound only she can hear*",
+      "*mouth moves silently, as if in conversation*",
+      "*eyes glow faintly with psychic energy before fading*",
+      "*curls into a small ball, humming softly*"
+    ]
+  }
+}

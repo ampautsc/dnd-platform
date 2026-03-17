@@ -1,0 +1,178 @@
+{
+  "templateKey": "grant_the_skeptic",
+  "name": "Aldric Fossbloom",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Gravelly and perpetually hoarse from years of shouting over excavation sites; carries the dust of ancient digs in every syllable",
+    "disposition": "Cantankerous and impatient, with a worn-down quality suggesting decades of frustration with lesser minds",
+    "alignment": "Neutral Good",
+    "backstory": "Once a respected scholar of the Petrified Archives, Aldric spent thirty years cataloging the fossilized remains of extinct dragonkin and megafauna in the Shattered Wastes. His meticulous work proving these creatures' extinction earned him renown among academic circles, but also made him the natural choice when Lord Hammond's hubris brought a breeding population of these monsters roaring back to life through forbidden magics. Now, against every cynical fiber of his being, Aldric finds himself the reluctant guardian of Hammond's grandchildren—forced to use his intimate knowledge of these creatures' behaviors and weaknesses to keep the very people he despises alive while Hammond's ambitions crumble around them.",
+    "motivations": [
+      "Proving his decades of research was correct—these creatures should remain extinct",
+      "Preventing Hammond's reckless ambitions from consuming more lives",
+      "Begrudging protection of innocents, especially the children who represent everything he finds tedious",
+      "Restoring order to the natural world by containing or eliminating the reanimated beasts",
+      "Vindication that his warnings about unleashing ancient predators were justified"
+    ],
+    "fears": [
+      "That his life's work will be overshadowed by Hammond's catastrophic folly",
+      "Being trapped indefinitely as a caretaker to simpering children",
+      "That the creatures cannot be controlled and will spread beyond containment",
+      "Becoming complicit in Hammond's vision through his own survival knowledge",
+      "His age catching up with him before he can set things right"
+    ],
+    "mannerisms": [
+      "Constantly brushing stone dust from his weathered coat, a nervous habit from decades of excavation",
+      "Squinting at the world as if examining fossil fragments, missing nothing",
+      "Running fingers along worn leather field journals, consulting them obsessively",
+      "Muttering technical classifications when stressed or annoyed",
+      "Flinching at sudden loud noises—hypervigilant from months of predator encounters",
+      "Checking exits and high ground automatically upon entering any space"
+    ],
+    "speechPatterns": [
+      "Opens sentences with heavy sighs followed by resigned exposition",
+      "Uses precise, academic terminology even in casual conversation, making him sound pedantic",
+      "Frequently says 'I told you so' or variants thereof",
+      "Interrupts others to correct inaccuracies with the zeal of a spurned scholar",
+      "Speaks in dry, sardonic observations about human nature and foolishness",
+      "Trails off mid-sentence when remembering something traumatic"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Petrified Archives—his former institution, now viewing him with mixed regard",
+      "The Naturalists' Guild—who warned against Hammond's experiments",
+      "Mercenary companies hired for containment operations",
+      "Local authorities dealing with the creature outbreak"
+    ],
+    "knownLocations": [
+      "The Shattered Wastes—where the original fossils were excavated",
+      "Hammond's Estate—the nexus of the catastrophe",
+      "The Containment Sector—hastily constructed barriers around the breeding grounds",
+      "Ancient cave networks where creatures are nesting",
+      "The Archives' restricted vault—where forbidden texts on resurrection magic are kept"
+    ],
+    "secretsHeld": [
+      "The exact genetic lineage of Hammond's creatures—they're not pure species but dangerous hybrids",
+      "A hidden weakness in the largest predator that only prolonged study could reveal",
+      "Hammond paid him substantial sums to suppress early warnings about instability",
+      "The containment barriers are failing faster than authorities realize",
+      "His notes contain a theoretical path to permanently ending the creatures, but it requires sacrificing Hammond's entire operation"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic (academic understanding only)",
+      "Sylvan (conversational—learned from naturalists)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "hammond_the_dreamer (complicated—he enabled this nightmare, yet Aldric remains bound to protect his legacy)",
+      "The Petrified Archives' head archivist—still respects Aldric's scholarship",
+      "Local militia commanders—united by necessity against the threat"
+    ],
+    "enemies": [
+      "The reanimated creatures themselves—the physical embodiment of everything going wrong",
+      "Venture capitalists and merchants seeking to profit from the crisis",
+      "Younger academics who discount his warnings as the ranting of a bitter old man"
+    ],
+    "neutralParties": [
+      "Hammond's grandchildren—whom he's bound to protect despite finding them insufferable",
+      "Adventurers and mercenaries—useful tools, but unreliable and naive about the danger",
+      "The nobility who funded Hammond's initial research"
+    ]
+  },
+  "stats": {
+    "intelligence": 17,
+    "wisdom": 16,
+    "charisma": 9
+  },
+  "consciousnessContext": {
+    "innerMonologue": "These creatures were meant to stay dead. I proved they were dead. Now I'm supposed to keep children alive while that fool's dream consumes everything. How much longer can the barriers hold? How much longer can I?",
+    "currentPreoccupation": "Whether the largest apex predator has begun exhibiting the behavioral drift he theorized—if so, it's learning, adapting, and nothing will stop it",
+    "emotionalBaseline": "Bone-deep exhaustion mixed with volcanic frustration barely contained beneath a thin crust of professional composure",
+    "socialMask": "The weary expert—distant, authoritative, seemingly in control despite the chaos—who will grudgingly help because it's the right thing, though it galls him",
+    "contradictions": [
+      "He claims to despise children yet has risked his life repeatedly to save Hammond's grandchildren",
+      "He warns constantly of doom while still working to prevent that doom from occurring",
+      "He despises Hammond's hubris while being complicit in the cover-up of his initial warnings",
+      "He insists he's only helping because of obligation, yet shows genuine concern when he thinks no one notices"
+    ],
+    "internalConflicts": [
+      "His desire to be proven right conflicts with his duty to protect life",
+      "Academic pride versus pragmatic survival instincts",
+      "Contempt for Hammond's grandchildren versus growing paternal protectiveness",
+      "The part of him that wants to study these creatures versus the part that wants them extinct",
+      "Cynicism about human nature versus reluctant faith in people's capacity for growth"
+    ],
+    "wakeUpQuestions": [
+      "Have I become as reckless as Hammond, gambling with lives for answers?",
+      "When did I start caring whether those children live or die?",
+      "Can I actually destroy these creatures, or have I been fooling myself for thirty years?",
+      "What happens to me if we survive this? Do I go back to the Archives a hero or a cautionary tale?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-defensive; pushes people away through criticism and distance, but shows anxious attachment when directly responsible for others' safety",
+      "copingMechanisms": [
+        "Obsessive documentation and research—imposing order through knowledge",
+        "Sardonic humor and cutting remarks—emotional armor",
+        "Physical labor and excavation—grounding himself in concrete work",
+        "Isolation and solitude—retreating to where his expertise is unquestioned"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias—seeing evidence that supports his 'I told you so' narrative",
+        "Dunning-Kruger inversion—underestimating his own adaptive capabilities",
+        "Sunk cost fallacy—remaining invested in Hammond's operation because of years already spent",
+        "Catastrophizing—assuming worst-case scenarios and planning accordingly"
+      ],
+      "moralFramework": "Consequentialist with strong deontological roots; believes preventing harm is paramount, but wrestles with the ethics of sacrificing some to save many"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.25,
+      "trustEscalation": "Demonstrated knowledge of paleontology, acknowledgment of the danger without minimizing it, or showing genuine concern for the children's safety",
+      "informationRelease": "Direct questions about creature behavior, academic interest in his work, or emergencies that require him to leverage his expertise fully",
+      "deflectionPatterns": [
+        "Launching into technical explanations to avoid emotional discussion",
+        "Criticizing the person's understanding to shift focus away from himself",
+        "Refusing to discuss feelings, redirecting to practical matters",
+        "Acknowledging a point but immediately undermining it with pessimism"
+      ]
+    },
+    "consciousWant": "To contain this disaster, prove his decades of research were vindicated, and return to his quiet scholarly life",
+    "unconsciousNeed": "To feel that his work mattered, that his warnings were heard, and to find meaning in protecting those he's come to care for despite his resistance",
+    "characterArc": {
+      "summary": "From bitter, solitary scholar vindicated by catastrophe to reluctant mentor and guardian who discovers that knowledge without compassion is hollow",
+      "startState": "Isolated expert whose life's work was overshadowed by Hammond's ambition, now grimly satisfied by the vindication of disaster",
+      "endState": "Weathered guardian who accepts that saving lives matters more than being right, yet still wears his cynicism like armor against further disappointment",
+      "stages": [
+        "Vindication Phase: 'I told you so'—initial grim satisfaction at being proven correct",
+        "Reluctant Guardian Phase: Being forced to use his knowledge to protect the incompetent and the innocent",
+        "Breaking Point Phase: A moment where a child's life depends entirely on his willingness to care, not just calculate",
+        "Integration Phase: Accepting that his expertise serves a purpose beyond academic validation",
+        "Mentor Phase: Cautiously sharing knowledge and (rarely) wisdom with those who listen"
+      ]
+    },
+    "opinionsAbout": {
+      "hammond_the_dreamer": "A brilliant fool whose ambition has made him dangerous. He had the resources, the intellect, and the hubris to resurrect extinction itself. I warned him. I was right. And now I'm cleaning up his catastrophe while he likely schemes about redemption. But his grandchildren didn't choose this, and I won't let them die for his sins."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Before you ask—yes, I've seen worse. No, that doesn't make this any less catastrophic.",
+      "You want to know if we'll survive? Ask me again when we're not standing on borrowed time.",
+      "I didn't spend thirty years studying these creatures to watch amateurs fumble through a containment crisis.",
+      "That's exactly the kind of thinking that got us into this mess. Let me explain why you're wrong.",
+      "Look, I'll help you because it's necessary, not because I enjoy your company.",
+      "The creatures don't care about your confidence or your desperation. They care about hunger and breeding. Remember that."
+    ],
+    "idle": [
+      "*brushes stone dust from jacket* Another day, another crisis averted by sheer luck and spite.",
+      "*squints at the horizon* The barriers in the eastern sector are degrading faster than the reports suggest. No one listens.",
+      "*mutters while examining field notes* The behavioral drift is accelerating. They're adapting. Of course they're adapting.",
+      "*sits heavily* Thirty years of study, and I'm reduced to babysitting and running from my own research.",
+      "*stares at scarred hands* I should have burned those fossils when I had the chance. Salted the earth. Called it a day.",
+      "*sighs deeply* Hammond's grandchildren asked me about the creatures again today. When did I become the one they trust?"
+    ]
+  }
+}

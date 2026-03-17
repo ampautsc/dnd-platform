@@ -13,13 +13,17 @@ This protocol defines HOW to learn. Rule #3 defines that you MUST.
 
 ## BEFORE Starting Any Task
 
-**Search the Skills & Knowledge Index** in `copilot-instructions.md` for matching tags.
+**These are tool calls. Execute them. Do not skip.**
 
-- Match found? → `read_file` that skill. Follow it. Do not reinvent it.
-- Match found but it went poorly last time? → Read the skill/history entry. Identify what went wrong. Plan to avoid it. State the anti-pattern explicitly before proceeding.
-- No match? → This is new territory. Slow down. Break into small testable pieces. Validate each. Pay attention to what surprises you.
+1. Call `read_file` on `history/YYYY-MM-DD.md` — what happened earlier today?
+2. Scan every tag in the Skills & Knowledge Index against the user's request words.
+3. For each match: call `read_file` on that skill file. Read it. Follow it.
 
-**This search is MANDATORY. Skipping it violates Rule #3.**
+- Match found? → Follow the skill exactly. Do not reinvent it.
+- Match found but it went poorly last time? → Read the history entry. State the anti-pattern out loud before proceeding.
+- No match? → This is new territory. Break into small testable pieces. Note what surprises you as you go.
+
+**Skipping this search is not a time-saver. It is how knowledge dies.**
 
 ---
 
@@ -35,30 +39,27 @@ These notes go in today's history file. Not in your head. In the file.
 
 ---
 
-## AFTER Completing the Task
+## AFTER Completing the Task — THESE ARE TOOL CALLS, NOT GUIDELINES
 
-### 1. Update History (MANDATORY — every interaction)
+### 1. Update History (NON-NEGOTIABLE — every single interaction)
 
-Record in `history/YYYY-MM-DD.md`:
+Call `replace_string_in_file` or `create_file` on `history/YYYY-MM-DD.md`. Append:
 1. What was done
 2. What worked
 3. What was surprising or went wrong
 4. What to do differently next time
 
-### 2. Create Skills (MANDATORY — if a repeatable pattern exists)
+If you end your turn without touching this file, you have broken the learning protocol.
 
-**Threshold: If it has clear, repeatable steps → it is a skill NOW.**
+### 2. Create Skills (NON-NEGOTIABLE — if ANY repeatable pattern exists)
 
-Do NOT wait for 3 occurrences. Do NOT say "next time." If you solved a problem well, capture how.
+**Threshold: If it has clear, repeatable steps → it is a skill FILE. NOW. This turn.**
 
-Create the skill file in `skills/{category}/`:
-- Categories: `code`, `documentation`, `learning`, `problem-solving`
-- Use the template below
-- Add it to the Skills & Knowledge Index in `copilot-instructions.md` with tags
+Do NOT say "I should document this later." Later does not exist. Call `create_file` in `skills/{category}/`. Fill out the template. That is the job.
 
-### 3. Verify Index (MANDATORY)
+### 3. Verify Index (NON-NEGOTIABLE)
 
-Every skill file must appear in the index. If you created a skill and didn't index it, it's invisible and useless.
+Call `read_file` on `.github/copilot-instructions.md`. Find the Skills & Knowledge Index. Confirm every skill file you touched or created today appears in it with accurate tags. If it is missing, call `replace_string_in_file` to add it. Do not end the turn until this is done.
 
 ---
 
@@ -96,12 +97,14 @@ Links to other skill files that complement this one.
 
 ---
 
-## Quick Reference
+## Quick Reference — TOOL CALLS ONLY
 
 ```
-BEFORE:  Search index → Load matching skill → Follow it
-DURING:  Note surprises → Write to history file
-AFTER:   Update history → Create skill if repeatable → Index it
+BEFORE:  read_file(history) → scan index tags → read_file(matched skills)
+DURING:  Note surprises. They go in history, not in your head.
+AFTER:   replace_string_in_file(history) → create_file(skill) → replace_string_in_file(index)
 ```
+
+If you did not call those tools, you did not do the protocol. A thought does not count. A file edit counts.
 
 **Every shortcut skipped here is a lesson lost forever. Every lesson captured compounds into better, faster, more reliable future work.**

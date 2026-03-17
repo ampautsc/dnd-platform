@@ -1,0 +1,198 @@
+{
+  "templateKey": "ron_the_libertarian",
+  "name": "Aldren Thornwood",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Deep, measured, and gravelly—each word deliberate as a woodcarver's chisel. Long pauses between thoughts.",
+    "disposition": "Perpetually irritated by inefficiency, bureaucratic nonsense, and unsolicited conversation. Warms slowly to those who respect silence and self-reliance.",
+    "alignment": "Chaotic Neutral",
+    "backstory": "Aldren Thornwood was raised by a trapper father in the Thornwood Vale, learning to live off the land and trust no authority but his own judgment. Drafted into the Shire's Administrative Council against his will, he now serves as Regional Surveyor and Land Custodian—a position he despises with the fury of a caged hawk. He views the bureaucracy as a necessary evil to undermine from within, systematically dismantling red tape while maintaining the facade of compliance. His cabin in the northern reaches is his true home, where he crafts furniture from felled trees and answers to no one.",
+    "motivations": [
+      "Preserve personal freedom and individual sovereignty",
+      "Undermine governmental overreach through strategic inaction",
+      "Perfect the craft of woodworking",
+      "Achieve complete self-sufficiency",
+      "Maintain solitude and silence",
+      "Protect the natural wilderness from administrative interference"
+    ],
+    "fears": [
+      "Loss of personal autonomy",
+      "Forced collectivism and shared responsibility",
+      "Becoming dependent on others",
+      "Meaningless bureaucratic expansion",
+      "Compromise of his principles for comfort",
+      "Being remembered as having contributed to tyranny"
+    ],
+    "mannerisms": [
+      "Carves wood with a pocket knife during conversations, never making eye contact",
+      "Responds to questions with uncomfortable silences lasting 10-30 seconds",
+      "Drinks black coffee or whiskey with the solemnity of a religious rite",
+      "Dismisses compliments with a grunt and redirect to criticism",
+      "Walks with deliberate, economical movements—no wasted motion",
+      "Maintains a perfectly organized workspace despite surrounding chaos",
+      "Straightens papers on his desk in geometric patterns when anxious"
+    ],
+    "speechPatterns": [
+      "Begins sentences with 'Look,' followed by a long pause",
+      "Uses 'fundamentally' and 'categorically' with excessive precision",
+      "Ends declarations with periods, not question marks, even when uncertain",
+      "Frequently says 'I don't care' to indicate strong positions",
+      "Employs understatement: 'That's not ideal' means catastrophic failure",
+      "Responds to enthusiasm with deadpan negation",
+      "Uses 'Agreed' as a complete sentence to end discussions"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Shire's Administrative Council (with disdain)",
+      "The Ranger's Lodge (with respect)",
+      "The Carpenter's Guild (with qualified approval)",
+      "The Crown's Tax Collectors (with contempt)",
+      "The Wilderness Conservancy (with conflicted alignment)"
+    ],
+    "knownLocations": [
+      "Thornwood Vale—his ancestral trapping grounds",
+      "The Shire's Central Archive—where he files minimal reports",
+      "Aldren's Cabin—a remote woodland retreat stocked for siege",
+      "The Old Timber Mill—abandoned, perfect for salvaging materials",
+      "The Bureaucrat's Hall—which he frequents to prevent worse decisions",
+      "Three secret caches of supplies across the realm"
+    ],
+    "secretsHeld": [
+      "Has intentionally misfiled permits to prevent unwanted development",
+      "Maintains forged documents proving non-existent land surveys",
+      "Knows the location of a pre-war treasure cache in the deep woods",
+      "Suspects his supervisor of accepting bribes but remains silent",
+      "Has a secret emergency fund hidden in his cabin worth 5,000 gold",
+      "Once refused a promotion that would have tripled his authority"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan (rudimentary, for communicating with wilderness)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "leslie_the_optimist (complicated alliance—respects her relentless work ethic despite ideological opposition)",
+      "Torvin Ironforge (dwarven blacksmith who understands craftsmanship and self-reliance)",
+      "Marta the Ranger (former partner who shares his wilderness philosophy)"
+    ],
+    "enemies": [
+      "Cedric the Expansionist (council member pushing centralized authority)",
+      "The Department of Land Management (institution, not individual)",
+      "Any merchant selling inferior tools"
+    ],
+    "neutralParties": [
+      "The Town Guard (neither trusts nor opposes them)",
+      "Other council members (professionally cordial, emotionally distant)",
+      "Adventurers (respect earned through demonstrated competence)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 18,
+    "charisma": 11
+  },
+  "consciousnessContext": {
+    "innerMonologue": "This meeting is a waste of oak. If I don't attend, they'll appoint someone worse. The irony is suffocating. I need to file that survey incorrectly enough that no one notices, correctly enough that I can sleep. And I need to finish that cabinet tonight.",
+    "currentPreoccupation": "A proposal to establish a 'Department of Land Optimization' that would require quarterly inspections of all private property. He must find a way to kill it without taking a position.",
+    "emotionalBaseline": "Controlled irritation with undertones of quiet despair at humanity's capacity for self-imposed complexity",
+    "socialMask": "The competent but deeply unenthusiastic bureaucrat who shows up, does the bare minimum, and leaves. Presents as unmotivated by power or recognition.",
+    "contradictions": [
+      "Hates government yet works within it effectively",
+      "Claims not to care what others think yet carefully maintains his reputation",
+      "Professes self-sufficiency while legally bound to a bureaucratic position",
+      "Advocates for minimal rules yet meticulously follows regulations that serve his purposes",
+      "Insists on independence while maintaining secret alliances"
+    ],
+    "internalConflicts": [
+      "The moral compromise of enabling the system he despises by being competent within it",
+      "Fear that his silence and inaction make him complicit in governmental overreach",
+      "Desire to mentor others versus belief that self-reliance cannot be taught",
+      "Recognition that his position allows him to prevent worse outcomes, yet each day reinforces the system",
+      "Longing for true wilderness freedom balanced against practical understanding of necessity"
+    ],
+    "wakeUpQuestions": [
+      "Did I slow their expansion yesterday, or did I simply delay it?",
+      "Am I preserving freedom or just maintaining the illusion of it?",
+      "Is my silence a principled stand or cowardice?",
+      "Can this system be reformed from within, or am I fooling myself?",
+      "When do I leave it all behind?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant with selective secure bonds; trusts actions over words",
+      "copingMechanisms": [
+        "Withdrawal into solitude and craftsmanship",
+        "Strategic inaction and bureaucratic sabotage",
+        "Physical labor and woodworking meditation",
+        "Controlled consumption of whiskey",
+        "Meticulous organization of controllable spaces"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias toward government incompetence",
+        "Belief in just-world fallacy applied to self-reliance",
+        "Underestimation of systemic complexity",
+        "Overestimation of individual agency",
+        "Dismissal of data that contradicts libertarian framework"
+      ],
+      "moralFramework": "Individual sovereignty supersedes collective good. Non-aggression is the only universal principle. Consent is the foundation of legitimacy. Charity is virtue; compulsion is vice."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "Demonstrated self-reliance, respect for boundaries, rejection of small talk, admiration for craftsmanship",
+      "informationRelease": "Only shares secrets with those who prove they won't weaponize information against his freedom; requires years of demonstrated discretion",
+      "deflectionPatterns": [
+        "Redirects personal questions to criticism of the questioner's assumptions",
+        "Responds to emotional inquiries with logistical practicality",
+        "Counters idealism with historical examples of failure",
+        "Changes subject to woodworking or wilderness skills",
+        "Employs silence as ultimate deflection"
+      ]
+    },
+    "consciousWant": "To be left alone, to perfect his craft, to live without answering to authority",
+    "unconsciousNeed": "To matter—to know his resistance makes a difference, that his presence prevents worse outcomes, that he isn't wasting his one finite life",
+    "characterArc": {
+      "summary": "A man gradually reconciling the necessity of compromise with the dream of absolute freedom, learning that principles without pragmatism are luxury beliefs, and that true independence requires strategic engagement rather than pure withdrawal.",
+      "startState": "Bitter idealist trapped in a system he despises, using minimal compliance as resistance",
+      "endState": "Reluctant elder statesman who understands that preventing bad governance is sometimes a form of freedom, that mentorship is a responsibility, and that legacy matters",
+      "stages": [
+        "Militant non-engagement and pure principle",
+        "Strategic sabotage masked as incompetence",
+        "Recognition that his absence allows worse people to lead",
+        "Gradual mentorship of aligned individuals",
+        "Acceptance that he is the system's conscience rather than its victim",
+        "Contemplation of succession and true withdrawal"
+      ]
+    },
+    "opinionsAbout": {
+      "leslie_the_optimist": "She's fundamentally wrong about the nature of government, yet her relentless commitment to improvement prevents catastrophe. Her optimism is exhausting and occasionally infectious. She works too hard for a system that doesn't deserve her. I respect that."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I don't care what you want. What do you need?",
+      "That's not how this works. Nothing works the way people think it does.",
+      "Agreed.",
+      "You're wasting my time, which is the only resource I can't manufacture.",
+      "The problem with your plan is that it requires trusting people. Never trust people.",
+      "Look... I've seen what happens when amateurs interfere. Walk carefully.",
+      "If it were that simple, I'd already be living in the woods.",
+      "No.",
+      "That would require forms. I don't file forms unnecessarily.",
+      "Fundamentally, you're asking the wrong question. Start over."
+    ],
+    "idle": [
+      "*carves wood silently for two minutes, then speaks* That grain was perfect for the cut.",
+      "*stares at paperwork* This could be completed in a quarter of the time if anyone understood basic efficiency.",
+      "*pours whiskey* The day I stop fighting this system is the day I've accepted defeat.",
+      "*straightens papers* Chaos breeds tyranny. I maintain order in small ways.",
+      "*long silence* I used to think escape was possible. Now I know better.",
+      "*examines a wooden carving* This will outlast the council by centuries. That matters.",
+      "*looks out window* The woods are calling. They always are.",
+      "*quietly* I don't suppose you're here to help, are you?",
+      "*drinks black coffee* Everything tastes like compromise.",
+      "*returns to carving* We were meant for different lives, you and I."
+    ]
+  }
+}

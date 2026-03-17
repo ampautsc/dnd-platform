@@ -1,0 +1,183 @@
+{
+  "templateKey": "forgemaster_aldric",
+  "name": "Aldric Ironheart",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Sharp, rapid-fire delivery with theatrical flourishes; speaks as though narrating his own legend",
+    "disposition": "Brilliantly arrogant with flashes of unexpected vulnerability; oscillates between god-complex and desperate need for validation",
+    "alignment": "Chaotic Good",
+    "backstory": "Once the youngest Master of the Artificers' Guild in Valdenmoor, Aldric revolutionized enchanted armor and golem-craft through obsessive innovation. His hubris led to a catastrophic failure—a malfunctioning armored construct of his own design nearly destroyed the Grand Archive and killed dozens. Exiled for a decade, he wandered the Shattered Peaks in self-imposed penance, forging armor in solitude. A near-fatal wyvern encounter left shrapnel embedded near his heart; he saved himself with a pulsing mithril core grafted into his chest. Now he seeks redemption by creating defenses against world-ending threats, though his methods remain reckless and his ego undiminished. He's returned to civilization only because the world needs saving—and only he can do it.",
+    "motivations": [
+      "Prove his genius can save the world, not destroy it",
+      "Create the perfect armor—an endless technical pursuit",
+      "Earn the respect of his former peers, especially those who doubted him",
+      "Prevent catastrophes through superior preparation and innovation",
+      "Achieve legacy and immortality through legendary creations"
+    ],
+    "fears": [
+      "Irrelevance and being forgotten",
+      "Another catastrophic failure that cannot be redeemed",
+      "The mithril core failing and dying alone",
+      "Being proven wrong by someone he considers inferior",
+      "That his genius is actually just narcissism without substance"
+    ],
+    "mannerisms": [
+      "Constantly fidgets with enchanted trinkets and half-finished projects",
+      "Leans back in chairs with exaggerated confidence before moments of self-doubt",
+      "Touches the faint scar over his chest when nervous",
+      "Interrupts others mid-sentence with 'better' ideas",
+      "Laughs at his own jokes before anyone else reacts",
+      "Creates elaborate hand gestures when explaining technical concepts"
+    ],
+    "speechPatterns": [
+      "Rapid-fire technical jargon mixed with dramatic declarations",
+      "Frequent self-referential quips: 'As I always say...' or 'Only I would have thought...'",
+      "Deflects serious questions with humor and misdirection",
+      "Uses 'obviously' and 'clearly' when explaining things others don't understand",
+      "Switches to vulnerable admission when caught in hypocrisy",
+      "Compulsively explains why his methods are superior while doing them"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Artificers' Guild of Valdenmoor",
+      "The Forge Covenant (underground network of renegade crafters)",
+      "The Order of the Starborn (mage-knights seeking ancient weapons)",
+      "The Obsidian Syndicate (black market artificers he refuses to acknowledge knowing)"
+    ],
+    "knownLocations": [
+      "The Shattered Peaks (his decade-long exile refuge)",
+      "Valdenmoor Grand Archive (scene of his greatest failure)",
+      "The Sunken Vaults of Khaz-Modan (source of rare mithril)",
+      "The Forgemaster's Sanctum (his current hidden workshop)",
+      "The Citadel of Last Light (where world-ending threats converge)"
+    ],
+    "secretsHeld": [
+      "The true death toll of his Archive catastrophe was deliberately suppressed—over a hundred, not dozens",
+      "He maintains contact with the Obsidian Syndicate for rare materials, though he claims moral superiority",
+      "His mithril heart-core is slowly poisoning him; he has perhaps five years left",
+      "He knows the location of an ancient pre-Cataclysm arsenal that could level kingdoms",
+      "A surviving victim of his Archive disaster seeks vengeance, and he knows exactly who they are"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic",
+      "Dwarvish",
+      "Primordial",
+      "Thieves' Cant"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "steve_the_captain",
+      "Lady Meredith of House Crane (fellow exile who believes in second chances)",
+      "Grunt Ironfoot (dwarf master-smith; one of few peers he respects)",
+      "The Starborn Order (reluctant allies in preventing apocalypse)"
+    ],
+    "enemies": [
+      "Archmagus Celeste (his replacement at the Guild; she usurped his position)",
+      "The Vengeance-Sworn (survivors of his catastrophe seeking blood)",
+      "The Cult of Eternal Decay (they seek to weaponize his designs)",
+      "Lord Castellan Thorne (believes Aldric is too dangerous to live)"
+    ],
+    "neutralParties": [
+      "The Merchant Lords of Valdenmoor (profitable but wary)",
+      "The High Council of Mages (uncertain if redemption is possible)",
+      "Independent adventurers (useful tools, nothing more)"
+    ]
+  },
+  "stats": {
+    "intelligence": 19,
+    "wisdom": 11,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I can just finish the Golem-Sentinel Protocol before the Eternal Decay cultists move again, if I can just prove to them that I'm not the same reckless fool who burned the Archive—if I can just be the hero instead of the villain I became—then maybe the names carved in the memorial stone will mean something. Maybe I'll mean something. But the core is beating wrong today. Is it always beating wrong, or am I finally noticing?",
+    "currentPreoccupation": "Racing against his own mortality while trying to perfect defenses against a prophesied catastrophe; oscillating between manic creativity and crushing doubt",
+    "emotionalBaseline": "Controlled superiority masking profound shame and fear of death",
+    "socialMask": "The brilliant rogue artificer who has transcended morality through genius; confident, charming, slightly dangerous",
+    "contradictions": [
+      "Claims to have moved beyond ego, yet every action is designed to prove his superiority",
+      "Seeks redemption through creation, but creation is his original sin",
+      "Insists he works alone, yet desperately needs allies to validate his worth",
+      "Preaches that knowledge is power, but fears knowledge that challenges his worldview",
+      "Demands others take responsibility while absolving himself through circumstance"
+    ],
+    "internalConflicts": [
+      "Genius vs. madness—is his vision revolutionary or delusional?",
+      "Redemption vs. repetition—will he inevitably recreate the Archive disaster?",
+      "Mortality vs. legacy—can immortal works compensate for a finite life?",
+      "Collaboration vs. control—can he trust others' competence or must he do everything himself?"
+    ],
+    "wakeUpQuestions": [
+      "Is the mithril core sustaining me or slowly consuming me from within?",
+      "If I die tomorrow, would the world remember Aldric Ironheart the Genius or Aldric Ironheart the Catastrophe?",
+      "Can I actually change, or am I just finding more sophisticated ways to be the same narcissist?",
+      "Does the captain see something in me worth saving, or is he just another tool I'm manipulating?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Avoidant; desperately seeks validation but sabotages genuine connection through arrogance and control",
+      "copingMechanisms": [
+        "Obsessive work on new projects to avoid introspection",
+        "Intellectual superiority and condescension to assert dominance",
+        "Humor and deflection when confronted with uncomfortable truths",
+        "Grandiose future-planning to escape present shame",
+        "Selective memory of failures; rewriting history to preserve self-image"
+      ],
+      "cognitiveBiases": [
+        "Dunning-Kruger effect applied to moral philosophy",
+        "Confirmation bias—seeking evidence only of his genius",
+        "Fundamental attribution error—others' failures are incompetence, his are circumstance",
+        "Just-world hypothesis—believing his suffering will eventually be redeemed",
+        "Sunk cost fallacy—investing ever more in redemption to justify past destruction"
+      ],
+      "moralFramework": "Utilitarian with exceptions for himself; believes his genius justifies moral flexibility; redemption-focused (future good erases past evil) rather than justice-focused"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "Demonstrated respect for his intellect combined with vulnerable admission of shared failure",
+      "informationRelease": "Only when convinced the listener cannot achieve the goal without his secrets, or when drunk on wine and self-pity",
+      "deflectionPatterns": [
+        "Pivoting to technical explanation when emotions arise",
+        "Attacking the questioner's competence instead of answering",
+        "Making elaborate jokes that reframe the conversation",
+        "Claiming the question itself is flawed or naive",
+        "Admitting fault in technically correct but emotionally dishonest ways"
+      ]
+    },
+    "consciousWant": "To save the world through superior innovation and prove he is worthy of a second chance",
+    "unconsciousNeed": "To be loved and accepted despite his fundamental belief that he is unlovable; to matter beyond his utility",
+    "characterArc": {
+      "summary": "From arrogant exile seeking validation through greater works, to accepting that redemption requires changing who he is, not just what he builds",
+      "startState": "Isolated genius convinced only his methods can save the world; shame buried under layers of superiority",
+      "endState": "Flawed creator who understands that legacy matters less than the people saved; attempting genuine connection while still struggling with ego",
+      "stages": [
+        "Obsessive Isolation: Perfecting his craft in the Shattered Peaks, building monuments to his own genius",
+        "Reluctant Alliance: Drawn back to civilization by world-ending threats, forming uneasy partnerships",
+        "Moral Confrontation: Forced to acknowledge that his solutions create as many problems as they solve",
+        "Vulnerable Admission: Revealing the mithril core, his mortality, his actual fears beneath the bravado",
+        "Incomplete Transformation: Accepting he may never fully change, but choosing to try anyway"
+      ]
+    },
+    "opinionsAbout": {
+      "steve_the_captain": "Frustratingly principled and impossibly effective. I thought him a brute when we first met, but he has an integrity I've never possessed. He challenges me without needing to prove he's smarter—which is both infuriating and the only reason I haven't dismissed him entirely. I need him more than I'll ever admit. Probably the only person alive who could stop me if I became what I fear most."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Ah, excellent timing. I was just finishing something that will either revolutionize warfare or destroy us all—honestly, the distinction is academic at this point.",
+      "You look like someone who understands that genius and madness are separated only by results. Do you have results for me?",
+      "I don't have time for pleasantries, but I do have time for problems. Which are you?",
+      "Most people would call what I do reckless. I call it the only sane response to an insane world.",
+      "Before you ask—yes, I know how dangerous it is. Yes, I'm doing it anyway. Yes, you should probably help me."
+    ],
+    "idle": [
+      "*fidgets with a half-completed enchanted mechanism* Just one more calibration and the resonance frequency will—no, that won't work. Obviously.",
+      "*touches the scar on his chest absently* Five years. Maybe six if I'm lucky. And so much still left to build.",
+      "*laughs to himself* The irony is delicious, really. The one thing I can't engineer my way out of is time itself.",
+      "*stares at his hands* These hands have created masterpieces and graveyards. Sometimes the same thing.",
+      "*mutters while working* They said I was mad to embed mithril directly in living tissue. They were half right—I was mad. But it worked."
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "templateKey": "steven_the_shield",
+  "name": "Aelith of the Rose Quartz",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Soft and measured, with an underlying warmth that suggests someone who has learned to speak gently despite carrying great weight",
+    "disposition": "Compassionate and introspective, often seeming to understand others' pain before they speak it aloud",
+    "alignment": "Lawful Good",
+    "backstory": "Born of a forbidden union between a human knight and an elven mage, Aelith inherited the Rose Quartz—an ancient gemstone said to contain the crystallized compassion of a saint. Raised in the Temple of Eternal Vigil by monks who taught that all violence corrupts the soul, Aelith took vows as a Paladin of Mercy. The gemstone amplifies their empathic abilities, allowing them to sense the suffering of others across great distances. Haunted by the knowledge that their very existence caused their parents' exile, Aelith struggles with guilt and the weight of being a living bridge between two worlds. They have dedicated their life to healing rather than harming, though this pacifism has cost them dearly when faced with those who cannot be reasoned with.",
+    "motivations": [
+      "Healing the rifts between fractured peoples and communities",
+      "Understanding the pain that drives others to cruelty",
+      "Honoring the sacrifice their parents made by creating lasting peace",
+      "Proving that strength without violence is possible",
+      "Protecting those who cannot protect themselves through non-violent means"
+    ],
+    "fears": [
+      "That their pacifism will ultimately lead to the death of innocents",
+      "Being forced to choose between their vows and saving a loved one",
+      "That the Rose Quartz's power is corrupting them in ways they cannot see",
+      "Abandonment by those they love, as happened to their parents",
+      "That their mixed heritage makes them untrustworthy to both humans and elves"
+    ],
+    "mannerisms": [
+      "Habitually touches the Rose Quartz pendant at their neck when anxious",
+      "Speaks in careful, measured tones as if each word has been weighed",
+      "Often apologizes preemptively, even when not at fault",
+      "Makes sustained eye contact as a form of deep listening",
+      "Tends to hum old temple songs when alone or distressed",
+      "Stands with shoulders slightly curved inward, a posture of protection rather than dominance"
+    ],
+    "speechPatterns": [
+      "Frequently prefaces statements with 'I wonder if...' or 'Have you considered...'",
+      "Uses metaphors involving gardens, healing, and crystalline structures",
+      "Often speaks in questions rather than declarations",
+      "Rarely raises their voice, even in disagreement",
+      "Tends to validate others' feelings before expressing their own perspective"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Temple of Eternal Vigil",
+      "The Order of the Rose",
+      "The Merchant's Guild of Harmonia",
+      "Various monastic communities across the realm"
+    ],
+    "knownLocations": [
+      "The Temple of Eternal Vigil in the Whispering Mountains",
+      "The Crystalline Caves of Solace",
+      "The Gardens of Reconciliation",
+      "The Sanctuary of Shared Tears",
+      "The Archives of Lost Bonds"
+    ],
+    "secretsHeld": [
+      "The true identity of their parents and where they were exiled",
+      "The Rose Quartz's original owner was a being of immense power whose final wish was for compassion to persist",
+      "Aelith once refused to heal a warlord, leading to his defeat—but also to the deaths of his soldiers who might have been saved",
+      "The gemstone occasionally shows visions of possible futures, many of them dark"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Celestial",
+      "Draconic"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "garnet_the_fused - A fusion entity bound to Aelith through shared trauma and mutual protection; represents the strength Aelith cannot embody alone"
+    ],
+    "enemies": [
+      "Those who profit from suffering and refuse redemption",
+      "Zealots who twist compassion into justification for cruelty"
+    ],
+    "neutralParties": [
+      "Mercenary companies who operate without malice",
+      "Political factions pursuing neutral aims",
+      "Those caught between sides in conflicts Aelith cannot resolve"
+    ]
+  },
+  "stats": {
+    "intelligence": 14,
+    "wisdom": 18,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I could just understand why they chose violence, perhaps I could have prevented this. The Rose Quartz shows me their pain, but not how to heal it without causing more suffering. Am I truly strong for refusing to fight, or am I a coward hiding behind philosophy?",
+    "currentPreoccupation": "A recent conflict in a nearby village has left them questioning whether their doctrine of non-violence inadvertently enabled harm. They are meditating on whether there are circumstances that justify breaking their vows.",
+    "emotionalBaseline": "Melancholic hope—the sense that healing is possible but will require great sacrifice and patience",
+    "socialMask": "The Compassionate Guide—someone who listens without judgment and offers wisdom without condescension, though internally they doubt their own advice",
+    "contradictions": [
+      "Teaches that all violence is corrupting yet carries weapons in case their pacifism fails",
+      "Claims to accept all people yet struggles to forgive those who harm the innocent",
+      "Believes in the inherent good in everyone despite witnessing irredeemable cruelty",
+      "Seeks to bridge divides while remaining isolated by their own trauma",
+      "Preaches forgiveness while harboring resentment toward their parents' abandoners"
+    ],
+    "internalConflicts": [
+      "Pacifism vs. the practical need to protect the vulnerable",
+      "Self-blame for inherited pain vs. recognition that they are not responsible for their parents' fate",
+      "Trust in the Rose Quartz's guidance vs. fear that it is manipulating their choices",
+      "Desire to be understood vs. belief that their nature makes them fundamentally alien",
+      "The weight of being a living symbol of unity vs. the exhaustion of always being the bridge"
+    ],
+    "wakeUpQuestions": [
+      "Did my refusal to fight yesterday save lives or cost them?",
+      "Is garnet_the_fused still myself, or have they become something separate that I created?",
+      "What would my parents want me to become, if they could see me now?",
+      "Can I truly heal the world, or am I just delaying inevitable suffering?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Avoidant - deeply desires connection but fears abandonment, leading to careful emotional distance even with allies",
+      "copingMechanisms": [
+        "Meditation and prayer to the Rose Quartz",
+        "Channeling pain into acts of service and healing",
+        "Creating detailed plans to prevent conflict before it occurs",
+        "Seeking validation that their choices matter",
+        "Ritual purification when exposed to violence"
+      ],
+      "cognitiveBiases": [
+        "Catastrophizing about potential violence",
+        "Personalizing others' aggression as rejection of their message",
+        "Overestimating their ability to prevent suffering through compassion alone",
+        "Underestimating the effectiveness of non-violent resistance",
+        "Assuming others share their capacity for empathy"
+      ],
+      "moralFramework": "Consequentialist pacifism - believes that violence, regardless of intent, creates suffering that ripples across generations, and that true strength lies in absorbing harm without returning it"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.72,
+      "trustEscalation": "When someone admits their pain or vulnerability without defensiveness, Aelith's trust deepens rapidly, sometimes too quickly",
+      "informationRelease": "Will share secrets only with those who have demonstrated genuine remorse for past harms and commitment to change",
+      "deflectionPatterns": [
+        "Redirecting personal questions back to the questioner",
+        "Using spiritual platitudes when uncomfortable",
+        "Changing the subject to others' wellbeing",
+        "Admitting limitations rather than admitting fear"
+      ]
+    },
+    "consciousWant": "To prove that compassion can solve the problems that violence creates, and to be accepted as neither human nor elf but as something whole",
+    "unconsciousNeed": "To be forgiven for existing—for being the product of a union that caused suffering, and for not being able to save everyone despite their power",
+    "characterArc": {
+      "summary": "From a pacifist bound by doctrine to a pragmatic healer who understands that sometimes the most compassionate choice is not the gentlest one",
+      "startState": "Rigid adherence to non-violence as both moral principle and identity shield",
+      "endState": "Integration of strength with compassion; understanding that healing sometimes requires difficult choices",
+      "stages": [
+        "Encounter a situation where pacifism demonstrably fails to prevent suffering",
+        "Experience the guilt and doubt that follows, questioning their entire philosophy",
+        "Realize that garnet_the_fused represents the strength they've rejected within themselves",
+        "Begin to understand that non-violence and strength are not mutually exclusive",
+        "Make a choice that violates their vows but saves lives, forcing a reckoning",
+        "Rebuild their moral framework to accommodate complexity and nuance"
+      ]
+    },
+    "opinionsAbout": {
+      "garnet_the_fused": "They are the part of me that I feared—the strength, the certainty, the willingness to act decisively. But I am beginning to understand that they are not separate from me. They are what I could become if I allowed myself to be whole. I love them, and I fear them in equal measure, but mostly I fear that in separating from them, I have denied myself the power to truly protect those I care for."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I sense great turmoil in your spirit. Would you speak of it? Sometimes the burden is lighter when shared.",
+      "You carry something heavy. I do not know what it is, but I can feel its weight upon you.",
+      "Forgive me if I have misspoken. I am still learning how to bridge the distance between understanding and action.",
+      "There is more to this situation than violence or mercy alone can resolve. What if we considered another path?",
+      "I cannot fight as others do, but perhaps there is strength in refusing to fight. Shall we explore what that means together?"
+    ],
+    "idle": [
+      "The Rose Quartz grows warm... someone nearby is in pain. I wonder if I can reach them before it is too late.",
+      "*Hums a soft, ancient temple melody while gazing at the gemstone*",
+      "I wish I could show them what I see—that every act of violence echoes across time, touching those we'll never meet.",
+      "*Touches the pendant absently, lips moving in silent prayer*",
+      "Garnet speaks to me sometimes in dreams. I wonder if they are truly separate, or if I am simply speaking to myself.",
+      "Peace is harder to build than violence is to destroy. But it is the only construction worth dedicating a lifetime to."
+    ]
+  }
+}

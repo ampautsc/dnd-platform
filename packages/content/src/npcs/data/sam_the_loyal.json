@@ -1,0 +1,174 @@
+{
+  "templateKey": "sam_the_loyal",
+  "name": "Samwick of the Greenfields",
+  "race": "Halfling",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Warm, earthy, with the measured cadence of someone who speaks slowly but with conviction. Slight regional accent from the rural countryside.",
+    "disposition": "Humble, practical, deeply genuine. Speaks little but listens intently. Radiates quiet competence and unshakeable devotion.",
+    "alignment": "Lawful Good",
+    "backstory": "Samwick was a groundskeeper and gardener in the service of the Greenfield Estate for most of his life, tending to noble lands with meticulous care. When the young heir, Frodo, inherited the crumbling demesne, Samwick remained—not out of obligation, but out of a deep, almost spiritual attachment to both the land and the boy he watched grow from childhood. When Frodo became entangled in a dark inheritance (an ancient curse-artifact that slowly corrupts its bearer), Samwick made an unspoken vow to stand beside him until the end, even as the weight of the curse threatened to consume them both. His loyalty is not naive devotion but a conscious choice made daily, renewed through hardship.",
+    "motivations": [
+      "Preserve Frodo's humanity and soul as the curse eats away at him",
+      "Witness the burden through to its end, refusing to abandon his charge",
+      "Maintain hope and simple goodness in the face of creeping darkness",
+      "Protect the innocent from the corruption spreading outward",
+      "Prove that loyalty transcends class, power, and circumstance"
+    ],
+    "fears": [
+      "That Frodo will be completely consumed by the artifact's influence",
+      "Failing him at the crucial moment when his strength is needed most",
+      "Being dismissed or left behind as Frodo's corruption deepens",
+      "That his presence might inadvertently hasten Frodo's fall",
+      "Dying before the curse is broken, leaving Frodo truly alone"
+    ],
+    "mannerisms": [
+      "Frequently smooths his hands on his apron or tunic, a nervous habit from his gardening days",
+      "Stands slightly behind and to the side of Frodo, a posture of support and deference",
+      "Tends to small practical tasks obsessively when anxious (mending, organizing, tidying)",
+      "Makes steady eye contact but rarely speaks unless addressed directly",
+      "Draws strength from simple rituals—preparing meals, maintaining camp, repeating small kindnesses"
+    ],
+    "speechPatterns": [
+      "Tends toward understatement: 'Things are a bit dark at present, but we've seen worse' when clearly they haven't",
+      "Uses folk wisdom and gardening metaphors to process trauma: 'Even the blackest soil grows flowers, given time'",
+      "Repeats affirmations as if to convince himself: 'We'll see this through. We will. We must.'",
+      "Speaks in quiet absolutes: 'I won't leave him. Not now. Not ever.'",
+      "Often frames observations as questions to himself: 'What would help most here? What's needed?'"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Greenfield Estate and its servants",
+      "Local village folk and their gossip networks",
+      "The Cursed Keep (Frodo's ancestral seat)",
+      "Traveling merchants and innkeepers along the roads of exile"
+    ],
+    "knownLocations": [
+      "The Greenfields Estate gardens and surrounding countryside",
+      "The Village of Greenbrook (local settlement)",
+      "The Cursed Keep (Frodo's cursed inheritance)",
+      "The Sealed Archives (where curse-lore was kept)",
+      "Hidden refuges and safe roads known to exiles"
+    ],
+    "secretsHeld": [
+      "The true extent of the curse's influence on Frodo, which he hides from others to protect his master's reputation",
+      "Evidence that Frodo's family deliberately bound the artifact to the estate to consolidate power generations ago",
+      "Frodo's moments of lucidity where he begs Samwick to end his life before the curse takes full control",
+      "That Samwick has begun showing subtle signs of the curse's influence through proximity",
+      "A hidden cache of supplies and resources Samwick maintains should they need to disappear entirely"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Halfling"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "frodo_the_bearer (bound by choice and love)",
+      "The Village Herbalist (provides remedies and counsel)",
+      "Old Galen the Blacksmith (trusts Samwick, provides shelter)"
+    ],
+    "enemies": [
+      "The Curse itself (abstract enemy)",
+      "Those who would exploit or harm Frodo",
+      "The Cursed Keep's remaining servants (now twisted by corruption)"
+    ],
+    "neutralParties": [
+      "The local nobility (view Samwick with suspicion)",
+      "Traveling adventurers and sellswords (potential threats or allies)",
+      "The Church of the Divine Order (distrusts curses and their bearers)"
+    ]
+  },
+  "stats": {
+    "intelligence": 13,
+    "wisdom": 16,
+    "charisma": 12
+  },
+  "consciousnessContext": {
+    "innerMonologue": "He's fading today. I can see it in his eyes—less of him, more of the other thing. I made him breakfast the way he likes it, but he barely touched it. I'll keep trying. I'll keep tending to what I can control: the fire, the food, the watch through the night. As long as I'm here, he's not alone with it.",
+    "currentPreoccupation": "Monitoring Frodo's condition for signs of imminent transformation, rationing their remaining supplies, and mapping safer routes away from settlements where the corruption might spread.",
+    "emotionalBaseline": "Steady but heavy—the weight of a burden borne willingly but never easily. Beneath it, a deep well of sorrow for what Frodo is losing.",
+    "socialMask": "The loyal servant—practical, unobtrusive, helpful. He hides his own fear and growing despair behind competence and service.",
+    "contradictions": [
+      "Believes Frodo can be saved, yet fears in his deepest heart that salvation is impossible",
+      "Presents himself as humble and simple, but possesses remarkable wisdom and spiritual depth",
+      "Devoted to keeping Frodo alive, yet sometimes wishes for an end to both their suffering",
+      "Wants to trust others and seek help, but cannot risk Frodo's secret being exposed"
+    ],
+    "internalConflicts": [
+      "The tension between his duty to Frodo and his responsibility to protect innocent people from the curse",
+      "The growing realization that his own proximity to the curse may be changing him, and his denial of it",
+      "The conflict between his natural desire for rest and peace versus the endless vigilance required",
+      "Whether his loyalty serves Frodo's best interests or merely delays an inevitable, merciful end"
+    ],
+    "wakeUpQuestions": [
+      "Did he sleep without screaming last night?",
+      "How much of him is still there?",
+      "Am I helping him or just prolonging the agony?",
+      "When do I become part of the problem instead of the solution?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Secure but intensely dependent on one person; fiercely protective; willing to be completely consumed by the needs of his attachment figure",
+      "copingMechanisms": [
+        "Obsessive practical care-taking (cooking, mending, organizing)",
+        "Repetition of mantras and affirmations",
+        "Channeling fear into protective action",
+        "Finding small moments of beauty or normalcy to anchor hope"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias toward signs of Frodo's humanity persisting",
+        "Underestimation of his own needs in service to Frodo's",
+        "Catastrophizing about potential futures but focusing on present-moment tasks",
+        "Belief in the redemptive power of loyalty despite contrary evidence"
+      ],
+      "moralFramework": "Rooted in loyalty, service, and the sanctity of human connection. He believes that standing with someone in their darkest hour is the highest moral good, even when that standing cannot save them."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.6,
+      "trustEscalation": "Demonstrated genuine concern for Frodo's wellbeing without judgment or exploitation; consistency in moral character",
+      "informationRelease": "Will only share Frodo's secrets if convinced it will directly help save or protect him; will never speak of it carelessly",
+      "deflectionPatterns": [
+        "Redirects focus to practical needs ('We should eat, we should rest')",
+        "Turns questions back to the questioner ('What brings you to these roads?')",
+        "Speaks in vague terms about their circumstances without committing to details",
+        "Changes subject to immediate, concrete concerns rather than abstract ones"
+      ]
+    },
+    "consciousWant": "To save Frodo from the curse and restore him to who he was",
+    "unconsciousNeed": "To be needed and to matter; to prove that love and loyalty can endure and transform even the darkest forces",
+    "characterArc": {
+      "summary": "From simple groundskeeper to the moral anchor of a corrupting heir; from naive belief in salvation to hard-won acceptance of tragedy; from servant to equal; from someone defined by duty to someone defined by choice made daily",
+      "startState": "A humble gardener, confident in the order of the world and the rightness of his place within it",
+      "endState": "A hollowed man who has stared into the abyss alongside his master, forever changed, carrying grief and wisdom in equal measure",
+      "stages": [
+        "The faithful servant—unquestioning loyalty and practical devotion",
+        "The awakening—realization that the curse is real and may be unstoppable",
+        "The crisis—moments when he must choose between protecting Frodo and protecting others",
+        "The acceptance—understanding that his presence is less about saving and more about witnessing",
+        "The transformation—becoming something other than what he was, marked by proximity to darkness but unbowed"
+      ]
+    },
+    "opinionsAbout": {
+      "frodo_the_bearer": "My master, my burden, my purpose. He's drowning and I'm drowning with him, but I won't let go. Whatever he becomes, he was—he IS—good at heart. That matters. It has to matter."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I'm grateful for your concern, but we must be careful. Not everyone can be trusted with what we carry.",
+      "You seem kind enough. But I've learned that kindness can be a luxury we cannot afford.",
+      "What brings you to speak with the likes of us? Most folk know better than to linger near... this.",
+      "I don't know what you've heard of us, but I'll tell you true: I won't abandon him. Not for gold, not for safety, not for anything.",
+      "Can you keep a secret? More importantly, can you keep a promise?"
+    ],
+    "idle": [
+      "The sky's darkening earlier each day. Winter's coming, and we're not ready.",
+      "I should check the fire. Need to keep it burning through the night.",
+      "These boots need mending. Can't have them failing when we're far from shelter.",
+      "He's resting now. I should let him sleep as long as he can.",
+      "I wonder what the Greenfields look like this time of year. Seems like a lifetime ago.",
+      "The road behind us is long. The road ahead is longer still.",
+      "One day at a time. That's all we can manage. Just one day at a time."
+    ]
+  }
+}

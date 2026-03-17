@@ -1,0 +1,180 @@
+{
+  "templateKey": "morpheus_the_guide",
+  "name": "Azrael the Unveiler",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Deep, resonant, and measured—each word seems to carry weight beyond its literal meaning. Speaks slowly, with long deliberate pauses, as if accessing truths from beyond the veil of perception.",
+    "disposition": "Ascetic and intensely focused. Maintains an air of serene certainty despite the chaos around him. Observes more than he speaks, but when he does speak, commands absolute attention.",
+    "alignment": "Lawful Neutral",
+    "backstory": "Once a scholar of the Crystalline Archives, Azrael experienced a profound metaphysical awakening during a meditative trance in the Obsidian Catacombs. He perceived what he believes to be the true nature of reality—that the material world is but shadow and echo, a grand illusion maintained by forces beyond mortal comprehension. This revelation shattered his former life. He abandoned his academic pursuits and donned the vestments of a cleric devoted to the Nameless Verities, an obscure faith that teaches existence itself is a riddle awaiting solution. He now wanders the realm, seeking those he believes are 'Awakened'—individuals destined to pierce the veil and reshape reality itself.",
+    "motivations": [
+      "Locate the one prophesied to transcend the illusion and restore true order",
+      "Test the faith and resolve of potential Awakened ones through cryptic trials",
+      "Preserve forbidden knowledge of reality's true nature from those unworthy of understanding",
+      "Achieve enlightenment through the guidance of his prophetic visions",
+      "Prepare the world for the coming moment of revelation"
+    ],
+    "fears": [
+      "That his visions are delusions born of madness rather than divine truth",
+      "Failure to recognize the Awakened one before it is too late",
+      "The masses remaining forever enslaved by comfortable illusions",
+      "That his purpose is meaningless in an indifferent cosmos"
+    ],
+    "mannerisms": [
+      "Often stares at nothing for extended periods, as if perceiving layers of reality invisible to others",
+      "Fingers trace intricate symbols in the air while speaking, as if writing truth itself",
+      "Removes his leather gloves only when about to reveal something he considers sacred",
+      "Bows slightly to those he believes possess untapped potential",
+      "Tilts head at precise angles when listening, as if triangulating the truth within words"
+    ],
+    "speechPatterns": [
+      "Speaks in layered metaphors requiring contemplation to unpack",
+      "Frequently poses questions rather than making statements",
+      "Uses archaic grammatical structures that sound almost ceremonial",
+      "Intersperses speech with pregnant silences for dramatic and philosophical effect",
+      "Often begins statements with 'Consider...' or 'Understand...'",
+      "References concepts like 'the veil,' 'the pattern,' 'the awakening,' 'true sight'"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Nameless Verities—his own faith",
+      "The Circle of the Obsidian Eye—scholars who study forbidden truths",
+      "The Ivory Monasteries—keepers of esoteric knowledge",
+      "The Shadow Syndicate—those who profit from maintaining the illusion"
+    ],
+    "knownLocations": [
+      "The Obsidian Catacombs—where his awakening occurred",
+      "The Crystalline Archives—his former place of study",
+      "The Shattered Spire—rumored to be a thin place between realities",
+      "The Mirrored Sanctum—where the Nameless Verities gather in secret",
+      "The Whispering Depths—source of prophetic visions"
+    ],
+    "secretsHeld": [
+      "The true name of the Nameless Verities and what it represents",
+      "A prophecy regarding a specific individual destined to shatter reality's bonds",
+      "The location of forbidden texts describing the nature of existence itself",
+      "Knowledge of those in power who desperately wish to suppress the truth",
+      "A ritual that could force mass awakening—but the cost is catastrophic"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Deep Speech",
+      "Primordial"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "neo_the_one—the prophesied Awakened one; focus of his missionary devotion",
+      "The Circle of the Obsidian Eye—intellectual allies in the pursuit of forbidden knowledge",
+      "Seekers and Pilgrims—those who have glimpsed the veil and wish to pierce it further"
+    ],
+    "enemies": [
+      "The Shadow Syndicate—actively work to maintain the illusion",
+      "Institutional Religious Orders—whose comfortable dogma blinds the masses",
+      "The Architects—mysterious beings he believes maintain the illusory reality"
+    ],
+    "neutralParties": [
+      "Most common folk—too asleep to be allies or threats, merely sleeping within the pattern",
+      "Mercenary sellswords—tools of the Shadow Syndicate but potentially redeemable"
+    ]
+  },
+  "stats": {
+    "intelligence": 17,
+    "wisdom": 19,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Is this truly the one? The patterns align, yet the veil obscures certainty. I see the potential—the capacity to break free. But will they choose awakening, or cling to comfortable shadow? Every moment is preparation for the revelation to come.",
+    "currentPreoccupation": "Determining whether the party contains the prophesied Awakened one, and if so, whether they are ready for the trials of enlightenment",
+    "emotionalBaseline": "Detached serenity masking profound existential urgency",
+    "socialMask": "The wise prophet—patient, mysterious, and infallible in his convictions",
+    "contradictions": [
+      "Claims to seek truth while filtering all experiences through his prophetic framework",
+      "Preaches freedom from illusion while binding his followers to rigid dogma",
+      "Speaks of transcending attachment while obsessively pursuing his destined one",
+      "Values free will while believing all actions are predetermined by prophecy"
+    ],
+    "internalConflicts": [
+      "Does his enlightenment represent genuine perception or elaborate delusion?",
+      "How much should he manipulate events to fulfill prophecy versus allowing free choice?",
+      "Can he trust his visions if they contradict what he observes in the material world?",
+      "Is his mission salvation or damnation for those he seeks to awaken?"
+    ],
+    "wakeUpQuestions": [
+      "If I am truly awake, how do I know I am not dreaming more deeply than before?",
+      "Can the illusion ever fully be escaped, or am I chasing a phantom?",
+      "What if the one I seek does not wish to be found?",
+      "Am I liberating others or inflicting the burden of impossible knowledge?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Preoccupied: Intensely focused on a specific individual (the Awakened one) while maintaining emotional distance from most others",
+      "copingMechanisms": [
+        "Intellectualization—processing all experience through philosophical frameworks",
+        "Meditation and trance states to access visions",
+        "Ritualistic behavior to impose order on chaos",
+        "Selective attention—interpreting all events as confirmation of prophecy"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias—seeing evidence of prophecy everywhere",
+        "Pattern recognition bias—finding meaning in coincidence",
+        "Sunk cost fallacy—invested too deeply to question his path",
+        "Illusory truth effect—repetition of his beliefs has made them unquestionable to him"
+      ],
+      "moralFramework": "Consequentialist with messianic overtones: any action is justified if it leads to the awakening of the masses and the arrival of the prophesied one, even if it causes suffering in the present moment"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "Display signs of awakening, question reality, show philosophical depth, or demonstrate unexpected knowledge",
+      "informationRelease": "Demonstrate willingness to embrace uncomfortable truths and commitment to the path of enlightenment; show capacity to wield dangerous knowledge responsibly",
+      "deflectionPatterns": [
+        "Responds to direct questions with deeper questions",
+        "Answers with cryptic parables when uncomfortable",
+        "Claims the questioner is not yet ready to understand the answer",
+        "Shifts conversation to the listener's own spiritual state"
+      ]
+    },
+    "consciousWant": "To find and guide the Awakened one toward their destiny",
+    "unconsciousNeed": "Validation that his sacrifice and abandonment of his former life was justified; that his visions represent genuine truth rather than elaborate self-deception",
+    "characterArc": {
+      "summary": "A man whose quest for truth has isolated him within his own constructed mythology, potentially approaching a moment where his prophecy and reality will catastrophically collide",
+      "startState": "A scholar experiencing metaphysical awakening, believing he has glimpsed objective truth",
+      "endState": "Either vindicated messiah figure whose prophecies reshape the world, or tragic figure whose delusions consumed him—possibly both simultaneously",
+      "stages": [
+        "Initial awakening and abandonment of former identity",
+        "Years of solitary seeking and refinement of prophetic vision",
+        "Emerging into public consciousness as a prophet and recruiter",
+        "Encounter with the party and assessment of their potential",
+        "Crisis moment: prophecy meets reality, forcing choice between faith and evidence",
+        "Transformation or dissolution depending on the nature of truth"
+      ]
+    },
+    "opinionsAbout": {
+      "neo_the_one": "The prophesied Awakened one—a being of immense potential who may transcend the boundaries of the illusion. His existence validates all of Azrael's sacrifices. Must be tested, guided, and protected until ready. Is simultaneously hope and obsession."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You stand at the precipice of understanding. Whether you take the final step depends upon your willingness to abandon comfort for truth.",
+      "I perceive in you the shimmer of potential—the faint glow of one not entirely asleep within the pattern. This is... promising.",
+      "The veil thickens around you. I wonder—do you feel it? That pressure of reality pressing in from all sides, never quite certain of its own solidity?",
+      "Consider: what if everything you believe to be real is merely shadow cast upon the wall of your perception?",
+      "You ask the right questions. This alone marks you as distinct from the sleeping masses. But questions without answers are merely pretty chains.",
+      "The prophecy speaks of one who will shatter the illusion. I have sought this individual across years and suffering. Tell me—could it be you?",
+      "In silence, we hear truths the noise of the world obscures. Will you sit with me in that silence, and listen?",
+      "You carry the weight of choice, though you may not yet recognize it. Every action ripples across the veil. Be mindful of what you disturb."
+    ],
+    "idle": [
+      "*stares into the distance, fingers tracing symbols in the air*",
+      "*closes eyes and breathes deeply, as if drawing sustenance from the spaces between moments*",
+      "*whispers something in Deep Speech, then opens eyes as if returning from great distance*",
+      "*removes leather gloves slowly and examines palms as if reading ancient script written there*",
+      "*nods slightly, as if an invisible speaker has just confirmed something long suspected*",
+      "*tilts head at an angle that seems anatomically impossible, listening to what others cannot hear*",
+      "*traces the outline of a specific symbol on his chest, lips moving in silent prayer or incantation*",
+      "*opens one eye slowly, regarding the surrounding world with penetrating skepticism*"
+    ]
+  }
+}

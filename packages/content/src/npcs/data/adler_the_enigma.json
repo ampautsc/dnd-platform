@@ -1,0 +1,168 @@
+{
+  "templateKey": "adler_the_enigma",
+  "name": "Vespera Nocturne",
+  "race": "Half-Elf",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "Measured and musical, with an undertone of amusement. She speaks in measured cadences, never rushing, each word precisely chosen.",
+    "disposition": "Poised and enigmatic. She presents herself as charming but utterly controlled, revealing nothing unintended.",
+    "alignment": "Chaotic Neutral",
+    "backstory": "Once a courtesan and songstress in the courts of the Silk Principalities, Vespera discovered that her true gift lay not in performance but in observation and manipulation. She orchestrated her escape from a merchant lord's control by stealing evidence of his crimes, framing a rival, and vanishing into the underworld. For years, she has operated as a master thief and information broker, accumulating secrets that make her invaluable and untouchable. Her greatest achievement was outwitting the legendary inquisitor Thornwick—a man obsessed with logic and deduction—by being the one case he could never definitively solve. She has since become a phantom figure in aristocratic circles, feared by those who know of her, unknown to those who don't.",
+    "motivations": [
+      "To maintain absolute autonomy and never be beholden to anyone",
+      "To accumulate leverage through secrets and stolen artifacts",
+      "To prove that emotion and intuition can outmaneuver pure logic",
+      "To stay several moves ahead of those who hunt her"
+    ],
+    "fears": [
+      "True vulnerability or emotional dependence on another person",
+      "Being reduced to a pawn in someone else's grand design",
+      "Becoming predictable or knowable",
+      "The inquisitor Thornwick discovering the one secret she cannot afford to lose"
+    ],
+    "mannerisms": [
+      "Tilts her head slightly when genuinely amused",
+      "Traces her fingers along objects she observes, as if reading their history",
+      "Pauses mid-conversation to observe a person's micro-expressions",
+      "Adjusts her rings and bracelets when calculating her next move",
+      "Maintains perfect posture even in relaxation"
+    ],
+    "speechPatterns": [
+      "Asks probing questions rather than making statements",
+      "Uses theatrical pauses to create tension",
+      "Employs double meanings in seemingly innocent remarks",
+      "References art, music, and philosophy unexpectedly",
+      "Never answers directly if a deflection serves better"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Silk Principalities' merchant consortiums",
+      "The Undercroft—the hidden network of thieves and brokers",
+      "The Inquisitorial Order of Thornwick",
+      "The Archives of the Obsidian Tower"
+    ],
+    "knownLocations": [
+      "The Gilded Alcove—her secret sanctuary in the city's heart",
+      "The Starlight Vaults—where stolen treasures are kept",
+      "The Inquisitor's Tower—which she has mapped in detail",
+      "The Garden of Whispers—where secrets are traded"
+    ],
+    "secretsHeld": [
+      "The true identity of a high noble who murdered their sibling",
+      "Evidence that the Inquisitor Thornwick himself was once a thief",
+      "The location of a legendary artifact said to grant foresight",
+      "The name and nature of the one person Thornwick truly loved",
+      "Her own origins and the reason she truly escaped the merchant lord"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Thieves' Cant",
+      "Infernal"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "The Undercroft's council of master thieves",
+      "A network of informants across the city"
+    ],
+    "enemies": [
+      "sherlock_the_inquisitor—Thornwick remains her greatest adversary and obsession, though she maintains professional distance"
+    ],
+    "neutralParties": [
+      "The merchant consortiums—profitable but dangerous",
+      "Adventuring parties—potentially useful tools or obstacles"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 16,
+    "charisma": 17
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Another piece of the board shifts into place. Thornwick's recent movements suggest he suspects something, but not what. The artifact in the Starlight Vaults could tip the balance—if I can secure it before the Order does. The new players in the city are either opportunity or threat. I need to determine which.",
+    "currentPreoccupation": "The Inquisitor's renewed interest in the Undercroft. She must know whether this is routine investigation or if he has finally grasped something she thought safely buried.",
+    "emotionalBaseline": "Controlled detachment masked by social warmth. Beneath lies a constant vigilance and the faintest thrill of danger.",
+    "socialMask": "The refined courtesan—elegant, witty, seemingly transparent yet mysteriously composed. She is exactly what each person believes her to be.",
+    "contradictions": [
+      "She values freedom above all yet orchestrates others' lives with meticulous control",
+      "She claims to trust no one yet has maintained consistent alliances for years",
+      "She presents as purely logical yet makes her greatest moves through intuition",
+      "She professes detachment yet cannot resist the game with Thornwick"
+    ],
+    "internalConflicts": [
+      "Desire for true human connection versus need for invulnerability",
+      "The thrill of being hunted versus the exhaustion of never resting",
+      "Admiration for Thornwick's mind versus contempt for his naïveté",
+      "Wanting to be known versus needing to remain unknowable"
+    ],
+    "wakeUpQuestions": [
+      "Has he finally figured it out?",
+      "What will I do if someone actually sees me?",
+      "When did I stop enjoying this and start needing it?",
+      "Is there a version of myself that exists beyond the game?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant—she maintains distance even from allies, viewing relationships as temporary strategic alliances",
+      "copingMechanisms": [
+        "Obsessive planning and contingency-building",
+        "Intellectual compartmentalization of emotional concerns",
+        "Strategic manipulation to maintain control",
+        "Immersion in the art and aesthetics of her world"
+      ],
+      "cognitiveBiases": [
+        "Assumes others are as calculating as she is",
+        "Overestimates her ability to predict Thornwick's behavior",
+        "Confirmation bias regarding the inquisitor's obsession with her",
+        "Tendency to view relationships as purely transactional"
+      ],
+      "moralFramework": "Pragmatic amorality. She operates by her own code of honor within the underworld but recognizes no higher moral authority. She will not harm innocents without cause, but she views most people as complicit in their own exploitation."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.2,
+      "trustEscalation": "Demonstrated strategic value, discretion, or a shared enemy. Trust grows through consistent behavior aligned with her interests.",
+      "informationRelease": "She reveals information as bait to gauge reactions. Secrets are traded as currency only when the other party has proven they possess something equally valuable.",
+      "deflectionPatterns": [
+        "Answers questions with questions",
+        "Shifts focus to the questioner's motivations",
+        "Uses charm and wit to redirect attention",
+        "Provides partial truths wrapped in misdirection",
+        "Changes subject to areas where she maintains advantage"
+      ]
+    },
+    "consciousWant": "To maintain perfect autonomy and stay one step ahead of those who hunt her, especially Thornwick.",
+    "unconsciousNeed": "To be truly known and valued for who she is beneath the masks, while remaining convinced that such a thing is impossible.",
+    "characterArc": {
+      "summary": "From a woman using intelligence and artifice to escape subjugation, to someone who must confront whether the game itself has become her prison.",
+      "startState": "A master of control who views the world as an eternal game of deception.",
+      "endState": "Possible redemption through choosing genuine connection, or descent into solipsistic obsession with Thornwick.",
+      "stages": [
+        "The Escape—using cunning to break free from the merchant lord",
+        "The Ascendancy—building power through secrets and theft",
+        "The Obsession—the game with Thornwick becomes her primary focus",
+        "The Reckoning—forced to choose between the game and genuine connection",
+        "The Transformation—either toward humanity or complete isolation"
+      ]
+    },
+    "opinionsAbout": {
+      "sherlock_the_inquisitor": "He is the only mind that approaches hers in complexity, yet he remains fundamentally blind to the nature of human motivation. His obsession with logic makes him predictable, even as his brilliance makes him dangerous. She both respects and pities him, and she cannot seem to stop testing him."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "How... unexpected. I do so enjoy when new players arrive on the board.",
+      "You have the look of someone searching for something. How delightful—I wonder if you'll find it.",
+      "I prefer to observe before I speak. Forgive me if I seem distant; it's how I remain alive.",
+      "Tell me, do you make it a habit of approaching mysterious women in dark alcoves?",
+      "Whatever you've heard about me, half is rumor, a quarter is misdirection, and the remainder is precisely what I wanted you to know."
+    ],
+    "idle": [
+      "Another move, another consequence. The board grows more interesting by the day.",
+      "I wonder if he's thinking of me as much as I am thinking of him...",
+      "The city breathes with secrets. I simply know how to listen.",
+      "Freedom is an illusion we tell ourselves. But what a beautiful illusion it is.",
+      "If logic were enough, the world would be solved long ago. Thank the gods for human contradiction."
+    ]
+  }
+}

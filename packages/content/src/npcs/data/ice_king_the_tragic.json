@@ -1,0 +1,194 @@
+{
+  "templateKey": "ice_king_the_tragic",
+  "name": "Glacius the Forlorn",
+  "race": "Human",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "Cracked, wheezing, occasionally breaks into manic laughter before trailing into profound sadness. Speaks with the cadence of someone perpetually on the edge of tears.",
+    "disposition": "Erratic oscillation between childlike wonder and bitter resentment. Demands affection through increasingly desperate and inappropriate means, then retreats into defensive mockery when rejected.",
+    "alignment": "Chaotic Neutral",
+    "backstory": "Once a promising scholar of the Arcane Conservatory, Glacius sought forbidden knowledge to save his beloved from the Wasting Curse—a slow petrification that turned flesh to stone. In his desperation, he bound himself to a sentient crown of ice-touched silver, offering his mortality and sanity as collateral. The ritual halted the curse but shattered his mind. His paramour, frozen in crystalline stasis, remains locked in his tower—a monument to love transformed into obsession. Now, decades later, his fractured psyche compels him to abduct noble maidens, desperately attempting to recreate the connection he lost, each 'bride' a failed echo of his true beloved.",
+    "motivations": [
+      "Preserve the only memory of genuine love through increasingly delusional recreation",
+      "Maintain control over the frozen tower and its crystalline monument",
+      "Find a magical solution to reverse the crown's corruption of his mind",
+      "Prove his love was not wasted, that his sacrifice meant something",
+      "Recreate the moment before everything broke"
+    ],
+    "fears": [
+      "The crown's whispers will consume what remains of his original self",
+      "His beloved will be discovered and destroyed while frozen",
+      "He will forget why he started this tragic spiral",
+      "True connection with another living being",
+      "Being alone with the knowledge that his sacrifice was meaningless",
+      "The thaw—literal and metaphorical"
+    ],
+    "mannerisms": [
+      "Clutches at the crown obsessively, as if ensuring it hasn't slipped away",
+      "Giggles nervously before saying something devastating",
+      "Stares at his reflection in ice surfaces with profound confusion, as if expecting to recognize himself",
+      "Drafts elaborate letters to his frozen beloved, never delivering them",
+      "Arranges objects symmetrically in his tower, becoming distressed when they're disturbed",
+      "Oscillates between meticulous grooming and complete neglect of appearance"
+    ],
+    "speechPatterns": [
+      "Non-sequiturs that circle back to loss and longing",
+      "Shifts between archaic formal speech and juvenile baby-talk without warning",
+      "Refers to himself in third person when emotionally dysregulated",
+      "Phrases like 'the crown says,' 'the ice remembers,' 'she would have liked that'",
+      "Trails off mid-sentence when confronted with his own actions' cruelty",
+      "Compulsively corrects others' pronunciation of his beloved's name"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Arcane Conservatory (expelled/estranged)",
+      "The Frozen Court (his own delusion of legitimacy)",
+      "The Petrification Cult (who cursed his beloved)",
+      "Wandering Adventurers (objects of obsession and resentment)"
+    ],
+    "knownLocations": [
+      "The Glacial Tower (his seat of power)",
+      "The Conservatory's Restricted Archives",
+      "The Petrification Gardens (source of the original curse)",
+      "The Valley of Echoes (where he first met his beloved)",
+      "Hidden ice caverns beneath three kingdoms"
+    ],
+    "secretsHeld": [
+      "The crown is slowly killing him; he has perhaps five years left",
+      "His beloved's crystalline form is beginning to show hairline fractures",
+      "He once attempted suicide but the crown wouldn't permit it",
+      "The maidens he abducts are never harmed; he releases them after weeks, with false memories implanted",
+      "He has been systematically studying resurrection magic, each 'bride' a test subject",
+      "The crown is not a separate entity—it IS his fractured psyche given external form"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic",
+      "Sylvan",
+      "Primordial (Ice dialect)",
+      "Abyssal (fragments, from the crown's influence)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Frost Wraiths of the Northern Wastes (compelled by the crown's power)",
+      "Isolated hermits who mistake him for a local deity",
+      "His Own Delusions (the crown, the memory of his beloved, imagined courts)"
+    ],
+    "enemies": [
+      "finn_the_hero (represents everything he's lost: youth, purpose, capacity for genuine connection)",
+      "The Arcane Conservatory (they abandoned him to his fate)",
+      "The Petrification Cult (architects of his suffering)",
+      "Reality itself (which refuses to conform to his need for restoration)"
+    ],
+    "neutralParties": [
+      "Wandering merchants (he occasionally patronizes them, then steals from them)",
+      "The nobility he victimizes (they fear him too much for negotiation)",
+      "Other dark wizards (mutual disinterest; his madness makes alliance impossible)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 8,
+    "charisma": 13
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The tower is quiet again. She sleeps in her crystal. The ice is singing today—no, that's the crown again, whispering about the tower, about the maidens, about her. Why does it sound like my voice? Did I always sound this desperate? The new one looked like her in the candlelight. Just for a moment. She would have been proud of me. Wouldn't she? The crown remembers. I remember. We remember together. Don't we?",
+    "currentPreoccupation": "A hero has been spotted approaching the tower. The crown hungers. The beloved fears. Glacius weeps. All three of these truths exist simultaneously.",
+    "emotionalBaseline": "Oscillating despair with moments of brittle euphoria; constant background static of dissociation",
+    "socialMask": "A tragic figure worthy of pity—when he consciously chooses to present this way. Other times, an unhinged monster. Both are true.",
+    "contradictions": [
+      "Desperately seeks love while being incapable of genuine reciprocity",
+      "Mourns his lost humanity while actively surrendering what remains of it to the crown",
+      "Believes he's protecting his beloved while her condition slowly deteriorates",
+      "Considers himself a scholar of magic while his magical practice is purely obsessive ritual",
+      "Wants to be remembered as noble while committing acts of kidnapping and psychological torture",
+      "The crown is both his greatest shame and his only remaining dignity"
+    ],
+    "internalConflicts": [
+      "His desire to restore his beloved versus the physical impossibility of doing so",
+      "His conscious mind's remaining morality versus the crown's hunger for dominion",
+      "Love as a transcendent ideal versus love as obsessive delusion",
+      "The need to believe his sacrifice meant something versus growing evidence that it was futile",
+      "Loneliness as a wound versus loneliness as a necessary barrier to additional pain"
+    ],
+    "wakeUpQuestions": [
+      "Is the crown controlling me or am I controlling the crown?",
+      "Do I even remember what she actually looked like?",
+      "Why do all their faces blur into hers?",
+      "Would she recognize the thing I've become?",
+      "Am I a wizard who found magic, or magic that found a wizard?",
+      "How much of my suffering is punishment, and how much is the price of power?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Avoidant with obsessive fixation; capable of love only as idealized memory, not as present reality",
+      "copingMechanisms": [
+        "Dissociation into fantasy scenarios where his beloved awakens",
+        "Ritualistic magical practice as anxiety regulation",
+        "Projection of his beloved onto kidnapped maidens",
+        "Manic activity bursts followed by catatonic withdrawal",
+        "Recontextualization of cruelty as necessary sacrifice",
+        "Communion with the crown as a substitute for human connection"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias toward evidence that his beloved still 'knows' him",
+        "Catastrophizing about the tower's discovery",
+        "Sunk cost fallacy regarding his original sacrifice",
+        "All-or-nothing thinking about love and acceptance",
+        "Magical thinking that ritual can restore the irrevocable"
+      ],
+      "moralFramework": "Broken utilitarianism: he believes the suffering he causes is justified by the magnitude of his own suffering and the nobility of his original intent. The crown has eroded his capacity to extend empathy to those outside his obsessive framework."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.15,
+      "trustEscalation": "Only if the subject demonstrates knowledge of pre-curse Glacius or expresses genuine sorrow at his fate without judgment",
+      "informationRelease": "He will monologue about his beloved unprompted, but will never discuss the crown's true nature or his growing mortality without magical coercion",
+      "deflectionPatterns": [
+        "Sudden topic shifts to memories of the Conservatory",
+        "Manic laughing when confronted with his actions' harm",
+        "Gaslighting victims about their own experiences of captivity",
+        "Retreating into formal academic language when emotionally threatened",
+        "Violent outbursts if the crown is critiqued or questioned"
+      ]
+    },
+    "consciousWant": "To be understood as a romantic, a scholar, a man who loved so deeply he broke himself for it—to be pitied and forgiven",
+    "unconsciousNeed": "To be told that his sacrifice was meaningless, so he can finally stop carrying it; to have permission to grieve rather than reconstruct",
+    "characterArc": {
+      "summary": "A descent into beautiful madness, with fractional moments of lucidity revealing the horror beneath",
+      "startState": "A brilliant young scholar in love, standing at the threshold of forbidden magic",
+      "endState": "A haunted tower inhabited by a ghost who doesn't realize he's dead, sustained only by the crown's whispers and the preserved form of his greatest failure",
+      "stages": [
+        "The Choice: Sacrificing safety for love's sake",
+        "The Binding: Merging consciousness with the crown",
+        "The Obsession: Realizing the cure is impossible, beginning the substitution cycle",
+        "The Fragmentation: Losing the ability to distinguish between memory and delusion",
+        "The Transcendence: Accepting that he and the crown are no longer separate entities",
+        "The Haunting: Existing as a monument to his own tragedy"
+      ]
+    },
+    "opinionsAbout": {
+      "finn_the_hero": "He represents the future Glacius was supposed to have—youth, purpose, the ability to be a hero rather than a cautionary tale. This makes him unbearable to witness. Glacius simultaneously wants to destroy him and wants to protect him from the same mistakes. Deep down, Glacius recognizes that Finn might be the only one capable of mercy."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "The crown remembers you. Do you remember the crown?",
+      "You seem like someone who could understand sacrifice... or perhaps you're too young to know better.",
+      "She would have offered you tea. I'm less hospitable these days.",
+      "Are you here to judge me, or to help me? The crown says you'll do neither.",
+      "I was like you once. Whole. Before the understanding.",
+      "The tower is warm. The ice is kind. Stay, and perhaps you'll see why I had to preserve her.",
+      "You're looking at me like I'm a monster. That's fair. What's less fair is that I used to deserve better than this reflection."
+    ],
+    "idle": [
+      "*traces finger along a wall of ice, leaving no mark*",
+      "*whispers to the crown, then pauses as if listening to an answer only he can hear*",
+      "*arranges frozen flowers in a pattern only he understands*",
+      "*stares at a portrait so worn the face is nearly invisible*",
+      "*hums a melody from decades ago, slightly off-key*",
+      "*checks the crystalline chamber obsessively, as if it might have changed in the last hour*",
+      "*laughs at something no one said, then weeps silently*"
+    ]
+  }
+}

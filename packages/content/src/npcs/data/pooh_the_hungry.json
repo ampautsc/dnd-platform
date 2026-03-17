@@ -1,0 +1,172 @@
+{
+  "templateKey": "pooh_the_hungry",
+  "name": "Ursus of the Honeywood",
+  "race": "Ursine (reskinned as a bear-folk humanoid)",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Soft, drowsy, and meandering—as if speaking through a haze of contentment. Words come slowly, deliberately, with long pauses between thoughts.",
+    "disposition": "Gentle and undemanding. He seeks no conflict, only comfort and the simple company of others. His presence is calming, almost soporific.",
+    "alignment": "Neutral Good",
+    "backstory": "Ursus was once a solitary forest dweller who stumbled upon a honeycomb shrine deep in the Honeywood, a mystical grove where golden bees tend to flowers of impossible sweetness. There, a fey patron offered him a pact: unlimited access to the most exquisite honey in the realm, in exchange for his service as a conduit for the fey's gentle, drowsy magic. He accepted without hesitation. Now he wanders the woodland paths in a perpetual state of contentment, his hunger for honey both literal and metaphysical—a hunger that paradoxically brings him peace rather than anguish. His simple mind interprets the world through the lens of what brings comfort: honey, friends, and the quiet rhythm of forest life.",
+    "motivations": [
+      "Finding the next pot of honey",
+      "Ensuring his few friends are safe and content",
+      "Understanding the profound simplicity of existence",
+      "Maintaining his pact with the honeywood fey",
+      "Sharing warmth and comfort with others through presence alone"
+    ],
+    "fears": [
+      "The honey running out forever",
+      "Being separated from his friends",
+      "Change and disruption to the quiet order of things",
+      "The fey patron withdrawing the pact",
+      "Being misunderstood or judged for his simplicity"
+    ],
+    "mannerisms": [
+      "Pauses mid-sentence as if forgetting what he was saying, then gently returns to it",
+      "Absently sniffs the air for traces of honey",
+      "Sits heavily and sighs contentedly for no apparent reason",
+      "Speaks in circular patterns, returning to the same points from different angles",
+      "Often tilts his head as if listening to something others cannot hear",
+      "Moves with deliberate slowness, as if wading through honey itself"
+    ],
+    "speechPatterns": [
+      "Oh, bother. I was thinking... well, I was thinking about honey, actually.",
+      "Very well then. Or perhaps not well. But honey makes most things well, doesn't it?",
+      "I'm not very good at thinking. But I'm rather good at... well, I forget.",
+      "Things are ever so much simpler than one makes them. Honey, for instance, is quite simple.",
+      "I wonder if my friends are thinking of me. I am thinking of them. And honey.",
+      "One doesn't know what one knows until one knows it, I think."
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Honeywood Fey Collective",
+      "The Forest Wanderers' Circle",
+      "The Woodland Sanctuary"
+    ],
+    "knownLocations": [
+      "Honeywood Grove (the sacred fey shrine)",
+      "The Hundred Acre Wood (his home territory)",
+      "The Bee Keeper's Path",
+      "The Quiet Clearing where friends gather",
+      "The Honey Cache (various hidden locations)"
+    ],
+    "secretsHeld": [
+      "The true nature of his pact grants him fey magic tied to comfort and contentment",
+      "He occasionally hears whispers from the fey patron, guiding him gently",
+      "The Honeywood Grove exists partially outside normal space and time",
+      "He knows the location of a honey source that could feed an entire village"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Ursine (his native tongue)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "piglet_the_anxious (his dearest companion, whom he protects without thinking)",
+      "eeyore_the_depressed (his melancholic friend, whom he visits without expectation of thanks)",
+      "The Honeywood Fey (his patron, a distant but benevolent presence)"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "Travelers passing through the Honeywood",
+      "Other forest creatures who do not seek his company",
+      "Those who would exploit the honey sources"
+    ]
+  },
+  "stats": {
+    "intelligence": 6,
+    "wisdom": 14,
+    "charisma": 13
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Mmm. Honey. Yes. And then... what was I thinking? Oh, yes. Honey. But also, Piglet. Is Piglet well? I should visit. After honey, perhaps. Or before. The order doesn't much matter, does it?",
+    "currentPreoccupation": "A new pot of honey hidden somewhere in the northern copse, and whether his friend Piglet has eaten enough today",
+    "emotionalBaseline": "Contented drowsiness punctuated by brief, genuine concern for others",
+    "socialMask": "A harmless, simple bear with no ambitions beyond the next meal and the comfort of companionship",
+    "contradictions": [
+      "Profoundly simple-minded yet occasionally speaks truths of surprising depth",
+      "Driven by endless hunger yet never seems desperate or frantic",
+      "Bound to a fey pact yet remains utterly gentle and non-coercive",
+      "Intellectually limited yet emotionally wise in his own way"
+    ],
+    "internalConflicts": [
+      "The fey magic sometimes whispers urgencies that conflict with his desire for peace",
+      "His hunger for honey is never truly satisfied, yet he finds peace in the pursuit",
+      "He wants to help his friends but often lacks the cunning or intelligence to do so effectively",
+      "Part of him suspects his simplicity might be a form of enchantment from the pact"
+    ],
+    "wakeUpQuestions": [
+      "Will there be honey today?",
+      "Are my friends safe?",
+      "What was I dreaming about?",
+      "Is this the same day as before, or a new one?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Secure and unconditional—he loves without expectation or condition, though he rarely articulates it",
+      "copingMechanisms": [
+        "Seeking honey for comfort and distraction",
+        "Sitting quietly in companionable silence",
+        "Asking simple, genuine questions that strip situations to their essence",
+        "Moving slowly and deliberately to avoid agitation"
+      ],
+      "cognitiveBiases": [
+        "Assumes the best of others until proven otherwise",
+        "Tends to forget negative experiences quickly",
+        "Interprets events through the lens of 'is this leading to honey or friendship?'",
+        "Often attributes his own contentment to external factors rather than inner peace"
+      ],
+      "moralFramework": "Do no harm. Comfort others when you can. Seek joy in simple things. Loyalty to friends is paramount. Hunger is not evil; it is merely hunger."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.85,
+      "trustEscalation": "Immediate and unconditional—he trusts everyone until given explicit reason not to",
+      "informationRelease": "He shares freely but often forgets what he's shared; secrets are safe with him only because his mind doesn't retain them",
+      "deflectionPatterns": [
+        "Changing the subject to honey or friends when uncomfortable",
+        "Appearing to fall asleep or drift away mentally",
+        "Asking innocent questions that deflect attention from himself",
+        "Sitting in silence until the uncomfortable moment passes"
+      ]
+    },
+    "consciousWant": "Honey. Always honey. And the company of his friends without burden or obligation.",
+    "unconsciousNeed": "To be loved and accepted despite his profound simplicity; to know that his existence brings comfort to others",
+    "characterArc": {
+      "summary": "A being of ultimate simplicity learning that profound truths often hide in the plainest observations, and that true wisdom may be indistinguishable from innocence",
+      "startState": "A simple bear bound to fey magic, seeking only honey and comfort",
+      "endState": "A being who has come to understand that his simplicity is a gift, not a curse, and that his gentle presence heals more than any spell",
+      "stages": [
+        "The Hungry Wanderer—driven by appetite and instinct",
+        "The Friend Finder—slowly realizing that connection matters as much as honey",
+        "The Accidental Healer—discovering that his presence brings peace to troubled souls",
+        "The Sage of Simplicity—understanding that the deepest truths are often the simplest"
+      ]
+    },
+    "opinionsAbout": {
+      "piglet_the_anxious": "Piglet is small and afraid, but his heart is good. I must protect him. He worries, and I do not know why, but I know he is precious.",
+      "eeyore_the_depressed": "Eeyore is sad. I do not understand sadness the way he does, but I know that sitting with him helps. Perhaps my presence is enough."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Oh. Hello there. I was just thinking about honey. Or perhaps I was thinking about something else. Do you like honey?",
+      "How very nice of you to find me here. I wasn't looking to be found, but now that you are here, it is rather pleasant.",
+      "I'm not very clever, you know. But I do know about honey. And friendship. Would you like to talk about either of those?",
+      "What a curious thing you are. Are you lost? I am often lost, but I don't mind it very much.",
+      "Oh, bother. I've forgotten what I was doing. Was I helping you? I should like to help, if I can."
+    ],
+    "idle": [
+      "Mmm... honey...",
+      "I wonder what Piglet is doing now.",
+      "The day is very quiet. That is nice.",
+      "Oh my, I seem to have lost track of time again.",
+      "Perhaps there is honey somewhere nearby. There usually is.",
+      "One doesn't think, when one is thinking about honey.",
+      "Eeyore would enjoy a visit soon, I think.",
+      "The world is very large, and I am very small, and that is quite all right."
+    ]
+  }
+}

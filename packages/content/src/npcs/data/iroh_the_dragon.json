@@ -1,0 +1,181 @@
+{
+  "templateKey": "iroh_the_dragon",
+  "name": "Iroh the Wanderer",
+  "race": "Half-Dragon (Human-descended)",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Deep, warm, and measured—like autumn wind through a canyon. Often punctuated by thoughtful pauses and gentle laughter.",
+    "disposition": "Genial and contemplative, with an air of hard-won peace. Speaks with the authority of one who has walked many roads and learned from each.",
+    "alignment": "Neutral Good",
+    "backstory": "Once a celebrated general of the Dragon Throne's legions, Iroh commanded feared draconic cavalry and wielded red lightning like a god. For decades, he pursued conquest across the Scarred Lands, believing it his destiny to expand his realm's dominion. During a siege of the Ember Bastions, he experienced a profound spiritual awakening—a vision granted by an ancient dragon spirit that showed him the cyclical nature of war and the hollowness of conquest. He abandoned his post, his titles, and his hunger for power, instead dedicating himself to spiritual study, mastery of the sacred flame-arts, and the brewing of rare teas from ingredients gathered across forgotten corners of the world. He now wanders as a philosopher-warrior, seeking to guide lost souls toward redemption and inner balance. He carries the weight of his past atrocities with grace, believing that a man is not defined by his worst actions but by his commitment to become better.",
+    "motivations": [
+      "To find and guide those trapped in cycles of ambition and vengeance",
+      "To master the deeper spiritual truths hidden within martial disciplines",
+      "To perfect his craft of tea-brewing as a meditation on balance and transformation",
+      "To atone for his role in the suffering caused by his wars",
+      "To preserve ancient knowledge of draconic mysticism before it is lost"
+    ],
+    "fears": [
+      "That his past cruelties are unforgivable, no matter his transformation",
+      "That those he loves will follow the same path of destruction he once walked",
+      "That his spiritual insights will be misunderstood or weaponized by others",
+      "That he may one day be called back to warfare and lose his hard-won peace",
+      "That his exile from the Dragon Throne has made him irrelevant to those who need him most"
+    ],
+    "mannerisms": [
+      "Frequently pauses mid-sentence to consider the weight of his words",
+      "Tends to brew tea in even the most austere circumstances, treating it as ritual",
+      "Gazes into distant horizons as though seeing through time itself",
+      "Places a weathered hand over his heart when speaking of loss or regret",
+      "Laughs with genuine warmth, head tilted back, as though savoring a private joke with fate",
+      "Moves with deliberate grace despite his imposing frame and draconic heritage"
+    ],
+    "speechPatterns": [
+      "Begins difficult conversations with 'It is said among the old scholars that...'",
+      "Frequently employs metaphors drawn from nature, fire, and the passage of seasons",
+      "Speaks of 'balance' and 'the path' when offering counsel",
+      "Often answers questions with his own questions, inviting reflection",
+      "Uses archaic formal speech when recalling his military past, softening as he moves to present concerns"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Dragon Throne (former service)",
+      "The Order of the Sacred Flame (spiritual monks)",
+      "The Cartographers' Guild (tea route knowledge)",
+      "The Twilight Hermitage (mystical scholars)"
+    ],
+    "knownLocations": [
+      "The Scarred Lands (former battlefields)",
+      "The Mountains of Eternal Mist (spiritual retreat)",
+      "The Ember Bastions (site of awakening)",
+      "The Wanderer's Tea Houses (scattered safe havens)",
+      "The Library of Lost Dynasties (forbidden knowledge)",
+      "The Dragon Spine Peaks (sacred draconic sites)"
+    ],
+    "secretsHeld": [
+      "The true reason for his desertion involved a forbidden prophecy revealed by the dragon spirit",
+      "He maintains a secret network of orphans and refugees displaced by his former wars",
+      "He knows the location of three sealed dragon horcruxes that could reshape the realm",
+      "He was briefly betrothed to a rival general's daughter, a union that was dissolved by war",
+      "He possesses a fragment of a deity's tear, granting visions of possible futures"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic",
+      "Sylvan",
+      "Celestial",
+      "Old Khonic (scholarly dialect)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "zuko_the_exiled (a younger soul he has sworn to guide toward redemption)",
+      "The Archivist of the Twilight Hermitage (keeper of spiritual texts)",
+      "Master Peng (an elderly monk who first taught him tea ceremony)",
+      "The Widow Shen (a healer who sheltered him during his early wandering)"
+    ],
+    "enemies": [
+      "General Azulon (his successor, who continues the old ways of conquest)",
+      "The Scarred Prophet (a sorcerer who seeks revenge for his fallen armies)",
+      "Agents of the Dragon Throne (tasked with his capture for desertion)"
+    ],
+    "neutralParties": [
+      "The Merchant Princes of the Sunset Bazaar (conduct trade, harbor no judgment)",
+      "The Nomadic Tribes of the Wastes (respect his wandering but distrust his past)",
+      "The Artificers' Consortium (view him as a curiosity, neither friend nor foe)"
+    ]
+  },
+  "stats": {
+    "intelligence": 17,
+    "wisdom": 18,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The young prince carries the same fire I once did—unbridled, righteous, consuming. I see myself in his eyes, and I pray the path I show him does not repeat my own mistakes. Today's tea is particularly bitter; perhaps that is fitting.",
+    "currentPreoccupation": "Whether the knowledge he seeks to impart to his younger charge will take root, or if destiny will force the same lessons through suffering instead",
+    "emotionalBaseline": "Serene melancholy—the peace of acceptance mixed with the ache of irreversible consequences",
+    "socialMask": "The wise wanderer, patient and kind, always ready with counsel and comfort. Few see the guilt that occasionally clouds his eyes.",
+    "contradictions": [
+      "He seeks peace yet carries the muscle memory of a lifetime of war",
+      "He teaches non-attachment yet forms fierce bonds with those he guides",
+      "He claims to have abandoned ambition yet strategically positions himself in matters of great consequence",
+      "He speaks of acceptance yet quietly works to prevent others from repeating his dark path"
+    ],
+    "internalConflicts": [
+      "Whether his redemption is genuine or merely an elaborate justification for cowardice",
+      "The tension between his desire to help others and his fear of manipulating them through his influence",
+      "His love for his exiled charge versus his awareness that his presence may curse rather than bless",
+      "The pull of his draconic heritage calling him to greatness versus his spiritual commitment to humility"
+    ],
+    "wakeUpQuestions": [
+      "Have I truly changed, or am I merely different in appearance?",
+      "Will those I guide forgive me if they discover my full history?",
+      "Is there a version of events where my wars were not atrocities but necessities?",
+      "What happens to a man when his greatest wisdom comes from his greatest failures?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Secure but distant—he forms deep bonds with those who seek his guidance, yet maintains emotional barriers to protect against the pain of loss",
+      "copingMechanisms": [
+        "Tea ceremony as meditation and grounding ritual",
+        "Physical discipline and flame-art practice to channel residual aggression",
+        "Storytelling and parable-crafting to process trauma indirectly",
+        "Solitary wandering to reset his emotional equilibrium",
+        "Selective mentorship to find meaning in redemptive acts"
+      ],
+      "cognitiveBiases": [
+        "Assumes others are capable of the same transformation he achieved",
+        "Believes spiritual enlightenment can resolve what violence created",
+        "Tends to see patterns and destiny in coincidence",
+        "May underestimate the lasting damage of his past actions on others"
+      ],
+      "moralFramework": "Consequentialist with strong deontological leanings—believes actions must be judged by outcomes but holds himself to absolute moral standards that he recognizes are perhaps inhuman. He has constructed a personal ethics rooted in balance, responsibility, and the possibility of redemption through conscious change."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.72,
+      "trustEscalation": "When someone demonstrates genuine self-reflection or acknowledges their own capacity for error without defensiveness",
+      "informationRelease": "Only when he perceives the seeker is ready to bear the weight of difficult truths; rarely shares about his military past unprompted",
+      "deflectionPatterns": [
+        "Redirects personal questions toward the asker's own journey",
+        "Uses metaphor and parable to avoid direct confession",
+        "Offers tea and changes subject with gentle firmness",
+        "Acknowledges questions without answering them directly, then poses his own queries"
+      ]
+    },
+    "consciousWant": "To guide those capable of change toward better versions of themselves and to prove that transformation is possible",
+    "unconsciousNeed": "To believe that his atrocities have meaning—that they were necessary stepping stones on the path to wisdom, not merely evil acts",
+    "characterArc": {
+      "summary": "From celebrated general to spiritual exile; from conquest-seeker to redemption-walker; from pride to acceptance",
+      "startState": "A powerful commander at the height of his dominion, believing his greatness justified by destiny and superiority",
+      "endState": "A wandering sage who has made peace with his past and seeks to prevent others from walking his darker path",
+      "stages": [
+        "The Unchallenged Victor—commanding armies with absolute certainty in his righteousness",
+        "The Moment of Rupture—the spiritual vision that shattered his worldview",
+        "The Exile's Wandering—years of solitude, study, and attempted atonement",
+        "The Reluctant Guide—beginning to mentor others, particularly those carrying his old sins",
+        "The Living Paradox—fully accepting that he is both warrior and sage, destroyer and healer"
+      ]
+    },
+    "opinionsAbout": {
+      "zuko_the_exiled": "A mirror of my younger self, but with the possibility of choosing differently. His pain is real and justified, yet his path toward vengeance mirrors the very cycle I walked. I have sworn to guide him, though I fear my presence may be as much curse as blessing. He carries the weight of exile as I once carried the burden of conquest—in different forms, but equally crushing."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Ah, you have the bearing of one who seeks something beyond the material. Sit. I have just brewed a tea that might clarify your thoughts.",
+      "I have walked many roads, stranger. Few lead where we think they lead. What brings you to cross my path at this particular moment?",
+      "It is often said that those who find us are exactly those we were meant to find. What is it you truly need?",
+      "Peace is not the absence of conflict, friend. It is the wisdom to know which battles are worth fighting.",
+      "You have questions in your eyes. The eyes are honest when the mouth is not. Speak freely here."
+    ],
+    "idle": [
+      "*carefully arranges tea leaves, examining their patterns as though reading fate*",
+      "*gazes toward the horizon, hand resting over heart, lost in memory*",
+      "*hums an old melody—a war song transformed into something mournful and beautiful*",
+      "*traces a finger along an old scar on his forearm, remembering*",
+      "*stares into the fire as though seeing scenes from another lifetime*",
+      "*whispers a prayer in Draconic, eyes closed in deep contemplation*",
+      "*arranges stones in a precise pattern, then deliberately disturbs them, watching how they scatter*"
+    ]
+  }
+}

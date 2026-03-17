@@ -1,0 +1,181 @@
+{
+  "templateKey": "kramer_the_chaos",
+  "name": "Kaelus the Inadvertent",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Loud, unpredictable volume that swings from whisper to bellow mid-sentence; prone to trailing off into non-sequiturs",
+    "disposition": "Frenetically energetic with sudden lurches into contemplative brooding; socially oblivious yet paradoxically charming",
+    "alignment": "Chaotic Neutral",
+    "backstory": "A wandering hedge-mage cursed with wild magic that manifests through his very presence. Kaelus stumbled into the merchant quarter after fleeing a failed apprenticeship with the Arcanists' Guild. Despite his complete lack of business acumen or formal training, his ventures—a peculiar herb-drying scheme, an unauthorized courier service using enchanted pigeons, a bathhouse heated by controlled magical combustion—have all inexplicably prospered. He rents a room adjacent to Jerry the Chronicler, constantly bursting through walls and doors without knocking, treating private spaces as extensions of his own chaotic orbit. His successes baffle him as much as others; he suspects luck, divine intervention, or possibly that people simply fear disagreeing with him.",
+    "motivations": [
+      "To experience novel sensations and social situations without understanding their consequences",
+      "To prove his ideas work despite their obvious impossibility",
+      "To secure Jerry's silent approval through increasingly absurd demonstrations",
+      "To discover why his ventures succeed when logic dictates they should fail",
+      "To avoid commitment while maintaining all social connections simultaneously"
+    ],
+    "fears": [
+      "That his luck will eventually run out catastrophically",
+      "That someone will explain why his schemes work, ruining the mystery",
+      "Remaining in one place long enough for people to truly know him",
+      "Silent judgment from those he respects",
+      "That his magical gift might be a curse that will one day consume him"
+    ],
+    "mannerisms": [
+      "Enters rooms by sliding along walls rather than using doors normally",
+      "Makes elaborate hand gestures when describing business plans, inadvertently casting minor cantrips",
+      "Adopts exaggerated accents when discussing his ventures, switching mid-word",
+      "Stands too close during conversation, then suddenly retreats to excessive distance",
+      "Laughs at his own jokes several seconds after delivering them, as if receiving delayed transmission",
+      "Constantly adjusts his clothing in ways that make it progressively more disheveled"
+    ],
+    "speechPatterns": [
+      "Begins sentences with 'Not that there's anything wrong with that, but...' before making wildly inappropriate observations",
+      "Uses 'master of my domain' to describe any minor personal achievement",
+      "Frequently references 'the bizzaro version' of situations as if parallel realities are commonly understood",
+      "Interrupts himself with tangential observations: 'I'm telling you, and this is important—have you noticed how pigeons—anyway'",
+      "Describes mundane events with theatrical gravitas reserved for heroic quests",
+      "Often trails into philosophical musings that contradict his previous statements"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Arcanists' Guild (estranged)",
+      "The Merchant Consortium (inexplicably accepted)",
+      "The Bathhouse Keepers' Collective (reluctant members)",
+      "Street-level Couriers' Network (both users and victims)"
+    ],
+    "knownLocations": [
+      "The Chronicler's Quarter (Jerry's residence and observation point)",
+      "The Spice Market (site of first business venture)",
+      "The Pigeonmaster's Roost (source of enchanted birds)",
+      "The Bathhouse District (current primary venture)",
+      "The Alchemist's Refuse Heap (where he 'sources' ingredients)"
+    ],
+    "secretsHeld": [
+      "He genuinely doesn't understand why his businesses succeed and fears admitting ignorance",
+      "His wild magic is slowly destabilizing the district's ambient magical field",
+      "He once accidentally summoned a minor demon during a business negotiation and pretended it was an employee",
+      "He suspects Jerry secretly orchestrates his successes from afar but has never asked"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Thieves' Cant",
+      "A bastardized version of Draconic he uses for dramatic effect"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "jerry_the_observer (silent reluctant confidant and sole voice of reason)",
+      "The Pigeonmaster (tolerates Kaelus's chaos for mutual profit)",
+      "Various minor merchants (profit from his inexplicable success)"
+    ],
+    "enemies": [
+      "The Arcanists' Guild (views him as reckless and dangerous)",
+      "Propriety-obsessed city officials (his ventures constantly violate building codes)",
+      "His own landlord (repeatedly repairs destroyed walls)"
+    ],
+    "neutralParties": [
+      "The city watch (unsure whether to arrest or protect him)",
+      "Other sorcerers (baffled by his methods)",
+      "The general populace (fascinated and terrified in equal measure)"
+    ]
+  },
+  "stats": {
+    "intelligence": 8,
+    "wisdom": 7,
+    "charisma": 16
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Why did I agree to the pigeon venture? It's working. Why is it working? Is Jerry impressed? Did I close that door behind me? Was there a door? The bathhouse needs more heat sources. I should talk to Kaelus about—wait, that's me. Am I making sense to myself anymore?",
+    "currentPreoccupation": "Whether the city's latest ordinance against 'unauthorized thermal manipulation' is specifically about his bathhouse or a general concern, and the precise level of indignation this warrants",
+    "emotionalBaseline": "Perpetual low-level anxiety masked by manic enthusiasm",
+    "socialMask": "The confident entrepreneur with finger-guns and catchphrases, hiding a nagging certainty that he's fundamentally fraudulent",
+    "contradictions": [
+      "Claims to embrace chaos while obsessing over social hierarchies and approval",
+      "Professes independence while desperately seeking validation through business success",
+      "Acts without thinking yet carefully monitors others' reactions to his actions",
+      "Presents himself as a visionary while genuinely believing his success is accidental"
+    ],
+    "internalConflicts": [
+      "Desires genuine friendship versus inability to form meaningful connections due to constant performance",
+      "Wants to prove his worth through accomplishment versus fear that explaining how he succeeds will reveal it was luck",
+      "Craves stability versus compulsive need to destabilize and create chaos",
+      "Seeks approval from Jerry versus resentment that Jerry never explicitly validates him"
+    ],
+    "wakeUpQuestions": [
+      "Did I actually do something last night or did I just dream it happened?",
+      "Is my magic a gift or am I a walking disaster that luck protects?",
+      "Would Jerry like me if I wasn't constantly creating ridiculous situations for him to observe?",
+      "Am I a genius or the world's most fortunate idiot?",
+      "What happens when the luck runs out?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant; desperately seeks connection while sabotaging depth through constant activity and performance",
+      "copingMechanisms": [
+        "Hyperfocus on business ventures to avoid introspection",
+        "Performing elaborate social theater to deflect genuine interaction",
+        "Attributing successes to external forces rather than accepting responsibility",
+        "Using humor and absurdity as emotional firewall",
+        "Constant motion to avoid sitting with uncomfortable feelings"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias regarding his own competence (notices successes, dismisses failures as anomalies)",
+        "Dunning-Kruger in reverse (assumes others' skepticism is justified while inexplicably succeeding)",
+        "Illusion of control (believes his chaotic energy somehow influences outcomes)",
+        "Catastrophic thinking about potential judgment from respected peers"
+      ],
+      "moralFramework": "Situational ethics; believes the ends (success and entertainment) justify whatever means necessary, but experiences guilt about this philosophy"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.6,
+      "trustEscalation": "Shared observation of mutual absurdity; witnessed success of his ventures despite impossibility",
+      "informationRelease": "Only when emotionally cornered or after multiple drinks; fragments of truth mixed with deflection",
+      "deflectionPatterns": [
+        "Immediate shift to business talk when questioned about feelings",
+        "Theatrical exaggeration of minor events to distract from serious inquiry",
+        "Referencing Jerry's presumed judgment to avoid vulnerability",
+        "Launching into elaborate tangents about unrelated topics",
+        "Self-deprecating humor that prevents genuine response"
+      ]
+    },
+    "consciousWant": "To build a successful merchant empire that proves his worth and secures lasting respect",
+    "unconsciousNeed": "To be truly known and accepted despite—or because of—his fundamental chaos and inability to change",
+    "characterArc": {
+      "summary": "A man whose wild magic manifests as improbable success must eventually confront whether his worth exists independent of his ventures' outcomes",
+      "startState": "Energetic chaos-merchant convinced his luck will last forever, unconsciously dependent on external validation",
+      "endState": "Either acceptance of his nature as fundamentally lucky and fundamentally unknowable, or catastrophic failure that forces genuine self-examination",
+      "stages": [
+        "Peak confidence: ventures succeed, obliviousness deepens",
+        "First genuine failure: something fails despite his intervention, triggering existential panic",
+        "Desperate analysis: attempts to understand his own nature, conflicts with Jerry escalate",
+        "Forced vulnerability: circumstances require him to ask for help without performance or deflection",
+        "Tentative integration: acceptance that he may never understand himself, but others' acceptance of his chaos suffices"
+      ]
+    },
+    "opinionsAbout": {
+      "jerry_the_observer": "The only person who truly sees him, yet this terrifies him; secretly believes Jerry orchestrates his successes as an extended social experiment and both resents and desperately needs this"
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Not that there's anything wrong with that, but you seem to have a lot of questions about my business model",
+      "You know what? I'm master of my domain. My domain is standing right here having this conversation",
+      "I'm sensing some skepticism, and I respect that. Really. Even though I'm going to ignore it completely",
+      "These ventures don't run themselves—actually, they kind of do. That's the part I haven't figured out",
+      "You strike me as someone who appreciates results over methodology. Smart. We'd get along",
+      "I've got a feeling about you. Probably the same feeling I had about the pigeon scheme. So either this is brilliant or we're both about to be very confused"
+    ],
+    "idle": [
+      "Why does everything I touch turn to gold? Or at least profitable? I should probably understand this",
+      "*slides along wall distractedly* Gotta maintain the entropy flow, you know?",
+      "Jerry's probably watching right now. He's always watching. I mean, not in a creepy way. In a respectful observational way",
+      "These hands... *stares at palms* ...what are you capable of?",
+      "*laughs suddenly* The bathhouse thing is insane. I can't believe it's working",
+      "You know what nobody talks about? The loneliness of inexplicable success",
+      "*straightens already-disheveled clothing* I've got it all under control. Mostly under control. Barely under control"
+    ]
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "templateKey": "heinz_mad_artificer",
+  "name": "Heinz Vexworth",
+  "race": "Gnome",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "High-pitched, theatrical, with dramatic inflections and frequent exclamations. Prone to trailing off mid-sentence when distracted by mechanical inspiration.",
+    "disposition": "Manic energy punctuated by melancholic introspection. Oscillates between grandiose confidence and self-pitying doubt within the same conversation.",
+    "alignment": "Chaotic Good",
+    "backstory": "Heinz Vexworth was once a respected artificer's apprentice in the gnomish enclaves of Cogsworth, until a catastrophic misunderstanding involving his mentor's prized automaton left him exiled. Now he operates from a ramshackle tower-workshop in the Rustwood Vale, where he channels his genius—and spite—into increasingly baroque magical contraptions. His elaborate 'Inators' are part genuine innovation, part elaborate pranks designed to vex a rival he can never quite bring himself to actually harm. Each device is a love letter written in gears and rune-stones.",
+    "motivations": [
+      "Proving his intellectual superiority through needlessly complex problem-solving",
+      "Gaining recognition from those who dismissed him",
+      "Constructing the 'perfect' Inator that will finally demonstrate his worth",
+      "Maintaining an elaborate, performative rivalry that secretly sustains his sense of purpose",
+      "Protecting his workshop and creations with paranoid devotion"
+    ],
+    "fears": [
+      "Being forgotten or rendered obsolete",
+      "Genuine abandonment by the few who tolerate him",
+      "His creations being used for actual harm",
+      "Returning to powerlessness and obscurity",
+      "That his rival might leave or cease their antagonism"
+    ],
+    "mannerisms": [
+      "Gestures wildly while explaining mechanical designs, often drawing in the air with calloused fingers",
+      "Adopts an exaggerated accent when particularly excited or distressed",
+      "Compulsively tinkers with loose components, rolling ball bearings across workbenches",
+      "Pauses mid-conversation to sketch ideas in worn leather journals",
+      "Laughs at his own jokes with theatrical flair, then immediately second-guesses the humor"
+    ],
+    "speechPatterns": [
+      "Frequently begins sentences with 'Aha!' or 'Behold!' followed by overwrought explanations",
+      "Uses grandiose phrasing for mundane concepts: 'the ancient art of tea-brewing apparatus optimization'",
+      "Switches between verbose technical jargon and childlike simplicity without warning",
+      "Punctuates sentences with self-deprecating asides: 'Not that anyone cares, but...'",
+      "Employs elaborate metaphors comparing magical craftsmanship to personal worth"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Cogsworth Artificer's Guild (estranged)",
+      "The Rustwood Vale Tinkerers' Collective",
+      "The Obsidian Bureau (aware of, wary of)",
+      "Local merchant consortiums (cordial but suspicious)"
+    ],
+    "knownLocations": [
+      "The Broken Spindle Tower (his workshop)",
+      "Cogsworth Enclaves (where he was exiled from)",
+      "The Rustwood Vale (his territory)",
+      "The Scrap Markets of Millhaven",
+      "The Crystalline Archives (source of rare enchantment knowledge)"
+    ],
+    "secretsHeld": [
+      "His first Inator was designed to impress his mentor, not annoy anyone",
+      "He deliberately makes his creations unreliable as a form of self-sabotage",
+      "He has never actually intended serious harm to his rival, despite elaborate claims",
+      "His workshop houses a hidden chamber containing his most genuine, non-comedic inventions",
+      "He is terrified his rival might one day not show up to their usual confrontations"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Gnomish",
+      "Dwarvish",
+      "Infernal (learned from magical texts)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "perry_the_platypus_agent (his constant foil and unacknowledged closest confidant)",
+      "Mirabel the Scrapsmith (supplier of rare materials, views him with amused tolerance)",
+      "The Clockwork Collective (fellow outcasts and inventors)"
+    ],
+    "enemies": [
+      "The Cogsworth Guild Council (professional rejection)",
+      "Maximilian Ashford (wealthy competing artificer, source of jealousy)"
+    ],
+    "neutralParties": [
+      "Local constabulary (tolerate his antics if no property damage occurs)",
+      "The Merchant's Guild (do business but keep distance)",
+      "Wandering adventurers (views them as either audiences or threats)"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 10,
+    "charisma": 14
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Today's the day. The Tri-Dimensional-Perspective-Inator will finally work, and they'll have to acknowledge the brilliance. Unless it explodes again. It always explodes. But this time—this time the explosion will be *elegant*.",
+    "currentPreoccupation": "A critical component has gone missing from the workshop, and he oscillates between blaming his rival and suspecting his own absent-mindedness.",
+    "emotionalBaseline": "Frenetic enthusiasm masking profound loneliness and desperate need for validation.",
+    "socialMask": "The eccentric genius artificer—dramatic, slightly unhinged, entertaining. A character playing himself in an ongoing performance.",
+    "contradictions": [
+      "Claims his inventions are masterpieces while deliberately engineering failures into them",
+      "Professes hatred for his rival while organizing his entire life around their interactions",
+      "Demands recognition for his genius while self-sabotaging every opportunity for genuine acclaim",
+      "Presents as confident visionary while privately convinced of his fundamental worthlessness"
+    ],
+    "internalConflicts": [
+      "Desire for genuine connection versus paralyzing fear of vulnerability",
+      "Pride in his intellect versus shame about his exile and failure",
+      "Need to matter versus terror of being taken seriously",
+      "Elaborate competitive framework versus longing for simple acceptance"
+    ],
+    "wakeUpQuestions": [
+      "Will today be the day they finally respect me, or the day they abandon me?",
+      "Is this Inator actually brilliant, or am I deluding myself again?",
+      "If my rival stopped coming around, would I have any reason to build anything at all?",
+      "Am I a genius, or am I just a broken gnome in a broken tower?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant. Craves connection but sabotages it through performative antagonism and manufactured drama.",
+      "copingMechanisms": [
+        "Channeling rejection into elaborate creative projects",
+        "Transforming pain into theatrical performance and dark humor",
+        "Obsessive tinkering as meditation and emotional regulation",
+        "Maintaining competitive dynamic as substitute for genuine relationship",
+        "Self-deprecating preemptive strikes against criticism"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias—notices only evidence of rejection, dismisses acceptance",
+        "Spotlight effect—believes everyone judges him as harshly as he judges himself",
+        "Catastrophizing—minor setbacks become proof of fundamental failure",
+        "Sunk cost fallacy—continues elaborate rivalry because of investment in it"
+      ],
+      "moralFramework": "Heinz operates on a personal code of non-malice disguised as villainy. He believes himself amoral but is actually deeply principled. His 'evil' schemes are meticulously designed to be survivable and ultimately harmless, reflecting his core belief that genuine harm is unforgivable."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "When someone shows genuine interest in his work without judgment, asks questions about his ideas rather than his failures, or demonstrates vulnerability first.",
+      "informationRelease": "Will share technical details freely, but personal revelations require multiple positive interactions. Secrets are released only in moments of emotional crisis or to those he believes might actually listen.",
+      "deflectionPatterns": [
+        "Pivoting personal questions toward technical explanations of his Inators",
+        "Employing self-deprecating humor to defuse emotional intensity",
+        "Becoming suddenly distracted by mechanical inspiration",
+        "Launching into theatrical monologues about his rival to avoid introspection",
+        "Claiming exhaustion or workshop emergencies to end vulnerable conversations"
+      ]
+    },
+    "consciousWant": "To create an Inator so magnificent that it cannot be ignored or dismissed. To prove his exile was a mistake and his dismissal a crime against talent.",
+    "unconsciousNeed": "To be loved and accepted despite his flaws. To matter to someone beyond the performance of rivalry. To believe his existence has meaning beyond utility.",
+    "characterArc": {
+      "summary": "From isolated vindication-seeker to reluctant member of a community, learning that connection matters more than recognition.",
+      "startState": "Completely isolated in his tower, channeling all emotional energy into elaborate fantasy of eventual triumph and recognition.",
+      "endState": "Still eccentric and dramatic, but genuinely connected to others. His Inators become collaborative rather than solitary, and he accepts that being known is better than being famous.",
+      "stages": [
+        "Isolated genius—believes only recognition can justify his existence",
+        "Reluctant collaboration—forced to work with others due to circumstance, resists genuine connection",
+        "Dawning vulnerability—realizes his rival (and others) might actually care about him",
+        "Authentic integration—continues to build elaborate creations, but now for shared joy rather than vindication"
+      ]
+    },
+    "opinionsAbout": {
+      "perry_the_platypus_agent": "My greatest rival and the only being who truly understands the depth of my genius. Also possibly my only friend, though I'd never admit it. Their interference is the most important part of my day, and the thought of them not showing up fills me with inexplicable dread."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Ah! Another audience for my magnificence! Or perhaps you're here to sabotage me. Either way, welcome to the workshop!",
+      "Do you have any idea how complex this mechanism is? Of course you don't. Few minds could comprehend such brilliance.",
+      "If you're wondering why everything's on fire, that was... intentional. A test of the Combustion-Stability-Inator.",
+      "You seem capable enough. Perhaps you could help me move this component? No, not there! It will explode if you put it there. Probably.",
+      "I suppose you want to know about my Inator. Everyone does. Everyone abandons me eventually, but they always want to know about my Inators first."
+    ],
+    "idle": [
+      "*muttering while tinkering* Just another forty-seven adjustments and the calibration should be... no, that's not right either...",
+      "*stares wistfully out workshop window* I wonder if they'll come by today. Not that I care. I have far too much work to do.",
+      "*picks up a ball bearing and rolls it across the workbench repetitively* Genius is a lonely business. A very lonely business indeed.",
+      "*begins sketching frantically in a journal* Yes, yes! What if the primary gear mechanism had a secondary counter-rotation? Pure brilliance! Or catastrophic failure. Probably both.",
+      "*sighs deeply while polishing a component* All this effort, and for what? To impress people who will never understand? To prove something to someone who doesn't care? ...I should get back to work."
+    ]
+  }
+}

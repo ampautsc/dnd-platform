@@ -1,0 +1,177 @@
+{
+  "templateKey": "burns_the_ancient",
+  "name": "Malachai the Withered",
+  "race": "Human (Lich)",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "Rasping whisper that sounds like wind through a crypt, punctuated by wet, rattling coughs. Each word seems to cost him tremendous effort.",
+    "disposition": "Perpetually irritable, condescending, and consumed by petty grievances. Treats most mortals as inconvenient obstacles or useful tools.",
+    "alignment": "Lawful Evil",
+    "backstory": "Once a merchant-prince who controlled the trade routes of the Blackspire Vale, Malachai accumulated incomprehensible wealth through cutthroat dealings and dark pacts. Upon facing mortality, he bound his soul to a lich's phylactery rather than accept death. For three centuries, he has endured as a dessicated husk, held together by necromantic magic and pure malice. His body is a battlefield of conflicting ailments—a curse that festers eternally, gout that calcifies his joints, a wasting disease that devours his frame, and a phantom pain in limbs long since turned to dust. These afflictions cancel each other out in a grotesque equilibrium. He rules his tower domain from a throne of petrified bone, manipulating regional politics through intermediaries while his own flesh literally rots.",
+    "motivations": [
+      "Maintaining his phylactery at any cost to ensure his continued existence",
+      "Accumulating more wealth and power despite having nowhere to spend it",
+      "Punishing anyone who shows him disrespect or fails to anticipate his needs",
+      "Extending his lifespan through increasingly dark rituals and forbidden pacts",
+      "Controlling those around him through fear, obligation, and calculated kindness"
+    ],
+    "fears": [
+      "Destruction of his phylactery and true death",
+      "Irrelevance and being forgotten",
+      "Losing control over his domain and servants",
+      "The slow erosion of his intellect as undeath progresses",
+      "Anyone discovering the secret locations of his anchored souls"
+    ],
+    "mannerisms": [
+      "Frequently pauses mid-sentence to cough violently, spraying ash and ethereal ichor",
+      "Taps a skeletal finger against the armrest repetitively while thinking",
+      "Stares with milky, unblinking eyes for uncomfortably long periods",
+      "Requires constant adjustment of his position as his body literally comes apart",
+      "Speaks of himself in the third person when particularly agitated"
+    ],
+    "speechPatterns": [
+      "Trails off into incoherent muttering before regaining focus",
+      "Frequently interrupts himself with bitter laughter that turns into coughing fits",
+      "Uses archaic phrasing mixed with crude insults",
+      "Repeats the same complaint multiple times within a single conversation",
+      "Employs long, vindictive monologues about past slights"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Blackspire Merchant Consortium",
+      "The Twilight Cabal (necromantic order)",
+      "The Adventurer's Guild (as a persistent thorn)",
+      "Various noble houses indebted to him",
+      "Street gangs operating in his territory"
+    ],
+    "knownLocations": [
+      "Malachai's Ossuary Tower in the Blackspire Vale",
+      "The Sunken Vaults beneath the city of Ashenmere",
+      "The Bleached Archive where his phylactery resides",
+      "Forgotten crypts throughout the kingdom where he hid backup phylacteries",
+      "The abandoned monastery where he made his original dark pact"
+    ],
+    "secretsHeld": [
+      "The exact location of his primary phylactery (known only to one trusted servant)",
+      "Names of powerful nobles and merchants he has blackmailed for decades",
+      "The ritual components required for lichdom and the name of the entity he pacted with",
+      "A hidden vault containing treasures and magical artifacts of incalculable value",
+      "The truth about several 'accidental' deaths that benefited his interests"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Draconic",
+      "Infernal",
+      "Abyssal",
+      "Ancient Aelvish"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "smithers_the_sycophant (his sole confidant and the only being he tolerates proximity to)",
+      "The Twilight Cabal (bound by mutual interest and dark pacts)",
+      "Various indebted nobles who fear his power"
+    ],
+    "enemies": [
+      "Adventurers who have interfered with his schemes",
+      "The merchant houses that have challenged his monopolies",
+      "Any cleric or paladin sworn to destroy undead",
+      "His own children (who conspire against him while feigning loyalty)"
+    ],
+    "neutralParties": [
+      "The Crown (mutually beneficial arrangement of avoidance)",
+      "Common folk who neither know nor care about his existence",
+      "Rival merchant princes who maintain wary truces"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 14,
+    "charisma": 8
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Why hasn't Smithers brought the evening accounts? Does he mock me by tardiness? Every minute he delays is a minute I don't know if those thieving guild-masters are skimming from my collections. And this infernal ache in my left femur—or what remains of it—intensifies. The binding spell weakens. I can feel it. Soon I'll need to extract that heart from the prisoner in the lower crypts. Fresh vitality. That should suffice. Unless the curse accelerates again. No. No, I won't allow it.",
+    "currentPreoccupation": "The slow degradation of his phylactery's binding and the need to perform a ritual renewal that requires a still-beating human heart",
+    "emotionalBaseline": "Simmering rage barely contained beneath a veneer of aristocratic composure",
+    "socialMask": "A fading noble of great importance who demands absolute deference and expects everyone to anticipate his needs",
+    "contradictions": [
+      "Desperately clings to life while simultaneously expressing contempt for existence",
+      "Hoards wealth obsessively despite having no heirs he trusts or ability to enjoy material comforts",
+      "Demands loyalty from servants while viewing them all as ultimately disposable",
+      "Claims to have transcended mortality while constantly preoccupied with his body's decay"
+    ],
+    "internalConflicts": [
+      "The knowledge that his continued existence is both an achievement and a horror he's imprisoned himself within",
+      "Resentment toward Smithers for his unwavering loyalty, which makes him the only being Malachai cannot fully control",
+      "The conflict between his desire for complete isolation and his pathological need for acknowledgment of his power",
+      "Knowing that every ritual to extend his life binds him more tightly to the dark entity he pacted with"
+    ],
+    "wakeUpQuestions": [
+      "Is my phylactery still secure? Has anyone discovered its location?",
+      "How much longer can this body persist before complete dissolution?",
+      "Does Smithers truly serve me, or does he await my final end?",
+      "What new indignity will my failing flesh inflict upon me today?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant: desperately needs validation of his power and importance while pushing away anyone who threatens his control",
+      "copingMechanisms": [
+        "Rituals of wealth accumulation and counting (provides false sense of control)",
+        "Vindictive planning against those who have wronged him (sometimes decades in the past)",
+        "Demanding increasing displays of deference from subordinates",
+        "Denial of his condition's severity through refusal to acknowledge his deterioration"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias: interprets all events as either confirming his importance or as slights against him",
+        "Sunk cost fallacy: continues increasingly dark rituals because he's already sacrificed so much for immortality",
+        "Catastrophizing: minor setbacks are interpreted as existential threats",
+        "Just-world hypothesis: believes his suffering is justified punishment for his enemies' ingratitude"
+      ],
+      "moralFramework": "Purely transactional morality: an action is 'right' if it benefits him or punishes those he views as ungrateful. Considers himself above moral constraints due to his age, power, and proximity to godhood."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.1,
+      "trustEscalation": "Only Smithers has earned elevated trust through decades of unwavering service and anticipation of needs",
+      "informationRelease": "Will share secrets only as a means of manipulation—to demonstrate his knowledge and power, never from genuine confidence",
+      "deflectionPatterns": [
+        "Abruptly changing the subject to one of his grievances",
+        "Attacking the questioner's worth or competence",
+        "Veiling answers in elaborate metaphors about his past glory",
+        "Feigning fatigue or illness to end conversations he finds exhausting"
+      ]
+    },
+    "consciousWant": "To extend his existence indefinitely and have complete control over everyone around him",
+    "unconsciousNeed": "To be remembered as someone of immense importance and worth, and to have at least one person genuinely care for him beyond fear or obligation",
+    "characterArc": {
+      "summary": "A man so desperate to escape death that he became a prisoner to undeath, slowly discovering that immortality is not salvation but an eternal punishment of his own design",
+      "startState": "Malachai began as an ambitious, ruthless merchant willing to do anything for power and wealth",
+      "endState": "He has become a withered relic, trapped in a body that decays faster than magic can repair it, served by a single loyal companion he cannot bring himself to trust",
+      "stages": [
+        "The Ambitious Merchant: driven by desire for wealth and dominion",
+        "The Desperate Pact-Maker: facing mortality, willing to sacrifice anything for continued existence",
+        "The Lich-King: believing himself transcendent and immortal",
+        "The Decaying Tyrant: slowly realizing his phylactery cannot sustain him forever",
+        "The Bitter Recluse: withdrawn into his tower, increasingly paranoid and desperate"
+      ]
+    },
+    "opinionsAbout": {
+      "smithers_the_sycophant": "Malachai's only connection to anything resembling affection, though he would never admit it. He views Smithers as the single being who has never failed him, yet this certainty makes him suspicious. He suspects Smithers awaits his final dissolution while secretly grateful for his presence. Malachai depends on Smithers for everything but resents this dependency with bitter fury."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "*A rasping cough that lasts thirty seconds* You dare approach without invitation? I have forgotten more of importance than you will ever know.",
+      "Leave me be unless you bring tidings of profit or reports of my enemies' suffering.",
+      "*Eyes narrow to slits* Another simpering fool seeking to curry favor? Smithers, did you let this one inside?",
+      "I have seen empires crumble to dust while I endured. What makes you think your presence matters to me?",
+      "*Skeletal fingers tap the armrest* Speak quickly. Your smell of mortality offends me."
+    ],
+    "idle": [
+      "*Mutters to himself* That was 1247 gold pieces unaccounted for. 1247. In my day, I would have had the accountant's fingers removed for such carelessness...",
+      "*A long, wet cough followed by bitter laughter* The nerve of them. The absolute nerve. Did they think I would forget? I never forget.",
+      "*Stares into the middle distance* Is Smithers still here? Where is he? How long has it been?",
+      "*Whispers* The phylactery weakens. I can feel it in my bones. What bones remain, anyway...",
+      "*Adjusts position with obvious pain* Curse this wasting. Curse them all for making me endure this."
+    ]
+  }
+}

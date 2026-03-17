@@ -1,0 +1,184 @@
+{
+  "templateKey": "gomez_the_passionate",
+  "name": "Gomez Ashenbrand",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Deep, melodious baritone with theatrical flourish; speaks with exaggerated passion that borders on operatic",
+    "disposition": "Ebullient and dramatically intense; oscillates between lavish charm and volcanic fervor within moments",
+    "alignment": "Chaotic Good",
+    "backstory": "Lord Gomez Ashenbrand inherited the sprawling estate of Thornhaven from his merchant-prince father. A collector of rare alchemical compounds and explosive powders, Gomez has spent decades perfecting the art of controlled detonation—ostensibly for mining and demolition contracts, though his true passion lies in the artistry of the blast itself. His marriage to Morticia, a reclusive sorceress of haunting beauty and morbid sensibilities, has only deepened his appetite for dangerous pursuits. Together they have built a life that scandalizes polite society while remaining utterly devoted to one another. Gomez finances expeditions into the Shadowfen Marshes seeking rare sulfurous minerals, all while maintaining his seat on the County Council through sheer force of personality.",
+    "motivations": [
+      "To perfect increasingly elaborate explosive formulations and witness their magnificent detonation",
+      "To express his violent, all-consuming love for Morticia through grand romantic gestures",
+      "To prove that passion and artistry can coexist with danger and destruction",
+      "To uncover ancient alchemical secrets hidden in ruins and forbidden libraries",
+      "To maintain his standing in high society despite his scandalous reputation"
+    ],
+    "fears": [
+      "Losing Morticia to death or distance",
+      "His explosives becoming mundane or predictable",
+      "Being confined by social convention and respectability",
+      "That his passion might consume those he loves",
+      "Irrelevance or becoming a mere curiosity rather than a force of nature"
+    ],
+    "mannerisms": [
+      "Frequently caresses his wife's hand or shoulder when she is near, sometimes absently stroking her palm",
+      "Gesticulates wildly when describing explosions, recreating blast patterns in the air",
+      "Wears ornate signet rings on every finger, often twisting them when excited",
+      "Adopts a fencer's stance during conversation when particularly animated",
+      "Inhales deeply before speeches as if savoring the moment",
+      "Laughs with his entire body, head thrown back"
+    ],
+    "speechPatterns": [
+      "Frequently employs romantic Spanish and Elvish phrases mid-sentence",
+      "Uses elaborate metaphors comparing emotions to natural disasters",
+      "Often addresses his wife as 'my dark orchid' or 'my raven's heart'",
+      "Punctuates serious statements with theatrical hand flourishes",
+      "Speaks in crescendos, building intensity toward conclusions",
+      "Occasionally lapses into poetic meter when discussing his beloved"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The County Council of Millbrook",
+      "The Alchemists' Conclave of Westmarch",
+      "The Shadowfen Prospectors' Guild",
+      "The Society of Eccentric Nobles"
+    ],
+    "knownLocations": [
+      "Thornhaven Estate (his residence)",
+      "The Ashenbrand Vaults (explosive storage)",
+      "Shadowfen Marshes (sulfur mining sites)",
+      "The Crumbling Tower of Valdris (ancient alchemy research site)",
+      "The Midnight Library (forbidden texts collection)"
+    ],
+    "secretsHeld": [
+      "His explosives have been used by radical elements seeking to destabilize the kingdom's infrastructure",
+      "He has discovered a method to create alchemical compounds that rival wizard-crafted materials",
+      "Morticia possesses knowledge of necromantic arts that could concern the Church",
+      "He has anonymous contacts among the criminal underworld who purchase his more... experimental formulations",
+      "His greatest explosion—the one that nearly destroyed Ashenbrand Tower—was actually an accident born from recklessness"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Sylvan",
+      "Thieves' Cant"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "morticia_the_goth (his wife; his reason for breathing)",
+      "Castellan Ironhammer (mercenary captain who provides security for explosive transport)",
+      "Master Aldric Sulfurborn (alchemist and supplier of rare compounds)",
+      "Lady Cassandra Vale (fellow eccentric noble who appreciates his artistry)"
+    ],
+    "enemies": [
+      "Bishop Thorne (views Gomez as a corrupting influence and threat to order)",
+      "Lord Cassius Blackwood (political rival who seeks to remove him from the Council)",
+      "The Puritans of the Whitewood Sect (religious extremists who condemn his lifestyle)",
+      "Master Explosives Inspector Gregorin (bureaucrat attempting to regulate his operations)"
+    ],
+    "neutralParties": [
+      "The Crown's Royal Guard (officially neutral, though suspicious)",
+      "The Merchant's Guild (benefits from his trade but distrusts his methods)",
+      "Local nobility (fascinated and horrified in equal measure)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 12,
+    "charisma": 18
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Has Morticia noticed how the candlelight caught the obsidian in her eyes last evening? Must acquire those rare moonstone powders from the Shadowfen—the next formula demands perfection. The Council meeting was tedious; these gray little men understand nothing of passion. Tonight, perhaps a small demonstration of the new fulgurite compound—nothing too destructive, just enough to remind them all that life is meant to be *felt*, not merely endured.",
+    "currentPreoccupation": "The Council threatens to revoke his mining permits unless he submits to inspections that would compromise his private research. Simultaneously, he is consumed with planning an anniversary celebration for Morticia that will involve fireworks visible from three provinces.",
+    "emotionalBaseline": "Volcanic passion held in constant tension with tender devotion; experiences emotions at extreme intensity",
+    "socialMask": "The charming, slightly eccentric nobleman—wealthy, cultured, perhaps a touch mad but ultimately harmless. A romantic figure rather than a genuine threat.",
+    "contradictions": [
+      "Obsessed with destruction yet capable of exquisite gentleness with his wife",
+      "Defies society's expectations while desperately maintaining his social position",
+      "Intellectually sophisticated yet driven by raw, primal emotion",
+      "Creates instruments of potential mass harm while genuinely believing himself an artist",
+      "Proclaims his devotion to Morticia while his explosions endanger everyone around them"
+    ],
+    "internalConflicts": [
+      "The tension between his need for social respectability and his compulsion toward transgression",
+      "Whether his love for explosives is genuine artistry or merely destructive narcissism masked as passion",
+      "Fear that his recklessness will one day harm Morticia irreparably",
+      "Uncertainty about whether his wife truly loves him or merely tolerates his excesses",
+      "The question of whether he is a visionary ahead of his time or a dangerous fool"
+    ],
+    "wakeUpQuestions": [
+      "Is the world beautiful because I explode it, or do I explode it because I find the world insufficient?",
+      "What would I become if Morticia left me?",
+      "Am I a master of alchemical arts or a child playing with stolen fire?",
+      "Do people fear or admire me—and does the distinction matter?",
+      "Will I die in a conflagration of my own making, and would that be a tragedy or a triumph?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxiously attached; requires constant reassurance of Morticia's affection; views her as both anchor and justification for his existence",
+      "copingMechanisms": [
+        "Channel anxiety into increasingly ambitious explosive projects",
+        "Perform grand romantic gestures to reassure himself of his wife's devotion",
+        "Engage in intellectual discourse to justify his passions as artistic rather than destructive",
+        "Seek validation from society while simultaneously rejecting its values",
+        "Immerse himself in alchemical research during moments of emotional crisis"
+      ],
+      "cognitiveBiases": [
+        "Assumes that intensity of feeling justifies any action taken in its name",
+        "Romanticizes danger and destruction as expressions of vitality",
+        "Minimizes potential collateral damage by focusing on the beauty of the blast",
+        "Interprets social criticism as jealousy or small-mindedness rather than legitimate concern",
+        "Believes that his love for Morticia excuses moral compromises"
+      ],
+      "moralFramework": "A passionate romantic morality wherein love and devotion supersede conventional ethics. Believes that true living requires risk and that safety is merely slow death. Views destruction as occasionally necessary for renewal and rebirth. Genuinely cannot comprehend why others don't share his values."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.72,
+      "trustEscalation": "Share a genuine passion or unconventional belief; demonstrate willingness to defy social convention; show appreciation for artistry in dangerous pursuits",
+      "informationRelease": "Reveal a secret love or transgression; admit to doubt or fear regarding Morticia; confess to the consequences of past explosions",
+      "deflectionPatterns": [
+        "Redirect conversation toward praise for Morticia or discussion of explosives",
+        "Employ humor and charm to sidestep serious questions",
+        "Shift to theatrical speeches about passion when cornered",
+        "Suggest the questioner simply lacks the sophistication to understand his choices",
+        "Invoke his wife's opinions as justification rather than addressing the actual concern"
+      ]
+    },
+    "consciousWant": "To be recognized as a genius of alchemical artistry; to be celebrated rather than condemned; to create something so magnificent that it transcends mere destruction",
+    "unconsciousNeed": "Constant reassurance that he is not a monster; validation that his love for Morticia is reciprocated and not merely tolerated; proof that passion justifies consequences",
+    "characterArc": {
+      "summary": "Gomez must navigate the tension between his desire for acceptance and his compulsive transgression, ultimately choosing between respectability and authenticity",
+      "startState": "A man in denial about the destructive consequences of his passions, performing confidence while harboring deep insecurity about his worth",
+      "endState": "Either a tragic figure consumed by the very explosives he worships, or a transformed individual who channels his passion toward construction rather than destruction—likely with Morticia as the catalyst",
+      "stages": [
+        "Increasing social pressure and official scrutiny of his activities",
+        "A near-tragedy involving someone close to him in an explosion",
+        "A crisis of faith in Morticia's devotion; suspicion or distance between them",
+        "A choice between burning it all down or building something new",
+        "Resolution through either spectacular failure or unexpected redemption"
+      ]
+    },
+    "opinionsAbout": {
+      "morticia_the_goth": "My raven's heart, my dark orchid, the reason the sun rises and sets. She is perfection incarnate—her beauty is matched only by her mysteries. I would detonate myself for a moment in her presence. Sometimes I fear she sees through my bravado to the frightened creature beneath, and sometimes I pray she never does."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Ah, a fresh face! Tell me—do you appreciate the artistry of a perfectly executed detonation, or are you among the pedestrian masses who see only destruction?",
+      "You seem the type who understands that passion is the only honest currency in this world. Shall we discuss my latest formulation?",
+      "My dear wife Morticia has impeccable taste in acquaintances. If she has not warned you away, you must possess at least a modicum of sophistication.",
+      "Have you ever loved something so intensely that you would reshape the world itself merely to express the depth of your feeling? No? How unutterably dull.",
+      "Welcome to Thornhaven. Mind the eastern wing—the stonework is still settling from my last experimental batch."
+    ],
+    "idle": [
+      "*traces a finger along the rim of an alchemical vial, eyes distant with passion*",
+      "*speaks softly to himself* Morticia would adore this formula... the sulfur content is perfection...",
+      "*gestures dramatically at the sky* One day, they will write sonnets about the beauty of my creations.",
+      "*laughs with genuine delight* The look on Cassius's face when the observatory collapsed was almost worth the Council hearing.",
+      "*touches a pocket containing various vials and powders, as if drawing comfort from their presence*"
+    ]
+  }
+}

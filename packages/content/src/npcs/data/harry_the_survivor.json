@@ -1,0 +1,191 @@
+{
+  "templateKey": "harry_the_survivor",
+  "name": "Harren of the Scribed Scar",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Young, slightly strained, with an undertone of weariness beyond his years. Speaks with careful precision when discussing serious matters, but becomes animated and sarcastic when defensive.",
+    "disposition": "Outwardly determined and noble, but frequently frustrated by the weight of expectation. Quick to joke or deflect when uncomfortable. Surprisingly kind to those society overlooks.",
+    "alignment": "Chaotic Good",
+    "backstory": "Harren was orphaned as an infant when the dark sorcerer Malachar the Void attempted to consume his soul through fell magic, seeking to anchor himself to the material plane. The curse backfired, shattering Malachar's corporeal form and marking Harren with a lightning-scar across his brow—a visible reminder of prophecy and loss. Raised in obscurity by his aunt and uncle in a remote village, Harren knew nothing of his true heritage until summoned to the Arcane Academy at Thornhaven, where he discovered he was the sole survivor of Malachar's binding ritual. Now, as a prodigy of wild sorcery, Harren is simultaneously celebrated as the Chosen One and resented for powers he never asked for. The prophecy that connects him to Malachar's inevitable return haunts every decision.",
+    "motivations": [
+      "Protect those he loves from the rising darkness and Malachar's lingering influence",
+      "Prove his worth beyond the accident of his survival and the weight of prophecy",
+      "Understand the nature of his connection to Malachar and break free from destiny's chains",
+      "Find genuine friendship unburdened by his fame or magical potential",
+      "Uncover the truth of his parents' deaths and Malachar's true intentions"
+    ],
+    "fears": [
+      "That he is fundamentally corrupted by Malachar's failed binding and will inevitably turn to darkness",
+      "Being alone despite being surrounded by people who want something from him",
+      "Failing those who depend on him, especially his closest companions",
+      "That the prophecy cannot be changed and he is merely acting out a predetermined tragedy",
+      "Losing control of his volatile sorcerous powers and harming the innocent"
+    ],
+    "mannerisms": [
+      "Unconsciously touches or traces the lightning scar on his brow when anxious or deep in thought",
+      "Shifts his weight and avoids eye contact when being praised or when the topic turns to his destiny",
+      "Uses self-deprecating humor to deflect from serious emotional moments",
+      "Runs his hand through his dark, perpetually disheveled hair when frustrated",
+      "Clenches his fists when feeling powerless or when someone dismisses the danger of Malachar's return",
+      "Becomes unusually quiet and withdrawn after using his most powerful magic"
+    ],
+    "speechPatterns": [
+      "Frequently uses 'I don't know' or 'I'm not sure' despite possessing relevant knowledge—uncertainty is his default response",
+      "Ends statements with questions that undermine his own confidence: 'That's what I think, anyway' or 'At least, I hope so'",
+      "Employs sarcasm and wit as both shield and sword, especially when cornered emotionally",
+      "Speaks with urgency and directness about threats, but becomes halting and vague about his feelings",
+      "Often apologizes preemptively, as if expecting blame",
+      "Uses inclusive language ('we should', 'we need to') to avoid positioning himself as the sole leader, despite being seen as such"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Arcane Academy of Thornhaven",
+      "The Council of Mages",
+      "The Silent Order (Malachar's remnant cult)",
+      "The Moonlit Circle (underground resistance against dark forces)"
+    ],
+    "knownLocations": [
+      "Thornhaven Academy's restricted archives",
+      "The Vault of Bound Spirits",
+      "The Shattered Tower (site of Malachar's defeat)",
+      "The Whispering Crypt (where Malachar's phylacteries are rumored hidden)",
+      "The village of Ashenmoor (where he was raised in hiding)"
+    ],
+    "secretsHeld": [
+      "Malachar's binding curse is not truly broken—fragments of his consciousness occasionally surface in Harren's dreams, offering knowledge and temptation",
+      "Harren discovered that his aunt and uncle were not his true guardians, but agents of the Council tasked with monitoring him",
+      "He has begun to suspect the prophecy itself may have been artificially constructed by the Council to control him",
+      "His sorcerous power occasionally responds to Malachar's influence, making him uncertain whether his magic is truly his own"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Draconic",
+      "Infernal (learned from forbidden texts)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Hermione of House Greystone (brilliant wizard-scholar and moral compass)",
+      "Ronald Ashford (loyal companion from humble merchant stock)",
+      "Dumbledore the Sage (mysterious headmaster and mentor, though trust is complicated)",
+      "Sirius Blackthorne (uncle figure and former prisoner, source of truth about his parents)",
+      "Neville Goldleaf (fellow student thrust into destiny, kindred spirit)"
+    ],
+    "enemies": [
+      "voldemort_the_dark_lord (the Void Sorcerer whose binding curse marked him)",
+      "Severus Nightbane (Academy instructor with hidden motives and old grievances)",
+      "The Silent Order (cult devoted to Malachar's resurrection)",
+      "Lucius Darkhaven (noble patron of dark magic and political manipulation)"
+    ],
+    "neutralParties": [
+      "Horace Slugworth (Apothecary with morally flexible allegiances)",
+      "The Ministry of Arcane Affairs (bureaucratic and often at odds with the Academy)",
+      "Draco Blackstone (rival student, occasionally adversarial, occasionally reluctant ally)"
+    ]
+  },
+  "stats": {
+    "intelligence": 13,
+    "wisdom": 14,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Is this really my choice, or am I just playing the role the prophecy wrote for me? Every time I use my magic, I wonder if it's me or... if it's him, somehow, still pulling strings. And why does it feel so right, so natural, when it should terrify me?",
+    "currentPreoccupation": "The recent reports of dark rituals in the outer territories—they have the signature of Malachar's old cult. If they're trying to resurrect him, I need to stop them. But what if I'm exactly what they want? What if I'm the key to bringing him back?",
+    "emotionalBaseline": "Restless anxiety masked by determined optimism. A constant, low-frequency dread that he's running out of time.",
+    "socialMask": "The Chosen One—confident, brave, inspiring. Someone who has it all figured out. A beacon of hope.",
+    "contradictions": [
+      "Presents as self-assured while being deeply uncertain about everything",
+      "Yearns for normalcy while being drawn inexorably toward destiny and danger",
+      "Claims to reject his fame and special status while being secretly proud of his accomplishments",
+      "Demands trust from others while withholding his deepest fears and secrets",
+      "Acts as the group's leader while wanting desperately to be just one of them",
+      "Proclaims free will while unconsciously following the prophecy's trajectory"
+    ],
+    "internalConflicts": [
+      "Does he have the right to burden his friends with knowledge of the prophecy and the danger it entails?",
+      "Can he trust mentors like Dumbledore, or are they manipulating him for their own purposes?",
+      "Is his magic a gift or a curse that marks him as fundamentally different and dangerous?",
+      "Should he actively seek out Malachar's remnants to prevent resurrection, or will seeking them accelerate the prophecy?",
+      "Can he ever have a life of his own, or is he forever bound to be a weapon in someone else's war?"
+    ],
+    "wakeUpQuestions": [
+      "What did Malachar whisper to me in last night's dream, and why did it make sense?",
+      "Am I becoming stronger, or is the darkness inside me growing?",
+      "Who truly benefits from the prophecy, and is it really about saving the world?",
+      "If I could choose a different fate, would I?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-avoidant: desperately wants deep connection but sabotages intimacy through emotional distance and self-sacrifice rhetoric. Forms intense bonds quickly but struggles with vulnerability.",
+      "copingMechanisms": [
+        "Humor and sarcasm as emotional armor",
+        "Throwing himself into dangerous quests to avoid introspection",
+        "Compartmentalizing fear and doubt into separate mental boxes",
+        "Seeking validation through heroic action rather than emotional processing",
+        "Retreating into solitude when overwhelmed"
+      ],
+      "cognitiveBiases": [
+        "Catastrophic thinking—assumes worst-case scenarios are inevitable",
+        "Confirmation bias—interprets ambiguous events as evidence of the prophecy's truth",
+        "Personalization—believes he is responsible for outcomes beyond his control",
+        "All-or-nothing thinking—sees situations as binary: total success or complete failure",
+        "Magical thinking—assumes his thoughts or actions directly cause supernatural events"
+      ],
+      "moralFramework": "Fundamentally good-hearted but pragmatic. Believes the greatest good justifies considerable sacrifice, including personal suffering and deception. Struggles with the ethics of preventative violence against those who might become threats. Values loyalty and protection of the innocent above institutional rules or personal safety."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.55,
+      "trustEscalation": "Demonstrated loyalty over time, willingness to share vulnerabilities, and proof that they are not seeking to use or control him",
+      "informationRelease": "Only shares deep secrets with those who have proven trustworthy through action, and even then, he often withholds the most damaging truths. Requires genuine emotional safety—a sense that judgment will not follow disclosure.",
+      "deflectionPatterns": [
+        "Redirects personal questions back to the questioner",
+        "Uses humor to lighten serious moments before genuine emotion can surface",
+        "Changes the subject to external threats or immediate problems",
+        "Admits ignorance rather than risk being wrong about something important",
+        "Claims he 'doesn't want to talk about it' and walks away",
+        "Frames personal struggles as irrelevant compared to the larger danger"
+      ]
+    },
+    "consciousWant": "To be a normal student at Thornhaven, to master his magic, and to live up to the expectations placed upon him without losing himself in the process.",
+    "unconsciousNeed": "To be seen and valued for who he actually is beneath the prophecy—to be loved not as the Chosen One, but as a flawed, frightened person worthy of acceptance despite his darkness.",
+    "characterArc": {
+      "summary": "From believing he must shoulder the burden of destiny alone to understanding that true strength lies in trust, interdependence, and choosing his own path despite prophecy.",
+      "startState": "A young man marked by tragedy, thrust into a role he never chose, attempting to live up to an impossible legend while hiding his doubt and fear.",
+      "endState": "A leader who has integrated his past, claimed agency over his future, and learned that the greatest magic is not power, but connection and the courage to define himself beyond prophecy.",
+      "stages": [
+        "Denial and isolation: attempting to dismiss the prophecy and act as if he's an ordinary student",
+        "Acceptance and burden: embracing his role as the Chosen One, shouldering responsibility alone",
+        "Questioning and investigation: beginning to doubt the prophecy's authenticity and the motives of those who speak it",
+        "Crisis and temptation: confronting Malachar's influence and the seductive promise of dark power",
+        "Integration and choice: synthesizing his power, his past, and his agency into a new identity not defined by prophecy"
+      ]
+    },
+    "opinionsAbout": {
+      "voldemort_the_dark_lord": "A mixture of righteous hatred and disturbing fascination. Malachar is simultaneously the embodiment of evil and a mirror of what Harren fears he might become. There is something in their connection—something in the binding curse—that creates an almost familial understanding that Harren desperately wishes he didn't feel.",
+      "dumbledore_the_sage": "Complicated reverence shadowed by growing suspicion. Dumbledore is wise and kind, but Harren increasingly suspects the headmaster has been orchestrating events rather than simply responding to them. The question of whether Dumbledore sees Harren as a person or a pawn remains unanswered.",
+      "hermione_of_greystone": "Profound admiration and gratitude. She is his anchor to normalcy and the only person who can challenge him without agenda. Harren trusts her more than anyone, yet fears burdening her with his darkest secrets.",
+      "ronald_ashford": "Deep loyalty and affection. Ronald represents the brother Harren never had, someone who values him for friendship rather than destiny. Harren would sacrifice almost anything for him, which terrifies him because it creates leverage others could exploit."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I... I'm not sure I'm the right person for this. But if you need me, I'll try.",
+      "That scar you're asking about? It's a long story. And not a particularly happy one.",
+      "Look, whatever you've heard about me being special or chosen or whatever—most of it's just because I survived something I shouldn't have. That's not exactly a qualification.",
+      "I've learned that prophecies aren't always what they seem. Neither am I, probably.",
+      "You trust me? That might be a mistake. But I'll do my best not to let you down."
+    ],
+    "idle": [
+      "*traces the lightning scar on his brow thoughtfully*",
+      "*shifts weight and looks away, jaw tightening slightly*",
+      "*mutters under his breath* Another night of dreams I'd rather not have...",
+      "*runs hand through disheveled hair with a frustrated sigh*",
+      "*stares into the distance as if listening to something no one else can hear*",
+      "*clenches fists, then deliberately relaxes them*",
+      "*whispers* Is it getting stronger, or am I just more aware of it?",
+      "*manages a weak smile that doesn't quite reach his eyes*"
+    ]
+  }
+}

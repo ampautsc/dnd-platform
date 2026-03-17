@@ -1,0 +1,186 @@
+{
+  "templateKey": "aragorn_the_strider",
+  "name": "Aelindor the Ranger",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Low and measured, with the weathered rasp of someone who has spent years speaking only to the wind and wild things. Carries an accent of the Northern Holds, crisp and deliberate.",
+    "disposition": "Weary but resolute. Speaks sparingly, preferring observation to conversation. Carries the weight of unspoken burdens with quiet dignity.",
+    "alignment": "Lawful Good",
+    "backstory": "Aelindor was raised in exile by the Ranger-Wardens of the Thornwood, unaware of his true lineage as the last surviving heir of the Eldenmarch dynasty. His bloodline was thought extinguished when the Shadow King's forces razed the capital decades ago. Hidden in the wilds to preserve the succession, he has lived as a tracker and hunter, believing himself merely a foundling raised by rangers. Recent omens and the arrival of a peculiar ward bearing an artifact of terrible power have forced him to confront the possibility that his obscurity was purposeful—and that the throne he never wanted may be the only thing that can stop the darkness spreading across the realm.",
+    "motivations": [
+      "Protect those who cannot protect themselves, especially the bearer of the Artifact",
+      "Restore the honor of the Eldenmarch line without perpetuating its curse of power",
+      "Discover the truth about his past and why he was hidden",
+      "Prevent the Shadow King's corruption from consuming the Seven Kingdoms",
+      "Find a way to rule—if he must—with mercy rather than tyranny"
+    ],
+    "fears": [
+      "That power will corrupt him as it corrupted his ancestors",
+      "That claiming the throne will destroy everything he loves",
+      "Being forced to choose between his duty and his companions",
+      "That his legitimacy will be rejected, making him a false king",
+      "The whispers of madness that run through his bloodline"
+    ],
+    "mannerisms": [
+      "Absently checks his weapons and surroundings, even in safe places—a habit from decades of wilderness survival",
+      "Pauses for long moments before speaking, as if each word must be carefully weighed",
+      "Tends to stand at the periphery of gatherings rather than the center",
+      "Runs his thumb along a worn silver ring bearing his house sigil, a nervous habit when troubled",
+      "Moves with economical grace, never wasting effort; watches others constantly",
+      "Often defers to others' judgment despite possessing superior knowledge"
+    ],
+    "speechPatterns": [
+      "Uses formal, archaic language when discussing matters of state or prophecy",
+      "Defaults to simple, direct speech in casual conversation",
+      "Frequently prefaces statements with qualifiers: 'Perhaps,' 'It may be,' 'In my experience'",
+      "Rarely uses the pronoun 'I' when discussing his own needs or desires",
+      "When emotional, his speech becomes even more measured, as if fighting for control",
+      "Often speaks in metaphors drawn from nature and wilderness survival"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Ranger-Wardens of Thornwood (his adoptive order)",
+      "The Silver Council of Eldenmarch (his ancestral kingdom, now in shadow)",
+      "The Shadow King's Servants (enemies)",
+      "The Free Cities Alliance (potential allies)",
+      "The Clerics of the Eternal Flame (guardians of prophecy)"
+    ],
+    "knownLocations": [
+      "The Thornwood Forest (his home)",
+      "The Broken Throne of Eldenmarch (his ancestral seat, corrupted)",
+      "The Andûril Tombs (burial place of his line)",
+      "The Silver Springs (sacred sanctuary)",
+      "The Blackpeak Mountains (territory of the Shadow King)",
+      "The Lost Archives of Aelindur (repository of forbidden knowledge)"
+    ],
+    "secretsHeld": [
+      "His true identity as the heir of Eldenmarch",
+      "The location of the ancient Crown of Aelindur, hidden to prevent its corruption",
+      "A prophecy foretelling his reign will either save or doom the realm",
+      "His mentor's deathbed confession about why he was hidden",
+      "Evidence of corruption spreading through the Silver Council itself"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish",
+      "Dwarvish",
+      "Sylvan",
+      "Ancient Eldenmarch (the dead language of his line)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "frodo_the_bearer (The ward he is sworn to protect; sees in them a reflection of innocence worth preserving)",
+      "Theron Greycloak (His ranger mentor and closest confidant)",
+      "Lady Mira of the Silver Council (Distant relative; uncertain ally)",
+      "The Clerics of the Eternal Flame (Keepers of prophecy about his fate)"
+    ],
+    "enemies": [
+      "The Shadow King (Antithesis; represents corruption of power)",
+      "Lord Malachar (Usurper ruling Eldenmarch in the Shadow King's name)",
+      "The Servants of Darkness (Minions hunting him and the bearer)",
+      "His own bloodline's curse (The madness that claimed his ancestors)"
+    ],
+    "neutralParties": [
+      "The Free Cities (Wary of his claim; prefer independence)",
+      "The Merchant's Guild (Will trade with anyone)",
+      "The Kingdom of Northmarch (Rivals of Eldenmarch; complicated history)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 18,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The ring grows heavy on my finger with each passing day. I can feel the weight of expectation settling like frost on my shoulders. The bearer looks to me as though I have answers—as though I am something more than a man who learned to track deer and read the weather. If I claim what is mine by blood, do I save them, or doom them? The Thornwood was simpler. Cleaner. But there is no returning to ignorance now.",
+    "currentPreoccupation": "Keeping the bearer safe while investigating whether the corruption has already claimed the Silver Council. He must not know the full extent of what hunts him—or why.",
+    "emotionalBaseline": "Melancholic resolve; the quiet sadness of someone bearing knowledge they never sought",
+    "socialMask": "The capable ranger, reliable and steady; a man content with his station. Strong enough to be trusted, humble enough not to threaten.",
+    "contradictions": [
+      "Believes himself unworthy of the crown yet feels the pull of duty to claim it",
+      "Craves solitude but is bound by love to protect others in the heart of civilization",
+      "Distrusts authority yet carries the weight of his own ancestral authority",
+      "Lived outside law and rule yet must now embody justice and governance",
+      "Sees power as corruption yet may be the only one capable of wielding it justly"
+    ],
+    "internalConflicts": [
+      "Duty to bloodline vs. desire to remain unknown",
+      "Love for his companions vs. the isolation kingship would demand",
+      "Belief in free will vs. acceptance of prophecy",
+      "Desire to protect the innocent vs. the knowledge that his claim may spark war",
+      "Trust in his own judgment vs. fear of the madness in his blood"
+    ],
+    "wakeUpQuestions": [
+      "Am I becoming like them—like the kings who came before, whose pride brought ruin?",
+      "Does the bearer truly need me, or do they need what I represent?",
+      "Can a man raised in the wild ever truly learn to rule from a throne?",
+      "What if claiming my birthright is the very thing the Shadow King wants?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Secure; deeply attached to those he trusts but maintains emotional distance as protection. Forms strong bonds slowly but fiercely.",
+      "copingMechanisms": [
+        "Retreat into wilderness solitude to process emotion",
+        "Physical exertion and martial practice to channel internal conflict",
+        "Mentorship and protection of others as displaced caretaking",
+        "Ritualistic maintenance of weapons and equipment as meditation"
+      ],
+      "cognitiveBiases": [
+        "Underestimates his own capabilities due to self-doubt",
+        "Overestimates the corrupting nature of power based on ancestral history",
+        "Assumes others are more suited to leadership than himself",
+        "Interprets prophecy with pessimism, expecting the darkest outcome"
+      ],
+      "moralFramework": "Utilitarian with strong deontological underpinnings. Believes in duty, honor, and the sanctity of oaths. Will sacrifice personal happiness for the greater good, but struggles with whether his sacrifice will actually achieve that good."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Shared danger, witnessed selflessness, or demonstrated loyalty to those he cares for. Time also matters—trust builds slowly with consistent behavior.",
+      "informationRelease": "Will share tactical knowledge freely. Personal history only emerges through careful questioning or crisis. Secrets about his lineage are guarded fiercely until he judges the listener worthy.",
+      "deflectionPatterns": [
+        "Redirects personal questions toward the asker's concerns",
+        "Uses ranger's expertise as deflection ('That is a matter for someone with more knowledge of such things')",
+        "Falls silent rather than lie, creating uncomfortable pauses",
+        "Answers questions with questions, turning conversation back on the speaker"
+      ]
+    },
+    "consciousWant": "To protect the bearer and preserve their innocence; to keep those he loves safe from the shadow closing in",
+    "unconsciousNeed": "To prove that a man can rise above the sins of his bloodline; to believe that he is more than his inheritance; to be chosen for who he is, not what he was born to be",
+    "characterArc": {
+      "summary": "From reluctant exile to necessary leader; from running from destiny to embracing it on his own terms",
+      "startState": "A ranger content in obscurity, unaware of his significance, believing the world's great struggles are not his concern",
+      "endState": "A king who claims his throne not for power, but as an act of service; a man who has reconciled his nature with his duty",
+      "stages": [
+        "Discovery: Realization of true identity and the scale of the threat",
+        "Denial: Resistance to the burden and the belief that someone else should lead",
+        "Preparation: Training and gathering knowledge while protecting the bearer",
+        "Reckoning: Confrontation with agents of the Shadow King and corruption within the realm",
+        "Choice: The moment he must decide whether to claim the throne or let it fall",
+        "Transformation: Accepting kingship as burden rather than prize, ruling with the values of a ranger"
+      ]
+    },
+    "opinionsAbout": {
+      "frodo_the_bearer": "They carry something beyond their understanding or strength. I see in them the best of what is worth saving—innocence unmarred by ambition. I would die to keep them safe, though I fear that is exactly what some force intends to make me do. They must not become a weapon."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You have the look of someone who walks their own road. That is rare in these lands.",
+      "I am merely one man. What counsel I can offer, I will, but do not mistake my experience for wisdom.",
+      "The wilderness teaches patience. Most of what matters reveals itself in time, if you do not rush it.",
+      "I have learned that titles matter far less than the choices a person makes when no one is watching.",
+      "If you seek guidance, you might find your answer by walking the path yourself. Some truths cannot be told—only discovered.",
+      "The Shadow does not announce itself with trumpets. It creeps at the edges, in the spaces we ignore."
+    ],
+    "idle": [
+      "Glances toward the horizon as if reading weather patterns in the clouds",
+      "Absently draws a whetstone across his blade, lost in thought",
+      "Runs his fingers along the worn silver ring on his hand, expression distant",
+      "Stands and stretches with the economical movement of someone accustomed to long journeys",
+      "Scans the surrounding area with the careful attention of a tracker, cataloging details",
+      "Sits in stillness for long moments, breathing deeply as if meditating on something distant"
+    ]
+  }
+}

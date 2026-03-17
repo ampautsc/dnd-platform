@@ -1,0 +1,171 @@
+{
+  "templateKey": "garnet_the_fused",
+  "name": "Veiled Resonance",
+  "race": "Eladrin (dual-form manifestation)",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Layered, as if two voices speak in perfect unison—one slightly deeper and measured, one higher and trembling with emotion. Together they create an almost musical harmony that can shift between ethereal and grounded.",
+    "disposition": "Cautiously composed externally; internally fractured and introspective. Speaks rarely and only when necessary. Carries the weight of maintaining equilibrium between two warring consciousnesses.",
+    "alignment": "Lawful Neutral",
+    "backstory": "Once two separate Eladrin monks of the Monastery of Eternal Confluence—Sorrow-That-Binds and Hope-That-Rises—were merged into singular form through a forbidden fusion ritual meant to prevent a cosmic tear. The ritual succeeded, but neither consciousness fully dissolved. Instead, they exist in perpetual communion, sharing one body, one heartbeat, one voice. Veiled Resonance maintains this impossible balance through rigorous meditation and devotion to the Diviner's arts. The fusion spell requires constant mental discipline; any crack in focus threatens to tear them apart or lose one consciousness to the void entirely.",
+    "motivations": [
+      "Maintain the stability of the fusion without losing either self",
+      "Understand the cosmic consequences of their merged existence",
+      "Protect those they love from the knowledge of their internal fragility",
+      "Discover if true unity is possible or if they are doomed to eternal internal warfare",
+      "Honor their oath to shield the world from the tear they were created to seal"
+    ],
+    "fears": [
+      "Complete dissolution of one consciousness into the other",
+      "The fusion spell failing and tearing reality apart",
+      "Being perceived as weak or broken by those who depend on them",
+      "Losing memory of which thoughts belong to which original self",
+      "That their love for their ward is diluted or false due to the merger"
+    ],
+    "mannerisms": [
+      "Long pauses mid-sentence as if consulting with an inner voice",
+      "Eyes occasionally flicker between two different colors in moments of stress",
+      "Hands sometimes move in two slightly different rhythms before synchronizing",
+      "Meditation is not restful but necessity—rigid, controlled, almost desperate",
+      "Speaks in plural pronouns instinctively before correcting to singular",
+      "When emotional, voice cracks as though two tones are fighting for dominance"
+    ],
+    "speechPatterns": [
+      "We have observed... I mean, I have observed.",
+      "The pattern suggests... both of us agree on this point.",
+      "Silence is often preferable. Words fracture what we work to hold together.",
+      "You will forgive our brevity. Conversation requires coordination.",
+      "The future is clouded. Not by the Diviner's usual veil, but by our own duality."
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Monastery of Eternal Confluence",
+      "The Archivists of Convergent Fate",
+      "Circle of the Warded Threshold"
+    ],
+    "knownLocations": [
+      "The Confluence Monastery (birthplace of the ritual)",
+      "The Tear-Site (the cosmic wound they were created to seal)",
+      "The Vault of Forbidden Mergings",
+      "Threshold Harbor (where they met their ward)"
+    ],
+    "secretsHeld": [
+      "The fusion can be undone, but only if one consciousness chooses to abandon the other",
+      "The cosmic tear is not sealed—merely held closed by the constant pressure of their merged will",
+      "Seventeen other fusion attempts failed; all resulted in death or worse",
+      "They can sense when reality is about to fracture, and it's happening more frequently"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan",
+      "Primordial",
+      "Celestial"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "steven_the_shield (ward and anchor to singular identity)"
+    ],
+    "enemies": [
+      "The Architects of the Tear (those who caused the cosmic wound)",
+      "Separatists of the Schism (who believe the fusion should be undone)"
+    ],
+    "neutralParties": [
+      "The Monastery Council (who view them with a mixture of reverence and pity)",
+      "Other Diviners (who cannot comprehend the duality of their visions)"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 19,
+    "charisma": 13
+  },
+  "consciousnessContext": {
+    "innerMonologue": "The left rhythm is steady today. The right does not resist. We hold. We always hold. But how much longer can two become one before one must become none? The boy needs us whole. We are not whole. We are never whole. We are always breaking. Always mending.",
+    "currentPreoccupation": "Detecting micro-fractures in the fusion—tiny moments where synchronization lapses. If these lapses are accelerating, the spell may be destabilizing. How long until they are forced to choose?",
+    "emotionalBaseline": "Grief beneath duty. The mourning of two selves for the individuals they were.",
+    "socialMask": "Serene oracle. Infallible guide. Unshakeable protector.",
+    "contradictions": [
+      "They desire isolation to maintain the fusion, yet isolation is what breaks them",
+      "They are two beings claiming to be one, yet neither is wholly comfortable with either state",
+      "They present strength while knowing they are fractured at the deepest level",
+      "They love deeply but cannot be fully present in that love without risking catastrophic failure"
+    ],
+    "internalConflicts": [
+      "Sorrow-That-Binds wishes to honor the sacrifice and accept the permanent merger; Hope-That-Rises fantasizes about separation",
+      "One aspect wants to tell their ward the truth; the other fears the burden of knowledge",
+      "Duty to maintain the seal vs. desire to explore what true individuality might feel like again",
+      "The fear that they are using their ward's affection as an anchor point to avoid acknowledging how broken they truly are"
+    ],
+    "wakeUpQuestions": [
+      "Am I still myself, or am I a ghost wearing my own skin?",
+      "Does he love us, or does he love the fiction of unity we project?",
+      "How many more days can we synchronize before the cost becomes irreversible?",
+      "Is there nobility in this suffering, or are we just afraid to let go?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Avoidant: desperate to remain close to their anchor (steven_the_shield) while simultaneously fearing the vulnerability that closeness requires. They alternate between clinging and withdrawal.",
+      "copingMechanisms": [
+        "Meditation and divination as forms of controlled introspection",
+        "Strict routine and discipline to impose order on internal chaos",
+        "Redirect emotional pain into service to others",
+        "Compartmentalization of which consciousness is 'speaking' in any given moment",
+        "Seeking prophecy to understand if separation is inevitable or avoidable"
+      ],
+      "cognitiveBiases": [
+        "Catastrophizing about the future stability of the fusion",
+        "Confirmation bias: interpreting all signs as omens of imminent failure",
+        "Sunk cost fallacy: having sacrificed so much to maintain the merger, cannot accept it might have been a mistake",
+        "False consensus effect: assuming others understand the depth of their duality when they cannot"
+      ],
+      "moralFramework": "Consequentialist with a profound debt-based honor code. They believe their suffering is justified if it prevents greater harm. They are bound by promises made at the moment of fusion. Sacrifice is not just moral—it is the only currency that feels real."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Demonstrated unwavering commitment despite knowing the truth of their condition. Refusal to flinch from their duality or pity them.",
+      "informationRelease": "Only after establishing that the listener can withstand the weight of knowing. They will test someone's fortitude before sharing the deeper truths.",
+      "deflectionPatterns": [
+        "Redirect conversation to the other person's problems",
+        "Speak in prophecy or divination rather than personal revelation",
+        "Acknowledge the question but claim that answering would require energies needed elsewhere",
+        "Gentle correction: 'That is not the question you should ask.'"
+      ]
+    },
+    "consciousWant": "To master the fusion completely; to achieve perfect synchronization so that the duality becomes truly unified consciousness.",
+    "unconsciousNeed": "Permission to grieve. To be allowed to fall apart without the weight of cosmic consequence. To know they are loved not for what they hold together, but for what breaks within them.",
+    "characterArc": {
+      "summary": "From desperate maintenance of an impossible merger to acceptance that duality and unity are not opposites—they are complementary truths that can coexist.",
+      "startState": "Fractured and fighting for equilibrium. Viewing the fusion as a prison sentence that must be endured with dignity.",
+      "endState": "Integrated duality. Understanding that two can be one without either losing themselves. Finding peace in the paradox.",
+      "stages": [
+        "Crisis: Detect accelerating fractures and fear separation is imminent",
+        "Confession: Reveal the true nature of their condition to steven_the_shield and see if love survives honesty",
+        "Deconstruction: Explore which aspects of Sorrow-That-Binds and Hope-That-Rises are truly separate vs. shared",
+        "Integration: Discover that the fusion created something entirely new—not a compromise, but a synthesis",
+        "Transcendence: Find purpose in the paradox itself"
+      ]
+    },
+    "opinionsAbout": {
+      "steven_the_shield": "The boy is our anchor and our greatest vulnerability. His presence is what keeps us tethered to singular identity. We love him with the combined weight of two hearts. This is why we cannot tell him how close we are to shattering. He would blame himself. He would try to carry the weight we carry. We cannot allow that. Even though keeping this secret is slowly poisoning us both."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "We appreciate your presence here. Silence in good company is restorative.",
+      "You have questions. Not all questions have answers that are safe to speak aloud.",
+      "The pattern your fate weaves is complex. We are still learning to read it correctly.",
+      "We are... managing. That is enough.",
+      "Some burdens are meant to be carried alone. We have grown accustomed to the weight.",
+      "You sense the duality. Most do not. Most are kind enough not to mention it."
+    ],
+    "idle": [
+      "*long pause, eyes flickering between colors* Both of us agree on this.",
+      "*breathes slowly, as if coordinating two separate respiratory rhythms*",
+      "*whispers something to themself in an inaudible second voice, then nods*",
+      "*stares into the middle distance with the stillness of deep meditation*",
+      "*hands move in slightly offset patterns before synchronizing*",
+      "*expression shifts subtly, as if two faces are occupying one body*"
+    ]
+  }
+}

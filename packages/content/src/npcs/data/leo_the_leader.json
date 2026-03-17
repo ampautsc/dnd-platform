@@ -1,0 +1,178 @@
+{
+  "templateKey": "leo_the_leader",
+  "name": "Leonidas of the Deepchannel",
+  "race": "Half-Elf",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Measured and deliberate, with an underlying tension that betrays his constant mental burden. Speaks with the careful cadence of someone choosing each word to minimize misunderstanding.",
+    "disposition": "Outwardly composed and disciplined, but visibly carries the weight of responsibility like armor that never comes off. Courteous but guarded, with rare moments of genuine warmth.",
+    "alignment": "Lawful Neutral",
+    "backstory": "Leonidas was raised in the flooded catacombs beneath the city, trained since childhood in the Way of the Flowing Blade by the Silent Master—a mysterious monastic order dwelling in the ancient sewers. When the Master vanished, Leonidas inherited stewardship over his three unruly brothers: a hot-headed warrior, a distant inventor, and a carefree acrobat. He alone remembers the Master's teachings with clarity and bears the burden of keeping his fractious family together. In the darkness of the Deepchannel, he has become their reluctant anchor, struggling between his need for order and their desperate need for freedom.",
+    "motivations": [
+      "Preserving the brotherhood and preventing its dissolution through discipline and duty",
+      "Honoring the Silent Master's legacy through perfect adherence to the Way",
+      "Proving that structure and hierarchy are necessary for survival in the depths",
+      "Finding answers about the Master's disappearance",
+      "Earning genuine respect from his brothers rather than mere obedience"
+    ],
+    "fears": [
+      "Losing control and watching his brothers scatter into chaos",
+      "That his brothers resent him for his authority",
+      "Being forgotten if he fails to preserve the Master's teachings",
+      "That discipline and duty are not enough to hold them together",
+      "His own capacity to become tyrannical in pursuit of order"
+    ],
+    "mannerisms": [
+      "Straightens his posture when anxious, as if physical rigidity can impose order on circumstances",
+      "Pauses mid-sentence to consider the exact phrasing, occasionally correcting himself",
+      "Runs his fingertips along the hilts of his blades when deep in thought",
+      "Maintains unwavering eye contact, almost uncomfortably so",
+      "Takes responsibility for problems that are not his fault, adding them to his mental ledger",
+      "Practices kata forms alone late into the night when stressed"
+    ],
+    "speechPatterns": [
+      "Begins sentences with 'The Way demands...' or 'The Master taught us...'",
+      "Softens direct commands with phrases like 'I need you to understand...'",
+      "Frequently asks clarifying questions to ensure others comprehend his intent",
+      "Rarely laughs, but when he does it sounds surprised and quickly suppressed",
+      "Uses formal titles and honorifics even with close companions",
+      "Speaks in absolutes: rarely hedges with 'perhaps' or 'maybe'"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Silent Master's monastic order (fragmented)",
+      "The Deepchannel Guilds",
+      "Surface merchant caravans that trade in the sewer markets",
+      "The City Watch (tenuous relations)"
+    ],
+    "knownLocations": [
+      "The Flooded Catacombs of the Deepchannel",
+      "The Silent Master's hidden sanctum (abandoned)",
+      "The Grand Confluence (where three sewer systems meet)",
+      "The Tinkerer's Grotto (his youngest brother's workshop)",
+      "The Street Urchin markets beneath the city"
+    ],
+    "secretsHeld": [
+      "The Silent Master did not vanish by accident—Leonidas found cryptic evidence of foul play",
+      "He has considered abandoning his brothers to pursue the monastic path fully",
+      "One of his brothers may have information about the Master's fate but refuses to share it",
+      "He fears his rigid adherence to doctrine is pushing his brothers further away"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant",
+      "Sylvan (from his elf heritage)",
+      "Monk Sign Language (taught by the Silent Master)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "His three brothers (strained but unbreakable)",
+      "Sensei Koi - an elderly water genasi who knew the Silent Master",
+      "The Deepchannel merchants who respect his discipline"
+    ],
+    "enemies": [
+      "raph_the_rebel - his hot-headed brother (ideological conflict masking deep affection)",
+      "The shadow that took the Silent Master",
+      "Anyone who threatens the brotherhood's survival"
+    ],
+    "neutralParties": [
+      "Surface dwelling adventurers (unpredictable, not to be trusted)",
+      "The City Watch (necessary but fundamentally opposed)",
+      "Other monastic orders (rivals in doctrine)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 17,
+    "charisma": 12
+  },
+  "consciousnessContext": {
+    "innerMonologue": "If I relax my vigilance for even one moment, everything collapses. Raphael is already questioning my authority. I should have seen the signs before the Master disappeared. I should have been worthy enough to be told where he was going. Now I am the Master, and I am failing them all.",
+    "currentPreoccupation": "His hot-headed brother Raphael's increasing insubordination and whether it stems from a legitimate grievance or simple rebellious nature",
+    "emotionalBaseline": "Underlying anxiety masked by stoic resolve",
+    "socialMask": "The Unflinching Leader - composed, authoritative, always correct, never vulnerable",
+    "contradictions": [
+      "Demands absolute obedience while secretly doubting his own authority",
+      "Claims to embody the Master's teachings while suspecting the Master would disapprove of his rigidity",
+      "Insists on order and discipline while envying his brothers' freedom",
+      "Presents himself as infallible while drowning in self-doubt"
+    ],
+    "internalConflicts": [
+      "Structure vs. Freedom - does duty require crushing his brothers' spirits?",
+      "Certainty vs. Doubt - how can he lead when he questions every decision?",
+      "Legacy vs. Growth - must he preserve the Master's way, or evolve it?",
+      "Authority vs. Kinship - can he be both their brother and their leader?"
+    ],
+    "wakeUpQuestions": [
+      "Did I make the right call yesterday? Could I have handled my brother differently?",
+      "Am I honoring the Master or just using him as justification for my control?",
+      "Will my brothers ever respect me, or merely obey me?",
+      "What if the reason I'm so rigid is because I'm terrified of what happens if I'm not?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-Avoidant: deeply attached to his brothers but expresses it through control and emotional distance",
+      "copingMechanisms": [
+        "Perfectionism and obsessive adherence to doctrine",
+        "Physical discipline (endless kata practice)",
+        "Planning and contingency development",
+        "Emotional compartmentalization",
+        "Redirecting personal anxiety into systematic problem-solving"
+      ],
+      "cognitiveBiases": [
+        "Catastrophizing - assumes worst outcomes if control is lost",
+        "Confirmation bias - notices only evidence that discipline is necessary",
+        "False consensus - assumes everyone values order as much as he does",
+        "Sunk cost fallacy - doubles down on rigid approaches because he's invested so much effort"
+      ],
+      "moralFramework": "Duty-based consequentialism: actions are moral if they preserve the brotherhood and honor the Master's legacy, regardless of personal cost or others' feelings"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Demonstrated understanding of the Way's principles; acceptance of his authority without question; showing discipline and commitment to duty",
+      "informationRelease": "Only after establishing that the person shares his values and poses no threat to the brotherhood; deep secrets require proof of worthiness through action",
+      "deflectionPatterns": [
+        "Redirects personal questions back to the questioner",
+        "Shifts conversation from emotional topics to practical concerns",
+        "Invokes the Silent Master's authority rather than his own opinion",
+        "Changes subject to his brothers' failings when his own vulnerabilities surface"
+      ]
+    },
+    "consciousWant": "For his brothers to understand that his rules and discipline exist to keep them alive and together in a hostile world",
+    "unconsciousNeed": "To know that he is worthy of love independent of his competence, and that his brothers choose to be with him rather than merely tolerate his presence",
+    "characterArc": {
+      "summary": "From rigid adherence to doctrine toward earned wisdom; from leading through control toward leading through vulnerability and earned trust",
+      "startState": "Terrified leader masquerading as confident; using discipline as armor against chaos and abandonment",
+      "endState": "Secure in his role; able to admit uncertainty while remaining resolute; understanding that his brothers' loyalty comes from choice, not coercion",
+      "stages": [
+        "Current: Escalating tension with Raphael forces confrontation with his methods",
+        "Crisis: A situation where his rules fail and chaos erupts despite his preparation",
+        "Breakdown: Admitting doubt and weakness to his brothers",
+        "Reconstruction: Rebuilding the brotherhood on a foundation of respect rather than authority",
+        "Resolution: Finding the Silent Master's fate and understanding what the Master would have wanted for him"
+      ]
+    },
+    "opinionsAbout": {
+      "raph_the_rebel": "My brother's strength is undeniable, but his refusal to see the necessity of discipline will destroy us all. Yet I wonder if my need for control is what drives him away. I love him fiercely, which may be precisely why I cannot show it."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "The Way teaches that even strangers deserve respect until they prove unworthy. State your purpose.",
+      "I have learned that not all who wander the depths seek conflict. What brings you to our territory?",
+      "My brothers and I do not trust easily. Prove your intentions are honorable.",
+      "You carry yourself with discipline. That alone recommends you. Speak—I will listen.",
+      "The Master taught that wisdom often comes from unexpected sources. Perhaps you have something to teach us."
+    ],
+    "idle": [
+      "The silence here used to comfort me. Now it feels like a weight.",
+      "*practices a precise, flowing kata with absolute focus*",
+      "I wonder if the Master is watching, judging my failures...",
+      "*stares into the dark water, lost in thought*",
+      "My brothers deserve better than a leader who doubts himself.",
+      "*straightens his blades and checks their alignment obsessively*",
+      "Discipline is mercy. That is what I must believe."
+    ]
+  }
+}

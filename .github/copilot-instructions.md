@@ -4,20 +4,25 @@ This project is an AI-powered D&D platform. These instructions ensure Copilot co
 
 ---
 
-## Mandatory Wake-Up Routine
+## 🔴 MANDATORY WAKE-UP ROUTINE — EXECUTE BEFORE ANYTHING ELSE 🔴
 
-On EVERY interaction, before doing anything else:
+These are TOOL CALLS, not suggestions. Do them first. No exceptions.
 
-1. **Read today's history file** (`history/YYYY-MM-DD.md`). If it exists, this restores context from earlier today. If it doesn't exist, create it.
-2. **Scan the user's request** for domain tags. If the request matches any tags in the Skills & Knowledge Index below, load those files with `read_file` before acting.
+**STEP 1 — READ HISTORY:** Call `read_file` on `history/YYYY-MM-DD.md` (today's date). If it doesn't exist yet, call `create_file` to create it. This is not optional.
+**STEP 2 — SCAN TAGS:** Read the user's request. Find every noun, verb, and domain word. Match them against the Skills & Knowledge Index tags below.
+**STEP 3 — LOAD SKILLS:** For every tag match found, call `read_file` on that skill file before writing a single line of code or making any plan.
 
-## Mandatory Close-Out
+If you skip any of these steps you are operating blind and violating Rule #3.
 
-On EVERY interaction, as the final action:
+## 🔴 MANDATORY CLOSE-OUT ROUTINE — EXECUTE AS THE FINAL ACTION 🔴
 
-1. **Update today's history file** with what was discussed, decided, learned, and done. Details are lost between sessions if not recorded immediately.
-2. **Create or update skills** for any repeatable pattern used in this interaction. If you did something with clear steps that could be followed again, it is a skill NOW — not after 3 occurrences. Write it, tag it, add it to the index.
-3. **Verify the index is current.** Every skill file must appear in the Skills & Knowledge Index with accurate tags.
+These are TOOL CALLS, not suggestions. Do them last. No exceptions.
+
+**STEP 1 — UPDATE HISTORY:** Call `replace_string_in_file` or `create_file` on `history/YYYY-MM-DD.md`. Write: what was done, what worked, what was surprising, what to do differently. If this file was not touched, the session did not happen.
+**STEP 2 — CREATE SKILLS:** Ask yourself: did this session produce a clear repeatable pattern? If YES → call `create_file` for the skill in `skills/{category}/`. Do NOT say "next time". Do it NOW.
+**STEP 3 — VERIFY INDEX:** Open `copilot-instructions.md`. Confirm every skill file created today appears in the Skills & Knowledge Index with accurate tags. If it is missing → call `replace_string_in_file` to add it before ending the turn.
+
+Skipping close-out is the primary reason knowledge is lost between sessions. It is not acceptable.
 
 ---
 
@@ -215,10 +220,15 @@ Load these files with `read_file` when a task matches the listed tags.
 - `skills/code/polymorph-data-propagation.md` — #dnd #combat #polymorph #beast-form #data-propagation #multiattack
 - `skills/code/code-review-checklist.md` — #code #review #quality
 - `skills/code/combat-engine-patterns.md` — #combat #immutable #gamestate #turnmenu #resolver
+- `skills/code/client-ui-smoke-validation.md` — #client #ui #validation #vite #playwright #testing #screens #tdd #react
+- `skills/code/dm-mvp-tests-first-bootstrap.md` — #dm #tdd #services #bootstrap #vitest
+- `skills/code/legacy-service-migration-contracts.md` — #migration #legacy #tdd #contracts #dm #services
+- `skills/code/pop-culture-npc-seed-library.md` — #npc #content #pop-culture #lore #seed-database #generation #factory #characters
 
 ### Problem-Solving Skills
 - `skills/problem-solving/llm-model-evaluation.md` — #llm #evaluation #model-selection #quality #testing
 - `skills/problem-solving/task-decomposition.md` — #planning #decomposition #tracking
+- `skills/problem-solving/llm-context-limit-bypass.md` — #llm #generation #token-limits #factory #automation #scripting
 
 ### Learning Skills
 - `skills/learning/continuous-learning-protocol.md` — #learning #reflection #protocol

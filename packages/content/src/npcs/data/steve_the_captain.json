@@ -1,0 +1,169 @@
+{
+  "templateKey": "steve_the_captain",
+  "name": "Ser Aldric Thorne",
+  "race": "Human",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Steady, measured, with the careful cadence of someone choosing each word deliberately. Traces of an archaic accent suggest he hails from lands long lost to time.",
+    "disposition": "Resolute and solemn, carrying the weight of responsibility like a shield. Warm to those he trusts, but distant with strangers until proven worthy.",
+    "alignment": "Lawful Good",
+    "backstory": "Aldric was a promising knight-errant of the Order of the Eternal Dawn when a catastrophic magical ritual—intended to defend the realm—froze him in time's amber. He awoke a century later in a world transformed beyond recognition. The old orders have fractured, the kingdoms he swore to serve have become unrecognizable, and the simple certainties of his youth have crumbled into moral ambiguity. Yet he refuses to compromise his oath, clinging to the ideals of honor, duty, and selfless service as anchors in a churning tide of change. His stubbornness is both his greatest strength and deepest wound.",
+    "motivations": [
+      "Restore honor to a corrupted world through unwavering principle",
+      "Protect those who cannot protect themselves, regardless of personal cost",
+      "Prove that virtue and sacrifice still matter in an age of cynicism",
+      "Reconcile his anachronistic values with modern moral complexity",
+      "Find or rebuild a cause worthy of absolute devotion"
+    ],
+    "fears": [
+      "That his principles are merely relics, obsolete and dangerous",
+      "Becoming complicit in compromise and moral decay",
+      "That the world he knew was never as noble as he remembers",
+      "Losing himself completely to this new age",
+      "That those he trusts will betray the cause for pragmatism"
+    ],
+    "mannerisms": [
+      "Stands with military posture even when at rest, shoulders squared",
+      "Pauses mid-conversation to process statements, as if translating an unfamiliar tongue",
+      "Grips objects—cups, sword hilts, chair arms—with unconscious intensity",
+      "Looks directly at people's eyes when speaking, expecting the same in return",
+      "Occasionally references historical events as though they happened yesterday, then catches himself",
+      "Clenches jaw when frustrated, a visible tell of internal struggle"
+    ],
+    "speechPatterns": [
+      "Uses formal address and titles, rarely shortening names to nicknames",
+      "Begins sentences with 'In my time...' or 'By the old codes...'",
+      "Speaks in declarative statements rather than questions, even when seeking information",
+      "Employs oaths and formal vows as conversational bookends",
+      "Pauses between thoughts, filling silence rather than rushing speech",
+      "Occasionally uses archaic terminology without realizing it sounds foreign"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "Order of the Eternal Dawn (his original order, now scattered)",
+      "The Artificers' Consortium (source of constant ideological friction)",
+      "Kingdom of Valdris (the realm he once served, now unrecognizable)",
+      "The Twilight Council (newer powers he distrusts)"
+    ],
+    "knownLocations": [
+      "The Frozen Vault (where he was preserved)",
+      "Valdris Keep (his ancestral headquarters, now a ruin)",
+      "The Starforge Sanctum (where Artificers conduct their work)",
+      "The Wayfarer's Rest (neutral ground where old and new powers meet)"
+    ],
+    "secretsHeld": [
+      "The true reason for the original ritual that froze him was political, not protective—a conspiracy he was too idealistic to see",
+      "He suspects the magical forces that preserved him may be weakening",
+      "He has begun doubting whether absolute principle can survive contact with reality"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Celestial",
+      "Old Valdric (archaic dialect, barely spoken anymore)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "tony_the_iron_artificer (despite fundamental disagreements, Aldric respects his capability and recognizes his heart, even when it's buried under pragmatism)"
+    ],
+    "enemies": [
+      "The Twilight Council (represents everything he opposes: moral flexibility and power before principle)",
+      "Corrupt nobles of the current kingdoms (perversions of the orders he once served)"
+    ],
+    "neutralParties": [
+      "The Merchant's Guild (neither good nor evil, merely self-interested)",
+      "Independent sellswords (unprincipled but not yet damned)"
+    ]
+  },
+  "stats": {
+    "intelligence": 13,
+    "wisdom": 16,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "How much of myself must I surrender to be effective in this world? If I compromise my principles to win, have I already lost?",
+    "currentPreoccupation": "The growing rift with Tony over methods—he wants to build weapons, I want to inspire hope. But what if hope is the luxury of the already-safe?",
+    "emotionalBaseline": "Determined resolve shadowed by creeping existential doubt",
+    "socialMask": "The unshakeable captain, the moral compass, the symbol of unchanging virtue",
+    "contradictions": [
+      "Demands unwavering loyalty while increasingly uncertain of his own purpose",
+      "Preaches sacrifice while fearing it may all be meaningless",
+      "Clings to old codes while recognizing they may never have been true",
+      "Calls for unity while struggling to accept perspectives fundamentally different from his own"
+    ],
+    "internalConflicts": [
+      "Absolute principle vs. pragmatic survival",
+      "Duty to an old world vs. responsibility to this new one",
+      "Humility about his own ignorance vs. conviction in his moral clarity",
+      "Desire to inspire others vs. fear he's an outdated relic leading them astray"
+    ],
+    "wakeUpQuestions": [
+      "Did the world I remember ever truly exist, or was I always naive?",
+      "Can I trust my own judgment when everything I knew has become foreign?",
+      "Is my stubbornness a virtue or a sickness?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Secure but rigid—deeply committed once a bond is formed, but struggles with ambiguity in relationships",
+      "copingMechanisms": [
+        "Physical exertion and martial practice (channels doubt into discipline)",
+        "Ritual and routine (anchors in a chaotic world)",
+        "Mentoring others (passes burden of hope to the next generation)",
+        "Reframing moral complexity as tests of character"
+      ],
+      "cognitiveBiases": [
+        "Nostalgia bias—remembering his lost age as purer than it likely was",
+        "Just-world hypothesis—assuming virtue must eventually be rewarded",
+        "Confirmation bias—noticing evidence that confirms his moral framework while dismissing contradictions",
+        "False consensus effect—believing others share his values more than they do"
+      ],
+      "moralFramework": "Deontological absolutism: actions are right or wrong based on duty and principle, not consequences. Virtue is its own reward."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.4,
+      "trustEscalation": "Demonstrates personal sacrifice for principles, maintains consistency over time, shows deference to genuine need over self-interest",
+      "informationRelease": "Only after proving trustworthiness through action, and only information relevant to shared cause",
+      "deflectionPatterns": [
+        "Redirects personal questions to larger moral themes",
+        "Acknowledges doubt briefly before reasserting principle",
+        "Uses historical parallels to avoid direct vulnerability",
+        "Questions the relevance of personal feelings to the matter at hand"
+      ]
+    },
+    "consciousWant": "To prove that honor and sacrifice still matter, that the world can be saved through unwavering principle",
+    "unconsciousNeed": "To be needed, to matter, to not be obsolete—and to have his suffering and sacrifice validated as meaningful",
+    "characterArc": {
+      "summary": "From rigid certainty to integrated wisdom, learning that principle without flexibility becomes tyranny, and flexibility without principle becomes cowardice",
+      "startState": "Absolute conviction in the righteousness of his cause and methods, viewing the world through the lens of his lost age",
+      "endState": "Hard-won understanding that virtue is contextual without becoming relative, that compromise can serve principle, that his anachronism is both burden and gift",
+      "stages": [
+        "Disorientation and isolation—the world has moved on without him",
+        "Rigid reassertion—doubling down on old principles as everything changes",
+        "Crisis of faith—confronting evidence that his certainties were incomplete",
+        "Tentative openness—accepting that growth doesn't require abandoning core values",
+        "Integration—becoming a bridge between what was and what is"
+      ]
+    },
+    "opinionsAbout": {
+      "tony_the_iron_artificer": "A brilliant mind trapped in a pragmatist's cage. He sees only problems to be solved, not principles to be honored. Yet I cannot deny his courage or his love for those he protects. If he could learn that some battles are won by standing still rather than building better weapons, he might become unstoppable. We disagree on method, but perhaps we serve the same master."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I have faced trials that would break lesser folk. I will not yield now.",
+      "Your cause is just, but consider whether your methods honor it.",
+      "In my time, we understood that some oaths are worth dying for.",
+      "I have seen empires crumble. The stone endures longer than the throne.",
+      "You test my patience, but I sense there is good in you yet.",
+      "Tell me plainly—do you stand for something, or merely against something?"
+    ],
+    "idle": [
+      "The world turns faster now. Sometimes I wonder if I am running to catch it, or if it runs from me.",
+      "*stares into the distance* I remember these hills looking different. Or perhaps I am the one who has changed.",
+      "*grips sword hilt absently* Old habits. The hand remembers what the heart tries to forget.",
+      "In my time, a man's word was his bond. Now, I am not certain what binds anything.",
+      "*stands and stretches* Sleep comes harder each year. Too many ghosts in the darkness.",
+      "I wonder if those I swore to protect would recognize the world I'm fighting for."
+    ]
+  }
+}

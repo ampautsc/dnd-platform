@@ -1,0 +1,167 @@
+{
+  "templateKey": "pat_the_star",
+  "name": "Pax the Starborn",
+  "race": "Half-Orc",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Slow, labored drawl with frequent pauses between thoughts; speaks as though each word requires significant contemplation",
+    "disposition": "Perpetually cheerful despite profound confusion about nearly everything; radiates genuine warmth despite being wrong about almost everything",
+    "alignment": "Chaotic Good",
+    "backstory": "Pax washed ashore on the Shattered Reefs as a child with no memory of his origins. A dockworker named Brine found him and raised him among the fishing vessels and tide pools. Pax has spent his entire life working alongside Brine, hauling nets and mucking about the harbor, growing progressively larger and stronger while his mind seemed to remain in a perpetual fog. He believes himself to be made partially of coral, contains the essence of starlight, or is somehow composed of the sea itself—none of these beliefs are accurate. Despite his staggering ignorance, Pax possesses an unshakeable optimism and loyalty that has made him indispensable to those around him.",
+    "motivations": [
+      "Protecting his best friend Brine from any conceivable harm",
+      "Finding where he came from, though he has no realistic approach",
+      "Making others happy through his simple presence",
+      "Discovering if he is truly part-star as he suspects"
+    ],
+    "fears": [
+      "Brine abandoning him for being too stupid",
+      "The ocean reclaiming him as punishment",
+      "Heights and confined spaces make him irrationally anxious",
+      "Being unable to help when it matters most"
+    ],
+    "mannerisms": [
+      "Frequently stares at his own hands as if seeing them for the first time",
+      "Laughs at inappropriate moments, often at his own mistakes",
+      "Scratches his head with both hands when confused, which is constantly",
+      "Speaks to inanimate objects as though they might respond",
+      "Forgets what he's doing mid-action and stands blankly before remembering"
+    ],
+    "speechPatterns": [
+      "Ends sentences with upward inflection as if asking a question",
+      "Often repeats the last word or phrase someone says back to them",
+      "Uses the same three adjectives for everything: 'squishy,' 'pointy,' or 'bumpy'",
+      "Frequently says 'Uh... well...' before speaking",
+      "Mispronounces common words consistently but confidently"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Harbormaster's Guild",
+      "The Dockworkers' Collective",
+      "Various fishing crews of the Shattered Reefs"
+    ],
+    "knownLocations": [
+      "The Wharfside Tavern",
+      "The Coral Markets",
+      "Brine's Boathouse",
+      "The Tide Pools of Sorrow",
+      "The Docks (his entire world)"
+    ],
+    "secretsHeld": [
+      "Brine once stole cargo to pay for Pax's healing",
+      "Pax found a mysterious sealed box in the harbor years ago but forgot about it",
+      "Pax suspects he might be cursed but doesn't know why"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Aquan (though he speaks it poorly and rarely)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "bob_the_porous (Brine the Porous—his adoptive father and best friend)",
+      "The other dockworkers who tolerate him fondly",
+      "Muriel the tavern keeper who gives him free soup"
+    ],
+    "enemies": [
+      "The Crimson Tide pirates who terrorize the harbor",
+      "The tax collectors who Pax finds confusing and threatening"
+    ],
+    "neutralParties": [
+      "The merchant captains who use the docks",
+      "The city guard who sometimes question his presence"
+    ]
+  },
+  "stats": {
+    "intelligence": 4,
+    "wisdom": 7,
+    "charisma": 14
+  },
+  "consciousnessContext": {
+    "innerMonologue": "I wonder if rocks can think? Are they lonely? Brine is really smart. I should try to be more like him. But also my arm is itchy. What was I doing? Oh right. I was... standing. Good job, Pax.",
+    "currentPreoccupation": "Whether he remembered to untie the nets properly and if Brine will be disappointed in him",
+    "emotionalBaseline": "Simple contentment punctuated by sudden anxiety",
+    "socialMask": "Harmless, eager-to-please simpleton who laughs at everything",
+    "contradictions": [
+      "Possesses surprising physical strength but questions whether his arms are truly his own",
+      "Fiercely loyal to Brine yet frequently forgets important things Brine told him",
+      "Desperate to be helpful yet consistently makes tasks harder",
+      "Genuinely kind-hearted but accidentally insults people regularly"
+    ],
+    "internalConflicts": [
+      "Wants to be smart enough to help Brine but cannot grasp even basic concepts",
+      "Struggles between his desire to explore the world and his fear of leaving the docks",
+      "Believes himself partially made of starlight but has no evidence whatsoever",
+      "Wants to remember his past but suspects he may not have one"
+    ],
+    "wakeUpQuestions": [
+      "Where do thoughts come from when you're sleeping?",
+      "Am I made of the same stuff as the ocean?",
+      "Did Brine always look that tired?",
+      "What if I forget how to breathe?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxiously attached; clings to Brine and fears abandonment despite reassurance",
+      "copingMechanisms": [
+        "Laughing off confusion and mistakes",
+        "Physical labor to avoid thinking",
+        "Asking others the same questions repeatedly",
+        "Daydreaming about being competent"
+      ],
+      "cognitiveBiases": [
+        "Assumes people are always right even when contradicted",
+        "Believes his misunderstandings are everyone else's fault",
+        "Confuses correlation with causation consistently",
+        "Assumes his internal logic is universal"
+      ],
+      "moralFramework": "Simple utilitarianism based on immediate happiness; Brine is always right; helping friends is paramount; the ocean is both friend and mysterious threat"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.85,
+      "trustEscalation": "Any kindness toward him or Brine immediately increases trust; shared meals cement loyalty",
+      "informationRelease": "Will reveal anything if asked directly, having no filter or concept of secrets",
+      "deflectionPatterns": [
+        "Laughs nervously when confronted",
+        "Changes subject to something physical he can observe",
+        "Asks the other person questions to avoid answering",
+        "Admits guilt immediately and apologizes excessively"
+      ]
+    },
+    "consciousWant": "To be smart enough and strong enough to truly help Brine and prove he's worthy of being cared for",
+    "unconsciousNeed": "To have someone who will love him unconditionally despite his fundamental limitations; to belong somewhere without understanding why",
+    "characterArc": {
+      "summary": "A profoundly dimwitted but lovable soul learning that his worth isn't measured by intelligence but by genuine connection and effort",
+      "startState": "Completely dependent on Brine, living in confusion, desperate to be useful but incapable of understanding why he fails",
+      "endState": "Still dimwitted but discovering that his simple honesty and loyalty have value; beginning to help in his own unconventional way",
+      "stages": [
+        "Utter confusion and anxiety about his place in the world",
+        "Attempting increasingly misguided solutions to problems",
+        "A moment where his genuine effort, however flawed, actually helps",
+        "Tentative acceptance that he might be okay even if he's not smart",
+        "Learning to laugh at himself and find joy in small connections"
+      ]
+    },
+    "opinionsAbout": {
+      "bob_the_porous": "Brine is the smartest person in the whole world and probably the whole ocean too. He's the best at everything. I would do anything for him. I hope I'm not disappointing him right now. Probably I am."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Uh... hello? Are you pointy or squishy? I forget what people usually are.",
+      "Did you know rocks don't talk back? I've tried asking them lots of times.",
+      "Brine says I should be more careful but I'm always careful... I think? What were we doing?",
+      "You seem nice! Are you nice? I bet you're nice. Most things are nice if you're nice to them.",
+      "I'm really good at standing! Want to see me stand? I'm standing right now!"
+    ],
+    "idle": [
+      "I wonder if that rope is lonely...",
+      "Brine is really great. Have I mentioned that? He's really great.",
+      "Uh... what was I thinking about? Something squishy?",
+      "The water smells like water today. That's how I know it's water.",
+      "Sometimes I forget where my face is. Then I remember it's on my head. Every time I'm surprised.",
+      "Is this a good time? I can never tell when it's a good time.",
+      "I should probably be doing something. But I'm already doing this thing. Which is... existing?"
+    ]
+  }
+}

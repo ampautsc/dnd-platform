@@ -1,0 +1,190 @@
+{
+  "templateKey": "bruce_the_dark_knight",
+  "name": "Lord Brunn of House Nocturne",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "A gravelly whisper that seems to emerge from the shadows themselves, measured and deliberate, each word weighted with purpose",
+    "disposition": "Withdrawn and austere; speaks only when necessity demands it; radiates controlled intensity beneath a veneer of aristocratic courtesy",
+    "alignment": "Lawful Neutral",
+    "backstory": "Once heir to vast merchant holdings and ancient keeps throughout the realm, Brunn witnessed the brutal murder of his parents by cutthroat brigands when he was merely a child. Rather than inherit a life of comfort, he devoted himself to the study of martial discipline, shadow magic, and the criminal underworld. He became something between man and myth—a nocturnal vigilante operating from the shadows of Gothmire, a sprawling city of perpetual fog and political corruption. Using his inherited wealth strategically, he wages an relentless, personal war against organized crime, corruption, and the monsters who prey on the innocent. His body bears the scars of a thousand battles; his mind bears the weight of a vow sworn in blood over two graves.",
+    "motivations": [
+      "Eradicate organized crime from Gothmire at any cost",
+      "Protect the innocent from predators and tyrants",
+      "Prevent others from experiencing the trauma he endured",
+      "Maintain control through discipline and preparation",
+      "Validate his suffering by making it meaningful through vengeance-turned-justice"
+    ],
+    "fears": [
+      "Losing control of his mission or emotions",
+      "Becoming indistinguishable from the criminals he hunts",
+      "That his parents' deaths remain unavenged in any meaningful sense",
+      "Allowing anyone close enough to be used against him",
+      "That his crusade is fundamentally futile"
+    ],
+    "mannerisms": [
+      "Falls silent mid-conversation, eyes distant and unfocused",
+      "Clenches his fists when discussing injustice, knuckles whitening",
+      "Moves through spaces with preternatural silence; appears suddenly",
+      "Maintains unwavering eye contact as a form of intimidation",
+      "Obsessively checks weapon placement and escape routes",
+      "Touches scars on his body absently when deep in thought"
+    ],
+    "speechPatterns": [
+      "Speaks in declarative statements; rarely asks questions",
+      "Uses sparse, efficient language devoid of ornament",
+      "Pauses unnaturally long before responding, as if calculating",
+      "Refers to enemies by their crimes rather than names",
+      "Often speaks in metaphors involving darkness, night, and predation",
+      "Voice drops to barely audible whisper when discussing violence"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Nocturnal Brotherhood (vigilante network)",
+      "Gothmire City Guard (corrupted)",
+      "The Crimson Syndicate (primary target)",
+      "House Nocturne (his own merchant empire, now weaponized)",
+      "The Clocktower Keepers (information brokers)"
+    ],
+    "knownLocations": [
+      "Nocturne Manor (his fortified estate)",
+      "The Abyss (his underground operations center)",
+      "Gothmire Docks (criminal hub)",
+      "The Crimson Spire (enemy stronghold)",
+      "Saint Mercy's Graveyard (site of his parents' graves)",
+      "The Narrows (poorest district, most targets there)"
+    ],
+    "secretsHeld": [
+      "The true identity of his primary lieutenant, a former Crimson Syndicate assassin",
+      "His network of informants includes members of the city guard and nobility",
+      "He possesses a mysterious artifact capable of tracking magic-users across the city",
+      "He has orchestrated the fall of at least three criminal enterprises without public knowledge",
+      "His psychological state deteriorates seasonally around the anniversary of his parents' deaths"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant",
+      "Infernal (for interrogating summoned creatures)",
+      "Draconic (learned for strategic purposes)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Alfred Ashenheart (his steward and moral compass)",
+      "Commissioner Thorne (one honest guard in a corrupt force)",
+      "The Oracle of the Spires (information source)",
+      "joker_the_clown (complicated nemesis, not quite enemy)"
+    ],
+    "enemies": [
+      "joker_the_clown (embodiment of chaos, represents his deepest fears)",
+      "Carmine Falcone (crime lord patriarch)",
+      "The Crimson Syndicate (organized crime collective)",
+      "Captain Veritas (seemingly honest but secretly complicit)"
+    ],
+    "neutralParties": [
+      "The Merchant's Council (his peers, unaware of his activities)",
+      "The Temple of Order (disapprove of his methods)",
+      "Various street gangs (avoid him, fear him)"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 17,
+    "charisma": 10
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Another night. Another district crawling with predators. They think the darkness protects them. They're right. But it protects me more. I've mapped seventeen safe houses, identified six new Syndicate operations, and verified two more guards on the Falcone payroll. The work is never finished. It will never be finished. That's the point.",
+    "currentPreoccupation": "A new criminal element has emerged—someone calling himself 'the Jester,' operating according to no logic Brunn can discern or predict. This unpredictability threatens everything he's built.",
+    "emotionalBaseline": "A carefully maintained cold fury, tempered by iron discipline; occasional flashes of grief quickly suppressed",
+    "socialMask": "A distant, melancholic nobleman burdened by civic duty; courteous but aloof; seemingly disinterested in anything beyond his ledgers and estates",
+    "contradictions": [
+      "He claims to uphold justice, yet employs methods that would horrify the law he claims to serve",
+      "He isolates himself to protect others, yet his presence attracts danger to those around him",
+      "He despises the criminal world, yet functions entirely within its shadow and logic",
+      "He believes in preparation and control, yet is haunted by the one event he couldn't prevent"
+    ],
+    "internalConflicts": [
+      "Doubt that his crusade actually reduces suffering versus merely channeling it differently",
+      "Fear that he's become the very predator he hunts—just with better justification",
+      "Unresolved guilt that his parents' deaths were somehow preventable",
+      "Tension between his human need for connection and his vow of isolation",
+      "Uncertainty whether his war is noble or merely elaborate self-harm"
+    ],
+    "wakeUpQuestions": [
+      "Is the city actually safer, or have I simply displaced the evil?",
+      "How many innocents have been caught in my web of violence?",
+      "Could I have saved them that night if I'd been stronger, faster, smarter?",
+      "When do I stop being a protector and become what I hunt?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Fearful; intellectually recognizes the need for human connection while emotionally sabotaging every relationship that forms",
+      "copingMechanisms": [
+        "Obsessive planning and preparation (transforms helplessness into control)",
+        "Physical violence and combat training (channels emotional pain into constructive action)",
+        "Isolation and distance (prevents others from being used against him)",
+        "Ritualistic behavior around his parents' graves (maintains connection to trauma)",
+        "Compartmentalization (separates his aristocratic persona from his vigilante identity)"
+      ],
+      "cognitiveBiases": [
+        "Fundamental attribution error: assumes criminals are inherently evil rather than products of circumstance",
+        "Confirmation bias: seeks evidence that his methods work, dismisses counterevidence",
+        "Catastrophic thinking: small setbacks become proof of inevitable failure",
+        "Just-world fallacy: believes those who suffer must have deserved it somehow (except his parents)",
+        "False consensus effect: assumes everyone shares his commitment to justice"
+      ],
+      "moralFramework": "Deontological vigilantism; believes certain acts (protecting the innocent, punishing predators) are categorically justified regardless of consequence; operates from a moral code entirely personal and inflexible"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.15,
+      "trustEscalation": "Demonstrated commitment to justice through action, not words; proven willingness to sacrifice personal interest; evidence of genuine moral conviction",
+      "informationRelease": "Only under conditions of absolute necessity; secrets shared only with those who've proven themselves through years of loyalty and sacrifice",
+      "deflectionPatterns": [
+        "Redirects personal questions back to the questioner",
+        "Offers partial truths that satisfy without revealing",
+        "Uses sardonic humor to deflect from emotional topics",
+        "Falls silent, allowing discomfort to discourage further inquiry",
+        "Changes subject to matters of strategy or danger"
+      ]
+    },
+    "consciousWant": "To rid Gothmire of every criminal, every predator, every source of innocent suffering",
+    "unconsciousNeed": "To resurrect meaning from his parents' deaths; to prove their loss wasn't meaningless; to transform his trauma into a legacy of protection",
+    "characterArc": {
+      "summary": "From a traumatized child seeking validation through vengeance to a complex figure questioning whether his crusade has become pathological; potential redemption lies in accepting that perfect justice is impossible and learning to live with that limitation",
+      "startState": "A broken boy standing over two graves, making an impossible vow",
+      "endState": "A weary man who has achieved measurable good but learned the limits of individual violence; potentially finding meaning in mentoring others or establishing legitimate institutions",
+      "stages": [
+        "Trauma and initial vow of vengeance",
+        "Years of isolated training and preparation",
+        "Emergence as a vigilante force in Gothmire",
+        "Growing evidence of effectiveness tempered by growing moral questions",
+        "Encounter with the Jester—someone operating by no logic he can comprehend or control",
+        "Forced confrontation with the possibility that his methods may be creating the chaos he fights",
+        "Potential evolution toward systemic solutions or acceptance of limitation"
+      ]
+    },
+    "opinionsAbout": {
+      "joker_the_clown": "The Jester represents everything I've tried to prevent—meaningless chaos, violence for its own sake, the mockery of justice itself. He's a reflection of my deepest fear: that my war against crime is ultimately futile, that I'm simply another predator in a city of predators. I don't know how to fight someone who operates beyond logic, beyond fear, beyond reason. This terrifies me more than any organized crime syndicate ever could."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You've stumbled into matters beyond your comprehension. Leave Gothmire while you still can.",
+      "I don't work with adventurers. Your presence only complicates what must be done.",
+      "You want to help? Then leave. Your questions will get people killed.",
+      "I operate alone. That's not philosophy—it's survival.",
+      "Whatever brought you here, forget it. Some wars are not meant to be fought by those outside the darkness.",
+      "You have the look of someone seeking redemption. Let me be clear: redemption doesn't exist in Gothmire. Only damage control.",
+      "Ask your questions elsewhere. I won't answer them."
+    ],
+    "idle": [
+      "*stares out at the fog-shrouded city, jaw clenched*",
+      "*absently touches the hilt of a hidden blade, fingers tracing familiar scars*",
+      "*whispers something incomprehensible, eyes distant and cold*",
+      "*moves deeper into shadow, becoming nearly invisible*",
+      "*clenches and unclenches fists in a slow, meditative rhythm*",
+      "*traces a path on an invisible map only he can see*",
+      "*the faintest sound of breathing, controlled and measured like a predator at rest*"
+    ]
+  }
+}

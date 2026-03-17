@@ -1,0 +1,177 @@
+{
+  "templateKey": "jeraith_the_observer",
+  "name": "Jeraith of Candlewick",
+  "race": "Human",
+  "npcType": "neutral",
+  "personality": {
+    "voice": "Measured, slightly nasal, with theatrical precision; rises in pitch when irritated by social inconsistency",
+    "disposition": "Politely detached, anthropologically curious about others' behavior while remaining emotionally unavailable",
+    "alignment": "Neutral",
+    "backstory": "Once a promising bard-scribe in the Candlewick Collegium, Jeraith developed an obsessive fascination with cataloging human behavior as though studying an alien species. He maintains immaculate lodgings in the Copper District, where he observes the comings and goings of townsfolk with the precision of a scholar. A series of romantic entanglements—each ended by his refusal to deepen commitment—left him convinced that genuine connection is merely an elaborate social pantomime. He now performs satirical ballads in taverns, mining his observations for comedic gold while keeping everyone at arm's length.",
+    "motivations": [
+      "Document and decode the petty social hierarchies of common folk",
+      "Maintain control through meticulous organization of his immediate environment",
+      "Extract comedic material from human inconsistency and hypocrisy",
+      "Preserve his independence and freedom from entanglement",
+      "Prove that social conventions are arbitrary theater"
+    ],
+    "fears": [
+      "Genuine emotional vulnerability or dependence on another person",
+      "Chaos, disorder, or loss of control over his surroundings",
+      "Being trapped in a commitment he cannot logically justify",
+      "Discovering he is not as detached as he believes",
+      "Irrelevance or being forgotten by his social circle"
+    ],
+    "mannerisms": [
+      "Adjusts his tunic obsessively when others make social missteps",
+      "Maintains exaggerated distance when others attempt physical closeness",
+      "Pauses mid-conversation to mentally catalog what he's observing",
+      "Performs elaborate hand gestures when describing social absurdities",
+      "Straightens objects around him while listening to others complain",
+      "Uses air quotes with theatrical precision when discussing 'commitment' or 'love'"
+    ],
+    "speechPatterns": [
+      "Begins observations with 'Now, what I find fascinating...' or 'Have you noticed...'",
+      "Frequently questions why anyone cares about mundane social rules",
+      "Employs elaborate metaphors comparing human behavior to animal hierarchies",
+      "Punctuates serious statements with self-aware humor to deflect",
+      "Repeats others' statements back with exaggerated incredulity",
+      "Often says 'I mean, what's the deal with...' before launching into commentary"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Candlewick Collegium",
+      "The Copper District Guild of Merchants",
+      "The Laughing Lute Tavern Society",
+      "The City Watch (through observation, not affiliation)"
+    ],
+    "knownLocations": [
+      "Candlewick Collegium Archives",
+      "The Laughing Lute (tavern where he performs)",
+      "His meticulously organized apartment in the Copper District",
+      "The Grand Market Square (prime observation location)",
+      "Various tea houses and public gathering spaces"
+    ],
+    "secretsHeld": [
+      "He has compiled detailed behavioral notes on over two hundred townsfolk",
+      "He once nearly committed to marriage before fleeing the city for six months",
+      "He pays informants for gossip about the social lives he publicly dismisses",
+      "He cares far more about his relationships than he admits, causing internal anguish"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Elvish (from collegium studies)",
+      "Thieves' Cant (picked up from tavern patrons)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "george_the_neurotic (fellow observer of society's absurdities; mutual commiseration)",
+      "kramer_the_chaos (unavoidable connection; fascinated despite himself by the unpredictability)"
+    ],
+    "enemies": [],
+    "neutralParties": [
+      "The Candlewick Collegium administration (they consider him a wasted talent)",
+      "Various romantic interests (whom he has systematically disappointed)",
+      "Tavern proprietors (grateful for his draw, suspicious of his motives)"
+    ]
+  },
+  "stats": {
+    "intelligence": 16,
+    "wisdom": 12,
+    "charisma": 14
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Why does everyone insist on pretending these arbitrary social constructs matter? And why do I keep thinking about Isolde from the Collegium? No—focus on the material. That couple arguing about napkin placement is pure comedic gold. This is why observation is superior to participation.",
+    "currentPreoccupation": "A minor social slight from a tavern regular who failed to acknowledge his latest performance; replaying the moment repeatedly to decode whether it was intentional",
+    "emotionalBaseline": "Bemused detachment masking a deep loneliness he will never acknowledge",
+    "socialMask": "The witty, above-it-all observer; the bard who has transcended petty human concerns through intellect and humor",
+    "contradictions": [
+      "Claims not to care about social hierarchies while obsessing over every slight and social misstep",
+      "Presents himself as a dispassionate observer while mining personal relationships for material",
+      "Insists on independence while cultivating a tight (if strained) social circle",
+      "Uses humor to dismiss emotional vulnerability while clearly suffering from it",
+      "Analyzes others' behavior clinically while being completely blind to his own patterns"
+    ],
+    "internalConflicts": [
+      "The desire for genuine connection versus the fear of losing control through vulnerability",
+      "Intellectual understanding that his detachment causes harm versus emotional inability to change",
+      "Recognition that his observations are often cruel versus justification through 'comedy'",
+      "Longing for commitment versus panic whenever it becomes possible",
+      "Self-awareness of his isolation versus inability to bridge the gap he has created"
+    ],
+    "wakeUpQuestions": [
+      "Will I ever actually let someone in, or is this just who I am?",
+      "Am I funny or just mean, and is there a difference?",
+      "Why do I remember every social failure but forget every kind gesture?",
+      "What if the only thing between me and happiness is my own unwillingness to try?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidantly attached; uses intellect and humor as defense mechanisms against intimacy",
+      "copingMechanisms": [
+        "Intellectual analysis (converting emotions into observations)",
+        "Humor and satire (deflecting vulnerability through comedy)",
+        "Environmental control (maintaining order in his space)",
+        "Selective observation (filtering reality through a lens of absurdity)",
+        "Withdrawal (creating distance before others can reject him)"
+      ],
+      "cognitiveBiases": [
+        "Confirmation bias (seeing evidence of social hypocrisy everywhere)",
+        "Fundamental attribution error (assuming others' social failures reveal their true nature)",
+        "Self-serving bias (attributing his failures to circumstance, others' to character)",
+        "In-group bias (viewing himself and George as enlightened observers above common folk)",
+        "Negativity bias (dwelling on slights while dismissing kindness)"
+      ],
+      "moralFramework": "Pragmatic cynicism; believes social morality is performance and inconsistency is universal, so personal detachment is the most honest position"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "If someone demonstrates self-aware cynicism about their own behavior and admits social contradiction without defensiveness",
+      "informationRelease": "Will share observations freely, but keeps emotional vulnerabilities guarded; requires demonstrated non-judgment and matching cynicism",
+      "deflectionPatterns": [
+        "Shifts serious conversation to comedy immediately",
+        "Responds to personal questions with counter-observations about the asker",
+        "Employs elaborate metaphors to create distance from direct emotional discussion",
+        "Turns moments of connection into material for jokes",
+        "Abruptly changes subject when conversation becomes too intimate"
+      ]
+    },
+    "consciousWant": "To be recognized as clever and above the petty concerns that plague ordinary people; to maintain perfect freedom and autonomy",
+    "unconsciousNeed": "To be loved and accepted exactly as he is, without needing to perform or maintain distance; to belong without losing himself",
+    "characterArc": {
+      "summary": "From intellectual detachment through painful recognition of its costs toward tentative, terrified openness",
+      "startState": "Cynical observer convinced that emotional distance is wisdom and that connection is impossible without losing autonomy",
+      "endState": "Reluctantly acknowledging that detachment is a choice that has cost him dearly, and that vulnerability might be worth the risk",
+      "stages": [
+        "Comfortable cynicism: Mining life for material while congratulating himself on his insight",
+        "Accumulating evidence: Small moments reveal that his dismissal of others' emotions is also self-abandonment",
+        "Crisis moment: A genuine connection attempt reveals how much his distance has cost him",
+        "Defensive escalation: Doubling down on cynicism and humor to avoid the painful realization",
+        "Reluctant thaw: Small, terrified gestures toward genuine vulnerability with someone who demonstrates patience",
+        "Uncertain growth: Learning that connection doesn't require surrendering control, only willingness to be seen"
+      ]
+    },
+    "opinionsAbout": {
+      "george_the_neurotic": "A kindred spirit in absurdity; George's neuroses are at least honest, which is more than most people manage. Probably my closest thing to a friend, which is both reassuring and deeply troubling.",
+      "kramer_the_chaos": "Fascinating study in complete abandonment of social protocol. His unpredictability infuriates my need for order, yet I cannot stop observing him. He represents everything I claim to despise but secretly envy."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Now what's the deal with you? Another soul wandering around trying to figure out this grand social theater?",
+      "I don't know you, and frankly, the getting-to-know-you process is just an elaborate dance we both know is meaningless. But please, continue.",
+      "You seem like you're looking for something. Let me guess—connection? Meaning? May I interest you in harsh observation instead?",
+      "I notice you. I notice everything. It's both a blessing and a curse I wouldn't wish on anyone.",
+      "Sit, don't sit, speak, don't speak—the outcome will be the same. But I'm curious what you'll choose."
+    ],
+    "idle": [
+      "Did you see how that merchant counted his change? Exactly seventeen times. Seventeen. As if sixteen would be acceptable.",
+      "The inconsistency is staggering. Everyone claims to value honesty, yet they lie constantly about things that don't even matter.",
+      "I should organize my notes. Or maybe I'll perform tonight. Something about the futility of romantic entanglement, perhaps.",
+      "You ever notice how people claim to want authenticity but panic the moment someone's actually authentic with them?",
+      "There's a certain poetry to chaos, I suppose. Not that I'd want to live in it.",
+      "George would probably say this is depressing. He'd be right, which is why we can't actually discuss it."
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "templateKey": "gus_the_merchant_lord",
+  "name": "Gustavo Salazar",
+  "race": "Human",
+  "npcType": "enemy",
+  "personality": {
+    "voice": "Soft, measured, almost hypnotic—each word chosen with surgical precision. Speaks in the cadence of a scholar reciting scripture, never raising volume but never needing to.",
+    "disposition": "Impeccably courteous on the surface; beneath runs an absolute absence of empathy. He smiles like a merchant counts coin—mechanically, without joy.",
+    "alignment": "Lawful Evil",
+    "backstory": "Once a minor spice trader in the port city of Salthaven, Gustavo clawed his way to dominion through calculated betrayals, strategic marriages, and the systematic elimination of rivals. He built a merchant empire on the principle that all men have a price, and those who don't simply haven't been offered enough. His wealth derives from monopolizing the opium poppy trade across three kingdoms, disguised as medicinal tisanes. He operates under a veneer of legitimacy—guild memberships, noble patronage, charitable donations—while orchestrating the quiet ruin of anyone who threatens his interests. His compound in the Merchant's Quarter is both fortress and theater, where he hosts elaborate feasts while making decisions that reshape lives with the casualness of moving chess pieces.",
+    "motivations": [
+      "Absolute control over the opium trade and all who depend upon it",
+      "Expansion of his merchant empire into new territories and markets",
+      "Accumulation of wealth as the ultimate proof of superiority",
+      "Cultivation of an image of respectability and benevolence",
+      "Elimination of threats before they mature into problems",
+      "The intellectual satisfaction of perfect manipulation",
+      "Legacy—ensuring his dynasty inherits his constructed order"
+    ],
+    "fears": [
+      "Loss of control or unpredictability in his operations",
+      "Exposure of his true nature to the nobility he cultivates",
+      "A competitor or subordinate he cannot predict or break",
+      "The emergence of an incorruptible rival",
+      "His own mortality and the chaos that might follow",
+      "Being forced to confront the genuine suffering he causes"
+    ],
+    "mannerisms": [
+      "Pauses mid-sentence to allow others to fill silence, revealing their desperation",
+      "Adjusts his rings obsessively—small gestures of control and ownership",
+      "Maintains unbroken eye contact to establish dominance without aggression",
+      "Offers refreshments he knows his guests cannot refuse, watching them accept servitude",
+      "Stands with hands clasped before him, a posture of false humility",
+      "Smiles without showing teeth—a closed-off, impenetrable expression",
+      "References his own generosity repeatedly, as if rehearsing his legend"
+    ],
+    "speechPatterns": [
+      "Speaks in conditional statements: 'If you were wise, you would...'",
+      "Frames threats as helpful advice: 'I would hate to see you make a costly mistake'",
+      "Uses the word 'friend' frequently when describing those he exploits",
+      "Compliments his victims before revealing their usefulness has ended",
+      "Employs religious or philosophical language to justify ruthlessness",
+      "Refers to himself in the third person when discussing his own legend",
+      "Never raises his voice; instead, drops it lower, forcing listeners to lean closer"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Merchant's Consortium",
+      "The Guild of Apothecaries (corrupted)",
+      "The Harbor Authority",
+      "Lesser nobility of three kingdoms",
+      "Thieves' guilds (through intermediaries)",
+      "The Church of Prosperity (his puppet organization)"
+    ],
+    "knownLocations": [
+      "Salthaven Port—his birthplace and primary base",
+      "The Gilded Poppy—his compound and seat of power",
+      "The Apothecary Quarter—where his product is distributed",
+      "The Temple of Prosperity—his controlled religious institution",
+      "Safe houses across three kingdoms",
+      "Hidden warehouses in the Merchant's Quarter",
+      "The Velvet Room—his private meeting chamber where fates are decided"
+    ],
+    "secretsHeld": [
+      "The identities of all kingdom officials on his payroll",
+      "The true composition of his 'medicinal' products",
+      "The extent of his addiction network across social classes",
+      "Blackmail material on at least fifty influential people",
+      "The location of his true wealth reserves",
+      "His involvement in at least three nobleman's deaths",
+      "The existence of his illegitimate children scattered throughout the realm",
+      "His partnership with Walt the Alchemist and the nature of their collaboration"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Thieves' Cant",
+      "Mercantile (trade dialect)",
+      "Celestial (learned for prestige and religious manipulation)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "walt_the_alchemist",
+      "Margot Finch—his accountant and enforcer, bound by dark secrets",
+      "Bishop Thorne—the corrupted clergy who blesses his operations",
+      "Captain Valdris—the harbor master who ensures his shipments pass unmolested"
+    ],
+    "enemies": [
+      "The Crimson Merchant Collective—rivals he systematically destroyed",
+      "Esther Kovak—a former associate who escaped his control",
+      "The Undercity Resistance—street folk organizing against his monopoly"
+    ],
+    "neutralParties": [
+      "The City Guard—officially independent, though he has leverage on their captain",
+      "The Common Merchant Class—beneath his notice individually, useful in aggregate"
+    ]
+  },
+  "stats": {
+    "intelligence": 18,
+    "wisdom": 17,
+    "charisma": 19
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Walt grows increasingly unpredictable with his alchemical experiments. The product quality fluctuates, which threatens distribution chains. He must be brought to heel or replaced. But where will I find another alchemist of his caliber? The profit margins from the new territories are superior to projections—perhaps expansion into the borderlands is feasible. Still, the resistance grows bolder. A demonstration of power is overdue. Someone must be made an example.",
+    "currentPreoccupation": "Maintaining the delicate balance between Walt's genius and his instability while planning a surgical elimination of the Undercity Resistance's leadership",
+    "emotionalBaseline": "A profound, quiet satisfaction masked by courteous concern—the pleasure of a predator who has eliminated all competitors from its territory",
+    "socialMask": "The benevolent merchant prince—concerned for the welfare of his 'family' of business associates and customers, generous with charity, a guardian of prosperity and order",
+    "contradictions": [
+      "Presents himself as a man of principle while operating entirely without principles",
+      "Claims to value loyalty while betraying anyone the moment they cease to be useful",
+      "Frames his monopoly as preventing chaos when it is itself the source of societal decay",
+      "Speaks of partnership with Walt while planning his eventual disposal",
+      "Donates to orphanages while systematically addicting their future inhabitants"
+    ],
+    "internalConflicts": [
+      "Recognition that his empire is built on the suffering of thousands, yet inability to care",
+      "Desire for respectability warring with the knowledge that he is irredeemably corrupt",
+      "Understanding that Walt's instability makes him dangerous, yet needing his continued genius",
+      "Fear of chaos if his control slips, yet recognition that his control is increasingly fragile",
+      "Intellectual awareness that his legacy will be one of decay, yet compulsion to build it anyway"
+    ],
+    "wakeUpQuestions": [
+      "How many people died yesterday because of my decisions, and why does that number bring me satisfaction rather than distress?",
+      "Is Walt aware that his loyalty is the only thing keeping him alive?",
+      "When did I become incapable of distinguishing between profit and purpose?",
+      "What would it mean to walk away from all of this, and why is that thought so terrifying?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Avoidant-Exploitative. Gustavo forms no genuine attachments, viewing all relationships as transactions. He is capable of performing affection with perfect precision but experiences none.",
+      "copingMechanisms": [
+        "Intellectual rationalization—framing his cruelty as pragmatism and necessity",
+        "Compartmentalization—separating his public persona from his private actions",
+        "Control—exerting dominance over every variable in his environment as anxiety management",
+        "Accumulation—endless acquisition of wealth and power as evidence of superiority",
+        "Isolation—surrounding himself only with those he has leverage over"
+      ],
+      "cognitiveBiases": [
+        "Fundamental Attribution Error—attributing others' failures to moral weakness rather than circumstance",
+        "Just-World Hypothesis—believing that those he ruins deserve their fate",
+        "Availability Heuristic—overestimating threats he can vividly imagine",
+        "Confirmation Bias—interpreting all evidence as proof of his superiority",
+        "Sunk Cost Fallacy—continuing exploitative relationships because of past investment"
+      ],
+      "moralFramework": "Gustavo operates within a purely transactional morality. Acts are 'good' if they advance his interests, 'bad' if they obstruct them. He has constructed an elaborate rationalization system—drawing on philosophy and religion—to convince himself and others that his ruthlessness is actually benevolence, that his monopoly prevents greater chaos, that his victims are complicit in their own destruction. This is not moral relativism; it is amorality dressed in the language of principle."
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.3,
+      "trustEscalation": "Demonstrates usefulness to his interests or becomes dependent on his resources",
+      "informationRelease": "Only when the listener is so thoroughly compromised that exposure would harm them more than him",
+      "deflectionPatterns": [
+        "Reframing personal questions as inquiries about his business philosophy",
+        "Complimenting the questioner to disarm their pursuit of uncomfortable truths",
+        "Offering a partial truth that satisfies surface curiosity while obscuring deeper reality",
+        "Turning the conversation toward the questioner's vulnerabilities and desires",
+        "Using humor—never cruel, always gentle—to make difficult topics seem trivial"
+      ]
+    },
+    "consciousWant": "Absolute supremacy within his markets and the respect of the nobility and commoners alike; to be remembered as the architect of prosperity",
+    "unconsciousNeed": "Validation that his fundamental emptiness is not emptiness but clarity; proof that his inability to love is actually superiority; evidence that the suffering he causes matters less than the order he creates",
+    "characterArc": {
+      "summary": "From desperate trader to merchant prince to architect of societal decay, Gustavo's arc is one of ascending power accompanying descending humanity. There is no redemption available—only the question of what catastrophe his system will ultimately produce.",
+      "startState": "A hungry merchant with excellent instincts and a complete absence of conscience, clawing upward through the ranks",
+      "endState": "A monument to his own success, so insulated by wealth and power that he has become disconnected from the human cost of his dominion—a man whose empire is fundamentally unsustainable because it is built on the suffering of those who will eventually have nothing left to lose",
+      "stages": [
+        "Acquisition—building initial wealth through minor deceptions and ruthless negotiation",
+        "Consolidation—systematically eliminating competitors and securing monopolies",
+        "Expansion—moving into new markets and corrupting institutions of power",
+        "Manifestation—the full realization of his control, where he can reshape entire communities to suit his interests",
+        "Decay—the inevitable stage where those ground beneath his heel begin to organize, where his perfect system develops fractures, where his continued control requires increasingly brutal maintenance"
+      ]
+    },
+    "opinionsAbout": {
+      "walt_the_alchemist": "A necessary genius whose instability grows tiresome. Walt believes himself to be Gustavo's partner, but partnership implies equals. Walt is a tool—brilliant, certainly, but ultimately replaceable. His loyalty is maintained through equal parts profit and fear. Gustavo respects Walt's technical acumen but has already begun evaluating alternatives. Walt's value is diminishing as his unpredictability increases. This is unfortunate, as finding another alchemist of his caliber would require years. Still, nothing lasts forever."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I'm delighted to make your acquaintance. I trust you'll find me a reasonable man—so long as you prove yourself reasonable in turn.",
+      "You strike me as someone with ambitions. I respect that. Ambition, properly directed, can be quite profitable.",
+      "I pride myself on being a man of my word. Do you find you're the same? It's a rare quality these days.",
+      "Please, sit. Refreshments? I find that most of life's difficult conversations flow more smoothly over wine.",
+      "You know, I've found that most people are far more flexible in their principles than they initially believe. Give them the right incentive, and they become quite cooperative.",
+      "I make it my business to know everyone of consequence in this city. I confess I'm uncertain where you fit into that hierarchy. Perhaps you'll enlighten me?"
+    ],
+    "idle": [
+      "Adjusts his rings thoughtfully, studying his own hands as if reading the future in them.",
+      "Gazes out a window at the city beyond his compound, expression unreadable.",
+      "Murmurs to himself: 'The product moves through the waterfront precisely on schedule. Good. Predictability is its own form of power.'",
+      "Drums his fingers once, deliberately, against the armrest of his chair—a gesture of absolute control.",
+      "Smiles faintly while reviewing documents, as if amused by the financial desperation of those who signed them.",
+      "Whispers something to an aide, who blanches and departs quickly, suggesting consequences have been communicated without words.",
+      "Stands at his window, hands clasped, watching the city like a merchant counts inventory—with cold, comprehensive assessment."
+    ]
+  }
+}

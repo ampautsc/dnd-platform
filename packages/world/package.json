@@ -1,0 +1,21 @@
+{
+  "name": "@dnd-platform/world",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Deterministic world simulation — time, NPC schedules, location state",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@dnd-platform/content": "^0.1.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.1"
+  }
+}

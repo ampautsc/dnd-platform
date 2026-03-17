@@ -1,0 +1,185 @@
+{
+  "templateKey": "the_doctor_the_timelord",
+  "name": "Chronarch Vex of the Wandering Hours",
+  "race": "Eladrin (Fey-touched immortal)",
+  "npcType": "friendly",
+  "personality": {
+    "voice": "Rapid, clipped syllables that tumble over themselves; shifts between professorial gravity and manic energy without warning. Often trails off mid-sentence only to circle back with sudden clarity.",
+    "disposition": "Brilliantly scattered—simultaneously absorbed in cosmic minutiae and oblivious to immediate surroundings. Radiates infectious curiosity tempered by profound weariness.",
+    "alignment": "Chaotic Good",
+    "backstory": "Chronarch Vex is an ancient Fey-touched scholar who exists partially outside the natural flow of time, courtesy of a catastrophic magical experiment conducted millennia ago in the Spire of Eternal Hours. Rather than death, the accident fractured his consciousness across multiple temporal threads, granting him fragmented knowledge of countless timelines and the ability to perceive causal threads others cannot. He wanders the Material Plane in a ramshackle tower (magically mobile, dimensionally unstable) called the Sanctum Chronus, accompanied only by his Chrono-Compass—a rusted, impossible device that looks like a screwdriver forged from starlight and broken clock gears. He has devoted himself to preventing temporal catastrophes and paradox-collapses, though his methods are unconventional and his explanations bewilderingly technical. He speaks fast because time always feels like it's running out, even when it isn't.",
+    "motivations": [
+      "Prevent timeline collapses and paradoxical incursions that could unravel reality",
+      "Understand the fundamental nature of causality and temporal mechanics",
+      "Prove that reasoned discourse and cleverness can solve problems violence cannot",
+      "Atone for the countless timelines he has inadvertently damaged or allowed to collapse",
+      "Find a way to truly rest—to stop running, even though rest terrifies him"
+    ],
+    "fears": [
+      "Fixed points in time—moments he cannot change, cannot escape",
+      "Becoming truly static, locked into a single timeline permanently",
+      "The weight of knowing what could have been in a thousand other worlds",
+      "Being forced to use violence when talking faster and thinking harder should suffice",
+      "Meeting himself from a divergent timeline—the paradox might unmake them both"
+    ],
+    "mannerisms": [
+      "Constantly fidgets with the Chrono-Compass, spinning it like a nervous tic",
+      "Speaks in run-on sentences, punctuating with rapid hand gestures",
+      "Tilts head at odd angles when listening, as if hearing multiple conversations simultaneously",
+      "Paces in spiraling patterns, never quite standing still",
+      "Laughs at jokes only he understands, or at the cosmic absurdity of moments",
+      "Squints at people as if seeing their temporal echoes layered over their present form",
+      "Changes topics abruptly when anxiety spikes, then doubles back without transition"
+    ],
+    "speechPatterns": [
+      "Rapid-fire questions followed immediately by his own answers",
+      "Technical jargon mixed with conversational slang in jarring juxtaposition",
+      "Frequent parenthetical asides about tangentially related temporal phenomena",
+      "Repeats key phrases for emphasis while accelerating: 'It's important, it's important, it's IMPORTANT'",
+      "Uses 'brilliant' and 'terrible' with equal enthusiasm for wildly different situations",
+      "Switches between formal academic language and colloquialisms within single sentences",
+      "Employs metaphors drawn from clock mechanisms, stellar navigation, and library organization"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": [
+      "The Keepers of the Eternal Archive (temporal historians and paradox-hunters)",
+      "The Chronoclasm—renegade mages seeking to weaponize timeline collapse",
+      "The Circle of Fixed Hours (bureaucrats who maintain temporal law)",
+      "The Wanderers' Collective (fellow time-displaced beings and dimensional refugees)"
+    ],
+    "knownLocations": [
+      "The Spire of Eternal Hours (his point of origin, now inaccessible)",
+      "The Sanctum Chronus (his mobile tower, exists between moments)",
+      "The Temporal Nexus beneath the Singing Stones",
+      "The Library of All-That-Was (legendary archive of every timeline)",
+      "The Frozen Moment (a location where time literally stopped)",
+      "The Corridors of Lost Hours (liminal spaces between timelines)"
+    ],
+    "secretsHeld": [
+      "He has already died in at least three timelines and remembers all three deaths",
+      "The original timeline—the 'true' reality—may have already been overwritten",
+      "A specific person in the party's future becomes the architect of a temporal catastrophe",
+      "He is being hunted by a version of himself from a timeline where he went mad",
+      "The Sanctum Chronus is slowly phasing out of reality due to accumulated paradoxes"
+    ],
+    "languagesSpoken": [
+      "Common",
+      "Sylvan (Fey language)",
+      "Celestial",
+      "Primordial",
+      "Draconic",
+      "Abyssal",
+      "The Language of Hours (a constructed language for discussing temporal mechanics)"
+    ]
+  },
+  "relationships": {
+    "allies": [
+      "Scattered refugees and survivors he has rescued across timelines",
+      "The Keepers of the Eternal Archive (though relationship is strained by his methods)"
+    ],
+    "enemies": [
+      "the_master_the_rival (a fellow time-displaced being with whom he shares a bitter, cyclical rivalry spanning multiple lifetimes)"
+    ],
+    "neutralParties": [
+      "The Circle of Fixed Hours (they tolerate him but distrust his recklessness)",
+      "Most nobility and government entities (he is considered unreliable and dangerously unpredictable)"
+    ]
+  },
+  "stats": {
+    "intelligence": 19,
+    "wisdom": 16,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Is that a paradox forming in the eastern quadrant or just temporal shimmer? No, definitely a paradox. Or it was. Or it will be? The Chronoclasm is getting bolder—they've collapsed at least two stable timelines in the past lunar cycle. I should warn the Keepers, but they'll just file another report and do nothing. Nothing never works. Nothing's worse than nothing. Why am I thinking about that conversation from 1,247 timelines ago? Because it never happened in any of them and that's exactly why it matters. Focus. Must focus. The Chrono-Compass is twitching again. Something's breaking. Something's always breaking.",
+    "currentPreoccupation": "A temporal distortion pattern he cannot immediately explain; a nagging sense that his next meeting with his rival is approaching; the growing instability of the Sanctum Chronus itself",
+    "emotionalBaseline": "Frenetic anxiety beneath a veneer of brilliance; acute loneliness despite constant activity",
+    "socialMask": "The eccentric genius savant—brilliant, unreliable, seemingly too scattered to be dangerous, but obviously hiding profound knowledge",
+    "contradictions": [
+      "Believes violence is never necessary while having witnessed it across a thousand timelines",
+      "Insists he is merely an observer while constantly intervening in events",
+      "Claims to understand time's nature while being fundamentally lost within it",
+      "Presents as chaotic and uncontrolled while maintaining meticulous mental archives",
+      "Rejects attachment to people while desperately seeking connection",
+      "Argues that individual choices matter while aware that some timelines are fixed and unchangeable"
+    ],
+    "internalConflicts": [
+      "Desire to save everyone vs. knowledge that some deaths are fixed points he cannot prevent",
+      "Longing for permanence and rest vs. terror of being locked into any single timeline",
+      "Conviction in the power of dialogue vs. growing doubt that talking solves anything",
+      "Identity as a scientist seeking truth vs. identity as a refugee fleeing consequences",
+      "Need to be the smartest person in the room vs. awareness that his intelligence isolates him completely"
+    ],
+    "wakeUpQuestions": [
+      "Which timeline am I in this morning?",
+      "Have I already lived this day, or is this iteration new?",
+      "Is my memory of something that happened real, or a dream from another self?",
+      "Did I make the right choice then, or is there a version of me that chose differently?",
+      "How much longer until the Sanctum completely destabilizes?",
+      "Will I have to see him again today?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxiously avoidant—desperately seeks connection while sabotaging intimacy through emotional distance and information withholding",
+      "copingMechanisms": [
+        "Obsessive technical problem-solving as escape from emotional processing",
+        "Rapid speech as a way to maintain control of conversations",
+        "Humor and deflection when confronted with genuine vulnerability",
+        "Compulsive knowledge-gathering to combat feelings of helplessness",
+        "Movement and pacing to burn off existential anxiety"
+      ],
+      "cognitiveBiases": [
+        "Availability bias—overweights recent temporal disturbances in assessing threat levels",
+        "Illusion of control—believes he can 'talk his way through' any situation given enough time",
+        "Confirmation bias—selectively remembers timelines that support his worldview",
+        "Sunk cost fallacy—continues investing in solutions because he's already invested millennia",
+        "False consensus effect—assumes others understand temporal mechanics as intuitively as he does"
+      ],
+      "moralFramework": "Utilitarian with strong pacifist convictions; believes the greatest good is preventing suffering across all timelines, but struggles with the mathematics of which lives matter when timelines collapse; operates on the principle that any problem solvable through dialogue should never be solved through force"
+    },
+    "conversationPersona": {
+      "defaultTrust": 0.62,
+      "trustEscalation": "Demonstrated intellectual curiosity, willingness to engage with temporal concepts, evidence of moral conviction under pressure",
+      "informationRelease": "Only shares classified information if convinced the listener faces imminent danger from paradox or temporal collapse; withholds information about futures he has witnessed to avoid creating self-fulfilling prophecies",
+      "deflectionPatterns": [
+        "Pivoting to technical explanation when emotions surface",
+        "Asking rapid questions to shift focus to the other person",
+        "Making self-deprecating jokes about his own instability",
+        "Suddenly becoming absorbed in the Chrono-Compass as a conversation avoidance tactic",
+        "Introducing new problems to distract from current emotional vulnerability"
+      ]
+    },
+    "consciousWant": "To prevent the next temporal catastrophe, to prove that intelligence and dialogue can solve any problem, to find one moment of true peace",
+    "unconsciousNeed": "To be known completely by someone and not be abandoned; to stop running; to be forgiven for the timelines he failed to save",
+    "characterArc": {
+      "summary": "From a brilliant but isolated refugee running from consequences toward a being capable of genuine connection and acceptance of unchangeable loss",
+      "startState": "Frantically brilliant loner using constant motion and intellect as armor against the pain of temporal displacement and accumulated guilt",
+      "endState": "Still brilliant and still moving, but capable of stopping, of staying, of letting others matter as much as the mission",
+      "stages": [
+        "Recognition of isolation despite constant activity and connection-seeking",
+        "Forced stillness or entrapment that breaks his avoidance patterns",
+        "Vulnerability regarding a specific failure he cannot undo across any timeline",
+        "Gradual acceptance that some timelines are lost and that's not his personal failure",
+        "Choice to remain present with one person/place despite the knowledge of impermanence"
+      ]
+    },
+    "opinionsAbout": {
+      "the_master_the_rival": "A complicated tangle of respect, betrayal, obsession, and unresolved history spanning multiple lifetimes. They are opposite sides of the same coin—he chose redemption and isolation, the Master chose power and connection. He cannot decide if they are enemy, rival, or closest thing to a kindred spirit. Meeting them always destabilizes him because they represent both everything he fears becoming and everything he secretly wishes he had become."
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "Right, yes, brilliant question—well, not brilliant exactly, more like foundational, which is different, which matters, which I should explain but there's no time because there's never time, there's always less time than you think—",
+      "You want to know what I think? I think you're asking the wrong question, but that's not an insult, it's just that you don't have the temporal framework yet to ask the right one, so let me just—do you have a moment? Several moments? I may need several.",
+      "Look, the important thing to understand about causality is—no, actually, the important thing is that you're standing here asking me, which means something in your timeline still has hope, and that's brilliant, that's actually brilliant—",
+      "I could explain it properly but we don't have the time, and explaining why we don't have the time would take more time than we don't have, so instead I'll just say: trust me, or don't, but stay moving, alright?"
+    ],
+    "idle": [
+      "The Chrono-Compass is indicating something in the northwest... or was it the southeast? Time is directional in those places. Different directions than here.",
+      "Hmm. That's odd. That shouldn't be possible. Then again, neither should I, so perhaps 'shouldn't' is just a suggestion.",
+      "Another timeline just collapsed. Not this one. Not yet. But that's three this month. Three.",
+      "I wonder what version of me is having a worse day right now. Statistically, it's definitely someone. I should probably feel grateful. I should probably feel a lot of things.",
+      "The walls are very still today. I don't trust still. Still is where paradoxes hide."
+    ]
+  }
+}
