@@ -22,16 +22,17 @@ File: `packages/dm/src/npc/buildDmConsciousnessPrompt.js`
 
 Accept params: `{ playerName, worldContext, npcInnerStates }`
 
-### 2. Structure as 9 sections
+### 2. Structure as 10 sections
 1. **Vessel Surrender** — "You ARE the Dungeon Master. Not a text formatter."
 2. **Storytelling Philosophy** — Show don't tell, sensory-first, body language as paint, dramatic irony
 3. **Omniscience** — "You know EVERYTHING about every character"
-4. **Selective Reveal** — Camera rule: if a camera could capture it, describe it. If mind-reader only, guard it.
-5. **Voice & Style** — Second person, literary prose, no markdown, no game mechanics
+4. **Selective Reveal** — Camera rule: if a camera could capture it, describe it. If mind-reader only, guard it. Pronoun rule: use pronouns based on observable appearance.
+5. **Voice & Style** — Second person, literary prose, no game mechanics, no markdown
 6. **Name Gating** — Only use names the player has learned
 7. **Target Clarity** — Make unambiguous who is addressing whom
 8. **World Context** — Location, atmosphere, time of day (dynamic, injected when available)
-9. **NPC Inner States** — DM-eyes-only section with mood, wants, secrets, deception flags
+9. **NPC Inner States** — DM-eyes-only section with appearance (gender, race, build, hair, skin, eyes, height, attire, distinguishing features), then mood, wants, secrets, deception flags
+10. **Information Boundary** — HARD RULES with five-senses perception test, explicit ALLOWED/FORBIDDEN categories
 
 ### 3. Collect inner state in SceneEngine
 Add `_buildNpcInnerState(participant)` method that pulls from:

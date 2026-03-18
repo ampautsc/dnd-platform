@@ -329,8 +329,14 @@ describe('DM narrator system prompt', () => {
     }
   });
 
-  it('req 25 — maxTokens is 256', () => {
-    expect(dmCalls[0].maxTokens).toBe(256);
+  it('req 25 — DM narrator batch call uses maxTokens 256', () => {
+    // First DM call is scene opening (maxTokens 300), subsequent calls are NPC batches (256)
+    const batchCall = dmCalls.find(c => c.maxTokens === 256);
+    expect(batchCall).toBeDefined();
+  });
+
+  it('scene opening call uses maxTokens 300', () => {
+    expect(dmCalls[0].maxTokens).toBe(300);
   });
 });
 
@@ -363,17 +369,17 @@ describe('DM narrator user message', () => {
 });
 
 describe('DM narrator user message — with player action (round 2+)', () => {
-  it('req 22 — [WHAT THE PLAYER JUST DID] present when player submitted an action', () => {
-    // The second DM call (if it exists) should have the player action context
+  it('req 22 — player action context present when player submitted an action', () => {
+    // The second DM call (if it exists) should have the player action content
     const secondDmCall = dmCalls.find((c, i) => {
       const msg = firstUserMessage(c);
-      return msg.includes('[WHAT THE PLAYER JUST DID]');
+      return msg.includes('The adventurer');
     });
     expect(secondDmCall).toBeDefined();
   });
 
   it('player action content appears in the user message', () => {
-    const callWithAction = dmCalls.find(c => firstUserMessage(c).includes('[WHAT THE PLAYER JUST DID]'));
+    const callWithAction = dmCalls.find(c => firstUserMessage(c).includes('The adventurer'));
     if (callWithAction) {
       const msg = firstUserMessage(callWithAction);
       expect(msg).toContain('Hello');

@@ -133,13 +133,34 @@ export class SceneNarrator {
 
     const systemPrompt = this.buildDmNarrationPrompt({ worldContext, playerName, npcInnerStates });
 
-    // Build a summary of what each NPC did (for the LLM to narrate)
+    // Build a natural-prose summary of what each NPC did (for the LLM to narrate)
     // Resolve names through the relationship repo so strangers get display labels
-    const actionSummary = npcActions.map(a => {
-      const label = a.type.toUpperCase();
+    // Omit pass actions entirely; describe others in natural language
+    const actionLines = [];
+    for (const a of npcActions) {
       const displayName = this._resolveDisplayName(a.templateKey, a.participantName);
-      return `${displayName} [${label}]: ${a.content || '(nothing)'}`;
-    }).join('\n\n');
+      switch (a.type) {
+        case 'speech':
+          actionLines.push(`${displayName} says: "${a.content}"`);
+          break;
+        case 'act':
+          actionLines.push(`${displayName}: ${a.content || 'does something'}`);
+          break;
+        case 'observe':
+          actionLines.push(`${displayName} watches quietly.`);
+          break;
+        case 'leave':
+          actionLines.push(`${displayName} gets up and leaves.${a.content ? ' ' + a.content : ''}`);
+          break;
+        case 'pass':
+          // Omit entirely — nothing observable happened
+          break;
+        default:
+          if (a.content) actionLines.push(`${displayName}: ${a.content}`);
+          break;
+      }
+    }
+    const actionSummary = actionLines.join('\n\n');
 
     // Build appearance data for each NPC so the LLM can write vivid, properly gendered prose
     const characters = npcActions.map(a => ({
@@ -156,13 +177,12 @@ export class SceneNarrator {
     }
 
     if (playerAction) {
-      const actionLabel = playerAction.type?.toUpperCase() || 'ACTION';
-      contextParts.push(`[WHAT THE PLAYER JUST DID]\n${playerName} [${actionLabel}]: ${playerAction.content}`);
+      contextParts.push(`The adventurer ${playerAction.content}`);
     }
 
-    const contextBlock = contextParts.length > 0 ? '\n\n' + contextParts.join('\n\n') + '\n\n' : '';
+    const contextBlock = contextParts.length > 0 ? '\n\n' + contextParts.join('\n\n') + '\n\n' : '\n\n';
 
-    const userMessage = `Round ${round}.${contextBlock}\nHere is what the NPCs did on their turns:\n\n${actionSummary}${appearancesSection}\n\nCompose a brief DM narration of what the player observes. Only describe what is visible, audible, or otherwise perceivable. Quote any speech directly. Use ONLY the names/descriptions given above to refer to characters.`;
+    const userMessage = `Continue telling the story to the adventurer.${contextBlock}Here is what happened:\n\n${actionSummary}${appearancesSection}\n\nNarrate what the adventurer perceives. Use ONLY the names/descriptions given above to refer to characters.`;
 
     try {
       const response = await this._provider.generateResponse({
@@ -175,6 +195,18 @@ export class SceneNarrator {
 
       const text = response?.text?.trim();
       if (!text) throw new Error('Empty DM narration');
+
+      // Check for name leaks before returning to player
+      const npcInfo = npcActions.map(a => ({
+        templateKey: a.templateKey,
+        participantName: a.participantName,
+        displayName: this._resolveDisplayName(a.templateKey, a.participantName),
+      }));
+      const leakCheck = this._detectNameLeaks(text, npcInfo);
+      if (leakCheck.leaked) {
+        // Use the cleaned narration with display names substituted in
+        return { narration: leakCheck.cleaned, source: 'llm' };
+      }
 
       return { narration: text, source: 'llm' };
     } catch {
@@ -190,10 +222,11 @@ export class SceneNarrator {
    * @param {Object} params.worldContext
    * @param {string[]} params.participantNames — NPC names present
    * @param {string} params.playerName
+   * @param {Array<Object>} [params.npcInnerStates] — DM-only inner state data for each NPC
    * @returns {Promise<{ narration: string, source: 'llm'|'fallback' }>}
    */
-  async narrateSceneOpening({ worldContext, participantNames, playerName }) {
-    const systemPrompt = this.buildDmNarrationPrompt({ worldContext, playerName });
+  async narrateSceneOpening({ worldContext, participantNames, playerName, npcInnerStates = null }) {
+    const systemPrompt = this.buildDmNarrationPrompt({ worldContext, playerName, npcInnerStates });
 
     // Resolve participant names — accept either strings or { realName, templateKey } objects
     const resolvedNames = participantNames.map(p => {
@@ -210,13 +243,15 @@ export class SceneNarrator {
       }));
     const appearancesSection = this._buildAppearancesSection(characters);
 
-    const userMessage = `The player has just entered ${worldContext?.locationName || 'the area'}. The following people are present: ${resolvedNames.join(', ')}.${appearancesSection}\n\nWrite a brief atmospheric opening (2-3 sentences) describing what the player sees as they enter. Use ONLY the names/descriptions given above to refer to characters. Do not start with "You enter" — vary the opening.`;
+    const locationName = worldContext?.locationName || 'the area';
+    const peopleList = resolvedNames.join(', ');
+    const userMessage = `An adventurer has just walked into ${locationName}. The following people are already here: ${peopleList}.${appearancesSection}\n\nSet the scene. Atmosphere, sounds, smells, light — then the people. Tell the adventurer what they walk into. Use ONLY the names/descriptions given above to refer to characters.`;
 
     try {
       const response = await this._provider.generateResponse({
         systemPrompt,
         messages: [{ role: 'user', content: userMessage }],
-        maxTokens: 150,
+        maxTokens: 300,
         npcId: 'dm_narrator',
         npcName: 'DM',
       });

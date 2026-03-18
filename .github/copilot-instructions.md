@@ -229,7 +229,7 @@ Load these files with `read_file` when a task matches the listed tags.
 - `skills/code/narrator-appearance-injection.md` — #narrator #appearance #gender #npc #prompt #scene #llm #name-gating
 - `skills/code/chatgpt-image-generation-and-download.md` — #playwright #chatgpt #dall-e #image-generation #browser-automation #download #autonomous
 - `skills/code/npc-relationship-repository.md` — #npc #relationship #memory #recognition #persistence #llm #encounter #scene #prompt-injection #opinions
-- `skills/code/dm-consciousness-prompt-architecture.md` — #dm #consciousness #narrator #prompt #omniscient #inner-state #scene #llm #vessel-surrender
+- `skills/code/dm-consciousness-prompt-architecture.md` — #dm #consciousness #narrator #prompt #omniscient #inner-state #scene #llm #vessel-surrender #perception-boundary #information-filter #appearance
 - `skills/code/npc-vessel-surrender-canonical-prompt.md` — #npc #vessel-surrender #canonical #locked-text #consciousness #prompt #remember-structure #llm
 
 ### Problem-Solving Skills

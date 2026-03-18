@@ -372,7 +372,7 @@ describe('SceneEngine', () => {
       expect(result.sceneState.pendingAction).toBe('player_1');
     });
 
-    it('should be a no-op when it is already the player turn', async () => {
+    it('should be a no-op when it is already the player turn (except scene opening)', async () => {
       const scene = engine.createScene({
         participants: [
           { id: 'player_1', name: 'Thorn', chaMod: 100, isPlayer: true, templateKey: null },
@@ -383,7 +383,9 @@ describe('SceneEngine', () => {
 
       const result = await engine.advanceNpcTurns(scene.id);
       expect(result.npcActions).toHaveLength(0);
-      expect(result.sceneState.transcript).toHaveLength(0);
+      // Scene opening narration is added even when no NPCs act
+      const dmEntries = result.sceneState.transcript.filter(e => e.participantId === 'dm');
+      expect(dmEntries.length).toBeGreaterThanOrEqual(1);
       expect(result.sceneState.pendingAction).toBe('player_1');
     });
   });

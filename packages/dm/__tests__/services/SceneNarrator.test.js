@@ -1,8 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { SceneNarrator } from '../../src/services/SceneNarrator.js';
+import { SceneEngine } from '../../src/services/SceneEngine.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
 import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.js';
 import { CharacterResponseService } from '../../src/npc/CharacterResponseService.js';
+import { EncounterMemoryService } from '../../src/npc/EncounterMemoryService.js';
+import { PersonalityEvolutionService } from '../../src/npc/PersonalityEvolutionService.js';
+import { NpcRuntimeContext } from '../../src/npc/NpcRuntimeContext.js';
 import { RelationshipRepository } from '../../src/services/RelationshipRepository.js';
 
 /**
@@ -68,6 +72,40 @@ function makeWorldContext() {
       sounds: ['Low murmur of conversation', 'Clink of tankards'],
       smells: ['Wood smoke', 'Spilled ale'],
       lighting: 'Warm amber candlelight.',
+    },
+  };
+}
+
+function makePersonality(key, name, cha = 14) {
+  return {
+    templateKey: key,
+    name,
+    race: 'Human',
+    npcType: 'friendly',
+    age: 30,
+    personality: {
+      voice: 'calm',
+      alignment: 'neutral',
+      disposition: 'friendly',
+      backstory: `${name} is a local.`,
+      motivations: ['Survive'],
+      fears: ['Darkness'],
+      mannerisms: ['Nods often'],
+      speechPatterns: ['Short sentences'],
+    },
+    stats: { intelligence: 10, wisdom: 12, charisma: cha },
+    consciousnessContext: {
+      innerMonologue: 'Hmm.',
+      currentPreoccupation: 'Nothing special.',
+      emotionalBaseline: 'content',
+      socialMask: 'pleasant',
+      consciousWant: 'Peace',
+      unconsciousNeed: 'Purpose',
+    },
+    knowledge: { secretsHeld: [] },
+    fallbackLines: {
+      player_addressed: ['Hmm, interesting.'],
+      idle: ['...'],
     },
   };
 }
@@ -854,6 +892,517 @@ describe('SceneNarrator', () => {
       expect(result.leaked).toBe(true);
       expect(result.leakedNames).toContain('Fen Colby');
       expect(result.cleaned).not.toContain('Fen Colby');
+    });
+
+    it('should clean leaked names in narrateNpcBatch output', async () => {
+      const provider = new MockProvider();
+      // Simulate LLM leaking Mira's real name
+      provider.generateResponse = async () => ({ text: 'Mira Barrelbottom smiles and pours you a drink.' });
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const repo = new RelationshipRepository();
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'mira_barrelbottom',
+        recognitionTier: 'recognized',
+        displayLabel: 'the halfling behind the bar',
+      });
+
+      const narrator = new SceneNarrator({ responseService, provider, relationshipRepo: repo });
+      const result = await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira Barrelbottom', type: 'speech', content: 'Welcome!', templateKey: 'mira_barrelbottom' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+      });
+
+      expect(result.source).toBe('llm');
+      expect(result.narration).not.toContain('Mira Barrelbottom');
+      expect(result.narration).not.toMatch(/\bMira\b/);
+      expect(result.narration).toContain('the halfling behind the bar');
+    });
+  });
+
+  // ── Storytelling Reframe ────────────────────────────────────────
+  //
+  // The DM's primary job is storytelling. ALL messages to the player from the
+  // DM must be in storytelling form — no game-mechanic formatting, no report
+  // style, no "Round X" labels, no "[TYPE]:" tags, no "Compose a brief DM
+  // narration" instructions. The LLM user messages must frame the DM as a
+  // storyteller continuing a live narrative.
+
+  describe('storytelling reframe — narrateNpcBatch user message', () => {
+    let capturedUserMsg;
+    let capturedOpts;
+    let narrator;
+
+    beforeEach(() => {
+      capturedUserMsg = null;
+      capturedOpts = null;
+      const provider = new MockProvider();
+      provider.generateResponse = async (opts) => {
+        capturedOpts = opts;
+        capturedUserMsg = opts.messages?.[0]?.content || '';
+        return { text: 'The halfling sets a mug before you.' };
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      narrator = new SceneNarrator({ responseService, provider });
+    });
+
+    it('should NOT contain "Round X" in user message', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 3,
+        playerName: 'Steven',
+      });
+
+      expect(capturedUserMsg).not.toMatch(/\bRound \d/i);
+    });
+
+    it('should NOT contain "Compose a brief DM narration" in user message', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hi there.' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      expect(capturedUserMsg).not.toMatch(/compose a brief/i);
+      expect(capturedUserMsg).not.toMatch(/DM narration/i);
+    });
+
+    it('should NOT contain game-mechanic action labels like [SPEECH] or [ACT]', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome!' },
+          { participantId: 'npc_fen', participantName: 'Fen', type: 'act', content: '*nods quietly*' },
+          { participantId: 'npc_lell', participantName: 'Lell', type: 'observe', content: '*watches*' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      expect(capturedUserMsg).not.toMatch(/\[SPEECH\]/i);
+      expect(capturedUserMsg).not.toMatch(/\[ACT\]/i);
+      expect(capturedUserMsg).not.toMatch(/\[OBSERVE\]/i);
+      expect(capturedUserMsg).not.toMatch(/\[PASS\]/i);
+      expect(capturedUserMsg).not.toMatch(/\[LEAVE\]/i);
+    });
+
+    it('should use natural prose for speech actions (quoted with attribution)', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome to my tavern!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      // Should describe speech naturally, e.g. 'Mira says: "Welcome to my tavern!"'
+      expect(capturedUserMsg).toMatch(/says|spoke|speaking/i);
+      expect(capturedUserMsg).toContain('Welcome to my tavern!');
+    });
+
+    it('should use natural prose for act actions (no brackets)', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_fen', participantName: 'Fen', type: 'act', content: 'slides an ale across the bar' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      // Should describe the action naturally
+      expect(capturedUserMsg).toContain('Fen');
+      expect(capturedUserMsg).toContain('slides an ale across the bar');
+      expect(capturedUserMsg).not.toMatch(/\[ACT\]/);
+    });
+
+    it('should omit pass actions from the action summary', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_fen', participantName: 'Fen', type: 'pass', content: '' },
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hello!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      // Pass actions should not appear in the action descriptions
+      expect(capturedUserMsg).not.toMatch(/Fen/);
+      expect(capturedUserMsg).toContain('Mira');
+    });
+
+    it('should describe leave actions naturally', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_fen', participantName: 'Fen', type: 'leave', content: 'finishes drink and slips out' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      expect(capturedUserMsg).toMatch(/Fen/);
+      expect(capturedUserMsg).toMatch(/leave|left|depart|exit|slip/i);
+    });
+
+    it('should contain storytelling instruction framing', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Steven',
+      });
+
+      // User message must tell the LLM to continue telling the story
+      expect(capturedUserMsg).toMatch(/continue|tell|narrate|story/i);
+    });
+
+    it('should include player action context naturally when provided', async () => {
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: '"Coming right up."' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 2,
+        playerName: 'Steven',
+        playerAction: { type: 'speech', content: 'I\'d like an ale, please.' },
+      });
+
+      expect(capturedUserMsg).toContain("I'd like an ale, please");
+      // Should NOT have game-mechanic framing around it
+      expect(capturedUserMsg).not.toMatch(/\[SPEECH\]/i);
+    });
+  });
+
+  describe('storytelling reframe — narrateSceneOpening user message', () => {
+    let capturedUserMsg;
+    let capturedOpts;
+    let narrator;
+
+    beforeEach(() => {
+      capturedUserMsg = null;
+      capturedOpts = null;
+      const provider = new MockProvider();
+      provider.generateResponse = async (opts) => {
+        capturedOpts = opts;
+        capturedUserMsg = opts.messages?.[0]?.content || '';
+        return { text: 'The heavy door swings open...' };
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      narrator = new SceneNarrator({ responseService, provider });
+    });
+
+    it('should NOT contain "Write a brief atmospheric opening" in user message', async () => {
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira', 'Fen'],
+        playerName: 'Steven',
+      });
+
+      expect(capturedUserMsg).not.toMatch(/write a brief atmospheric opening/i);
+    });
+
+    it('should contain storytelling framing for scene opening', async () => {
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira', 'Fen'],
+        playerName: 'Steven',
+      });
+
+      // Opening should tell the LLM to set the stage as a storyteller
+      expect(capturedUserMsg).toMatch(/story|scene|stage|walk|enter|arriv/i);
+    });
+
+    it('should accept npcInnerStates and pass them to system prompt', async () => {
+      let capturedSystemPrompt = null;
+      const provider = new MockProvider();
+      provider.generateResponse = async (opts) => {
+        capturedSystemPrompt = opts.systemPrompt;
+        capturedUserMsg = opts.messages?.[0]?.content || '';
+        return { text: 'The door swings open...' };
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narr = new SceneNarrator({ responseService, provider });
+
+      await narr.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira', 'Fen'],
+        playerName: 'Steven',
+        npcInnerStates: [
+          { displayName: 'Mira', mood: 'busy but cheerful', consciousWant: 'Keep the bar running' },
+          { displayName: 'Fen', mood: 'watchful', consciousWant: 'Stay unnoticed' },
+        ],
+      });
+
+      // Inner states should appear in system prompt (DM omniscience)
+      expect(capturedSystemPrompt).toContain('busy but cheerful');
+      expect(capturedSystemPrompt).toContain('watchful');
+    });
+
+    it('should use maxTokens >= 300 for scene opening', async () => {
+      let capturedMaxTokens = null;
+      const provider = new MockProvider();
+      provider.generateResponse = async (opts) => {
+        capturedMaxTokens = opts.maxTokens;
+        return { text: 'The heavy door swings open...' };
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narr = new SceneNarrator({ responseService, provider });
+
+      await narr.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira', 'Fen'],
+        playerName: 'Steven',
+      });
+
+      expect(capturedMaxTokens).toBeGreaterThanOrEqual(300);
+    });
+  });
+
+  describe('storytelling reframe — SceneEngine integration', () => {
+    // These test that SceneEngine calls narrateSceneOpening and passes all states
+
+    it('should call narrateSceneOpening on first advanceNpcTurns call', async () => {
+      let openingCalled = false;
+      let batchCalled = false;
+      const mockNarrator = {
+        narrateSceneOpening: async () => {
+          openingCalled = true;
+          return { narration: 'The tavern door swings open...', source: 'llm' };
+        },
+        narrateNpcBatch: async () => {
+          batchCalled = true;
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: () => makePersonality('mira', 'Mira', 16),
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      // NPC goes first (high CHA), player second
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: -5, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 100, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.advanceNpcTurns(scene.id);
+
+      expect(openingCalled).toBe(true);
+    });
+
+    it('should NOT call narrateSceneOpening on second advanceNpcTurns call', async () => {
+      let openingCallCount = 0;
+      const mockNarrator = {
+        narrateSceneOpening: async () => {
+          openingCallCount++;
+          return { narration: 'You enter...', source: 'llm' };
+        },
+        narrateNpcBatch: async () => {
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: () => makePersonality('mira', 'Mira', 16),
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: -5, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 100, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      // First call — should trigger opening
+      await innerEngine.advanceNpcTurns(scene.id);
+      // Player acts
+      await innerEngine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello.' });
+
+      // opening should only have been called once
+      expect(openingCallCount).toBe(1);
+    });
+
+    it('should include scene opening narration in transcript', async () => {
+      const mockNarrator = {
+        narrateSceneOpening: async () => {
+          return { narration: 'The oak door groans open. Warm light spills across the threshold.', source: 'llm' };
+        },
+        narrateNpcBatch: async () => {
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: () => makePersonality('mira', 'Mira', 16),
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: -5, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 100, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      const result = await innerEngine.advanceNpcTurns(scene.id);
+      const transcript = result.sceneState.transcript;
+
+      // First entry should be the DM opening narration
+      const openingEntry = transcript.find(e => e.participantId === 'dm' && e.content.includes('oak door'));
+      expect(openingEntry).toBeDefined();
+      expect(openingEntry.type).toBe('narration');
+    });
+
+    it('should pass ALL participant inner states to narrateNpcBatch, not just actors', async () => {
+      let capturedBatchArgs = null;
+      const mockNarrator = {
+        narrateSceneOpening: async () => {
+          return { narration: 'You enter the tavern.', source: 'llm' };
+        },
+        narrateNpcBatch: async (args) => {
+          capturedBatchArgs = args;
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const personalityMap = {
+        mira: makePersonality('mira', 'Mira', 16),
+        fen: makePersonality('fen', 'Fen', 10),
+      };
+
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: (key) => personalityMap[key] || null,
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      // Player goes first so both NPCs act after
+      // But one NPC might observe/pass — we still want their inner state
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+          { id: 'npc_fen', name: 'Fen', chaMod: 1, isPlayer: false, templateKey: 'fen' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.submitAction(scene.id, 'player_1', {
+        type: 'speech', content: 'Good evening.',
+      });
+
+      expect(capturedBatchArgs).toBeDefined();
+      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
+      // Should have BOTH NPCs, not just actors
+      expect(capturedBatchArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+
+      const names = capturedBatchArgs.npcInnerStates.map(s => s.displayName);
+      expect(names).toContain('Mira');
+      expect(names).toContain('Fen');
+    });
+
+    it('should pass ALL participant inner states to narrateSceneOpening', async () => {
+      let capturedOpeningArgs = null;
+      const mockNarrator = {
+        narrateSceneOpening: async (args) => {
+          capturedOpeningArgs = args;
+          return { narration: 'The tavern is warm.', source: 'llm' };
+        },
+        narrateNpcBatch: async () => {
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const personalityMap = {
+        mira: makePersonality('mira', 'Mira', 16),
+        fen: makePersonality('fen', 'Fen', 10),
+      };
+
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: (key) => personalityMap[key] || null,
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: -5, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 100, isPlayer: false, templateKey: 'mira' },
+          { id: 'npc_fen', name: 'Fen', chaMod: 50, isPlayer: false, templateKey: 'fen' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.advanceNpcTurns(scene.id);
+
+      expect(capturedOpeningArgs).toBeDefined();
+      expect(capturedOpeningArgs.npcInnerStates).toBeDefined();
+      expect(capturedOpeningArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
     });
   });
 });

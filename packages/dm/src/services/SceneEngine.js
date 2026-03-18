@@ -107,6 +107,9 @@ export class SceneEngine {
 
     /** @type {Map<string, SceneState>} */
     this._scenes = new Map();
+
+    /** @type {Set<string>} Track which scenes have had their opening narrated */
+    this._narratedOpenings = new Set();
   }
 
   // ── Housekeeping ──────────────────────────────────────────────
@@ -314,14 +317,22 @@ export class SceneEngine {
     }
 
     // DM narration: synthesize player-facing narration from NPC batch
+    // Pass ALL NPC participant inner states (not just actors) so the DM
+    // has full awareness of every character in the scene.
     if (npcActions.length > 0 && this._sceneNarrator) {
       const playerParticipant = state.allParticipants.find(p => p.isPlayer);
+
+      // Collect inner states for ALL NPC participants, not just those who acted
+      const allNpcInnerStates = state.allParticipants
+        .filter(p => !p.isPlayer)
+        .map(p => this._buildNpcInnerState(p));
+
       const { narration } = await this._sceneNarrator.narrateNpcBatch({
         npcActions,
         worldContext: state.worldContext,
         round: state.round,
         playerName: playerParticipant?.name || 'adventurer',
-        npcInnerStates: npcInnerStates.length > 0 ? npcInnerStates : null,
+        npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
         playerAction: action,
       });
       if (narration) {
@@ -430,6 +441,44 @@ export class SceneEngine {
     let state = this._scenes.get(sceneId);
     if (!state) this._throwError(`Scene not found: ${sceneId}`, 'SCENE_NOT_FOUND');
 
+    // ── Scene Opening Narration (first call only) ─────────────────
+    if (this._sceneNarrator && !this._narratedOpenings.has(sceneId)) {
+      this._narratedOpenings.add(sceneId);
+
+      const playerParticipant = state.allParticipants.find(p => p.isPlayer);
+      const npcParticipants = state.allParticipants.filter(p => !p.isPlayer);
+
+      // Build inner states for ALL NPCs in the scene
+      const allNpcInnerStates = npcParticipants.map(p => this._buildNpcInnerState(p));
+
+      // Build participant names for the narrator
+      const participantNames = npcParticipants.map(p => ({
+        realName: p.name,
+        templateKey: p.templateKey || p.id,
+      }));
+
+      if (this._sceneNarrator.narrateSceneOpening) {
+        const { narration } = await this._sceneNarrator.narrateSceneOpening({
+          worldContext: state.worldContext,
+          participantNames,
+          playerName: playerParticipant?.name || 'adventurer',
+          npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
+        });
+        if (narration) {
+          state = state.withTranscriptEntry({
+            id: _generateEntryId(),
+            participantId: 'dm',
+            participantName: 'DM',
+            type: 'narration',
+            content: narration,
+            round: state.round,
+            turnIndex: state.turnIndex,
+            timestamp: Date.now(),
+          });
+        }
+      }
+    }
+
     const npcActions = [];
     const npcInnerStates = [];
     let skipCount = 0;
@@ -482,14 +531,22 @@ export class SceneEngine {
     }
 
     // DM narration: synthesize player-facing narration from NPC batch
+    // Pass ALL NPC participant inner states (not just actors) so the DM
+    // has full awareness of every character in the scene.
     if (npcActions.length > 0 && this._sceneNarrator) {
       const playerParticipant = state.allParticipants.find(p => p.isPlayer);
+
+      // Collect inner states for ALL NPC participants, not just those who acted
+      const allNpcInnerStates = state.allParticipants
+        .filter(p => !p.isPlayer)
+        .map(p => this._buildNpcInnerState(p));
+
       const { narration } = await this._sceneNarrator.narrateNpcBatch({
         npcActions,
         worldContext: state.worldContext,
         round: state.round,
         playerName: playerParticipant?.name || 'adventurer',
-        npcInnerStates: npcInnerStates.length > 0 ? npcInnerStates : null,
+        npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
       });
       if (narration) {
         state = state.withTranscriptEntry({
