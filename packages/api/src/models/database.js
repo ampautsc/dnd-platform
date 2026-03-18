@@ -86,5 +86,21 @@ function createTables(database) {
 
     CREATE INDEX IF NOT EXISTS idx_characters_userId ON characters(userId);
     CREATE INDEX IF NOT EXISTS idx_sessions_createdBy ON sessions(createdBy);
+
+    CREATE TABLE IF NOT EXISTS relationships (
+      subjectId TEXT NOT NULL,
+      targetId TEXT NOT NULL,
+      recognitionTier TEXT NOT NULL DEFAULT 'stranger',
+      displayLabel TEXT,
+      memories TEXT NOT NULL DEFAULT '[]',
+      emotionalValence REAL NOT NULL DEFAULT 0,
+      encounterCount INTEGER NOT NULL DEFAULT 0,
+      lastEncounter TEXT,
+      createdAt TEXT NOT NULL DEFAULT (datetime('now')),
+      PRIMARY KEY (subjectId, targetId)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_relationships_subject ON relationships(subjectId);
+    CREATE INDEX IF NOT EXISTS idx_relationships_target ON relationships(targetId);
   `);
 }

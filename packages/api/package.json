@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@dnd-platform/content": "^0.1.0",
+    "@dnd-platform/dm": "^0.1.0",
     "better-sqlite3": "^11.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

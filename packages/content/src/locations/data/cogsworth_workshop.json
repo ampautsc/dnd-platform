@@ -1,0 +1,62 @@
+{
+  "id": "cogsworth_workshop",
+  "name": "Cogsworth & Craftwhisper — Tinkers, Inventors, Repairs",
+  "type": "workshop",
+  "description": "A converted barn at the end of Mill Road, half-hidden behind a fence that has been rebuilt four times. The sign reads 'Cogsworth & Craftwhisper — Tinkers, Inventors, Repairs' in careful lettering (Ferb's work) with 'NO JOB TOO AMBITIOUS' painted below it in excited scrawl (Phineas's addition). The ground floor is a functioning workshop: forges, lathes, workbenches covered in half-finished mechanisms. The loft is stuffed with blueprints, failed prototypes, and a hammock. Outside, a fenced yard contains whatever the current project is — last month it was a mechanical scarecrow that actually worked. The month before, a water-powered grain sorter that flooded Mill Road. The neighbors have opinions.",
+  "owner": "ferb_the_silent",
+  "atmosphere": {
+    "defaultTone": "industrious",
+    "tags": ["creative", "chaotic", "noisy during the day", "smells of metal and oil", "occasionally alarming"],
+    "sounds": [
+      "Steady rhythmic hammering from Ferb's station",
+      "Phineas talking rapidly to himself or to Ferb",
+      "Whirring of gears being tested",
+      "The hiss of hot metal in the quench bucket",
+      "A prototype making an unexpected noise",
+      "The creak of the loft floorboards under stacked blueprints"
+    ],
+    "smells": [
+      "Hot iron and coal from the forge",
+      "Machine oil and grease",
+      "Pine sawdust from the woodworking bench",
+      "Burnt insulation from something that overheated",
+      "Tea — Ferb brews a pot every two hours like clockwork"
+    ],
+    "lighting": "Bright during the day — the barn doors are thrown wide open. At night, an array of oil lamps and one of Phineas's experimental glowing orbs (which flickers unpredictably)."
+  },
+  "layout": [
+    {
+      "name": "Main Workshop Floor",
+      "description": "Open-plan work area with two primary stations. Ferb's side is immaculate — tools in exact positions, projects organized by stage. Phineas's side is a hurricane of inspiration — blueprints tacked to every surface, three projects in progress simultaneously."
+    },
+    {
+      "name": "The Forge",
+      "description": "A proper smithing forge built by Ferb's father. Smaller than Torval's at the Millhaven Forge, but better suited to precision work — hinges, gears, clockwork components."
+    },
+    {
+      "name": "The Loft",
+      "description": "Accessed by a ladder that Phineas keeps threatening to replace with a mechanical lift. Storage for blueprints, completed designs, and rejected prototypes. A hammock hangs in the corner for when Phineas works through the night."
+    },
+    {
+      "name": "The Yard",
+      "description": "A fenced outdoor area where larger projects take shape. Currently features a partially assembled something that neither Phineas nor Ferb will explain to passersby. The fence has been replaced four times due to 'incidents.'"
+    }
+  ],
+  "regulars": [
+    "phineas_the_builder",
+    "ferb_the_silent",
+    "heinz_mad_artificer"
+  ],
+  "hooks": [
+    "Phineas is convinced he can build a device to predict weather three days in advance — he just needs a rare crystal from the Darkwood",
+    "Ferb has been quietly building something in the cellar he has never shown Phineas",
+    "Heinz Vexworth keeps showing up to 'prove his Inator is better' and the competitive demonstrations are escalating",
+    "The town council has sent three warnings about noise and one about an unexplained tremor",
+    "A merchant offered Phineas a fortune to relocate to the capital — Ferb hasn't said a word about it"
+  ],
+  "worldContext": {
+    "location": "Cogsworth & Craftwhisper workshop, Mill Road (east end), Millhaven",
+    "defaultTone": "energetic and slightly chaotic",
+    "region": "Millhaven, The Vale"
+  }
+}

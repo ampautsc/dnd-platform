@@ -2,14 +2,15 @@ import { test, expect } from '@playwright/test';
 
 test('loads The Gate screen', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /the gate/i })).toBeVisible();
-  await expect(page.getByRole('button', { name: /join session/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /d&d platform/i })).toBeVisible();
+  await expect(page.getByText(/join a game session/i)).toBeVisible();
 });
 
 test('full flow: gate → character select → lobby → exploration → vote → end', async ({ page }) => {
   await page.goto('/');
 
-  // 1. Fill in gate form and join
+  // 1. Open the session form (collapsed in <details>) and fill it
+  await page.getByText(/join a game session/i).click();
   await page.getByLabel(/session code/i).fill('DEMO');
   await page.getByLabel(/player name/i).fill('Tester');
   await page.getByRole('button', { name: /join session/i }).click();
@@ -46,5 +47,21 @@ test('full flow: gate → character select → lobby → exploration → vote �
 
   // Play again loops back to gate
   await page.getByRole('button', { name: /play again/i }).click();
-  await expect(page.getByRole('heading', { name: /the gate/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /d&d platform/i })).toBeVisible();
+});
+
+test('Enter Bottoms Up button starts a scene', async ({ page }) => {
+  await page.goto('/');
+
+  // The "Enter Bottoms Up" button should be visible on the gate screen
+  const enterButton = page.getByRole('button', { name: /enter bottoms up/i });
+  await expect(enterButton).toBeVisible();
+
+  // Click it — should navigate to the scene screen
+  await enterButton.click();
+  await expect(page.getByRole('heading', { name: /scene/i })).toBeVisible({ timeout: 5000 });
+
+  // Should show loading state initially, then scene content once API responds
+  // Wait for either the initiative bar or the loading text
+  await expect(page.getByText(/starting scene|round|leave/i)).toBeVisible({ timeout: 15000 });
 });

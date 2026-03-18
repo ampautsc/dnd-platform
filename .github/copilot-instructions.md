@@ -224,6 +224,13 @@ Load these files with `read_file` when a task matches the listed tags.
 - `skills/code/dm-mvp-tests-first-bootstrap.md` — #dm #tdd #services #bootstrap #vitest
 - `skills/code/legacy-service-migration-contracts.md` — #migration #legacy #tdd #contracts #dm #services
 - `skills/code/pop-culture-npc-seed-library.md` — #npc #content #pop-culture #lore #seed-database #generation #factory #characters
+- `skills/code/rest-api-bridge-pattern.md` — #api #dm #rest #bridge #encounter #controller #tdd #integration
+- `skills/code/npc-encounter-prompt-architecture.md` — #npc #encounter #prompt #consciousness #vessel-surrender #llm #multi-turn #runtime-context
+- `skills/code/narrator-appearance-injection.md` — #narrator #appearance #gender #npc #prompt #scene #llm #name-gating
+- `skills/code/chatgpt-image-generation-and-download.md` — #playwright #chatgpt #dall-e #image-generation #browser-automation #download #autonomous
+- `skills/code/npc-relationship-repository.md` — #npc #relationship #memory #recognition #persistence #llm #encounter #scene #prompt-injection #opinions
+- `skills/code/dm-consciousness-prompt-architecture.md` — #dm #consciousness #narrator #prompt #omniscient #inner-state #scene #llm #vessel-surrender
+- `skills/code/npc-vessel-surrender-canonical-prompt.md` — #npc #vessel-surrender #canonical #locked-text #consciousness #prompt #remember-structure #llm
 
 ### Problem-Solving Skills
 - `skills/problem-solving/llm-model-evaluation.md` — #llm #evaluation #model-selection #quality #testing

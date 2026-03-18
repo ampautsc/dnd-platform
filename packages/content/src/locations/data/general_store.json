@@ -1,0 +1,62 @@
+{
+  "id": "general_store",
+  "name": "The Coin-Keeper's Provisions",
+  "type": "general_store",
+  "description": "A squat stone building on the market square with a hand-painted sign of a coin being squeezed until it bleeds. Inside, every inch of shelf space is utilized. Rope, lanterns, rations, cookware, nails, canvas, ink, waterskins — if Millhaven needs it, Krassus stocks it, and Krassus has priced it to his advantage. The counter is caged with iron bars that Krassus installed himself. He watches customers from behind it with the unblinking focus of a predator monitoring prey. Despite the markup, the shop is indispensable — the nearest alternative is two days' travel. Tomás Aventide rents a corner stall where his latest venture unfolds and inevitably collapses.",
+  "owner": "krabs_the_miser",
+  "atmosphere": {
+    "defaultTone": "mercantile",
+    "tags": ["cramped", "overpriced", "essential", "suspicious", "smells of everything"],
+    "sounds": [
+      "The click of Krassus's counting beads",
+      "Customers muttering about prices",
+      "Tomás pitching his latest venture to anyone within earshot",
+      "The creak of overstocked shelves",
+      "Krassus's claws tapping the counter when he's calculating",
+      "The bell above the door — installed so Krassus can track traffic"
+    ],
+    "smells": [
+      "Dried herbs and rope fiber",
+      "Lamp oil",
+      "Leather goods",
+      "Whatever Tomás is selling this week",
+      "Old wood and dust from the back storeroom",
+      "Krassus's clam chowder — he eats lunch at the counter and never shares"
+    ],
+    "lighting": "Minimal. Krassus doesn't waste candles on ambiance. A skylight provides most illumination. The back corners are dim, which Krassus claims deters theft."
+  },
+  "layout": [
+    {
+      "name": "The Shop Floor",
+      "description": "Narrow aisles between floor-to-ceiling shelves. Everything has a handwritten price tag in Krassus's cramped script. Common items near the front, expensive items behind the cage."
+    },
+    {
+      "name": "The Cage",
+      "description": "Krassus's counter, enclosed in iron bars with a small transaction window. He conducts all business from in here. The lockbox is under the counter; the trap is above the lockbox."
+    },
+    {
+      "name": "Tomás's Corner",
+      "description": "A rented stall near the entrance where Tomás Aventide displays his current enterprise. Last month: enchanted walking sticks. This month: 'essence of vigor' tonic. The display changes weekly."
+    },
+    {
+      "name": "The Storeroom",
+      "description": "Behind a locked door. Krassus's surplus, bulk goods, and the items he bought cheap and is holding until prices rise. He keeps the key on a chain around his neck."
+    }
+  ],
+  "regulars": [
+    "krabs_the_miser",
+    "tom_the_entrepreneur",
+    "george_the_neurotic"
+  ],
+  "hooks": [
+    "Krassus has been buying a suspicious amount of rope and chain — more than Millhaven could need",
+    "Tomás's latest tonic is actually working, which terrifies him because he has no idea what's in it",
+    "Georvin does odd jobs for Krassus in exchange for store credit and has started noticing inventory discrepancies",
+    "A merchant from upriver offered to open a competing store — Krassus's reaction was disproportionate"
+  ],
+  "worldContext": {
+    "location": "The Coin-Keeper's Provisions, Market Square, Millhaven",
+    "defaultTone": "transactional and slightly tense",
+    "region": "Millhaven, The Vale"
+  }
+}

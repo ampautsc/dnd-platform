@@ -1,3 +1,6 @@
+import { buildEncounterSystemPrompt } from './buildEncounterSystemPrompt.js'
+import { MemorySynthesizer } from '../services/MemorySynthesizer.js'
+
 /**
  * EncounterSessionService — Manages conversational encounter sessions.
  *
@@ -9,6 +12,9 @@
  *   - Uses CharacterResponseService for NPC responses (injected)
  *   - Uses InfoExtractionService for initial appearance generation (injected)
  *   - Uses EncounterMemoryService for per-NPC memory (injected)
+ *   - Uses NpcRuntimeContext for location/activity/mood (injected, optional)
+ *   - Uses PersonalityEvolutionService for cross-session growth (injected, optional)
+ *   - Uses buildEncounterSystemPrompt for vessel-surrender prompting
  *   - Personality lookup is an injected function (no filesystem or DB dependency)
  *
  * No HTTP, no DB, no global state. Pure service layer.
@@ -37,13 +43,23 @@ export class EncounterSessionService {
    * @param {import('./InfoExtractionService.js').InfoExtractionService} deps.infoExtraction
    * @param {import('./CharacterResponseService.js').CharacterResponseService} deps.responseService
    * @param {function(string): Object|null} deps.personalityLookup — returns personality for templateKey
+   * @param {import('./NpcRuntimeContext.js').NpcRuntimeContext} [deps.runtimeContext] — per-NPC runtime state
+   * @param {import('./PersonalityEvolutionService.js').PersonalityEvolutionService} [deps.evolutionService] — cross-session growth
+   * @param {function(string): Object|null} [deps.locationLookup] — returns location data for locationId
+   * @param {import('../services/MemorySynthesizer.js').MemorySynthesizer} [deps.memorySynthesizer] — LLM encounter memory extraction
+   * @param {import('../services/RelationshipRepository.js').RelationshipRepository} [deps.relationshipRepo] — persistent relationship store
    * @param {number} [deps.maxSessions]
    */
-  constructor({ encounterMemory, infoExtraction, responseService, personalityLookup, maxSessions }) {
+  constructor({ encounterMemory, infoExtraction, responseService, personalityLookup, runtimeContext, evolutionService, locationLookup, memorySynthesizer, relationshipRepo, maxSessions }) {
     this._encounterMemory = encounterMemory;
     this._infoExtraction = infoExtraction;
     this._responseService = responseService;
     this._personalityLookup = personalityLookup;
+    this._runtimeContext = runtimeContext || null;
+    this._evolutionService = evolutionService || null;
+    this._locationLookup = locationLookup || null;
+    this._memorySynthesizer = memorySynthesizer || null;
+    this._relationshipRepo = relationshipRepo || null;
     this._maxSessions = maxSessions || DEFAULT_MAX_SESSIONS;
 
     /** @type {Map<string, Object>} */
@@ -142,6 +158,9 @@ export class EncounterSessionService {
 
     this._sessions.set(id, session);
 
+    // Auto-seed display labels for NPCs the player hasn't met
+    this._seedDisplayLabels(npcs.map(n => n.templateKey));
+
     // Generate initial appearance for each NPC and seed revealedInfo
     const appearancePromises = npcs.map(async (npc) => {
       try {
@@ -157,7 +176,7 @@ export class EncounterSessionService {
 
     return {
       encounterId: id,
-      npcs: this._enrichNpcsWithRevealedInfo(id, npcs),
+      npcs: this._resolveNpcNamesForPlayer(this._enrichNpcsWithRevealedInfo(id, npcs)),
       messages: session.messages,
       worldContext: session.worldContext,
       status: session.status,
@@ -179,7 +198,7 @@ export class EncounterSessionService {
     }
     return {
       encounterId: session.id,
-      npcs: this._enrichNpcsWithRevealedInfo(encounterId, session.npcs),
+      npcs: this._resolveNpcNamesForPlayer(this._enrichNpcsWithRevealedInfo(encounterId, session.npcs)),
       messages: session.messages,
       worldContext: session.worldContext,
       status: session.status,
@@ -253,6 +272,51 @@ export class EncounterSessionService {
       if (!personality) continue;
 
       try {
+        // ── Build encounter system prompt ──────────────────────────
+        const runtimeSnapshot = this._runtimeContext
+          ? this._runtimeContext.getSnapshot(templateKey)
+          : null;
+
+        const ageInDays = this._runtimeContext && personality.age != null
+          ? this._runtimeContext.computeAgeInDays(personality)
+          : null;
+
+        const memorySummary = this._encounterMemory.buildMemorySummary(encounterId, templateKey);
+
+        const evolutionSummary = this._evolutionService
+          ? this._evolutionService.buildEvolutionSummary(templateKey, personality)
+          : '';
+
+        const nearbyNpcKeys = session.npcs.map(n => n.templateKey).filter(k => k !== templateKey);
+
+        // Build unified relationship context (opinions + memories)
+        let relationshipContext = '';
+        if (this._relationshipRepo) {
+          this._relationshipRepo.seedFromPersonality(personality);
+          const otherParticipants = nearbyNpcKeys.map(k => ({ id: k, templateKey: k, name: k }));
+          relationshipContext = this._relationshipRepo.buildRelationshipContext(templateKey, otherParticipants);
+        }
+
+        const locationId = runtimeSnapshot?.currentLocation?.locationId
+          || session.worldContext?.locationId
+          || null;
+        const location = locationId && this._locationLookup
+          ? this._locationLookup(locationId)
+          : null;
+
+        const systemPrompt = buildEncounterSystemPrompt({
+          personality,
+          location,
+          runtimeSnapshot,
+          ageInDays,
+          memorySummary,
+          evolutionSummary,
+          relationshipContext,
+        });
+
+        // ── Build multi-turn messages ──────────────────────────────
+        const messages = this._buildConversationMessages(session, templateKey);
+
         const contextPackage = {
           character: {
             id: templateKey,
@@ -266,7 +330,7 @@ export class EncounterSessionService {
             recentEvents: [`${session.playerName} says: "${text.trim()}"`],
           },
           responseConstraints: {
-            maxTokens: 150,
+            maxTokens: 1024,
             format: 'spoken',
             avoidRepetition: [],
           },
@@ -277,12 +341,19 @@ export class EncounterSessionService {
           personality,
           entityId: 'player',
           playerMessage: text.trim(),
+          systemPrompt,
+          messages,
         });
+
+        // Update encounter memory with this interaction
+        this._encounterMemory.applyTriggerEffects(
+          encounterId, templateKey, 'player_addressed', session.playerName
+        );
 
         const npcMessage = {
           id: _messageId(),
           sender: templateKey,
-          senderName: result.npcName || personality.name,
+          senderName: this._resolvePlayerDisplayName(templateKey, result.npcName || personality.name),
           text: result.text,
           source: result.source,
           timestamp: Date.now(),
@@ -295,7 +366,7 @@ export class EncounterSessionService {
         const fallbackMessage = {
           id: _messageId(),
           sender: templateKey,
-          senderName: personality.name,
+          senderName: this._resolvePlayerDisplayName(templateKey, personality.name),
           text: '*looks at you thoughtfully but says nothing*',
           source: 'fallback',
           timestamp: Date.now(),
@@ -308,8 +379,36 @@ export class EncounterSessionService {
     return {
       playerMessage,
       npcResponses,
-      npcs: this._enrichNpcsWithRevealedInfo(encounterId, session.npcs),
+      npcs: this._resolveNpcNamesForPlayer(this._enrichNpcsWithRevealedInfo(encounterId, session.npcs)),
     };
+  }
+
+  /**
+   * Build multi-turn messages array for the LLM from session history.
+   *
+   * Converts the flat session.messages array into alternating user/assistant
+   * messages for a specific NPC. Player messages → role:'user',
+   * this NPC's messages → role:'assistant', other NPCs → folded into user context.
+   *
+   * @param {Object} session
+   * @param {string} templateKey — the NPC we're generating for
+   * @returns {Array<{ role: string, content: string }>}
+   */
+  _buildConversationMessages(session, templateKey) {
+    const msgs = []
+
+    for (const m of session.messages) {
+      if (m.sender === 'player') {
+        msgs.push({ role: 'user', content: m.text })
+      } else if (m.sender === templateKey) {
+        msgs.push({ role: 'assistant', content: m.text })
+      } else {
+        // Other NPC's speech — fold into user context so the NPC "hears" it
+        msgs.push({ role: 'user', content: `[${m.senderName} says: "${m.text}"]` })
+      }
+    }
+
+    return msgs
   }
 
   /**
@@ -331,6 +430,53 @@ export class EncounterSessionService {
       status: 'ended',
       messageCount: session.messages.length,
     };
+  }
+
+  /**
+   * Synthesize and store relationship memories after an encounter ends.
+   * Asks the DM LLM to analyze the transcript and record what each participant remembers.
+   * No-op if memorySynthesizer or relationshipRepo are not wired.
+   *
+   * @param {string} encounterId
+   * @returns {Promise<{ memoriesStored: number } | null>}
+   */
+  async synthesizeAndStoreMemories(encounterId) {
+    if (!this._memorySynthesizer || !this._relationshipRepo) return null;
+
+    const session = this._sessions.get(encounterId);
+    if (!session) return null;
+
+    const participants = [
+      { id: 'player', name: session.playerName || 'Adventurer', isPlayer: true },
+      ...session.npcs.map(npc => ({
+        id: npc.templateKey,
+        name: npc.name,
+        isPlayer: false,
+        templateKey: npc.templateKey,
+      })),
+    ];
+
+    const { memories } = await this._memorySynthesizer.synthesizeEncounterMemories({
+      transcript: session.messages,
+      participants,
+    });
+
+    let stored = 0;
+    for (const mem of memories) {
+      this._relationshipRepo.recordMemory(mem.subjectId, mem.targetId, {
+        summary: mem.summary,
+        significance: mem.significance,
+      });
+      if (typeof mem.emotionalShift === 'number' && mem.emotionalShift !== 0) {
+        this._relationshipRepo.adjustValence(mem.subjectId, mem.targetId, mem.emotionalShift);
+      }
+      if (mem.tierPromotion) {
+        this._relationshipRepo.promoteTier(mem.subjectId, mem.targetId, mem.tierPromotion);
+      }
+      stored++;
+    }
+
+    return { memoriesStored: stored };
   }
 
   /**
@@ -358,5 +504,59 @@ export class EncounterSessionService {
    */
   clearAll() {
     this._sessions.clear();
+  }
+
+  // ── Player-facing name resolution ─────────────────────────────
+
+  /**
+   * Auto-seed display labels for NPCs the player hasn't met yet.
+   * For each NPC: generate appearance label if stranger, promote to recognized.
+   *
+   * @param {string[]} templateKeys
+   */
+  _seedDisplayLabels(templateKeys) {
+    if (!this._relationshipRepo) return;
+
+    for (const key of templateKeys) {
+      const rel = this._relationshipRepo.getOrCreateRelationship('player', key);
+
+      if (!rel.displayLabel) {
+        const personality = this._personalityLookup(key);
+        if (personality) {
+          const label = MemorySynthesizer.generateDisplayLabel(personality);
+          this._relationshipRepo.setDisplayLabel('player', key, label);
+        }
+      }
+
+      if (rel.recognitionTier === 'stranger') {
+        this._relationshipRepo.promoteTier('player', key, 'recognized');
+      }
+    }
+  }
+
+  /**
+   * Resolve an NPC's name for player-facing output based on recognition tier.
+   *
+   * @param {string} templateKey
+   * @param {string} realName
+   * @returns {string}
+   */
+  _resolvePlayerDisplayName(templateKey, realName) {
+    if (!this._relationshipRepo) return realName;
+    return this._relationshipRepo.getDisplayName('player', templateKey, realName);
+  }
+
+  /**
+   * Resolve NPC names in an npcs array for player-facing output.
+   *
+   * @param {Array<{ templateKey, name, ... }>} npcs
+   * @returns {Array}
+   */
+  _resolveNpcNamesForPlayer(npcs) {
+    if (!this._relationshipRepo) return npcs;
+    return npcs.map(npc => ({
+      ...npc,
+      name: this._resolvePlayerDisplayName(npc.templateKey, npc.name),
+    }));
   }
 }

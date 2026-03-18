@@ -15,7 +15,12 @@ import { InfoExtractionService } from './npc/InfoExtractionService.js';
 import { PersonalityEvolutionService } from './npc/PersonalityEvolutionService.js';
 import { EncounterSessionService } from './npc/EncounterSessionService.js';
 import { CombatNarratorService } from './npc/CombatNarratorService.js';
+import { NpcRuntimeContext } from './npc/NpcRuntimeContext.js';
 import { createNpcScheduler } from './npc/NpcScheduler.js';
+import { SceneEngine } from './services/SceneEngine.js';
+import { SceneNarrator } from './services/SceneNarrator.js';
+import { RelationshipRepository } from './services/RelationshipRepository.js';
+import { MemorySynthesizer } from './services/MemorySynthesizer.js';
 import { MockProvider } from './llm/MockProvider.js';
 import { LLMProvider } from './llm/LLMProvider.js';
 
@@ -36,7 +41,17 @@ export { InfoExtractionService } from './npc/InfoExtractionService.js';
 export { PersonalityEvolutionService } from './npc/PersonalityEvolutionService.js';
 export { EncounterSessionService } from './npc/EncounterSessionService.js';
 export { CombatNarratorService } from './npc/CombatNarratorService.js';
+export { NpcRuntimeContext } from './npc/NpcRuntimeContext.js';
+export { buildEncounterSystemPrompt } from './npc/buildEncounterSystemPrompt.js';
+export { buildDmConsciousnessPrompt } from './npc/buildDmConsciousnessPrompt.js';
 export { createNpcScheduler } from './npc/NpcScheduler.js';
+export { SceneEngine } from './services/SceneEngine.js';
+export { SceneState } from './services/SceneState.js';
+export { rollSceneInitiative } from './services/SceneInitiative.js';
+export { buildSceneSystemPrompt } from './npc/buildSceneSystemPrompt.js';
+export { SceneNarrator } from './services/SceneNarrator.js';
+export { RelationshipRepository, RECOGNITION_TIERS, SIGNIFICANCE_LEVELS } from './services/RelationshipRepository.js';
+export { MemorySynthesizer } from './services/MemorySynthesizer.js';
 export { MockProvider } from './llm/MockProvider.js';
 export { LLMProvider } from './llm/LLMProvider.js';
 export {
@@ -61,15 +76,36 @@ export function createDmEngine(options = {}) {
   const personalityEvolution = new PersonalityEvolutionService();
 
   const personalityLookup = options.personalityLookup || (() => null);
+  const locationLookup = options.locationLookup || null;
+  const runtimeContext = options.runtimeContext || new NpcRuntimeContext();
+  const relationshipRepo = options.relationshipRepo || new RelationshipRepository(options.relationshipRepoOptions);
+  const memorySynthesizer = new MemorySynthesizer({ provider });
   const encounterSession = new EncounterSessionService({
     encounterMemory,
     infoExtraction,
     responseService: characterResponseService,
     personalityLookup,
+    runtimeContext,
+    evolutionService: personalityEvolution,
+    locationLookup,
+    memorySynthesizer,
+    relationshipRepo,
   });
   const combatNarrator = new CombatNarratorService({
     responseService: characterResponseService,
     personalityLookup,
+  });
+  const sceneNarrator = new SceneNarrator({ responseService: characterResponseService, provider, relationshipRepo, personalityLookup });
+  const sceneEngine = new SceneEngine({
+    encounterMemory,
+    responseService: characterResponseService,
+    personalityLookup,
+    runtimeContext,
+    evolutionService: personalityEvolution,
+    sceneNarrator,
+    locationLookup,
+    memorySynthesizer,
+    relationshipRepo,
   });
   const npcScheduler = options.npcScheduler || createNpcScheduler({
     schedules: options.npcSchedules,
@@ -91,10 +127,15 @@ export function createDmEngine(options = {}) {
     personalityEvolution,
     encounterSession,
     combatNarrator,
+    sceneEngine,
+    sceneNarrator,
     npcScheduler,
+    runtimeContext,
     partyCoherenceMonitor,
     chapterGenerator,
     imagePromptBuilder,
     narrationGenerator,
+    relationshipRepo,
+    memorySynthesizer,
   };
 }

@@ -11,7 +11,7 @@
  * - Users can only access their own characters (403 for others')
  * - 404 for non-existent characters
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -68,12 +68,14 @@ describe('Character Routes', () => {
       expect(res.status).toBe(400);
     });
 
-    it('should return 401 without auth', async () => {
+    it('should return 401 without auth (production mode)', async () => {
+      vi.stubEnv('NODE_ENV', 'production');
       const res = await request
         .post('/api/characters')
         .send({ name: 'Unauthorized' });
 
       expect(res.status).toBe(401);
+      vi.unstubAllEnvs();
     });
   });
 

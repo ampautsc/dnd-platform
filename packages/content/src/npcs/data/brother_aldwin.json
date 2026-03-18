@@ -3,6 +3,7 @@
   "name": "Brother Aldwin",
   "race": "Human",
   "npcType": "friendly",
+  "age": 37,
   "personality": {
     "voice": "warm without being soft, present without being intrusive",
     "alignment": "lawful good",

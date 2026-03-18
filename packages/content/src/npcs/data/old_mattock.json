@@ -3,6 +3,21 @@
   "name": "Old Mattock",
   "race": "Human",
   "npcType": "neutral",
+  "age": 67,
+  "appearance": {
+    "build": "Wiry and weathered, slightly stooped from decades on the water",
+    "hair": "Thin white hair, mostly bald on top, wild at the sides",
+    "skin": "Deep brown and leathered from sun and wind, hands scarred from hooks and line",
+    "eyes": "Pale grey, watery, surprisingly sharp when focused",
+    "height": "Average, but seems shorter from his habitual stoop",
+    "distinguishingFeatures": [
+      "Hands that never stop moving — always mending something",
+      "Smells strongly of fish and river water",
+      "A fishing net perpetually draped over one knee or shoulder"
+    ],
+    "typicalAttire": "A patched canvas vest over a faded linen shirt, trousers rolled to mid-calf, bare feet calloused like leather",
+    "firstImpression": "An old fisherman, practically part of the furniture, with hands that work a net like breathing"
+  },
   "personality": {
     "voice": "slow, circuitous, lands somewhere unexpected",
     "alignment": "true neutral",

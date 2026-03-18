@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millhaven - Fantasy Town Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: 10px;
+        }
+        
+        .map-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            fill: #4a3728;
+            text-anchor: middle;
+        }
+        
+        .map-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 14px;
+            fill: #6b5b4a;
+            text-anchor: middle;
+        }
+        
+        .location-label {
+            font-family: 'Crimson Text', serif;
+            font-size: 11px;
+            fill: #2d2520;
+            text-anchor: middle;
+            font-weight: 400;
+        }
+        
+        .road-label {
+            font-family: 'Crimson Text', serif;
+            font-size: 10px;
+            fill: #5a4a3a;
+            text-anchor: middle;
+            font-style: italic;
+        }
+        
+        .compass-text {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            fill: #4a3728;
+            text-anchor: middle;
+        }
+        
+        .legend-title {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 600;
+            fill: #4a3728;
+        }
+        
+        .legend-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 11px;
+            fill: #2d2520;
+        }
+        
+        .scale-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 10px;
+            fill: #5a4a3a;
+        }
+        
+        /* Building hover effects */
+        .building:hover {
+            stroke: #333;
+            stroke-width: 2;
+            filter: brightness(1.1);
+        }
+        
+        .tree {
+            fill: #4a7c59;
+        }
+        
+        .road {
+            fill: none;
+            stroke: #8b7355;
+            stroke-width: 12;
+        }
+        
+        .bridge {
+            fill: #7a6b5d;
+            stroke: #5a4b3d;
+            stroke-width: 1;
+        }
+        
+        .river {
+            fill: #4a90e2;
+            stroke: #2e5a8a;
+            stroke-width: 2;
+        }
+        
+        .dock {
+            fill: #8b7355;
+            stroke: #5a4b3d;
+            stroke-width: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <svg viewBox="0 0 1400 1050" xmlns="http://www.w3.org/2000/svg">
+            <!-- Parchment background -->
+            <defs>
+                <radialGradient id="parchmentGrad" cx="50%" cy="50%">
+                    <stop offset="0%" stop-color="#f0deb0"/>
+                    <stop offset="100%" stop-color="#e4d0a0"/>
+                </radialGradient>
+                <filter id="aged" x="0%" y="0%" width="100%" height="100%">
+                    <feTurbulence baseFrequency="0.04" numOctaves="4" result="noise"/>
+                    <feColorMatrix in="noise" type="saturate" values="0"/>
+                    <feComponentTransfer>
+                        <feFuncA type="discrete" tableValues="0 0.15"/>
+                    </feComponentTransfer>
+                    <feComposite operator="over" in2="SourceGraphic"/>
+                </filter>
+            </defs>
+            
+            <!-- Background -->
+            <rect width="1400" height="1050" fill="url(#parchmentGrad)" filter="url(#aged)"/>
+            
+            <!-- Stoneback River (flowing S-curve, North to South on East side) -->
+            <path d="M 1100 50 Q 1120 150 1080 250 Q 1040 350 1100 450 Q 1160 550 1120 650 Q 1080 750 1120 850 Q 1160 950 1140 1050" 
+                  class="river" stroke-width="35"/>
+            
+            <!-- King's Road (East-West through center) -->
+            <path d="M 50 525 L 1080 525" class="road"/>
+            
+            <!-- North-South trade road -->
+            <path d="M 600 50 L 600 525 L 600 950" class="road"/>
+            
+            <!-- Mill Road (branches southwest from crossroads) -->
+            <path d="M 600 525 L 450 625 L 300 725" class="road"/>
+            
+            <!-- River Road (along west bank) -->
+            <path d="M 1020 200 L 1020 850" class="road"/>
+            
+            <!-- East road -->
+            <path d="M 1080 525 L 1350 525" class="road"/>
+            
+            <!-- Stone Bridge -->
+            <rect x="1080" y="515" width="40" height="20" class="bridge">
+                <title>Stone Bridge over Stoneback River</title>
+            </rect>
+            
+            <!-- Darkwood Forest (tree line along top) -->
+            <g class="forest">
+                <circle cx="150" cy="80" r="12" class="tree"/>
+                <circle cx="180" cy="65" r="15" class="tree"/>
+                <circle cx="210" cy="85" r="13" class="tree"/>
+                <circle cx="250" cy="70" r="14" class="tree"/>
+                <circle cx="290" cy="90" r="12" class="tree"/>
+                <circle cx="330" cy="75" r="16" class="tree"/>
+                <circle cx="370" cy="85" r="13" class="tree"/>
+                <circle cx="410" cy="70" r="15" class="tree"/>
+                <circle cx="450" cy="90" r="14" class="tree"/>
+                <circle cx="490" cy="75" r="12" class="tree"/>
+                <circle cx="530" cy="85" r="15" class="tree"/>
+                <circle cx="570" cy="70" r="13" class="tree"/>
+                <circle cx="610" cy="90" r="14" class="tree"/>
+                <circle cx="650" cy="75" r="12" class="tree"/>
+                <circle cx="690" cy="85" r="16" class="tree"/>
+                <circle cx="730" cy="70" r="13" class="tree"/>
+            </g>
+            
+            <!-- SE tree line near lumber yard -->
+            <g class="forest">
+                <circle cx="1150" cy="700" r="12" class="tree"/>
+                <circle cx="1180" cy="720" r="15" class="tree"/>
+                <circle cx="1210" cy="705" r="13" class="tree"/>
+                <circle cx="1250" cy="725" r="14" class="tree"/>
+                <circle cx="1290" cy="710" r="12" class="tree"/>
+            </g>
+            
+            <!-- Market Square (open area) -->
+            <rect x="550" y="450" width="100" height="100" fill="none" stroke="#8b7355" stroke-width="2" stroke-dasharray="5,5"/>
+            
+            <!-- BUILDINGS - Placed alongside roads, not on them -->
+            
+            <!-- 1. Bottoms Up Tavern (corner Mill Rd & King's Rd) -->
+            <rect x="580" y="540" width="35" height="25" fill="#d2691e" class="building">
+                <title>Bottoms Up Tavern - Mira Barrelbottom, Lell Sparrow, Bob the Porous</title>
+            </rect>
+            <text x="597" y="580" class="location-label">Bottoms Up</text>
+            
+            <!-- 2. Market Square (center) -->
+            <text x="600" y="500" class="location-label" font-size="14px" font-weight="600">Market Square</text>
+            
+            <!-- 3. Millhaven Forge (on market square) -->
+            <rect x="520" y="460" width="25" height="20" fill="#8b4513" class="building">
+                <title>Millhaven Forge - Torval Grimm, Pip Apprentice</title>
+            </rect>
+            <text x="532" y="495" class="location-label">Forge</text>
+            
+            <!-- 4. Green Gate Bakery (near market) -->
+            <rect x="520" y="430" width="20" height="20" fill="#daa520" class="building">
+                <title>Green Gate Bakery - Oma Steadwick, Pooh the Hungry, Piglet the Anxious</title>
+            </rect>
+            <text x="530" y="465" class="location-label">Bakery</text>
+            
+            <!-- 5. Apothecary (Mill Road, two doors from healer) -->
+            <rect x="500" y="580" width="18" height="18" fill="#20b2aa" class="building">
+                <title>The Apothecary & Herbary - Vesna Calloway, Jesse the Apprentice</title>
+            </rect>
+            <text x="509" y="615" class="location-label">Apothecary</text>
+            
+            <!-- 6. Guard Post (next to east gate) -->
+            <rect x="1300" y="510" width="25" height="30" fill="#8b0000" class="building">
+                <title>Guard Post - Captain Edric Vane, Brennan Holt, Sera Dunwick, Dwight the Assistant</title>
+            </rect>
+            <text x="1312" y="560" class="location-label">Guard Post</text>
+            
+            <!-- 7. Temple of Allmother (near market) -->
+            <rect x="570" y="420" width="30" height="25" fill="#ffd700" class="building">
+                <title>Temple of the Allmother - Brother Aldwin, Aang the Wind Monk</title>
+            </rect>
+            <text x="585" y="460" class="location-label">Temple</text>
+            
+            <!-- 8. Millhaven Docks (west bank of river) -->
+            <rect x="1020" y="400" width="50" height="15" fill="#8b7355" class="dock">
+                <title>Millhaven Docks - Old Mattock, Pat the Star, Han the Smuggler</title>
+            </rect>
+            <text x="1045" y="435" class="location-label">Docks</text>
+            
+            <!-- 9. Blue Lantern Alley (near docks) -->
+            <rect x="980" y="420" width="15" height="25" fill="#663399" class="building">
+                <title>Blue Lantern Alley - Hodge Fence, Widow Marsh, George the Neurotic</title>
+            </rect>
+            <text x="987" y="460" class="location-label">Blue Lantern</text>
+            
+            <!-- 10. Mill Road Residential -->
+            <g class="residential">
+                <rect x="450" y="560" width="12" height="12" fill="#deb887" class="building"/>
+                <rect x="470" y="565" width="12" height="12" fill="#deb887" class="building"/>
+                <rect x="490" y="570" width="12" height="12" fill="#deb887" class="building"/>
+                <rect x="380" y="640" width="12" height="12" fill="#deb887" class="building"/>
+                <rect x="400" y="645" width="12" height="12" fill="#deb887" class="building"/>
+                <text x="465" y="600" class="location-label">Mill Road Houses</text>
+            </g>
+            
+            <!-- 11. Stoneback Stables (east road) -->
+            <rect x="1200" y="510" width="30" height="20" fill="#cd853f" class="building">
+                <title>Stoneback Stables - Wren Stable, Tigger the Bouncy</title>
+            </rect>
+            <text x="1215" y="545" class="location-label">Stables</text>
+            
+            <!-- 12. Millhaven Mill (EAST bank of river, across bridge) -->
+            <rect x="1140" y="510" width="25" height="25" fill="#8b4513" class="building">
+                <title>Millhaven Mill - Eeyore the Depressed, Pat the Star</title>
+            </rect>
+            <text x="1152" y="550" class="location-label">Mill</text>
+            
+            <!-- 13. Coin-Keeper's Provisions (on market square) -->
+            <rect x="630" y="430" width="25" height="20" fill="#daa520" class="building">
+                <title>The Coin-Keeper's Provisions - Krabs the Miser, Tom the Entrepreneur, George the Neurotic</title>
+            </rect>
+            <text x="642" y="465" class="location-label">General Store</text>
+            
+            <!-- 14. Town Hall (north side of market square) -->
+            <rect x="570" y="400" width="35" height="30" fill="#4682b4" class="building">
+                <title>Millhaven Town Hall - Aldovar Crennick, Leslie the Optimist, Saul the Barrister, Michael the Manager, Jim the Prankster</title>
+            </rect>
+            <text x="587" y="390" class="location-label">Town Hall</text>
+            
+            <!-- 15. Mending House (quieter end Mill Road) -->
+            <rect x="460" y="580" width="20" height="18" fill="#20b2aa" class="building">
+                <title>The Mending House - Katara the Healer, Watson the Medic, Jesse the Apprentice</title>
+            </rect>
+            <text x="470" y="615" class="location-label">Healer</text>
+            
+            <!-- 16. Cogsworth Workshop (end of Mill Road) -->
+            <rect x="250" y="720" width="30" height="25" fill="#8b4513" class="building">
+                <title>Cogsworth & Craftwhisper Workshop - Phineas the Builder, Ferb the Silent, Heinz Mad Artificer</title>
+            </rect>
+            <text x="265" y="760" class="location-label">Workshop</text>
+            
+            <!-- 17. Thornwood Lumber (SE edge, tree line) -->
+            <rect x="1200" y="650" width="40" height="25" fill="#8b4513" class="building">
+                <title>Thornwood's Lumber & Carpentry - Ron the Libertarian, Fred the Trapper, Sam the Loyal</title>
+            </rect>
+            <text x="1220" y="690" class="location-label">Lumber Yard</text>
+            
+            <!-- 18. Ironbelly's Meats (market square, narrow) -->
+            <rect x="615" y="460" width="12" height="18" fill="#cd853f" class="building">
+                <title>Ironbelly's Meats & Ratcatching - Homer the Glutton</title>
+            </rect>
+            <text x="621" y="495" class="location-label">Butcher</text>
+            
+            <!-- 19. Quiet Yard Cemetery (north hill) -->
+            <rect x="400" y="150" width="60" height="40" fill="none" stroke="#696969" stroke-width="2" class="building">
+                <title>The Quiet Yard Cemetery - Hades the God</title>
+            </rect>
+            <text x="430" y="200" class="location-label">Cemetery</text>
+            
+            <!-- 20. Schoolhouse (south side market square) -->
+            <rect x="580" y="560" width="30" height="20" fill="#daa520" class="building">
+                <title>Millhaven Schoolhouse - Hermione the Bookworm, Splinter the Master, Donnie the Brain</title>
+            </rect>
+            <text x="595" y="595" class="location-label">School</text>
+            
+            <!-- 21. Withered Coin (between town hall and tailor) -->
+            <rect x="610" y="400" width="18" height="25" fill="#4682b4" class="building">
+                <title>The Withered Coin - Burns the Ancient, Smithers the Sycophant, Tyrion the Imp</title>
+            </rect>
+            <text x="619" y="440" class="location-label">Counting House</text>
+            
+            <!-- 22. Stoneback Warehouse (end of docks) -->
+            <rect x="1020" y="350" width="35" height="20" fill="#cd853f" class="building">
+                <title>Stoneback Warehouse - Fry the Delivery Boy, Han the Smuggler</title>
+            </rect>
+            <text x="1037" y="385" class="location-label">Warehouse</text>
+            
+            <!-- 23. Tannery (edge of town, south pastures) -->
+            <rect x="280" y="850" width="25" height="20" fill="#8b4513" class="building">
+                <title>Millhaven Tannery - Logan the Wolverine</title>
+            </rect>
+            <text x="292" y="885" class="location-label">Tannery</text>
+            
+            <!-- 24. Wanderer's Rest (river walk, between docks and temple) -->
+            <rect x="950" y="430" width="20" height="15" fill="#663399" class="building">
+                <title>The Wanderer's Rest - Iroh the Dragon</title>
+            </rect>
+            <text x="960" y="460" class="location-label">Tea House</text>
+            
+            <!-- 25. Curtain Call Theater (west side market square) -->
+            <rect x="520" y="490" width="25" height="20" fill="#663399" class="building">
+                <title>The Curtain Call - Kermit the Stressed, Piggy the Diva, Gonzo the Weirdo, Animal the Wild, Squid the Cynic</title>
+            </rect>
+            <text x="532" y="525" class="location-label">Theater</text>
+            
+            <!-- 26. Glasswright's Books (east side market square) -->
+            <rect x="660" y="460" width="20" height="25" fill="#daa520" class="building">
+                <title>Glasswright's Books & Investigations - Velma the Sage, Shaggy the Coward, Scooby the Hound</title>
+            </rect>
+            <text x="670" y="500" class="location-label">Bookshop</text>
+            
+            <!-- 27. Ashenbrand Bathhouse (south side Mill Road) -->
+            <rect x="420" y="600" width="25" height="20" fill="#663399" class="building">
+                <title>Ashenbrand Bathhouse & Spa - Gomez the Passionate, Morticia the Goth, Wednesday the Morbid, Mario the Plumber, Bender the Robot, Luigi the Cowardly Brother</title>
+            </rect>
+            <text x="432" y="635" class="location-label">Bathhouse</text>
+            
+            <!-- 28. Driftwood Tavern (end of docks, south) -->
+            <rect x="1020" y="480" width="30" height="20" fill="#d2691e" class="building">
+                <title>The Driftwood - Jack the Sparrow, Marceline the Vampire, Marge the Enabler</title>
+            </rect>
+            <text x="1035" y="515" class="location-label">Driftwood</text>
+            
+            <!-- 29. Nightwhisper's Tinctures (north market, between temple and tailor) -->
+            <rect x="630" y="400" width="18" height="20" fill="#20b2aa" class="building">
+                <title>Nightwhisper's Tinctures & Tonsure - Snape the Potions Master, Vanessa the Reluctant</title>
+            </rect>
+            <text x="639" y="435" class="location-label">Barber</text>
+            
+            <!-- 30. Hammondris Cabinet (east road, between stables and gate) -->
+            <rect x="1250" y="510" width="25" height="20" fill="#663399" class="building">
+                <title>Hammondris's Cabinet of Curiosities - Hammond the Dreamer, Perry the Platypus Agent, Malcolm the Chaos</title>
+            </rect>
+            <text x="1262" y="545" class="location-label">Curiosities</text>
+            
+            <!-- Residential clusters -->
+            <g class="residential">
+                <!-- North residential -->
+                <rect x="450" y="300" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="470" y="305" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="490" y="300" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="680" y="300" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="700" y="305" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="720" y="300" width="10" height="10" fill="#deb887" class="building"/>
+                
+                <!-- West residential -->
+                <rect x="200" y="450" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="220" y="455" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="240" y="450" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="200" y="550" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="220" y="555" width="10" height="10" fill="#deb887" class="building"/>
+                
+                <!-- South residential -->
+                <rect x="450" y="800" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="470" y="805" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="680" y="800" width="10" height="10" fill="#deb887" class="building"/>
+                <rect x="700" y="805" width="10" height="10" fill="#deb887" class="building"/>
+            </g>
+            
+            <!-- Road Labels -->
+            <text x="300" y="520" class="road-label">King's Road</text>
+            <text x="620" y="270" class="road-label" transform="rotate(-90 620 270)">North Trade Road</text>
+            <text x="420" y="650" class="road-label" transform="rotate(-35 420 650)">Mill Road</text>
+            <text x="1030" y="600" class="road-label" transform="rotate(-90 1030 600)">River Road</text>
+            <text x="1200" y="520" class="road-label">East Road</text>
+            <text x="1100" y="540" class="road-label">Stone Bridge</text>
+            
+            <!-- Geographic Labels -->
+            <text x="1140" y="250" class="road-label" transform="rotate(-20 1140 250)">Stoneback River</text>
+            <text x="450" y="100" class="road-label">Darkwood Forest</text>
+            <text x="150" y="600" class="road-label">Farmland</text>
+            <text x="600" y="950" class="road-label">South Pastures</text>
+            
+            <!-- Title Cartouche -->
+            <g transform="translate(100, 50)">
+                <rect x="0" y="0" width="280" height="90" fill="#f4f1e8" stroke="#8b7355" stroke-width="2" rx="5"/>
+                <text x="140" y="30" class="map-title">MILLHAVEN</text>
+                <text x="140" y="50" class="map-subtitle">A Market Town in The Vale</text>
+                <text x="140" y="70" class="map-subtitle">Population: 1,200 souls</text>
+            </g>
+            
+            <!-- Compass Rose -->
+            <g transform="translate(1250, 150)">
+                <circle cx="50" cy="50" r="45" fill="#f4f1e8" stroke="#8b7355" stroke-width="2"/>
+                <polygon points="50,15 55,40 50,35 45,40" fill="#8b7355"/>
+                <polygon points="50,85 45,60 50,65 55,60" fill="#deb887"/>
+                <polygon points="15,50 40,45 35,50 40,55" fill="#deb887"/>
+                <polygon points="85,50 60,55 65,50 60,45" fill="#deb887"/>
+                <text x="50" y="25" class="compass-text">N</text>
+            </g>
+            
+            <!-- Scale Bar -->
+            <g transform="translate(100, 950)">
+                <rect x="0" y="0" width="200" height="30" fill="#f4f1e8" stroke="#8b7355" stroke-width="1"/>
+                <line x1="10" y1="15" x2="60" y2="15" stroke="#8b7355" stroke-width="2"/>
+                <line x1="60" y1="15" x2="110" y2="15" stroke="#8b7355" stroke-width="2"/>
+                <line x1="110" y1="15" x2="160" y2="15" stroke="#8b7355" stroke-width="2"/>
+                <text x="35" y="27" class="scale-text">100 yards</text>
+                <text x="85" y="27" class="scale-text">200</text>
+                <text x="135" y="27" class="scale-text">300</text>
+            </g>
+            
+            <!-- Legend -->
+            <g transform="translate(1100, 850)">
+                <rect x="0" y="0" width="280" height="180" fill="#f4f1e8" stroke="#8b7355" stroke-width="2" rx="5"/>
+                <text x="10" y="20" class="legend-title">LEGEND</text>
+                
+                <rect x="10" y="30" width="12" height="8" fill="#d2691e"/>
+                <text x="25" y="38" class="legend-text">Taverns & Inns</text>
+                
+                <rect x="10" y="45" width="12" height="8" fill="#4682b4"/>
+                <text x="25" y="53" class="legend-text">Government</text>
+                
+                <rect x="10" y="60" width="12" height="8" fill="#ffd700"/>
+                <text x="25" y="68" class="legend-text">Religious</text>
+                
+                <rect x="10" y="75" width="12" height="8" fill="#daa520"/>
+                <text x="25" y="83" class="legend-text">Shops & Services</text>
+                
+                <rect x="10" y="90" width="12" height="8" fill="#20b2aa"/>
+                <text x="25" y="98" class="legend-text">Medical & Healing</text>
+                
+                <rect x="10" y="105" width="12" height="8" fill="#8b4513"/>
+                <text x="25" y="113" class="legend-text">Crafts & Industry</text>
+                
+                <rect x="140" y="30" width="12" height="8" fill="#663399"/>
+                <text x="155" y="38" class="legend-text">Entertainment</text>
+                
+                <rect x="140" y="45" width="12" height="8" fill="#8b0000"/>
+                <text x="155" y="53" class="legend-text">Military</text>
+                
+                <rect x="140" y="60" width="12" height="8" fill="#cd853f"/>
+                <text x="155" y="68" class="legend-text">Trade & Storage</text>
+                
+                <rect x="140" y="75" width="12" height="8" fill="#deb887"/>
+                <text x="155" y="83" class="legend-text">Residential</text>
+                
+                <circle cx="146" cy="95" r="6" fill="#4a7c59"/>
+                <text x="155" y="99" class="legend-text">Forest</text>
+                
+                <rect x="140" y="105" width="12" height="4" fill="#4a90e2"/>
+                <text x="155" y="113" class="legend-text">River</text>
+                
+                <line x1="10" y1="135" x2="30" y2="135" stroke="#8b7355" stroke-width="3"/>
+                <text x="35" y="139" class="legend-text">Roads</text>
+                
+                <rect x="140" y="130" width="12" height="6" fill="#8b7355"/>
+                <text x="155" y="138" class="legend-text">Docks & Bridge</text>
+                
+                <text x="10" y="165" class="legend-text" font-style="italic">Hover over buildings for details</text>
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

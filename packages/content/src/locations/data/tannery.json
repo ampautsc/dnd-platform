@@ -1,0 +1,65 @@
+{
+  "id": "tannery",
+  "name": "Millhaven Tannery",
+  "type": "tannery",
+  "description": "Downwind of everything, at the very edge of town where Mill Road meets the south pastures. There is a reason tanneries are always at the edge of town and that reason is the smell. The building is functional — open-sided for ventilation, with stone tanning pits, drying racks, and a workshop for finished leather goods. Kael Ironblood runs it alone. He doesn't tan hides because he loves leathercraft — he does it because the work is physical, repetitive, solitary, and no one visits unless they have to. The result is that Millhaven's leather goods are extraordinarily well-made by a man who would prefer you didn't talk to him about it. Elara Sharpwit brings pelts from her mercenary jobs and picks up tanned leather in exchange. It is the closest thing either of them has to a friendship.",
+  "owner": "logan_the_wolverine",
+  "atmosphere": {
+    "defaultTone": "isolated",
+    "tags": ["pungent", "solitary", "edge of town", "excellent craftsmanship despite appearance", "do not visit upwind"],
+    "sounds": [
+      "Scraping — hide being worked on the beam",
+      "Liquid sloshing in the tanning pits",
+      "Kael's knife against leather — precise, rhythmic",
+      "Wind from the south pastures",
+      "Silence — Kael doesn't talk to himself",
+      "The occasional growl when someone approaches without warning"
+    ],
+    "smells": [
+      "Tanning chemicals — acrid, pervasive, unforgettable",
+      "Raw hides",
+      "Oak bark from the tanning solution",
+      "Smoke from the smoking rack",
+      "Finished leather — the only pleasant smell here"
+    ],
+    "lighting": "Open-sided, so fully natural. The workshop interior is shaded by the roof overhang. Kael works from dawn to dusk and sleeps when it's dark."
+  },
+  "layout": [
+    {
+      "name": "The Tanning Pits",
+      "description": "Six stone-lined pits filled with tanning solution. Hides soak for days to weeks depending on the leather. The process cannot be rushed, which suits Kael."
+    },
+    {
+      "name": "The Beam",
+      "description": "A heavy log set at an angle where hides are scraped clean. Kael's arms are scarred from years of this work. He does not use gloves."
+    },
+    {
+      "name": "Drying Racks",
+      "description": "Wooden frames where finished hides are stretched and dried in the open air. In good weather, a dozen hides hang at once."
+    },
+    {
+      "name": "The Workshop",
+      "description": "A small enclosed space at the back for cutting, stitching, and finishing leather goods. Belts, boots, scabbards, armor pieces. The quality surprises anyone who sees the rest of the operation."
+    },
+    {
+      "name": "Kael's Lean-To",
+      "description": "A cot, a chest, and a water barrel. He sleeps here. There is nothing personal on display. The chest is locked with something that isn't an ordinary lock."
+    }
+  ],
+  "regulars": [
+    "logan_the_wolverine",
+    "elaine_the_vengeful"
+  ],
+  "hooks": [
+    "Kael's scars are not from tanning — and some of them glow faintly in moonlight",
+    "Someone has been leaving animal carcasses at the edge of Kael's property — not as threats, but as gifts. He hasn't figured out who.",
+    "Elara brought in a hide last week from something she won't identify — the leather is black, unnaturally smooth, and warm to the touch",
+    "Kael's locked chest contains something that occasionally makes a sound — metallic, like a blade vibrating",
+    "The south pasture wolves have never come near the tannery despite the meat smell. They avoid this place."
+  ],
+  "worldContext": {
+    "location": "Millhaven Tannery, south edge of town past Mill Road, Millhaven",
+    "defaultTone": "solitary and pungent",
+    "region": "Millhaven, The Vale"
+  }
+}

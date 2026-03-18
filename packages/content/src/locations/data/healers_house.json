@@ -1,0 +1,58 @@
+{
+  "id": "healers_house",
+  "name": "The Mending House",
+  "type": "healer",
+  "description": "A clean cottage on the quieter end of Mill Road, marked by a faded blue cloth tied to the gate post — the old sign for a healer's house in The Vale. Maireth of the Frozen Vale runs the front room as a surgery and treatment space, while Aldric of Thornhaven maintains a study and recovery room in the back. The cottage smells of boiled linen, dried herbs, and the faint mineral tang of Maireth's water-healing. Vesna Calloway's apothecary is two doors down, and the two work in close coordination — Vesna supplies the medicines, Maireth and Aldric apply them. It is the only place in Millhaven where broken bones are set, wounds are properly sutured, and fevers are treated by someone who has done it before.",
+  "owner": "katara_the_healer",
+  "atmosphere": {
+    "defaultTone": "calm",
+    "tags": ["clean", "quiet", "clinical", "reassuring", "smells of herbs and linen"],
+    "sounds": [
+      "Water being poured — Maireth uses it constantly",
+      "The scratch of Aldric's pen in his chronicle",
+      "Quiet conversation between healer and patient",
+      "Mortar and pestle grinding herbs",
+      "The creak of the recovery cot",
+      "Maireth humming when she concentrates — she doesn't know she does it"
+    ],
+    "smells": [
+      "Boiled linen bandages",
+      "Dried lavender and chamomile from hanging bundles",
+      "The mineral tang of healing water",
+      "Fresh poultices — earthy and sharp",
+      "Aldric's ink — he writes constantly"
+    ],
+    "lighting": "Bright and practical. Large south-facing windows in the treatment room. Aldric keeps extra candles at his desk for late-night chronicle work."
+  },
+  "layout": [
+    {
+      "name": "The Treatment Room",
+      "description": "Front room. A sturdy table, clean linens, a basin of water that Maireth keeps unnaturally clear and cool. Shelves of supplies along the walls. A chair for patients who can sit. A cot for those who can't."
+    },
+    {
+      "name": "The Recovery Room",
+      "description": "Back room. Two cots, a window, and absolute quiet. Patients recovering from serious injuries stay here. Aldric's desk is in the corner — he writes while keeping watch."
+    },
+    {
+      "name": "The Herb Garden",
+      "description": "Behind the cottage. Maireth and Vesna maintain it jointly. Medicinal herbs, healing mosses, and a small cold-water basin fed by a pipe from the Stoneback."
+    }
+  ],
+  "regulars": [
+    "katara_the_healer",
+    "watson_the_medic",
+    "vesna_calloway",
+    "jesse_the_apprentice"
+  ],
+  "hooks": [
+    "A patient came in last week with wounds unlike anything Aldric has catalogued — the marks don't match any weapon or creature he knows",
+    "Jessyr has been apprenticing with Vesna at the apothecary but keeps finding excuses to assist at the Mending House instead",
+    "Maireth's water-healing has started behaving differently — more potent but harder to control — and she hasn't told anyone",
+    "Aldric's chronicles contain detailed records of every injury in Millhaven for the past year, and the pattern is troubling"
+  ],
+  "worldContext": {
+    "location": "The Mending House, Mill Road (quiet end), Millhaven",
+    "defaultTone": "calm and professional",
+    "region": "Millhaven, The Vale"
+  }
+}

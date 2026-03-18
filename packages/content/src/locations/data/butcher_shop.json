@@ -1,0 +1,56 @@
+{
+  "id": "butcher_shop",
+  "name": "Ironbelly's Meats & Ratcatching",
+  "type": "butcher",
+  "description": "A narrow shop squeezed between two larger buildings on the market square, identifiable by the hooks outside the door and the perpetual smell of blood, salt, and sawdust. Durgin Ironbelly runs it — 'runs' being generous. He butchers adequately. He is the only butcher in Millhaven, which is the sole reason Millhaven has a butcher. The front room displays hanging meats, cured sausages, and whatever Durgin managed to process that morning. The back room is where the actual work happens and where Durgin's ratcatching equipment is stored — his other job, and the one he's marginally better at. His wife sends him supplies and instructions by letter from the city. He follows about half of them.",
+  "owner": "homer_the_glutton",
+  "atmosphere": {
+    "defaultTone": "functional",
+    "tags": ["bloody", "sawdust", "cramped", "Durgin is sweating", "the sausages are fine"],
+    "sounds": [
+      "The thwack of a cleaver — slightly off-rhythm",
+      "Durgin breathing heavily from exertion",
+      "Flies buzzing in summer",
+      "The scrape of sawdust being swept",
+      "A customer haggling, which Durgin always loses"
+    ],
+    "smells": [
+      "Raw meat and blood",
+      "Sawdust on the floor — fresh every morning, Durgin's one reliable habit",
+      "Salt brine from the curing barrels",
+      "Durgin himself, after a morning's work",
+      "Honeycakes — he always has one nearby"
+    ],
+    "lighting": "A single front window and the open door. The back room is lit by a single oil lamp. Durgin doesn't notice the dimness."
+  },
+  "layout": [
+    {
+      "name": "The Shop Front",
+      "description": "Hooks, a counter, a scale that Durgin forgets to calibrate. Hanging meats and sausage links. A basket of honeycakes that are not for sale but Durgin eats from constantly."
+    },
+    {
+      "name": "The Back Room",
+      "description": "The butchering workspace. A heavy block, knives of varying sharpness, and curing barrels. Also where Durgin stores his ratcatching gear — nets, cages, and a club named 'Persuader.'"
+    },
+    {
+      "name": "The Cold Cellar",
+      "description": "Below the shop. Keeps meat fresh longer in summer. Durgin is afraid of the dark but won't admit it, so trips to the cellar are fast and noisy."
+    }
+  ],
+  "regulars": [
+    "homer_the_glutton",
+    "bob_the_porous",
+    "elaine_the_vengeful"
+  ],
+  "hooks": [
+    "Bobbert the Gleeful buys Durgin's 'reject cuts' at a discount and turns them into tavern stew — the arrangement benefits everyone",
+    "Elara Sharpwit drinks at the Bottoms Up and picks up work as a hired blade — she buys jerky in bulk and never explains where she's headed",
+    "The rats in Millhaven's sewers have been getting larger and smarter — Durgin's traps aren't working as well as they used to",
+    "Durgin's wife sent a letter threatening to visit — he has been cleaning the shop with an urgency the town has never seen"
+  ],
+  "worldContext": {
+    "location": "Ironbelly's Meats & Ratcatching, Market Square, Millhaven",
+    "defaultTone": "unpretentious and slightly chaotic",
+    "region": "Millhaven, The Vale"
+  }
+}

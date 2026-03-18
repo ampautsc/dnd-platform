@@ -5,6 +5,7 @@ import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.j
 import { EncounterMemoryService } from '../../src/npc/EncounterMemoryService.js';
 import { InfoExtractionService } from '../../src/npc/InfoExtractionService.js';
 import { CharacterResponseService } from '../../src/npc/CharacterResponseService.js';
+import { RelationshipRepository } from '../../src/services/RelationshipRepository.js';
 
 /**
  * EncounterSessionService Requirements:
@@ -414,6 +415,121 @@ describe('EncounterSessionService', () => {
       const list = service.listEncounters();
       expect(list).toHaveLength(1);
       expect(list[0].npcs[0].templateKey).toBe('hodge_fence');
+    });
+  });
+
+  // ── Player-facing name resolution ─────────────────────────────────────
+
+  describe('player-facing name resolution', () => {
+    let repoService;
+    let repo;
+    let personalitiesWithAppearance;
+
+    beforeEach(() => {
+      repo = new RelationshipRepository();
+      personalitiesWithAppearance = {
+        bree_millhaven: {
+          ...makePersonality('bree_millhaven', 'Bree Millhaven', { race: 'Halfling', npcType: 'friendly' }),
+          appearance: { firstImpression: 'a cheerful halfling with flour-dusted hands' },
+        },
+        hodge_fence: {
+          ...makePersonality('hodge_fence', 'Hodge the Fence'),
+          appearance: { firstImpression: 'a shifty-eyed man leaning against the wall' },
+        },
+      };
+
+      repoService = new EncounterSessionService({
+        encounterMemory: deps.encounterMemory,
+        infoExtraction: deps.infoExtraction,
+        responseService: deps.responseService,
+        personalityLookup: (key) => personalitiesWithAppearance[key] || null,
+        relationshipRepo: repo,
+      });
+    });
+
+    it('should auto-seed display labels for stranger NPCs on encounter creation', async () => {
+      await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      const rel = repo.getRelationship('player', 'bree_millhaven');
+      expect(rel).not.toBeNull();
+      expect(rel.displayLabel).toBe('a cheerful halfling with flour-dusted hands');
+    });
+
+    it('should promote stranger NPCs to recognized on encounter creation', async () => {
+      await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      const rel = repo.getRelationship('player', 'bree_millhaven');
+      expect(rel.recognitionTier).toBe('recognized');
+    });
+
+    it('should use display labels for NPC names in createEncounter response', async () => {
+      const result = await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      expect(result.npcs[0].name).toBe('a cheerful halfling with flour-dusted hands');
+      expect(result.npcs[0].name).not.toBe('Bree Millhaven');
+    });
+
+    it('should use display labels for senderName in NPC responses', async () => {
+      const result = await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      const response = await repoService.sendMessage(result.encounterId, {
+        text: 'Hello there!',
+      });
+
+      expect(response.npcResponses[0].senderName).toBe('a cheerful halfling with flour-dusted hands');
+    });
+
+    it('should use real names when NPC is acquaintance', async () => {
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'bree_millhaven',
+        recognitionTier: 'acquaintance',
+        displayLabel: 'a cheerful halfling',
+      });
+
+      const result = await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      expect(result.npcs[0].name).toBe('Bree Millhaven');
+
+      const response = await repoService.sendMessage(result.encounterId, {
+        text: 'Hey Bree!',
+      });
+      expect(response.npcResponses[0].senderName).toBe('Bree Millhaven');
+    });
+
+    it('should use display labels in getEncounter response', async () => {
+      const created = await repoService.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      const encounter = repoService.getEncounter(created.encounterId);
+      expect(encounter.npcs[0].name).toBe('a cheerful halfling with flour-dusted hands');
+    });
+
+    it('should still work without relationshipRepo (backward compat)', async () => {
+      const result = await service.createEncounter({
+        npcTemplateKeys: ['bree_millhaven'],
+        playerName: 'Hero',
+      });
+
+      // Without repo, uses real name
+      expect(result.npcs[0].name).toBe('Bree Millhaven');
     });
   });
 });

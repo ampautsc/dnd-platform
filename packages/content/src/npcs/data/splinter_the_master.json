@@ -3,6 +3,7 @@
   "name": "Master Kyoshi the Rat Sage",
   "race": "Awakened Rat",
   "npcType": "friendly",
+  "age": 62,
   "personality": {
     "voice": "Weathered and measured, like wind through ancient bamboo—soft yet commanding, each word deliberately chosen and weighted with years of contemplation",
     "disposition": "Patient serenity masking deep exhaustion; speaks rarely but with absolute authority when he does",

@@ -18,16 +18,17 @@
   },
   "notableLocations": [
     {
-      "name": "The Tipsy Gnome",
+      "name": "Bottoms Up",
       "type": "inn_and_tavern",
-      "description": "The social heart of Millhaven. Half the town's business gets done over ale here.",
-      "npcInstances": ["mira_barrelbottom", "lell_sparrow"]
+      "description": "The social heart of Millhaven. Half the town's business gets done over ale here. Corner of Mill Road and King's Road.",
+      "locationFile": "bottoms_up",
+      "npcInstances": ["mira_barrelbottom", "lell_sparrow", "bob_the_porous"]
     },
     {
       "name": "Millhaven Market Square",
       "type": "market",
       "description": "Open-air market every Tenthday. Farmers, traveling merchants, and local craftspeople.",
-      "npcInstances": ["davan_merchant", "dolly_thurn", "floris_embrich"]
+      "npcInstances": ["davan_merchant", "dolly_thurn", "floris_embrich", "tom_the_entrepreneur", "kramer_the_chaos"]
     },
     {
       "name": "The Millhaven Forge",
@@ -39,49 +40,182 @@
       "name": "Green Gate Bakery",
       "type": "bakery",
       "description": "Opens before dawn. The smell reaches the inn district before sunrise.",
-      "npcInstances": ["oma_steadwick"]
+      "npcInstances": ["oma_steadwick", "pooh_the_hungry", "piglet_the_anxious"]
     },
     {
       "name": "The Apothecary & Herbary",
       "type": "shop",
       "description": "Dried herbs, poultices, basic healing supplies. The herbalist lives above the shop.",
-      "npcInstances": ["vesna_calloway"]
+      "npcInstances": ["vesna_calloway", "jesse_the_apprentice"]
     },
     {
       "name": "The Guard Post",
       "type": "military",
       "description": "A modest two-story stone structure next to the town gate. Usually two guards on duty.",
-      "npcInstances": ["captain_edric_vane", "brennan_holt", "sera_dunwick"]
+      "npcInstances": ["captain_edric_vane", "brennan_holt", "sera_dunwick", "dwight_the_assistant"]
     },
     {
       "name": "Temple of the Allmother",
       "type": "temple",
       "description": "A modest temple to the goddess of hearth and harvest. Open to all faiths.",
-      "npcInstances": ["brother_aldwin"]
+      "npcInstances": ["brother_aldwin", "aang_the_wind_monk"]
     },
     {
       "name": "Millhaven Docks",
       "type": "waterfront",
       "description": "Small river docks for barges and fishing vessels on the Stoneback River.",
-      "npcInstances": ["old_mattock"]
+      "npcInstances": ["old_mattock", "pat_the_star", "han_the_smuggler"]
     },
     {
       "name": "Blue Lantern Alley",
       "type": "shady_district",
       "description": "The fence operates from a junk shop that smells of old leather and regret.",
-      "npcInstances": ["hodge_fence", "widow_marsh"]
+      "npcInstances": ["hodge_fence", "widow_marsh", "george_the_neurotic"]
     },
     {
       "name": "Mill Road (residential)",
       "type": "residential",
       "description": "Where the working families live. Children play in the street. Laundry hangs between buildings.",
-      "npcInstances": ["tuck_millhaven", "bree_millhaven", "aldovar_crennick", "fen_colby"]
+      "npcInstances": ["tuck_millhaven", "bree_millhaven", "aldovar_crennick", "fen_colby", "bart_the_menace"]
     },
     {
       "name": "Stoneback Stables",
       "type": "stables",
       "description": "On the east road. Horses, mules, hay, and the best-kept secret gossip exchange in Millhaven.",
-      "npcInstances": ["wren_stable"]
+      "npcInstances": ["wren_stable", "tigger_the_bouncy"]
+    },
+    {
+      "name": "Millhaven Mill",
+      "type": "mill",
+      "description": "The watermill that gives the town its name. On the Stoneback River, grinding grain for every farm within ten miles.",
+      "locationFile": "millhaven_mill",
+      "npcInstances": ["eeyore_the_depressed", "pat_the_star"]
+    },
+    {
+      "name": "The Coin-Keeper's Provisions",
+      "type": "general_store",
+      "description": "The only general store in town. Every item priced to Krassus's advantage.",
+      "locationFile": "general_store",
+      "npcInstances": ["krabs_the_miser", "tom_the_entrepreneur", "george_the_neurotic"]
+    },
+    {
+      "name": "Millhaven Town Hall",
+      "type": "government",
+      "description": "Council chamber, records office, and seat of local government. North side of the square.",
+      "locationFile": "town_hall",
+      "npcInstances": ["aldovar_crennick", "leslie_the_optimist", "saul_the_barrister", "michael_the_manager", "jim_the_prankster"]
+    },
+    {
+      "name": "The Mending House",
+      "type": "healer",
+      "description": "The town healer's cottage. Bones set, wounds sutured, fevers treated.",
+      "locationFile": "healers_house",
+      "npcInstances": ["katara_the_healer", "watson_the_medic", "jesse_the_apprentice"]
+    },
+    {
+      "name": "Cogsworth & Craftwhisper Workshop",
+      "type": "workshop",
+      "description": "Tinkers, inventors, repairs. The fence has been rebuilt four times.",
+      "locationFile": "cogsworth_workshop",
+      "npcInstances": ["phineas_the_builder", "ferb_the_silent", "heinz_mad_artificer"]
+    },
+    {
+      "name": "Thornwood's Lumber & Carpentry",
+      "type": "lumber_yard",
+      "description": "Timber, planks, and furniture. Southeast edge of town near the tree line.",
+      "locationFile": "lumber_yard",
+      "npcInstances": ["ron_the_libertarian", "fred_the_trapper", "sam_the_loyal"]
+    },
+    {
+      "name": "Ironbelly's Meats & Ratcatching",
+      "type": "butcher",
+      "description": "The only butcher in Millhaven, which is the sole reason Millhaven has a butcher.",
+      "locationFile": "butcher_shop",
+      "npcInstances": ["homer_the_glutton"]
+    },
+    {
+      "name": "The Quiet Yard",
+      "type": "cemetery",
+      "description": "The town cemetery on the north hill. Well-kept by its solemn caretaker.",
+      "locationFile": "cemetery",
+      "npcInstances": ["hades_the_god"]
+    },
+    {
+      "name": "Millhaven Schoolhouse",
+      "type": "school",
+      "description": "South side of Market Square. Reading, arithmetic, martial arts, and practical skills for ages six to sixteen.",
+      "locationFile": "schoolhouse",
+      "npcInstances": ["hermione_the_bookworm", "splinter_the_master", "donnie_the_brain"]
+    },
+    {
+      "name": "The Withered Coin",
+      "type": "money_lender",
+      "description": "Counting house and lending. Fair rates in the strictest mathematical sense.",
+      "locationFile": "counting_house",
+      "npcInstances": ["burns_the_ancient", "smithers_the_sycophant", "tyrion_the_imp"]
+    },
+    {
+      "name": "Stoneback Warehouse",
+      "type": "warehouse",
+      "description": "River docks storage. Goods in transit, delivery schedules, and unlisted cargo.",
+      "locationFile": "warehouse",
+      "npcInstances": ["fry_the_delivery_boy", "han_the_smuggler"]
+    },
+    {
+      "name": "Millhaven Tannery",
+      "type": "tannery",
+      "description": "Downwind of everything. Excellent leather goods made by a man who prefers silence.",
+      "locationFile": "tannery",
+      "npcInstances": ["logan_the_wolverine"]
+    },
+    {
+      "name": "The Wanderer's Rest",
+      "type": "tea_house",
+      "description": "Tea, conversation, and silence on the river walk. All welcome.",
+      "locationFile": "tea_house",
+      "npcInstances": ["iroh_the_dragon"]
+    },
+    {
+      "name": "The Curtain Call",
+      "type": "theater",
+      "description": "Converted coaching stable turned theater. Three performance nights a week.",
+      "locationFile": "theater",
+      "npcInstances": ["kermit_the_stressed", "piggy_the_diva", "gonzo_the_weirdo", "animal_the_wild", "squid_the_cynic"]
+    },
+    {
+      "name": "Glasswright's Books & Investigations",
+      "type": "bookshop",
+      "description": "Books, investigations, and an enormous trembling dog blocking the door.",
+      "locationFile": "bookshop",
+      "npcInstances": ["velma_the_sage", "shaggy_the_coward", "scooby_the_hound"]
+    },
+    {
+      "name": "Ashenbrand Bathhouse & Spa",
+      "type": "bathhouse",
+      "description": "Steam, nightshade potpourri, and eccentric luxury. The Ashenbrand family's idea of public service.",
+      "locationFile": "bathhouse",
+      "npcInstances": ["gomez_the_passionate", "morticia_the_goth", "wednesday_the_morbid", "mario_the_plumber", "bender_the_robot", "luigi_the_cowardly_brother"]
+    },
+    {
+      "name": "The Driftwood",
+      "type": "tavern",
+      "description": "Dock-side tavern built from salvaged barge planks. Rougher crowd, evening music, rooms for rent.",
+      "locationFile": "driftwood_tavern",
+      "npcInstances": ["jack_the_sparrow", "marceline_the_vampire", "marge_the_enabler"]
+    },
+    {
+      "name": "Nightwhisper's Tinctures & Tonsure",
+      "type": "barber_apothecary",
+      "description": "Haircuts, potions, and minor surgery. All performed with equal disdain.",
+      "locationFile": "tinctures_shop",
+      "npcInstances": ["snape_the_potions_master", "vanessa_the_reluctant"]
+    },
+    {
+      "name": "Hammondris's Cabinet of Curiosities",
+      "type": "curiosity_shop",
+      "description": "Specimens, artifacts, and an awakened platypus. The locked cabinet glows at night.",
+      "locationFile": "curiosity_shop",
+      "npcInstances": ["hammond_the_dreamer", "perry_the_platypus_agent", "malcolm_the_chaos"]
     }
   ],
   "factions": [
@@ -108,7 +242,7 @@
     }
   ],
   "npcRoster": [
-    { "templateKey": "mira_barrelbottom",  "name": "Mira Barrelbottom",  "role": "Innkeeper, The Tipsy Gnome" },
+    { "templateKey": "mira_barrelbottom",  "name": "Mira Barrelbottom",  "role": "Innkeeper, Bottoms Up" },
     { "templateKey": "brennan_holt",       "name": "Brennan Holt",       "role": "Gate Guard" },
     { "templateKey": "sera_dunwick",       "name": "Sera Dunwick",       "role": "Market Patrol Guard" },
     { "templateKey": "captain_edric_vane", "name": "Captain Edric Vane", "role": "Captain of the Guard" },
@@ -118,9 +252,9 @@
     { "templateKey": "vesna_calloway",     "name": "Vesna Calloway",     "role": "Herbalist & Apothecary" },
     { "templateKey": "davan_merchant",     "name": "Davan of the Road",  "role": "Traveling Merchant" },
     { "templateKey": "floris_embrich",     "name": "Floris Embrich",     "role": "Tailor, Cloth & Thread" },
-    { "templateKey": "lell_sparrow",       "name": "Lell Sparrow",       "role": "House Bard, The Tipsy Gnome" },
+    { "templateKey": "lell_sparrow",       "name": "Lell Sparrow",       "role": "House Bard, Bottoms Up" },
     { "templateKey": "aldovar_crennick",   "name": "Aldovar Crennick",   "role": "Town Elder, Council Head" },
-    { "templateKey": "dolly_thurn",        "name": "Dolly Thurn",        "role": "Farmer, Mill Road Farm" },
+    { "templateKey": "dolly_thurn",        "name": "Dolly Thurn",        "role": "Farmer & Mill Owner" },
     { "templateKey": "wren_stable",        "name": "Wren",               "role": "Stable Hand, Stoneback Stables" },
     { "templateKey": "old_mattock",        "name": "Old Mattock",        "role": "Fisherman, Stoneback Docks" },
     { "templateKey": "brother_aldwin",     "name": "Brother Aldwin",     "role": "Priest, Temple of the Allmother" },
@@ -128,7 +262,71 @@
     { "templateKey": "bree_millhaven",     "name": "Bree",               "role": "Baker's daughter, age ~11" },
     { "templateKey": "fen_colby",          "name": "Fen Colby",          "role": "Town Drunk, formerly promising" },
     { "templateKey": "widow_marsh",        "name": "The Widow Marsh",    "role": "Beggar, Blue Lantern steps" },
-    { "templateKey": "hodge_fence",        "name": "Hodge",              "role": "Fence, Blue Lantern Alley junk shop" }
+    { "templateKey": "hodge_fence",        "name": "Hodge",              "role": "Fence, Blue Lantern Alley junk shop" },
+    { "templateKey": "phineas_the_builder","name": "Phineas Cogsworth",  "role": "Inventor, Cogsworth & Craftwhisper Workshop" },
+    { "templateKey": "ferb_the_silent",    "name": "Ferb Craftwhisper",  "role": "Tinker & Smith, Cogsworth & Craftwhisper Workshop" },
+    { "templateKey": "heinz_mad_artificer","name": "Heinz Vexworth",     "role": "Mad Artificer, rival inventor" },
+    { "templateKey": "eeyore_the_depressed","name": "Mordain the Threadbare", "role": "Millstone Keeper, Millhaven Mill" },
+    { "templateKey": "krabs_the_miser",    "name": "Krassus the Coin-Keeper", "role": "Shopkeeper, The Coin-Keeper's Provisions" },
+    { "templateKey": "tom_the_entrepreneur","name": "Tomás Aventide",    "role": "Entrepreneur, rents a stall at the general store" },
+    { "templateKey": "leslie_the_optimist","name": "Lestelle Brightbinder", "role": "Town Clerk, Millhaven Town Hall" },
+    { "templateKey": "saul_the_barrister", "name": "Sylvain the Advocate", "role": "Town Lawyer, Millhaven Town Hall" },
+    { "templateKey": "michael_the_manager","name": "Aldric Brightblade", "role": "Guildmaster, Merchant Guild" },
+    { "templateKey": "katara_the_healer",  "name": "Maireth of the Frozen Vale", "role": "Town Healer, The Mending House" },
+    { "templateKey": "watson_the_medic",   "name": "Aldric of Thornhaven", "role": "Surgeon & Chronicler, The Mending House" },
+    { "templateKey": "jesse_the_apprentice","name": "Jessyr of the Copper Quarters", "role": "Apprentice, Apothecary & Mending House" },
+    { "templateKey": "ron_the_libertarian","name": "Aldren Thornwood",   "role": "Woodsman & Carpenter, Thornwood's Lumber" },
+    { "templateKey": "fred_the_trapper",   "name": "Fredrick Ironsnare", "role": "Trap Designer, Thornwood's Lumber" },
+    { "templateKey": "sam_the_loyal",      "name": "Samwick of the Greenfields", "role": "Gardener & Groundskeeper" },
+    { "templateKey": "homer_the_glutton",  "name": "Durgin Ironbelly",   "role": "Butcher & Ratcatcher, Ironbelly's Meats" },
+    { "templateKey": "bob_the_porous",     "name": "Bobbert the Gleeful","role": "Cook, Bottoms Up kitchen" },
+    { "templateKey": "hades_the_god",      "name": "Malachar the Ledger-Keeper", "role": "Sexton & Gravedigger, The Quiet Yard" },
+    { "templateKey": "dwight_the_assistant","name": "Durwin Thornhide",  "role": "Assistant Gate-Warden" },
+    { "templateKey": "pat_the_star",       "name": "Pax the Starborn",   "role": "Dockworker & Mill Laborer" },
+    { "templateKey": "han_the_smuggler",   "name": "Kael Stormrunner",   "role": "River Smuggler, Stoneback Docks" },
+    { "templateKey": "george_the_neurotic","name": "Georvin the Wretched", "role": "Odd-Job Man, Blue Lantern Alley" },
+    { "templateKey": "elaine_the_vengeful","name": "Elara Sharpwit",     "role": "Mercenary, passing through" },
+    { "templateKey": "amethyst_the_wildcard","name": "Amara the Stonebreaker", "role": "Brawler, Bottoms Up regular" },
+    { "templateKey": "fry_the_delivery_boy","name": "Fren of Coldwater Vale", "role": "Courier & Delivery Boy" },
+    { "templateKey": "hermione_the_bookworm","name": "Maelis Thornwick",       "role": "Head Teacher, Millhaven Schoolhouse" },
+    { "templateKey": "splinter_the_master",  "name": "Master Kyoshi the Rat Sage", "role": "Martial Instructor, Millhaven Schoolhouse" },
+    { "templateKey": "donnie_the_brain",     "name": "Donovan the Tinkerer",    "role": "Teaching Assistant, Millhaven Schoolhouse" },
+    { "templateKey": "burns_the_ancient",    "name": "Malachai the Withered",   "role": "Money Lender, The Withered Coin" },
+    { "templateKey": "smithers_the_sycophant","name": "Aldwin the Perpetually Obliging", "role": "Clerk, The Withered Coin" },
+    { "templateKey": "tyrion_the_imp",       "name": "Vex Ironfoot",            "role": "Consultant, The Withered Coin" },
+    { "templateKey": "logan_the_wolverine",  "name": "Kael Ironblood",          "role": "Tanner, Millhaven Tannery" },
+    { "templateKey": "iroh_the_dragon",      "name": "Iroh the Wanderer",       "role": "Proprietor, The Wanderer's Rest" },
+    { "templateKey": "kermit_the_stressed",  "name": "Kerwin the Green",        "role": "Director, The Curtain Call" },
+    { "templateKey": "piggy_the_diva",       "name": "Lady Rosette of House Crimson", "role": "Lead Performer, The Curtain Call" },
+    { "templateKey": "gonzo_the_weirdo",     "name": "Thrackus the Inexplicable","role": "Stunt Performer, The Curtain Call" },
+    { "templateKey": "animal_the_wild",      "name": "Thrall-Beast Valorix",    "role": "Drummer, The Curtain Call" },
+    { "templateKey": "squid_the_cynic",      "name": "Squire Tentaculus",       "role": "Musician, The Curtain Call" },
+    { "templateKey": "velma_the_sage",       "name": "Velma Glasswright",       "role": "Bookseller & Investigator, Glasswright's Books" },
+    { "templateKey": "shaggy_the_coward",    "name": "Norwick the Trembling",   "role": "Shop Assistant, Glasswright's Books" },
+    { "templateKey": "scooby_the_hound",     "name": "Scobyn the Trembling Hound", "role": "Shop Dog, Glasswright's Books" },
+    { "templateKey": "jerry_the_observer",   "name": "Jeraith of Candlewick",   "role": "Writer & Observer, Glasswright's regular" },
+    { "templateKey": "gomez_the_passionate","name": "Gomez Ashenbrand",        "role": "Co-owner, Ashenbrand Bathhouse & Spa" },
+    { "templateKey": "morticia_the_goth",   "name": "Morrigan the Pale Mistress", "role": "Co-owner, Ashenbrand Bathhouse & Spa" },
+    { "templateKey": "wednesday_the_morbid","name": "Morrwen Nightwhisper",    "role": "Bookkeeper, Ashenbrand Bathhouse & Spa" },
+    { "templateKey": "mario_the_plumber",   "name": "Mariol the Conduit-Mender", "role": "Plumber & Engineer, Ashenbrand Bathhouse" },
+    { "templateKey": "luigi_the_cowardly_brother","name": "Lucius the Verdant", "role": "Assistant Plumber, Ashenbrand Bathhouse" },
+    { "templateKey": "bender_the_robot",    "name": "Bendrik the Brass Golem", "role": "Furnace Tender, Ashenbrand Bathhouse" },
+    { "templateKey": "jack_the_sparrow",    "name": "Captain Meridian Thorne", "role": "Owner (sometimes), The Driftwood" },
+    { "templateKey": "marceline_the_vampire","name": "Meredith of the Scarlet Veil", "role": "Evening Musician, The Driftwood" },
+    { "templateKey": "marge_the_enabler",   "name": "Margot of House Ashenbraid", "role": "Manager & Cook, The Driftwood" },
+    { "templateKey": "snape_the_potions_master","name": "Malachor Nightwhisper", "role": "Barber & Potions Master, Nightwhisper's Tinctures" },
+    { "templateKey": "vanessa_the_reluctant","name": "Vex Shadowmend",         "role": "Apprentice, Nightwhisper's Tinctures" },
+    { "templateKey": "hammond_the_dreamer", "name": "Lord Aldwin Hammondris",  "role": "Curator, Hammondris's Cabinet of Curiosities" },
+    { "templateKey": "perry_the_platypus_agent","name": "Periwinkle Platycaudus", "role": "Shop Assistant & Courier, Hammondris's Cabinet" },
+    { "templateKey": "malcolm_the_chaos",   "name": "Meridian the Inevitable", "role": "Visiting Scholar, Hammondris's Cabinet regular" },
+    { "templateKey": "grant_the_skeptic",   "name": "Aldric Fossbloom",        "role": "Natural Philosopher, Hammondris's Cabinet regular" },
+    { "templateKey": "pooh_the_hungry",     "name": "Ursus of the Honeywood",  "role": "Forager, Green Gate Bakery regular" },
+    { "templateKey": "piglet_the_anxious",  "name": "Pimpkin Swiftwhisker",    "role": "Ursus's companion, Green Gate Bakery regular" },
+    { "templateKey": "tigger_the_bouncy",   "name": "Thryx the Tawny",         "role": "Stable Hand Assistant, Stoneback Stables" },
+    { "templateKey": "bart_the_menace",     "name": "Barrick the Wayward",     "role": "Troublemaker, Mill Road resident" },
+    { "templateKey": "jim_the_prankster",   "name": "Jalen of House Halper",   "role": "Scribe, Millhaven Town Hall" },
+    { "templateKey": "kramer_the_chaos",    "name": "Kaelus the Inadvertent",  "role": "Hedge-Mage & Vendor, Market Square" },
+    { "templateKey": "aang_the_wind_monk",  "name": "Aeren of the Skyborne Monastery", "role": "Visiting Monk, Temple of the Allmother" }
   ],
   "worldContext": {
     "defaultLocation": "Millhaven town",

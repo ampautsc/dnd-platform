@@ -1,0 +1,63 @@
+{
+  "id": "cemetery",
+  "name": "The Quiet Yard",
+  "type": "cemetery",
+  "description": "A walled enclosure on the north hill above Millhaven, overlooking the river and the rooftops. The stone wall is old but maintained — Brother Aldwin sees to it. Inside, rows of small headstones mark the town's dead going back four generations. The newer graves are near the east wall; the older ones near the west are mossy and difficult to read. A single yew tree grows in the center, wide enough to shade a dozen graves. Malachar the Ledger-Keeper tends the grounds with the obsessive precision of a man whose entire existence is organized around accounting for the dead. He lives in the sexton's cottage attached to the wall. He does not enjoy visitors but does not turn them away. The cemetery is quiet, well-kept, and does exactly what it needs to do.",
+  "owner": null,
+  "caretaker": "hades_the_god",
+  "atmosphere": {
+    "defaultTone": "solemn",
+    "tags": ["quiet", "well-maintained", "overlooking the town", "peaceful", "visited mostly by the grieving"],
+    "sounds": [
+      "Wind through the yew tree",
+      "Malachar's rake on gravel paths",
+      "Birdsong — the cemetery attracts them",
+      "The distant sound of Millhaven below",
+      "The scratch of Malachar's pen when he updates his records",
+      "The gate hinge — he keeps it oiled but it still creaks"
+    ],
+    "smells": [
+      "Cut grass and turned earth",
+      "Yew needles — sharp and resinous",
+      "Wildflowers left on graves",
+      "Stone and rain",
+      "Malachar's ink — he always smells faintly of ink"
+    ],
+    "lighting": "Open to the sky. The yew provides dappled shade. The sexton's cottage has a single lamp that burns late — Malachar keeps long hours with his records."
+  },
+  "layout": [
+    {
+      "name": "The Graves",
+      "description": "Simple headstones in rows. New additions to the east, founders to the west. Each stone cleaned quarterly by Malachar. He knows every name."
+    },
+    {
+      "name": "The Yew",
+      "description": "The centerpiece. An ancient yew tree that predates the cemetery. Some say it was the reason the cemetery was placed here. A bench sits beneath it."
+    },
+    {
+      "name": "The Sexton's Cottage",
+      "description": "Malachar's home. One room, meticulously organized. A desk covered in ledgers — one for the dead, one for the dying, one for 'pending matters' he declines to explain. A cot he rarely uses."
+    },
+    {
+      "name": "The Chapel Alcove",
+      "description": "A niche in the cemetery wall with a small altar. Brother Aldwin conducts funeral rites here. Malachar maintains it but does not use it — his relationship with deities is 'professional.'"
+    }
+  ],
+  "regulars": [
+    "hades_the_god",
+    "brother_aldwin",
+    "widow_marsh"
+  ],
+  "hooks": [
+    "Malachar's 'pending matters' ledger has three names in it that belong to living residents of Millhaven",
+    "A grave in the old section has been disturbed — not dug up, but the earth has settled as if something moved beneath it",
+    "The Widow Marsh visits the same headstone every morning and leaves before anyone can read the name on it",
+    "Malachar found a discrepancy: there is one more grave in the old section than his predecessor's records account for",
+    "Brother Aldwin and Malachar have a working relationship built on mutual professional respect and profound theological disagreement"
+  ],
+  "worldContext": {
+    "location": "The Quiet Yard, north hill above Millhaven",
+    "defaultTone": "solemn and orderly",
+    "region": "Millhaven, The Vale"
+  }
+}

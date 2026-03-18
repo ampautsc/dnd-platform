@@ -14,7 +14,7 @@ import { App } from './App.jsx';
 describe('App', () => {
   it('renders the gate heading on start', () => {
     render(<App />);
-    expect(screen.getByRole('heading', { name: /the gate/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /d&d platform/i })).toBeInTheDocument();
   });
 
   it('renders join session button on start', () => {
@@ -73,5 +73,10 @@ describe('App', () => {
     }, { timeout: 2000 });
 
     expect(screen.getByText(/dark cavern/i)).toBeInTheDocument();
+  });
+
+  it('renders Enter Bottoms Up button on gate screen', () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: /enter bottoms up/i })).toBeInTheDocument();
   });
 });

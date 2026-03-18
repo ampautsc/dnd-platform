@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useScreen, SCREENS } from './hooks/useScreen.js';
 import { TheGate } from './screens/TheGate/TheGate.jsx';
 import { CharacterSelect } from './screens/CharacterSelect/CharacterSelect.jsx';
@@ -6,6 +6,9 @@ import { SessionLobby } from './screens/SessionLobby/SessionLobby.jsx';
 import { Exploration } from './screens/Exploration/Exploration.jsx';
 import { GroupVote } from './screens/GroupVote/GroupVote.jsx';
 import { SessionEnd } from './screens/SessionEnd/SessionEnd.jsx';
+import { NpcCatalog } from './screens/NpcCatalog/NpcCatalog.jsx';
+import { NpcEncounter } from './screens/NpcEncounter/NpcEncounter.jsx';
+import { NpcScene } from './screens/NpcScene/NpcScene.jsx';
 
 /**
  * Demo fixtures for local dev — these simulate gateway responses.
@@ -49,6 +52,16 @@ export function App() {
   const [isReady, setIsReady] = useState(false);
   const [scene, setScene] = useState(DEMO_SCENE);
   const [vote, setVote] = useState(DEMO_VOTE);
+
+  // NPC encounter state
+  const [npcList, setNpcList] = useState(null);
+  const [encounter, setEncounter] = useState(null);
+  const [npcSending, setNpcSending] = useState(false);
+
+  // NPC scene state (multi-NPC initiative scenes)
+  const [sceneState, setSceneState] = useState(null);
+  const [sceneProcessing, setSceneProcessing] = useState(false);
+  const [selectedNpcs, setSelectedNpcs] = useState([]);
 
   const handleJoin = useCallback((payload) => {
     navigate(SCREENS.CHARACTER_SELECT, { playerName: payload.playerName, code: payload.code });
@@ -110,13 +123,223 @@ export function App() {
     navigate(SCREENS.GATE);
   }, [navigate]);
 
+  // ── NPC Catalog: fetch NPC list when entering catalog screen ──
+  const handleOpenNpcCatalog = useCallback(() => {
+    setNpcList(null);
+    navigate(SCREENS.NPC_CATALOG);
+    fetch('/api/content/npcs')
+      .then(r => r.json())
+      .then(data => setNpcList(data.npcs))
+      .catch(() => setNpcList([]));
+  }, [navigate]);
+
+  // ── NPC Catalog: select an NPC to talk to ──
+  const handleSelectNpc = useCallback((templateKey) => {
+    setEncounter(null);
+    navigate(SCREENS.NPC_ENCOUNTER);
+    fetch('/api/encounters', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ npcTemplateKeys: [templateKey] }),
+    })
+      .then(r => r.json())
+      .then(data => setEncounter(data))
+      .catch(() => setEncounter({ error: true }));
+  }, [navigate]);
+
+  // ── NPC Encounter: send a message ──
+  const handleNpcSend = useCallback((text) => {
+    if (!encounter?.encounterId) return;
+    setNpcSending(true);
+    fetch(`/api/encounters/${encounter.encounterId}/messages`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }),
+    })
+      .then(r => r.json())
+      .then(data => {
+        // Merge new messages into encounter state
+        setEncounter(prev => ({
+          ...prev,
+          messages: [
+            ...(prev.messages || []),
+            data.playerMessage,
+            ...data.npcResponses,
+          ],
+        }));
+      })
+      .catch(() => {})
+      .finally(() => setNpcSending(false));
+  }, [encounter?.encounterId]);
+
+  // ── NPC Encounter: leave ──
+  const handleNpcLeave = useCallback(() => {
+    if (encounter?.encounterId) {
+      fetch(`/api/encounters/${encounter.encounterId}/end`, { method: 'POST' }).catch(() => {});
+    }
+    setEncounter(null);
+    handleOpenNpcCatalog();
+  }, [encounter?.encounterId, handleOpenNpcCatalog]);
+
+  // ── NPC Scene: toggle NPC selection for scene mode ──
+  const handleToggleNpcSelection = useCallback((npc) => {
+    setSelectedNpcs(prev => {
+      const exists = prev.find(n => n.templateKey === npc.templateKey);
+      if (exists) return prev.filter(n => n.templateKey !== npc.templateKey);
+      return [...prev, npc];
+    });
+  }, []);
+
+  // ── NPC Scene: start a multi-NPC scene ──
+  const handleStartScene = useCallback(() => {
+    if (selectedNpcs.length < 1) return;
+    setSceneState(null);
+    navigate(SCREENS.NPC_SCENE);
+
+    const participants = [
+      { id: 'player1', name: 'You', chaMod: 2, isPlayer: true },
+      ...selectedNpcs.map(npc => ({
+        id: `npc_${npc.templateKey}`,
+        name: npc.name,
+        chaMod: npc.personality?.chaMod ?? 0,
+        isPlayer: false,
+        templateKey: npc.templateKey,
+      })),
+    ];
+
+    fetch('/api/scenes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ participants }),
+    })
+      .then(r => r.json())
+      .then(created => {
+        // Start the scene (roll initiative)
+        return fetch(`/api/scenes/${created.id}/start`, { method: 'POST' })
+          .then(r => r.json());
+      })
+      .then(started => {
+        setSceneState(started);
+        setSelectedNpcs([]);
+      })
+      .catch(() => setSceneState({ error: true }));
+  }, [selectedNpcs, navigate]);
+
+  // ── NPC Scene: submit player action ──
+  const handleSceneAction = useCallback((text) => {
+    if (!sceneState?.id) return;
+    setSceneProcessing(true);
+    fetch(`/api/scenes/${sceneState.id}/action`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        participantId: 'player1',
+        type: 'speech',
+        content: text,
+      }),
+    })
+      .then(r => r.json())
+      .then(data => setSceneState(data.sceneState))
+      .catch(() => {})
+      .finally(() => setSceneProcessing(false));
+  }, [sceneState?.id]);
+
+  // ── NPC Scene: leave ──
+  const handleSceneLeave = useCallback(() => {
+    if (sceneState?.id) {
+      fetch(`/api/scenes/${sceneState.id}/end`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason: 'player_left' }),
+      }).catch(() => {});
+    }
+    setSceneState(null);
+    setSceneProcessing(false);
+    navigate(SCREENS.GATE);
+  }, [sceneState?.id, navigate]);
+
+  // ── Enter a location scene (e.g. Bottoms Up) ──
+  const handleEnterLocation = useCallback((locationId, locationImage) => {
+    setSceneState(null);
+    setSceneProcessing(false);
+    navigate(SCREENS.NPC_SCENE, { locationImage });
+
+    fetch('/api/scenes/at-location', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locationId }),
+    })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(started => setSceneState(started))
+      .catch(() => setSceneState({ error: true }));
+  }, [navigate]);
+
   return (
     <main style={{ maxWidth: 480, margin: '2rem auto', padding: '1rem', fontFamily: 'system-ui, sans-serif' }}>
       {screen === SCREENS.GATE && (
         <>
-          <h1>The Gate</h1>
-          <p>Who goes there?</p>
-          <TheGate onJoin={handleJoin} />
+          <h1 style={{ marginBottom: '0.5rem' }}>D&amp;D Platform</h1>
+
+          {/* ── Location Scenes ── */}
+          <button
+            onClick={() => handleEnterLocation('bottoms_up', '/images/locations/bottoms-up.png')}
+            style={{
+              width: '100%',
+              minHeight: 56,
+              padding: '0.75rem',
+              cursor: 'pointer',
+              borderRadius: 8,
+              border: 'none',
+              background: 'linear-gradient(135deg, #b45309, #92400e)',
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              marginBottom: '0.75rem',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>🍺</span>
+            <span>
+              <span style={{ display: 'block' }}>Enter Bottoms Up</span>
+              <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'normal', opacity: 0.85 }}>
+                Tavern scene with Mira, Lell, and the regulars
+              </span>
+            </span>
+          </button>
+
+          <button
+            onClick={handleOpenNpcCatalog}
+            style={{
+              width: '100%',
+              minHeight: 48,
+              padding: '0.75rem',
+              cursor: 'pointer',
+              borderRadius: 6,
+              border: 'none',
+              background: '#7c3aed',
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              marginBottom: '2rem',
+            }}
+          >
+            🗣️ Talk to NPCs
+          </button>
+
+          <details style={{ borderTop: '1px solid #444', paddingTop: '1rem' }}>
+            <summary style={{ cursor: 'pointer', color: '#aaa', fontSize: '0.9rem' }}>
+              Join a Game Session
+            </summary>
+            <div style={{ marginTop: '1rem' }}>
+              <TheGate onJoin={handleJoin} />
+            </div>
+          </details>
         </>
       )}
 
@@ -152,6 +375,78 @@ export function App() {
       {screen === SCREENS.END && (
         <>
           <SessionEnd summary={DEMO_SUMMARY} onPlayAgain={handlePlayAgain} />
+        </>
+      )}
+
+      {screen === SCREENS.NPC_CATALOG && (
+        <>
+          <h1>NPC Catalog</h1>
+
+          {/* Scene mode: show selected count + start button */}
+          {selectedNpcs.length > 0 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '0.5rem 0.75rem',
+              marginBottom: '0.75rem',
+              background: '#f0f0ff',
+              borderRadius: 8,
+              border: '1px solid #7c3aed',
+            }}>
+              <span>{selectedNpcs.length} NPC{selectedNpcs.length > 1 ? 's' : ''} selected</span>
+              <button
+                onClick={handleStartScene}
+                style={{
+                  minHeight: 36,
+                  padding: '0.4rem 1rem',
+                  cursor: 'pointer',
+                  borderRadius: 6,
+                  border: 'none',
+                  background: '#7c3aed',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                }}
+              >
+                Start Scene
+              </button>
+            </div>
+          )}
+
+          <NpcCatalog
+            npcs={npcList}
+            onSelect={handleSelectNpc}
+            selectedNpcs={selectedNpcs}
+            onToggleSelect={handleToggleNpcSelection}
+          />
+          <button
+            onClick={() => { setSelectedNpcs([]); navigate(SCREENS.GATE); }}
+            style={{ marginTop: '1rem', minHeight: 36, padding: '0.4rem 1rem', cursor: 'pointer' }}
+          >
+            ← Back
+          </button>
+        </>
+      )}
+
+      {screen === SCREENS.NPC_ENCOUNTER && (
+        <NpcEncounter
+          encounter={encounter}
+          onSend={handleNpcSend}
+          onLeave={handleNpcLeave}
+          sending={npcSending}
+        />
+      )}
+
+      {screen === SCREENS.NPC_SCENE && (
+        <>
+          <h1>Scene</h1>
+          <NpcScene
+            scene={sceneState}
+            onAction={handleSceneAction}
+            onLeave={handleSceneLeave}
+            processing={sceneProcessing}
+            locationImage={screenData.locationImage}
+          />
         </>
       )}
     </main>

@@ -1,0 +1,74 @@
+{
+  "id": "bathhouse",
+  "name": "Ashenbrand Bathhouse & Spa",
+  "type": "bathhouse",
+  "description": "A converted stone granary on the south side of Mill Road, identifiable by the steam rising from its roof vents at all hours and the faint, unsettling scent of nightshade potpourri. Gomez Ashenbrand purchased the building on a whim after his wife Morrigan remarked that Millhaven lacked 'anywhere civilized to decompose.' The renovation took four months, bankrupted one contractor, and involved Mariol the Conduit-Mender performing feats of plumbing engineering that should not be possible in a town without pressurized water. The bathhouse has hot pools, cold plunges, a steam room, and a private suite that Morrigan decorated in a style best described as 'funereal chic.' Gomez greets every visitor with the enthusiasm of a man who has just discovered bathing for the first time. Morrwen — their daughter — handles bookkeeping with unsettling precision and silent judgment. Bendrik the Brass Golem tends the furnaces, boilers, and heating system with mechanical reliability and open contempt for the work. Lucius the Verdant maintains the pipework alongside Mariol, and is perpetually startled by the steam vents.",
+  "owner": "gomez_the_passionate",
+  "atmosphere": {
+    "defaultTone": "luxurious and slightly unsettling",
+    "tags": ["steamy", "eccentric", "surprisingly clean", "smells of nightshade and lavender", "you're not sure if you should relax"],
+    "sounds": [
+      "Gomez's booming laughter echoing off the stone walls",
+      "Water sloshing in the pools",
+      "Steam hissing from the vents",
+      "Bendrik clanking in the furnace room and muttering about his dignity",
+      "Morrwen's pen scratching in the ledger — always scratching",
+      "Lucius yelping when a pipe rattles unexpectedly",
+      "Morrigan humming something in a minor key"
+    ],
+    "smells": [
+      "Nightshade potpourri — Morrigan's signature, unsettling but addictive",
+      "Lavender and eucalyptus in the steam rooms",
+      "Mineral water from the hot pools — slightly sulfuric",
+      "Coal smoke from the furnaces",
+      "Whatever Gomez has been experimenting with in the back — occasionally acrid"
+    ],
+    "lighting": "Dim by design. Candles in iron sconces. The hot pools are lit from below by alchemical stones Gomez sourced from somewhere he won't discuss. The steam room is lit by nothing — Morrigan says darkness improves the experience."
+  },
+  "layout": [
+    {
+      "name": "The Reception",
+      "description": "A front desk staffed by whoever Gomez can intercept first. Black marble counter (imported, cost more than the building). Morrwen's ledger sits open. Towels in black and deep purple."
+    },
+    {
+      "name": "The Hot Pools",
+      "description": "Three stone pools fed by Mariol's boiler system. The water is kept at precise temperatures by a mechanism Mariol built and Lucius maintains with nervous reverence. Each pool is separated by carved stone dividers."
+    },
+    {
+      "name": "The Cold Plunge",
+      "description": "A single deep pool of cold river water. Gomez insists on demonstrating it to every new visitor by leaping in fully clothed. He does this at least once a day."
+    },
+    {
+      "name": "The Steam Room",
+      "description": "Stone chamber with heated rocks and aromatic water. Morrigan added herbs that produce a mist she describes as 'contemplative.' Some patrons report unusually vivid daydreams."
+    },
+    {
+      "name": "The Furnace Room",
+      "description": "Bendrik's domain. Boilers, coal stores, pipe junctions, and the heating mechanism. Bendrik runs it with begrudging competence and an ongoing monologue about how he was meant for greater things."
+    },
+    {
+      "name": "The Private Suite",
+      "description": "Morrigan's design. A single pool, black stone, candles, and silence. Reserved by appointment only. The door has a lock that Morrwen installed herself. No one asks what for."
+    }
+  ],
+  "regulars": [
+    "gomez_the_passionate",
+    "morticia_the_goth",
+    "wednesday_the_morbid",
+    "mario_the_plumber",
+    "luigi_the_cowardly_brother",
+    "bender_the_robot"
+  ],
+  "hooks": [
+    "The steam room herbs are producing more than daydreams — one patron described seeing the future, then refused to return",
+    "Bendrik has been stealing small items from the furnace room and denying it, but the items keep reappearing in strange places",
+    "Gomez wants to expand into the adjacent building and is negotiating with a landlord who has gone suspiciously quiet",
+    "Morrwen's ledger contains a section in cipher that tracks something other than appointments",
+    "The hot pool water has started glowing faintly at midnight — Mariol says it's mineral deposits. Morrigan says nothing."
+  ],
+  "worldContext": {
+    "location": "Ashenbrand Bathhouse & Spa, south side of Mill Road, Millhaven",
+    "defaultTone": "luxuriously macabre",
+    "region": "Millhaven, The Vale"
+  }
+}

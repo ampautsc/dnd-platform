@@ -1,0 +1,64 @@
+{
+  "id": "warehouse",
+  "name": "Stoneback Warehouse",
+  "type": "warehouse",
+  "description": "A long, low stone building at the end of the docks, built where the river road meets the wharf. It stores goods in transit — grain moving downriver, ironwork moving upriver, and everything merchants need held between market days. The building is unremarkable by design. The legitimate operation is managed by Fren of Coldwater Vale, who keeps delivery schedules with the earnest confusion of a man who still doesn't understand commerce but has memorized every route by repetition. The loading dock faces the river. The back door faces Blue Lantern Alley, which is less coincidental than it appears. Kael Stormrunner's river barge ties up at the warehouse dock more often than a legitimate smuggler should feel comfortable with, but Old Mattock never asks questions and Fren never notices.",
+  "owner": null,
+  "manager": "fry_the_delivery_boy",
+  "atmosphere": {
+    "defaultTone": "busy",
+    "tags": ["dusty", "echoing", "river-damp", "cargo smells", "busier than it looks"],
+    "sounds": [
+      "Crates being dragged across stone floors",
+      "Fren reading delivery manifests aloud to himself",
+      "The slap of river water against the dock pilings",
+      "Kael's barge creaking at its moorings",
+      "Pax grunting as he lifts things no one else can",
+      "The back door opening and closing at odd hours"
+    ],
+    "smells": [
+      "Burlap, grain dust, and hemp rope",
+      "River damp — the stones never fully dry",
+      "Lamp oil from the dock lanterns",
+      "Salt from preserved goods",
+      "Whatever Kael's barge is carrying this week"
+    ],
+    "lighting": "High narrow windows and the open loading doors during the day. Oil lamps at the dock after dark. The back corners stay dim."
+  },
+  "layout": [
+    {
+      "name": "Main Storage Floor",
+      "description": "Organized by merchant and destination. Crates, barrels, and sacks in rows. Fren's system is labeled with a code only he understands — which works because only he needs to."
+    },
+    {
+      "name": "The Loading Dock",
+      "description": "River-facing platform where barges tie up and goods are moved in or out. A crane for heavy loads that Phineas built and that works approximately 80% of the time."
+    },
+    {
+      "name": "Fren's Office",
+      "description": "A desk near the front door with delivery schedules, route maps, and a jar of cookies Oma sends over. The maps have Fren's hand-drawn annotations that are surprisingly accurate."
+    },
+    {
+      "name": "The Back Corridor",
+      "description": "Connects to the alley side. Officially for emergency egress. Unofficially, for goods that arrive without paperwork and leave without being inventoried."
+    }
+  ],
+  "regulars": [
+    "fry_the_delivery_boy",
+    "han_the_smuggler",
+    "pat_the_star",
+    "old_mattock"
+  ],
+  "hooks": [
+    "A shipment marked 'ceramic tiles' arrived last week that no merchant has claimed — and it's heavier than ceramic should be",
+    "Fren's delivery manifests don't match the actual inventory count, but he can't figure out why and is getting anxious",
+    "Kael has been making more trips upstream than usual and paying Fren extra to not mention it",
+    "Something in the back corner has been making noise at night — Fren refuses to investigate alone",
+    "Old Mattock saw someone on the dock at midnight who shouldn't have been there and is deciding whether to tell the captain"
+  ],
+  "worldContext": {
+    "location": "Stoneback Warehouse, river docks, Millhaven",
+    "defaultTone": "practical with an undercurrent of secrets",
+    "region": "Millhaven, The Vale"
+  }
+}

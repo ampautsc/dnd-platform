@@ -319,9 +319,9 @@ describe('PersonalityEvolutionService', () => {
     });
   });
 
-  // ── buildOpinionsContext ───────────────────────────────────────────────
+  // ── buildOpinionsContext (DEPRECATED — use RelationshipRepository) ────
 
-  describe('buildOpinionsContext', () => {
+  describe('buildOpinionsContext (deprecated)', () => {
     it('should return empty string for no opinions', () => {
       const result = service.buildOpinionsContext('bree_millhaven', {});
       expect(result).toBe('');

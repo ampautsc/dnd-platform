@@ -1,0 +1,62 @@
+{
+  "id": "town_hall",
+  "name": "Millhaven Town Hall",
+  "type": "government",
+  "description": "A two-story stone building on the north side of the market square, the most official-looking structure in Millhaven. The ground floor is the public hall where the council meets, disputes are arbitrated, and proclamations are posted on the notice board outside. The upper floor houses the town records, the tax ledger, and Lestelle Brightbinder's office — identifiable by the color-coded filing system visible through the window. The building was a merchant's warehouse before the council bought it thirty years ago, and it still feels more practical than grand. The front steps are where people sit to gossip, eat lunch, or wait for someone official to notice them.",
+  "owner": "aldovar_crennick",
+  "atmosphere": {
+    "defaultTone": "bureaucratic",
+    "tags": ["official", "slightly musty", "paper-heavy", "surprisingly busy", "echoing"],
+    "sounds": [
+      "Lestelle's quill scratching — she writes constantly",
+      "The thud of binder covers being opened and closed",
+      "Arguments in the council chamber carrying through the walls",
+      "Aldovar's measured, gravelly voice calling for order",
+      "Sylvain's smooth voice making a point no one asked for",
+      "Boots on stone floors, echoing in the stairwell"
+    ],
+    "smells": [
+      "Old parchment and ink",
+      "Beeswax from the floor (Lestelle's initiative)",
+      "Aldovar's pipe tobacco — he only smokes when stressed, so frequently",
+      "Bread from the Green Gate Bakery — someone always brings lunch"
+    ],
+    "lighting": "Large windows on both floors. Well-lit during the day. Candelabras for evening council sessions. Lestelle's office has the best window in the building."
+  },
+  "layout": [
+    {
+      "name": "The Council Chamber",
+      "description": "Ground floor. A long oak table with seven chairs, a speaker's podium, and benches along the walls for public observers. The table has been scarred by every contentious vote in Millhaven's history."
+    },
+    {
+      "name": "The Records Office",
+      "description": "Upper floor. Lestelle's domain. Filing cabinets organized by color, date, and category. Every tax record, land deed, birth certificate, and complaint since Millhaven's founding. She knows where everything is."
+    },
+    {
+      "name": "The Advocate's Bench",
+      "description": "A desk in the corner of the council chamber where Sylvain the Advocate sits during disputes. Not an official position — he simply started showing up and no one could make him stop."
+    },
+    {
+      "name": "The Notice Board",
+      "description": "Outside the front door. Job postings, lost items, merchant advertisements, council decrees, and the occasional anonymous grievance. Lestelle curates it."
+    }
+  ],
+  "regulars": [
+    "aldovar_crennick",
+    "leslie_the_optimist",
+    "saul_the_barrister",
+    "michael_the_manager"
+  ],
+  "hooks": [
+    "A land dispute between two farmers has escalated to the point where Sylvain is involved — never a good sign",
+    "Lestelle has discovered a discrepancy in the tax records from three years ago that implicates a council member",
+    "Aldric Brightblade's merchant guild petitions keep getting more elaborate and less coherent",
+    "The council is debating whether to fund a second bridge over the Stoneback — the vote is deadlocked",
+    "Someone has been stealing notices from the board and replacing them with obscene poetry"
+  ],
+  "worldContext": {
+    "location": "Millhaven Town Hall, Market Square (north side), Millhaven",
+    "defaultTone": "official but approachable",
+    "region": "Millhaven, The Vale"
+  }
+}

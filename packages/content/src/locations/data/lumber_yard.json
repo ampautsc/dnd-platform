@@ -1,0 +1,61 @@
+{
+  "id": "lumber_yard",
+  "name": "Thornwood's Lumber & Carpentry",
+  "type": "lumber_yard",
+  "description": "A fenced yard on the southeast edge of town where the road meets the tree line. Stacks of seasoned timber sorted by type — oak, ash, pine — fill the yard in orderly rows. A single-room cabin serves as both office and workshop, where Aldren Thornwood builds and repairs furniture when he's not cutting timber. He runs the operation alone, on principle, with occasional grudging help from Fredrick Ironsnare, who maintains the woodland traps that keep the timber road safe from predators. The lumber yard is essential to Millhaven — every building, barrel, cart, and coffin in town came through here — but Aldren treats customers like interruptions to his real work, which is being left alone.",
+  "owner": "ron_the_libertarian",
+  "atmosphere": {
+    "defaultTone": "solitary",
+    "tags": ["outdoorsy", "quiet", "practical", "smells of fresh-cut wood", "antisocial"],
+    "sounds": [
+      "The rhythmic chop of an axe splitting logs",
+      "Wind through stacked timber",
+      "The rasp of a hand-plane on a workbench",
+      "Aldren muttering about the council under his breath",
+      "Birds in the tree line",
+      "Fred's traps clicking in the distance — testing, always testing"
+    ],
+    "smells": [
+      "Fresh-cut pine — sharp and clean",
+      "Seasoned oak — warm and deep",
+      "Sawdust everywhere",
+      "Wood varnish from Aldren's furniture projects",
+      "The forest beyond the fence"
+    ],
+    "lighting": "Entirely outdoors except the cabin. Natural light. The cabin interior is dim; Aldren prefers it that way."
+  },
+  "layout": [
+    {
+      "name": "Timber Yard",
+      "description": "Sorted stacks of planks, posts, and beams. Oak at the north end, pine at the south, ash in between. Aldren can tell you the age and source of every piece."
+    },
+    {
+      "name": "Aldren's Cabin",
+      "description": "Single room. Workbench against one wall, a cot against the other, a wood stove in the corner. Hand tools hung on pegs in exact order. A shelf of woodworking reference books he claims to never read."
+    },
+    {
+      "name": "The Carpentry Bench",
+      "description": "Under a lean-to outside the cabin. Where Aldren builds furniture — chairs, tables, shelving — when he has no timber orders to fill. His work is excellent and he won't hear you say so."
+    },
+    {
+      "name": "Fred's Shed",
+      "description": "A small outbuilding where Fredrick Ironsnare stores and tests his trap designs. Wires, springs, pressure plates, and a detailed map of every trap placement on the timber road pinned to the wall."
+    }
+  ],
+  "regulars": [
+    "ron_the_libertarian",
+    "fred_the_trapper",
+    "sam_the_loyal"
+  ],
+  "hooks": [
+    "Aldren found claw marks on trees deeper in the Darkwood than anything should be marking — too high for wolves, too wide for bears",
+    "Fred's perimeter traps have been triggered three times this month but nothing was caught — whatever tripped them is smart enough to escape",
+    "Samwick comes by to collect scrap wood for garden stakes and stays to help stack timber — the only person Aldren doesn't mind having around",
+    "The town council wants Aldren to take on an apprentice and he has refused eleven times"
+  ],
+  "worldContext": {
+    "location": "Thornwood's Lumber & Carpentry, southeast edge of town near the tree line, Millhaven",
+    "defaultTone": "quiet and self-sufficient",
+    "region": "Millhaven, The Vale"
+  }
+}

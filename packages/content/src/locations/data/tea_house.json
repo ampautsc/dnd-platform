@@ -1,0 +1,63 @@
+{
+  "id": "tea_house",
+  "name": "The Wanderer's Rest",
+  "type": "tea_house",
+  "description": "A small stone cottage on the river walk between the docks and the temple, with a hand-lettered sign that reads 'Tea. Conversation. Silence. All welcome.' Iroh the Wanderer arrived in Millhaven three seasons ago, rented the empty cottage, installed a wood stove and a collection of ceramic pots, and opened for business without asking anyone's permission. The town didn't know it needed a tea house. Now half the council stops by before meetings, Brother Aldwin comes after funerals, and people who have had difficult days find themselves walking here without deciding to. The tea is exceptional. The advice is better. Iroh charges nothing for conversation and modest prices for the tea, which he sources through contacts no one in Millhaven has heard of. There is a Go board in the corner that he claims no one has ever beaten him at. This is not a boast — it is a fact he finds slightly sad.",
+  "owner": "iroh_the_dragon",
+  "atmosphere": {
+    "defaultTone": "warm",
+    "tags": ["peaceful", "wise", "smells of rare tea", "unhurried", "feels like a pause in the world"],
+    "sounds": [
+      "Water heating in the kettle — a gentle, building whistle",
+      "Iroh humming while he prepares tea",
+      "The soft click of Go stones on the board",
+      "The river through the window — close enough to hear",
+      "Quiet conversation — people lower their voices here without being asked",
+      "Iroh's deep, warm laughter — frequent and genuine"
+    ],
+    "smells": [
+      "Jasmine tea — Iroh's default",
+      "White dragon tea — his rarest, served only to those who need it",
+      "Ginger and honey in winter",
+      "The wood stove — cherry wood, because Iroh insists the smoke tastes different",
+      "Fresh air from the river through open windows"
+    ],
+    "lighting": "Warm and natural. Windows on two sides let in river light. In the evening, beeswax candles and the glow of the stove. Iroh adjusts the lighting to the mood of whoever is sitting across from him."
+  },
+  "layout": [
+    {
+      "name": "The Tea Room",
+      "description": "Four small tables, mismatched chairs chosen for comfort over aesthetics. The Go board occupies the corner table by the window. A shelf of tea varieties behind Iroh's preparation counter — labeled in a script most people can't read."
+    },
+    {
+      "name": "The Preparation Counter",
+      "description": "Iroh's workspace. Kettles, ceramic pots of varying sizes and origins, small drawers of dried leaves and blends. He knows what tea someone needs before they sit down. This is not magic. It is attention."
+    },
+    {
+      "name": "The Garden",
+      "description": "A tiny walled garden behind the cottage. Three tea plants that shouldn't survive this climate but do. A bench. Iroh meditates here at dawn, which is how Old Mattock first found the place — he saw the smoke from the stove before anyone else was awake."
+    },
+    {
+      "name": "Iroh's Room",
+      "description": "Upstairs. Simple — a bed, a trunk, a writing desk. Letters from people he's helped in a dozen towns. A sword mounted on the wall that he hasn't touched in years but maintains weekly."
+    }
+  ],
+  "regulars": [
+    "iroh_the_dragon",
+    "brother_aldwin",
+    "aldovar_crennick",
+    "old_mattock"
+  ],
+  "hooks": [
+    "Iroh receives a letter once a month from someone he calls 'my nephew' — the letters are getting more desperate",
+    "The white dragon tea has properties Iroh doesn't fully explain — those who drink it report vivid dreams for three nights after",
+    "Iroh knows more about the Darkwood than anyone in Millhaven, and he won't say how",
+    "A stranger visited the tea house last week and left without drinking. Iroh watched them go and said nothing. He hasn't smiled since.",
+    "The Go board has a game in progress that Iroh plays against himself — or so he claims. The opposing moves appear overnight."
+  ],
+  "worldContext": {
+    "location": "The Wanderer's Rest, river walk between docks and temple, Millhaven",
+    "defaultTone": "warm, wise, and unhurried",
+    "region": "Millhaven, The Vale"
+  }
+}

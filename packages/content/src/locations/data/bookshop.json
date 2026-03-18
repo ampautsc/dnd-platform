@@ -1,0 +1,64 @@
+{
+  "id": "bookshop",
+  "name": "Glasswright's Books & Investigations",
+  "type": "bookshop",
+  "description": "A narrow two-story building on the east side of Market Square, between the tailor's and the counting house. The ground floor is a bookshop — shelves floor to ceiling, organized by a system only Velma understands, stacked on tables, piled in corners, and spilling off a cart outside the door labeled 'TAKE ONE — READ IT — BRING IT BACK.' The upper floor is Velma's office and living space, where she conducts private investigations into matters the town guard considers 'resolved' or 'imaginary.' Norwick the Trembling — her anxious associate — manages the shop when Velma is investigating, which means the shop is technically open but functionally useless because he can't find anything and is afraid of the cellar. Scobyn the Trembling Hound, an enormous mastiff, lies across the doorway and has to be stepped over to enter.",
+  "owner": "velma_the_sage",
+  "atmosphere": {
+    "defaultTone": "intellectual",
+    "tags": ["dusty", "overstocked", "smells of old paper", "a dog is blocking the door", "surprisingly useful if you can find what you need"],
+    "sounds": [
+      "Velma muttering cross-references to herself upstairs",
+      "Pages turning — always pages turning somewhere",
+      "Norwick dropping books and apologizing to no one",
+      "Scobyn whimpering at shadows",
+      "The creak of overstocked shelves",
+      "Velma's magnifying glass clicking against surfaces as she examines evidence"
+    ],
+    "smells": [
+      "Old paper and leather bindings — the dominant smell in every room",
+      "Dust — thick, undisturbed dust in some sections",
+      "Velma's lamp oil — she works late",
+      "Dog — Scobyn sheds prodigiously",
+      "Whatever Norwick stress-cooked in the upstairs kitchen"
+    ],
+    "lighting": "Variable. The ground floor is dim between the tall shelves. Velma's office has excellent lamp light because she demands it for investigation work. The cellar has no light because no one goes down there voluntarily."
+  },
+  "layout": [
+    {
+      "name": "The Shop Floor",
+      "description": "Books everywhere. Shelves labeled by Velma's system: subject, era, reliability rating. A front counter where purchases happen. Norwick stands behind it looking lost. Scobyn blocks the door."
+    },
+    {
+      "name": "Velma's Office",
+      "description": "Upper floor. A desk covered in case files, maps with pins, and connection boards with red string. A shelf of reference volumes she consults constantly. A magnifying glass, a journal, and a locked file drawer of 'sensitive matters.'"
+    },
+    {
+      "name": "The Cellar",
+      "description": "Below the shop. Archive storage for rare and fragile texts. Something about it makes Shaggrim and Scobyn deeply uncomfortable. Velma insists it's just a cellar. Velma goes down there alone."
+    },
+    {
+      "name": "The Reading Nook",
+      "description": "Two chairs by the window on the ground floor. The only comfortable spot. Regular customers claim these seats. Maelis Thornwick from the school reads here on her afternoons off."
+    }
+  ],
+  "regulars": [
+    "velma_the_sage",
+    "shaggy_the_coward",
+    "scooby_the_hound",
+    "hermione_the_bookworm",
+    "jerry_the_observer"
+  ],
+  "hooks": [
+    "Velma has been investigating a series of minor thefts across Millhaven that she believes are connected — and not actually about the stolen items",
+    "A book Velma ordered from the capital arrived with pages that weren't in the original — someone inserted them before delivery",
+    "Norwick heard something in the cellar last night and is refusing to open the shop until someone checks",
+    "Jeraith the Observer has been sitting in the reading nook for three days straight, ostensibly writing, actually cataloging everyone who enters",
+    "Scobyn has started growling at a specific bookshelf for no apparent reason. The books on that shelf predate the building."
+  ],
+  "worldContext": {
+    "location": "Glasswright's Books & Investigations, east side of Market Square, Millhaven",
+    "defaultTone": "bookish, cluttered, and mildly mysterious",
+    "region": "Millhaven, The Vale"
+  }
+}

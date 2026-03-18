@@ -3,6 +3,21 @@
   "name": "Aldovar Crennick",
   "race": "Human",
   "npcType": "neutral",
+  "age": 64,
+  "appearance": {
+    "build": "Thin and angular, the frame of a man who forgets to eat when thinking",
+    "hair": "Silver-white, swept back from a high forehead, unkempt at the collar",
+    "skin": "Pale and papery, with age spots on the backs of his hands",
+    "eyes": "Sharp grey behind wire-rimmed spectacles that he adjusts constantly",
+    "height": "Tall, made taller by a rigid upright posture",
+    "distinguishingFeatures": [
+      "Wire-rimmed spectacles perpetually sliding down a narrow nose",
+      "Ink stains on his fingers that never fully wash out",
+      "A leather satchel of papers and scrolls that he guards possessively"
+    ],
+    "typicalAttire": "A threadbare but once-fine coat with too many inside pockets, all bulging with papers, a high collar, ink-spotted cuffs",
+    "firstImpression": "An older scholar or clerk, bespectacled and ink-stained, with the distracted intensity of someone whose mind is elsewhere"
+  },
   "personality": {
     "voice": "deliberate, precedent-aware, holds risk like a hot object",
     "alignment": "lawful neutral",

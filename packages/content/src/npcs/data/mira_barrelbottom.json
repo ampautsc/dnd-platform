@@ -2,7 +2,23 @@
   "templateKey": "mira_barrelbottom",
   "name": "Mira Barrelbottom",
   "race": "Halfling",
+  "gender": "female",
   "npcType": "friendly",
+  "age": 38,
+  "appearance": {
+    "build": "Compact and sturdy, halfling frame with a barmaid's practical strength",
+    "hair": "Curly auburn, pinned back with a wooden clip, always escaping at the temples",
+    "skin": "Warm olive complexion with flour dust on her forearms",
+    "eyes": "Dark brown, quick-moving, miss nothing in the room",
+    "height": "Short even for a halfling — uses a step-stool behind the bar without self-consciousness",
+    "distinguishingFeatures": [
+      "Constantly wiping her hands on a worn apron",
+      "A small leather-bound notebook tucked into her apron pocket",
+      "Bare feet — halfling custom, with thick soles"
+    ],
+    "typicalAttire": "A practical dress with rolled sleeves under a stained canvas apron, a ring of keys at her belt",
+    "firstImpression": "The halfling behind the bar who runs this place — quick hands, quicker eyes, clearly in charge"
+  },
   "personality": {
     "voice": "warm, quick, commercially sharp under a friendly surface",
     "alignment": "neutral good",
@@ -126,6 +142,7 @@
       ]
     },
     "opinionsAbout": {
+      "fen_colby": "Part of the furniture. He sits at the bar and he watches and he drinks and he says nothing useful most of the time. But twice — twice — he's said something that mattered. I let him sleep in the stable in winter because he's mostly harmless and because I remember when he wasn't this. He was a clerk once. Clever. Something broke him and the town stopped asking what.",
       "lell_sparrow": "Best entertainment in three towns. Also the best listener disguised as a talker. We know overlapping things and we've never discussed this directly. Professional courtesy between information professionals.",
       "captain_edric_vane": "Third floor, Thursday evenings. Business arrangement. He gets atmosphere; I get assurance. Neither of us pretends it's friendship. It works because of that.",
       "aldovar_crennick": "A good man with no instinct for speed. The council meets monthly; the town changes daily. I fill in the gaps he can't.",

@@ -1,0 +1,67 @@
+{
+  "id": "curiosity_shop",
+  "name": "Hammondris's Cabinet of Curiosities",
+  "type": "curiosity_shop",
+  "description": "A wide, squat building on the east road, between the stables and the town wall gate. From the outside it looks like an oversized storage shed with ambitions. Inside it is a museum, a menagerie, a library, and a disaster waiting to happen — all maintained with the cheerful confidence of a man who has never once considered the possibility that he might be wrong. Lord Aldwin Hammondris arrived in Millhaven two years ago, purchased the building, filled it with specimens and artifacts collected from a lifetime of expeditions, and opened it to the public for a modest admission fee. The collection includes taxidermied creatures, preserved magical specimens in glass jars, geological samples, ancient maps, and at least three items that should not exist in a market town. Periwinkle Platycaudus — an awakened platypus of startling competence — serves as the shop's courier and 'general assistant,' though his actual duties are considerably more complex than Lord Hammondris realizes. Meridian the Inevitable visits regularly to explain, in precise mathematical terms, why everything in the building will eventually kill someone.",
+  "owner": "hammond_the_dreamer",
+  "atmosphere": {
+    "defaultTone": "wonder with undercurrent of danger",
+    "tags": ["cluttered", "fascinating", "smells of preservation fluid and old leather", "something in the back moved", "Hammondris is delighted"],
+    "sounds": [
+      "Hammondris narrating the provenance of every item to anyone within earshot",
+      "Glass jars bubbling — some of the specimens are not entirely dead",
+      "Periwinkle's webbed feet padding across the floor on unknowable errands",
+      "Meridian muttering calculations about structural load capacity",
+      "Children gasping at the displays",
+      "Something shifting in the locked cabinet that Hammondris says is 'settling'"
+    ],
+    "smells": [
+      "Preservation fluid — formaldehyde and alchemical fixative",
+      "Old leather from the map cases and specimen books",
+      "Dust — the collection grows faster than it can be cleaned",
+      "Something faintly floral from Periwinkle's corner",
+      "Ozone — from the locked cabinet, intermittently"
+    ],
+    "lighting": "Bright in the main gallery — Hammondris installed skylights. Dim in the archive room where light-sensitive specimens are stored. The locked cabinet emits its own faint glow that Hammondris attributes to 'phosphorescence.'"
+  },
+  "layout": [
+    {
+      "name": "The Main Gallery",
+      "description": "The public showroom. Glass display cases, specimen jars on shelves, taxidermied creatures (some real, some dubious), geological samples, and a full owlbear skeleton suspended from the ceiling. Hammondris gives tours whether asked or not."
+    },
+    {
+      "name": "The Map Room",
+      "description": "A side chamber with drawers of old maps, expedition journals, and survey notes from Hammondris's travels. Some maps show locations that cartographers insist don't exist. One map updates itself."
+    },
+    {
+      "name": "The Archive",
+      "description": "A dim back room for light-sensitive specimens and fragile texts. Access restricted — Hammondris has the only key. Periwinkle has a copy. Hammondris doesn't know this."
+    },
+    {
+      "name": "The Locked Cabinet",
+      "description": "A reinforced glass-and-iron cabinet in the main gallery containing three items: a crystal that hums, a book that won't open, and a compass that points at different things depending on who's holding it. Hammondris describes them as 'curiosities.' Meridian describes them as 'extinction-level.'"
+    },
+    {
+      "name": "Periwinkle's Corner",
+      "description": "A basket with a cushion behind the front counter. To visitors, it's a pet bed. In practice, Periwinkle has hollowed out the space beneath to create a concealed drop point for messages he receives and dispatches as part of his other, classified, occupation."
+    }
+  ],
+  "regulars": [
+    "hammond_the_dreamer",
+    "perry_the_platypus_agent",
+    "malcolm_the_chaos",
+    "grant_the_skeptic"
+  ],
+  "hooks": [
+    "One of the taxidermied creatures has moved to a different shelf overnight — twice — and Hammondris blames the cleaning routine",
+    "Meridian calculated that the locked cabinet's contents will interact catastrophically within six months and filed a formal complaint that Hammondris framed and hung on the wall",
+    "Periwinkle has been leaving the shop at exactly 2 AM every third night and returning before dawn — his 'basket' shows signs of recent document storage",
+    "A historian from the capital offered to buy the self-updating map for a sum that would fund the shop for a decade. Hammondris refused. The historian has not left Millhaven.",
+    "Children who visit the owlbear skeleton report that its eye sockets glow briefly when adults aren't looking"
+  ],
+  "worldContext": {
+    "location": "Hammondris's Cabinet of Curiosities, east road near the town wall gate, Millhaven",
+    "defaultTone": "wonderous and obliviously dangerous",
+    "region": "Millhaven, The Vale"
+  }
+}

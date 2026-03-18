@@ -3,6 +3,7 @@
   "name": "Captain Edric Vane",
   "race": "Human",
   "npcType": "neutral",
+  "age": 44,
   "personality": {
     "voice": "measured, economical, carrying the weight of someone who says things he means",
     "alignment": "lawful neutral",

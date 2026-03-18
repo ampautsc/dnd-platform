@@ -16,6 +16,9 @@ export const SCREENS = {
   PLAY: 'play',
   VOTE: 'vote',
   END: 'end',
+  NPC_CATALOG: 'npcCatalog',
+  NPC_ENCOUNTER: 'npcEncounter',
+  NPC_SCENE: 'npcScene',
 };
 
 export function useScreen(initial = SCREENS.GATE) {

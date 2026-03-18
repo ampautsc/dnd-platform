@@ -8,12 +8,15 @@
  * @param {Object} deps.authService - AuthService instance
  * @param {Object} deps.characterService - CharacterService instance
  * @param {import('better-sqlite3').Database} deps.db - Database instance
+ * @param {Object} [deps.encounterController] - EncounterController instance (optional)
  */
 import express from 'express';
 import cors from 'cors';
 import { createAuthRoutes } from './routes/auth.js';
 import { createCharacterRoutes } from './routes/characters.js';
 import { createContentRoutes } from './routes/content.js';
+import { createEncounterRoutes } from './routes/encounters.js';
+import { createSceneRoutes } from './routes/scenes.js';
 import { createAuthMiddleware } from './middleware/auth.js';
 
 export function createApp(deps) {
@@ -35,6 +38,16 @@ export function createApp(deps) {
   app.use('/api/auth', createAuthRoutes(deps));
   app.use('/api/characters', requireAuth, createCharacterRoutes(deps));
   app.use('/api/content', createContentRoutes());
+
+  // Encounter routes (optional — only mounted when encounterController is provided)
+  if (deps.encounterController) {
+    app.use('/api/encounters', requireAuth, createEncounterRoutes(deps.encounterController));
+  }
+
+  // Scene routes (optional — only mounted when sceneController is provided)
+  if (deps.sceneController) {
+    app.use('/api/scenes', requireAuth, createSceneRoutes(deps.sceneController));
+  }
 
   // 404 handler
   app.use((_req, res) => {

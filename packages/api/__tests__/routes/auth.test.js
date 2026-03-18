@@ -10,7 +10,7 @@
  * - Invalid/missing tokens → 401
  * - Missing email → 400
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -133,9 +133,11 @@ describe('Auth Routes', () => {
       expect(res.body.user.id).toBeTruthy();
     });
 
-    it('should return 401 without Authorization header', async () => {
+    it('should return 401 without Authorization header (production mode)', async () => {
+      vi.stubEnv('NODE_ENV', 'production');
       const res = await request.get('/api/auth/me');
       expect(res.status).toBe(401);
+      vi.unstubAllEnvs();
     });
 
     it('should return 401 with invalid JWT', async () => {

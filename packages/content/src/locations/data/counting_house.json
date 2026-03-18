@@ -1,0 +1,62 @@
+{
+  "id": "counting_house",
+  "name": "The Withered Coin — Counting House & Lending",
+  "type": "money_lender",
+  "description": "A narrow stone building wedged between the town hall and the tailor's shop, identifiable by an iron sign of a coin being weighed on scales. Inside it is cold regardless of season — the stone walls are thick and the windows are small by design. Malachai the Withered runs the operation from behind a desk that hasn't moved in decades. He loans money, holds deposits, changes foreign coin, and issues letters of credit for merchants traveling the trade routes. His rates are fair in the strictest mathematical sense and merciless in every other. Aldwin the Perpetually Obliging manages the day-to-day — receiving clients, filing documents, bringing tea that Malachai never drinks — with the devotion of a man who has confused servitude with purpose. Vex Ironfoot occupies a corner desk as the house's 'consultant,' mediating disputes, reviewing contracts, and advising merchants on deals that somehow always leave Malachai richer.",
+  "owner": "burns_the_ancient",
+  "atmosphere": {
+    "defaultTone": "cold",
+    "tags": ["hushed", "precise", "uncomfortable", "smells of old paper and metal", "you want to leave quickly"],
+    "sounds": [
+      "The scratch of Malachai's pen — slow, deliberate, final",
+      "Coins being counted and weighed on brass scales",
+      "Aldwin's anxious footsteps, always moving",
+      "Vex's low voice explaining terms that somehow favor the house",
+      "The heavy click of the vault lock",
+      "Silence — the dominant sound"
+    ],
+    "smells": [
+      "Old parchment and dried ink",
+      "Metal — copper, silver, the faint tang of gold",
+      "Cold stone",
+      "Aldwin's nervous sweat, faintly",
+      "Nothing else — Malachai permits no food, no candles with scent, no flowers"
+    ],
+    "lighting": "Minimal. Two small windows. Oil lamps on the desks. Malachai can see perfectly in the dim and has no interest in accommodating those who cannot."
+  },
+  "layout": [
+    {
+      "name": "The Front Desk",
+      "description": "Aldwin's station. A writing desk, ledger books, ink wells, and a bell that clients ring. Aldwin appears before the bell stops vibrating."
+    },
+    {
+      "name": "Malachai's Office",
+      "description": "Behind a half-wall. A massive desk, older than the building. Malachai sits here, unsleeping, reviewing accounts. He does not stand for clients. They come to him."
+    },
+    {
+      "name": "Vex's Corner",
+      "description": "A smaller desk near the window — the only natural light in the room. Contracts, trade ledgers, and a bottle of dwarven brandy that Malachai disapproves of but tolerates."
+    },
+    {
+      "name": "The Vault",
+      "description": "Below the building. Iron door, three locks, and wards that Malachai placed himself. Contents unknown except to Malachai. Aldwin has never been inside. This bothers him more than he admits."
+    }
+  ],
+  "regulars": [
+    "burns_the_ancient",
+    "smithers_the_sycophant",
+    "tyrion_the_imp"
+  ],
+  "hooks": [
+    "A merchant defaulted on a loan three months ago and has not been seen since — Malachai's ledger marks the debt as 'resolved'",
+    "Vex has been quietly advising a rival to undercut one of Malachai's key clients — playing both sides as insurance",
+    "Aldwin discovered a discrepancy in the vault inventory and is agonizing over whether to mention it",
+    "Malachai has been writing letters to someone in the capital — sealed with a sigil Aldwin doesn't recognize",
+    "The town council owes the counting house a significant debt that Malachai has never called in — the question is why"
+  ],
+  "worldContext": {
+    "location": "The Withered Coin, Market Square (north side, adjacent to Town Hall), Millhaven",
+    "defaultTone": "transactional and subtly threatening",
+    "region": "Millhaven, The Vale"
+  }
+}

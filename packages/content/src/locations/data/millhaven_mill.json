@@ -1,0 +1,67 @@
+{
+  "id": "millhaven_mill",
+  "name": "Millhaven Mill",
+  "type": "mill",
+  "description": "The reason this town has a name. A stone-and-timber watermill on the east bank of the Stoneback River, fed by a millrace that was dug by the town's founders three generations ago. The great wheel turns slowly when the sluice is open, driving two sets of millstones inside — one for grain, one for malt. The building is old and solid, its timbers darkened by decades of flour dust and river damp. The previous miller, Garrett Thurn, died two winters ago with no heir willing to take it on. The town council technically owns it now. Mordain keeps the stones turning because someone has to, and because the rhythmic grinding is the only sound that quiets his mind. Dolly Thurn brings her grain here every harvest. So does every farmer within ten miles.",
+  "owner": null,
+  "manager": "eeyore_the_depressed",
+  "atmosphere": {
+    "defaultTone": "steady",
+    "tags": ["rhythmic", "dusty", "essential", "melancholy", "constant"],
+    "sounds": [
+      "The deep, constant rumble of millstones grinding",
+      "Creak and splash of the waterwheel",
+      "Rush of the millrace through the sluice gate",
+      "Grain pouring from hoppers into the stones",
+      "Mordain's heavy footsteps on flour-dusted boards",
+      "River birds outside the open loading door"
+    ],
+    "smells": [
+      "Fresh-ground flour — warm, nutty, pervasive",
+      "River water and damp stone",
+      "Grain dust thick enough to taste",
+      "The faint sweetness of malt from the second stones",
+      "Old timber and iron grease"
+    ],
+    "lighting": "Natural light from the loading doors and high windows. Flour dust hangs in the light shafts like slow snow. Interior is dim and cool."
+  },
+  "layout": [
+    {
+      "name": "Grinding Floor",
+      "description": "The main working level. Two sets of millstones — the larger for wheat and barley, the smaller for malt. Hoppers above, flour bins below. Everything is coated in a fine white dust."
+    },
+    {
+      "name": "The Waterwheel",
+      "description": "Sixteen feet across, oak and iron, half-submerged in the millrace. When the sluice is open the wheel creates a steady, thudding rhythm that can be felt through the building's foundations."
+    },
+    {
+      "name": "Grain Store",
+      "description": "Upper level where sacks of grain are hoisted through the loading door and stored before milling. Cool, dry, and smelling intensely of wheat."
+    },
+    {
+      "name": "Flour Store & Loading",
+      "description": "Ground level facing the road. Finished flour in sacks, weighed and stacked for collection. A loading platform for carts."
+    },
+    {
+      "name": "Mordain's Corner",
+      "description": "A straw pallet, a stool, and a tin cup behind the grain store. He sleeps here most nights. It is exactly as cheerful as you'd expect."
+    }
+  ],
+  "regulars": [
+    "eeyore_the_depressed",
+    "dolly_thurn",
+    "pat_the_star"
+  ],
+  "hooks": [
+    "The mill needs a proper owner or it will fall into disrepair — the town council is arguing about it",
+    "Mordain has been hearing sounds from below the grinding floor at night — something rhythmic, not the wheel",
+    "Grain shipments from the south road have been light — someone is skimming or there's trouble on the route",
+    "Pax (Pat) helps with heavy lifting and has started sleeping in the grain store — he says the flour reminds him of sand, which reminds him of the sea, which reminds him of something he can't remember",
+    "The old miller's locked office upstairs hasn't been opened since Garrett died — Mordain won't touch it"
+  ],
+  "worldContext": {
+    "location": "Millhaven Mill, east bank of Stoneback River, Millhaven",
+    "defaultTone": "steady and slightly melancholy",
+    "region": "Millhaven, The Vale"
+  }
+}

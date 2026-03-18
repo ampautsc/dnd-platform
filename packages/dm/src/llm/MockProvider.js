@@ -19,6 +19,10 @@ export class MockProvider {
         return this.history;
     }
 
+    getLastRequest() {
+        return this.history.length > 0 ? this.history[this.history.length - 1] : null;
+    }
+
     clearHistory() {
         this.history = [];
     }

@@ -9,12 +9,15 @@
  * GET /api/content/items/:id    — single item
  * GET /api/content/species      — all species
  * GET /api/content/species/:id  — single species
+ * GET /api/content/npcs         — all NPC summaries (key, name, race, npcType)
+ * GET /api/content/npcs/:key    — full NPC personality data
  */
 import { Router } from 'express';
 import { SPELLS, getSpell } from '@dnd-platform/content/spells';
 import { getCreature, listCreatures, createCreature } from '@dnd-platform/content/creatures';
 import { getAllItems, getItem } from '@dnd-platform/content/items';
 import { getSpecies, getAllSpeciesSlugs } from '@dnd-platform/content/species';
+import { getNpc, getAllNpcKeys } from '@dnd-platform/content/npcs';
 
 export function createContentRoutes() {
   const router = Router();
@@ -68,6 +71,28 @@ export function createContentRoutes() {
     const species = getSpecies(req.params.id);
     if (!species) return res.status(404).json({ error: 'Species not found' });
     res.json({ species });
+  });
+
+  // NPCs — summary list and full personality data
+  router.get('/npcs', (_req, res) => {
+    const keys = getAllNpcKeys();
+    const npcs = keys.map(k => {
+      const npc = getNpc(k);
+      return {
+        templateKey: npc.templateKey,
+        name: npc.name,
+        race: npc.race,
+        npcType: npc.npcType,
+        personality: npc.personality,
+      };
+    });
+    res.json({ npcs });
+  });
+
+  router.get('/npcs/:key', (req, res) => {
+    const npc = getNpc(req.params.key);
+    if (!npc) return res.status(404).json({ error: 'NPC not found' });
+    res.json({ npc });
   });
 
   return router;

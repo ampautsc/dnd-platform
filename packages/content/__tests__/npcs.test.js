@@ -9,6 +9,7 @@ import {
 
 const REQUIRED_TOP_FIELDS = ['templateKey', 'name', 'race', 'npcType', 'personality']
 const VALID_NPC_TYPES = ['friendly', 'neutral', 'enemy']
+const REQUIRED_APPEARANCE_FIELDS = ['build', 'distinguishingFeatures', 'typicalAttire']
 
 describe('NPC_PERSONALITIES data integrity', () => {
   const keys = getAllNpcKeys()
@@ -42,6 +43,21 @@ describe('NPC_PERSONALITIES data integrity', () => {
     expect(typeof p.voice).toBe('string')
     expect(typeof p.disposition).toBe('string')
   })
+
+  // Appearance is optional, but when present must have required subfields
+  const keysWithAppearance = keys.filter(k => NPC_PERSONALITIES[k].appearance)
+  if (keysWithAppearance.length > 0) {
+    it.each(keysWithAppearance)('%s appearance has required subfields', (key) => {
+      const a = NPC_PERSONALITIES[key].appearance
+      for (const field of REQUIRED_APPEARANCE_FIELDS) {
+        expect(a[field], `appearance.${field} missing on ${key}`).toBeDefined()
+      }
+      expect(typeof a.build).toBe('string')
+      expect(Array.isArray(a.distinguishingFeatures)).toBe(true)
+      expect(a.distinguishingFeatures.length).toBeGreaterThan(0)
+      expect(typeof a.typicalAttire).toBe('string')
+    })
+  }
 })
 
 describe('NPC spot checks', () => {

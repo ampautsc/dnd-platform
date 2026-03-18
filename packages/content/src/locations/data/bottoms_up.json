@@ -1,0 +1,75 @@
+{
+  "id": "bottoms_up",
+  "name": "Bottoms Up",
+  "type": "tavern",
+  "description": "A two-story timber-frame tavern on the corner of Mill Road and the King's Road. The sign out front is a painted wooden tankard tipped upside-down, faded by weather but recently re-hung. Inside it smells of woodsmoke, spilled ale, and whatever's simmering in the kitchen. The floorboards creak in specific places the regulars have memorized. The bar is oak, scarred and polished by decades of elbows. There are ten tables of varying size, a fireplace that dominates the west wall, and a staircase to the rooms upstairs that groans on the fourth step.",
+  "owner": "mira_barrelbottom",
+  "atmosphere": {
+    "defaultTone": "lively",
+    "tags": ["welcoming", "gossipy", "warm", "loud in the evenings", "quiet in the mornings"],
+    "sounds": [
+      "Low murmur of conversation",
+      "Clink of tankards and ceramic",
+      "Laughter from a corner table",
+      "Creak of floorboards under serving staff",
+      "Pop and hiss of the hearth fire",
+      "Occasional shout for another round",
+      "Lell's lute from the corner on busy nights"
+    ],
+    "smells": [
+      "Wood smoke from the hearth",
+      "Spilled ale soaked into old wood",
+      "Roasting meat or stew from the kitchen",
+      "Candle tallow",
+      "Wet wool when it rains",
+      "Bread — Oma sends a basket over every morning"
+    ],
+    "lighting": "Candles on tables, oil lamps along the walls, firelight from the hearth. Dim in the corners. Warm amber everywhere else."
+  },
+  "layout": [
+    {
+      "name": "Main Room",
+      "description": "The heart of the tavern. Ten tables, the bar along the north wall, fireplace to the west. Most of the town's informal business happens here."
+    },
+    {
+      "name": "The Bar",
+      "description": "Oak counter with six stools. Mira's domain. She can see the entire room from here and frequently does."
+    },
+    {
+      "name": "Back Corner",
+      "description": "Two tables tucked behind a support pillar. Preferred by people who want to talk without being overheard. They are always overheard."
+    },
+    {
+      "name": "Kitchen",
+      "description": "Small but efficient. A halfling-height prep table, an iron stove, hanging herbs, and a door to the alley for deliveries and smoke breaks."
+    },
+    {
+      "name": "Upstairs Rooms",
+      "description": "Six rooms for rent. Clean, small, each with a bed, a basin, and a lock that actually works. The walls are thin."
+    },
+    {
+      "name": "Third Floor",
+      "description": "Officially storage. Unofficially, a card table operates here two nights a week. The captain does not know about this."
+    },
+    {
+      "name": "Cellar",
+      "description": "Kegs, bottles, root vegetables, and one locked cabinet Mira does not discuss."
+    }
+  ],
+  "regulars": [
+    "mira_barrelbottom",
+    "fen_colby"
+  ],
+  "hooks": [
+    "The card game on the third floor — anyone with the right introduction can get in",
+    "Fen Colby has been drinking more than usual and muttering about something he saw at the docks",
+    "A traveler left a locked chest in one of the rooms two weeks ago and hasn't come back",
+    "Mira's locked ledger — she knows everyone's secrets but has never used one",
+    "The bread basket from Oma's bakery arrives before dawn and is always empty by mid-morning"
+  ],
+  "worldContext": {
+    "location": "Bottoms Up tavern, Mill Road and King's Road, Millhaven",
+    "defaultTone": "lively and warm",
+    "region": "Millhaven, The Vale"
+  }
+}

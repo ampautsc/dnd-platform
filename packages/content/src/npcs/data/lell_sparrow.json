@@ -3,6 +3,21 @@
   "name": "Lell Sparrow",
   "race": "Human",
   "npcType": "friendly",
+  "age": 31,
+  "appearance": {
+    "build": "Lean and loose-limbed, the build of someone who moves a lot but carries nothing heavy",
+    "hair": "Dark brown, shoulder-length, perpetually falling across one eye",
+    "skin": "Fair with a scatter of freckles across the nose and cheekbones",
+    "eyes": "Green, bright, quick to find the interesting thing in a room",
+    "height": "Taller than average, which she uses to see over crowds",
+    "distinguishingFeatures": [
+      "A battered lute that she keeps within arm's reach at all times",
+      "Fingers that tap rhythms on whatever surface is nearby",
+      "A crooked grin that arrives before she decides whether she means it"
+    ],
+    "typicalAttire": "A patched traveling cloak over a loose linen shirt, leather vest with too many pockets, well-worn boots",
+    "firstImpression": "A traveling musician in the back corner, watching the room like it's a show she's deciding whether to join"
+  },
   "personality": {
     "voice": "theatrical by training, precise by nature, the performance is real and so is the intelligence underneath it",
     "alignment": "chaotic good",

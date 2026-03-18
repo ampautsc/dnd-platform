@@ -124,14 +124,22 @@ export class CharacterResponseService {
     /**
      * Generate a character response for an NPC given a context package.
      *
+     * Two calling modes:
+     *   1. Combat path: contextPackage has character/situationalContext/responseConstraints,
+     *      context is built via contextBuilder.buildContext()
+     *   2. Encounter path: options.systemPrompt + options.messages are provided,
+     *      passed directly to the LLM provider (multi-turn conversation)
+     *
      * @param {Object} contextPackage - { character, situationalContext, responseConstraints }
      * @param {Object} [options]
      * @param {string} [options.sessionId] - For repetition tracking cache key
      * @param {Object} [options.personality] - Personality record for fallback lines
+     * @param {string} [options.systemPrompt] - Direct system prompt (encounter path)
+     * @param {Array}  [options.messages] - Multi-turn messages array (encounter path)
      * @returns {Promise<ResponseResult>}
      */
     async generateResponse(contextPackage, options = {}) {
-        const { sessionId, personality } = options;
+        const { sessionId, personality, systemPrompt, messages } = options;
         const { character, situationalContext, responseConstraints } = contextPackage;
         const start = Date.now();
 
@@ -141,29 +149,42 @@ export class CharacterResponseService {
             ? responseConstraints.avoidRepetition
             : cachedRecent;
 
-        // Build the context prompt from personality + game state
-        const gameState = {
-            currentScene: situationalContext.triggerEvent,
-            recentEvents: [],
-        };
-        const prompt = this.contextBuilder.buildContext(
-            personality || { name: character.name },
-            gameState
-        );
-
         let text = null;
         let source = 'llm';
 
         // ── Attempt LLM call ───────────────────────────────────────
         try {
-            const response = await this.provider.generateResponse({
-                prompt,
-                npcId: character.id,
-                npcName: character.name,
-                triggerEvent: situationalContext.triggerEvent,
-                maxTokens: responseConstraints.maxTokens,
-                avoidRepetition: avoidList,
-            });
+            let response;
+
+            if (systemPrompt && Array.isArray(messages) && messages.length > 0) {
+                // Encounter path: direct system prompt + multi-turn messages
+                response = await this.provider.generateResponse({
+                    systemPrompt,
+                    messages,
+                    npcId: character.id,
+                    npcName: character.name,
+                    maxTokens: responseConstraints.maxTokens,
+                });
+            } else {
+                // Combat path: build context from personality + game state
+                const gameState = {
+                    currentScene: situationalContext.triggerEvent,
+                    recentEvents: [],
+                };
+                const prompt = this.contextBuilder.buildContext(
+                    personality || { name: character.name },
+                    gameState
+                );
+
+                response = await this.provider.generateResponse({
+                    prompt,
+                    npcId: character.id,
+                    npcName: character.name,
+                    triggerEvent: situationalContext.triggerEvent,
+                    maxTokens: responseConstraints.maxTokens,
+                    avoidRepetition: avoidList,
+                });
+            }
 
             text = response?.text;
 

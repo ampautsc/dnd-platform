@@ -14,6 +14,7 @@
     "./npcs": "./src/npcs/index.js",
     "./towns": "./src/towns/index.js",
     "./loot": "./src/loot/index.js",
+    "./locations": "./src/locations/index.js",
     "./builds": "./src/builds/index.js"
   },
   "scripts": {

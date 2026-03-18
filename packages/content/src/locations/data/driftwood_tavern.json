@@ -1,0 +1,69 @@
+{
+  "id": "driftwood_tavern",
+  "name": "The Driftwood",
+  "type": "tavern",
+  "description": "A slouching timber-frame building at the end of the docks, built from salvaged river barge planks and held together by stubbornness and tar. The sign is a piece of actual driftwood with the name burned in. Captain Meridian Thorne won the place in a card game, lost it in another, won it back in dispute that may have involved a small fire, and now considers it home port. When he's in town — which is most of the time, despite claims of imminent departure — he holds court at the corner table with a bottle of whatever arrived on the last barge. Margot of House Ashenbraid runs the actual operation: the kitchen, the books, the cleaning, the bouncing. She was hired as a temporary cook and has been managing the entire establishment for two years. Meredith of the Scarlet Veil performs on evenings — her music starts after sundown and draws a different crowd than the daytime dock workers. The Driftwood is not Bottoms Up. Bottoms Up is where you drink with your neighbors. The Driftwood is where you drink with people who arrived on a boat and might leave on one.",
+  "owner": "jack_the_sparrow",
+  "atmosphere": {
+    "defaultTone": "rough",
+    "tags": ["river-damp", "loud after dark", "smells of tar and cheap ale", "rougher crowd", "music in the evenings"],
+    "sounds": [
+      "Meridian telling a story that gets more elaborate with each retelling",
+      "Margot shouting orders at the kitchen boy — there is no kitchen boy, she shouts anyway",
+      "Dockworkers arguing about whose turn it is to buy",
+      "Meredith's lute after sundown — haunting, minor key, centuries of practice",
+      "River sounds through the walls — the building is basically on the water",
+      "The occasional crash from the kitchen"
+    ],
+    "smells": [
+      "Tar and damp wood — the building sweats river",
+      "Cheap ale and cheaper wine — Meridian's sourcing is unreliable",
+      "Margot's cooking — unexpectedly good, she was trained at a temple kitchen",
+      "Fish — the docks are right there",
+      "Pipe smoke from the regulars"
+    ],
+    "lighting": "Oil lamps, unevenly distributed. The corner table always has a candle because Meridian insists on ambiance. The stage area has proper lamps for Meredith's performances. The back booths are deliberately dark."
+  },
+  "layout": [
+    {
+      "name": "The Taproom",
+      "description": "Long and narrow, following the building's barge-hull shape. A bar made from a ship's gangplank. Mismatched stools. Three long tables and Meridian's corner booth, which he claims by leaving his hat on it even when absent."
+    },
+    {
+      "name": "The Stage Corner",
+      "description": "A slightly raised platform in the front corner with a stool, lamp hooks, and a sign reading 'PERFORMERS WELCOME — MANAGEMENT NOT RESPONSIBLE.' Meredith performs here most evenings. Other musicians are technically allowed but rarely volunteer after hearing her play."
+    },
+    {
+      "name": "The Kitchen",
+      "description": "Tiny, efficient, and somehow producing food that's better than the establishment deserves. Margot runs it with temple-trained precision and the quiet fury of someone who expected more from life."
+    },
+    {
+      "name": "The Back Deck",
+      "description": "A wooden platform extending over the water. Four tables. Popular in summer. In winter, only Meridian sits out here, claiming the cold helps him think. It does not."
+    },
+    {
+      "name": "The Upstairs Rooms",
+      "description": "Three rooms available for rent by the night. Basic: a bed, a hook, a bucket. Margot keeps them cleaner than the prices warrant."
+    }
+  ],
+  "regulars": [
+    "jack_the_sparrow",
+    "marceline_the_vampire",
+    "marge_the_enabler",
+    "han_the_smuggler",
+    "old_mattock",
+    "kramer_the_chaos"
+  ],
+  "hooks": [
+    "Meridian's enchanted compass has been pointing at the same spot upriver for a week — he's pretending not to notice",
+    "Meredith's music caused a patron to weep uncontrollably last night — the song was supposed to be cheerful",
+    "A sealed crate washed up against the back deck that Margot won't let anyone open until she finishes reading the markings",
+    "Kael Stormrunner and Meridian haven't spoken in three days, which is unusual — the smuggler and the captain usually drink together nightly",
+    "Someone has been leaving coins under the floorboards — Margot found seven stacks, each exactly thirteen coins"
+  ],
+  "worldContext": {
+    "location": "The Driftwood, river docks (south end of wharf), Millhaven",
+    "defaultTone": "rough, damp, and honest",
+    "region": "Millhaven, The Vale"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "tinctures_shop",
+  "name": "Nightwhisper's Tinctures & Tonsure",
+  "type": "barber_apothecary",
+  "description": "A narrow stone building on the north side of Market Square, between the temple and the tailor's shop. The sign depicts a pair of scissors crossed over a potion bottle, painted in faded black and silver. Inside it smells of cut hair, dried herbs, and something vaguely chemical that Malachor Nightwhisper will not identify. Malachor provides three services: haircuts, potions, and minor surgery. All three are performed with identical precision, identical disdain, and identical silence unless the client asks a question, at which point Malachor explains exactly how stupid the question was before answering it correctly. Vex Shadowmend — his apprentice — works the front counter, mixes basic tinctures, and apologizes for Malachor's behavior with the exhaustion of someone who has done this many times. Vex's partner, Heinz Vexworth at the Cogsworth Workshop, built the distillation apparatus in the back room. It works perfectly. Malachor has never thanked him.",
+  "owner": "snape_the_potions_master",
+  "atmosphere": {
+    "defaultTone": "hostile but competent",
+    "tags": ["clinical", "sharp-smelling", "uncomfortable", "the haircuts are excellent", "the silence is a weapon"],
+    "sounds": [
+      "Scissors — precise, rhythmic, never hesitating",
+      "Liquid bubbling in the distillation apparatus",
+      "Malachor's voice — low, deliberate, cutting",
+      "Vex sighing at the front counter",
+      "Glass bottles clinking on shelves",
+      "The bell above the door — the only warm sound in the building"
+    ],
+    "smells": [
+      "Cut hair and shaving soap — astringent, clean",
+      "Potion reagents — mineral, herbal, occasionally sulfuric",
+      "Dried herbs hanging from ceiling racks",
+      "Malachor's black robes — somehow smell of cold stone",
+      "Vex's attempt at burning incense to soften the mood — ineffective"
+    ],
+    "lighting": "Precise and clinical. Malachor installed reflector lamps above the barber chair for perfect visibility. The potion shelves are backlit. The back room is dim except when Malachor is working, at which point every lamp burns at full."
+  },
+  "layout": [
+    {
+      "name": "The Front Counter",
+      "description": "Vex's station. A glass display case of basic tinctures, salves, headache remedies, and 'Nightwhisper's Famous Hangover Cure' (the only product Malachor allows to have a cheerful label — Vex insisted). A bell, a ledger, and a jar of complimentary mints that Malachor calls 'bribery.'"
+    },
+    {
+      "name": "The Barber Chair",
+      "description": "A single high-backed chair facing a mirror. Tools laid out with surgical precision on a side table: scissors, razors, combs, a strop. Malachor does not ask what style you want. He assesses your face and cuts accordingly. Everyone leaves looking better than they arrived."
+    },
+    {
+      "name": "The Potion Shelves",
+      "description": "Floor to ceiling, glass-fronted. Organized by effect, not alphabetically — because Malachor considers alphabetical organization 'an admission that you don't understand your own inventory.' Each bottle is hand-labeled in Malachor's spidery script."
+    },
+    {
+      "name": "The Back Room",
+      "description": "The laboratory. Heinz's distillation apparatus dominates one wall. Workbenches with mortar and pestle, scales, and drying racks. Malachor works here in the evenings. Vex is allowed in only when supervised."
+    },
+    {
+      "name": "The Surgery Corner",
+      "description": "A screened-off area with a padded table, clean linens, and a locked case of surgical instruments. Malachor sets bones, stitches wounds, and removes teeth. He is uncomfortably good at all three."
+    }
+  ],
+  "regulars": [
+    "snape_the_potions_master",
+    "vanessa_the_reluctant",
+    "vesna_calloway"
+  ],
+  "hooks": [
+    "Malachor has been brewing something in the back room that he won't show Vex — the fumes turn the ceiling blue",
+    "A client's hair grew back overnight in a different color after Malachor's last haircut — Malachor denies involvement but seems unsurprised",
+    "Vex discovered that one of the 'standard' tinctures on the shelf has an ingredient she can't identify — and Malachor changed the subject when asked",
+    "Vesna Calloway at the herbary and Malachor have been exchanging increasingly terse notes about a patient neither will discuss",
+    "The distillation apparatus has started making sounds it didn't used to — Heinz says it's normal. Malachor says Heinz's definition of normal is clinically insane."
+  ],
+  "worldContext": {
+    "location": "Nightwhisper's Tinctures & Tonsure, north side of Market Square, Millhaven",
+    "defaultTone": "intimidating but indispensable",
+    "region": "Millhaven, The Vale"
+  }
+}

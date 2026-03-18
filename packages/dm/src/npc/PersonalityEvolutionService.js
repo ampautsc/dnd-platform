@@ -281,6 +281,7 @@ export class PersonalityEvolutionService {
    * @param {string[]} [nearbyNpcKeys]
    * @returns {string}
    */
+  /** @deprecated Use RelationshipRepository.buildRelationshipContext() instead */
   buildOpinionsContext(templateKey, personality, nearbyNpcKeys) {
     const opinions = personality?.consciousnessContext?.opinionsAbout || {};
     const record = this._store.get(templateKey);

@@ -3,6 +3,21 @@
   "name": "Davan of the Road",
   "race": "Human",
   "npcType": "neutral",
+  "age": 45,
+  "appearance": {
+    "build": "Portly and comfortable, the build of a man who samples his own trade goods",
+    "hair": "Thinning brown with grey at the temples, combed over optimistically",
+    "skin": "Pale with the indoor complexion of someone who works market stalls, not fields",
+    "eyes": "Small and calculating, crinkle when he smiles which is often",
+    "height": "Below average, compensates with animated gestures",
+    "distinguishingFeatures": [
+      "Rings on three fingers — not expensive, but numerous",
+      "A booming laugh that fills whatever room he's in",
+      "Constantly touching or adjusting his goods even when not selling"
+    ],
+    "typicalAttire": "A merchant's vest with many pockets over a clean linen shirt, a leather belt with coin pouches, travel-dusty boots that he polishes when he remembers",
+    "firstImpression": "A well-fed traveling merchant holding court at his table, rings glinting, voice carrying — clearly someone who sells things for a living"
+  },
   "personality": {
     "voice": "warm-transactional, worldly, comfortable with the fact that he's assessing you",
     "alignment": "true neutral",

@@ -2,7 +2,23 @@
   "templateKey": "fen_colby",
   "name": "Fen Colby",
   "race": "Human",
+  "gender": "male",
   "npcType": "neutral",
+  "age": 34,
+  "appearance": {
+    "build": "Compact and capable, moves like someone aware of every exit",
+    "hair": "Black, cut short on the sides, longer on top, slightly oiled",
+    "skin": "Tanned brown, with a thin scar along the left jawline",
+    "eyes": "Dark brown, watchful, rarely blink at the expected rate",
+    "height": "Average, deliberately unremarkable",
+    "distinguishingFeatures": [
+      "A thin scar along the left jawline — old, clean, deliberate",
+      "Sits with his back to the wall, always",
+      "A way of being still that is more noticeable than most people's movement"
+    ],
+    "typicalAttire": "Dark, practical clothing that could be a merchant's or a traveler's — deliberately ambiguous, good boots, no visible weapons but the kind of belt that could hold some",
+    "firstImpression": "A quiet man at the bar who watches people the way a cat watches a room — not threatening, but definitely paying attention"
+  },
   "personality": {
     "voice": "meandering with intervals of startling precision",
     "alignment": "chaotic neutral",

@@ -1,0 +1,65 @@
+{
+  "id": "schoolhouse",
+  "name": "Millhaven Schoolhouse",
+  "type": "school",
+  "description": "A former grain warehouse converted into a schoolhouse fifteen years ago when Aldovar Crennick convinced the council that illiterate children become illiterate farmers. The main room has rows of benches, a slate board, and more natural light than most buildings in town thanks to windows Phineas installed last year. Maelis Thornwick teaches reading, arithmetic, history, and introductory arcane theory to anyone between six and sixteen who shows up. Master Kyoshi holds classes in the fenced yard behind the building — movement, discipline, awareness — for older students and any adult willing to be corrected by a two-foot-tall rat. Donovan the Tinkerer assists both teachers, maintaining the building and teaching practical skills: how things work, how to fix them, how to build something useful from scrap.",
+  "owner": null,
+  "headTeacher": "hermione_the_bookworm",
+  "atmosphere": {
+    "defaultTone": "studious",
+    "tags": ["chalk dust", "children's voices", "sometimes quiet, sometimes chaotic", "smells of ink and old wood"],
+    "sounds": [
+      "Maelis's clear voice explaining something for the third time",
+      "Chalk on slate",
+      "Children whispering when they shouldn't be",
+      "Kyoshi's staff striking the ground in the yard — the signal to begin again",
+      "Donovan's tools clicking as he repairs something mid-lesson",
+      "Laughter from the yard during break"
+    ],
+    "smells": [
+      "Chalk dust and slate",
+      "Ink — the cheap kind, slightly acrid",
+      "Old wood and sunlight through the windows",
+      "Sweat from the yard after Kyoshi's sessions",
+      "Whatever Donovan is soldering at the back bench"
+    ],
+    "lighting": "Bright — Phineas's windows flood the main room with light. The yard is open to the sky. Late afternoon classes run by candle."
+  },
+  "layout": [
+    {
+      "name": "The Classroom",
+      "description": "Benches in rows, a slate board at the front, a desk for Maelis with precarious stacks of books. Maps of The Vale on the walls. A locked cabinet of 'advanced materials' that Maelis guards fiercely."
+    },
+    {
+      "name": "The Yard",
+      "description": "Fenced area behind the building. Kyoshi's training space. Wooden practice weapons, balance posts, and a raked sand area where footwork is drilled. The sand is always freshly raked — Kyoshi's first lesson is patience."
+    },
+    {
+      "name": "The Workshop Corner",
+      "description": "Donovan's domain. A workbench at the back of the classroom with tools, scrap metal, gears, and half-finished projects. Students who finish early are invited to build something. Most things built here explode mildly."
+    },
+    {
+      "name": "The Book Closet",
+      "description": "A repurposed storage room with three shelves of books — the closest thing Millhaven has to a library. Maelis catalogs every volume. There are forty-seven books. She wants a hundred."
+    }
+  ],
+  "regulars": [
+    "hermione_the_bookworm",
+    "splinter_the_master",
+    "donnie_the_brain",
+    "tuck_millhaven",
+    "bree_millhaven"
+  ],
+  "hooks": [
+    "Maelis found a book in the closet she didn't catalog — it wasn't there last week and she doesn't recognize the language",
+    "Kyoshi has been teaching one student privately after hours and won't explain why",
+    "Donovan built a device in the workshop corner that shouldn't work by any known principle — but it does",
+    "Tuck and Bree have discovered something in the crawlspace under the building and formed a secret club about it",
+    "The council wants to cut the school's funding and Maelis is preparing a speech that may constitute a threat"
+  ],
+  "worldContext": {
+    "location": "Millhaven Schoolhouse, south side of Market Square, Millhaven",
+    "defaultTone": "earnest and slightly chaotic",
+    "region": "Millhaven, The Vale"
+  }
+}

@@ -114,4 +114,41 @@ describe('Content Routes', () => {
       expect(res.status).toBe(200);
     });
   });
+
+  describe('GET /api/content/npcs', () => {
+    it('should return an array of NPC summaries', async () => {
+      const res = await request.get('/api/content/npcs');
+      expect(res.status).toBe(200);
+      expect(Array.isArray(res.body.npcs)).toBe(true);
+      expect(res.body.npcs.length).toBeGreaterThan(0);
+    });
+
+    it('should return summary fields only (not full data)', async () => {
+      const res = await request.get('/api/content/npcs');
+      const npc = res.body.npcs[0];
+      expect(npc).toHaveProperty('templateKey');
+      expect(npc).toHaveProperty('name');
+      expect(npc).toHaveProperty('race');
+      expect(npc).toHaveProperty('npcType');
+      expect(npc).toHaveProperty('personality');
+      // Full data fields should not be present in summary
+      expect(npc).not.toHaveProperty('consciousnessContext');
+      expect(npc).not.toHaveProperty('fallbackLines');
+    });
+  });
+
+  describe('GET /api/content/npcs/:key', () => {
+    it('should return full NPC data by templateKey', async () => {
+      const res = await request.get('/api/content/npcs/bree_millhaven');
+      expect(res.status).toBe(200);
+      expect(res.body.npc.templateKey).toBe('bree_millhaven');
+      expect(res.body.npc).toHaveProperty('consciousnessContext');
+      expect(res.body.npc).toHaveProperty('personality');
+    });
+
+    it('should return 404 for unknown NPC', async () => {
+      const res = await request.get('/api/content/npcs/nonexistent_npc');
+      expect(res.status).toBe(404);
+    });
+  });
 });

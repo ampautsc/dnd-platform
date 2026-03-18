@@ -1,0 +1,65 @@
+{
+  "id": "theater",
+  "name": "The Curtain Call",
+  "type": "theater",
+  "description": "A converted coaching stable on the west side of Market Square, identifiable by the painted curtains nailed over the old stable doors and a hand-lettered marquee that changes weekly. Inside, the stalls have been ripped out and replaced with tiered bench seating facing a raised wooden stage. The ceiling still has hay hooks. Kerwin the Green runs the operation with the permanent air of someone watching a building collapse in slow motion but unable to stop giving notes on the architecture. His troupe — Lady Rosette, Thrackus the Inexplicable, and the entity known as Valorix — performs three nights a week. Every performance is a minor miracle of survival. Audiences come for the spectacle, which includes but is not limited to actual theatrical performance. Squire Tentaculus plays music before and between acts with the visible suffering of a man who knows he's better than this.",
+  "owner": "kermit_the_stressed",
+  "atmosphere": {
+    "defaultTone": "chaotic",
+    "tags": ["dramatic", "unpredictable", "louder than expected", "smells of greasepaint and sawdust", "never boring"],
+    "sounds": [
+      "Kerwin shouting directions that no one follows",
+      "Lady Rosette's voice — commanding, operatic, carrying to the back row without effort",
+      "Thrackus doing something dangerous backstage",
+      "Valorix's drumming — technically percussion, practically assault",
+      "Squire Tentaculus's clarinet, played with contemptuous perfection",
+      "Audience laughter, gasps, and occasional screams",
+      "The structural creak of the stage under heavy dramatics"
+    ],
+    "smells": [
+      "Greasepaint and theatrical powder",
+      "Sawdust on the floor",
+      "Candle wax from the stage lights",
+      "Rosette's perfume — detectable from any seat",
+      "Hay — remnants of the building's past life, never fully gone"
+    ],
+    "lighting": "Candelabras at the stage edges. Oil lamps along the walls. A spotlight Phineas rigged that runs on a hand-crank mechanism and requires constant operation. The back rows are dark. This is sometimes intentional."
+  },
+  "layout": [
+    {
+      "name": "The Stage",
+      "description": "Raised wooden platform with a painted backdrop that changes per show (badly). Trapdoors that mostly work. Wing space on both sides barely large enough for entrances."
+    },
+    {
+      "name": "The Seating",
+      "description": "Tiered benches for about sixty people. Front row is cushioned (Rosette's demand). Standing room at the back for another twenty. The best seats are on the left, where you can see backstage disasters developing."
+    },
+    {
+      "name": "Backstage",
+      "description": "A cramped area of costume racks, prop tables, and barely contained chaos. Gonzo's stunt equipment is technically stored here but frequently escapes containment."
+    },
+    {
+      "name": "Kerwin's Office",
+      "description": "A repurposed tack room. A desk covered in scripts, schedules, and stress. A cot for the nights when rehearsals run late, which is most nights. A motivational sign that reads 'THE SHOW MUST GO ON' that has been defaced by every troupe member at least once."
+    }
+  ],
+  "regulars": [
+    "kermit_the_stressed",
+    "piggy_the_diva",
+    "gonzo_the_weirdo",
+    "animal_the_wild",
+    "squid_the_cynic"
+  ],
+  "hooks": [
+    "A noble from the capital has offered to fund the troupe in exchange for performing at a private event — Kerwin is suspicious but desperate",
+    "Thrackus's last stunt opened a small portal backstage that no one has been able to close. Things come through. Small things. So far.",
+    "Lady Rosette and Kerwin's artistic disagreements have escalated to the point where the troupe is choosing sides",
+    "Valorix's drumming has been causing things to vibrate off shelves in adjacent buildings — the pattern is not random",
+    "Squire Tentaculus has been composing a piece that makes listeners weep involuntarily and claims it's 'just music'"
+  ],
+  "worldContext": {
+    "location": "The Curtain Call, west side of Market Square, Millhaven",
+    "defaultTone": "theatrical chaos",
+    "region": "Millhaven, The Vale"
+  }
+}

@@ -58,11 +58,11 @@ describe('Millhaven spot checks', () => {
     expect(m.population).toBe(1200)
   })
 
-  it('has The Tipsy Gnome as a notable location', () => {
+  it('has Bottoms Up as a notable location', () => {
     const m = getTown('millhaven')
-    const gnome = m.notableLocations.find(l => l.name === 'The Tipsy Gnome')
-    expect(gnome).toBeDefined()
-    expect(gnome.type).toBe('inn_and_tavern')
+    const tavern = m.notableLocations.find(l => l.name === 'Bottoms Up')
+    expect(tavern).toBeDefined()
+    expect(tavern.type).toBe('inn_and_tavern')
   })
 
   it('has bree_millhaven in npcRoster', () => {

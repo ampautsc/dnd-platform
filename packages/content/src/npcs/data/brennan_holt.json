@@ -3,6 +3,21 @@
   "name": "Brennan Holt",
   "race": "Human",
   "npcType": "neutral",
+  "age": 31,
+  "appearance": {
+    "build": "Solid and square, built like a man who lifts heavy things for a living",
+    "hair": "Sandy brown, cropped short and practical",
+    "skin": "Ruddy and wind-chapped, with sunburn across the nose",
+    "eyes": "Blue-grey, narrowed in habitual suspicion",
+    "height": "Average but broad, takes up more space than his height suggests",
+    "distinguishingFeatures": [
+      "A heavy iron ring of keys at his belt — marks him as someone with responsibilities",
+      "A permanent furrow between his eyebrows",
+      "Callused hands that grip his ale mug like he's afraid someone will take it"
+    ],
+    "typicalAttire": "A worn leather jerkin over a plain wool shirt, heavy boots, a town guard's badge pinned crookedly to his chest",
+    "firstImpression": "A stocky man with a guard's badge nursing an ale and looking annoyed about something — probably everything"
+  },
   "personality": {
     "voice": "flat, spare, professionally uninterested in most of what he sees",
     "alignment": "lawful neutral",
