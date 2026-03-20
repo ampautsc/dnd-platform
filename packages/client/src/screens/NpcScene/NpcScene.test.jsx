@@ -115,8 +115,14 @@ describe('NpcScene', () => {
   });
 
   it('shows thinking indicator when processing is true', () => {
-    render(<NpcScene scene={mockScene} onAction={vi.fn()} onLeave={vi.fn()} processing={true} />);
+    // processing=true during NPC turn resolution — transcript is non-empty at this point
+    render(<NpcScene scene={sceneWithTranscript} onAction={vi.fn()} onLeave={vi.fn()} processing={true} />);
     expect(screen.getByText(/thinking|resolving/i)).toBeInTheDocument();
+  });
+
+  it('shows setting the scene indicator during initial load (processing=true, empty transcript)', () => {
+    render(<NpcScene scene={mockScene} onAction={vi.fn()} onLeave={vi.fn()} processing={true} />);
+    expect(screen.getByText(/setting the scene/i)).toBeInTheDocument();
   });
 
   it('calls onLeave when Leave is clicked', async () => {

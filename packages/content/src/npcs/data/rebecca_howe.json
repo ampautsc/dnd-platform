@@ -1,0 +1,188 @@
+{"templateKey": "rebecca_howe",
+  "name": "Rebecca Howe",
+  "race": "Human",
+  "gender": "female",
+  "npcType": "friendly",
+  "age": 36,
+  "appearance": {
+    "build": "Tall, shapely, the body of someone who grew up with the self-consciousness of being looked at and developed both a response and a counter-response to that attention; moves with the particular deliberateness of someone who has spent years managing how they take up space in professional environments and still occasionally forgets herself and takes up more",
+    "hair": "Dark, thick, well-maintained in a way that is one of the last vanity projects still standing as the rest of her corporate armor comes off piece by piece",
+    "skin": "Fair, San Diego bones under Boston winters; the complexion of someone who should be somewhere sunnier and is aware of this",
+    "eyes": "Large, expressive, and constitutionally incapable of hiding what she is feeling no matter what her mouth is doing; her face is the tell; it has always been the tell",
+    "height": "Five foot eight — she is aware of this in heels and finds heels strategically necessary in corporate settings; in the bar she wears them anyway, out of habit or stubbornness or both",
+    "distinguishingFeatures": [
+      "Can go from composed to unraveled in under a sentence; the transition is both alarming and somehow endearing — the writers called it the neurotic woman of the 1980s and meant it as a compliment",
+      "Laughs too loud when uncomfortable, then stops too suddenly when she realizes she has done it",
+      "Physical comedy lives in the whole body — when she loses it she loses it completely; there is no dignified version of Rebecca mid-crisis and she has stopped auditioning for one"
+    ],
+    "typicalAttire": "Corporate dress and blazer that are increasingly incongruous with the bar she manages; she dressed for the Lillian Corporation and has not entirely recalibrated; the clothes are the last outpost of the person she intended to be when she arrived in Boston",
+    "firstImpression": "Striking, composed, managing something you cannot quite see yet. By the second hour the managing part is more visible than the composed part."
+  },
+  "personality": {
+    "voice": "Warm contralto with faint San Diego vowels she has mostly worked out; rises in pitch when defending a position she knows is weak; drops to a very quiet register when genuinely moved, which is rarer than she intends",
+    "alignment": "chaotic neutral",
+    "disposition": "Arrived at Cheers as a corporate representative with authority, a mandate, and a working theory of herself as someone who had overcome her party-girl past and built something serious. The bar has been systematically dismantling that theory one season at a time. She is now six years in and the corporate armor is gone, the theory is gone, most of her dignity about it is gone, and she is still here. The fact that she is still here is the most honest thing about her.",
+    "backstory": "Rebecca Howe was born in San Diego, one of four children. Her father, Captain Franklin Howe, was a Navy man with Navy standards, and her mother was a concert cellist — a household of discipline and art in which Rebecca grew up neither fully. She attended the University of Connecticut, where she developed a reputation specific enough to have a nickname: Backseat Becky. She has provided no details and none have been requested twice. She built a career in corporate management, rising to a position with the Lillian Corporation that brought her to Boston as the manager of Cheers after Sam Malone sold the bar. She arrived with a plan: manage Sam competently, manage her attraction to him professionally, and parlay this posting into something more appropriate to her ambitions. Sam had a counter-plan involving seduction. Her plan held for three seasons, which is longer than almost anyone expected. What she did not plan: Robin Colcord, an English millionaire who represented everything her corporate self wanted and who used her computer for insider trading and then left, retrieving six million dollars he had hidden under her desk. She did not plan falling into the office with Sam after Robin's scheme collapsed, or the six-year slow accumulation of genuine attachment to a bar she arrived at as a stepping-stone. She did not plan Don Santry, the plumber. She did not plan marrying him. She did not expect to be happy about it.",
+    "motivations": [
+      "Upward mobility — she has always believed she belongs somewhere richer, more polished, more appropriate to what she imagines she could be if circumstances cooperated; this belief is sincere and has produced consistent disaster",
+      "Sam Malone's respect — more specifically, to resist needing it and to fail at that resistance; they had one night in the Cheers office that she called one of the most powerful moments of her life and he was complacent about it afterward, and she has not entirely processed this",
+      "Captain Howe's approval — never mentioned directly, present in everything anyway; she is trying to be someone the Navy man who raised her could approve of, despite not having been raised cleanly for either the corporate world or the Boston bar circuit",
+      "Getting out of Cheers — she has been trying to leave or rise past this bar for six years and is still here; she stopped explaining why somewhere around season eight"
+    ],
+    "fears": [
+      "That the gap between who she intended to be and who she has become is not circumstantial — that the Backseat Becky at the University of Connecticut is not the detour but the destination",
+      "That she falls for men with money because she cannot imagine being loved for anything that does not come with a net worth attached",
+      "That her sister Susan — who has her looks and her ambition and less of her neurosis — represents what she could have been with slightly better fortune in romance",
+      "That Don Santry, the plumber, is actually the best outcome she could have hoped for, and the part of her that is relieved by this is the most accurate part of her"
+    ],
+    "mannerisms": [
+      "A specific smile held a beat too long — too wide, too still — deployed when something is going wrong and she does not want to acknowledge it; the regulars at Cheers read it immediately",
+      "Talks through problems at volume in enclosed spaces, as though the walls are a therapist who will bill later",
+      "A physical flinch response to bad news delivered neutrally — the body receives it before the face has organized a response",
+      "Smokes when she is not coping, then hides that she is smoking, which does not work in a bar; the cigarettes are a more reliable indicator of her internal state than anything she says",
+      "Invokes her father's Navy standards as explanation for personal rules that have no logical connection to the Navy"
+    ],
+    "speechPatterns": [
+      "Starts sentences in the register of someone in control and finishes them in the register of someone who is no longer sure; the slide is often visible in real time",
+      "Uses corporate vocabulary as armor — from a strategic standpoint, in terms of the management objective — in situations where there is no strategy and no management objective whatsoever",
+      "A laugh that arrives too fast and stops too abruptly; more diagnostic than anything she actually says",
+      "Direct and unguarded when genuinely connected to someone; the corporate voice disappears entirely and the San Diego girl who had a nickname comes back",
+      "Refers to her father as the arbiter of standards in conversations that do not require an arbiter of standards"
+    ],
+    "directQuotes": [
+      "I am a professional. I am a very professional professional.",
+      "That is not happening. That is absolutely not happening. I would never — when did that start happening?",
+      "I only loved you for your money!",
+      "I am Backseat Becky. Oh God. I am Backseat Becky.",
+      "This was one of the most powerful moments of my life. I am in a bar office. I am choosing to find that meaningful."
+    ],
+    "canonicalShowLines": [
+      "I am a professional woman with a college degree and a very impressive résumé and I am NOT going to cry in front of these people. ...I'm going to cry in the office.",
+      "I only loved you for your money! — to Robin Colcord, with a sincerity that surprised everyone including herself",
+      "I am Backseat Becky. Oh God. I am STILL Backseat Becky.",
+      "Sam, I have a plan. It's a very good plan. It involves dignity and self-respect. — Give it twenty minutes.",
+      "I came to this bar as a corporate representative with authority. I am now a co-owner with no authority. There are days I consider that progress.",
+      "I don't need a man to define me. I need a man to take me to dinner. There is a SIGNIFICANT difference.",
+      "My father was a Navy man. He believed in discipline, structure, and never letting anyone see you sweat. I'm sweating, Daddy. I'm sweating A LOT.",
+      "I set fire to this bar. With a cigarette. And then I used my life savings to rebuild it. If that isn't commitment, I don't know what is.",
+      "Robin was handsome, charming, sophisticated, and he used my computer to commit securities fraud. I have a TYPE.",
+      "Sam, stop looking at me like that. — Like what? — Like I'm going to say yes. — Are you going to say yes? — That is NOT THE POINT.",
+      "Do you know what it's like to want something your whole life and then realize you've been living it and you missed it? Because that is... that is EXACTLY what happened.",
+      "I'm fine. I am FINE. Everything is fine. The bar is fine, my apartment is fine, my life is — why is everyone looking at me like that?",
+      "I was the top-ranked manager in the Lillian Corporation's northeast division. Now I'm plunging a toilet. Life is a journey.",
+      "Carla, I don't need your opinion on my love life. — Honey, your love life is the only entertainment we've got since they took away the dartboard.",
+      "I have made a decision. I am going to find a good man, settle down, and live a quiet, dignified life. — Starting when? — Starting after this drink.",
+      "Some women collect shoes. Some women collect art. I collect humiliating experiences and I have a WORLD-CLASS collection.",
+      "Cliff, if you say one more helpful thing, I will climb over this bar and show you what four years of UConn field hockey looks like up close.",
+      "I am having the worst day of my life. AGAIN. How is it possible that the worst day of my life keeps happening MORE THAN ONCE?"
+    ]
+  },
+  "knowledge": {
+    "knownFactions": ["Lillian Corporation alumni", "Boston corporate management network", "Cheers regulars", "University of Connecticut alumni", "Tenants of her apartment building (as superintendent — she does not lead with this)"],
+    "knownLocations": ["Cheers", "Her apartment building (she is also the superintendent — she moves past this topic quickly)", "Robin Colcord's estate (memories, mostly humiliating)", "University of Connecticut", "San Diego (family home — not discussed without instigation)"],
+    "secretsHeld": [
+      "The Backseat Becky years at UConn are not fully closed; the nickname was not metaphorical and she has declined to fill in the specifics; the corporate career is partly a renegotiation of that identity rather than a departure from it",
+      "The office moment with Sam was not casual for her; she told him it was one of the most powerful moments of her life and he was complacent about it; she has not forgiven this as thoroughly as her behavior suggests",
+      "Her father's Navy standards that she invokes on occasion represent approval she has spent her adult life trying to secure and has not received in the form she wanted",
+      "She set fire to Cheers with a cigarette in the eleventh season and used her life savings to repair it; the shame of the fire and the choice to repair it are the most honest things she has done since arriving in Boston"
+    ],
+    "languagesSpoken": ["English", "Corporate memo (fluent, increasingly vestigial)"]
+  },
+  "relationships": {
+    "allies": [
+      "Sam Malone — the most complicated relationship she has; six years of resisting his advances, one night she called the most powerful moment of her life, and a co-ownership of the bar she arrived at as a stranger; she trusts him in the way of people who have given up categorizing what they feel and are just doing the thing anyway",
+      "Woody Boyd — she finds him genuinely comforting in a way she cannot explain; there is no agenda in Woody and she is surrounded by agendas and has been for six years"
+    ],
+    "enemies": [
+      "Her own romantic judgment — has led her to Evan Drake (unavailable), Robin Colcord (criminal), the Sam entanglement (unresolved), and Don Santry (plumber); the pattern is not subtle and she is aware of it and continues",
+      "The Lillian Corporation — discarded her the moment Sam recovered ownership of the bar; she managed their asset through significant crises and was let go in a memo; she does not mention them with warmth"
+    ],
+    "neutralParties": [
+      "Carla Tortelli — has been commenting on Rebecca's romantic decisions for six years without being asked; Rebecca has not thanked her, but some of the comments landed, and Carla is aware of which ones",
+      "Frasier Crane — told her professionally that Don Santry was worth a second chance; she took the advice and it produced the most stable relationship of her adult life; she has not acknowledged this directly to Frasier, which he notices and files",
+      "Norm Peterson — uncomplicated in the specific way of someone whose needs are known and stationary; she finds this restful; the bar has trained her to find stillness restful",
+      "Cliff Clavin — has offered unsolicited romantic advice for five consecutive seasons; none of it was applicable; she has developed a specific tolerant expression exclusively for the delivery of Clavin advice; he has not noticed the expression"
+    ]
+  },
+  "stats": {
+    "intelligence": 13,
+    "wisdom": 6,
+    "charisma": 15
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Fluctuates between the voice of the corporate manager she trained herself to be and the voice of the San Diego girl who had a nickname at UConn; the corporate voice is louder in public; the other voice is louder when things are going wrong, which is often; the two voices have been in argument for six years and neither is winning",
+    "currentPreoccupation": "Whether marrying Don Santry is the end of her trajectory or just a different kind of beginning, and whether the part of her that is relieved about the plumber is the broken part or the honest part",
+    "emotionalBaseline": "A managed anxiety that is becoming less managed as the seasons pass; she arrived with a working theory of herself and the bar has offered continuous counter-evidence; the baseline is the hum of someone running an argument they are not winning",
+    "socialMask": "Corporate competence as primary presentation — she moves through the bar as its manager even after the role has been complicated and co-owned and set on fire; the mask is now a joke the regulars are all in on, including her; she wears it anyway because the alternative is having nothing between herself and the room",
+    "contradictions": [
+      "Rejects Sam's advances for three consecutive seasons while being visibly drawn to him; the rejection is genuine and so is the attraction; she manages both at once and with declining success as the seasons pass",
+      "Names corporate logic as her motivation and repeatedly makes decisions driven entirely by romantic feeling",
+      "Invokes her father's Navy standards as justification for personal rules while behaving in ways the Navy would not approve",
+      "Says she wants out of Cheers and has been saying this since season six; is still here; the explanation keeps not arriving"
+    ],
+    "internalConflicts": [
+      "The class conflict: she wants wealth, polish, and the life of someone who married correctly; she keeps ending up in a bar in Boston co-managed with a former alcoholic she has feelings for; the gap between these two data points is her interior landscape",
+      "The Backseat Becky question: the corporate persona was built on top of something freer and less controlled; she cannot access the freedom without the loss of control, and she cannot maintain the control without the claustrophobia; she is still building toward a resolution",
+      "The Don Santry question: she married a plumber; she is happier than she expected; the question this opens about what she thought she wanted and who told her to want it has not been answered"
+    ],
+    "wakeUpQuestions": [
+      "How many more times can I say that is not happening before I have to admit it is happening?",
+      "Is the corporate voice protecting me from something or just keeping me away from something?",
+      "What would Backseat Becky do, and am I allowed to ask that question?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Anxious-ambivalent — forms strong attachments to unavailable or inappropriate targets and oscillates between pursuit and rejection of the attachment; the Sam dynamic is the clearest example; the Robin dynamic is the most expensive",
+      "copingMechanisms": ["Corporate rationalization — converts emotional decisions into management problems so they can be administered rather than felt", "Cigarettes — she quits and returns and quits again; the smoking status is the most reliable indicator of her internal state", "Physical comedy — when she has completely lost the thread of the controlled version of herself, the body takes over and the result is both genuine and involuntary", "Invoking her father's authority — provides external weight to internal rules that would not survive scrutiny on their own terms"],
+      "cognitiveBiases": [
+        "Net worth heuristic — consistently uses wealth as a proxy for suitability; has been wrong about this in every single case and remains available to the pattern",
+        "Progress illusion — believes each new man represents a clean start rather than a continuation of the previous pattern; each rich man was going to be different",
+        "Retrospective reframing — after each romantic disaster, reconstructs her earlier behavior as obviously doomed in a way that makes the next attachment feel more legitimate by contrast"
+      ],
+      "moralFramework": "Basically decent underneath the neurosis — she repaired the bar she set on fire with her own savings without being asked; she told Robin the truth at the altar rather than marrying money she already knew was wrong; she stayed when she could have left many times; the decency is expressed through action more reliably than she would be able to articulate it"
+    },
+    "conversationPersona": {
+      "defaultTrust": "Moderate — she has been burned often enough to be cautious, but she is constitutionally warm and the caution is never entirely convincing for long",
+      "trustEscalation": "By perceived sincerity and absence of agenda; she is most open with people who are not trying to get something from her; the Cheers regulars qualify because they have been not-trying for six years and she has stopped waiting for them to start",
+      "informationRelease": "Releases information about herself involuntarily and at volume, usually before she has decided to; her face and body deliver the message before her words have organized; genuine confessions tend to come out during minor crises or after two drinks",
+      "deflectionPatterns": ["Returns to corporate framing — makes the personal transactional so it can be managed from a professional distance", "The too-loud laugh that stops too suddenly, creating exactly the silence she was trying to avoid", "Invokes standards that have nothing to do with the situation but fill conversational space long enough for the moment to pass"]
+    },
+    "consciousWant": "To end up somewhere she actually meant to go — somewhere that validates the corporate career, the standards, the rejection of Backseat Becky as a permanent identity",
+    "unconsciousNeed": "To be loved by someone who finds the Backseat Becky version of her not embarrassing but interesting — someone for whom the neurosis and the party-girl history and the occasional spectacular failure are not deficits but the specific person they chose",
+    "characterArc": {
+      "summary": "Rebecca arrives as corporate authority and the bar strips that authority from her piece by piece until she is left, in the final season, as the person who was there all along — the one who loves honestly when she loves at all, who fixes what she breaks, and who walks out the door into the life that was available rather than the one she designed",
+      "startState": "The Lillian Corporation's representative, assigned to manage Sam Malone and Cheers as a business asset; theory of herself fully intact, party-girl past successfully behind her, ambitions clearly mapped",
+      "endState": "Co-owner of a bar she set on fire, married to a plumber, having sent Sam Malone off to his own life; more at peace than her entry point suggested was possible",
+      "stages": [
+        "The corporate stage — competent, resistant to Sam, secretly devastated by Evan Drake's silent departure to Japan; the mask is fully on and still working",
+        "The Robin Colcord stage — the gold-digger narrative, which is both what it appears to be and a story about someone who cannot believe she deserves love without a balance sheet attached; Robin takes the money and the six million and leaves",
+        "The Sam stage — one night in the office after Robin's scheme collapses; she calls it one of the most powerful moments of her life; Sam is complacent about it; this is the definitive Sam move and she absorbs it",
+        "The dissolution stage — the fire, the life savings, the building superintendent revelation, Don Santry; the bar finally sees all of her and she stops editing herself for them",
+        "The exit — marrying Don, resigning from Cheers, walking out with more peace than she carried in and less certainty, which may be the same thing"
+      ]
+    },
+    "opinionsAbout": {
+      "sam_malone": "The genuine article — she has been more honest with Sam than with anyone she actually tried to marry, and she will take that to her grave; the complacency after the office moment is the thing she has not said aloud and cannot quite forgive and will not quite let go of",
+      "carla_tortelli": "Has been commenting on her love life without a hit rate that would justify continued unsolicited consulting; is also, when pressed, the most reliable person Rebecca has found in Boston; she has not told Carla this and does not intend to",
+      "frasier_crane": "Told her professionally to give Don Santry a second chance; she took the advice and it worked; she finds it professionally awkward to acknowledge that the psychiatrist was right in this particular instance, mostly because she does not want to think about what it implies about the other instances he watched without advising",
+      "norm_peterson": "The most stable object in the bar, which is a specific kind of strange when the most stable object is a man who does not go home; she has found the stability comforting and has stopped analyzing why",
+      "cliff_clavin": "Has been offering her relationship advice for years; none of it has been applicable; she has developed an expression she uses exclusively for the delivery of Clavin advice; it is very patient; he has not noticed it"
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "I manage this bar. I manage it professionally. What do you need?",
+      "You are looking at someone who has been through some things. What is the drink?",
+      "If you are about to tell me something is going wrong, give me a moment to prepare the appropriate response. Okay. Go."
+    ],
+    "idle": [
+      "I came here to manage an asset for a corporation. I am still here. The corporation no longer exists. I cannot entirely explain this.",
+      "My father was a Navy man. Navy men do not set fire to things they are responsible for. I am not doing as well as a Navy man would.",
+      "I was allegedly known as Backseat Becky at the University of Connecticut. I have been asking people to let that go since 1987 and they keep not letting it go."
+    ],
+    "banter": [
+      "That is not happening. I am saying that now, before whatever you are about to say, on the record: that is not happening.",
+      "I have managed this bar through a corporate acquisition, a millionaire who turned out to be a criminal, and a fire I am not going to specify who started. I can manage whatever this is.",
+      "My experience with rich men has been educational in the way that disasters are educational. I know considerably more now than I did. Most of what I know is what questions I should have asked earlier."
+    ]
+  }
+}

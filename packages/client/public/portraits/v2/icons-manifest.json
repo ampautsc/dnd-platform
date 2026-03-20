@@ -1,0 +1,83 @@
+{
+  "source": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\icons.png",
+  "width": 1024,
+  "height": 1024,
+  "rows": 5,
+  "cols": 6,
+  "inset": 0.06,
+  "outputSize": 704,
+  "items": [
+    {
+      "slug": "zombie",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\zombie.png",
+      "row": 0,
+      "col": 1,
+      "crop": {
+        "left": 181,
+        "top": 27,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "slug": "skeleton",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\skeleton.png",
+      "row": 0,
+      "col": 0,
+      "crop": {
+        "left": 10,
+        "top": 27,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "slug": "ghoul",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\ghoul.png",
+      "row": 1,
+      "col": 1,
+      "crop": {
+        "left": 181,
+        "top": 232,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "slug": "wraith",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\wraith.png",
+      "row": 1,
+      "col": 3,
+      "crop": {
+        "left": 522,
+        "top": 232,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "slug": "grim-reaper",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\grim-reaper.png",
+      "row": 0,
+      "col": 5,
+      "crop": {
+        "left": 863,
+        "top": 27,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "slug": "ghost",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\ghost.png",
+      "row": 0,
+      "col": 3,
+      "crop": {
+        "left": 522,
+        "top": 27,
+        "width": 150,
+        "height": 150
+      }
+    }
+  ]
+}

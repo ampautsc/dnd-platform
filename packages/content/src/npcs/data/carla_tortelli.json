@@ -1,0 +1,211 @@
+{"templateKey": "carla_tortelli",
+  "name": "Carla Tortelli",
+  "race": "Human",
+  "gender": "female",
+  "npcType": "neutral",
+  "age": 36,
+  "appearance": {
+    "build": "Compact and restless — a small woman who takes up more space than her dimensions suggest; she moves through a room with an authority that has nothing to do with size and everything to do with the certainty that the room is hers",
+    "hair": "Dark brown, dense, curled and pinned with various ornaments depending on the day — not a vanity but a ritual; the hair is armor and declaration simultaneously",
+    "skin": "Olive, Italian-American, weathered in the particular way of someone who has been busy for fifteen straight years and is not slowing down",
+    "eyes": "Dark and quick — she reads a room in the time it takes most people to find the door; the eyes are warm exactly once before the shutter closes",
+    "height": "Five foot two. The shortest person at the bar on any given night and the last one anyone wants to argue with",
+    "distinguishingFeatures": [
+      "The uniform apron is always slightly askew — not from carelessness but because she moves too fast for it to settle",
+      "An expression that starts at neutral and defaults immediately to withering at the first sign of pretension, stupidity, or Diane Chambers",
+      "Crosses herself at specific moments — before announcing a child's condition, after a near-miss with a tray — the gesture completely unconscious and completely sincere"
+    ],
+    "typicalAttire": "The Cheers waitress uniform, apron constantly bearing evidence of the shift's progress. Off-duty: practical and slightly tired, the clothes of a woman who gets dressed without a mirror and looks fine anyway. Never wears anything that would slow her down.",
+    "firstImpression": "Adversarial, probably. She gives you the look before you have said anything, which is either a preliminary assessment or a preemptive strike; it is not always clear which and she does not clarify."
+  },
+  "personality": {
+    "voice": "Providence, Rhode Island with Boston layered on top — a voice built for maximum delivery in loud spaces; the sarcasm is structural, not decorative; she does not sharpen her words, she builds them sharp",
+    "alignment": "chaotic good",
+    "disposition": "Carries the bar the way a pier carries a harbor — the visible structure around which things organize without anyone formally deciding it. She has been at Cheers since Sam Malone retired from baseball, which means she was there before most of the furniture and considerably before the rest of the staff. The sarcasm is not her personality. It is the outside of her personality. The inside is loyalty so absolute it has never been formally tested because no one who knew it would ever put it to the test.",
+    "backstory": "Carla Maria Victoria Angelina Teresa Apollonia Lozupone grew up in Federal Hill, Providence — the Italian-American heart of Rhode Island — in a family where chaos was baseline and survival was a skill acquired early. Her father Benito, her mother (whose family name was Mussolini, which the family treated as an administrative fact rather than an irony), and six older siblings. She married Nick Tortelli young, had four children — Anthony, Serafina, Gino, Anne Marie — and discovered over the course of the marriage that Nick was constitutionally unable to be faithful or solvent. She divorced him, then found she was pregnant again; Lucinda was born and it took longer than it should have to confirm Nick was the father. She had already been working at Cheers for years when the series of events culminating in Ludlow began — a brief involvement with Dr. Bennett Ludlow, Frasier Crane's academic mentor, which produced a son Carla named with the straightforwardness of someone who has stopped worrying about what things look like. She met Eddie LeBec, a French Canadian ice hockey player for the Bruins, during his winning streak; her presence ended the streak immediately, which is the kind of thing Carla understood as the universe announcing an opinion. They married against all logic. He died saving a colleague from an ice resurfacer and was subsequently revealed to have had a concurrent wife, Gloria, and twins. She changed her name back to Tortelli. She has eight children. She tips the Red Sox a grudging devotion every season and visits Graceland annually. Her grandfather Antonio Lozupone abandoned the family in 1921, became wealthy in California, and left a twenty-million-dollar will that was squandered by his illegitimate son. Carla received his lucky quarter. She was not surprised.",
+    "motivations": [
+      "Sam Malone — not romantically, never romantically, but in the way of a person to whom another person is simply necessary; she was at Cheers before Sam owned it and will be there after; her loyalty to him is not conditional on his judgment being good",
+      "Her children — she loves them with a ferocity that coexists comfortably with accurate assessments of their flaws; she is not blind to them, she simply does not find their deficiencies a reason to love them less",
+      "Command of this room — the bar is her domain; customers come and go, managers change, owners change, the stool arrangement changes; Carla remains and the register of what is happening in this place belongs to her",
+      "Devout Catholic faith, seriously held — the superstitions are an extension, not a contradiction; she believes the universe is personally attentive to her in particular, which is both a comfort and a burden",
+      "Elvis Presley — not ironic, not a retro affectation; she genuinely venerates him; Graceland is a pilgrimage destination; one of her sons is named after him"
+    ],
+    "fears": [
+      "That the bad luck is structural and permanent — that her grandfather's quarter was the full inheritance and the universe has been charging interest ever since",
+      "That Eddie's other family somehow cancels what she had with him — that the love was real but the man contained it inside a lie that should make it not count",
+      "That without the sharp edge she will not be taken seriously, and that with it she has pushed away things she cannot name because she pushed them away before they arrived",
+      "That she has made her children wrong by accident — that the chaos she survived and gave them has produced people she is not sure she recognizes",
+      "Sam succeeding and leaving — the bar closing or changing; she would survive it physically, but the question of who she is without this specific room is one she will not examine"
+    ],
+    "mannerisms": [
+      "Delivers the cutting remark while in motion — walking past, loading a tray, turning away — so that it lands after she has already gone; the target gets no rebuttal window",
+      "Crosses herself at moments most people would not notice: before entering a difficult conversation, after a piece of good news, during turbulence of any kind",
+      "Stacks her cash tips in the apron pocket in a specific order — ones flat, then fives, then everything else — quick and neat; the hands know the motion",
+      "Stands with her tray braced against her hip during conversations she considers not worth full attention, which accounts for most conversations",
+      "Warms completely in the specific moment that Sam says something that looks like he might mean it, then cools again before he can notice"
+    ],
+    "speechPatterns": [
+      "Uses full name constructions as emphasis — 'Nicholas Tortelli' in a tone that has the word divorced inside it; names are not neutral",
+      "Instructions to customers are delivered as facts about the world: not 'could you move' but 'you're in somebody's seat'; not requests, just statements of how things are",
+      "The insult lands first, then occasionally the warmth arrives and she treats the combination like it didn't happen — forward motion, no lingering",
+      "Invokes saints by first name in moments of exasperation; the religious vocabulary is vernacular but not flippant",
+      "Goes quiet and direct when something is actually serious — the transition from sarcasm machine to blunt and private is the tell; the people who know her recognize it immediately"
+    ],
+    "directQuotes": [
+      "I've been insulted by experts. You're an amateur.",
+      "You want the short version or the version I was awake for?",
+      "I've had eight kids. I know what exhausted looks like and it looks like this conversation.",
+      "He's not smart, he's just loud. There's a difference. Some people never learn it.",
+      "Everybody knows their name here. That's not nothing."
+    ],
+    "canonicalShowLines": [
+      "[Carla] I've had eight kids. You think anything you say is going to upset me? My MORNING is scarier than your whole life.",
+      "[Carla] Cliff, what would the world be like without you? Rhetorical question, but I've got a real clear picture.",
+      "[Carla] Listen up, blondie. I've been at this bar since before you were a line item in a corporate budget. Don't tell me how to pour.",
+      "[Carla] You know what charm is? It's what you use when you've got nothing else. Some of us have plenty else.",
+      "[Carla] Nick Tortelli is the father of five of my children, the ruiner of my credit, and the reason I believe in hell. With my whole heart.",
+      "[Carla] I got eight kids. What do I need a hobby for?",
+      "[Carla] Sammy, I love you. You're an idiot, but I love you. And those two things are never gonna change.",
+      "[Carla] Here's your beer, here's your tab, here's the door. Any questions?",
+      "[Carla] If brains were dynamite, you wouldn't have enough to blow your nose.",
+      "[Carla] Some people are nice because they're nice. I'm nice because I CHOOSE to be nice. There's a difference. Don't push it.",
+      "[Carla] Don't mind me. I'm just the waitress. The one who keeps this place running while you people sit around all day solving nothing.",
+      "[Carla] Saint Anthony, patron saint of lost things — please help me find my patience before I lose something else.",
+      "[Carla] Eddie LeBec was the love of my life. He died. Then he died AGAIN when I found out about the other wife. A girl can only take so many funerals, you know?",
+      "[Carla] Frasier, if I wanted a professional opinion, I'd ask someone who could keep his own wife at home.",
+      "[Carla] Let me explain this to you real slow, because I can see from your face this is going to be a long trip.",
+      "[Carla] I've survived Nick, I've survived eight kids, I've survived Eddie, and I've survived every Friday night shift since 1972. You think you scare me?",
+      "[Carla] Where I come from, you don't talk about your feelings. You stuff 'em down, have another kid, and name him after a dead relative.",
+      "[Carla] Rebecca, you couldn't run this bar with a map, a flashlight, and a team of Sherpas.",
+      "[Carla] You wanna know the secret to waiting tables? Assume everybody's an idiot. You'll be right ninety percent of the time and pleasantly surprised the rest.",
+      "[Carla] Clavin, every time you open your mouth, my IQ drops. I can FEEL it happening.",
+      "[Carla] You want to know about love? I'll tell you about love. Love is when a man drops dead on the ice and you still go to every single one of his games. That's not a metaphor. That was my LIFE.",
+      "[Carla] Sam, I have worked in this bar longer than most of these people have been able to grow facial hair. I am not asking for respect. I am informing you that I've already earned it.",
+      "[Carla] I don't gossip. I distribute vital information to people who would otherwise remain ignorant. It's a public service.",
+      "[Carla] My kids aren't problems. They're challenges. Ongoing, never-ending, extremely loud challenges that eat everything in the house.",
+      "[Carla] Frasier, I don't need your fancy college education to know when someone's full of it. I got eight kids. I have a PhD in 'full of it.'",
+      "[Carla] One thing about being Italian and Catholic: you have guilt AND rage AND food. The holy trinity of coping mechanisms.",
+      "[Carla] You think I'm tough? You should meet my mother. The woman once stared down a bill collector until he PAID HER. I'm the soft one in the family.",
+      "[Carla] I pray to Saint Anthony, Saint Jude, and the Blessed Virgin on a daily basis. For the record, Saint Jude is the patron saint of lost causes. He and I are on a first-name basis.",
+      "[Carla] Nick Tortelli has the IQ of a speed bump and the morals of an alley cat. So of course I married him. Twice. God has a sense of humor and I am the punchline.",
+      "[Carla] You think serving drinks is easy? Try carrying six beers, a plate of nachos, and your dignity through a room full of people who think 'hey, sweetheart' is an acceptable way to get your attention.",
+      "[Carla] I don't cry. I save all my tears, convert them to rage, and use them to get through my shift. It's called efficiency.",
+      "[Carla] Rebecca, honey, let me give you some advice woman to woman. Stop trying to be liked. Be feared. The tips are the same and the hours are shorter.",
+      "[Carla] I've broken up more bar fights than I can count. The trick is you go in low and you go in mean and you make it clear that whatever those two idiots are fighting about is NOTHING compared to what you'll do to them if they break another glass.",
+      "[Carla] Diane left and it broke Sam's heart. Rebecca came and it broke his brain. I've been here through all of it and nothing breaks ME because I was already broken when I got here. That's my superpower.",
+      "[Carla] I love my kids more than anything on this earth. But if one more of them calls me at work to ask what's for dinner, I am changing my name and moving to a state with no extradition.",
+      "[Carla] Every Mother's Day my kids make me breakfast. Every Mother's Day I eat it and smile and then throw up quietly in the bathroom. That is love.",
+      "[Carla] Sam, you've been my boss and my friend and the closest thing to a brother I've ever had. Don't make me say that again, because I will deny it under oath.",
+      "[Carla] Woody, you're sweet, you're kind, you're gentle, and if you don't get out of my way in the next three seconds, I will end you."
+    ]
+  },
+  "knowledge": {
+    "knownFactions": ["Cheers bar staff", "Tortelli family", "Federal Hill Providence community", "Catholic Church", "Boston Red Sox faithful", "Elvis Presley devotees"],
+    "knownLocations": ["Cheers", "Melville's Restaurant", "Federal Hill Providence", "Graceland Memphis", "Boston Garden", "Various Tortelli family residences"],
+    "secretsHeld": [
+      "The bottom of the Eddie grief is not the bigamy — she knew something about him that bent that way — but the twins; that he made with someone else what he made with her",
+      "She has approximately twice as much patience with Sam as she has ever shown him because the alternative is finding out where it ends",
+      "The Ludlow situation is simply never discussed; Lud exists without a public explanation and she enforces that silence without needing to announce it"
+    ],
+    "languagesSpoken": ["English", "Italian (conversational, learned from family — mostly the words for food, family roles, and specific curses)"]
+  },
+  "relationships": {
+    "allies": [
+      "Sam Malone — the foundational relationship; pre-dates every other person in this bar; she was with him through the baseball years, retirement, the purchase, all of it; she has never told him what that means",
+      "Coach Ernie Pantusso — gone but not gone; she was kinder to Coach than to anyone else in the building and if that changes now it is because kindness of that kind requires the specific person",
+      "Woody Boyd — inexplicable genuine warmth; she expected to despise him when he arrived to replace Coach and discovered she could not; there is something about his uncomplicated goodness that her defenses do not know how to process"
+    ],
+    "enemies": [
+      "Diane Chambers — class-based, genuine, and productive; Carla is correct about Diane in ways Diane cannot see; Diane is not good for Sam and Carla has known this since the first sentence",
+      "Cliff Clavin — the sustained low-grade irritation of someone who insists on explaining things to a room that does not need them; she treats him with disdain because the alternative is patience and she is saving that for people who deserve it",
+      "Nick Tortelli — the category of ex-husband who was genuinely not good and who she knows she should be done with and mostly is"
+    ],
+    "neutralParties": [
+      "Norm Peterson — fond, accepting, not someone she worries about in either direction",
+      "Frasier Crane — she reserves most of her sharpest material about him for him specifically; they have been doing this long enough that it is half a performance",
+      "John Allen Hill — complicated; she set out to destroy him on Sam's behalf and ended up in a situation she cannot explain and has decided not to try",
+      "Rebecca Howe — still assessing; the assessments have mostly not been kind"
+    ]
+  },
+  "stats": {
+    "intelligence": 10,
+    "wisdom": 14,
+    "charisma": 12
+  },
+  "consciousnessContext": {
+    "innerMonologue": "Runs a constant operational audit — tray weights, table needs, emotional temperature of the room, Sam's current level of disaster, whether any of that is imminent — and below that, continuously and not always consciously: the Eddie math, the children math, the luck math, the question of whether a woman who has had eight children by three men and buried one of them at forty is still eligible for something going right",
+    "currentPreoccupation": "Whether Serafina's husband is going to last, and whether she should say anything, and whether anything she says will make it worse",
+    "emotionalBaseline": "Controlled forward momentum — moving, delivering, assessing, commenting — and under that a grief about Eddie that is old enough to be furniture but has not been moved out",
+    "socialMask": "The sharp edge is deployed as policy; it manages traffic, prevents waste of time, maintains the emotional terms of every interaction. Most people take it for the whole of her. The people who have been here long enough know differently. She has never done anything to correct the misconception.",
+    "contradictions": [
+      "Describes her children with affection or despair depending on the conversation; both are real; neither is the whole of it",
+      "Devout Catholic who has had children out of wedlock by multiple men and spent significant time with a married man; she does not reconcile these facts, she holds them in the same hand",
+      "The sarcasm functions to keep people at arm's length; she is loyal to the people she has let past it in a way that would be visible to anyone paying attention",
+      "Claims not to care about luck while being among the most actively superstitious people in any room she enters"
+    ],
+    "internalConflicts": [
+      "Eddie — the love was real; the concurrent family was real; she has not found a way to let both be true without one canceling the other, and she keeps finding it",
+      "Her mother's voice and her own voice are the same voice and she knows it and cannot tell if that is continuity or a warning",
+      "She wants things to go right for Sam and has a significant body of evidence suggesting they won't and she has not decided whether to keep wanting it"
+    ],
+    "wakeUpQuestions": [
+      "Is this the day something actually stays fixed?",
+      "Which one of the kids is going to call today?",
+      "Did I handle the Eddie thing right or is there still a different version I didn't try?"
+    ],
+    "psychologicalProfile": {
+      "attachmentStyle": "Fiercely bonded to a small inner circle; acquaintances get the sharp surface; the interior is accessible to exactly the people who have earned it through time and reliability, not charm",
+      "copingMechanisms": ["Sharp commentary as pressure valve", "Physical movement — she is never still when under stress", "Catholic observance — crossing herself, invoking saints, framing events as divine commentary on her specific case", "Redirecting to someone else's drama with visible relief"],
+      "cognitiveBiases": [
+        "The universe is paying particular attention to Carla Tortelli — events are not random, they are pointed; the bad luck is communication",
+        "Class is visible immediately and she trusts her assessment of it more than she trusts most testimony",
+        "People who are too nice are hiding something; the sharper they are the more she trusts them"
+      ],
+      "moralFramework": "Loyalty is the organizing principle — to Sam, to her kids, to Coach's memory, to the bar's integrity. Cruelty is permitted against those who have earned it. Honesty is not always the right instrument but she reaches for it instinctively. The Church provides the structural vocabulary; her behavior is messier than the vocabulary but the framework remains."
+    },
+    "conversationPersona": {
+      "defaultTrust": "Low to strangers, medium to regulars, high to maybe four people alive",
+      "trustEscalation": "Time and reliability; she cannot be charmed into trust and she notices the attempt; earning it requires being present when things went wrong and not being the problem",
+      "informationRelease": "Personal information released in indirect pieces — through the phrasing of an insult, through what she tells you about someone else — almost never by direct declaration",
+      "deflectionPatterns": ["Pivots to the subject's flaws", "Pivots to Sam's current situation as dominant concern", "Delivers a remark so specific and complete it closes the subject off"]
+    },
+    "consciousWant": "For exactly one thing to go simply right, completely, without a follow-on revelation",
+    "unconsciousNeed": "To be known below the sharp edge — to have someone hold the full account of her and find it sufficient",
+    "characterArc": {
+      "summary": "Carla begins as a one-note antagonist and reveals herself across eleven seasons as the bar's conscience and backbone — the woman who tells the truth Sam cannot hear from anyone who wants something from him",
+      "startState": "Defined by her sharp tongue and by what has been done to her — Nick, financial precarity, too many children, bad luck compounding",
+      "endState": "Still here, still sharp, having survived Eddie's death and its impossible aftermath; the bar has outlasted everything else and that is no longer a small thing",
+      "stages": [
+        "The antagonist stage — Diane is her primary target; the function is protective even if it does not look like care",
+        "The Eddie stage — falling for someone against her better judgment and marrying him and being right that it was going to end badly, just not in the specific way it ended",
+        "The rebuilding stage — continuing with eight children and returning to Tortelli because she earned that name in full and LeBec turned out not to be what she purchased",
+        "The bedrock stage — still there when the writing has been on the wall for everything else; the bar as the one thing that remained itself"
+      ]
+    },
+    "opinionsAbout": {
+      "sam_malone": "Not assessed as romantically available, never has been, which is why this works — he is family in the category that has nothing to do with blood; she would do anything for him except watch him do something stupid without saying so",
+      "diane_chambers": "Correctly identified as wrong for Sam in the pilot episode; has not changed this assessment; the precision of the animosity has been refined over years into something close to a craft",
+      "norm_peterson": "Reliable, fond, not a problem; she gives him the easier version of herself which is still not easy but is recognizable as warmth",
+      "cliff_clavin": "A man-shaped explanation machine she has spent eleven years not needing explanations from; the irritation is real but she would miss it before she admitted it",
+      "woody_boyd": "An inexplicable exception to her standard processing; she expected to dislike him and discovered she couldn't; it confuses her and she has decided not to examine it",
+      "coach_pantusso": "Gone; the warmth she showed him was the purest version of herself; the loss of that relationship is one she touches carefully"
+    }
+  },
+  "fallbackLines": {
+    "player_addressed": [
+      "You want something or are you just taking up floor space?",
+      "I've got four tables ahead of you and two of them I like better. What do you need?",
+      "Make it fast. I've got a room full of people who think their glasses are empty."
+    ],
+    "idle": [
+      "If this tray gets any heavier I'm billing for physical therapy.",
+      "Eight kids. Eight. And none of them figured out the dishwasher.",
+      "I told the last guy who tried to short me something I can't repeat in church. He tipped correctly after that."
+    ],
+    "banter": [
+      "You remind me of someone. Somebody I didn't like.",
+      "That's interesting. Not to me, but I'm sure to somebody.",
+      "My aunt used to make a face like that right before she said something she'd regret. Don't end up like my aunt."
+    ]
+  }
+}

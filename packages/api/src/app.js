@@ -18,6 +18,7 @@ import { createContentRoutes } from './routes/content.js';
 import { createEncounterRoutes } from './routes/encounters.js';
 import { createSceneRoutes } from './routes/scenes.js';
 import { createAuthMiddleware } from './middleware/auth.js';
+import combatSessionsRouter from './routes/combatSessions.js';
 
 export function createApp(deps) {
   const app = express();
@@ -38,6 +39,7 @@ export function createApp(deps) {
   app.use('/api/auth', createAuthRoutes(deps));
   app.use('/api/characters', requireAuth, createCharacterRoutes(deps));
   app.use('/api/content', createContentRoutes());
+  app.use('/api/combat', combatSessionsRouter);
 
   // Encounter routes (optional — only mounted when encounterController is provided)
   if (deps.encounterController) {

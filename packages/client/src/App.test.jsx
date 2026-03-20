@@ -79,4 +79,9 @@ describe('App', () => {
     render(<App />);
     expect(screen.getByRole('button', { name: /enter bottoms up/i })).toBeInTheDocument();
   });
+
+  it('renders Enter Combat Simulator button on gate screen', () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: /enter combat simulator/i })).toBeInTheDocument();
+  });
 });

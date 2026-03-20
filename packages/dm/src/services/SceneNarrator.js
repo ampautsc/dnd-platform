@@ -34,6 +34,25 @@ export class SceneNarrator {
     this._provider = provider;
     this._relationshipRepo = relationshipRepo || null;
     this._personalityLookup = personalityLookup || null;
+    /** @type {Map<string, Array<{ role: string, content: string }>>} */
+    this._narratorHistory = new Map();
+  }
+
+  /**
+   * Get the narrator conversation history for a scene.
+   * @param {string} sceneId
+   * @returns {Array<{ role: string, content: string }>}
+   */
+  getNarratorHistory(sceneId) {
+    return this._narratorHistory.get(sceneId) || [];
+  }
+
+  /**
+   * Clear the narrator conversation history for a scene (e.g., on scene end).
+   * @param {string} sceneId
+   */
+  clearNarratorHistory(sceneId) {
+    this._narratorHistory.delete(sceneId);
   }
 
   /**
@@ -126,7 +145,7 @@ export class SceneNarrator {
    * @param {string} [params.sceneMemory] — Rolling summary of earlier scene events
    * @returns {Promise<{ narration: string, source: 'llm'|'fallback' }>}
    */
-  async narrateNpcBatch({ npcActions, worldContext, round, playerName, npcInnerStates = null, playerAction = null, sceneMemory = null }) {
+  async narrateNpcBatch({ npcActions, worldContext, round, playerName, npcInnerStates = null, playerAction = null, sceneMemory = null, sceneId = null }) {
     if (!npcActions || npcActions.length === 0) {
       return { narration: '', source: 'fallback' };
     }
@@ -182,12 +201,17 @@ export class SceneNarrator {
 
     const contextBlock = contextParts.length > 0 ? '\n\n' + contextParts.join('\n\n') + '\n\n' : '\n\n';
 
-    const userMessage = `Continue telling the story to the adventurer.${contextBlock}Here is what happened:\n\n${actionSummary}${appearancesSection}\n\nNarrate what the adventurer perceives. Use ONLY the names/descriptions given above to refer to characters.`;
+    // Build history first so we know whether the scene has already been narrated
+    const priorHistory = sceneId ? this.getNarratorHistory(sceneId) : [];
+
+    const userMessage = `Continue telling the story to the adventurer.${contextBlock}Here is what happened:\n\n${actionSummary}${appearancesSection}\n\nNarrate what the adventurer perceives. Use ONLY the names/descriptions given above to refer to characters.${priorHistory.length > 0 ? '\n\nIMPORTANT: The scene has already been set. Do NOT re-describe the setting, atmosphere, or environment. Do not repeat sensory details (smells, lighting, sounds) that were established in previous narration. Focus ONLY on the new actions, dialogue, and character reactions.' : ''}`;
+
+    const messages = [...priorHistory, { role: 'user', content: userMessage }];
 
     try {
       const response = await this._provider.generateResponse({
         systemPrompt,
-        messages: [{ role: 'user', content: userMessage }],
+        messages,
         maxTokens: 256,
         npcId: 'dm_narrator',
         npcName: 'DM',
@@ -195,6 +219,14 @@ export class SceneNarrator {
 
       const text = response?.text?.trim();
       if (!text) throw new Error('Empty DM narration');
+
+      // Store the exchange in narrator history for this scene
+      if (sceneId) {
+        const history = this.getNarratorHistory(sceneId);
+        history.push({ role: 'user', content: userMessage });
+        history.push({ role: 'assistant', content: text });
+        this._narratorHistory.set(sceneId, history);
+      }
 
       // Check for name leaks before returning to player
       const npcInfo = npcActions.map(a => ({
@@ -225,9 +257,7 @@ export class SceneNarrator {
    * @param {Array<Object>} [params.npcInnerStates] — DM-only inner state data for each NPC
    * @returns {Promise<{ narration: string, source: 'llm'|'fallback' }>}
    */
-  async narrateSceneOpening({ worldContext, participantNames, playerName, npcInnerStates = null }) {
-    const systemPrompt = this.buildDmNarrationPrompt({ worldContext, playerName, npcInnerStates });
-
+  async narrateSceneOpening({ worldContext, participantNames, playerName, npcInnerStates = null, sceneId = null }) {
     // Resolve participant names — accept either strings or { realName, templateKey } objects
     const resolvedNames = participantNames.map(p => {
       if (typeof p === 'string') return p;
@@ -245,19 +275,53 @@ export class SceneNarrator {
 
     const locationName = worldContext?.locationName || 'the area';
     const peopleList = resolvedNames.join(', ');
-    const userMessage = `An adventurer has just walked into ${locationName}. The following people are already here: ${peopleList}.${appearancesSection}\n\nSet the scene. Atmosphere, sounds, smells, light — then the people. Tell the adventurer what they walk into. Use ONLY the names/descriptions given above to refer to characters.`;
+    const arrivalVerb = playerName.toLowerCase() === 'you' ? 'push open the door and step' : 'pushes open the door and steps';
+    const userMessage = `${playerName} ${arrivalVerb} inside ${locationName} for the first time.\n\nPresent inside: ${peopleList}.${appearancesSection}\n\nWrite this moment of arrival in second person. Open by naming the place and placing ${playerName} at the threshold — the door swinging open, the first rush of senses hitting them. This is not a description of the room in isolation: it is the room experienced from inside it, as ${playerName} enters it right now. Anchor the reader immediately in "you" — "you step inside," "the smell reaches you," "you notice." Then the people: who is here, what they are doing, what is immediately striking about them.\n\nUse ONLY the names/descriptions given above to refer to characters.`;
 
     try {
+      // Build system prompt inside the try block so any prompt-construction error
+      // falls through to the fallback rather than rejecting the whole call.
+      const systemPrompt = this.buildDmNarrationPrompt({ worldContext, playerName, npcInnerStates });
+
+      // Build messages array (opening is always first — no prior history)
+      const messages = [{ role: 'user', content: userMessage }];
+
       const response = await this._provider.generateResponse({
         systemPrompt,
-        messages: [{ role: 'user', content: userMessage }],
-        maxTokens: 300,
+        messages,
+        maxTokens: 500,
         npcId: 'dm_narrator',
         npcName: 'DM',
       });
 
-      const text = response?.text?.trim();
+      let text = response?.text?.trim();
       if (!text) throw new Error('Empty opening narration');
+
+      // Store the opening exchange in narrator history for this scene
+      if (sceneId) {
+        this._narratorHistory.set(sceneId, [
+          { role: 'user', content: userMessage },
+          { role: 'assistant', content: text },
+        ]);
+      }
+
+      // ── Name-leak protection ─────────────────────────────────
+      if (this._relationshipRepo) {
+        const npcInfo = participantNames
+          .filter(p => typeof p === 'object' && p.templateKey)
+          .map(p => ({
+            templateKey: p.templateKey,
+            participantName: p.realName,
+            displayName: this._resolveDisplayName(p.templateKey, p.realName),
+          }));
+
+        if (npcInfo.length > 0) {
+          const leakCheck = this._detectNameLeaks(text, npcInfo);
+          if (leakCheck.leaked) {
+            text = leakCheck.cleaned;
+          }
+        }
+      }
 
       return { narration: text, source: 'llm' };
     } catch {

@@ -1,0 +1,47 @@
+{
+  "source": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\Steven.png",
+  "width": 1024,
+  "height": 1536,
+  "rows": 5,
+  "cols": 6,
+  "inset": 0.08,
+  "outputSize": 704,
+  "items": [
+    {
+      "slug": "zombie-from-sheet",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\zombie-from-sheet.png",
+      "row": 0,
+      "col": 0,
+      "crop": {
+        "left": 14,
+        "top": 82,
+        "width": 142,
+        "height": 142
+      }
+    },
+    {
+      "slug": "skeleton-from-sheet",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\skeleton-from-sheet.png",
+      "row": 0,
+      "col": 1,
+      "crop": {
+        "left": 185,
+        "top": 82,
+        "width": 142,
+        "height": 142
+      }
+    },
+    {
+      "slug": "ghoul-from-sheet",
+      "file": "C:\\Users\\ampau\\source\\AiAssist\\AiAssist\\DnD\\dnd-builder\\public\\portraits\\v2\\ghoul-from-sheet.png",
+      "row": 1,
+      "col": 1,
+      "crop": {
+        "left": 185,
+        "top": 389,
+        "width": 142,
+        "height": 142
+      }
+    }
+  ]
+}

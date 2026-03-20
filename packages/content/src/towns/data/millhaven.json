@@ -22,7 +22,14 @@
       "type": "inn_and_tavern",
       "description": "The social heart of Millhaven. Half the town's business gets done over ale here. Corner of Mill Road and King's Road.",
       "locationFile": "bottoms_up",
-      "npcInstances": ["mira_barrelbottom", "lell_sparrow", "bob_the_porous"]
+      "npcInstances": ["samren_malondar", "norvin_stonebottom", "clifton_rattleknow", "carza_bitetongue", "frasirel_cranewing", "rebeciel_ashgrace", "woody_tallfield", "harrik_hatfield"]
+    },
+    {
+      "name": "The Tipsy Gnome",
+      "type": "tavern",
+      "description": "A squat, round-roofed tavern on lower Mill Road that leans slightly to the left. Cozy, unpretentious, and fiercely loyal to its regulars.",
+      "locationFile": "tipsy_gnome",
+      "npcInstances": ["mira_barrelbottom", "lell_sparrow", "bob_the_porous", "amethyst_the_wildcard", "fen_colby"]
     },
     {
       "name": "Millhaven Market Square",
@@ -242,7 +249,7 @@
     }
   ],
   "npcRoster": [
-    { "templateKey": "mira_barrelbottom",  "name": "Mira Barrelbottom",  "role": "Innkeeper, Bottoms Up" },
+    { "templateKey": "mira_barrelbottom",  "name": "Mira Barrelbottom",  "role": "Innkeeper, The Tipsy Gnome" },
     { "templateKey": "brennan_holt",       "name": "Brennan Holt",       "role": "Gate Guard" },
     { "templateKey": "sera_dunwick",       "name": "Sera Dunwick",       "role": "Market Patrol Guard" },
     { "templateKey": "captain_edric_vane", "name": "Captain Edric Vane", "role": "Captain of the Guard" },
@@ -252,7 +259,7 @@
     { "templateKey": "vesna_calloway",     "name": "Vesna Calloway",     "role": "Herbalist & Apothecary" },
     { "templateKey": "davan_merchant",     "name": "Davan of the Road",  "role": "Traveling Merchant" },
     { "templateKey": "floris_embrich",     "name": "Floris Embrich",     "role": "Tailor, Cloth & Thread" },
-    { "templateKey": "lell_sparrow",       "name": "Lell Sparrow",       "role": "House Bard, Bottoms Up" },
+    { "templateKey": "lell_sparrow",       "name": "Lell Sparrow",       "role": "House Bard, The Tipsy Gnome" },
     { "templateKey": "aldovar_crennick",   "name": "Aldovar Crennick",   "role": "Town Elder, Council Head" },
     { "templateKey": "dolly_thurn",        "name": "Dolly Thurn",        "role": "Farmer & Mill Owner" },
     { "templateKey": "wren_stable",        "name": "Wren",               "role": "Stable Hand, Stoneback Stables" },
@@ -279,14 +286,14 @@
     { "templateKey": "fred_the_trapper",   "name": "Fredrick Ironsnare", "role": "Trap Designer, Thornwood's Lumber" },
     { "templateKey": "sam_the_loyal",      "name": "Samwick of the Greenfields", "role": "Gardener & Groundskeeper" },
     { "templateKey": "homer_the_glutton",  "name": "Durgin Ironbelly",   "role": "Butcher & Ratcatcher, Ironbelly's Meats" },
-    { "templateKey": "bob_the_porous",     "name": "Bobbert the Gleeful","role": "Cook, Bottoms Up kitchen" },
+    { "templateKey": "bob_the_porous",     "name": "Bobbert the Gleeful","role": "Cook, The Tipsy Gnome kitchen" },
     { "templateKey": "hades_the_god",      "name": "Malachar the Ledger-Keeper", "role": "Sexton & Gravedigger, The Quiet Yard" },
     { "templateKey": "dwight_the_assistant","name": "Durwin Thornhide",  "role": "Assistant Gate-Warden" },
     { "templateKey": "pat_the_star",       "name": "Pax the Starborn",   "role": "Dockworker & Mill Laborer" },
     { "templateKey": "han_the_smuggler",   "name": "Kael Stormrunner",   "role": "River Smuggler, Stoneback Docks" },
     { "templateKey": "george_the_neurotic","name": "Georvin the Wretched", "role": "Odd-Job Man, Blue Lantern Alley" },
     { "templateKey": "elaine_the_vengeful","name": "Elara Sharpwit",     "role": "Mercenary, passing through" },
-    { "templateKey": "amethyst_the_wildcard","name": "Amara the Stonebreaker", "role": "Brawler, Bottoms Up regular" },
+    { "templateKey": "amethyst_the_wildcard","name": "Amara the Stonebreaker", "role": "Brawler, The Tipsy Gnome regular" },
     { "templateKey": "fry_the_delivery_boy","name": "Fren of Coldwater Vale", "role": "Courier & Delivery Boy" },
     { "templateKey": "hermione_the_bookworm","name": "Maelis Thornwick",       "role": "Head Teacher, Millhaven Schoolhouse" },
     { "templateKey": "splinter_the_master",  "name": "Master Kyoshi the Rat Sage", "role": "Martial Instructor, Millhaven Schoolhouse" },
@@ -326,7 +333,15 @@
     { "templateKey": "bart_the_menace",     "name": "Barrick the Wayward",     "role": "Troublemaker, Mill Road resident" },
     { "templateKey": "jim_the_prankster",   "name": "Jalen of House Halper",   "role": "Scribe, Millhaven Town Hall" },
     { "templateKey": "kramer_the_chaos",    "name": "Kaelus the Inadvertent",  "role": "Hedge-Mage & Vendor, Market Square" },
-    { "templateKey": "aang_the_wind_monk",  "name": "Aeren of the Skyborne Monastery", "role": "Visiting Monk, Temple of the Allmother" }
+    { "templateKey": "aang_the_wind_monk",  "name": "Aeren of the Skyborne Monastery", "role": "Visiting Monk, Temple of the Allmother" },
+    { "templateKey": "samren_malondar",     "name": "Samren Malondar",      "role": "Owner & Bartender, Bottoms Up" },
+    { "templateKey": "norvin_stonebottom",   "name": "Norvin Stonebottom",    "role": "Regular, Bottoms Up (third barstool from the left)" },
+    { "templateKey": "clifton_rattleknow",   "name": "Clifton Rattleknow",    "role": "Regular & Courier, Bottoms Up" },
+    { "templateKey": "carza_bitetongue",     "name": "Carza Bitetongue",      "role": "Waitress, Bottoms Up" },
+    { "templateKey": "frasirel_cranewing",    "name": "Frasirel Cranewing",    "role": "Regular & Mind-Healer, Bottoms Up" },
+    { "templateKey": "rebeciel_ashgrace",     "name": "Rebeciel Ashgrace",     "role": "Manager, Bottoms Up" },
+    { "templateKey": "woody_tallfield",       "name": "Woody Tallfield",       "role": "Bartender, Bottoms Up" },
+    { "templateKey": "harrik_hatfield",       "name": "Harrik Hatfield",       "role": "Occasional Regular & Card Sharp, Bottoms Up" }
   ],
   "worldContext": {
     "defaultLocation": "Millhaven town",

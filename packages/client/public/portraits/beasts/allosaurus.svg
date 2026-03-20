@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Head - raptor like with crest -->
+    <path d="M20 22 L40 16 L48 18 L50 22 L48 28 L44 30 L40 28 L36 30 L30 28 L24 30 L20 28Z"/>
+    <!-- Lower jaw -->
+    <path d="M22 28 L30 30 L38 30 L44 30 L48 32 L44 36 L36 38 L26 36 L20 32Z"/>
+    <!-- Teeth -->
+    <path d="M26 28 L28 30 L30 28 M32 28 L34 30 L36 28 M38 28 L40 30 L42 28" fill="none" stroke="#1a2020" stroke-width="0.8"/>
+    <!-- Crest ridge -->
+    <path d="M32 14 L36 12 L40 14 L44 16" fill="none" stroke="#b0a890" stroke-width="1.5"/>
+    <!-- Eye -->
+    <circle cx="42" cy="22" r="2.5" fill="#c4a63a"/>
+    <circle cx="42" cy="22" r="1" fill="#1a2020"/>
+    <!-- Body/neck -->
+    <path d="M22 30 L16 38 L18 46 L26 50 L34 48 L36 42 L32 36 L28 32Z"/>
+    <!-- Arm with claws -->
+    <path d="M28 40 L24 44 L22 46 M24 44 L22 48 M24 44 L26 48" fill="none" stroke="#d0c8b0" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+</svg>

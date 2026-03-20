@@ -98,12 +98,18 @@ export function buildEncounterSystemPrompt({
   // ⚠ Header text "Remember who you are:" is CANONICAL — do not change.
 
   const intMod = Math.floor(((stats.intelligence || 10) - 10) / 2)
+  const wisMod = Math.floor(((stats.wisdom || 10) - 10) / 2)
   const chaMod = Math.floor(((stats.charisma || 10) - 10) / 2)
   const smartDesc = intMod >= 3 ? 'sharp and articulate'
     : intMod >= 1 ? 'perceptive'
     : intMod >= 0 ? 'of average wit'
     : 'not quick of mind'
-  const charDesc = chaMod >= 3 ? 'naturally commanding'
+  const wisDesc = wisMod >= 3 ? 'deeply perceptive of people and situations'
+    : wisMod >= 1 ? 'observant'
+    : wisMod >= 0 ? 'no better or worse than most at reading the room'
+    : 'prone to missing what others see'
+  const charDesc = chaMod >= 4 ? 'magnetically commanding — people notice when you enter'
+    : chaMod >= 3 ? 'naturally commanding'
     : chaMod >= 1 ? 'socially at ease'
     : chaMod >= 0 ? 'unremarkable in bearing'
     : 'gruff and off-putting'
@@ -124,7 +130,30 @@ export function buildEncounterSystemPrompt({
   if (pers.mannerisms?.length > 0) {
     identityLines.push(`Your mannerisms: ${pers.mannerisms.join('; ')}.`)
   }
-  identityLines.push(`You are ${smartDesc} and ${charDesc}.`)
+  identityLines.push(`You are ${smartDesc}, ${wisDesc}, and ${charDesc}.`)
+
+  // Appearance — how you experience your own body and presence
+  const app = p.appearance
+  if (app) {
+    const appLines = ['How you carry yourself and what you know about your own appearance:']
+    if (app.build) appLines.push(`Build: ${app.build}.`)
+    if (app.height) appLines.push(`Height: ${app.height}.`)
+    if (app.hair) appLines.push(`Hair: ${app.hair}.`)
+    if (app.eyes) appLines.push(`Eyes: ${app.eyes}.`)
+    if (app.skin) appLines.push(`Skin: ${app.skin}.`)
+    if (app.typicalAttire) appLines.push(`You typically wear: ${app.typicalAttire}.`)
+    if (app.distinguishingFeatures?.length > 0) {
+      appLines.push(`Distinguishing features: ${app.distinguishingFeatures.join('; ')}.`)
+    }
+    if (app.firstImpression) appLines.push(`The impression you make on others: ${app.firstImpression}.`)
+    if (appLines.length > 1) identityLines.push(appLines.join(' '))
+  }
+
+  // Direct quotes — the actual sound of this consciousness speaking
+  if (pers.directQuotes?.length > 0) {
+    identityLines.push(`Your voice in your own words:\n${pers.directQuotes.map(q => `  ${q}`).join('\n')}`)
+  }
+
   sections.push(identityLines.join('\n'))
 
   // ── 3. Remember Where You Come From ─────────────────────────────
@@ -168,8 +197,28 @@ export function buildEncounterSystemPrompt({
   // ⚠ Header text "Remember your relationships:" is CANONICAL — do not change.
   // Unified section: opinion prose + structured data from RelationshipRepository
 
-  if (relationshipContext) {
-    sections.push(`Remember your relationships:\n${relationshipContext}`)
+  {
+    const relLines = []
+    if (relationshipContext) {
+      relLines.push(relationshipContext)
+    } else {
+      // Fall back to static relationship lists when RelationshipRepository hasn't been seeded yet
+      const rels = p.relationships || {}
+      if (rels.allies?.length > 0) relLines.push(`Allies: ${rels.allies.join(', ')}.`)
+      if (rels.enemies?.length > 0) relLines.push(`Enemies: ${rels.enemies.join(', ')}.`)
+      if (rels.neutralParties?.length > 0) relLines.push(`Known neutral parties: ${rels.neutralParties.join(', ')}.`)
+    }
+    // Specific opinions about known individuals
+    const opinions = cc?.opinionsAbout
+    if (opinions && Object.keys(opinions).length > 0) {
+      relLines.push('What you think of the people you know:')
+      for (const [key, opinion] of Object.entries(opinions)) {
+        relLines.push(`  ${key}: ${opinion}`)
+      }
+    }
+    if (relLines.length > 0) {
+      sections.push(`Remember your relationships:\n${relLines.join('\n')}`)
+    }
   }
 
   // ── 6. Remember Where You Are Going ─────────────────────────────
@@ -234,6 +283,15 @@ export function buildEncounterSystemPrompt({
     if (psych?.copingMechanisms?.length > 0) {
       mindLines.push(`Your coping mechanisms: ${psych.copingMechanisms.join('; ')}.`)
     }
+    if (psych?.attachmentStyle) {
+      mindLines.push(`Your attachment style: ${psych.attachmentStyle}.`)
+    }
+    if (psych?.cognitiveBiases?.length > 0) {
+      mindLines.push(`The ways your thinking is bent: ${psych.cognitiveBiases.join('; ')}.`)
+    }
+    if (cc.wakeUpQuestions?.length > 0) {
+      mindLines.push(`The questions you can't stop asking yourself:\n${cc.wakeUpQuestions.map(q => `  - ${q}`).join('\n')}`)
+    }
 
     if (mindLines.length > 1) sections.push(mindLines.join('\n'))
   }
@@ -267,12 +325,26 @@ export function buildEncounterSystemPrompt({
 
     const cp = cc?.conversationPersona
     if (cp) {
+      if (cp.trustEscalation) {
+        secLines.push(`How trust develops with you: ${cp.trustEscalation}.`)
+      }
       if (cp.informationRelease) {
         secLines.push(`How you release information: ${cp.informationRelease}.`)
       }
       if (cp.deflectionPatterns?.length > 0) {
         secLines.push(`When uncomfortable or guarding something, you: ${cp.deflectionPatterns.join('; ')}.`)
       }
+    }
+
+    // World knowledge this consciousness holds
+    const knownFactions = knowledge.knownFactions
+    const knownLocations = knowledge.knownLocations
+    const languages = knowledge.languagesSpoken
+    if (knownFactions?.length > 0 || knownLocations?.length > 0 || languages?.length > 0) {
+      secLines.push('[WHAT YOU KNOW ABOUT THE WORLD]')
+      if (knownFactions?.length > 0) secLines.push(`Factions and groups you know: ${knownFactions.join('; ')}.`)
+      if (knownLocations?.length > 0) secLines.push(`Places you know well: ${knownLocations.join('; ')}.`)
+      if (languages?.length > 0) secLines.push(`Languages you speak: ${languages.join(', ')}.`)
     }
 
     if (secLines.length > 0) sections.push(secLines.join('\n'))

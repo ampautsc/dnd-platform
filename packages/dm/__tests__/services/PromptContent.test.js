@@ -118,7 +118,11 @@ beforeAll(async () => {
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function firstUserMessage(call) {
-  return call.messages?.find(m => m.role === 'user')?.content ?? '';
+  // For single-turn calls (scene opening) this is the only user message.
+  // For multi-turn calls the first message may be prior history — use the
+  // last user message, which is always the current prompt being sent.
+  const userMessages = call.messages?.filter(m => m.role === 'user') ?? [];
+  return userMessages.at(-1)?.content ?? '';
 }
 
 // ── NPC system prompt tests ──────────────────────────────────────────────────
@@ -335,8 +339,8 @@ describe('DM narrator system prompt', () => {
     expect(batchCall).toBeDefined();
   });
 
-  it('scene opening call uses maxTokens 300', () => {
-    expect(dmCalls[0].maxTokens).toBe(300);
+  it('scene opening call uses maxTokens 500', () => {
+    expect(dmCalls[0].maxTokens).toBe(500);
   });
 });
 

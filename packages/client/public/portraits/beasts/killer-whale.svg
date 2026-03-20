@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <!-- Orca body - black -->
+  <path d="M8 34 Q14 22 28 24 L46 26 Q56 28 58 32 Q56 38 46 40 L28 42 Q14 44 8 34Z" fill="#2a2a2a"/>
+  <!-- White belly patch -->
+  <path d="M18 36 Q28 42 42 38 L46 36 Q50 34 52 32 Q50 36 46 40 L28 42 Q16 42 18 36Z" fill="#e8e4dc"/>
+  <!-- White eye patch -->
+  <ellipse cx="46" cy="28" rx="3" ry="2" fill="#e8e4dc"/>
+  <!-- Eye -->
+  <circle cx="48" cy="29" r="1.2" fill="#1a2020"/>
+  <!-- Dorsal fin -->
+  <path d="M30 24 L34 10 L38 24Z" fill="#2a2a2a"/>
+  <!-- Tail -->
+  <path d="M8 34 L4 26 L12 30 M8 34 L4 42 L12 38" fill="#2a2a2a" stroke="#2a2a2a" stroke-width="1"/>
+  <!-- Pectoral fin -->
+  <path d="M34 40 L30 48 L38 42Z" fill="#2a2a2a"/>
+  <!-- Saddle patch -->
+  <path d="M22 24 Q26 22 30 24 L28 26 Q26 24 22 26Z" fill="#6a6a6a"/>
+</svg>

@@ -185,6 +185,14 @@ const NPC_FILES = [
   'hammond_the_dreamer',
   'malcolm_the_chaos',
   'grant_the_skeptic',
+  'sam_malone',
+  'woody_boyd',
+  'norm_peterson',
+  'cliff_clavin',
+  'carla_tortelli',
+  'frasier_crane',
+  'harry_the_hat',
+  'rebecca_howe',
 ]
 
 // ─── Registry ───────────────────────────────────────────────────────────────

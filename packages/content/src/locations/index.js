@@ -43,6 +43,7 @@ const LOCATION_FILES = [
   'driftwood_tavern',
   'tinctures_shop',
   'curiosity_shop',
+  'tipsy_gnome',
 ]
 
 // ─── Registry ───────────────────────────────────────────────────────────────

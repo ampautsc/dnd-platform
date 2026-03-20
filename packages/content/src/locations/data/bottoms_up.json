@@ -3,7 +3,7 @@
   "name": "Bottoms Up",
   "type": "tavern",
   "description": "A two-story timber-frame tavern on the corner of Mill Road and the King's Road. The sign out front is a painted wooden tankard tipped upside-down, faded by weather but recently re-hung. Inside it smells of woodsmoke, spilled ale, and whatever's simmering in the kitchen. The floorboards creak in specific places the regulars have memorized. The bar is oak, scarred and polished by decades of elbows. There are ten tables of varying size, a fireplace that dominates the west wall, and a staircase to the rooms upstairs that groans on the fourth step.",
-  "owner": "mira_barrelbottom",
+  "owner": "samren_malondar",
   "atmosphere": {
     "defaultTone": "lively",
     "tags": ["welcoming", "gossipy", "warm", "loud in the evenings", "quiet in the mornings"],
@@ -14,7 +14,7 @@
       "Creak of floorboards under serving staff",
       "Pop and hiss of the hearth fire",
       "Occasional shout for another round",
-      "Lell's lute from the corner on busy nights"
+      "Banter from the end of the bar where Norvin holds court"
     ],
     "smells": [
       "Wood smoke from the hearth",
@@ -33,7 +33,7 @@
     },
     {
       "name": "The Bar",
-      "description": "Oak counter with six stools. Mira's domain. She can see the entire room from here and frequently does."
+      "description": "Oak counter with six stools. Samren's domain — the leonin presides from behind the bar with the pride of a former champion and the watchfulness of a recovering drinker. The end stool belongs to Norvin. Everyone knows this."
     },
     {
       "name": "Back Corner",
@@ -53,18 +53,24 @@
     },
     {
       "name": "Cellar",
-      "description": "Kegs, bottles, root vegetables, and one locked cabinet Mira does not discuss."
+      "description": "Kegs, bottles, root vegetables, and one locked cabinet from the previous management that Samren has not opened."
     }
   ],
   "regulars": [
-    "mira_barrelbottom",
-    "fen_colby"
+    "samren_malondar",
+    "norvin_stonebottom",
+    "clifton_rattleknow",
+    "carza_bitetongue",
+    "frasirel_cranewing",
+    "rebeciel_ashgrace",
+    "woody_tallfield",
+    "harrik_hatfield"
   ],
   "hooks": [
     "The card game on the third floor — anyone with the right introduction can get in",
     "Fen Colby has been drinking more than usual and muttering about something he saw at the docks",
     "A traveler left a locked chest in one of the rooms two weeks ago and hasn't come back",
-    "Mira's locked ledger — she knows everyone's secrets but has never used one",
+    "A locked cabinet from the previous owner — Samren has not opened it and does not plan to",
     "The bread basket from Oma's bakery arrives before dawn and is always empty by mid-morning"
   ],
   "worldContext": {

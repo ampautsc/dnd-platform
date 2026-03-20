@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Head - sleek raptor -->
+    <path d="M22 18 L42 14 L50 18 L50 24 L46 28 L42 26 L36 28 L28 26 L22 28 L18 24Z"/>
+    <!-- Lower jaw - narrow -->
+    <path d="M22 28 L30 30 L40 28 L46 28 L48 32 L42 34 L30 34 L20 30Z"/>
+    <!-- Teeth -->
+    <path d="M28 26 L30 28 L32 26 M34 26 L36 28 L38 26" fill="none" stroke="#1a2020" stroke-width="0.7"/>
+    <!-- Eye - large -->
+    <circle cx="42" cy="20" r="3" fill="#c4a63a"/>
+    <circle cx="42" cy="20" r="1.5" fill="#1a2020"/>
+    <!-- Body -->
+    <path d="M20 30 L14 38 L16 46 L24 50 L30 48 L28 42 L24 36Z"/>
+    <!-- Distinctive sickle claw -->
+    <path d="M20 48 L16 52 Q14 56 18 56 L22 52" fill="#f0ead0" stroke="#c0b8a0" stroke-width="0.5"/>
+    <!-- Arms with claws -->
+    <path d="M24 38 L20 42 L18 44 M20 42 L16 46" fill="none" stroke="#d0c8b0" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Tail -->
+    <path d="M16 46 L10 48 L8 46" fill="none" stroke="#d0c8b0" stroke-width="2" stroke-linecap="round"/>
+    <!-- Feather hints on arms -->
+    <path d="M22 36 L18 38 L20 40" fill="#b0a890"/>
+    <path d="M20 38 L16 40 L18 42" fill="#b0a890"/>
+  </g>
+</svg>

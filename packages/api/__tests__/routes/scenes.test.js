@@ -237,5 +237,21 @@ describe('Scene Routes', () => {
       expect(player).toBeDefined();
       expect(player.name).toBe('Thorn');
     });
+
+    it('should return a non-empty transcript containing a DM opening narration', async () => {
+      const res = await request.post('/api/scenes/at-location').send({
+        locationId: 'bottoms_up',
+        playerName: 'Thorn',
+      });
+      expect(res.status).toBe(201);
+      expect(Array.isArray(res.body.transcript)).toBe(true);
+      expect(res.body.transcript.length).toBeGreaterThanOrEqual(1);
+      const openingEntry = res.body.transcript.find(
+        e => e.participantId === 'dm' && e.type === 'narration',
+      );
+      expect(openingEntry).toBeDefined();
+      expect(typeof openingEntry.content).toBe('string');
+      expect(openingEntry.content.length).toBeGreaterThan(0);
+    });
   });
 });

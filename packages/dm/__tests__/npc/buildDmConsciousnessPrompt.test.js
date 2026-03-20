@@ -271,4 +271,78 @@ describe('buildDmConsciousnessPrompt', () => {
     // DM must use pronouns based on visible appearance, never from metadata
     expect(prompt).toMatch(/pronoun|gender.*appear|refer.*based on.*appear/i);
   });
+
+  // ── NPC-to-NPC Relationship Context ─────────────────────────
+
+  it('should include NPC-to-NPC relationship context when provided', () => {
+    const prompt = buildDmConsciousnessPrompt({
+      ...minimalParams,
+      npcInnerStates: [
+        {
+          displayName: 'the halfling behind the bar',
+          mood: 'content',
+          relationships: [
+            {
+              targetDisplayName: 'a quiet man at the bar',
+              opinion: 'Part of the furniture. Mostly harmless. Occasionally useful.',
+              recognitionTier: 'familiar',
+              valence: 'neutral',
+            },
+          ],
+        },
+        {
+          displayName: 'a quiet man at the bar',
+          mood: 'cautious',
+          relationships: [
+            {
+              targetDisplayName: 'the halfling behind the bar',
+              opinion: 'Tolerates me. Kinder than she has to be.',
+              recognitionTier: 'familiar',
+              valence: 'neutral',
+            },
+          ],
+        },
+      ],
+    });
+    expect(prompt).toContain('Part of the furniture');
+    expect(prompt).toContain('Tolerates me');
+    expect(prompt).toMatch(/familiar/i);
+  });
+
+  it('should label NPC-to-NPC relationships section clearly', () => {
+    const prompt = buildDmConsciousnessPrompt({
+      ...minimalParams,
+      npcInnerStates: [
+        {
+          displayName: 'the halfling behind the bar',
+          mood: 'content',
+          relationships: [
+            {
+              targetDisplayName: 'a quiet man at the bar',
+              opinion: 'Part of the furniture.',
+              recognitionTier: 'familiar',
+              valence: 'neutral',
+            },
+          ],
+        },
+      ],
+    });
+    // Should have a recognizable section header so the DM can use relationship data
+    expect(prompt).toMatch(/relationship|knows about|thinks about/i);
+  });
+
+  it('should skip relationships section when no relationships provided', () => {
+    const prompt = buildDmConsciousnessPrompt({
+      ...minimalParams,
+      npcInnerStates: [
+        {
+          displayName: 'a quiet man at the bar',
+          mood: 'cautious',
+          // no relationships field
+        },
+      ],
+    });
+    // Should not contain stale relationship headers
+    expect(prompt).not.toMatch(/Thinks about:|Knows about:/);
+  });
 });

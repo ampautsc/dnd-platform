@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Body -->
+    <path d="M8 32 Q12 22 24 24 L44 26 Q54 28 56 32 Q54 36 44 38 L24 40 Q12 42 8 32Z" fill="#8a9aaa"/>
+    <!-- Belly -->
+    <path d="M12 34 Q20 40 36 38 L44 36 Q50 34 52 32 Q50 34 44 38 L24 40 Q14 40 12 34Z" fill="#c0c8d0"/>
+    <!-- Dorsal fin -->
+    <path d="M28 24 L32 12 L36 24Z" fill="#7a8a9a"/>
+    <!-- Tail -->
+    <path d="M8 32 L4 22 L10 28 M8 32 L4 42 L10 36" fill="#8a9aaa" stroke="#8a9aaa" stroke-width="1"/>
+    <!-- Pectoral fin -->
+    <path d="M30 38 L26 46 L34 40Z" fill="#7a8a9a"/>
+    <!-- Eye -->
+    <circle cx="48" cy="30" r="2" fill="#1a2020"/>
+    <!-- Gill slits -->
+    <line x1="42" y1="28" x2="42" y2="34" stroke="#1a2020" stroke-width="0.8"/>
+    <line x1="40" y1="28" x2="40" y2="34" stroke="#1a2020" stroke-width="0.8"/>
+    <line x1="38" y1="28" x2="38" y2="35" stroke="#1a2020" stroke-width="0.8"/>
+    <!-- Mouth -->
+    <path d="M50 34 Q54 34 56 32" fill="none" stroke="#1a2020" stroke-width="1"/>
+  </g>
+</svg>

@@ -301,7 +301,7 @@ export class SceneEngine {
       });
 
       // Collect inner state for DM consciousness
-      npcInnerStates.push(this._buildNpcInnerState(npcParticipant));
+      npcInnerStates.push(this._buildNpcInnerState(npcParticipant, state.allParticipants));
 
       // Handle LEAVE — remove NPC from scene
       if (npcAction.type === 'leave') {
@@ -325,7 +325,7 @@ export class SceneEngine {
       // Collect inner states for ALL NPC participants, not just those who acted
       const allNpcInnerStates = state.allParticipants
         .filter(p => !p.isPlayer)
-        .map(p => this._buildNpcInnerState(p));
+        .map(p => this._buildNpcInnerState(p, state.allParticipants));
 
       const { narration } = await this._sceneNarrator.narrateNpcBatch({
         npcActions,
@@ -334,6 +334,7 @@ export class SceneEngine {
         playerName: playerParticipant?.name || 'adventurer',
         npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
         playerAction: action,
+        sceneId: sceneId,
       });
       if (narration) {
         state = state.withTranscriptEntry({
@@ -371,6 +372,12 @@ export class SceneEngine {
 
     state = state.withEndReason(reason);
     this._scenes.set(sceneId, state);
+
+    // Clean up narrator conversation history for this scene
+    if (this._sceneNarrator?.clearNarratorHistory) {
+      this._sceneNarrator.clearNarratorHistory(sceneId);
+    }
+
     return state;
   }
 
@@ -449,7 +456,7 @@ export class SceneEngine {
       const npcParticipants = state.allParticipants.filter(p => !p.isPlayer);
 
       // Build inner states for ALL NPCs in the scene
-      const allNpcInnerStates = npcParticipants.map(p => this._buildNpcInnerState(p));
+      const allNpcInnerStates = npcParticipants.map(p => this._buildNpcInnerState(p, state.allParticipants));
 
       // Build participant names for the narrator
       const participantNames = npcParticipants.map(p => ({
@@ -463,6 +470,7 @@ export class SceneEngine {
           participantNames,
           playerName: playerParticipant?.name || 'adventurer',
           npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
+          sceneId: state.id,
         });
         if (narration) {
           state = state.withTranscriptEntry({
@@ -475,6 +483,8 @@ export class SceneEngine {
             turnIndex: state.turnIndex,
             timestamp: Date.now(),
           });
+        } else {
+          console.warn('[SceneEngine] narrateSceneOpening returned empty narration — opening transcript entry skipped');
         }
       }
     }
@@ -515,7 +525,7 @@ export class SceneEngine {
       });
 
       // Collect inner state for DM consciousness
-      npcInnerStates.push(this._buildNpcInnerState(npcParticipant));
+      npcInnerStates.push(this._buildNpcInnerState(npcParticipant, state.allParticipants));
 
       // Handle LEAVE — remove NPC from scene
       if (npcAction.type === 'leave') {
@@ -539,7 +549,7 @@ export class SceneEngine {
       // Collect inner states for ALL NPC participants, not just those who acted
       const allNpcInnerStates = state.allParticipants
         .filter(p => !p.isPlayer)
-        .map(p => this._buildNpcInnerState(p));
+        .map(p => this._buildNpcInnerState(p, state.allParticipants));
 
       const { narration } = await this._sceneNarrator.narrateNpcBatch({
         npcActions,
@@ -547,6 +557,7 @@ export class SceneEngine {
         round: state.round,
         playerName: playerParticipant?.name || 'adventurer',
         npcInnerStates: allNpcInnerStates.length > 0 ? allNpcInnerStates : null,
+        sceneId: sceneId,
       });
       if (narration) {
         state = state.withTranscriptEntry({
@@ -652,11 +663,32 @@ export class SceneEngine {
    * @param {{ id, name, isPlayer, templateKey }} participant
    * @returns {{ displayName, mood, consciousWant, unconsciousNeed, currentActivity, secrets, isLying }}
    */
-  _buildNpcInnerState(participant) {
+  _buildNpcInnerState(participant, allParticipants = []) {
     const displayName = this._resolvePlayerDisplayName(participant);
     const personality = this._personalityLookup?.(participant.templateKey) || null;
     const snapshot = this._runtimeContext?.getSnapshot(participant.templateKey) || null;
     const cc = personality?.consciousnessContext || null;
+
+    // Build NPC-to-NPC relationship data
+    let relationships = null;
+    if (this._relationshipRepo && allParticipants.length > 0) {
+      const npcKey = participant.templateKey || participant.id;
+      const rels = [];
+      for (const other of allParticipants) {
+        if (other.isPlayer || other.id === participant.id) continue;
+        const otherKey = other.templateKey || other.id;
+        const rel = this._relationshipRepo.getRelationship(npcKey, otherKey);
+        if (rel && rel.recognitionTier !== 'stranger') {
+          rels.push({
+            targetDisplayName: this._resolvePlayerDisplayName(other),
+            opinion: rel.opinion || null,
+            recognitionTier: rel.recognitionTier,
+            valence: rel.emotionalValence >= 0.2 ? 'positive' : rel.emotionalValence <= -0.2 ? 'negative' : 'neutral',
+          });
+        }
+      }
+      if (rels.length > 0) relationships = rels;
+    }
 
     return {
       displayName,
@@ -669,6 +701,7 @@ export class SceneEngine {
       gender: personality?.gender || null,
       race: personality?.race || null,
       appearance: personality?.appearance || null,
+      relationships,
     };
   }
 

@@ -249,6 +249,15 @@ export function buildDmConsciousnessPrompt({
         npcLines.push('    perceptive observer might notice. Do NOT announce the lie.');
       }
 
+      // ── NPC-to-NPC relationships (DM-only — informs interaction dynamics) ────
+      if (npc.relationships?.length > 0) {
+        npcLines.push('  Thinks about others present:');
+        for (const rel of npc.relationships) {
+          npcLines.push(`    ${rel.targetDisplayName} (${rel.recognitionTier}): ${rel.opinion || 'No strong opinion.'}`);
+        }
+        npcLines.push('  → Use this to inform how they interact with each other.');
+      }
+
       stateLines.push(npcLines.join('\n'));
       stateLines.push('');
     }

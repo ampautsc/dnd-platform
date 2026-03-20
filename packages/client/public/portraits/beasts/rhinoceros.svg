@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Body -->
+    <path d="M10 36 Q20 24 36 26 L48 28 Q56 32 48 38 L36 40 Q20 42 10 36Z" fill="#8a8a88"/>
+    <!-- Head -->
+    <path d="M48 28 L58 30 L58 34 L56 36 L48 38Z" fill="#9a9a98"/>
+    <!-- Horn -->
+    <path d="M56 28 L58 22 L54 28" fill="#f0ead0"/>
+    <!-- Ear -->
+    <path d="M50 26 L52 22 L54 26Z" fill="#8a8a88"/>
+    <!-- Eye -->
+    <circle cx="54" cy="32" r="1.8" fill="#1a2020"/>
+    <!-- Nostril -->
+    <circle cx="58" cy="32" r="0.8" fill="#1a2020"/>
+    <!-- Mouth line -->
+    <path d="M56 36 Q58 36 58 34" fill="none" stroke="#1a2020" stroke-width="0.8"/>
+    <!-- Wrinkles -->
+    <path d="M44 30 Q46 28 48 30 M44 34 Q46 36 48 34" fill="none" stroke="#7a7a78" stroke-width="0.8"/>
+    <!-- Legs -->
+    <rect x="22" y="38" width="4" height="12" rx="1.5" fill="#7a7a78"/>
+    <rect x="38" y="36" width="4" height="14" rx="1.5" fill="#7a7a78"/>
+    <!-- Tail -->
+    <path d="M10 36 L6 38 L4 36" fill="none" stroke="#8a8a88" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

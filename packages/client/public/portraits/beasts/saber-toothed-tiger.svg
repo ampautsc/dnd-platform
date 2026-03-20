@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Head -->
+    <ellipse cx="32" cy="26" rx="12" ry="11"/>
+    <!-- Ears -->
+    <path d="M22 16 L18 10 L24 16Z"/>
+    <path d="M42 16 L46 10 L40 16Z"/>
+    <!-- Inner ears -->
+    <path d="M22 16 L20 12 L24 16Z" fill="#a09480"/>
+    <path d="M42 16 L44 12 L40 16Z" fill="#a09480"/>
+    <!-- Muzzle -->
+    <ellipse cx="32" cy="32" rx="6" ry="5" fill="#c0b8a0"/>
+    <!-- Nose -->
+    <ellipse cx="32" cy="30" rx="2.5" ry="1.5" fill="#6a4a3a"/>
+    <!-- Saber teeth! -->
+    <path d="M27 34 L26 44 L29 36" fill="#f0ead0"/>
+    <path d="M37 34 L38 44 L35 36" fill="#f0ead0"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="24" rx="2.5" ry="2" fill="#c4a63a"/>
+    <ellipse cx="38" cy="24" rx="2.5" ry="2" fill="#c4a63a"/>
+    <circle cx="26" cy="24" r="1" fill="#1a2020"/>
+    <circle cx="38" cy="24" r="1" fill="#1a2020"/>
+    <!-- Mouth -->
+    <path d="M28 35 Q32 37 36 35" fill="none" stroke="#1a2020" stroke-width="0.8"/>
+    <!-- Whiskers hint -->
+    <path d="M26 32 L18 30 M26 34 L18 34 M38 32 L46 30 M38 34 L46 34" fill="none" stroke="#b0a890" stroke-width="0.5"/>
+    <!-- Chin fur -->
+    <path d="M26 38 Q32 42 38 38" fill="#b0a890"/>
+  </g>
+</svg>

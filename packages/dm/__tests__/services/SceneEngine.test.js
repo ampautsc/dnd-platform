@@ -1060,6 +1060,137 @@ describe('SceneEngine', () => {
     });
   });
 
+  // ── NPC-to-NPC relationships in inner states ─────────────────
+
+  describe('NPC-to-NPC relationships in inner states', () => {
+    it('should include NPC-to-NPC relationships in inner states when relationshipRepo has data', async () => {
+      let capturedBatchArgs = null;
+      const mockNarrator = {
+        narrateNpcBatch: async (args) => {
+          capturedBatchArgs = args;
+          return { narration: 'They exchange a glance.', source: 'llm' };
+        },
+        narrateSceneOpening: async () => {
+          return { narration: 'The tavern is warm.', source: 'llm' };
+        },
+      };
+
+      const miraP = makePersonality('mira', 'Mira', 16);
+      miraP.gender = 'female';
+      miraP.race = 'Halfling';
+      miraP.appearance = { firstImpression: 'a compact halfling behind the bar' };
+      miraP.consciousnessContext.opinionsAbout = {
+        fen_colby: 'Part of the furniture. Mostly harmless. Occasionally useful.',
+      };
+
+      const fenP = makePersonality('fen_colby', 'Fen Colby', 10);
+      fenP.gender = 'male';
+      fenP.race = 'Human';
+      fenP.appearance = { firstImpression: 'a quiet man at the bar' };
+      fenP.consciousnessContext.opinionsAbout = {
+        mira: 'Tolerates me. Kinder than she has to be.',
+      };
+
+      const personalityMap = { mira: miraP, fen_colby: fenP };
+      const lookup = (key) => personalityMap[key] || null;
+
+      const repo = new RelationshipRepository();
+      // Seed NPC-to-NPC relationships
+      repo.seedFromPersonality(miraP);
+      repo.seedFromPersonality(fenP);
+      // Seed player-to-NPC (for display label resolution)
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'mira',
+        recognitionTier: 'recognized',
+        displayLabel: 'the halfling behind the bar',
+      });
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'fen_colby',
+        recognitionTier: 'recognized',
+        displayLabel: 'a quiet man at the bar',
+      });
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: lookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: mockNarrator,
+        relationshipRepo: repo,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+          { id: 'npc_fen', name: 'Fen Colby', chaMod: 1, isPlayer: false, templateKey: 'fen_colby' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.submitAction(scene.id, 'player_1', {
+        type: 'speech', content: 'Hello.',
+      });
+
+      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
+      expect(capturedBatchArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+
+      const miraState = capturedBatchArgs.npcInnerStates.find(s => s.displayName === 'the halfling behind the bar');
+      expect(miraState).toBeDefined();
+      expect(miraState.relationships).toBeDefined();
+      expect(miraState.relationships.length).toBeGreaterThanOrEqual(1);
+
+      const miraToFen = miraState.relationships.find(r => r.targetDisplayName === 'a quiet man at the bar');
+      expect(miraToFen).toBeDefined();
+      expect(miraToFen.opinion).toBe('Part of the furniture. Mostly harmless. Occasionally useful.');
+      expect(miraToFen.recognitionTier).toBe('familiar');
+
+      const fenState = capturedBatchArgs.npcInnerStates.find(s => s.displayName === 'a quiet man at the bar');
+      expect(fenState).toBeDefined();
+      expect(fenState.relationships).toBeDefined();
+      const fenToMira = fenState.relationships.find(r => r.targetDisplayName === 'the halfling behind the bar');
+      expect(fenToMira).toBeDefined();
+      expect(fenToMira.opinion).toBe('Tolerates me. Kinder than she has to be.');
+    });
+
+    it('should return null relationships when no repo is wired', async () => {
+      let capturedBatchArgs = null;
+      const mockNarrator = {
+        narrateNpcBatch: async (args) => {
+          capturedBatchArgs = args;
+          return { narration: 'She nods.', source: 'llm' };
+        },
+      };
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: deps.personalityLookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.submitAction(scene.id, 'player_1', {
+        type: 'speech', content: 'Hello.',
+      });
+
+      const miraState = capturedBatchArgs.npcInnerStates[0];
+      expect(miraState.relationships).toBeNull();
+    });
+  });
+
   // ── Player action context passed to narrator ───────────────────
 
   describe('player action context for narrator', () => {
@@ -1097,6 +1228,147 @@ describe('SceneEngine', () => {
       expect(capturedBatchArgs.playerAction).toBeDefined();
       expect(capturedBatchArgs.playerAction.type).toBe('speech');
       expect(capturedBatchArgs.playerAction.content).toBe('Good evening, may I have an ale?');
+    });
+  });
+
+  // ── sceneId threading to narrator ──────────────────────────────
+
+  describe('sceneId threading to narrator', () => {
+    it('should pass sceneId to narrateSceneOpening in advanceNpcTurns', async () => {
+      let capturedArgs = null;
+      const mockNarrator = {
+        narrateSceneOpening: async (args) => {
+          capturedArgs = args;
+          return { narration: 'You enter the tavern.', source: 'llm' };
+        },
+        narrateNpcBatch: async () => ({ narration: '', source: 'fallback' }),
+      };
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: deps.personalityLookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Aldric', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+      await innerEngine.advanceNpcTurns(scene.id);
+
+      expect(capturedArgs).toBeDefined();
+      expect(capturedArgs.sceneId).toBe(scene.id);
+    });
+
+    it('should pass sceneId to narrateNpcBatch in advanceNpcTurns', async () => {
+      let capturedBatchArgs = null;
+      const mockNarrator = {
+        narrateSceneOpening: async () => ({ narration: 'Opening.', source: 'llm' }),
+        narrateNpcBatch: async (args) => {
+          capturedBatchArgs = args;
+          return { narration: 'Mira nods.', source: 'llm' };
+        },
+      };
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: deps.personalityLookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Aldric', chaMod: 2, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 100, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+      await innerEngine.advanceNpcTurns(scene.id);
+
+      expect(capturedBatchArgs).toBeDefined();
+      expect(capturedBatchArgs.sceneId).toBe(scene.id);
+    });
+
+    it('should pass sceneId to narrateNpcBatch in submitAction', async () => {
+      let capturedBatchArgs = null;
+      const mockNarrator = {
+        narrateNpcBatch: async (args) => {
+          capturedBatchArgs = args;
+          return { narration: 'She smiles.', source: 'llm' };
+        },
+      };
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: deps.personalityLookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Kael', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+
+      await innerEngine.submitAction(scene.id, 'player_1', {
+        type: 'speech', content: 'Hello!',
+      });
+
+      expect(capturedBatchArgs).toBeDefined();
+      expect(capturedBatchArgs.sceneId).toBe(scene.id);
+    });
+
+    it('should clear narrator history on endScene', async () => {
+      const { narrator, provider } = (() => {
+        const p = new MockProvider();
+        const ctxBuilder = new CharacterContextBuilder();
+        const rs = new CharacterResponseService({ provider: p, contextBuilder: ctxBuilder });
+        const n = new SceneNarrator({ responseService: rs, provider: p });
+        return { narrator: n, provider: p };
+      })();
+
+      const innerEngine = new SceneEngine({
+        encounterMemory: deps.encounterMemory,
+        responseService: deps.responseService,
+        personalityLookup: deps.personalityLookup,
+        runtimeContext: deps.runtimeContext,
+        evolutionService: deps.evolutionService,
+        sceneNarrator: narrator,
+      });
+
+      const scene = innerEngine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Aldric', chaMod: 100, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 2, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      innerEngine.startScene(scene.id);
+      await innerEngine.advanceNpcTurns(scene.id);
+
+      // After opening, narrator should have history
+      const historyBefore = narrator.getNarratorHistory(scene.id);
+      expect(historyBefore.length).toBeGreaterThan(0);
+
+      // End the scene
+      innerEngine.endScene(scene.id, 'player_left');
+
+      // History should be cleared
+      const historyAfter = narrator.getNarratorHistory(scene.id);
+      expect(historyAfter.length).toBe(0);
     });
   });
 });

@@ -1,0 +1,76 @@
+{
+  "id": "tipsy_gnome",
+  "name": "The Tipsy Gnome",
+  "type": "tavern",
+  "description": "A squat, round-roofed establishment two blocks south of the Bottoms Up on the lower stretch of Mill Road. The sign is a carved wooden gnome mid-stumble, one hand on a tankard and the other on a mushroom for balance. The building leans slightly to the left and has done so for decades, a structural tilt that the regulars consider characterful rather than concerning. Inside it smells of mushroom stew, pipe smoke, and the particular warmth of a room that has been heated by the same hearth since before anyone can remember. The ceiling is low — built for gnomes and dwarves, adapted for everyone else by the installation of beams that taller patrons learn to duck after the first visit.",
+  "owner": "mira_barrelbottom",
+  "atmosphere": {
+    "defaultTone": "cozy",
+    "tags": ["intimate", "eccentric", "warm", "low-ceilinged", "slightly tilted", "fiercely loyal regulars"],
+    "sounds": [
+      "Quiet conversation at close range",
+      "The creak of the building settling — ongoing, ambient, ignored by regulars",
+      "Lell's lute from the corner booth, softer here than at the Bottoms Up",
+      "The thunk of heavy ceramic mugs on thick wooden tables",
+      "Mira's laugh from behind the bar, sudden and full",
+      "Bob humming in the kitchen, audible through the serving window"
+    ],
+    "smells": [
+      "Mushroom stew — always, regardless of the menu",
+      "Pipe smoke layered into the walls over decades",
+      "Fresh bread from the morning delivery",
+      "Candle wax and tallow",
+      "The particular warm-wood smell of a building that has been heated continuously for longer than anyone has been alive"
+    ],
+    "lighting": "Low, amber, candlelit. The windows are small and round, letting in more character than illumination. Two oil lamps behind the bar. The hearth provides most of the light and all of the warmth."
+  },
+  "layout": [
+    {
+      "name": "Main Room",
+      "description": "Compact and circular, following the building's round footprint. Eight tables, none of them the same size. The bar curves along the north wall. The hearth dominates the center, a round stone structure that forces traffic to flow around it."
+    },
+    {
+      "name": "The Bar",
+      "description": "A curved oak counter with four stools, each worn to the specific dimensions of its most frequent occupant. Mira Barrelbottom's new domain — smaller than the Bottoms Up bar but, she insists, better proportioned."
+    },
+    {
+      "name": "Corner Booth",
+      "description": "A deep, padded booth against the south wall. Lell Sparrow's preferred performance spot. The acoustics here are surprisingly good, a fact Lell attributes to the building's tilt."
+    },
+    {
+      "name": "Kitchen",
+      "description": "Gnome-proportioned, immaculate, and Bob the Porous's exclusive territory. The serving window is at bar height, which means Bob stands on a crate. The crate has a name. Bob will not share it."
+    },
+    {
+      "name": "The Lean",
+      "description": "Three tables on the tilted side of the building, where drinks slide gently if unattended. Regulars use weighted coasters. Newcomers learn quickly."
+    },
+    {
+      "name": "Upstairs",
+      "description": "Three small rooms for rent, accessible by a narrow spiral staircase. The rooms tilt with the building. Sleeping takes adjustment."
+    },
+    {
+      "name": "Cellar",
+      "description": "Cooler than the Bottoms Up cellar, mushroom-damp, excellent for storing ale. Mira has already organized it to her specifications."
+    }
+  ],
+  "regulars": [
+    "mira_barrelbottom",
+    "lell_sparrow",
+    "bob_the_porous",
+    "amethyst_the_wildcard",
+    "fen_colby"
+  ],
+  "hooks": [
+    "Mira brought her locked ledger from the Bottoms Up — her secrets moved with her",
+    "The building's tilt is getting worse. Very slowly. The regulars have started a betting pool on which direction it will go.",
+    "Lell Sparrow claims the acoustics in the corner booth are the best in Millhaven and is composing something he will not discuss",
+    "Bob the Porous has been experimenting with a new stew recipe that uses ingredients he will not name, sourced from a supplier he will not identify",
+    "An old map was found behind the hearthstones during renovation — Mira has it locked in the cellar"
+  ],
+  "worldContext": {
+    "location": "The Tipsy Gnome, lower Mill Road, Millhaven",
+    "defaultTone": "cozy and eccentric",
+    "region": "Millhaven, The Vale"
+  }
+}

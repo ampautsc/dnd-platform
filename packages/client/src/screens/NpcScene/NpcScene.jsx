@@ -147,9 +147,9 @@ export function NpcScene({ scene, onAction, onLeave, processing = false, locatio
         flexDirection: 'column',
         gap: '0.5rem',
       }}>
-        {transcript.length === 0 && (
+        {transcript.length === 0 && !processing && (
           <p style={{ color: '#888', textAlign: 'center', fontStyle: 'italic' }}>
-            The scene begins…
+            Setting the scene…
           </p>
         )}
 
@@ -205,14 +205,14 @@ export function NpcScene({ scene, onAction, onLeave, processing = false, locatio
 
         {processing && (
           <div style={{
-            alignSelf: 'flex-start',
+            alignSelf: 'center',
             padding: '0.5rem 0.75rem',
             borderRadius: 12,
             background: '#e8e8e8',
             color: '#888',
             fontStyle: 'italic',
           }}>
-            NPCs are thinking…
+            {transcript.length === 0 ? 'Setting the scene…' : 'NPCs are thinking…'}
           </div>
         )}
 

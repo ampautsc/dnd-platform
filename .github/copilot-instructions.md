@@ -231,6 +231,7 @@ Load these files with `read_file` when a task matches the listed tags.
 - `skills/code/npc-relationship-repository.md` — #npc #relationship #memory #recognition #persistence #llm #encounter #scene #prompt-injection #opinions
 - `skills/code/dm-consciousness-prompt-architecture.md` — #dm #consciousness #narrator #prompt #omniscient #inner-state #scene #llm #vessel-surrender #perception-boundary #information-filter #appearance
 - `skills/code/npc-vessel-surrender-canonical-prompt.md` — #npc #vessel-surrender #canonical #locked-text #consciousness #prompt #remember-structure #llm
+- `skills/code/npc-consciousness-json-authoring.md` — #npc #consciousness #json #content #character #authoring #cache #token-budget #analytical-register #tdd
 
 ### Problem-Solving Skills
 - `skills/problem-solving/llm-model-evaluation.md` — #llm #evaluation #model-selection #quality #testing

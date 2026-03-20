@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Head -->
+    <ellipse cx="32" cy="28" rx="14" ry="12" fill="#7a5a3a"/>
+    <!-- Snout -->
+    <ellipse cx="32" cy="36" rx="9" ry="7" fill="#8a6a4a"/>
+    <!-- Nostrils -->
+    <ellipse cx="28" cy="36" rx="2.5" ry="2" fill="#4a3a2a"/>
+    <ellipse cx="36" cy="36" rx="2.5" ry="2" fill="#4a3a2a"/>
+    <!-- Tusks -->
+    <path d="M24 38 Q22 44 24 48" fill="none" stroke="#f0ead0" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M40 38 Q42 44 40 48" fill="none" stroke="#f0ead0" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Eyes - small angry -->
+    <ellipse cx="24" cy="26" rx="2.5" ry="2" fill="#c4463a"/>
+    <circle cx="24" cy="26" r="1" fill="#1a2020"/>
+    <ellipse cx="40" cy="26" rx="2.5" ry="2" fill="#c4463a"/>
+    <circle cx="40" cy="26" r="1" fill="#1a2020"/>
+    <!-- Ears -->
+    <path d="M18 20 L14 14 L20 20Z" fill="#6a4a2a"/>
+    <path d="M46 20 L50 14 L44 20Z" fill="#6a4a2a"/>
+    <!-- Mohawk/bristles -->
+    <path d="M26 16 L28 12 L30 16 L32 10 L34 16 L36 12 L38 16" fill="none" stroke="#5a3a1a" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Chin/beard -->
+    <path d="M26 42 Q32 46 38 42" fill="#6a4a2a"/>
+  </g>
+</svg>

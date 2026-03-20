@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Body -->
+    <ellipse cx="32" cy="38" rx="8" ry="6"/>
+    <!-- Head/carapace -->
+    <ellipse cx="32" cy="32" rx="6" ry="4" fill="#c0b8a0"/>
+    <!-- Tail segments -->
+    <circle cx="32" cy="28" r="3"/>
+    <circle cx="30" cy="22" r="2.5"/>
+    <circle cx="26" cy="18" r="2.5"/>
+    <circle cx="22" cy="16" r="2"/>
+    <!-- Stinger -->
+    <path d="M22 16 L18 12 L20 10" fill="none" stroke="#c4463a" stroke-width="2" stroke-linecap="round"/>
+    <!-- Left pincer arm -->
+    <path d="M26 34 L16 28 L12 24" fill="none" stroke="#d0c8b0" stroke-width="2"/>
+    <!-- Left pincer -->
+    <path d="M12 24 L8 22 L10 26 Z" fill="#d0c8b0"/>
+    <path d="M12 24 L14 20 L10 22 Z" fill="#d0c8b0"/>
+    <!-- Right pincer arm -->
+    <path d="M38 34 L48 28 L52 24" fill="none" stroke="#d0c8b0" stroke-width="2"/>
+    <!-- Right pincer -->
+    <path d="M52 24 L56 22 L54 26 Z" fill="#d0c8b0"/>
+    <path d="M52 24 L50 20 L54 22 Z" fill="#d0c8b0"/>
+    <!-- Legs -->
+    <line x1="28" y1="38" x2="18" y2="44" stroke="#d0c8b0" stroke-width="1.2"/>
+    <line x1="28" y1="40" x2="18" y2="48" stroke="#d0c8b0" stroke-width="1.2"/>
+    <line x1="28" y1="42" x2="20" y2="52" stroke="#d0c8b0" stroke-width="1.2"/>
+    <line x1="36" y1="38" x2="46" y2="44" stroke="#d0c8b0" stroke-width="1.2"/>
+    <line x1="36" y1="40" x2="46" y2="48" stroke="#d0c8b0" stroke-width="1.2"/>
+    <line x1="36" y1="42" x2="44" y2="52" stroke="#d0c8b0" stroke-width="1.2"/>
+    <!-- Eyes -->
+    <circle cx="30" cy="31" r="1" fill="#1a2020"/>
+    <circle cx="34" cy="31" r="1" fill="#1a2020"/>
+  </g>
+</svg>

@@ -923,6 +923,63 @@ describe('SceneNarrator', () => {
       expect(result.narration).not.toMatch(/\bMira\b/);
       expect(result.narration).toContain('the halfling behind the bar');
     });
+
+    it('should clean leaked names in narrateSceneOpening output', async () => {
+      const provider = new MockProvider();
+      // Simulate LLM leaking Fen Colby's real name in scene opening
+      provider.generateResponse = async () => ({ text: 'You push open the heavy oak door. The warmth of the tavern hits you. Fen Colby sits at the bar nursing a drink.' });
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const repo = new RelationshipRepository();
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'fen_colby',
+        recognitionTier: 'recognized',
+        displayLabel: 'a quiet man at the bar',
+      });
+
+      const narrator = new SceneNarrator({ responseService, provider, relationshipRepo: repo });
+      const result = await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: [
+          { realName: 'Fen Colby', templateKey: 'fen_colby' },
+        ],
+        playerName: 'Aldric',
+      });
+
+      expect(result.source).toBe('llm');
+      expect(result.narration).not.toContain('Fen Colby');
+      expect(result.narration).not.toMatch(/\bFen\b/);
+      expect(result.narration).toContain('a quiet man at the bar');
+    });
+
+    it('should clean leaked first names in narrateSceneOpening output', async () => {
+      const provider = new MockProvider();
+      // Simulate LLM leaking just the first name
+      provider.generateResponse = async () => ({ text: 'A halfling wipes the bar. Mira glances up at your arrival.' });
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const repo = new RelationshipRepository();
+      repo.seedRelationship({
+        subjectId: 'player',
+        targetId: 'mira_barrelbottom',
+        recognitionTier: 'recognized',
+        displayLabel: 'the halfling behind the bar',
+      });
+
+      const narrator = new SceneNarrator({ responseService, provider, relationshipRepo: repo });
+      const result = await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: [
+          { realName: 'Mira Barrelbottom', templateKey: 'mira_barrelbottom' },
+        ],
+        playerName: 'Aldric',
+      });
+
+      expect(result.source).toBe('llm');
+      expect(result.narration).not.toMatch(/\bMira\b/);
+      expect(result.narration).toContain('the halfling behind the bar');
+    });
   });
 
   // ── Storytelling Reframe ────────────────────────────────────────
@@ -1403,6 +1460,388 @@ describe('SceneNarrator', () => {
       expect(capturedOpeningArgs).toBeDefined();
       expect(capturedOpeningArgs.npcInnerStates).toBeDefined();
       expect(capturedOpeningArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  // ── narrateSceneOpening — resilience ────────────────────────────
+
+  describe('narrateSceneOpening — resilience', () => {
+    it('should return fallback narration when the system prompt builder throws', async () => {
+      const { narrator } = makeNarrator('Good narration text');
+
+      // Corrupt the internal prompt builder so it throws before the LLM call
+      narrator.buildDmNarrationPrompt = () => { throw new Error('prompt builder exploded'); };
+
+      const result = await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: [{ realName: 'Mira', templateKey: 'mira_barrelbottom' }],
+        playerName: 'Aldric',
+      });
+
+      // Should NOT reject — must return a non-empty fallback narration
+      expect(result.narration).toBeTruthy();
+      expect(result.source).toBe('fallback');
+    });
+
+    it('should include opening narration in transcript after advanceNpcTurns', async () => {
+      const provider = new MockProvider();
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+
+      const openingNarration = 'The tavern smells of wood smoke and spilled ale.';
+      const mockNarrator = {
+        narrateSceneOpening: async () => ({ narration: openingNarration, source: 'llm' }),
+        narrateNpcBatch: async () => ({ narration: 'She nods.', source: 'llm' }),
+      };
+
+      const personalityMap = {
+        mira: makePersonality('mira', 'Mira', 16),
+      };
+
+      const engine = new SceneEngine({
+        encounterMemory: new EncounterMemoryService(),
+        responseService,
+        personalityLookup: (key) => personalityMap[key] || null,
+        runtimeContext: new NpcRuntimeContext(),
+        evolutionService: new PersonalityEvolutionService(),
+        sceneNarrator: mockNarrator,
+      });
+
+      const scene = engine.createScene({
+        participants: [
+          { id: 'player_1', name: 'Aldric', chaMod: 2, isPlayer: true },
+          { id: 'npc_mira', name: 'Mira', chaMod: 8, isPlayer: false, templateKey: 'mira' },
+        ],
+      });
+      engine.startScene(scene.id);
+
+      const { sceneState } = await engine.advanceNpcTurns(scene.id);
+      const json = sceneState.toJSON();
+
+      // Transcript must contain the scene opening narration entry
+      const openingEntry = json.transcript.find(
+        e => e.participantId === 'dm' && e.type === 'narration' && e.content === openingNarration,
+      );
+      expect(openingEntry).toBeDefined();
+      expect(json.transcript.length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  // ── Narrator conversation history threading ─────────────────────
+
+  describe('narrator conversation history', () => {
+    it('should store conversation history after narrateSceneOpening', async () => {
+      const { narrator } = makeNarrator('You push open the door. Warmth hits you.');
+
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      const history = narrator.getNarratorHistory('scene_1');
+      expect(history).toBeDefined();
+      expect(history.length).toBe(2); // user + assistant
+      expect(history[0].role).toBe('user');
+      expect(history[1].role).toBe('assistant');
+      expect(history[1].content).toBe('You push open the door. Warmth hits you.');
+    });
+
+    it('should include prior history in messages for narrateNpcBatch after opening', async () => {
+      let capturedMessages = null;
+      const provider = new MockProvider();
+      // First call: scene opening
+      provider.setMockSequence([
+        'You step inside a warm tavern.',
+        'She looks up. "Welcome, love."',
+      ]);
+      // Capture the second call's messages
+      const origGenerate = provider.generateResponse.bind(provider);
+      let callCount = 0;
+      provider.generateResponse = async (opts) => {
+        callCount++;
+        if (callCount === 2) {
+          capturedMessages = opts.messages;
+        }
+        return origGenerate(opts);
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Call 1: scene opening
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Call 2: NPC batch narration
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // The second call should include the opening exchange as prior history
+      expect(capturedMessages).toBeDefined();
+      expect(capturedMessages.length).toBe(3); // prior user + prior assistant + current user
+      expect(capturedMessages[0].role).toBe('user');
+      expect(capturedMessages[1].role).toBe('assistant');
+      expect(capturedMessages[1].content).toBe('You step inside a warm tavern.');
+      expect(capturedMessages[2].role).toBe('user');
+    });
+
+    it('should accumulate history across multiple narrateNpcBatch calls', async () => {
+      let capturedMessages = null;
+      const provider = new MockProvider();
+      provider.setMockSequence([
+        'You enter the tavern.',
+        'The halfling nods at you.',
+        'She pours you a drink.',
+      ]);
+      let callCount = 0;
+      const origGenerate = provider.generateResponse.bind(provider);
+      provider.generateResponse = async (opts) => {
+        callCount++;
+        if (callCount === 3) {
+          capturedMessages = opts.messages;
+        }
+        return origGenerate(opts);
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Call 1: opening
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Call 2: first NPC batch
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hello!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Call 3: second NPC batch
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'act', content: '*pours ale*' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 2,
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Third call should see all 4 prior messages + 1 current = 5
+      expect(capturedMessages).toBeDefined();
+      expect(capturedMessages.length).toBe(5);
+      expect(capturedMessages[0].role).toBe('user');     // opening user
+      expect(capturedMessages[1].role).toBe('assistant'); // opening response
+      expect(capturedMessages[2].role).toBe('user');     // batch 1 user
+      expect(capturedMessages[3].role).toBe('assistant'); // batch 1 response
+      expect(capturedMessages[4].role).toBe('user');     // batch 2 user (current)
+    });
+
+    it('should keep separate histories for different scenes', async () => {
+      const { narrator, provider } = makeNarrator();
+      provider.setMockSequence(['Opening scene 1.', 'Opening scene 2.']);
+
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Fen'],
+        playerName: 'Aldric',
+        sceneId: 'scene_2',
+      });
+
+      const history1 = narrator.getNarratorHistory('scene_1');
+      const history2 = narrator.getNarratorHistory('scene_2');
+      expect(history1.length).toBe(2);
+      expect(history2.length).toBe(2);
+      expect(history1[1].content).toBe('Opening scene 1.');
+      expect(history2[1].content).toBe('Opening scene 2.');
+    });
+
+    it('should clear history for a specific scene via clearNarratorHistory', async () => {
+      const { narrator } = makeNarrator('A cozy tavern.');
+
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      expect(narrator.getNarratorHistory('scene_1').length).toBe(2);
+
+      narrator.clearNarratorHistory('scene_1');
+      expect(narrator.getNarratorHistory('scene_1').length).toBe(0);
+    });
+
+    it('should include anti-repetition directive in follow-up narration when history exists', async () => {
+      let capturedMessages = null;
+      const provider = new MockProvider();
+      provider.setMockSequence(['You step into the tavern.', 'She nods warmly.']);
+      let callCount = 0;
+      const origGenerate = provider.generateResponse.bind(provider);
+      provider.generateResponse = async (opts) => {
+        callCount++;
+        if (callCount === 2) capturedMessages = opts.messages;
+        return origGenerate(opts);
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Opening
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_anti_rep',
+      });
+
+      // Follow-up batch
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Welcome!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+        sceneId: 'scene_anti_rep',
+      });
+
+      // The user message in the follow-up call should contain anti-repetition language
+      const lastUserMsg = capturedMessages[capturedMessages.length - 1];
+      expect(lastUserMsg.role).toBe('user');
+      expect(lastUserMsg.content).toMatch(/do not|don't|never/i);
+      expect(lastUserMsg.content).toMatch(/re-?describe|re-?set|repeat|scene.*(already|been)|setting.*(already|been)/i);
+    });
+
+    it('should NOT include anti-repetition directive when there is no prior history', async () => {
+      let capturedMessages = null;
+      const provider = new MockProvider();
+      provider.setMockResponse('She waves.');
+      const origGenerate = provider.generateResponse.bind(provider);
+      provider.generateResponse = async (opts) => {
+        capturedMessages = opts.messages;
+        return origGenerate(opts);
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Batch with no prior opening and no sceneId
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hey!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+      });
+
+      const userMsg = capturedMessages[0].content;
+      expect(userMsg).not.toMatch(/re-?describe|re-?set/i);
+    });
+
+    it('should work without sceneId (backward compat — no history threading)', async () => {
+      let capturedMessages = null;
+      const provider = new MockProvider();
+      provider.setMockSequence(['You enter.', 'She nods.']);
+      let callCount = 0;
+      const origGenerate = provider.generateResponse.bind(provider);
+      provider.generateResponse = async (opts) => {
+        callCount++;
+        if (callCount === 2) {
+          capturedMessages = opts.messages;
+        }
+        return origGenerate(opts);
+      };
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Opening with no sceneId
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+      });
+
+      // Batch with no sceneId
+      await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hi!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+      });
+
+      // Without sceneId, should still work — just single message (no history)
+      expect(capturedMessages).toBeDefined();
+      expect(capturedMessages.length).toBe(1);
+      expect(capturedMessages[0].role).toBe('user');
+    });
+
+    it('should not include history in messages on fallback narration', async () => {
+      const provider = new MockProvider();
+      provider.setMockSequence(['Opening narration.']);
+      const contextBuilder = new CharacterContextBuilder();
+      const responseService = new CharacterResponseService({ provider, contextBuilder });
+      const narrator = new SceneNarrator({ responseService, provider });
+
+      // Opening succeeds
+      await narrator.narrateSceneOpening({
+        worldContext: makeWorldContext(),
+        participantNames: ['Mira'],
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Force LLM failure for the next call
+      provider.generateResponse = async () => { throw new Error('LLM down'); };
+
+      const result = await narrator.narrateNpcBatch({
+        npcActions: [
+          { participantId: 'npc_mira', participantName: 'Mira', type: 'speech', content: 'Hello!' },
+        ],
+        worldContext: makeWorldContext(),
+        round: 1,
+        playerName: 'Aldric',
+        sceneId: 'scene_1',
+      });
+
+      // Should fall back gracefully
+      expect(result.source).toBe('fallback');
+      // History should NOT include the failed call's assistant message
+      const history = narrator.getNarratorHistory('scene_1');
+      expect(history.length).toBe(2); // Only the opening exchange
     });
   });
 });

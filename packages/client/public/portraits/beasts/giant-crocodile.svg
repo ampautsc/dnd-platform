@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Upper jaw/snout -->
+    <path d="M8 28 L48 24 L52 26 L52 30 L48 30 L8 32Z" fill="#7a8a5a"/>
+    <!-- Lower jaw -->
+    <path d="M8 32 L48 30 L52 32 L52 36 L48 38 L8 36Z" fill="#6a7a4a"/>
+    <!-- Upper teeth -->
+    <path d="M12 32 L14 30 L16 32 L18 30 L20 32 L22 30 L24 32 L26 30 L28 32 L30 30 L32 32 L34 30 L36 32 L38 30 L40 32" fill="none" stroke="#f0ead0" stroke-width="1"/>
+    <!-- Eye bump -->
+    <circle cx="46" cy="24" r="4" fill="#7a8a5a"/>
+    <!-- Eye -->
+    <ellipse cx="46" cy="24" rx="2" ry="1.5" fill="#c4a63a"/>
+    <ellipse cx="46" cy="24" rx="0.8" ry="1.5" fill="#1a2020"/>
+    <!-- Nostril -->
+    <circle cx="10" cy="29" r="1" fill="#1a2020"/>
+    <!-- Scale ridges -->
+    <path d="M44 28 L48 26 M42 28 L44 26 M40 28 L42 26" fill="none" stroke="#6a7a4a" stroke-width="1"/>
+    <!-- Body hint -->
+    <path d="M50 28 Q56 32 54 38 Q52 42 48 40 L48 34" fill="#6a7a4a"/>
+  </g>
+</svg>

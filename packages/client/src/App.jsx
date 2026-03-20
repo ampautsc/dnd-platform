@@ -9,6 +9,7 @@ import { SessionEnd } from './screens/SessionEnd/SessionEnd.jsx';
 import { NpcCatalog } from './screens/NpcCatalog/NpcCatalog.jsx';
 import { NpcEncounter } from './screens/NpcEncounter/NpcEncounter.jsx';
 import { NpcScene } from './screens/NpcScene/NpcScene.jsx';
+import { CombatSimulator } from './screens/CombatSimulator/CombatSimulator.jsx';
 
 /**
  * Demo fixtures for local dev — these simulate gateway responses.
@@ -261,7 +262,7 @@ export function App() {
   // ── Enter a location scene (e.g. Bottoms Up) ──
   const handleEnterLocation = useCallback((locationId, locationImage) => {
     setSceneState(null);
-    setSceneProcessing(false);
+    setSceneProcessing(true);
     navigate(SCREENS.NPC_SCENE, { locationImage });
 
     fetch('/api/scenes/at-location', {
@@ -273,9 +274,19 @@ export function App() {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
-      .then(started => setSceneState(started))
-      .catch(() => setSceneState({ error: true }));
+      .then(started => {
+        setSceneState(started);
+        setSceneProcessing(false);
+      })
+      .catch(() => {
+        setSceneState({ error: true });
+        setSceneProcessing(false);
+      });
   }, [navigate]);
+
+  if (screen === SCREENS.COMBAT_SIMULATOR) {
+    return <CombatSimulator onLeave={() => navigate(SCREENS.GATE)} />;
+  }
 
   return (
     <main style={{ maxWidth: 480, margin: '2rem auto', padding: '1rem', fontFamily: 'system-ui, sans-serif' }}>
@@ -309,6 +320,35 @@ export function App() {
               <span style={{ display: 'block' }}>Enter Bottoms Up</span>
               <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'normal', opacity: 0.85 }}>
                 Tavern scene with Mira, Lell, and the regulars
+              </span>
+            </span>
+          </button>
+
+          <button
+            onClick={() => navigate(SCREENS.COMBAT_SIMULATOR)}
+            style={{
+              width: '100%',
+              minHeight: 56,
+              padding: '0.75rem',
+              cursor: 'pointer',
+              borderRadius: 8,
+              border: 'none',
+              background: 'linear-gradient(135deg, #b91c1c, #7f1d1d)',
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              marginBottom: '0.75rem',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>⚔️</span>
+            <span>
+              <span style={{ display: 'block' }}>Enter Combat Simulator</span>
+              <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'normal', opacity: 0.85 }}>
+                Test encounters and mechanics
               </span>
             </span>
           </button>

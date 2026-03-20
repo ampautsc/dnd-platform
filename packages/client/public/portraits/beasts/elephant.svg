@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Head -->
+    <ellipse cx="32" cy="28" rx="14" ry="13"/>
+    <!-- Ears -->
+    <ellipse cx="14" cy="26" rx="8" ry="10" fill="#b0a890"/>
+    <ellipse cx="50" cy="26" rx="8" ry="10" fill="#b0a890"/>
+    <!-- Inner ears -->
+    <ellipse cx="14" cy="26" rx="5" ry="7" fill="#9a8e78"/>
+    <ellipse cx="50" cy="26" rx="5" ry="7" fill="#9a8e78"/>
+    <!-- Trunk -->
+    <path d="M30 38 Q28 44 30 48 Q32 52 34 50 Q36 48 34 44 L36 38" fill="#c0b8a0" stroke="#d0c8b0" stroke-width="0.5"/>
+    <!-- Trunk curl at end -->
+    <path d="M30 48 Q28 52 32 54 Q36 52 34 50" fill="#c0b8a0"/>
+    <!-- Tusks -->
+    <path d="M26 36 Q22 44 24 48" fill="none" stroke="#f0ead0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M38 36 Q42 44 40 48" fill="none" stroke="#f0ead0" stroke-width="2" stroke-linecap="round"/>
+    <!-- Eyes -->
+    <circle cx="26" cy="26" r="2" fill="#1a2020"/>
+    <circle cx="38" cy="26" r="2" fill="#1a2020"/>
+    <!-- Forehead wrinkles -->
+    <path d="M26 20 Q32 18 38 20" fill="none" stroke="#b0a890" stroke-width="0.8"/>
+  </g>
+</svg>

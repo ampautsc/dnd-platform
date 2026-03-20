@@ -19,6 +19,7 @@ export const SCREENS = {
   NPC_CATALOG: 'npcCatalog',
   NPC_ENCOUNTER: 'npcEncounter',
   NPC_SCENE: 'npcScene',
+  COMBAT_SIMULATOR: 'combatSimulator',
 };
 
 export function useScreen(initial = SCREENS.GATE) {

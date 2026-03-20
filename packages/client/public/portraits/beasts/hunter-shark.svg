@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#1a2020"/>
+  <g fill="#d0c8b0">
+    <!-- Body - slightly different shape from giant shark -->
+    <path d="M10 32 Q16 24 28 26 L42 28 Q52 30 54 34 Q52 38 42 40 L28 40 Q16 40 10 32Z" fill="#6a7a8a"/>
+    <!-- Belly - lighter -->
+    <path d="M14 34 Q24 40 38 38 L42 36 Q48 34 50 34 Q48 38 42 40 L28 40 Q16 40 14 34Z" fill="#a0a8b0"/>
+    <!-- Dorsal fin - shorter than giant shark -->
+    <path d="M26 26 L30 16 L34 26Z" fill="#5a6a7a"/>
+    <!-- Tail -->
+    <path d="M10 32 L6 24 L12 28 M10 32 L6 40 L12 36" fill="#6a7a8a" stroke="#6a7a8a" stroke-width="1"/>
+    <!-- Pectoral fin -->
+    <path d="M30 40 L28 46 L34 40Z" fill="#5a6a7a"/>
+    <!-- Eye -->
+    <circle cx="46" cy="32" r="2" fill="#1a2020"/>
+    <!-- Gill slits -->
+    <line x1="40" y1="30" x2="40" y2="36" stroke="#1a2020" stroke-width="0.7"/>
+    <line x1="38" y1="30" x2="38" y2="36" stroke="#1a2020" stroke-width="0.7"/>
+    <!-- Nose/snout more pointed -->
+    <path d="M52 34 L56 32 L54 34" fill="#6a7a8a"/>
+    <!-- Mouth -->
+    <path d="M48 36 Q52 36 54 34" fill="none" stroke="#1a2020" stroke-width="0.8"/>
+    <!-- Teeth hint -->
+    <path d="M50 36 L51 34 L52 36" fill="#e0d8c8"/>
+  </g>
+</svg>

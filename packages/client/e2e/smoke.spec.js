@@ -65,3 +65,9 @@ test('Enter Bottoms Up button starts a scene', async ({ page }) => {
   // Wait for either the initiative bar or the loading text
   await expect(page.getByText(/starting scene|round|leave/i)).toBeVisible({ timeout: 15000 });
 });
+
+test('Enter Combat Simulator button opens the viewer', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: /enter combat simulator/i }).click();
+  await expect(page.getByRole('button', { name: /exit combat simulator/i })).toBeVisible();
+});
