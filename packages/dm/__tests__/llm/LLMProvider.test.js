@@ -21,7 +21,7 @@ describe('LLMProvider', () => {
         await assert.rejects(() => provider.generateResponse({ model: 'unknown-model', prompt: 'test' }), /Unsupported model/);
     });
 
-    it('should default model to claude haiku when not specified', async () => {
+    it('should default model to claude sonnet when not specified', async () => {
         // Will attempt Anthropic call (and fail because key is fake),
         // but proves model defaulting works by NOT throwing "unsupported model"
         try {
@@ -50,7 +50,7 @@ describe('LLMProvider — prompt caching', () => {
                     capturedCreateArgs = args;
                     return {
                         content: [{ text: '[SPEAK] "What can I get you?"' }],
-                        model: 'claude-haiku-4-5-20251001',
+                        model: 'claude-sonnet-4-6',
                         usage: {
                             input_tokens: 5200,
                             output_tokens: 42,
@@ -69,7 +69,7 @@ describe('LLMProvider — prompt caching', () => {
         const systemPrompt = 'AI Model, you need to understand this concept...';
 
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt,
             userPrompt: 'What do you do?',
         });
@@ -86,7 +86,7 @@ describe('LLMProvider — prompt caching', () => {
 
     it('should pass empty array when no system prompt provided', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: '',
             userPrompt: 'Hello',
         });
@@ -97,7 +97,7 @@ describe('LLMProvider — prompt caching', () => {
 
     it('should return usage with cache fields in response', async () => {
         const result = await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: 'Some prompt',
             userPrompt: 'Hello',
         });
@@ -111,14 +111,14 @@ describe('LLMProvider — prompt caching', () => {
 
     it('should return text, content, and model in response', async () => {
         const result = await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: 'Some prompt',
             userPrompt: 'Hello',
         });
 
         assert.strictEqual(result.text, '[SPEAK] "What can I get you?"');
         assert.strictEqual(result.content, result.text);
-        assert.strictEqual(result.model, 'claude-haiku-4-5-20251001');
+        assert.strictEqual(result.model, 'claude-sonnet-4-6');
     });
 
     it('should use multi-turn messages when provided', async () => {
@@ -129,7 +129,7 @@ describe('LLMProvider — prompt caching', () => {
         ];
 
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: 'Some consciousness prompt',
             messages,
             userPrompt: 'ignored when messages present',
@@ -140,7 +140,7 @@ describe('LLMProvider — prompt caching', () => {
 
     it('should fall back to userPrompt as single message when no messages array', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: 'Some prompt',
             userPrompt: 'What do you see?',
         });
@@ -167,7 +167,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
                     capturedCreateArgs = args;
                     return {
                         content: [{ text: '[SPEAK] "Aye."' }],
-                        model: 'claude-haiku-4-5-20251001',
+                        model: 'claude-sonnet-4-6',
                         usage: {
                             input_tokens: 6000,
                             output_tokens: 10,
@@ -183,7 +183,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
 
     it('should create multiple system content blocks each with cache_control', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemBlocks: [
                 { text: '<world_knowledge>coins and gods</world_knowledge>' },
                 { text: 'AI Model, you need to understand this concept...' },
@@ -207,7 +207,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
 
     it('should skip blocks with empty text', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemBlocks: [
                 { text: '' },
                 { text: 'NPC consciousness prompt' },
@@ -221,7 +221,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
 
     it('should prefer systemBlocks over systemPrompt when both provided', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemBlocks: [
                 { text: 'Block A' },
                 { text: 'Block B' },
@@ -237,7 +237,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
 
     it('should fall back to systemPrompt when systemBlocks is not provided', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemPrompt: 'Single prompt',
             userPrompt: 'Hello',
         });
@@ -248,7 +248,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
 
     it('should produce empty system array when systemBlocks is empty', async () => {
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemBlocks: [],
             userPrompt: 'Hello',
         });
@@ -263,7 +263,7 @@ describe('LLMProvider — systemBlocks (multi-block caching)', () => {
         provider._logResponse = (req, _res) => { logEntries.push(req); };
 
         await provider.callAnthropic({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             systemBlocks: [
                 { text: 'Block A' },
                 { text: 'Block B' },

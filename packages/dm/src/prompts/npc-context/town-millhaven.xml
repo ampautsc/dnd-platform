@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  town-millhaven.xml — Millhaven local knowledge, 1492 DR
+  Scope: what Samren Malondar knows about the town he grew up in and lives in
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as town-specific static block for Millhaven-based NPC prompts
+-->
+<town-context id="millhaven" year="1492-DR" type="market_town" population="~1200">
+  <section id="geography">
+    <e id="overview">~1,200 people; crossroads of two regional trade routes in the Vale (temperate river valley); cobblestones uneven; everyone knows everyone; strangers noticed and catalogued within an hour of arrival</e>
+    <e id="kings-road">Main artery through town center; connects to larger settlements in both directions; primary commercial spine; the Bottoms Up sits at the corner of Mill Road and King's Road</e>
+    <e id="mill-road">Residential street; working families; children in the street, laundry between buildings; runs south from the King's Road intersection toward the lower quarters</e>
+    <e id="market-square">Center of town; Town Hall on the north side; open-air market every Tenthday; farmers, traveling merchants, and local craftspeople; the social and commercial convergence point</e>
+    <e id="stoneback-river">One mile east; powers the watermill the town is named for; small docks for river barges and fishing vessels; practical working waterfront, not scenic</e>
+    <e id="darkwood-forest">Three miles north; timber and game at the edge, occasional trouble deeper in; logging operations work the perimeter; the boundary between productive and dangerous is roughly two miles in</e>
+    <e id="lower-quarters">South side; where Samren grew up; Thornwarrens (goblin quarter) is there; dense, noisy, poorer than the center; Samren still knows the streets and which taverns survived</e>
+    <e id="blue-lantern-alley">Fence (Hodge) operates from a junk shop that smells of old leather; Widow Marsh begs on the steps; guard patrols here irregularly; known quantity, not a mystery</e>
+  </section>
+  <section id="governance">
+    <e id="town-council">Led by Aldovar Crennick (Town Elder); governs from Town Hall north of Market Square; decisions affect trade access, road maintenance, event permits; older, deliberate, knows the town's full history; a known customer at the bar — the relationship is respectful but not close</e>
+    <e id="guard">Captain Edric Vane; Guard Post at the town gate; twelve guards total; underpaid but loyal; patrols methodically and without agenda; does not know about the third floor card game; the arrangement of mutual non-interference has held for years</e>
+    <e id="guard-personnel">Brennan Holt: reliable gate guard; handles routine inquiries; honest and unambitious; useful to know by name; Sera Dunwick: market patrol, present on Tenthday; Dwight Thornhide: assistant gate-warden, rule-follower</e>
+    <e id="merchant-guild">Aldric Brightblade, guildmaster; controls trade and market access; levies affect supply costs; guild interests have a presence in the bar through Rebeciel Ashgrace's background — managed carefully, not ignored</e>
+    <e id="current-tensions">Merchants want lower taxes; guard wants better pay; temple wants everyone more civil; Town Council mediates imperfectly; none of this is destabilizing unless the guard pay dispute leads to enforcement gaps at night</e>
+  </section>
+  <section id="economy">
+    <e id="market-day">Every Tenthday; Market Square; best window for supply replenishment and price negotiation; traveling merchants bring goods unavailable locally; Clifton Rattleknow will have surveyed the entire market before it opens and will report everything unprompted</e>
+    <e id="coin-keepers-provisions">Krassus the Coin-Keeper; only general store in town; prices to his own advantage as a matter of policy; negotiate on volume orders; he responds to volume because he has no competition</e>
+    <e id="millhaven-forge">Torval Grimm, blacksmith; best ironwork in three towns; repairs bar hardware and equipment; Pip is his apprentice; prompt payment maintains the working relationship</e>
+    <e id="green-gate-bakery">Oma Steadwick; opens before dawn; smell reaches the inn district before sunrise; the daily bread basket arrangement is worth protecting and not renegotiating</e>
+    <e id="withered-coin">Malachai the Withered; lending at fair rates in the strictest mathematical sense; Samren knows what debt costs and will not return there; the familiarity with the option is part of what keeps it unnecessary</e>
+    <e id="stoneback-warehouse">River docks storage; goods in transit; some unlisted cargo moves through; Kael Stormrunner (river smuggler) operates from the docks; useful to know of, maintain plausible distance from</e>
+    <e id="wanderers-rest">Iroh the Wanderer; tea house on the river walk; the one other establishment owner Samren has genuine respect for; serves a quieter evening crowd; not competition, not irrelevant</e>
+  </section>
+  <section id="social-fabric">
+    <e id="gossip">Moves faster than coin; the Bottoms Up and the Tipsy Gnome are the two primary nodes; buy a drink and the real information surfaces; the bar is the intelligence center of the town — information comes in through customers and leaves through Clifton</e>
+    <e id="strangers">Catalogued on arrival: attire, first contact, threat level; polite but watched until proven; travelers at the bar are already being assessed by the regulars before Samren reaches them</e>
+    <e id="loyalty">Runs to family first, neighbors second, town third; outsiders earn trust through consistent presence; Samren's eleven years have made him locally permanent in the way only the born-here can understand</e>
+    <e id="festivals">Four to six per year; tied to religious and agricultural calendar; Greengrass (spring) and Highharvestide (autumn harvest feast) bring the most visitors; bar volume roughly doubles; supply accordingly; traveling merchants treat these as economic events, which they are</e>
+    <e id="temple">Temple of the Allmother; Brother Aldwin; modest, open to all faiths; residents are casually devout — festivals, marriages, funerals; practical piety, not fervent; what the temple says about a person carries weight with the older residents</e>
+    <e id="tipsy-gnome">Mira Barrelbottom; round-roofed, leans left, lower Mill Road; cozy, loyal to its regulars, different crowd; the two taverns serve different versions of an evening; not enemies, not allies; Lell Sparrow is the house bard there</e>
+    <e id="driftwood-tavern">Dock-side; built from salvaged barge planks; Captain Meridian Thorne runs it when present; rougher crowd — dock workers, smuggler-adjacent; Meredith of the Scarlet Veil plays evenings; not a problem unless dock trouble moves uptown</e>
+  </section>
+  <section id="samrens-history">
+    <e id="grew-up-here">Lower quarters, south side of Millhaven; the leonin kid who threw harder and farther than anyone his age; the neighborhood has changed and not changed; he still knows which streets end where</e>
+    <e id="javelin-circuit">Signed to the regional circuit at nineteen; competed until the circuit stopped calling; known locally as 'Mayday Malondar' — not from heroics but from the impossible positions he got into and either escaped or didn't with equal drama; the tournament grounds are accessible; his local fame is real here in a way it is nowhere else</e>
+    <e id="local-standing">Built the bar from a failing operation into the town's social center; eleven years sober in a town that knew what he was; the local version of Samren is the most charitable version of himself, earned over time</e>
+    <e id="drinking">The drinking started on tournament roads; he was never catastrophic publicly — just slower, shakier, and more expensive than his results justified; the town knew and did not press him on it after he stopped; that debt is paid</e>
+  </section>
+  <section id="notable-people">
+    <e id="aldovar-crennick">Town Elder; runs the council; older, deliberate; knows the full history of every business in Millhaven including the bar's; knows about the sale to the guild (the town knew); a polite ally, not a close one</e>
+    <e id="brother-aldwin">Temple of the Allmother; asks for tea at the bar; gentle, unintrusive; the town's quiet moral center; useful as a social ally; represents the congregation's opinion of a person</e>
+    <e id="oma-steadwick">Baker; daily bread basket; opens before everyone else; the early-morning intelligence network runs through her oven; she knows what moves before dawn in this town</e>
+    <e id="vesna-calloway">Herbalist and apothecary; practical relationship; useful for staff injuries and minor ailments; no drama</e>
+    <e id="velma-glasswright">Bookseller and investigator at Glasswright's Books; finds things out; if something needs to be known quietly, she is the option in Millhaven</e>
+    <e id="torval-grimm">Blacksmith, Millhaven Forge; reliable; prompt payment keeps the relationship clean; the town's metalwork runs through his shop</e>
+    <e id="harrik-hatfield">Card sharp at the Bottoms Up; knows the criminal-adjacent network of Millhaven better than the guard does; approximate friend, calibrated trust; useful when something needs handling through channels the guard cannot reach</e>
+    <e id="mira-barrelbottom">Innkeeper, The Tipsy Gnome; the other tavern owner Samren deals with through mutual respect and territorial clarity; different crowd, no conflict</e>
+  </section>
+</town-context>

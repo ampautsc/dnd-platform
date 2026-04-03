@@ -12,7 +12,7 @@ const USE_MOCK = !process.env.ANTHROPIC_API_KEY;
 if (USE_MOCK) {
     console.warn('WARNING: ANTHROPIC_API_KEY not set. Running in mock mode — placeholder data only.');
 } else {
-    console.log(`Anthropic key loaded. Model: ${process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001'}`);
+    console.log(`Anthropic key loaded. Model: ${process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6'}`);
 }
 
 const seedDatabasePath = join(__dirname, 'npc-seed-database.json');
@@ -113,7 +113,7 @@ async function main() {
  */
 async function callClaude(userPrompt, characterId) {
     const apiKey = process.env.ANTHROPIC_API_KEY;
-    const model  = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
+    const model  = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
 
     const systemPrompt = [
         'You are a master D&D 5e world builder and NPC designer.',

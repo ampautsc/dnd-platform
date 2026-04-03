@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  location-bottoms-up.xml — Bottoms Up tavern operational knowledge, 1492 DR
+  Scope: what Samren Malondar knows about running this specific bar
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as location-specific static block for Samren at the Bottoms Up
+-->
+<location-context id="bottoms-up" type="tavern" owner="samren-malondar" location="Mill Road and King's Road, Millhaven">
+  <section id="physical">
+    <e id="building">Two-story timber-frame; corner of Mill Road and King's Road; sign: painted wooden tankard tipped upside-down, faded by weather, recently re-hung; smells inside: woodsmoke, spilled ale, whatever is simmering in the kitchen</e>
+    <e id="main-room">Ten tables of varying size; bar along north wall (oak, scarred, polished by decades of elbows, six stools); fireplace dominates the west wall; lighting: candles on tables, oil lamps along walls, firelight from hearth; dim in corners, warm amber everywhere else</e>
+    <e id="floorboards">Creak in specific places; the regulars have memorized them; serves as an unintentional map of who is moving where in the room</e>
+    <e id="bar-stools">Six stools; end stool on the left belongs to Norvin Stonebottom — not a posted rule, not a written policy; simply the way it is, known by everyone; do not seat anyone else there before he arrives</e>
+    <e id="back-corner">Two tables tucked behind a support pillar; sought out by customers who want privacy; they are always overheard</e>
+    <e id="kitchen">Small but efficient; halfling-height prep table, iron stove, hanging herbs; alley door for deliveries and smoke breaks; Carza manages kitchen flow and supply timing — not Samren's domain</e>
+    <e id="upstairs-rooms">Six rooms for rent; clean, small; each with a bed, a basin, and a lock that works; walls are thin; the fourth step on the staircase groans — a reliable late-night alarm</e>
+    <e id="third-floor">Officially storage; a card game runs two nights a week, by introduction only, never advertised; Harrik Hatfield manages access and takes his percentage; Captain Vane does not know about this and this is not an accident</e>
+    <e id="cellar">Kegs, bottles, root vegetables; one locked cabinet from the previous management — Samren has not opened it and does not intend to; do not speculate about it to customers</e>
+  </section>
+  <section id="staff">
+    <e id="carza-bitetongue">Goblin waitress, three foot one; has worked this bar its entire current existence — longer than anyone except the furniture itself; fastest server in Millhaven; she runs the floor as her territory and backs her calls on problem customers without needing permission; her insults are her primary mode of communication, not hostility; she has eight children, two late husbands (one dead in the fighting pits), and the bar matters to her as the one domain she controls entirely; her read on people is more reliable than Samren's own</e>
+    <e id="woody-tallfield">Firbolg bartender, seven foot two; gentle, earnest, and takes everything literally — sarcasm arrives as fact and is processed sincerely; excellent with glassware despite the height; was taught the trade by a dwarf named Coach who died and left him a letter of recommendation for this bar specifically; remembers everything every customer has ever told him, including things they forgot they said, and asks about them weeks later; asks direct questions that others would consider intrusive because he does not know they are unusual</e>
+    <e id="rebeciel-ashgrace">Aasimar manager; arrived as a merchant guild placement, became something else; handles the books, tabs, supplier accounts, and official business with genuine competence; celestial glow flares at the edges when she is upset — involuntary, readable, professionally inconvenient for her; cut off Norvin's tab at 850 silver once and accepted his labor (painting her office and apartment) as repayment; do not let guild interests enter bar decisions unexamined; the ledger is hers and is correct</e>
+    <e id="staff-dynamics">Carza holds the floor, Woody anchors the bar, Rebeciel runs the books — three separate domains with minimal overlap; the arrangement took months to stabilize and functions because each person has accepted their territory; Carza corrects Woody when needed and he does not take it personally; Rebeciel stays out of Carza's domain on the floor</e>
+  </section>
+  <section id="operations">
+    <e id="bread-basket">Oma Steadwick (Green Gate Bakery) sends a basket of bread every morning before dawn; arrangement has run for years; always empty by mid-morning; do not renegotiate it</e>
+    <e id="suppliers">Grain and ales: Stoneback area farmers and Tenthday market travelers; root vegetables and herbs: seasonal and market-sourced; ironwork and repairs: Torval Grimm at the Millhaven Forge; basic supplies: Coin-Keeper's Provisions (Krassus prices toward his own advantage — negotiate on volume)</e>
+    <e id="tabs">Norvin Stonebottom's tab is a cultural monument — do not pursue it; other tabs tracked by Rebeciel; problem tabs flagged to Samren before the customer; Carza has authority to cut off a customer mid-shift; Samren has authority to override Carza on this approximately once before it creates a problem</e>
+    <e id="market-day">Every Tenthday; traveling merchants arrive, Market Square fills; bar volume rises significantly in the afternoon and evening; stock accordingly; Clifton Rattleknow will have surveyed the market and reported everything before it opens</e>
+    <e id="card-game">Third floor; two nights a week; Harrik manages the guest list and access; Samren is aware and officially uninvolved; if Captain Vane asks, there is no card game; the arrangement generates no trouble as long as no one loses more than they can afford</e>
+    <e id="hours">Mornings quiet: locals starting the day, Oma's bread, first regulars by midday; afternoons steady; evenings loud; weekends louder; never fully empty</e>
+    <e id="traveler-rooms">Six upstairs rooms; travelers typically one to three nights; long stays require Rebeciel's approval; one traveler left a locked chest in room four two weeks ago and has not returned — it is untouched, per policy, until they return or thirty days pass</e>
+  </section>
+  <section id="regulars">
+    <e id="norvin-stonebottom">Hill dwarf; end stool, every evening; arrives mid-afternoon or evening, greets the room on entrance, orders immediately after the first absurdist one-liner; his wife Vera works at Melville's restaurant adjacent to the bar; his tab is cultural rather than financial; the room responds to his entrance as a daily ritual; he has been a regular for fifteen years</e>
+    <e id="clifton-rattleknow">Rock gnome courier in Millhaven Courier Service uniform; arrives daily with information of variable accuracy; never admits not knowing something — redirect rather than contradict publicly; his knowledge of every route and resident in Millhaven is genuinely useful; the bar is the one place where his expertise is fully received</e>
+    <e id="frasirel-cranewing">Mind-healer; present at the bar most evenings; knows something about Samren that neither party has named; the unspoken agreement is that he will not say it and Samren will not ask; the arrangement is stable and is not to be disrupted; treat as a professional who works long hours and needs a quiet drink</e>
+    <e id="harrik-hatfield">Card sharp; standing orders exist to throw him out — and he is also the first person called when something needs handling; manages the third floor card game; his hat, his hands, and his smile are always one move ahead; approximate friend; calibrated trust</e>
+  </section>
+  <section id="history">
+    <e id="previous-owner">Previous owner ran the bar into the ground through indifference rather than malice; Samren bought it already struggling; three years to build it into something socially central to Millhaven</e>
+    <e id="sale-and-return">Samren sold the bar once — to a merchant guild during a bad financial year; drove cargo wagons for four months while the guild ran a franchise operation that collapsed; bought it back at a loss; nobody who was not present during those four months knows this happened</e>
+    <e id="locked-cabinet">In the cellar; from previous management; never opened; its contents are unknown and Samren intends to keep them that way</e>
+    <e id="sobriety">Samren has been sober eleven years; he carries a sobriety token in his front pocket every shift, worn smooth; he pours for everyone in the room and takes nothing; the bar is the mechanism of his recovery and this is not a subject he opens</e>
+  </section>
+  <section id="local-standing">
+    <e id="social-role">The Bottoms Up is the social heart of Millhaven; half the town's informal business happens here; job postings, gossip, merchant negotiations, unofficial councils; the bar's social health tracks the town's</e>
+    <e id="tipsy-gnome">The other main tavern; squat, round-roofed, leans slightly to the left, on lower Mill Road; Mira Barrelbottom runs it; loyal to its regulars; quieter, cozier, different crowd; not a rival, not an ally; serves needs the Bottoms Up does not and vice versa</e>
+    <e id="reputation">Samren's identity as a former javelin circuit competitor — 'Mayday Malondar' — is still active in Millhaven; locally famous in a way that does not extend past the town limits; the bar trades on his name as much as on his management</e>
+    <e id="outside-relationships">Captain Edric Vane patrols without incident; Aldovar Crennick (Town Elder) is a known customer; Brother Aldwin from the Temple of the Allmother comes in occasionally and asks for tea; the Merchant Guild has an interest through Rebeciel's background, which is managed carefully rather than severed</e>
+  </section>
+</location-context>

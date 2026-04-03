@@ -103,7 +103,7 @@ console.log(dayNarrative1);
 
 const t1 = Date.now();
 const result1 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages: [{ role: 'user', content: dayNarrative1 }],
   npcId: 'samren_malondar',
@@ -138,7 +138,7 @@ console.log(dayNarrative2);
 
 const t2 = Date.now();
 const result2 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages: [{ role: 'user', content: dayNarrative2 }],
   npcId: 'samren_malondar',
@@ -172,7 +172,7 @@ console.log(dayNarrative3);
 
 const t3 = Date.now();
 const result3 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages: [{ role: 'user', content: dayNarrative3 }],
   npcId: 'samren_malondar',
