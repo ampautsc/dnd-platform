@@ -236,11 +236,14 @@ function printResponse(label, result, elapsed) {
   const read = u.cache_read_input_tokens ?? 0;
   const inp = u.input_tokens ?? '—';
   const out = u.output_tokens ?? '—';
-  const cacheStatus = read > 0
-    ? `✓ CACHE HIT   read=${read.toLocaleString()} tokens  (created=${created})`
-    : created > 0
-      ? `  cache write  created=${created.toLocaleString()} tokens  (read=0)`
-      : '  no caching data';
+  let cacheStatus;
+  if (read > 0) {
+    cacheStatus = `✓ CACHE HIT   read=${read.toLocaleString()} tokens  (created=${created})`;
+  } else if (created > 0) {
+    cacheStatus = `  cache write  created=${created.toLocaleString()} tokens  (read=0)`;
+  } else {
+    cacheStatus = '  no caching data';
+  }
   console.log(`  [usage] input=${inp}  output=${out}  ${cacheStatus}`);
   console.log(sep);
 }
