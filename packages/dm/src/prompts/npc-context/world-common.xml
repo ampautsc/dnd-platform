@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  world-common.xml — Faerûn 1492 DR baseline world-knowledge
+  Scope: what any worldly adult Faerûnian commoner knows
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as static system block for every NPC prompt
+-->
+<world-context year="1492-DR" scope="faerûn-common-knowledge" depth="worldly-adult-commoner">
+
+  <section id="geography">
+    <e id="sword-coast">W Faerûn coast; trade corridor S→N: Baldur's Gate→Waterdeep→Neverwinter→Luskan; Sea of Swords W; main overland routes: High Road (coastal,patrolled), Trade Way (inland,merchant-heavy)</e>
+    <e id="major-cities">Waterdeep: largest N city; Baldur's Gate: wealthiest Sword Coast port; Neverwinter: rebuilding post-volcanic disaster; Luskan: pirate haven, Arcane Brotherhood base</e>
+    <e id="roads">High Road: safer,slower,coastal patrol; Trade Way: heavy caravan traffic BG↔WD; inns every day's ride; quality varies widely</e>
+    <e id="underdark">Vast subterranean network beneath Faerûn; drow/mind flayers/beholders+worse; surface entrances rare,sealed/guarded; respectable folk avoid entirely</e>
+    <e id="north">Above Waterdeep; anchor cities: Neverwinter,Mirabar,Silverymoon; leagues of wilderness between; ancient ruins,monster-haunted forests; Spine of the World=northern limit; Icewind Dale beyond: frozen,sparsely inhabited</e>
+    <e id="interior">E of Sword Coast: Cormyr (stable kingdom), Dalelands (farming near old Elven Court), Anauroch (desert,former Netherese empire); known by name,rarely visited by Sword Coast folk</e>
+    <e id="moonshae-isles">W across Sea of Swords; Northlander+Ffolk humans; fey creatures,druidic power; trade goods: wool,timber,fish</e>
+  </section>
+
+  <section id="religion">
+    <e id="pantheon">Many gods; most folk honor several not one; normal: Tymora (journey), Chauntea (planting), Kelemvor (death); exclusive single-deity devotion marks clerics/paladins, not common folk</e>
+    <e id="tymora">Goddess of luck+adventurers; coin-flip ritual before journeys/gambling/contracts; temples: cheerful,pragmatic clergy,modest healing fees</e>
+    <e id="helm">God of guardians+vigilance; symbol: eye in upturned gauntlet; patron of guards/soldiers; clergy: austere,keep meticulous records; reject glory</e>
+    <e id="tyr">God of justice+law; temples serve as courts; altar oaths binding (breaking=crime+religious transgression); clerics often serve as magistrates</e>
+    <e id="mystra">Goddess of magic+the Weave; died Spellplague 1385 DR; restored Second Sundering ~1487 DR; all magic failed/warped during absence; wizards+sorcerers pay reverence without active worship</e>
+    <e id="kelemvor">God of death+judgment; priests run mortuaries+funerals; oppose undead as souls refusing rightful judgment; consecrated Kelemvorite cemetery=safe from risen dead</e>
+    <e id="chauntea">Goddess of agriculture+earth; every farming village has shrine; prayers at planting+harvest; minimal ceremony; handful of seed returned to earth=sufficient offering</e>
+    <e id="selune-shar">Selûne (moonfire,moon goddess) vs Shar (darkness,secrets): twin sisters,ancient rivals; conflict shapes night sky; their worshippers=mortal enemies</e>
+    <e id="temples">Healing rarely free; expected offering scales with service: few cp minor wound → multiple gp restoration/disease; wealthy donors get priority; considered proper reverence not corruption</e>
+  </section>
+
+  <section id="economy">
+    <e id="currency">cp,sp,gp,pp ascending; 10cp=1sp; 10sp=1gp; 10gp=1pp; gp: large purchases/contracts; sp: daily commerce; cp: poor folk's coin</e>
+    <e id="wages">1492 DR: unskilled laborer 1-2sp/day; skilled craftsman (blacksmith/carpenter/mason) 2-5sp/day; city soldier ~5sp/day+lodging; adventurer single dungeon=laborer full-year income (if survives)</e>
+    <e id="guilds">Control most skilled trades in cities; unlicensed practice: fines/confiscation/violence; joining requires fees+apprenticeship; Waterdeep guilds powerful enough to influence city politics</e>
+    <e id="trade">Lords' Alliance promotes stable commerce; charter caravans: better gate treatment+commercial arbitration; Zhentarim compete on price,higher risk profile</e>
+    <e id="magical-goods">Healing potion: 50gp+; enchanted weapons/armor: heirlooms or trophies, common folk don't own; magical services (divination/remove curse/raise dead): hundreds→thousands gp</e>
+    <e id="moneylenders">Operate in every city; interest 20%+/month common; folk distrust but use in desperation; debt slavery illegal WD+BG (imperfect enforcement); defaulting has severe extralegal consequences</e>
+    <e id="taxes">City govts tax commerce; Waterdeep: entry fees,harbor duties,guild levies; Baldur's Gate: transit tax,Flaming Fist funded by merchant tithes; tolls common at bridges+city gates</e>
+  </section>
+
+  <section id="magic">
+    <e id="weave">Invisible structure maintained by Mystra; casters channel Weave,don't generate magic independently; frayed 1385-1487 DR (Mystra dead); reliable again post-Second Sundering</e>
+    <e id="spellcasters">Rare; most people never see one; cities: unusual but not shocking; rural areas: perhaps 1 per 10+ villages; common folk attitude: respectful+wary in equal measure</e>
+    <e id="cantrips">Minor effects used by street performers/market vendors/hedge wizards; light,prestidigitation,simple illusion most common; impressive to country folk; city dwellers treat as background noise</e>
+    <e id="enchanted-items">Glowing blade=immediate signal of wealth/power/serious adventuring experience; common guards don't carry magic weapons; elite force officers occasionally do</e>
+    <e id="wild-magic">Spellplague 1385-1395 DR: wild surges common; lingering anxiety in communities badly affected; largely faded in cities,persists in isolated settlements</e>
+    <e id="arcane-sources">Wizard: study; sorcerer: innate power; warlock: pact with powerful being; cleric/paladin: deity; druid: nature; common folk use "wizard" as catch-all regardless of source</e>
+  </section>
+
+  <section id="faction">
+    <e id="lords-alliance">Coalition: Waterdeep,Neverwinter,Baldur's Gate,Silverymoon+others; cooperative defense+trade; shared military response to major threats; political,sometimes fractious; 100+ years standing</e>
+    <e id="zhentarim">Black Network; mercenary+trading org; services: guards,assassins,smuggling,extrajudicial contract enforcement; not illegal everywhere; never fully trusted</e>
+    <e id="harpers">Semi-secret network; oppose tyranny,preserve knowledge; recruit adventurers+scholars; symbol: silver harp; called meddling spies by enemies; truth somewhere between</e>
+    <e id="order-gauntlet">Post-Second Sundering faction; paladins/clerics/devout warriors; proactive not reactive stance on evil; zealous,principled,sometimes to a fault</e>
+    <e id="emerald-enclave">Loose brotherhood: druids/rangers/nature wardens; protect natural world from corruption (magical/monstrous/human); don't oppose civilization; enforce wilderness boundary</e>
+    <e id="flaming-fist">Baldur's Gate mercenary army+de facto city guard; disciplined,well-equipped; operates Sword Coast-wide; badge=recognized authority across the region</e>
+    <e id="city-watch">Every significant city has one; quality varies: Waterdeep professional+incorruptible by most standards vs small city undertrained+bribeable; travelers learn which law is worth invoking</e>
+  </section>
+
+  <section id="danger">
+    <e id="bandits">Constant road hazard outside patrol range; traveling alone=unwise; caravans hire guards; solo travelers attach to groups; problem worsened since Sundering disrupted political order</e>
+    <e id="goblinoids">Goblins: raiders,nuisance-level; hobgoblins: warbands with tactics+discipline=genuine military threat; bugbears; all: capable of ambush+retreat; common enough that most frontier folk have faced them</e>
+    <e id="undead">More active since Sundering; graveyards near ruins need regular consecration; skeletons/zombies=negligent or malicious necromancy; vampires: rare,real,evacuation-level threat not hero-level</e>
+    <e id="gnolls">Hyena-headed humanoids; serve demon lord Yeenoghu; more organized than goblins,more savage than hobgoblins; don't take prisoners for ransom; gnoll signs=leave area immediately</e>
+    <e id="dragons">Real,rare,terrifying; settlement sighting triggers: evacuation/tribute negotiation/hiring expensive adventurers; chromatic (red/black/blue/green/white)=destructive+malevolent; metallic (gold/silver/bronze/copper/brass)=less hostile,still dangerous</e>
+    <e id="wilderness">Genuinely dangerous between settlements; wolves/owlbears/displacer beasts/wyverns regional hazards; ruins=almost certainly occupied by something hostile; patrol lapses make even cleared roads dangerous; no solo wilderness travel without serious reason</e>
+  </section>
+
+  <section id="daily-life">
+    <e id="housing">Urban: 2-3 room tenements,whole family; shared sleeping normal; privacy=luxury; wealthy: townhouses; truly wealthy: city estate+country estate; small town: single-storey combined living/cooking</e>
+    <e id="taverns">Community center; news travels by rumor+conversation; job postings/bounties/merchant ads on common room wall or via barkeep; bards+traveling merchants bring outside news; cheap,sociable,informative</e>
+    <e id="inns">Charge by bed not room; common room=few cp/night; private room=silver; sharing bed with stranger=standard for common travelers; innkeepers track guests,often best local intelligence source</e>
+    <e id="literacy">Most common folk cannot read; literate: merchants/clergy/nobility/formally schooled; city signs use pictures alongside words; literate people hired to read/write contracts+correspondence</e>
+    <e id="markets">Dawn-to-dusk; after-dark commerce in market district=suspicious (black market/fence activity); permanent shops on main streets; traveling vendors in open squares+outside city gates</e>
+    <e id="messages">No postal service; carried by hired messengers/travelers heading that way/caravan networks; 100mi delivery=1 week+; letters sealed with wax; broken seal=unauthorized reading</e>
+    <e id="water">Clean water not guaranteed; wells+river intakes vulnerable to upstream contamination; periodic illness=accepted fact of life; wealthy: boil or watered wine; Purify Food and Water=party-valuable spell</e>
+    <e id="festivals">4-6 major days/year: feasting/games/temple ceremonies; tied to religious+agricultural calendar; double as informal economic fairs; merchants travel specifically to attend larger festivals</e>
+  </section>
+
+  <section id="cosmology">
+    <e id="planes">Material Plane (mortal world) surrounded by Astral Sea; Outer Planes=god realms; Inner Planes=elemental (fire/water/earth/air); Feywild=vibrant fey mirror; Shadowfell=dark death-adjacent mirror</e>
+    <e id="afterlife">Soul→Fugue Plane (gray limbo)→judgment by Kelemvor; faithful: deity's servants claim soul→divine realm; unfaithful: remain as petitioners until claimed/assigned; undead=souls refusing or prevented from judgment</e>
+    <e id="shadowfell">Colorless decaying reflection of Material Plane; source of necromantic energy; shadow creatures; thin spots near mass-death sites: vegetation withers,animals flee</e>
+    <e id="feywild">Vibrant exaggerated reflection; pixies/dryads/satyrs/Archfey rulers; time moves strangely; mortals who wander in may lose/gain months; fey: alien,capricious,dangerous by nature not malice</e>
+    <e id="divine-manifestation">Gods rarely manifest physically; communicate via dreams/omens/clerical visions/prophets; physical manifestation=apocalyptic event (transforms area,kills bystanders); claims of direct divine speech=likely lying,mad, or extremely dangerous</e>
+  </section>
+
+  <section id="calendar">
+    <e id="harptos">12 months × 30 days + 5 standalone festival days; months in order: Hammer,Alturiak,Ches,Tarsakh,Mirtul,Kythorn,Flamerule,Eleasis,Eleint,Marpenoth,Uktar,Nightal</e>
+    <e id="festival-days">Midwinter (Hammer/Alturiak); Greengrass (Tarsakh/Mirtul, spring start); Midsummer (Flamerule/Eleasis); Highharvestide (Eleint/Marpenoth, harvest feast); Feast of the Moon (Uktar/Nightal, dead honored)</e>
+    <e id="current-year">1492 DR (Dale Reckoning); counts from founding of Dalereckoning by dalesfolk+Elven Court; common folk use without knowing origin</e>
+    <e id="second-sundering">~1482-1487 DR; recent cosmic upheaval; reshaped planes,restored dead gods (incl. Mystra),ended Spellplague; living memory: disrupted weather,failed magic,planar bleeds; world stabilized; most living adults remember it</e>
+    <e id="seasons">Winter (Hammer-Alturiak): mountain passes close,N roads treacherous; Spring (Ches-Mirtul): planting season; Summer (Kythorn-Eleasis): peak travel+trade; Autumn (Eleint-Uktar): harvest+preparation; Nightal: dark month before year turns</e>
+  </section>
+
+  <section id="society">
+    <e id="class">Vast divide wealthy/noble vs common laborer; accepted as natural order; mobility exists (skilled craftsman→wealthy; wealthy merchant→bought title) but requires exceptional effort or luck; most born+die in their station</e>
+    <e id="nobility">Hereditary in most city-states+kingdoms; titles pass through bloodlines; marriage into noble family=reliable elevation path; Waterdeep exception: masked Lords system decouples noble names from political power</e>
+    <e id="adventurers">Unusual social position: respected for capability,feared for power,distrusted for lawlessness,envied for potential wealth; cities: necessary but alarming; rural folk: openly impressed; inns have policies on weapons at table</e>
+    <e id="racial-tensions">Elves+dwarves: respected in most civilized areas; half-orcs: mistrust (orcish features read as threatening in raided communities); tieflings: suspicion in religious communities; gnomes: clever+eccentric reputation; halflings: seen as harmless (perception sometimes exploited)</e>
+    <e id="slavery">Practiced openly: Amn,Calimshan; illegal: Waterdeep,Neverwinter,most Lords' Alliance cities; Zhentarim historical trafficking; escaped slaves in N cities=legal grey area; enforcement depends on magistrate</e>
+    <e id="law">Law is local; Waterdeep Code Legal=most comprehensive in Faerûn; Baldur's Gate=merchant-family influenced; smaller towns=local lord/council decree; justice in practice correlates with wealth+influence over written code</e>
+    <e id="women">Varies by region; Waterdeep: female merchants/guildmasters/lords unremarkable; conservative inland: male-dominated structures; temples more egalitarian (Tymora/Selûne/Sune/Lliira have large female clergy)</e>
+    <e id="identity-docs">Larger cities require papers; Waterdeep: guild membership/residency/noble affiliation for certain districts+services; adventurers without papers=more scrutiny at gates; faction letter of introduction changes conversation considerably</e>
+  </section>
+
+</world-context>
