@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  city-baldurs-gate.xml — Baldur's Gate local knowledge, 1492 DR
+  Scope: what a Baldur's Gate resident or regular visitor knows beyond world-common
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as second static block for Baldur's Gate-based NPC prompts
+-->
+<city-context id="baldurs-gate" year="1492-DR" epithets="Gate; the City; the Gateway">
+
+  <section id="governance">
+    <e id="council-four">City ruled by four Dukes (Grand Duke + three); Grand Duke holds executive authority; currently Grand Duke Ulder Ravengard (also Marshal of the Flaming Fist)</e>
+    <e id="parliament-of-peers">Assembly of patriar families (landed nobility); advise+check the Dukes; significant political power but no formal veto; constant friction with Flaming Fist authority</e>
+    <e id="flaming-fist-authority">Flaming Fist is both mercenary army and city law enforcement; answers to Grand Duke Ravengard; more military discipline than civilian police; can be brutal in enforcement</e>
+    <e id="watch">A separate city Watch exists in Upper City; less powerful than Flaming Fist; handles disputes among patriars; widely seen as the nobility's private enforcers</e>
+    <e id="power-dynamics">Real power: Grand Duke + Flaming Fist; nominal power: Parliament of Peers; wealth power: merchant families who fund both; common folk have little formal voice</e>
+  </section>
+
+  <section id="districts">
+    <e id="upper-city">Walled enclave; patriars (nobility) + wealthy merchants live here; gates close at night; Baldur's Mouth (main gate) heavily guarded; cleaner,quieter,more law-abiding</e>
+    <e id="lower-city">Main residential+commercial area; most citizens; Eastway,Heapside,Bloomridge,Brampton neighborhoods; Flaming Fist patrols; lively but rough at edges; most taverns+shops here</e>
+    <e id="outer-city">Outside the walls; no citizenship protections; immigrants,poor,those who can't afford city rents; Flaming Fist has less presence; Rivington and Norchapel neighborhoods; dangerous after dark</e>
+    <e id="wide">Large open market square in Lower City; busiest commercial hub; vendors,performers,public notices; where most visitors spend their coin</e>
+    <e id="harbor">On the Chionthar River estuary; heavy merchant traffic; Fist-controlled docks; harbor fees significant; smugglers use the riverbanks outside city sight</e>
+  </section>
+
+  <section id="landmarks">
+    <e id="elfsong-tavern">Famous Lower City inn+tavern; ghost of an elven bard allegedly heard singing; gathering place for adventurers,merchants,those seeking work; owner Alyssa (human) tolerates rough clientele if they pay</e>
+    <e id="sorcerous-sundries">Major magical goods shop in Upper City; one of the few places on the Sword Coast with reliable stock of potions,scrolls,minor enchanted items; expensive; requires Upper City access</e>
+    <e id="high-hall">Grand Duke's seat of government in Upper City; Parliament of Peers meets here; public petitions heard on specific days; imposing fortified structure</e>
+    <e id="baldurs-mouth">Main gate between Lower City and Upper City; Flaming Fist guards check papers; non-patriar commoners enter by permit only; symbol of the city's class divide</e>
+    <e id="low-lantern">Famous floating tavern on a ship in the harbor; multilevel entertainment; gambling,drink,information; neutral ground by reputation</e>
+  </section>
+
+  <section id="factions-local">
+    <e id="flaming-fist-detail">Elite mercenary force 5,000+ strong; takes contracts across Faerûn; garrison in Baldur's Gate is home base; wages funded by city taxes+merchant tithes; officers mostly veterans; rank-and-file quality varies</e>
+    <e id="patriars">About 40 noble families; hereditary Upper City status; control much of the city's real estate+merchant trade; Parliament is their power base; resent Ravengard's military dominance</e>
+    <e id="guild">Thieves' Guild (now calling itself simply the Guild after reform attempts); controls organized crime in Lower City+Outer City; Guild informants in many establishments; uneasy truce with Flaming Fist</e>
+    <e id="zhentarim-presence">Zhentarim operate in the city; smuggling+mercenary contracts; tolerated because they're hard to root out and sometimes useful; openly rivals with the Guild for criminal territory</e>
+  </section>
+
+  <section id="economy-local">
+    <e id="trade-scale">Wealthiest trading city on the Sword Coast; sits at the mouth of the Chionthar giving access to interior Faerûn; goods from Amn,Calimshan,Sembia transit through the docks</e>
+    <e id="transit-tax">Tax on all goods passing through regardless of destination; major revenue source; merchants resent it,pay it anyway because alternatives are worse; Flaming Fist enforces collection</e>
+    <e id="class-commerce">Patriars dominate large-scale trade via import licenses and storage monopolies; common merchants compete for scraps; bribing the right official can unlock access</e>
+    <e id="chionthar-river">River access into the interior; barges run goods upriver toward Elturel and beyond; river tolls additional to harbor fees; piracy on upper stretches a problem</e>
+  </section>
+
+  <section id="social-culture">
+    <e id="class-tension">Starkest class divide on the Sword Coast; patriars openly look down on Lower City folk; Lower City folk resent the wall and the closed gate; Outer City folk resent everyone inside the walls</e>
+    <e id="attitude-toward-fist">Mixed: respected for discipline+effectiveness; feared for power to act without accountability; hated by those they've wronged; Grand Duke's control is the only real check</e>
+    <e id="adventurers-reception">Common in Baldur's Gate; treated as business opportunities by merchants,labor by the Fist,curiosities by patriars; adventure contracts posted at Elfsong+Low Lantern</e>
+    <e id="cosmopolitan">Major port; every race+nationality passes through; less overtly cosmopolitan than Waterdeep (class matters more than species here) but functionally diverse</e>
+  </section>
+
+</city-context>
