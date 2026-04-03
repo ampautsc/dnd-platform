@@ -41,7 +41,7 @@ const systemPrompt = [
 ].join('\n');
 
 const body = JSON.stringify({
-    model: process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001',
+    model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6',
     max_tokens: 4096,
     temperature: 0.9,
     system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],

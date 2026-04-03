@@ -79,7 +79,7 @@ console.log(prompt1);
 
 const t1 = Date.now();
 const r1 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages,
   npcId: 'samren_malondar',
@@ -106,7 +106,7 @@ console.log(prompt2);
 
 const t2 = Date.now();
 const r2 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages,
   npcId: 'samren_malondar',
@@ -132,7 +132,7 @@ console.log(prompt3);
 
 const t3 = Date.now();
 const r3 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages,
   npcId: 'samren_malondar',
@@ -158,7 +158,7 @@ console.log(prompt4);
 
 const t4 = Date.now();
 const r4 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemPrompt,
   messages,
   npcId: 'samren_malondar',

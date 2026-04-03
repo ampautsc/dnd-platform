@@ -123,7 +123,7 @@ console.log(`User prompt: ${userPrompt1}`);
 
 const t1 = Date.now();
 const result1 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemBlocks,
   userPrompt: userPrompt1,
   npcId: 'samren_malondar',
@@ -147,7 +147,7 @@ console.log('\nCALL 2: Second turn (expect cache READ — same system blocks)');
 
 const t2 = Date.now();
 const result2 = await provider.generateResponse({
-  model: 'claude-haiku-4-5-20251001',
+  model: 'claude-sonnet-4-6',
   systemBlocks,
   messages: messages2,
   npcId: 'samren_malondar',

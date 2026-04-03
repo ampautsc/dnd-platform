@@ -63,8 +63,8 @@ export class LLMProvider {
     }
 
     async generateResponse(request) {
-        // Default model to Claude Haiku if not specified
-        const model = request.model || 'claude-haiku-4-5-20251001';
+        // Default model to Claude Sonnet if not specified (override via ANTHROPIC_MODEL env var)
+        const model = request.model || process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
         // Support both `prompt` (from CharacterResponseService) and `userPrompt` (direct)
         const userPrompt = request.userPrompt || request.prompt || '';
         const normalizedRequest = { ...request, model, userPrompt };
