@@ -261,6 +261,148 @@ describe('npc-context/city-neverwinter.xml — content', () => {
   });
 });
 
+// ─── location-bottoms-up.xml ──────────────────────────────────────────────────
+
+const bottomsUpXml = readXml('location-bottoms-up.xml');
+
+describe('npc-context/location-bottoms-up.xml — structure', () => {
+  it('should be wrapped in a <location-context id="bottoms-up"> root tag', () => {
+    assert.ok(bottomsUpXml.includes('<location-context id="bottoms-up"'), 'missing <location-context id="bottoms-up">');
+    assert.ok(bottomsUpXml.includes('</location-context>'), 'missing </location-context>');
+  });
+
+  const requiredSections = ['physical', 'staff', 'operations', 'regulars', 'history', 'local-standing'];
+
+  for (const section of requiredSections) {
+    it(`should contain section id="${section}"`, () => {
+      assert.ok(bottomsUpXml.includes(`<section id="${section}">`),
+        `missing <section id="${section}">`);
+    });
+  }
+
+  it('should be well-formed XML', () => {
+    assert.ok(isWellFormed(bottomsUpXml), 'XML is not well-formed');
+  });
+});
+
+describe('npc-context/location-bottoms-up.xml — content', () => {
+  it('should reference Norvin Stonebottom and the end stool', () => {
+    assert.ok(bottomsUpXml.includes('norvin') || bottomsUpXml.includes('Norvin'), 'missing Norvin reference');
+    assert.ok(bottomsUpXml.includes('stool') || bottomsUpXml.includes('end stool'), 'missing end stool reference');
+  });
+
+  it('should reference Carza Bitetongue', () => {
+    assert.ok(bottomsUpXml.includes('carza') || bottomsUpXml.includes('Carza'), 'missing Carza reference');
+  });
+
+  it('should reference Woody Tallfield', () => {
+    assert.ok(bottomsUpXml.includes('woody') || bottomsUpXml.includes('Woody'), 'missing Woody reference');
+  });
+
+  it('should reference Rebeciel Ashgrace', () => {
+    assert.ok(bottomsUpXml.includes('rebeciel') || bottomsUpXml.includes('Rebeciel'), 'missing Rebeciel reference');
+  });
+
+  it('should reference the third-floor card game', () => {
+    assert.ok(bottomsUpXml.includes('third') && (bottomsUpXml.includes('card') || bottomsUpXml.includes('card game')),
+      'missing third-floor card game reference');
+  });
+
+  it('should reference Oma Steadwick and the bread basket', () => {
+    assert.ok(bottomsUpXml.includes('Oma') || bottomsUpXml.includes('oma'), 'missing Oma reference');
+    assert.ok(bottomsUpXml.includes('bread') || bottomsUpXml.includes('basket'), 'missing bread basket reference');
+  });
+
+  it('should reference sobriety or the sobriety token', () => {
+    assert.ok(bottomsUpXml.includes('sober') || bottomsUpXml.includes('sobriety') || bottomsUpXml.includes('token'),
+      'missing sobriety reference');
+  });
+
+  it('should reference the Tipsy Gnome', () => {
+    assert.ok(bottomsUpXml.includes('Tipsy Gnome') || bottomsUpXml.includes('tipsy-gnome'),
+      'missing Tipsy Gnome reference');
+  });
+
+  it('should reference Harrik Hatfield', () => {
+    assert.ok(bottomsUpXml.includes('Harrik') || bottomsUpXml.includes('harrik'), 'missing Harrik reference');
+  });
+
+  it('should reference the locked cabinet in the cellar', () => {
+    assert.ok(bottomsUpXml.includes('cabinet') || bottomsUpXml.includes('cellar'), 'missing cellar/cabinet reference');
+  });
+});
+
+// ─── town-millhaven.xml ───────────────────────────────────────────────────────
+
+const millhavenXml = readXml('town-millhaven.xml');
+
+describe('npc-context/town-millhaven.xml — structure', () => {
+  it('should be wrapped in a <town-context id="millhaven"> root tag', () => {
+    assert.ok(millhavenXml.includes('<town-context id="millhaven"'), 'missing <town-context id="millhaven">');
+    assert.ok(millhavenXml.includes('</town-context>'), 'missing </town-context>');
+  });
+
+  const requiredSections = ['geography', 'governance', 'economy', 'social-fabric', 'samrens-history', 'notable-people'];
+
+  for (const section of requiredSections) {
+    it(`should contain section id="${section}"`, () => {
+      assert.ok(millhavenXml.includes(`<section id="${section}">`),
+        `missing <section id="${section}">`);
+    });
+  }
+
+  it('should carry year="1492-DR" attribute', () => {
+    assert.ok(millhavenXml.includes('year="1492-DR"'), 'missing year="1492-DR" attribute');
+  });
+
+  it('should be well-formed XML', () => {
+    assert.ok(isWellFormed(millhavenXml), 'XML is not well-formed');
+  });
+});
+
+describe('npc-context/town-millhaven.xml — content', () => {
+  it('should reference the Stoneback River', () => {
+    assert.ok(millhavenXml.includes('Stoneback River') || millhavenXml.includes('stoneback-river'),
+      'missing Stoneback River reference');
+  });
+
+  it('should reference the King\'s Road', () => {
+    assert.ok(millhavenXml.includes("King's Road") || millhavenXml.includes('kings-road'),
+      "missing King's Road reference");
+  });
+
+  it('should reference Captain Edric Vane', () => {
+    assert.ok(millhavenXml.includes('Vane') || millhavenXml.includes('vane') || millhavenXml.includes('Edric'),
+      'missing Captain Vane reference');
+  });
+
+  it('should reference Aldovar Crennick', () => {
+    assert.ok(millhavenXml.includes('Crennick') || millhavenXml.includes('Aldovar'), 'missing Aldovar Crennick reference');
+  });
+
+  it('should reference market day', () => {
+    assert.ok(millhavenXml.includes('Tenthday') || millhavenXml.includes('market day') || millhavenXml.includes('market-day'),
+      'missing market day reference');
+  });
+
+  it('should reference gossip or information flow', () => {
+    assert.ok(millhavenXml.includes('gossip') || millhavenXml.includes('information'), 'missing gossip/information reference');
+  });
+
+  it('should reference the javelin circuit or Mayday Malondar', () => {
+    assert.ok(millhavenXml.includes('javelin') || millhavenXml.includes('Mayday'), 'missing javelin/Mayday reference');
+  });
+
+  it('should reference Darkwood Forest', () => {
+    assert.ok(millhavenXml.includes('Darkwood') || millhavenXml.includes('darkwood'), 'missing Darkwood Forest reference');
+  });
+
+  it('should reference the lower quarters or where Samren grew up', () => {
+    assert.ok(millhavenXml.includes('lower quarters') || millhavenXml.includes('lower-quarters') || millhavenXml.includes('grew up'),
+      'missing lower quarters / origin reference');
+  });
+});
+
 // ─── loader.js ────────────────────────────────────────────────────────────────
 
 describe('npc-context/loader.js — loadContextFile', () => {
@@ -299,6 +441,16 @@ describe('npc-context/loader.js — loadContextFile', () => {
   it('should load city-neverwinter.xml', () => {
     const content = loadContextFile('city-neverwinter');
     assert.ok(content.includes('<city-context id="neverwinter"'), 'missing neverwinter root tag');
+  });
+
+  it('should load location-bottoms-up.xml', () => {
+    const content = loadContextFile('location-bottoms-up');
+    assert.ok(content.includes('<location-context id="bottoms-up"'), 'missing bottoms-up root tag');
+  });
+
+  it('should load town-millhaven.xml', () => {
+    const content = loadContextFile('town-millhaven');
+    assert.ok(content.includes('<town-context id="millhaven"'), 'missing millhaven root tag');
   });
 
   it('should throw when the file does not exist', () => {

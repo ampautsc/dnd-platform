@@ -11,10 +11,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * prompt caching to produce cache hits across API calls.
  *
  * Available files:
- *   world-common       — Faerûn 1492 DR baseline (all NPCs)
- *   city-waterdeep     — Waterdeep-specific knowledge
- *   city-baldurs-gate  — Baldur's Gate-specific knowledge
- *   city-neverwinter   — Neverwinter-specific knowledge
+ *   world-common          — Faerûn 1492 DR baseline (all NPCs)
+ *   city-waterdeep        — Waterdeep-specific knowledge
+ *   city-baldurs-gate     — Baldur's Gate-specific knowledge
+ *   city-neverwinter      — Neverwinter-specific knowledge
+ *   location-bottoms-up   — Bottoms Up tavern operational knowledge (Samren)
+ *   town-millhaven        — Millhaven town knowledge (Millhaven-based NPCs)
  *
  * @internal Not exposed via any API route.
  */
