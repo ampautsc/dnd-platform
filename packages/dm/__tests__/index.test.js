@@ -5,7 +5,9 @@
  * - createDmEngine exposes log, session, actions, scenes, story, NPC response, and encounter memory modules
  * - CharacterContextPackage enums and builders are re-exported from barrel
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createDmEngine, TRIGGER_EVENT, NPC_TYPE, buildContextPackage } from '../src/index.js';
 import { MockProvider } from '../src/llm/MockProvider.js';
 
@@ -13,23 +15,25 @@ describe('DM Engine Integration', () => {
   it('exposes all core services including encounterMemory', () => {
     const engine = createDmEngine();
     
-    expect(engine.gameLog).toBeDefined();
-    expect(engine.sessionManager).toBeDefined();
-    expect(engine.actionProcessor).toBeDefined();
-    expect(engine.sceneManager).toBeDefined();
-    expect(engine.storyEngine).toBeDefined();
-    expect(engine.groupDecisionArbiter).toBeDefined();
-    expect(engine.characterResponseService).toBeDefined();
-    expect(engine.encounterMemory).toBeDefined();
-    expect(engine.infoExtraction).toBeDefined();
-    expect(engine.personalityEvolution).toBeDefined();
-    expect(engine.encounterSession).toBeDefined();
-    expect(engine.combatNarrator).toBeDefined();
-    expect(engine.npcScheduler).toBeDefined();
-    expect(engine.partyCoherenceMonitor).toBeDefined();
-    expect(engine.chapterGenerator).toBeDefined();
-    expect(engine.imagePromptBuilder).toBeDefined();
-    expect(engine.narrationGenerator).toBeDefined();
+    assert.notStrictEqual(engine.gameLog, undefined);
+    assert.notStrictEqual(engine.sessionManager, undefined);
+    assert.notStrictEqual(engine.actionProcessor, undefined);
+    assert.notStrictEqual(engine.sceneManager, undefined);
+    assert.notStrictEqual(engine.storyEngine, undefined);
+    assert.notStrictEqual(engine.groupDecisionArbiter, undefined);
+    assert.notStrictEqual(engine.characterResponseService, undefined);
+    assert.notStrictEqual(engine.encounterMemory, undefined);
+    assert.notStrictEqual(engine.infoExtraction, undefined);
+    assert.notStrictEqual(engine.personalityEvolution, undefined);
+    assert.notStrictEqual(engine.encounterSession, undefined);
+    assert.notStrictEqual(engine.combatNarrator, undefined);
+    assert.notStrictEqual(engine.npcScheduler, undefined);
+    assert.notStrictEqual(engine.partyCoherenceMonitor, undefined);
+    assert.notStrictEqual(engine.chapterGenerator, undefined);
+    assert.notStrictEqual(engine.imagePromptBuilder, undefined);
+    assert.notStrictEqual(engine.narrationGenerator, undefined);
+    // ambientEngine is null by default — caller must init the local model and inject it
+    assert.strictEqual(engine.ambientEngine, null);
   });
 
   it('accepts a custom provider for NPC responses', async () => {
@@ -46,13 +50,13 @@ describe('DM Engine Integration', () => {
       { personality: { name: 'Guard', backstory: 'A loyal guard.' } }
     );
 
-    expect(result.text).toBe('Hail, adventurer!');
-    expect(result.source).toBe('llm');
+    assert.strictEqual(result.text, 'Hail, adventurer!');
+    assert.strictEqual(result.source, 'llm');
   });
 
   it('re-exports CharacterContextPackage enums and builders', () => {
-    expect(TRIGGER_EVENT.COMBAT_START).toBe('combat_start');
-    expect(NPC_TYPE.ENEMY).toBe('enemy');
-    expect(typeof buildContextPackage).toBe('function');
+    assert.strictEqual(TRIGGER_EVENT.COMBAT_START, 'combat_start');
+    assert.strictEqual(NPC_TYPE.ENEMY, 'enemy');
+    assert.strictEqual(typeof buildContextPackage, 'function');
   });
 });

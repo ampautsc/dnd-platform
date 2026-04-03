@@ -1,4 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
 import { NpcRuntimeContext } from '../../src/npc/NpcRuntimeContext.js'
 
 describe('NpcRuntimeContext', () => {
@@ -11,11 +12,11 @@ describe('NpcRuntimeContext', () => {
   describe('constructor', () => {
     it('accepts optional gameDay', () => {
       const c = new NpcRuntimeContext({ gameDay: 5 })
-      expect(c.getGameDay()).toBe(5)
+      assert.strictEqual(c.getGameDay(), 5)
     })
 
     it('defaults gameDay to 1', () => {
-      expect(ctx.getGameDay()).toBe(1)
+      assert.strictEqual(ctx.getGameDay(), 1)
     })
   })
 
@@ -27,8 +28,8 @@ describe('NpcRuntimeContext', () => {
         arrivedAt: '8:00',
       })
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.currentLocation.locationId).toBe('bottoms_up')
-      expect(snap.currentLocation.areaWithin).toBe('The Bar')
+      assert.strictEqual(snap.currentLocation.locationId, 'bottoms_up')
+      assert.strictEqual(snap.currentLocation.areaWithin, 'The Bar')
     })
   })
 
@@ -36,7 +37,7 @@ describe('NpcRuntimeContext', () => {
     it('stores current activity', () => {
       ctx.setActivity('mira_barrelbottom', 'Wiping down the bar while surveying the room')
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.currentActivity).toBe('Wiping down the bar while surveying the room')
+      assert.strictEqual(snap.currentActivity, 'Wiping down the bar while surveying the room')
     })
   })
 
@@ -44,7 +45,7 @@ describe('NpcRuntimeContext', () => {
     it('stores current mood', () => {
       ctx.setMood('mira_barrelbottom', 'content but watchful')
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.currentMood).toBe('content but watchful')
+      assert.strictEqual(snap.currentMood, 'content but watchful')
     })
   })
 
@@ -60,9 +61,9 @@ describe('NpcRuntimeContext', () => {
         participants: ['brennan_holt'],
       })
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.dayExperiences).toHaveLength(2)
-      expect(snap.dayExperiences[0].type).toBe('observation')
-      expect(snap.dayExperiences[1].participants).toEqual(['brennan_holt'])
+      assert.strictEqual(snap.dayExperiences.length, 2)
+      assert.strictEqual(snap.dayExperiences[0].type, 'observation')
+      assert.deepStrictEqual(snap.dayExperiences[1].participants, ['brennan_holt'])
     })
 
     it('timestamps experiences automatically', () => {
@@ -71,13 +72,13 @@ describe('NpcRuntimeContext', () => {
         summary: 'A stranger walked in.',
       })
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.dayExperiences[0].timestamp).toBeDefined()
+      assert.notStrictEqual(snap.dayExperiences[0].timestamp, undefined)
     })
   })
 
   describe('getExperiencesSoFar', () => {
     it('returns empty array for unknown NPC', () => {
-      expect(ctx.getExperiencesSoFar('nobody')).toEqual([])
+      assert.deepStrictEqual(ctx.getExperiencesSoFar('nobody'), [])
     })
 
     it('returns recorded experiences in order', () => {
@@ -85,9 +86,9 @@ describe('NpcRuntimeContext', () => {
       ctx.recordExperience('fen_colby', { type: 'observation', summary: 'The docks smell worse than usual.' })
       ctx.recordExperience('fen_colby', { type: 'event', summary: 'Walked to Bottoms Up.' })
       const exps = ctx.getExperiencesSoFar('fen_colby')
-      expect(exps).toHaveLength(3)
-      expect(exps[0].summary).toMatch(/headache/)
-      expect(exps[2].summary).toMatch(/Bottoms Up/)
+      assert.strictEqual(exps.length, 3)
+      assert.match(exps[0].summary, /headache/)
+      assert.match(exps[2].summary, /Bottoms Up/)
     })
   })
 
@@ -105,49 +106,49 @@ describe('NpcRuntimeContext', () => {
         currentMood: 'cheerful',
         gameDay: 1,
       }))
-      expect(snap.dayExperiences).toHaveLength(1)
-      expect(snap.dailyPlan).toBeNull()
+      assert.strictEqual(snap.dayExperiences.length, 1)
+      assert.strictEqual(snap.dailyPlan, null)
     })
 
     it('returns defaults for unknown NPC', () => {
       const snap = ctx.getSnapshot('nobody')
-      expect(snap.currentLocation).toBeNull()
-      expect(snap.currentActivity).toBeNull()
-      expect(snap.currentMood).toBeNull()
-      expect(snap.dayExperiences).toEqual([])
-      expect(snap.dailyPlan).toBeNull()
-      expect(snap.gameDay).toBe(1)
+      assert.strictEqual(snap.currentLocation, null)
+      assert.strictEqual(snap.currentActivity, null)
+      assert.strictEqual(snap.currentMood, null)
+      assert.deepStrictEqual(snap.dayExperiences, [])
+      assert.strictEqual(snap.dailyPlan, null)
+      assert.strictEqual(snap.gameDay, 1)
     })
   })
 
   describe('computeAgeInDays', () => {
     it('computes age * 365 for a personality with age', () => {
-      expect(ctx.computeAgeInDays({ age: 38 })).toBe(38 * 365 + 1 - 1)
+      assert.strictEqual(ctx.computeAgeInDays({ age: 38 }), 38 * 365 + 1 - 1)
       // gameDay 1: lived age*365 + (gameDay-1) = age*365
     })
 
     it('returns null when personality has no age', () => {
-      expect(ctx.computeAgeInDays({})).toBeNull()
-      expect(ctx.computeAgeInDays({ name: 'Test' })).toBeNull()
+      assert.strictEqual(ctx.computeAgeInDays({}), null)
+      assert.strictEqual(ctx.computeAgeInDays({ name: 'Test' }), null)
     })
 
     it('accounts for game day progression', () => {
       const c = new NpcRuntimeContext({ gameDay: 10 })
       // age*365 + (gameDay - 1) additional days
-      expect(c.computeAgeInDays({ age: 38 })).toBe(38 * 365 + 9)
+      assert.strictEqual(c.computeAgeInDays({ age: 38 }), 38 * 365 + 9)
     })
   })
 
   describe('advanceDay', () => {
     it('increments game day', () => {
       ctx.advanceDay()
-      expect(ctx.getGameDay()).toBe(2)
+      assert.strictEqual(ctx.getGameDay(), 2)
     })
 
     it('clears all day experiences', () => {
       ctx.recordExperience('mira_barrelbottom', { type: 'event', summary: 'Something.' })
       ctx.advanceDay()
-      expect(ctx.getExperiencesSoFar('mira_barrelbottom')).toEqual([])
+      assert.deepStrictEqual(ctx.getExperiencesSoFar('mira_barrelbottom'), [])
     })
 
     it('preserves location and activity across day advance', () => {
@@ -155,8 +156,8 @@ describe('NpcRuntimeContext', () => {
       ctx.setActivity('mira_barrelbottom', 'Sleeping')
       ctx.advanceDay()
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.currentLocation.locationId).toBe('bottoms_up')
-      expect(snap.currentActivity).toBe('Sleeping')
+      assert.strictEqual(snap.currentLocation.locationId, 'bottoms_up')
+      assert.strictEqual(snap.currentActivity, 'Sleeping')
     })
   })
 
@@ -166,8 +167,8 @@ describe('NpcRuntimeContext', () => {
       ctx.recordExperience('mira_barrelbottom', { type: 'event', summary: 'Test' })
       ctx.clearNpc('mira_barrelbottom')
       const snap = ctx.getSnapshot('mira_barrelbottom')
-      expect(snap.currentLocation).toBeNull()
-      expect(snap.dayExperiences).toEqual([])
+      assert.strictEqual(snap.currentLocation, null)
+      assert.deepStrictEqual(snap.dayExperiences, [])
     })
   })
 })

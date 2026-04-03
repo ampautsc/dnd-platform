@@ -6,23 +6,25 @@
  * - supports transitioning to valid scene types (exploration, social, travel, combat, rest, shop)
  * - throws an error for invalid scene types
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createSceneManager } from '../../src/story/SceneManager.js';
 
 describe('SceneManager', () => {
   it('starts in exploration scene by default', () => {
     const manager = createSceneManager();
-    expect(manager.getCurrentScene()).toBe('exploration');
+    assert.strictEqual(manager.getCurrentScene(), 'exploration');
   });
 
   it('transitions to a valid scene type', () => {
     const manager = createSceneManager();
     manager.transitionTo('combat');
-    expect(manager.getCurrentScene()).toBe('combat');
+    assert.strictEqual(manager.getCurrentScene(), 'combat');
   });
 
   it('throws on transition to an invalid scene type', () => {
     const manager = createSceneManager();
-    expect(() => manager.transitionTo('flying')).toThrow(/UNKNOWN_SCENE_TYPE/);
+    assert.throws(() => manager.transitionTo('flying'), /UNKNOWN_SCENE_TYPE/);
   });
 });

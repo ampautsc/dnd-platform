@@ -3,7 +3,9 @@
  * Written BEFORE implementation (TDD Rule #4).
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { getItem, hasItem, getAllItems, getItemsByType, ITEMS } from '../src/items/index.js';
 
 describe('item data integrity', () => {
@@ -12,29 +14,29 @@ describe('item data integrity', () => {
   it('every item has all required fields', () => {
     for (const item of ITEMS) {
       for (const field of REQUIRED_FIELDS) {
-        expect(item, `item missing '${field}'`).toHaveProperty(field);
+        assert.notStrictEqual(item[field], undefined, `item missing '${field}'`);
       }
     }
   });
 
   it('every item id is unique', () => {
     const ids = ITEMS.map(i => i.id);
-    expect(new Set(ids).size).toBe(ids.length);
+    assert.strictEqual(new Set(ids).size, ids.length);
   });
 
   it('every item has a valid type', () => {
     const VALID_TYPES = ['weapon', 'armor', 'potion', 'misc'];
     for (const item of ITEMS) {
-      expect(VALID_TYPES, `${item.id} has invalid type '${item.type}'`).toContain(item.type);
+      assert.ok(VALID_TYPES.includes(item.type), `${item.id} has invalid type '${item.type}'`);
     }
   });
 
   it('weapons have weaponProperties', () => {
     for (const item of ITEMS) {
       if (item.type === 'weapon') {
-        expect(item, `weapon ${item.id} missing weaponProperties`).toHaveProperty('weaponProperties');
-        expect(item.weaponProperties).toHaveProperty('damageDie');
-        expect(item.weaponProperties).toHaveProperty('damageType');
+        assert.notStrictEqual(item['weaponProperties'], undefined, `weapon ${item.id} missing weaponProperties`);
+        assert.notStrictEqual(item.weaponProperties['damageDie'], undefined);
+        assert.notStrictEqual(item.weaponProperties['damageType'], undefined);
       }
     }
   });
@@ -42,8 +44,8 @@ describe('item data integrity', () => {
   it('armor has armorProperties', () => {
     for (const item of ITEMS) {
       if (item.type === 'armor') {
-        expect(item, `armor ${item.id} missing armorProperties`).toHaveProperty('armorProperties');
-        expect(item.armorProperties).toHaveProperty('ac');
+        assert.notStrictEqual(item['armorProperties'], undefined, `armor ${item.id} missing armorProperties`);
+        assert.notStrictEqual(item.armorProperties['ac'], undefined);
       }
     }
   });
@@ -52,41 +54,41 @@ describe('item data integrity', () => {
 describe('getItem', () => {
   it('returns item by id', () => {
     const sword = getItem('longsword');
-    expect(sword.name).toBe('Longsword');
-    expect(sword.type).toBe('weapon');
+    assert.strictEqual(sword.name, 'Longsword');
+    assert.strictEqual(sword.type, 'weapon');
   });
 
   it('returns null for unknown id', () => {
-    expect(getItem('vorpal_blade')).toBeNull();
+    assert.strictEqual(getItem('vorpal_blade'), null);
   });
 });
 
 describe('hasItem', () => {
   it('returns true for known item', () => {
-    expect(hasItem('scimitar')).toBe(true);
+    assert.strictEqual(hasItem('scimitar'), true);
   });
 
   it('returns false for unknown item', () => {
-    expect(hasItem('vorpal_blade')).toBe(false);
+    assert.strictEqual(hasItem('vorpal_blade'), false);
   });
 });
 
 describe('getAllItems', () => {
   it('returns all items', () => {
-    expect(getAllItems().length).toBeGreaterThanOrEqual(10);
+    assert.ok(getAllItems().length >= 10);
   });
 });
 
 describe('getItemsByType', () => {
   it('returns weapons only', () => {
     const weapons = getItemsByType('weapon');
-    expect(weapons.length).toBeGreaterThanOrEqual(4);
-    expect(weapons.every(i => i.type === 'weapon')).toBe(true);
+    assert.ok(weapons.length >= 4);
+    assert.strictEqual(weapons.every(i => i.type === 'weapon'), true);
   });
 
   it('returns potions only', () => {
     const potions = getItemsByType('potion');
-    expect(potions.length).toBeGreaterThanOrEqual(2);
-    expect(potions.every(i => i.type === 'potion')).toBe(true);
+    assert.ok(potions.length >= 2);
+    assert.strictEqual(potions.every(i => i.type === 'potion'), true);
   });
 });

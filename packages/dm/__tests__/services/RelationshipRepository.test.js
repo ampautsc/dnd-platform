@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { RelationshipRepository, RECOGNITION_TIERS, SIGNIFICANCE_LEVELS } from '../../src/services/RelationshipRepository.js';
 
 /**
@@ -26,11 +28,11 @@ describe('RelationshipRepository', () => {
 
   describe('constants', () => {
     it('should export the four recognition tiers in order', () => {
-      expect(RECOGNITION_TIERS).toEqual(['stranger', 'recognized', 'acquaintance', 'familiar']);
+      assert.deepStrictEqual(RECOGNITION_TIERS, ['stranger', 'recognized', 'acquaintance', 'familiar']);
     });
 
     it('should export significance levels in ascending order', () => {
-      expect(SIGNIFICANCE_LEVELS).toEqual(['trivial', 'minor', 'notable', 'major', 'life-changing']);
+      assert.deepStrictEqual(SIGNIFICANCE_LEVELS, ['trivial', 'minor', 'notable', 'major', 'life-changing']);
     });
   });
 
@@ -39,7 +41,7 @@ describe('RelationshipRepository', () => {
   describe('getRelationship / setRelationship', () => {
     it('should return null for unknown relationships', () => {
       const rel = repo.getRelationship('player', 'old_mattock');
-      expect(rel).toBeNull();
+      assert.strictEqual(rel, null);
     });
 
     it('should create a new relationship with defaults', () => {
@@ -53,22 +55,22 @@ describe('RelationshipRepository', () => {
         emotionalValence: 0,
         encounterCount: 0,
       });
-      expect(rel.lastEncounter).toBeNull();
-      expect(rel.createdAt).toBeDefined();
+      assert.strictEqual(rel.lastEncounter, null);
+      assert.notStrictEqual(rel.createdAt, undefined);
     });
 
     it('should return the same relationship on second call', () => {
       const first = repo.getOrCreateRelationship('player', 'old_mattock');
       const second = repo.getOrCreateRelationship('player', 'old_mattock');
-      expect(first).toBe(second);
+      assert.strictEqual(first, second);
     });
 
     it('should treat subject→target and target→subject as separate relationships', () => {
       const playerToNpc = repo.getOrCreateRelationship('player', 'old_mattock');
       const npcToPlayer = repo.getOrCreateRelationship('old_mattock', 'player');
-      expect(playerToNpc).not.toBe(npcToPlayer);
-      expect(playerToNpc.subjectId).toBe('player');
-      expect(npcToPlayer.subjectId).toBe('old_mattock');
+      assert.notStrictEqual(playerToNpc, npcToPlayer);
+      assert.strictEqual(playerToNpc.subjectId, 'player');
+      assert.strictEqual(npcToPlayer.subjectId, 'old_mattock');
     });
   });
 
@@ -77,20 +79,20 @@ describe('RelationshipRepository', () => {
   describe('recognition tiers', () => {
     it('should start at stranger', () => {
       const rel = repo.getOrCreateRelationship('player', 'old_mattock');
-      expect(rel.recognitionTier).toBe('stranger');
+      assert.strictEqual(rel.recognitionTier, 'stranger');
     });
 
     it('should promote through tiers in order', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
 
       repo.promoteTier('player', 'old_mattock', 'recognized');
-      expect(repo.getRelationship('player', 'old_mattock').recognitionTier).toBe('recognized');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').recognitionTier, 'recognized');
 
       repo.promoteTier('player', 'old_mattock', 'acquaintance');
-      expect(repo.getRelationship('player', 'old_mattock').recognitionTier).toBe('acquaintance');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').recognitionTier, 'acquaintance');
 
       repo.promoteTier('player', 'old_mattock', 'familiar');
-      expect(repo.getRelationship('player', 'old_mattock').recognitionTier).toBe('familiar');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').recognitionTier, 'familiar');
     });
 
     it('should not allow demotion', () => {
@@ -98,7 +100,7 @@ describe('RelationshipRepository', () => {
       repo.promoteTier('player', 'old_mattock', 'recognized');    // stranger → recognized
       repo.promoteTier('player', 'old_mattock', 'acquaintance');  // recognized → acquaintance
       repo.promoteTier('player', 'old_mattock', 'stranger');      // attempt demotion
-      expect(repo.getRelationship('player', 'old_mattock').recognitionTier).toBe('acquaintance');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').recognitionTier, 'acquaintance');
     });
 
     it('should not allow skipping tiers', () => {
@@ -106,7 +108,7 @@ describe('RelationshipRepository', () => {
       // Trying to jump from stranger straight to familiar
       repo.promoteTier('player', 'old_mattock', 'familiar');
       // Should only advance to the next tier (recognized)
-      expect(repo.getRelationship('player', 'old_mattock').recognitionTier).toBe('recognized');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').recognitionTier, 'recognized');
     });
 
     it('should throw on invalid tier', () => {
@@ -118,8 +120,8 @@ describe('RelationshipRepository', () => {
     it('should auto-create relationship if promoting unknown pair', () => {
       repo.promoteTier('player', 'lell_sparrow', 'recognized');
       const rel = repo.getRelationship('player', 'lell_sparrow');
-      expect(rel).not.toBeNull();
-      expect(rel.recognitionTier).toBe('recognized');
+      assert.notStrictEqual(rel, null);
+      assert.strictEqual(rel.recognitionTier, 'recognized');
     });
   });
 
@@ -136,7 +138,7 @@ describe('RelationshipRepository', () => {
     it('should return the display label via getDisplayName when stranger', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       repo.setDisplayLabel('player', 'old_mattock', 'the old fisherman');
-      expect(repo.getDisplayName('player', 'old_mattock', 'Old Mattock')).toBe('the old fisherman');
+      assert.strictEqual(repo.getDisplayName('player', 'old_mattock', 'Old Mattock'), 'the old fisherman');
     });
 
     it('should return the real name when acquaintance or higher', () => {
@@ -144,11 +146,11 @@ describe('RelationshipRepository', () => {
       repo.setDisplayLabel('player', 'old_mattock', 'the old fisherman');
       repo.promoteTier('player', 'old_mattock', 'recognized');
       // Still recognized — use label
-      expect(repo.getDisplayName('player', 'old_mattock', 'Old Mattock')).toBe('the old fisherman');
+      assert.strictEqual(repo.getDisplayName('player', 'old_mattock', 'Old Mattock'), 'the old fisherman');
 
       repo.promoteTier('player', 'old_mattock', 'acquaintance');
       // Acquaintance — knows the name
-      expect(repo.getDisplayName('player', 'old_mattock', 'Old Mattock')).toBe('Old Mattock');
+      assert.strictEqual(repo.getDisplayName('player', 'old_mattock', 'Old Mattock'), 'Old Mattock');
     });
 
     it('should return real name when familiar', () => {
@@ -156,17 +158,17 @@ describe('RelationshipRepository', () => {
       repo.promoteTier('player', 'old_mattock', 'recognized');
       repo.promoteTier('player', 'old_mattock', 'acquaintance');
       repo.promoteTier('player', 'old_mattock', 'familiar');
-      expect(repo.getDisplayName('player', 'old_mattock', 'Old Mattock')).toBe('Old Mattock');
+      assert.strictEqual(repo.getDisplayName('player', 'old_mattock', 'Old Mattock'), 'Old Mattock');
     });
 
     it('should fall back to real name if no display label set for stranger', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       // No label set — stranger with no description falls back to name
-      expect(repo.getDisplayName('player', 'old_mattock', 'Old Mattock')).toBe('Old Mattock');
+      assert.strictEqual(repo.getDisplayName('player', 'old_mattock', 'Old Mattock'), 'Old Mattock');
     });
 
     it('should return real name for unknown relationships', () => {
-      expect(repo.getDisplayName('player', 'unknown_npc', 'Some Guy')).toBe('Some Guy');
+      assert.strictEqual(repo.getDisplayName('player', 'unknown_npc', 'Some Guy'), 'Some Guy');
     });
   });
 
@@ -181,12 +183,12 @@ describe('RelationshipRepository', () => {
       });
 
       const rel = repo.getRelationship('player', 'old_mattock');
-      expect(rel.memories).toHaveLength(1);
+      assert.strictEqual(rel.memories.length, 1);
       expect(rel.memories[0]).toMatchObject({
         summary: 'Met in the Bottoms Up tavern. He was mending nets and seemed content to be left alone.',
         significance: 'minor',
       });
-      expect(rel.memories[0].date).toBeDefined();
+      assert.notStrictEqual(rel.memories[0].date, undefined);
     });
 
     it('should accumulate memories across encounters', () => {
@@ -205,8 +207,8 @@ describe('RelationshipRepository', () => {
       });
 
       const rel = repo.getRelationship('player', 'old_mattock');
-      expect(rel.memories).toHaveLength(3);
-      expect(rel.memories[2].significance).toBe('life-changing');
+      assert.strictEqual(rel.memories.length, 3);
+      assert.strictEqual(rel.memories[2].significance, 'life-changing');
     });
 
     it('should default significance to minor', () => {
@@ -214,7 +216,7 @@ describe('RelationshipRepository', () => {
       repo.recordMemory('player', 'old_mattock', {
         summary: 'A brief nod across the room.',
       });
-      expect(repo.getRelationship('player', 'old_mattock').memories[0].significance).toBe('minor');
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').memories[0].significance, 'minor');
     });
 
     it('should reject invalid significance levels', () => {
@@ -231,21 +233,21 @@ describe('RelationshipRepository', () => {
         significance: 'minor',
       });
       const rel = repo.getRelationship('player', 'lell_sparrow');
-      expect(rel).not.toBeNull();
-      expect(rel.memories).toHaveLength(1);
+      assert.notStrictEqual(rel, null);
+      assert.strictEqual(rel.memories.length, 1);
     });
 
     it('should increment encounterCount when recording', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       repo.recordMemory('player', 'old_mattock', { summary: 'First.' });
       repo.recordMemory('player', 'old_mattock', { summary: 'Second.' });
-      expect(repo.getRelationship('player', 'old_mattock').encounterCount).toBe(2);
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').encounterCount, 2);
     });
 
     it('should update lastEncounter timestamp', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       repo.recordMemory('player', 'old_mattock', { summary: 'Hello.' });
-      expect(repo.getRelationship('player', 'old_mattock').lastEncounter).toBeDefined();
+      assert.notStrictEqual(repo.getRelationship('player', 'old_mattock').lastEncounter, undefined);
     });
   });
 
@@ -254,7 +256,7 @@ describe('RelationshipRepository', () => {
   describe('emotional valence', () => {
     it('should start at 0 (neutral)', () => {
       const rel = repo.getOrCreateRelationship('player', 'old_mattock');
-      expect(rel.emotionalValence).toBe(0);
+      assert.strictEqual(rel.emotionalValence, 0);
     });
 
     it('should adjust valence within bounds', () => {
@@ -266,10 +268,10 @@ describe('RelationshipRepository', () => {
     it('should clamp to [-1, 1]', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       repo.adjustValence('player', 'old_mattock', 5);
-      expect(repo.getRelationship('player', 'old_mattock').emotionalValence).toBe(1);
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').emotionalValence, 1);
 
       repo.adjustValence('player', 'old_mattock', -10);
-      expect(repo.getRelationship('player', 'old_mattock').emotionalValence).toBe(-1);
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock').emotionalValence, -1);
     });
 
     it('should accumulate across calls', () => {
@@ -293,7 +295,7 @@ describe('RelationshipRepository', () => {
 
     it('should retrieve all relationships for a subject', () => {
       const playerRels = repo.getRelationshipsForSubject('player');
-      expect(playerRels).toHaveLength(3);
+      assert.strictEqual(playerRels.length, 3);
       expect(playerRels.map(r => r.targetId)).toEqual(
         expect.arrayContaining(['old_mattock', 'mira_barrelbottom', 'lell_sparrow'])
       );
@@ -301,20 +303,20 @@ describe('RelationshipRepository', () => {
 
     it('should retrieve all relationships targeting an entity', () => {
       const aboutPlayer = repo.getRelationshipsAbout('player');
-      expect(aboutPlayer).toHaveLength(1);
-      expect(aboutPlayer[0].subjectId).toBe('old_mattock');
+      assert.strictEqual(aboutPlayer.length, 1);
+      assert.strictEqual(aboutPlayer[0].subjectId, 'old_mattock');
     });
 
     it('should retrieve all relationships between scene participants', () => {
       const participants = ['player', 'old_mattock', 'mira_barrelbottom'];
       const sceneRels = repo.getSceneRelationships(participants);
       // player→mattock, player→mira, mattock→player, mattock→mira
-      expect(sceneRels).toHaveLength(4);
+      assert.strictEqual(sceneRels.length, 4);
     });
 
     it('should return empty arrays for unknown subjects', () => {
-      expect(repo.getRelationshipsForSubject('nobody')).toEqual([]);
-      expect(repo.getRelationshipsAbout('nobody')).toEqual([]);
+      assert.deepStrictEqual(repo.getRelationshipsForSubject('nobody'), []);
+      assert.deepStrictEqual(repo.getRelationshipsAbout('nobody'), []);
     });
   });
 
@@ -335,13 +337,13 @@ describe('RelationshipRepository', () => {
       repo.adjustValence('old_mattock', 'player', 0.2);
 
       const context = repo.getMemoryContext('old_mattock', 'player');
-      expect(context).toContain('recognized');
-      expect(context).toContain('stranger walked in');
-      expect(context).toContain('asked about the river');
+      assert.ok(context.includes('recognized'));
+      assert.ok(context.includes('stranger walked in'));
+      assert.ok(context.includes('asked about the river'));
     });
 
     it('should return null when no relationship exists', () => {
-      expect(repo.getMemoryContext('nobody', 'also_nobody')).toBeNull();
+      assert.strictEqual(repo.getMemoryContext('nobody', 'also_nobody'), null);
     });
 
     it('should include emotional valence description', () => {
@@ -350,7 +352,7 @@ describe('RelationshipRepository', () => {
       repo.recordMemory('old_mattock', 'player', { summary: 'A good encounter.' });
 
       const context = repo.getMemoryContext('old_mattock', 'player');
-      expect(context).toMatch(/warm|positive|favorable/i);
+      assert.match(context, /warm|positive|favorable/i);
     });
   });
 
@@ -371,8 +373,8 @@ describe('RelationshipRepository', () => {
         summary: 'Met in the tavern.',
       });
 
-      expect(saved.length).toBeGreaterThan(0);
-      expect(saved[saved.length - 1].subjectId).toBe('player');
+      assert.ok(saved.length > 0);
+      assert.strictEqual(saved[saved.length - 1].subjectId, 'player');
     });
 
     it('should load relationships from adapter on getOrCreate', () => {
@@ -399,9 +401,9 @@ describe('RelationshipRepository', () => {
 
       const persistentRepo = new RelationshipRepository({ persistenceAdapter: adapter });
       const rel = persistentRepo.getOrCreateRelationship('player', 'old_mattock');
-      expect(rel.recognitionTier).toBe('acquaintance');
-      expect(rel.memories).toHaveLength(1);
-      expect(rel.emotionalValence).toBe(0.4);
+      assert.strictEqual(rel.recognitionTier, 'acquaintance');
+      assert.strictEqual(rel.memories.length, 1);
+      assert.strictEqual(rel.emotionalValence, 0.4);
     });
   });
 
@@ -423,9 +425,9 @@ describe('RelationshipRepository', () => {
       });
 
       const rel = repo.getRelationship('old_mattock', 'mira_barrelbottom');
-      expect(rel.recognitionTier).toBe('familiar');
-      expect(rel.displayLabel).toBe('Mira');
-      expect(rel.memories).toHaveLength(1);
+      assert.strictEqual(rel.recognitionTier, 'familiar');
+      assert.strictEqual(rel.displayLabel, 'Mira');
+      assert.strictEqual(rel.memories.length, 1);
     });
 
     it('should not overwrite dynamically-evolved relationships', () => {
@@ -446,8 +448,8 @@ describe('RelationshipRepository', () => {
       });
 
       const rel = repo.getRelationship('old_mattock', 'player');
-      expect(rel.recognitionTier).toBe('recognized'); // not overwritten
-      expect(rel.memories).toHaveLength(1); // not cleared
+      assert.strictEqual(rel.recognitionTier, 'recognized'); // not overwritten
+      assert.strictEqual(rel.memories.length, 1); // not cleared
     });
   });
 
@@ -458,8 +460,8 @@ describe('RelationshipRepository', () => {
       repo.getOrCreateRelationship('player', 'old_mattock');
       repo.getOrCreateRelationship('player', 'mira_barrelbottom');
       repo.clearAll();
-      expect(repo.getRelationship('player', 'old_mattock')).toBeNull();
-      expect(repo.getRelationshipsForSubject('player')).toEqual([]);
+      assert.strictEqual(repo.getRelationship('player', 'old_mattock'), null);
+      assert.deepStrictEqual(repo.getRelationshipsForSubject('player'), []);
     });
   });
 
@@ -474,7 +476,7 @@ describe('RelationshipRepository', () => {
         opinion: 'Part of the furniture. Sharper than people think.',
       });
       const rel = repo.getRelationship('mira_barrelbottom', 'fen_colby');
-      expect(rel.opinion).toBe('Part of the furniture. Sharper than people think.');
+      assert.strictEqual(rel.opinion, 'Part of the furniture. Sharper than people think.');
     });
 
     it('should default opinion to null if not provided', () => {
@@ -484,7 +486,7 @@ describe('RelationshipRepository', () => {
         recognitionTier: 'stranger',
       });
       const rel = repo.getRelationship('mira_barrelbottom', 'player');
-      expect(rel.opinion).toBeNull();
+      assert.strictEqual(rel.opinion, null);
     });
 
     it('should allow updating opinion via setOpinion()', () => {
@@ -496,7 +498,7 @@ describe('RelationshipRepository', () => {
       });
       repo.setOpinion('fen_colby', 'mira_barrelbottom', 'She saved my life.');
       const rel = repo.getRelationship('fen_colby', 'mira_barrelbottom');
-      expect(rel.opinion).toBe('She saved my life.');
+      assert.strictEqual(rel.opinion, 'She saved my life.');
     });
 
     it('should include opinion text in getMemoryContext output', () => {
@@ -508,9 +510,9 @@ describe('RelationshipRepository', () => {
         emotionalValence: 0.3,
       });
       const ctx = repo.getMemoryContext('fen_colby', 'mira_barrelbottom');
-      expect(ctx).toContain('Tolerates me because I am mostly harmless.');
-      expect(ctx).toContain('Recognition: familiar');
-      expect(ctx).toContain('mildly favorable');
+      assert.ok(ctx.includes('Tolerates me because I am mostly harmless.'));
+      assert.ok(ctx.includes('Recognition: familiar'));
+      assert.ok(ctx.includes('mildly favorable'));
     });
 
     it('should work without opinion in getMemoryContext', () => {
@@ -521,8 +523,8 @@ describe('RelationshipRepository', () => {
         emotionalValence: 0,
       });
       const ctx = repo.getMemoryContext('player', 'mira_barrelbottom');
-      expect(ctx).toContain('Recognition: stranger');
-      expect(ctx).not.toContain('null');
+      assert.ok(ctx.includes('Recognition: stranger'));
+      assert.ok(!ctx.includes('null'));
     });
   });
 
@@ -542,16 +544,16 @@ describe('RelationshipRepository', () => {
     it('should seed relationships from opinionsAbout data', () => {
       repo.seedFromPersonality(miraPersonality);
       const rel = repo.getRelationship('mira_barrelbottom', 'fen_colby');
-      expect(rel).not.toBeNull();
-      expect(rel.opinion).toBe('Part of the furniture. Sharper than people think.');
-      expect(rel.recognitionTier).toBe('familiar');
+      assert.notStrictEqual(rel, null);
+      assert.strictEqual(rel.opinion, 'Part of the furniture. Sharper than people think.');
+      assert.strictEqual(rel.recognitionTier, 'familiar');
     });
 
     it('should seed all opinion targets', () => {
       repo.seedFromPersonality(miraPersonality);
       const lellRel = repo.getRelationship('mira_barrelbottom', 'lell_sparrow');
-      expect(lellRel).not.toBeNull();
-      expect(lellRel.opinion).toBe('Best entertainment in three towns.');
+      assert.notStrictEqual(lellRel, null);
+      assert.strictEqual(lellRel.opinion, 'Best entertainment in three towns.');
     });
 
     it('should not overwrite existing relationships', () => {
@@ -565,20 +567,20 @@ describe('RelationshipRepository', () => {
 
       repo.seedFromPersonality(miraPersonality);
       const rel = repo.getRelationship('mira_barrelbottom', 'fen_colby');
-      expect(rel.recognitionTier).toBe('recognized'); // not overwritten to familiar
-      expect(rel.opinion).toBeNull(); // seed was skipped — original null preserved
+      assert.strictEqual(rel.recognitionTier, 'recognized'); // not overwritten to familiar
+      assert.strictEqual(rel.opinion, null); // seed was skipped — original null preserved
     });
 
     it('should handle personality with no opinionsAbout', () => {
       const minimal = { templateKey: 'town_guard', consciousnessContext: {} };
       repo.seedFromPersonality(minimal);
-      expect(repo.getRelationshipsForSubject('town_guard')).toEqual([]);
+      assert.deepStrictEqual(repo.getRelationshipsForSubject('town_guard'), []);
     });
 
     it('should handle personality with null consciousnessContext', () => {
       const minimal = { templateKey: 'town_guard' };
       repo.seedFromPersonality(minimal);
-      expect(repo.getRelationshipsForSubject('town_guard')).toEqual([]);
+      assert.deepStrictEqual(repo.getRelationshipsForSubject('town_guard'), []);
     });
   });
 
@@ -597,9 +599,9 @@ describe('RelationshipRepository', () => {
         'mira_barrelbottom',
         [{ id: 'fen_colby', templateKey: 'fen_colby', name: 'Fen Colby' }]
       );
-      expect(ctx).toContain('About Fen Colby:');
-      expect(ctx).toContain('Part of the furniture.');
-      expect(ctx).toContain('familiar');
+      assert.ok(ctx.includes('About Fen Colby:'));
+      assert.ok(ctx.includes('Part of the furniture.'));
+      assert.ok(ctx.includes('familiar'));
     });
 
     it('should return empty string if no relationships with scene participants', () => {
@@ -607,7 +609,7 @@ describe('RelationshipRepository', () => {
         'mira_barrelbottom',
         [{ id: 'player', templateKey: 'player', name: 'Aldric' }]
       );
-      expect(ctx).toBe('');
+      assert.strictEqual(ctx, '');
     });
 
     it('should use display name from name resolver if provided', () => {
@@ -623,7 +625,7 @@ describe('RelationshipRepository', () => {
         'player',
         [{ id: 'mira', templateKey: 'mira_barrelbottom', name: 'Mira Barrelbottom' }]
       );
-      expect(ctx).toContain('About the halfling innkeeper:');
+      assert.ok(ctx.includes('About the halfling innkeeper:'));
     });
 
     it('should combine opinion + structured data for each participant', () => {
@@ -639,9 +641,9 @@ describe('RelationshipRepository', () => {
         'fen_colby',
         [{ id: 'mira', templateKey: 'mira_barrelbottom', name: 'Mira Barrelbottom' }]
       );
-      expect(ctx).toContain('She tolerates me.');
-      expect(ctx).toContain('Recognition: familiar');
-      expect(ctx).toContain('She let me sleep in the stable.');
+      assert.ok(ctx.includes('She tolerates me.'));
+      assert.ok(ctx.includes('Recognition: familiar'));
+      assert.ok(ctx.includes('She let me sleep in the stable.'));
     });
   });
 });

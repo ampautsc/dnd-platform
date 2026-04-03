@@ -5,15 +5,17 @@
  * - createWorldEngine exposes: getCurrentTime, tick, getNpcState
  * - tick advances world time and affects NPC state lookup
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createWorldEngine } from '../src/index.js';
 
 describe('@dnd-platform/world public API', () => {
   it('exposes core world functions', () => {
     const world = createWorldEngine();
-    expect(typeof world.getCurrentTime).toBe('function');
-    expect(typeof world.tick).toBe('function');
-    expect(typeof world.getNpcState).toBe('function');
+    assert.strictEqual(typeof world.getCurrentTime, 'function');
+    assert.strictEqual(typeof world.tick, 'function');
+    assert.strictEqual(typeof world.getNpcState, 'function');
   });
 
   it('advances time and resolves npc state at the current hour', () => {
@@ -27,8 +29,8 @@ describe('@dnd-platform/world public API', () => {
       },
     });
 
-    expect(world.getNpcState('bree')).toEqual({ location: 'Bakery', activity: 'Baking', mood: 'focused' });
+    assert.deepStrictEqual(world.getNpcState('bree'), { location: 'Bakery', activity: 'Baking', mood: 'focused' });
     world.tick(4 * 60);
-    expect(world.getNpcState('bree')).toEqual({ location: 'Market', activity: 'Selling', mood: 'friendly' });
+    assert.deepStrictEqual(world.getNpcState('bree'), { location: 'Market', activity: 'Selling', mood: 'friendly' });
   });
 });

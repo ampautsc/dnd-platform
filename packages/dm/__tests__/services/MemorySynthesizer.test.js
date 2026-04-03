@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, beforeEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { MemorySynthesizer } from '../../src/services/MemorySynthesizer.js';
 
 /**
@@ -16,13 +18,13 @@ import { MemorySynthesizer } from '../../src/services/MemorySynthesizer.js';
 
 function createMockProvider(response = 'Mock memory synthesis') {
   return {
-    generateResponse: vi.fn().mockResolvedValue({ text: response }),
+    generateResponse: mock.fn().mockResolvedValue({ text: response }),
   };
 }
 
 function createMockProviderWithParser(parsedResult) {
   return {
-    generateResponse: vi.fn().mockResolvedValue({
+    generateResponse: mock.fn().mockResolvedValue({
       text: JSON.stringify(parsedResult),
     }),
   };
@@ -92,7 +94,7 @@ describe('MemorySynthesizer', () => {
         participants: SAMPLE_PARTICIPANTS,
       });
 
-      expect(result.memories).toHaveLength(2);
+      assert.strictEqual(result.memories.length, 2);
       expect(result.memories[0]).toMatchObject({
         subjectId: 'old_mattock',
         targetId: 'player',
@@ -100,9 +102,9 @@ describe('MemorySynthesizer', () => {
         significance: 'minor',
         emotionalShift: expect.any(Number),
       });
-      expect(result.memories[1].subjectId).toBe('player');
-      expect(result.memories[1].targetId).toBe('old_mattock');
-      expect(mockProvider.generateResponse).toHaveBeenCalled();
+      assert.strictEqual(result.memories[1].subjectId, 'player');
+      assert.strictEqual(result.memories[1].targetId, 'old_mattock');
+      assert.ok(mockProvider.generateResponse.mock.calls.length > 0);
     });
 
     it('should handle multi-NPC scenes with cross-relationships', async () => {
@@ -126,14 +128,14 @@ describe('MemorySynthesizer', () => {
       });
 
       // 3 participants × 2 others each = 6 memory entries
-      expect(result.memories).toHaveLength(6);
+      assert.strictEqual(result.memories.length, 6);
 
       // Aldovar's agreement should be captured
       const aldovarToPlayer = result.memories.find(
         m => m.subjectId === 'aldovar_crennick' && m.targetId === 'player'
       );
-      expect(aldovarToPlayer.summary).toContain('records');
-      expect(aldovarToPlayer.significance).toBe('notable');
+      assert.ok(aldovarToPlayer.summary.includes('records'));
+      assert.strictEqual(aldovarToPlayer.significance, 'notable');
     });
 
     it('should include the system prompt instructing DM-style memory extraction', async () => {
@@ -147,8 +149,8 @@ describe('MemorySynthesizer', () => {
 
       const call = mockProvider.generateResponse.mock.calls[0];
       const systemPrompt = call[0]?.systemPrompt || call[0];
-      expect(typeof systemPrompt).toBe('string');
-      expect(systemPrompt).toContain('memory');
+      assert.strictEqual(typeof systemPrompt, 'string');
+      assert.ok(systemPrompt.includes('memory'));
     });
 
     it('should pass the full transcript to the LLM', async () => {
@@ -163,8 +165,8 @@ describe('MemorySynthesizer', () => {
       const call = mockProvider.generateResponse.mock.calls[0];
       // The transcript should appear somewhere in the prompt/messages
       const allText = JSON.stringify(call);
-      expect(allText).toContain('Nets. Always nets');
-      expect(allText).toContain('boats going upriver');
+      assert.ok(allText.includes('Nets. Always nets'));
+      assert.ok(allText.includes('boats going upriver'));
     });
   });
 
@@ -173,7 +175,7 @@ describe('MemorySynthesizer', () => {
   describe('fallback when LLM fails', () => {
     it('should return basic factual memories when LLM throws', async () => {
       const failingProvider = {
-        generateResponse: vi.fn().mockRejectedValue(new Error('API down')),
+        generateResponse: mock.fn().mockRejectedValue(new Error('API down')),
       };
       synthesizer = new MemorySynthesizer({ provider: failingProvider });
 
@@ -183,9 +185,9 @@ describe('MemorySynthesizer', () => {
       });
 
       // Should still produce something — basic presence-based memories
-      expect(result.memories).toBeDefined();
-      expect(result.memories.length).toBeGreaterThan(0);
-      expect(result.fallback).toBe(true);
+      assert.notStrictEqual(result.memories, undefined);
+      assert.ok(result.memories.length > 0);
+      assert.strictEqual(result.fallback, true);
     });
 
     it('should return basic memories when LLM returns unparseable response', async () => {
@@ -197,8 +199,8 @@ describe('MemorySynthesizer', () => {
         participants: SAMPLE_PARTICIPANTS,
       });
 
-      expect(result.memories.length).toBeGreaterThan(0);
-      expect(result.fallback).toBe(true);
+      assert.ok(result.memories.length > 0);
+      assert.strictEqual(result.fallback, true);
     });
   });
 
@@ -218,11 +220,11 @@ describe('MemorySynthesizer', () => {
       };
 
       const label = MemorySynthesizer.generateDisplayLabel(npcData);
-      expect(typeof label).toBe('string');
-      expect(label.length).toBeGreaterThan(0);
-      expect(label.length).toBeLessThan(100);
+      assert.strictEqual(typeof label, 'string');
+      assert.ok(label.length > 0);
+      assert.ok(label.length < 100);
       // Should NOT contain the actual name
-      expect(label.toLowerCase()).not.toContain('mattock');
+      assert.ok(!label.toLowerCase().includes('mattock'));
     });
 
     it('should use firstImpression when available', () => {
@@ -238,7 +240,7 @@ describe('MemorySynthesizer', () => {
       };
 
       const label = MemorySynthesizer.generateDisplayLabel(npcData);
-      expect(label).toBe('an old fisherman mending nets by the fire');
+      assert.strictEqual(label, 'an old fisherman mending nets by the fire');
     });
 
     it('should construct a label from build + attire when no firstImpression', () => {
@@ -253,9 +255,9 @@ describe('MemorySynthesizer', () => {
       };
 
       const label = MemorySynthesizer.generateDisplayLabel(npcData);
-      expect(typeof label).toBe('string');
-      expect(label.length).toBeGreaterThan(5);
-      expect(label.toLowerCase()).not.toContain('brennan');
+      assert.strictEqual(typeof label, 'string');
+      assert.ok(label.length > 5);
+      assert.ok(!label.toLowerCase().includes('brennan'));
     });
 
     it('should fall back to race description when no appearance data', () => {
@@ -265,8 +267,8 @@ describe('MemorySynthesizer', () => {
       };
 
       const label = MemorySynthesizer.generateDisplayLabel(npcData);
-      expect(label.toLowerCase()).toContain('elf');
-      expect(label.toLowerCase()).not.toContain('mystery');
+      assert.ok(label.toLowerCase().includes('elf'));
+      assert.ok(!label.toLowerCase().includes('mystery'));
     });
   });
 
@@ -282,7 +284,7 @@ describe('MemorySynthesizer', () => {
         participants: SAMPLE_PARTICIPANTS,
       });
 
-      expect(result.memories).toEqual([]);
+      assert.deepStrictEqual(result.memories, []);
     });
 
     it('should handle single-participant scene (monologue)', async () => {
@@ -294,11 +296,11 @@ describe('MemorySynthesizer', () => {
         participants: [{ id: 'player', name: 'Adventurer', isPlayer: true }],
       });
 
-      expect(result.memories).toEqual([]);
+      assert.deepStrictEqual(result.memories, []);
     });
 
     it('should require a provider', () => {
-      expect(() => new MemorySynthesizer({})).toThrow();
+      assert.throws(() => new MemorySynthesizer({}));
     });
   });
 });

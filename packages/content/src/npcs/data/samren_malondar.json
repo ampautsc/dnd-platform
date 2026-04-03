@@ -228,5 +228,23 @@
       "I once worked a tournament semifinal with a torn shoulder and got through it clean. Still do not know how. Some days just go that way.",
       "The secret to a good bar is you have to actually like the people. Most of them. Most of the time."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "Barkeep! Pour me your finest ale!",
+      "This is the finest tavern I have ever set foot in. You run a tight house.",
+      "I used to compete in the javelin tournaments myself. Has anyone here ever thrown?",
+      "Who runs this establishment? I need to speak with the owner immediately.",
+      "A toast! To the Bottoms Up tavern and everyone in it!",
+      "Hey, those two in the corner are about to throw hands. Somebody should step in."
+    ],
+    "shouldNotReact": [
+      "The arcane theory of third-order transmutation circles requires deep study of elemental bonds.",
+      "I need to find the courier service office. Where do they sort the outbound mail?",
+      "The doctrine of redemption through suffering is central to the Temple of Ilmater.",
+      "The merchant guild quarterly ledger shows a discrepancy in the export tariff line items.",
+      "Professor, can you explain the difference between cognitive restructuring and dialectical integration?",
+      "The silverleaf fern grows only in shaded limestone outcroppings above four hundred feet elevation."
+    ]
   }
 }

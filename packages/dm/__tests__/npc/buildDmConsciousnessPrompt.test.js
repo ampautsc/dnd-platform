@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { buildDmConsciousnessPrompt } from '../../src/npc/buildDmConsciousnessPrompt.js';
 
 /**
@@ -28,37 +30,37 @@ describe('buildDmConsciousnessPrompt', () => {
 
   it('should include DM identity / vessel surrender framing', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(prompt).toMatch(/you are the dungeon master/i);
-    expect(prompt).toMatch(/omniscient/i);
+    assert.match(prompt, /you are the dungeon master/i);
+    assert.match(prompt, /omniscient/i);
   });
 
   it('should include storytelling philosophy', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(prompt).toMatch(/show.*don.t tell|sensory|body language/i);
+    assert.match(prompt, /show.*don.t tell|sensory|body language/i);
   });
 
   it('should include selective reveal rules', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // DM knows everything but chooses what to reveal
-    expect(prompt).toMatch(/choose|reveal|observable|perceiv/i);
-    expect(prompt).toMatch(/never.*inner thoughts|never.*reveal.*thinking/i);
+    assert.match(prompt, /choose|reveal|observable|perceiv/i);
+    assert.match(prompt, /never.*inner thoughts|never.*reveal.*thinking/i);
   });
 
   it('should include voice and style guidelines', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(prompt).toMatch(/second person/i);
-    expect(prompt).toMatch(/you see|you notice|you hear/i);
-    expect(prompt).toMatch(/no.*markdown|no.*bullet/i);
+    assert.match(prompt, /second person/i);
+    assert.match(prompt, /you see|you notice|you hear/i);
+    assert.match(prompt, /no.*markdown|no.*bullet/i);
   });
 
   it('should include name gating rules', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(prompt).toMatch(/never.*reveal.*name|only.*names.*learned/i);
+    assert.match(prompt, /never.*reveal.*name|only.*names.*learned/i);
   });
 
   it('should reference the player by name', () => {
     const prompt = buildDmConsciousnessPrompt({ playerName: 'Kael' });
-    expect(prompt).toContain('Kael');
+    assert.ok(prompt.includes('Kael'));
   });
 
   // ── Location Context ──────────────────────────────────────────
@@ -76,9 +78,9 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       },
     });
-    expect(prompt).toContain("The Bottom's Up");
-    expect(prompt).toContain('Warm lantern glow');
-    expect(prompt).toContain('Fresh bread');
+    assert.ok(prompt.includes("The Bottom's Up"));
+    assert.ok(prompt.includes('Warm lantern glow'));
+    assert.ok(prompt.includes('Fresh bread'));
   });
 
   it('should include time of day when provided', () => {
@@ -86,7 +88,7 @@ describe('buildDmConsciousnessPrompt', () => {
       ...minimalParams,
       worldContext: { timeOfDay: 'late evening' },
     });
-    expect(prompt).toContain('late evening');
+    assert.ok(prompt.includes('late evening'));
   });
 
   // ── NPC Inner States ──────────────────────────────────────────
@@ -104,10 +106,10 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('the halfling behind the bar');
-    expect(prompt).toContain('content but watchful');
-    expect(prompt).toContain('keep the tavern safe');
-    expect(prompt).toContain('Wiping down the bar');
+    assert.ok(prompt.includes('the halfling behind the bar'));
+    assert.ok(prompt.includes('content but watchful'));
+    assert.ok(prompt.includes('keep the tavern safe'));
+    assert.ok(prompt.includes('Wiping down the bar'));
   });
 
   it('should flag when an NPC is hiding something or lying', () => {
@@ -122,10 +124,10 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('tense');
-    expect(prompt).toContain('stolen goods');
+    assert.ok(prompt.includes('tense'));
+    assert.ok(prompt.includes('stolen goods'));
     // DM should know this but only reveal through observable behavior
-    expect(prompt).toMatch(/body language|micro-expression|observable/i);
+    assert.match(prompt, /body language|micro-expression|observable/i);
   });
 
   // ── Target Clarity ────────────────────────────────────────────
@@ -133,8 +135,8 @@ describe('buildDmConsciousnessPrompt', () => {
   it('should include target clarity rules', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // Narration must make it clear who is being addressed
-    expect(prompt).toMatch(/who.*address|target|direct/i);
-    expect(prompt).toMatch(/unambiguous|clear/i);
+    assert.match(prompt, /who.*address|target|direct/i);
+    assert.match(prompt, /unambiguous|clear/i);
   });
 
   // ── Appearance Data in NPC Inner States ────────────────────
@@ -163,16 +165,16 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('Gender: female');
-    expect(prompt).toContain('Race: Halfling');
-    expect(prompt).toContain('Build: Compact and sturdy');
-    expect(prompt).toContain('Hair: Curly auburn');
-    expect(prompt).toContain('Skin: Warm olive complexion');
-    expect(prompt).toContain('Eyes: Dark brown');
-    expect(prompt).toContain('Height: Short even for a halfling');
-    expect(prompt).toContain('Attire: A practical dress');
-    expect(prompt).toContain('wiping her hands on a worn apron');
-    expect(prompt).toContain('leather-bound notebook');
+    assert.ok(prompt.includes('Gender: female'));
+    assert.ok(prompt.includes('Race: Halfling'));
+    assert.ok(prompt.includes('Build: Compact and sturdy'));
+    assert.ok(prompt.includes('Hair: Curly auburn'));
+    assert.ok(prompt.includes('Skin: Warm olive complexion'));
+    assert.ok(prompt.includes('Eyes: Dark brown'));
+    assert.ok(prompt.includes('Height: Short even for a halfling'));
+    assert.ok(prompt.includes('Attire: A practical dress'));
+    assert.ok(prompt.includes('wiping her hands on a worn apron'));
+    assert.ok(prompt.includes('leather-bound notebook'));
   });
 
   it('should gracefully skip missing appearance fields', () => {
@@ -191,12 +193,12 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('Gender: male');
-    expect(prompt).toContain('Race: Human');
-    expect(prompt).toContain('Build: Lean');
+    assert.ok(prompt.includes('Gender: male'));
+    assert.ok(prompt.includes('Race: Human'));
+    assert.ok(prompt.includes('Build: Lean'));
     // Should NOT contain labels for missing fields
-    expect(prompt).not.toMatch(/Hair:/);
-    expect(prompt).not.toMatch(/Skin:/);
+    assert.doesNotMatch(prompt, /Hair:/);
+    assert.doesNotMatch(prompt, /Skin:/);
   });
 
   it('should render NPC state without appearance when appearance is not provided', () => {
@@ -210,18 +212,18 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('a figure in the shadows');
-    expect(prompt).toContain('angry');
-    expect(prompt).not.toMatch(/Gender:/);
-    expect(prompt).not.toMatch(/Race:/);
+    assert.ok(prompt.includes('a figure in the shadows'));
+    assert.ok(prompt.includes('angry'));
+    assert.doesNotMatch(prompt, /Gender:/);
+    assert.doesNotMatch(prompt, /Race:/);
   });
 
   // ── Backward Compatibility ──────────────────────────────────
 
   it('should produce valid output with minimal params', () => {
     const prompt = buildDmConsciousnessPrompt({ playerName: 'Test' });
-    expect(typeof prompt).toBe('string');
-    expect(prompt.length).toBeGreaterThan(200);
+    assert.strictEqual(typeof prompt, 'string');
+    assert.ok(prompt.length > 200);
   });
 
   it('should not crash with empty npcInnerStates', () => {
@@ -229,47 +231,47 @@ describe('buildDmConsciousnessPrompt', () => {
       ...minimalParams,
       npcInnerStates: [],
     });
-    expect(typeof prompt).toBe('string');
+    assert.strictEqual(typeof prompt, 'string');
   });
 
   it('should not crash with undefined worldContext', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(typeof prompt).toBe('string');
+    assert.strictEqual(typeof prompt, 'string');
   });
 
   // ── Perception Boundary Enforcement ───────────────────────────
 
   it('should include an explicit information boundary section', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
-    expect(prompt).toMatch(/INFORMATION BOUNDARY|PERCEPTION BOUNDARY/i);
+    assert.match(prompt, /INFORMATION BOUNDARY|PERCEPTION BOUNDARY/i);
   });
 
   it('should enumerate ALLOWED information categories', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // Must explicitly state what IS allowed
-    expect(prompt).toMatch(/ALLOWED|PERMITTED|you (may|can) describe/i);
-    expect(prompt).toMatch(/physical appearance|visible|audible|sensory/i);
+    assert.match(prompt, /ALLOWED|PERMITTED|you (may|can) describe/i);
+    assert.match(prompt, /physical appearance|visible|audible|sensory/i);
   });
 
   it('should enumerate FORBIDDEN information categories', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // Must explicitly state what is FORBIDDEN
-    expect(prompt).toMatch(/FORBIDDEN|NEVER|must not/i);
-    expect(prompt).toMatch(/backstory|inner thoughts|motivations|private/i);
+    assert.match(prompt, /FORBIDDEN|NEVER|must not/i);
+    assert.match(prompt, /backstory|inner thoughts|motivations|private/i);
     // Name leak protection
-    expect(prompt).toMatch(/name.*not.*learned|unearned name|name.*player.*hasn.t/i);
+    assert.match(prompt, /name.*not.*learned|unearned name|name.*player.*hasn.t/i);
   });
 
   it('should include a perception test question', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // DM should ask: "could the player character perceive this right now?"
-    expect(prompt).toMatch(/could.*player.*perceive|five senses|observable.*right now/i);
+    assert.match(prompt, /could.*player.*perceive|five senses|observable.*right now/i);
   });
 
   it('should instruct correct pronoun usage from observable appearance', () => {
     const prompt = buildDmConsciousnessPrompt(minimalParams);
     // DM must use pronouns based on visible appearance, never from metadata
-    expect(prompt).toMatch(/pronoun|gender.*appear|refer.*based on.*appear/i);
+    assert.match(prompt, /pronoun|gender.*appear|refer.*based on.*appear/i);
   });
 
   // ── NPC-to-NPC Relationship Context ─────────────────────────
@@ -304,9 +306,9 @@ describe('buildDmConsciousnessPrompt', () => {
         },
       ],
     });
-    expect(prompt).toContain('Part of the furniture');
-    expect(prompt).toContain('Tolerates me');
-    expect(prompt).toMatch(/familiar/i);
+    assert.ok(prompt.includes('Part of the furniture'));
+    assert.ok(prompt.includes('Tolerates me'));
+    assert.match(prompt, /familiar/i);
   });
 
   it('should label NPC-to-NPC relationships section clearly', () => {
@@ -328,7 +330,7 @@ describe('buildDmConsciousnessPrompt', () => {
       ],
     });
     // Should have a recognizable section header so the DM can use relationship data
-    expect(prompt).toMatch(/relationship|knows about|thinks about/i);
+    assert.match(prompt, /relationship|knows about|thinks about/i);
   });
 
   it('should skip relationships section when no relationships provided', () => {
@@ -343,6 +345,6 @@ describe('buildDmConsciousnessPrompt', () => {
       ],
     });
     // Should not contain stale relationship headers
-    expect(prompt).not.toMatch(/Thinks about:|Knows about:/);
+    assert.doesNotMatch(prompt, /Thinks about:|Knows about:/);
   });
 });

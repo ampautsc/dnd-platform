@@ -16,6 +16,7 @@
     "@anthropic-ai/sdk": "^0.79.0",
     "@dnd-platform/combat": "^0.1.0",
     "@dnd-platform/content": "^0.1.0",
+    "node-llama-cpp": "^3.18.1",
     "openai": "^6.31.0"
   },
   "devDependencies": {

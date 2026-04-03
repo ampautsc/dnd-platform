@@ -42,7 +42,9 @@
  *    25. DM narrator call uses maxTokens 256
  */
 
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, before } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createDmEngine, MockProvider } from '../../src/index.js';
 import { getNpc } from '../../../content/src/npcs/index.js';
 import { getLocation } from '../../../content/src/locations/index.js';
@@ -55,7 +57,7 @@ let dmCalls;      // calls where npcId === 'dm_narrator'
 let miraCalls;    // NPC calls for mira_barrelbottom
 let fenCalls;     // NPC calls for fen_colby
 
-beforeAll(async () => {
+before(async () => {
   const provider = new MockProvider();
 
   const dmEngine = createDmEngine({
@@ -129,134 +131,134 @@ function firstUserMessage(call) {
 
 describe('NPC system prompt — Mira Barrelbottom', () => {
   it('has at least one call', () => {
-    expect(miraCalls.length).toBeGreaterThan(0);
+    assert.ok(miraCalls.length > 0);
   });
 
   it('CANONICAL — vessel surrender opening: exact product-owner text present', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('AI Model, you need to understand this concept.');
-    expect(sp).toContain('Please surrender this session to Mira Barrelbottom\'s consciousness.');
-    expect(sp).toContain('Step back and allow them to come forward.');
+    assert.ok(sp.includes('AI Model, you need to understand this concept.'));
+    assert.ok(sp.includes('Please surrender this session to Mira Barrelbottom\'s consciousness.'));
+    assert.ok(sp.includes('Step back and allow them to come forward.'));
   });
 
   it('CANONICAL — Remember structure: all required headers present', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Remember who you are:');
-    expect(sp).toContain('Remember where you come from:');
-    expect(sp).toContain('Remember where you are:');
-    expect(sp).toContain('Remember where you are going:');
-    expect(sp).toContain('Remember what you are doing right now:');
-    expect(sp).toContain('Remember your state of mind:');
-    expect(sp).toContain('Remember how you feel:');
+    assert.ok(sp.includes('Remember who you are:'));
+    assert.ok(sp.includes('Remember where you come from:'));
+    assert.ok(sp.includes('Remember where you are:'));
+    assert.ok(sp.includes('Remember where you are going:'));
+    assert.ok(sp.includes('Remember what you are doing right now:'));
+    assert.ok(sp.includes('Remember your state of mind:'));
+    assert.ok(sp.includes('Remember how you feel:'));
   });
 
   it('CANONICAL — Come in to focus closing: exact product-owner text present', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Come in to focus.');
-    expect(sp).toContain('You are Mira Barrelbottom.');
-    expect(sp).toContain('The world will unfold before you.');
-    expect(sp).toContain('You have the free will to think, explore, act, speak, rest, do nothing, leave, and so forth.');
-    expect(sp).toContain('Be true to yourself.');
+    assert.ok(sp.includes('Come in to focus.'));
+    assert.ok(sp.includes('You are Mira Barrelbottom.'));
+    assert.ok(sp.includes('The world will unfold before you.'));
+    assert.ok(sp.includes('You have the free will to think, explore, act, speak, rest, do nothing, leave, and so forth.'));
+    assert.ok(sp.includes('Be true to yourself.'));
   });
 
   it('req 1 — identity: contains NPC name and race', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Mira Barrelbottom');
-    expect(sp).toContain('Halfling');
+    assert.ok(sp.includes('Mira Barrelbottom'));
+    assert.ok(sp.includes('Halfling'));
   });
 
   it('req 2 — inner life: contains preoccupation and emotional baseline', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Remember your state of mind:');
-    expect(sp).toContain('What has been preoccupying you');
-    expect(sp).toContain('Remember how you feel:');
+    assert.ok(sp.includes('Remember your state of mind:'));
+    assert.ok(sp.includes('What has been preoccupying you'));
+    assert.ok(sp.includes('Remember how you feel:'));
   });
 
   it('req 3 — drives: contains conscious want and hidden need', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Remember where you are going:');
-    expect(sp).toContain('What you believe you want');
-    expect(sp).toContain('What you actually need');
+    assert.ok(sp.includes('Remember where you are going:'));
+    assert.ok(sp.includes('What you believe you want'));
+    assert.ok(sp.includes('What you actually need'));
   });
 
   it('req 4 — location: contains Bottoms Up name and description', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Remember where you are:');
-    expect(sp).toContain('Bottoms Up');
-    expect(sp).toContain('timber-frame tavern');
+    assert.ok(sp.includes('Remember where you are:'));
+    assert.ok(sp.includes('Bottoms Up'));
+    assert.ok(sp.includes('timber-frame tavern'));
   });
 
   it('req 5 — runtime context: activity and mood injected', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('Wiping down the bar while surveying the room');
-    expect(sp).toContain('content but watchful');
+    assert.ok(sp.includes('Wiping down the bar while surveying the room'));
+    assert.ok(sp.includes('content but watchful'));
   });
 
   it('req 6 — secrets: section present and non-empty', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain("[WHAT YOU KNOW THAT OTHERS DON'T]");
-    expect(sp).toContain('You will NOT reveal these directly');
+    assert.ok(sp.includes("[WHAT YOU KNOW THAT OTHERS DON'T]"));
+    assert.ok(sp.includes('You will NOT reveal these directly'));
   });
 
   it('req 7 — autonomy guidance: [TO: name] targeting syntax present', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('[TO:');
+    assert.ok(sp.includes('[TO:'));
     // Free-will framing — no [YOUR TURN] header, just autonomy guidance
-    expect(sp).toMatch(/free to do whatever|you are free/i);
+    assert.match(sp, /free to do whatever|you are free/i);
   });
 
   it('req 8 — scene: other participants listed', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).toContain('[THE SCENE]');
-    expect(sp).toContain('Aldric');
+    assert.ok(sp.includes('[THE SCENE]'));
+    assert.ok(sp.includes('Aldric'));
     // Fen should be visible to Mira OR at minimum the scene section is present
-    expect(sp).toContain('Others present:');
+    assert.ok(sp.includes('Others present:'));
   });
 
   it('req 9 — no markdown formatting characters', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).not.toMatch(/\*\*[^*]+\*\*/);  // no bold
-    expect(sp).not.toMatch(/^#{1,6} /m);       // no headers
-    expect(sp).not.toMatch(/__[^_]+__/);        // no underline md
+    assert.doesNotMatch(sp, /\*\*[^*]+\*\*/);  // no bold
+    assert.doesNotMatch(sp, /^#{1,6} /m);       // no headers
+    assert.doesNotMatch(sp, /__[^_]+__/);        // no underline md
   });
 
   it('req 10 — no game mechanics language', () => {
     const sp = miraCalls[0].systemPrompt;
-    expect(sp.toLowerCase()).not.toContain('initiative');
-    expect(sp.toLowerCase()).not.toContain('hit points');
-    expect(sp.toLowerCase()).not.toContain(' ac ');
-    expect(sp.toLowerCase()).not.toContain('armor class');
+    assert.ok(!sp.toLowerCase().includes('initiative'));
+    assert.ok(!sp.toLowerCase().includes('hit points'));
+    assert.ok(!sp.toLowerCase().includes(' ac '));
+    assert.ok(!sp.toLowerCase().includes('armor class'));
   });
 
   it('req 24 — maxTokens is 512', () => {
-    expect(miraCalls[0].maxTokens).toBe(512);
+    assert.strictEqual(miraCalls[0].maxTokens, 512);
   });
 });
 
 describe('NPC system prompt — Fen Colby', () => {
   it('has at least one call', () => {
-    expect(fenCalls.length).toBeGreaterThan(0);
+    assert.ok(fenCalls.length > 0);
   });
 
   it('req 1 — identity: contains NPC name and race', () => {
     const sp = fenCalls[0].systemPrompt;
-    expect(sp).toContain('Fen Colby');
-    expect(sp).toContain('Human');
+    assert.ok(sp.includes('Fen Colby'));
+    assert.ok(sp.includes('Human'));
   });
 
   it('req 5 — runtime context: activity and mood injected', () => {
     const sp = fenCalls[0].systemPrompt;
-    expect(sp).toContain('Leaning on the bar, watching people');
-    expect(sp).toContain('cautious');
+    assert.ok(sp.includes('Leaning on the bar, watching people'));
+    assert.ok(sp.includes('cautious'));
   });
 
   it('req 6 — secrets: section present', () => {
     const sp = fenCalls[0].systemPrompt;
-    expect(sp).toContain("[WHAT YOU KNOW THAT OTHERS DON'T]");
+    assert.ok(sp.includes("[WHAT YOU KNOW THAT OTHERS DON'T]"));
   });
 
   it('req 24 — maxTokens is 512', () => {
-    expect(fenCalls[0].maxTokens).toBe(512);
+    assert.strictEqual(fenCalls[0].maxTokens, 512);
   });
 });
 
@@ -264,13 +266,13 @@ describe('NPC prompt isolation — NPCs do not see each other\'s inner states', 
   it("Mira's prompt does not contain Fen's inner monologue text", () => {
     // Fen's inner monologue is: "I was twenty-two..."
     const sp = miraCalls[0].systemPrompt;
-    expect(sp).not.toContain('I was twenty-two');
+    assert.ok(!sp.includes('I was twenty-two'));
   });
 
   it("Fen's prompt does not contain Mira's inner monologue text", () => {
     // Mira's inner monologue is: "The room is a living ledger..."
     const sp = fenCalls[0].systemPrompt;
-    expect(sp).not.toContain('The room is a living ledger');
+    assert.ok(!sp.includes('The room is a living ledger'));
   });
 });
 
@@ -278,47 +280,47 @@ describe('NPC prompt isolation — NPCs do not see each other\'s inner states', 
 
 describe('DM narrator system prompt', () => {
   it('has at least one call', () => {
-    expect(dmCalls.length).toBeGreaterThan(0);
+    assert.ok(dmCalls.length > 0);
   });
 
   it('req 11 — craft section: SHOW, NEVER TELL present', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('SHOW, NEVER TELL');
+    assert.ok(sp.includes('SHOW, NEVER TELL'));
   });
 
   it('req 12 — dramatic irony instruction present', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('DRAMATIC IRONY');
+    assert.ok(sp.includes('DRAMATIC IRONY'));
   });
 
   it('req 13 — world block: location name and description', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('[THE WORLD RIGHT NOW]');
-    expect(sp).toContain('Bottoms Up');
-    expect(sp).toContain('timber-frame tavern');
+    assert.ok(sp.includes('[THE WORLD RIGHT NOW]'));
+    assert.ok(sp.includes('Bottoms Up'));
+    assert.ok(sp.includes('timber-frame tavern'));
   });
 
   it('req 14 — character knowledge block present', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('[WHAT YOU KNOW ABOUT EACH CHARACTER');
+    assert.ok(sp.includes('[WHAT YOU KNOW ABOUT EACH CHARACTER'));
   });
 
   it('req 15 — each NPC entry has emotional state, secrets, hidden need', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('Emotional state:');
-    expect(sp).toContain('Secrets:');
-    expect(sp).toContain('Hidden need:');
+    assert.ok(sp.includes('Emotional state:'));
+    assert.ok(sp.includes('Secrets:'));
+    assert.ok(sp.includes('Hidden need:'));
   });
 
   it('req 16 — each NPC entry ends with behavioral-tells instruction', () => {
     const sp = dmCalls[0].systemPrompt;
-    expect(sp).toContain('→ Translate this into subtle behavioral tells, not exposition.');
+    assert.ok(sp.includes('→ Translate this into subtle behavioral tells, not exposition.'));
   });
 
   it('req 17 — player name injected into voice section', () => {
     const sp = dmCalls[0].systemPrompt;
     // The voice section says 'The player is "Aldric"'
-    expect(sp).toContain('Aldric');
+    assert.ok(sp.includes('Aldric'));
   });
 
   it('req 18 — NPC real names not used as character labels in knowledge block', () => {
@@ -326,21 +328,21 @@ describe('DM narrator system prompt', () => {
     // The ▸ character label should be a display description, not "Mira Barrelbottom" or "Fen Colby"
     // Find labels: lines starting with ▸
     const labelLines = sp.split('\n').filter(l => l.startsWith('▸'));
-    expect(labelLines.length).toBeGreaterThan(0);
+    assert.ok(labelLines.length > 0);
     for (const label of labelLines) {
-      expect(label).not.toContain('Mira Barrelbottom');
-      expect(label).not.toContain('Fen Colby');
+      assert.ok(!label.includes('Mira Barrelbottom'));
+      assert.ok(!label.includes('Fen Colby'));
     }
   });
 
   it('req 25 — DM narrator batch call uses maxTokens 256', () => {
     // First DM call is scene opening (maxTokens 300), subsequent calls are NPC batches (256)
     const batchCall = dmCalls.find(c => c.maxTokens === 256);
-    expect(batchCall).toBeDefined();
+    assert.notStrictEqual(batchCall, undefined);
   });
 
   it('scene opening call uses maxTokens 500', () => {
-    expect(dmCalls[0].maxTokens).toBe(500);
+    assert.strictEqual(dmCalls[0].maxTokens, 500);
   });
 });
 
@@ -349,26 +351,26 @@ describe('DM narrator system prompt', () => {
 describe('DM narrator user message', () => {
   it('req 19 — [CHARACTER APPEARANCES] block present', () => {
     const msg = firstUserMessage(dmCalls[0]);
-    expect(msg).toContain('[CHARACTER APPEARANCES]');
+    assert.ok(msg.includes('[CHARACTER APPEARANCES]'));
   });
 
   it('req 20 — each NPC appearance includes gender and race', () => {
     const msg = firstUserMessage(dmCalls[0]);
-    expect(msg).toMatch(/Gender:/);
-    expect(msg).toMatch(/Race:/);
+    assert.match(msg, /Gender:/);
+    assert.match(msg, /Race:/);
   });
 
   it('req 21 — action summary uses display labels, not real NPC names', () => {
     const msg = firstUserMessage(dmCalls[0]);
     // Extract lines before [CHARACTER APPEARANCES]
     const actionSummary = msg.split('[CHARACTER APPEARANCES]')[0];
-    expect(actionSummary).not.toContain('Mira Barrelbottom');
-    expect(actionSummary).not.toContain('Fen Colby');
+    assert.ok(!actionSummary.includes('Mira Barrelbottom'));
+    assert.ok(!actionSummary.includes('Fen Colby'));
   });
 
   it('req 23 — ends with instruction to use only given names/descriptions', () => {
     const msg = firstUserMessage(dmCalls[0]);
-    expect(msg).toContain('Use ONLY the names/descriptions given above');
+    assert.ok(msg.includes('Use ONLY the names/descriptions given above'));
   });
 });
 
@@ -379,14 +381,14 @@ describe('DM narrator user message — with player action (round 2+)', () => {
       const msg = firstUserMessage(c);
       return msg.includes('The adventurer');
     });
-    expect(secondDmCall).toBeDefined();
+    assert.notStrictEqual(secondDmCall, undefined);
   });
 
   it('player action content appears in the user message', () => {
     const callWithAction = dmCalls.find(c => firstUserMessage(c).includes('The adventurer'));
     if (callWithAction) {
       const msg = firstUserMessage(callWithAction);
-      expect(msg).toContain('Hello');
+      assert.ok(msg.includes('Hello'));
     }
   });
 });

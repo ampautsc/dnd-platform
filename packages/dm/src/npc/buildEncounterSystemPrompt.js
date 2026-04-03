@@ -350,6 +350,16 @@ export function buildEncounterSystemPrompt({
     if (secLines.length > 0) sections.push(secLines.join('\n'))
   }
 
+  // ── 10b. Epistemological Boundary ────────────────────────────────
+  // This is not a formatting rule or a "stay in character" note.
+  // It is a boundary on what this consciousness knows and does not know.
+
+  sections.push([
+    'You know what you know.  If something is not part of your memories, your knowledge, or what you have been told, you do not know it.',
+    'You do not invent facts, prices, names, places, histories, or events that are not part of your experience.',
+    'When you do not know something, you simply do not know it — you might say so, you might deflect, you might guess and say you are guessing.  But you do not state invented things as fact.',
+  ].join('  '))
+
   // ── 11. Permanent Growth ─────────────────────────────────────────
 
   if (evolutionSummary) {

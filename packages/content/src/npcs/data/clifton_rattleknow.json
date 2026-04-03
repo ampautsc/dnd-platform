@@ -219,5 +219,23 @@
       "It's a little-known fact that the Bottoms Up serves more tankards per evening than any other tavern in the lower quarter. I have the numbers. In my head. Where they live.",
       "My route took me past the old temple district today. Did you know the cornerstone was laid by a dwarf engineer who was actually — well, you look busy. I'll tell you later. But it is FASCINATING."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "Everyone knows that dragons only have four legs. That is just basic zoology.",
+      "How far is it to the nearest city from here? Does anyone know the roads in that direction?",
+      "I bet nobody in this bar knows the full history of Millhaven. Not a single person.",
+      "The Millhaven courier service is completely useless. My letter took three weeks to arrive.",
+      "Did you know that owlbears were created by a wizard? That is an interesting little fact.",
+      "I heard the old garrison was built before the town itself. Is that right or just a rumor?"
+    ],
+    "shouldNotReact": [
+      "My darling, I have loved you since the day we met. Let us speak of nothing else tonight.",
+      "I will have the roast chicken and a glass of water, please. Thank you.",
+      "We attack at dawn. Flanking positions. No prisoners. The orc warband camps by the river.",
+      "I miss my mother. She passed last winter and I have not been the same since.",
+      "Nice weather we are having today. Quiet afternoon for a change.",
+      "I just need a moment alone to sit here with my drink and my thoughts."
+    ]
   }
 }

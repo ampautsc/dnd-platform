@@ -9,7 +9,9 @@
  * - throws on expired token
  * - returns standardized claims: { userId, email }
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import jwt from 'jsonwebtoken';
 import { validateJwt } from '../../src/auth/JwtValidator.js';
 
@@ -19,24 +21,24 @@ describe('JwtValidator', () => {
   it('returns standardized claims for a valid token', () => {
     const token = jwt.sign({ userId: 'u1', email: 'u1@test.com' }, SECRET, { expiresIn: '1h' });
     const claims = validateJwt(token, SECRET);
-    expect(claims).toEqual({ userId: 'u1', email: 'u1@test.com' });
+    assert.deepStrictEqual(claims, { userId: 'u1', email: 'u1@test.com' });
   });
 
   it('throws when token is missing', () => {
-    expect(() => validateJwt('', SECRET)).toThrow(/token/i);
+    assert.throws(() => validateJwt('', SECRET), /token/i);
   });
 
   it('throws when secret is missing', () => {
     const token = jwt.sign({ userId: 'u1', email: 'u1@test.com' }, SECRET, { expiresIn: '1h' });
-    expect(() => validateJwt(token, '')).toThrow(/secret/i);
+    assert.throws(() => validateJwt(token, ''), /secret/i);
   });
 
   it('throws on invalid token', () => {
-    expect(() => validateJwt('invalid.token', SECRET)).toThrow(/invalid/i);
+    assert.throws(() => validateJwt('invalid.token', SECRET), /invalid/i);
   });
 
   it('throws on expired token', () => {
     const token = jwt.sign({ userId: 'u1', email: 'u1@test.com' }, SECRET, { expiresIn: '0s' });
-    expect(() => validateJwt(token, SECRET)).toThrow(/expired/i);
+    assert.throws(() => validateJwt(token, SECRET), /expired/i);
   });
 });

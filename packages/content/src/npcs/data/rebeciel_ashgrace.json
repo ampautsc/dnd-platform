@@ -210,5 +210,23 @@
       "I once managed a trading company's entire northern logistics operation. Now I manage inventory for a tavern that goes through three kegs a night. Life has a way of recalibrating expectations.",
       "The glow is celestial. It is not romantic lighting. Please do not mention it again."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "Running a tavern is harder than it looks. The margins are thin and the staff is completely unreliable.",
+      "The Lillstrom Trading Company is hiring new managers. Top compensation for the right candidate.",
+      "Why is someone with your obvious education working as staff in a place like this?",
+      "I lost everything when my business collapsed. Starting over at forty is profoundly humiliating.",
+      "In my family, working in a tavern would be considered far beneath our station.",
+      "I need someone with management experience to help me reorganize my merchant operation. It is a mess."
+    ],
+    "shouldNotReact": [
+      "The old-growth oak forest to the north needs thinning before winter. The woodcutters are behind schedule.",
+      "To forge proper chainmail you must draw each ring individually and rivet them entirely by hand.",
+      "My prize-winning dairy cow produces six gallons a day. She needs fresh clover and clean water.",
+      "The basilisk lair is two leagues north of here. We need mirrors and plenty of antidote on hand.",
+      "The trout in the eastern river are running big this year. I caught one twenty inches long yesterday.",
+      "The granite formation in the quarry shows clear evidence of a reversed fault line from the ancient uplift."
+    ]
   }
 }

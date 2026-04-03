@@ -3,13 +3,14 @@
  * Tests the generic spell resolution pipeline against spell registry data.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, it, before, after } from 'node:test';
+import assert from 'node:assert/strict';
 import * as dice from '../src/engine/dice.js'
 import { createCreature } from '@dnd-platform/content/creatures'
 import * as resolver from '../src/engine/spellResolver.js'
 
-beforeAll(() => dice.setDiceMode('average'))
-afterAll(() => dice.setDiceMode('random'))
+before(() => dice.setDiceMode('average'))
+after(() => dice.setDiceMode('random'))
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Helpers
@@ -34,38 +35,38 @@ function makeFanatic(index = 1) {
 describe('spendSlot', () => {
   it('decrements slot count', () => {
     const bard = makeBard()
-    expect(bard.spellSlots[1]).toBe(4)
-    expect(resolver.spendSlot(bard, 1)).toBe(true)
-    expect(bard.spellSlots[1]).toBe(3)
+    assert.strictEqual(bard.spellSlots[1], 4)
+    assert.strictEqual(resolver.spendSlot(bard, 1), true)
+    assert.strictEqual(bard.spellSlots[1], 3)
   })
 
   it('returns false when no slots remain', () => {
     const bard = makeBard()
     bard.spellSlots[4] = 0
-    expect(resolver.spendSlot(bard, 4)).toBe(false)
-    expect(bard.spellSlots[4]).toBe(0)
+    assert.strictEqual(resolver.spendSlot(bard, 4), false)
+    assert.strictEqual(bard.spellSlots[4], 0)
   })
 
   it('increments spellsCast counter', () => {
     const bard = makeBard()
     resolver.spendSlot(bard, 1)
-    expect(bard.spellsCast).toBe(1)
+    assert.strictEqual(bard.spellsCast, 1)
   })
 })
 
 describe('hasSlot', () => {
   it('true when slots available', () => {
-    expect(resolver.hasSlot(makeBard(), 3)).toBe(true)
+    assert.strictEqual(resolver.hasSlot(makeBard(), 3), true)
   })
 
   it('false when slots exhausted', () => {
     const bard = makeBard()
     bard.spellSlots[4] = 0
-    expect(resolver.hasSlot(bard, 4)).toBe(false)
+    assert.strictEqual(resolver.hasSlot(bard, 4), false)
   })
 
   it('always true for cantrips (level 0)', () => {
-    expect(resolver.hasSlot(makeBard(), 0)).toBe(true)
+    assert.strictEqual(resolver.hasSlot(makeBard(), 0), true)
   })
 })
 
@@ -75,7 +76,7 @@ describe('hasSlot', () => {
 
 describe('getSaveDC', () => {
   it('cult fanatic uses spellSaveDC directly', () => {
-    expect(resolver.getSaveDC(makeFanatic(), {})).toBe(11)
+    assert.strictEqual(resolver.getSaveDC(makeFanatic(), {}), 11)
   })
 })
 
@@ -95,13 +96,13 @@ describe('resolveSpell — Hypnotic Pattern', () => {
       spell: 'Hypnotic Pattern', level: 3, targets: [f1, f2],
     }, all, log)
 
-    expect(result.success).toBe(true)
-    expect(result.details.affectedCount).toBe(2)
-    expect(f1.conditions).toContain('charmed_hp')
-    expect(f1.conditions).toContain('incapacitated')
-    expect(f2.conditions).toContain('charmed_hp')
-    expect(bard.concentrating).toBe('Hypnotic Pattern')
-    expect(bard.spellSlots[3]).toBe(2)
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.details.affectedCount, 2)
+    assert.ok(f1.conditions.includes('charmed_hp'))
+    assert.ok(f1.conditions.includes('incapacitated'))
+    assert.ok(f2.conditions.includes('charmed_hp'))
+    assert.strictEqual(bard.concentrating, 'Hypnotic Pattern')
+    assert.strictEqual(bard.spellSlots[3], 2)
   })
 
   it('skips dead targets', () => {
@@ -115,8 +116,8 @@ describe('resolveSpell — Hypnotic Pattern', () => {
       spell: 'Hypnotic Pattern', level: 3, targets: [f1, f2],
     }, [bard, f1, f2], log)
 
-    expect(result.details.affectedCount).toBe(1)
-    expect(f1.conditions).toEqual([])
+    assert.strictEqual(result.details.affectedCount, 1)
+    assert.deepStrictEqual(f1.conditions, [])
   })
 
   it('resolves targets from aoeCenter when provided (engine-resolved)', () => {
@@ -133,11 +134,11 @@ describe('resolveSpell — Hypnotic Pattern', () => {
       spell: 'Hypnotic Pattern', level: 3, aoeCenter: { x: 10, y: 0 },
     }, [bard, f1, f2, f3], log)
 
-    expect(result.success).toBe(true)
-    expect(result.details.affectedCount).toBe(2)
-    expect(f1.conditions).toContain('charmed_hp')
-    expect(f2.conditions).toContain('charmed_hp')
-    expect(f3.conditions).toEqual([])
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.details.affectedCount, 2)
+    assert.ok(f1.conditions.includes('charmed_hp'))
+    assert.ok(f2.conditions.includes('charmed_hp'))
+    assert.deepStrictEqual(f3.conditions, [])
   })
 })
 
@@ -155,11 +156,11 @@ describe('resolveSpell — Hold Person', () => {
       spell: 'Hold Person', level: 2, target: f2,
     }, [bard, f2], log)
 
-    expect(result.success).toBe(true)
-    expect(result.details.saved).toBe(false)
-    expect(f2.conditions).toContain('paralyzed')
-    expect(bard.concentrating).toBe('Hold Person')
-    expect(bard.spellSlots[2]).toBe(2)
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.details.saved, false)
+    assert.ok(f2.conditions.includes('paralyzed'))
+    assert.strictEqual(bard.concentrating, 'Hold Person')
+    assert.strictEqual(bard.spellSlots[2], 2)
   })
 
   it('target resists on successful save', () => {
@@ -172,9 +173,9 @@ describe('resolveSpell — Hold Person', () => {
       spell: 'Hold Person', level: 2, target: bard,
     }, [f1, bard], log)
 
-    expect(result.details.saved).toBe(true)
-    expect(bard.conditions).toEqual([])
-    expect(f1.concentrating).toBeNull()
+    assert.strictEqual(result.details.saved, true)
+    assert.deepStrictEqual(bard.conditions, [])
+    assert.strictEqual(f1.concentrating, null)
   })
 })
 
@@ -191,10 +192,10 @@ describe('resolveSpell — Greater Invisibility', () => {
       spell: 'Greater Invisibility', level: 4,
     }, [bard], log)
 
-    expect(result.success).toBe(true)
-    expect(bard.conditions).toContain('invisible')
-    expect(bard.concentrating).toBe('Greater Invisibility')
-    expect(bard.spellSlots[4]).toBe(1)
+    assert.strictEqual(result.success, true)
+    assert.ok(bard.conditions.includes('invisible'))
+    assert.strictEqual(bard.concentrating, 'Greater Invisibility')
+    assert.strictEqual(bard.spellSlots[4], 1)
   })
 })
 
@@ -213,10 +214,10 @@ describe('resolveSpell — Inflict Wounds', () => {
       spell: 'Inflict Wounds', level: 1, target: f2,
     }, [f1, f2], log)
 
-    expect(result.success).toBe(true)
-    expect(result.details.hit).toBe(true)
-    expect(f2.currentHP).toBe(33 - 16.5)
-    expect(f1.totalDamageDealt).toBe(16.5)
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.details.hit, true)
+    assert.strictEqual(f2.currentHP, 33 - 16.5)
+    assert.strictEqual(f1.totalDamageDealt, 16.5)
   })
 
   it('misses when attack doesn\'t meet AC', () => {
@@ -228,8 +229,8 @@ describe('resolveSpell — Inflict Wounds', () => {
       spell: 'Inflict Wounds', level: 1, target: bard,
     }, [f1, bard], log)
 
-    expect(result.details.hit).toBe(false)
-    expect(bard.currentHP).toBe(67)
+    assert.strictEqual(result.details.hit, false)
+    assert.strictEqual(bard.currentHP, 67)
   })
 })
 
@@ -247,10 +248,10 @@ describe('resolveCantrip — Vicious Mockery', () => {
       spell: 'Vicious Mockery', target: f1,
     }, [bard, f1], log)
 
-    expect(result.success).toBe(true)
-    expect(result.details.saved).toBe(false)
-    expect(f1.currentHP).toBe(33 - 5)
-    expect(f1.conditions).toContain('vm_disadvantage')
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.details.saved, false)
+    assert.strictEqual(f1.currentHP, 33 - 5)
+    assert.ok(f1.conditions.includes('vm_disadvantage'))
   })
 })
 
@@ -269,8 +270,8 @@ describe('resolveCantrip — Sacred Flame', () => {
       spell: 'Sacred Flame', target: f2,
     }, [f1, f2], log)
 
-    expect(result.details.saved).toBe(false)
-    expect(f2.currentHP).toBe(33 - 4.5)
+    assert.strictEqual(result.details.saved, false)
+    assert.strictEqual(f2.currentHP, 33 - 4.5)
   })
 })
 
@@ -288,9 +289,9 @@ describe('resolveSpell — Shield of Faith', () => {
       spell: 'Shield of Faith', level: 1, target: f1,
     }, [f1], log)
 
-    expect(result.success).toBe(true)
-    expect(f1.ac).toBe(beforeAC + 2)
-    expect(f1.concentrating).toBe('Shield of Faith')
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(f1.ac, beforeAC + 2)
+    assert.strictEqual(f1.concentrating, 'Shield of Faith')
   })
 })
 
@@ -310,9 +311,9 @@ describe('resolveSpell — Counterspell reaction', () => {
       onReaction: () => ({ countered: true, counteredBy: bard.name }),
     })
 
-    expect(result.success).toBe(false)
-    expect(result.countered).toBe(true)
-    expect(bard.conditions).toEqual([])
+    assert.strictEqual(result.success, false)
+    assert.strictEqual(result.countered, true)
+    assert.deepStrictEqual(bard.conditions, [])
   })
 
   it('spell resolves normally when onReaction returns null', () => {
@@ -326,9 +327,9 @@ describe('resolveSpell — Counterspell reaction', () => {
       onReaction: () => null,
     })
 
-    expect(result.success).toBe(true)
-    expect(result.countered).toBe(false)
-    expect(f1.conditions).toContain('paralyzed')
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.countered, false)
+    assert.ok(f1.conditions.includes('paralyzed'))
   })
 })
 
@@ -350,8 +351,8 @@ describe('concentration switch', () => {
       spell: 'Hold Person', level: 2, target: f2,
     }, [bard, f1, f2], log)
 
-    expect(f1.conditions).toEqual([])
-    expect(bard.concentrating).toBe('Hold Person')
+    assert.deepStrictEqual(f1.conditions, [])
+    assert.strictEqual(bard.concentrating, 'Hold Person')
   })
 })
 
@@ -364,8 +365,8 @@ describe('error handling', () => {
     const bard = makeBard()
     const log = []
     const result = resolver.resolveSpell(bard, { spell: 'Meteor Swarm', level: 9 }, [bard], log)
-    expect(result.success).toBe(false)
-    expect(result.details.error).toBe('unknown_spell')
+    assert.strictEqual(result.success, false)
+    assert.strictEqual(result.details.error, 'unknown_spell')
   })
 
   it('returns failure when no slots remain', () => {
@@ -376,8 +377,8 @@ describe('error handling', () => {
     const result = resolver.resolveSpell(bard, {
       spell: 'Hypnotic Pattern', level: 3, targets: [f1],
     }, [bard, f1], log)
-    expect(result.success).toBe(false)
-    expect(result.details.error).toBe('no_slots')
+    assert.strictEqual(result.success, false)
+    assert.strictEqual(result.details.error, 'no_slots')
   })
 })
 
@@ -396,7 +397,7 @@ describe('Dark Devotion — advantage on charmed saves', () => {
     }, [bard, f1], log)
 
     const advLog = log.find(l => l.includes('ADV'))
-    expect(advLog).toBeTruthy()
+    assert.ok(advLog)
   })
 })
 
@@ -417,7 +418,7 @@ describe('concentration check from spell damage', () => {
     }, [f1, bard], log)
 
     const conLog = log.find(l => l.includes('Concentration save'))
-    expect(conLog).toBeTruthy()
-    expect(conLog).toContain('MAINTAINED')
+    assert.ok(conLog)
+    assert.ok(conLog.includes('MAINTAINED'))
   })
 })

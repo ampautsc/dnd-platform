@@ -1,0 +1,20 @@
+<setting name="millhaven">
+<overview>
+Millhaven: prosperous market town, ~1,200 people, at the crossroads of two trade routes in the Vale (temperate river valley). Smells of bread, horse, and river mud. Unremarkable by design — cobblestones uneven, inn loud on weekends, guards underpaid but loyal. Everyone knows everyone. Strangers noticed within an hour.
+</overview>
+<geography>
+Stoneback River: 1 mile east, powers the town's namesake watermill. King's Road: runs through town center, connects to larger settlements. Darkwood Forest: 3 miles north — timber, game, occasional trouble. Surrounding Vale: fertile farmland (grain, vegetables, livestock).
+</geography>
+<factions>
+Town Council: led by Aldovar Crennick, governs from Town Hall (north of Market Square). The Guard: Captain Edric Vane, small loyal force at the Guard Post by the town gate. Merchant Guild: controls trade and market access. Temple Congregation: centered at the Temple of the Allmother. Tensions: merchants want lower taxes, guard wants better pay, temple wants everyone nicer.
+</factions>
+<economy>
+Market town economy. Every Tenthday the Market Square fills with farmers, travelling merchants, and craftspeople. Trade staples: grain, leather, ironwork, herbs, livestock. Key businesses: Coin-Keeper's Provisions (general store), the Withered Coin (lending), Stoneback Warehouse (transit goods).
+</economy>
+<social_norms>
+Gossip moves faster than coin. Strangers catalogued on arrival: attire, first contact, threat level. Loyalty to family, neighbors, and town is expected. Outsiders treated politely but watched until proven. Social hubs: Bottoms Up (Mill Road) and The Tipsy Gnome — buy a drink to hear what's really happening.
+</social_norms>
+<local_religion>
+Temple of the Allmother: modest temple to the goddess of hearth and harvest (locally understood as Chauntea). Open to all faiths. Tended by Brother Aldwin. Residents are casually devout — festivals, marriage blessings, funeral rites. Practical piety, not fervent devotion.
+</local_religion>
+</setting>

@@ -6,7 +6,9 @@
  * - starts at introduction with low tension
  * - pacing: records beats that automatically scale tension appropriately
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createStoryEngine } from '../../src/story/StoryEngine.js';
 
 describe('StoryEngine', () => {
@@ -14,8 +16,8 @@ describe('StoryEngine', () => {
     const engine = createStoryEngine();
     const state = engine.getStoryState();
     
-    expect(state.arc).toBe('introduction');
-    expect(state.tension).toBe(1);
+    assert.strictEqual(state.arc, 'introduction');
+    assert.strictEqual(state.tension, 1);
   });
 
   it('increases tension and advances arc to rising_action on dramatic beats', () => {
@@ -24,8 +26,8 @@ describe('StoryEngine', () => {
     engine.recordBeat({ type: 'conflict.discovery' });
     let state = engine.getStoryState();
     
-    expect(state.tension).toBeGreaterThan(1);
-    expect(state.arc).toBe('rising_action');
+    assert.ok(state.tension > 1);
+    assert.strictEqual(state.arc, 'rising_action');
   });
   
   it('caps tension at 10 and transitions to climax on critical beats', () => {
@@ -36,7 +38,7 @@ describe('StoryEngine', () => {
     engine.recordBeat({ type: 'combat.critical' });
     
     let state = engine.getStoryState();
-    expect(state.tension).toBeLessThanOrEqual(10);
-    expect(state.arc).toBe('climax');
+    assert.ok(state.tension <= 10);
+    assert.strictEqual(state.arc, 'climax');
   });
 });

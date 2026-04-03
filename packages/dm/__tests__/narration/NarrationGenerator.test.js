@@ -19,18 +19,20 @@
  *  - provider.generateResponse({ systemPrompt, userPrompt }) → { text }
  *  - imagePromptBuilder.buildPrompt({ scene, characters, mood, action, environment }) → { prompt, style, negativePrompt }
  */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createNarrationGenerator } from '../../src/narration/NarrationGenerator.js';
 
 function makeMockProvider(text = 'The torchlight flickered across weathered stone walls.') {
   return {
-    generateResponse: vi.fn().mockResolvedValue({ text }),
+    generateResponse: mock.fn().mockResolvedValue({ text }),
   };
 }
 
 function makeMockImageBuilder(prompt = 'A dark dungeon corridor.') {
   return {
-    buildPrompt: vi.fn().mockReturnValue({
+    buildPrompt: mock.fn().mockReturnValue({
       prompt,
       style: 'fantasy illustration',
       negativePrompt: 'modern technology',
@@ -59,15 +61,15 @@ describe('NarrationGenerator', () => {
       sceneType: 'exploration',
     });
 
-    expect(page.text).toBe('The adventurers crept forward.');
+    assert.strictEqual(page.text, 'The adventurers crept forward.');
     expect(page.imagePrompt).toEqual({
       prompt: 'A dungeon scene.',
       style: 'fantasy illustration',
       negativePrompt: 'modern technology',
     });
-    expect(page.speechDirective).toBeDefined();
-    expect(page.sceneType).toBe('exploration');
-    expect(page.generatedAt).toBe('2026-03-16T12:00:00.000Z');
+    assert.notStrictEqual(page.speechDirective, undefined);
+    assert.strictEqual(page.sceneType, 'exploration');
+    assert.strictEqual(page.generatedAt, '2026-03-16T12:00:00.000Z');
   });
 
   // ── provider interaction ───────────────────────────────────────────
@@ -86,10 +88,10 @@ describe('NarrationGenerator', () => {
     });
 
     const call = provider.generateResponse.mock.calls[0][0];
-    expect(call.systemPrompt).toMatch(/narrat|book page|DM/i);
-    expect(call.userPrompt).toContain('throne room');
-    expect(call.userPrompt).toContain('King Aldric');
-    expect(call.userPrompt).toContain('regal');
+    assert.match(call.systemPrompt, /narrat|book page|DM/i);
+    assert.ok(call.userPrompt.includes('throne room'));
+    assert.ok(call.userPrompt.includes('King Aldric'));
+    assert.ok(call.userPrompt.includes('regal'));
   });
 
   // ── imagePromptBuilder delegation ──────────────────────────────────
@@ -128,7 +130,7 @@ describe('NarrationGenerator', () => {
       sceneType: 'combat',
     });
 
-    expect(page.speechDirective.pace).toBe('fast');
+    assert.strictEqual(page.speechDirective.pace, 'fast');
   });
 
   it('sets slow pace for rest sceneType', async () => {
@@ -141,7 +143,7 @@ describe('NarrationGenerator', () => {
       sceneType: 'rest',
     });
 
-    expect(page.speechDirective.pace).toBe('slow');
+    assert.strictEqual(page.speechDirective.pace, 'slow');
   });
 
   it('sets moderate pace for default/unknown sceneType', async () => {
@@ -154,7 +156,7 @@ describe('NarrationGenerator', () => {
       sceneType: 'social',
     });
 
-    expect(page.speechDirective.pace).toBe('moderate');
+    assert.strictEqual(page.speechDirective.pace, 'moderate');
   });
 
   it('derives speech tone from mood', async () => {
@@ -167,7 +169,7 @@ describe('NarrationGenerator', () => {
       mood: 'menacing',
     });
 
-    expect(page.speechDirective.tone).toBe('menacing');
+    assert.strictEqual(page.speechDirective.tone, 'menacing');
   });
 
   // ── fallback for missing scene ─────────────────────────────────────
@@ -179,18 +181,18 @@ describe('NarrationGenerator', () => {
 
     const page = await gen.generatePage({});
 
-    expect(typeof page.text).toBe('string');
-    expect(page.text.length).toBeGreaterThan(0);
-    expect(provider.generateResponse).not.toHaveBeenCalled();
-    expect(page.imagePrompt).toBeDefined();
-    expect(page.speechDirective).toBeDefined();
+    assert.strictEqual(typeof page.text, 'string');
+    assert.ok(page.text.length > 0);
+    assert.strictEqual(provider.generateResponse.mock.calls.length, 0);
+    assert.notStrictEqual(page.imagePrompt, undefined);
+    assert.notStrictEqual(page.speechDirective, undefined);
   });
 
   // ── error propagation ──────────────────────────────────────────────
 
   it('propagates provider errors to the caller', async () => {
     const provider = {
-      generateResponse: vi.fn().mockRejectedValue(new Error('LLM_TIMEOUT')),
+      generateResponse: mock.fn().mockRejectedValue(new Error('LLM_TIMEOUT')),
     };
     const imageBuilder = makeMockImageBuilder();
     const gen = createNarrationGenerator({ provider, imagePromptBuilder: imageBuilder });
@@ -209,7 +211,7 @@ describe('NarrationGenerator', () => {
 
     const page = await gen.generatePage({ scene: 'test scene' });
 
-    expect(typeof page.speechDirective.voice).toBe('string');
-    expect(page.speechDirective.voice.length).toBeGreaterThan(0);
+    assert.strictEqual(typeof page.speechDirective.voice, 'string');
+    assert.ok(page.speechDirective.voice.length > 0);
   });
 });

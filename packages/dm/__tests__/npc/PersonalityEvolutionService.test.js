@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { PersonalityEvolutionService } from '../../src/npc/PersonalityEvolutionService.js';
 
 /**
@@ -78,21 +80,21 @@ describe('PersonalityEvolutionService', () => {
         personalGrowth: [],
         encountersSurvived: 0,
       }));
-      expect(typeof rec.createdAt).toBe('number');
-      expect(typeof rec.lastUpdatedAt).toBe('number');
+      assert.strictEqual(typeof rec.createdAt, 'number');
+      assert.strictEqual(typeof rec.lastUpdatedAt, 'number');
     });
 
     it('should return the same record on repeated calls', () => {
       const a = service.getEvolution('bree_millhaven');
       a.arcStage = 0.5;
       const b = service.getEvolution('bree_millhaven');
-      expect(b.arcStage).toBe(0.5);
+      assert.strictEqual(b.arcStage, 0.5);
     });
 
     it('should return null for falsy templateKey', () => {
-      expect(service.getEvolution(null)).toBeNull();
-      expect(service.getEvolution('')).toBeNull();
-      expect(service.getEvolution(undefined)).toBeNull();
+      assert.strictEqual(service.getEvolution(null), null);
+      assert.strictEqual(service.getEvolution(''), null);
+      assert.strictEqual(service.getEvolution(undefined), null);
     });
   });
 
@@ -107,20 +109,20 @@ describe('PersonalityEvolutionService', () => {
 
     it('should clamp arcStage to [0.0, 1.0]', () => {
       service.advanceArc('bree_millhaven', 1.5);
-      expect(service.getEvolution('bree_millhaven').arcStage).toBe(1.0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').arcStage, 1.0);
 
       service.advanceArc('bree_millhaven', -5.0);
-      expect(service.getEvolution('bree_millhaven').arcStage).toBe(0.0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').arcStage, 0.0);
     });
 
     it('should record an optional milestone', () => {
       service.advanceArc('bree_millhaven', 0.1, 'Confronted the bandit leader');
       const rec = service.getEvolution('bree_millhaven');
-      expect(rec.arcMilestones).toContain('Confronted the bandit leader');
+      assert.ok(rec.arcMilestones.includes('Confronted the bandit leader'));
     });
 
     it('should return null for falsy templateKey', () => {
-      expect(service.advanceArc(null, 0.1)).toBeNull();
+      assert.strictEqual(service.advanceArc(null, 0.1), null);
     });
   });
 
@@ -134,15 +136,15 @@ describe('PersonalityEvolutionService', () => {
 
     it('should clamp to [-1.0, +1.0]', () => {
       service.shiftDisposition('bree_millhaven', 2.0);
-      expect(service.getEvolution('bree_millhaven').permanentDisposition).toBe(1.0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').permanentDisposition, 1.0);
 
       service.shiftDisposition('bree_millhaven', -5.0);
-      expect(service.getEvolution('bree_millhaven').permanentDisposition).toBe(-1.0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').permanentDisposition, -1.0);
     });
 
     it('should record optional reason in personalGrowth', () => {
       service.shiftDisposition('bree_millhaven', 0.2, 'Party saved her farm');
-      expect(service.getEvolution('bree_millhaven').personalGrowth).toContain('Party saved her farm');
+      assert.ok(service.getEvolution('bree_millhaven').personalGrowth.includes('Party saved her farm'));
     });
   });
 
@@ -162,7 +164,7 @@ describe('PersonalityEvolutionService', () => {
 
     it('should clamp to [-1.0, +1.0]', () => {
       service.adjustRelationship('bree_millhaven', 'player1', 2.0);
-      expect(service.getEvolution('bree_millhaven').relationshipQuality.player1).toBe(1.0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').relationshipQuality.player1, 1.0);
     });
   });
 
@@ -189,7 +191,7 @@ describe('PersonalityEvolutionService', () => {
     it('should increment encountersSurvived', () => {
       service.recordEncounterSurvived('bree_millhaven');
       service.recordEncounterSurvived('bree_millhaven');
-      expect(service.getEvolution('bree_millhaven').encountersSurvived).toBe(2);
+      assert.strictEqual(service.getEvolution('bree_millhaven').encountersSurvived, 2);
     });
   });
 
@@ -228,7 +230,7 @@ describe('PersonalityEvolutionService', () => {
       };
       service.crystallizeEncounter('bree_millhaven', memory);
       const rec = service.getEvolution('bree_millhaven');
-      expect(rec.relationshipQuality.player1).toBeUndefined();
+      assert.strictEqual(rec.relationshipQuality.player1, undefined);
     });
 
     it('should carry over significant moments (max 2 per encounter)', () => {
@@ -237,7 +239,7 @@ describe('PersonalityEvolutionService', () => {
       };
       service.crystallizeEncounter('bree_millhaven', memory);
       const rec = service.getEvolution('bree_millhaven');
-      expect(rec.personalGrowth).toEqual(['Saved the child', 'Revealed a secret']);
+      assert.deepStrictEqual(rec.personalGrowth, ['Saved the child', 'Revealed a secret']);
     });
 
     it('should trim personalGrowth to 20 max', () => {
@@ -247,17 +249,17 @@ describe('PersonalityEvolutionService', () => {
 
       const memory = { significantMoments: ['New moment A', 'New moment B'] };
       service.crystallizeEncounter('bree_millhaven', memory);
-      expect(rec.personalGrowth.length).toBeLessThanOrEqual(20);
-      expect(rec.personalGrowth).toContain('New moment B');
+      assert.ok(rec.personalGrowth.length <= 20);
+      assert.ok(rec.personalGrowth.includes('New moment B'));
     });
 
     it('should increment encountersSurvived', () => {
       service.crystallizeEncounter('bree_millhaven', {});
-      expect(service.getEvolution('bree_millhaven').encountersSurvived).toBe(1);
+      assert.strictEqual(service.getEvolution('bree_millhaven').encountersSurvived, 1);
     });
 
     it('should return null for null encounterMemory', () => {
-      expect(service.crystallizeEncounter('bree_millhaven', null)).toBeNull();
+      assert.strictEqual(service.crystallizeEncounter('bree_millhaven', null), null);
     });
   });
 
@@ -266,34 +268,34 @@ describe('PersonalityEvolutionService', () => {
   describe('buildEvolutionSummary', () => {
     it('should return empty string for an NPC with no evolution', () => {
       service.getEvolution('bree_millhaven'); // create record
-      expect(service.buildEvolutionSummary('bree_millhaven')).toBe('');
+      assert.strictEqual(service.buildEvolutionSummary('bree_millhaven'), '');
     });
 
     it('should return empty string for unknown NPC', () => {
-      expect(service.buildEvolutionSummary('nobody')).toBe('');
+      assert.strictEqual(service.buildEvolutionSummary('nobody'), '');
     });
 
     it('should include disposition direction and intensity', () => {
       service.shiftDisposition('bree_millhaven', 0.4);
       service.recordEncounterSurvived('bree_millhaven');
       const summary = service.buildEvolutionSummary('bree_millhaven');
-      expect(summary).toContain('warmer toward');
-      expect(summary).toContain('notably');
+      assert.ok(summary.includes('warmer toward'));
+      assert.ok(summary.includes('notably'));
     });
 
     it('should describe negative disposition as colder', () => {
       service.shiftDisposition('bree_millhaven', -0.7);
       service.recordEncounterSurvived('bree_millhaven');
       const summary = service.buildEvolutionSummary('bree_millhaven');
-      expect(summary).toContain('colder toward');
-      expect(summary).toContain('significantly');
+      assert.ok(summary.includes('colder toward'));
+      assert.ok(summary.includes('significantly'));
     });
 
     it('should include personal growth items', () => {
       service.shiftDisposition('bree_millhaven', 0.1, 'Shared a meal');
       service.recordEncounterSurvived('bree_millhaven');
       const summary = service.buildEvolutionSummary('bree_millhaven');
-      expect(summary).toContain('Shared a meal');
+      assert.ok(summary.includes('Shared a meal'));
     });
 
     it('should include encounter count when > 1', () => {
@@ -301,7 +303,7 @@ describe('PersonalityEvolutionService', () => {
       service.recordEncounterSurvived('bree_millhaven');
       service.shiftDisposition('bree_millhaven', 0.1);
       const summary = service.buildEvolutionSummary('bree_millhaven');
-      expect(summary).toContain('2 encounters');
+      assert.ok(summary.includes('2 encounters'));
     });
 
     it('should include arc progression with personality context', () => {
@@ -313,9 +315,9 @@ describe('PersonalityEvolutionService', () => {
         },
       };
       const summary = service.buildEvolutionSummary('bree_millhaven', personality);
-      expect(summary).toContain('From timid farmer to village defender');
-      expect(summary).toContain('50%');
-      expect(summary).toContain('Found the clue');
+      assert.ok(summary.includes('From timid farmer to village defender'));
+      assert.ok(summary.includes('50%'));
+      assert.ok(summary.includes('Found the clue'));
     });
   });
 
@@ -324,7 +326,7 @@ describe('PersonalityEvolutionService', () => {
   describe('buildOpinionsContext (deprecated)', () => {
     it('should return empty string for no opinions', () => {
       const result = service.buildOpinionsContext('bree_millhaven', {});
-      expect(result).toBe('');
+      assert.strictEqual(result, '');
     });
 
     it('should include base personality opinions', () => {
@@ -336,8 +338,8 @@ describe('PersonalityEvolutionService', () => {
         },
       };
       const result = service.buildOpinionsContext('bree_millhaven', personality);
-      expect(result).toContain('hodge_fence');
-      expect(result).toContain('shady dealer');
+      assert.ok(result.includes('hodge_fence'));
+      assert.ok(result.includes('shady dealer'));
     });
 
     it('should merge overrides over base opinions', () => {
@@ -350,8 +352,8 @@ describe('PersonalityEvolutionService', () => {
         },
       };
       const result = service.buildOpinionsContext('bree_millhaven', personality);
-      expect(result).toContain('Now fully trusts him');
-      expect(result).not.toContain('shady');
+      assert.ok(result.includes('Now fully trusts him'));
+      assert.ok(!result.includes('shady'));
     });
 
     it('should filter to only nearby NPCs when provided', () => {
@@ -364,8 +366,8 @@ describe('PersonalityEvolutionService', () => {
         },
       };
       const result = service.buildOpinionsContext('bree_millhaven', personality, ['hodge_fence']);
-      expect(result).toContain('hodge_fence');
-      expect(result).not.toContain('aldovar_crennick');
+      assert.ok(result.includes('hodge_fence'));
+      assert.ok(!result.includes('aldovar_crennick'));
     });
   });
 
@@ -377,14 +379,14 @@ describe('PersonalityEvolutionService', () => {
       service.getEvolution('aldovar_crennick');
       service.clearAll();
       // After clear, getEvolution returns fresh records
-      expect(service.getEvolution('bree_millhaven').encountersSurvived).toBe(0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').encountersSurvived, 0);
     });
 
     it('should clear a single NPC evolution', () => {
       service.advanceArc('bree_millhaven', 0.5);
       service.advanceArc('aldovar_crennick', 0.3);
       service.clearEvolution('bree_millhaven');
-      expect(service.getEvolution('bree_millhaven').arcStage).toBe(0);
+      assert.strictEqual(service.getEvolution('bree_millhaven').arcStage, 0);
       expect(service.getEvolution('aldovar_crennick').arcStage).toBeCloseTo(0.3);
     });
   });

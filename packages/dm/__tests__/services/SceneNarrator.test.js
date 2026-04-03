@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, beforeEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { SceneNarrator } from '../../src/services/SceneNarrator.js';
 import { SceneEngine } from '../../src/services/SceneEngine.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
@@ -115,7 +117,7 @@ describe('SceneNarrator', () => {
 
   it('should construct without errors', () => {
     const { narrator } = makeNarrator();
-    expect(narrator).toBeDefined();
+    assert.notStrictEqual(narrator, undefined);
   });
 
   // ── narrateNpcBatch ─────────────────────────────────────────────
@@ -131,10 +133,10 @@ describe('SceneNarrator', () => {
         round: 1,
         playerName: 'Steven',
       });
-      expect(result.narration).toBeDefined();
-      expect(typeof result.narration).toBe('string');
-      expect(result.narration.length).toBeGreaterThan(0);
-      expect(result.source).toBe('llm');
+      assert.notStrictEqual(result.narration, undefined);
+      assert.strictEqual(typeof result.narration, 'string');
+      assert.ok(result.narration.length > 0);
+      assert.strictEqual(result.source, 'llm');
     });
 
     it('should produce fallback narration when LLM fails', async () => {
@@ -154,11 +156,11 @@ describe('SceneNarrator', () => {
         round: 1,
         playerName: 'Steven',
       });
-      expect(result.source).toBe('fallback');
-      expect(result.narration).toBeDefined();
+      assert.strictEqual(result.source, 'fallback');
+      assert.notStrictEqual(result.narration, undefined);
       // Fallback should include speech directly
-      expect(result.narration).toContain('Mira');
-      expect(result.narration).toContain('Hello there, welcome!');
+      assert.ok(result.narration.includes('Mira'));
+      assert.ok(result.narration.includes('Hello there, welcome!'));
     });
 
     it('should omit PASS actions in fallback narration', async () => {
@@ -178,8 +180,8 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
       // Fen's pass should not produce substantive narration
-      expect(result.narration).toContain('Mira');
-      expect(result.narration).toContain('What can I get you?');
+      assert.ok(result.narration.includes('Mira'));
+      assert.ok(result.narration.includes('What can I get you?'));
     });
 
     it('should narrate LEAVE actions in fallback', async () => {
@@ -197,8 +199,8 @@ describe('SceneNarrator', () => {
         round: 1,
         playerName: 'Steven',
       });
-      expect(result.narration).toMatch(/fen/i);
-      expect(result.narration).toMatch(/leave|depart|exit|slip|head/i);
+      assert.match(result.narration, /fen/i);
+      assert.match(result.narration, /leave|depart|exit|slip|head/i);
     });
 
     it('should handle empty NPC actions batch', async () => {
@@ -210,7 +212,7 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
       // Empty batch → no narration needed
-      expect(result.narration).toBe('');
+      assert.strictEqual(result.narration, '');
     });
   });
 
@@ -224,9 +226,9 @@ describe('SceneNarrator', () => {
         participantNames: ['Mira Barrelbottom', 'Lell Sparrow', 'Old Mattock'],
         playerName: 'Steven',
       });
-      expect(result.narration).toBeDefined();
-      expect(typeof result.narration).toBe('string');
-      expect(result.narration.length).toBeGreaterThan(0);
+      assert.notStrictEqual(result.narration, undefined);
+      assert.strictEqual(typeof result.narration, 'string');
+      assert.ok(result.narration.length > 0);
     });
 
     it('should fall back to a rules-based opening if LLM fails', async () => {
@@ -241,8 +243,8 @@ describe('SceneNarrator', () => {
         participantNames: ['Mira Barrelbottom', 'Lell Sparrow'],
         playerName: 'Steven',
       });
-      expect(result.source).toBe('fallback');
-      expect(result.narration).toContain('Bottoms Up');
+      assert.strictEqual(result.source, 'fallback');
+      assert.ok(result.narration.includes('Bottoms Up'));
     });
   });
 
@@ -255,7 +257,7 @@ describe('SceneNarrator', () => {
         worldContext: makeWorldContext(),
         playerName: 'Steven',
       });
-      expect(prompt).toMatch(/second person|"you"/i);
+      assert.match(prompt, /second person|"you"/i);
     });
 
     it('should instruct never to reveal NPC inner thoughts', () => {
@@ -264,8 +266,8 @@ describe('SceneNarrator', () => {
         worldContext: makeWorldContext(),
         playerName: 'Steven',
       });
-      expect(prompt).toMatch(/inner thought|inner monologue|internal/i);
-      expect(prompt).toMatch(/never|do not|must not/i);
+      assert.match(prompt, /inner thought|inner monologue|internal/i);
+      assert.match(prompt, /never|do not|must not/i);
     });
 
     it('should include location atmosphere', () => {
@@ -274,7 +276,7 @@ describe('SceneNarrator', () => {
         worldContext: makeWorldContext(),
         playerName: 'Steven',
       });
-      expect(prompt).toContain('Bottoms Up');
+      assert.ok(prompt.includes('Bottoms Up'));
     });
   });
 
@@ -310,8 +312,8 @@ describe('SceneNarrator', () => {
       });
 
       // The prompt sent to the LLM should contain the display label, not the real name
-      expect(capturedPrompt).toContain('the halfling behind the bar');
-      expect(capturedPrompt).not.toContain('Mira Barrelbottom');
+      assert.ok(capturedPrompt.includes('the halfling behind the bar'));
+      assert.ok(!capturedPrompt.includes('Mira Barrelbottom'));
     });
 
     it('should use real names for acquaintances in LLM prompt', async () => {
@@ -343,7 +345,7 @@ describe('SceneNarrator', () => {
       });
 
       // Acquaintance — real name is fine
-      expect(capturedPrompt).toContain('Lell Sparrow');
+      assert.ok(capturedPrompt.includes('Lell Sparrow'));
     });
 
     it('should use display labels in fallback narration for strangers', async () => {
@@ -370,9 +372,9 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(result.source).toBe('fallback');
-      expect(result.narration).toContain('the halfling behind the bar');
-      expect(result.narration).not.toContain('Mira Barrelbottom');
+      assert.strictEqual(result.source, 'fallback');
+      assert.ok(result.narration.includes('the halfling behind the bar'));
+      assert.ok(!result.narration.includes('Mira Barrelbottom'));
     });
 
     it('should resolve names in narrateSceneOpening', async () => {
@@ -403,10 +405,10 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedPrompt).toContain('the halfling behind the bar');
-      expect(capturedPrompt).not.toContain('Mira Barrelbottom');
+      assert.ok(capturedPrompt.includes('the halfling behind the bar'));
+      assert.ok(!capturedPrompt.includes('Mira Barrelbottom'));
       // Old Mattock has no relationship — should use realName as fallback
-      expect(capturedPrompt).toContain('Old Mattock');
+      assert.ok(capturedPrompt.includes('Old Mattock'));
     });
 
     it('should resolve names in fallback opening', async () => {
@@ -432,9 +434,9 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(result.source).toBe('fallback');
-      expect(result.narration).toContain('the halfling behind the bar');
-      expect(result.narration).not.toContain('Mira Barrelbottom');
+      assert.strictEqual(result.source, 'fallback');
+      assert.ok(result.narration.includes('the halfling behind the bar'));
+      assert.ok(!result.narration.includes('Mira Barrelbottom'));
     });
 
     it('should work without relationshipRepo (backward compat)', async () => {
@@ -447,8 +449,8 @@ describe('SceneNarrator', () => {
         round: 1,
         playerName: 'Steven',
       });
-      expect(result.narration).toBeDefined();
-      expect(result.source).toBe('llm');
+      assert.notStrictEqual(result.narration, undefined);
+      assert.strictEqual(result.source, 'llm');
     });
 
     it('should include name mapping in system prompt when repo is available', async () => {
@@ -480,7 +482,7 @@ describe('SceneNarrator', () => {
       });
 
       // System prompt should instruct the LLM about name restrictions
-      expect(capturedSystemPrompt).toMatch(/NEVER.*reveal.*real name|NEVER use.*real name|do not reveal.*name|unknown.*character/i);
+      assert.match(capturedSystemPrompt, /NEVER.*reveal.*real name|NEVER use.*real name|do not reveal.*name|unknown.*character/i);
     });
   });
 
@@ -563,11 +565,11 @@ describe('SceneNarrator', () => {
       });
 
       // Should contain appearance details — NOT the real name
-      expect(capturedPrompt).toContain('Curly auburn');
-      expect(capturedPrompt).toContain('Warm olive complexion');
-      expect(capturedPrompt).toContain('practical dress');
-      expect(capturedPrompt).toContain('female');
-      expect(capturedPrompt).not.toContain('Mira Barrelbottom');
+      assert.ok(capturedPrompt.includes('Curly auburn'));
+      assert.ok(capturedPrompt.includes('Warm olive complexion'));
+      assert.ok(capturedPrompt.includes('practical dress'));
+      assert.ok(capturedPrompt.includes('female'));
+      assert.ok(!capturedPrompt.includes('Mira Barrelbottom'));
     });
 
     it('should include gender/race in appearance block', async () => {
@@ -601,10 +603,10 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedPrompt).toContain('male');
-      expect(capturedPrompt).toContain('Human');
-      expect(capturedPrompt).toContain('scar');
-      expect(capturedPrompt).not.toContain('Fen Colby');
+      assert.ok(capturedPrompt.includes('male'));
+      assert.ok(capturedPrompt.includes('Human'));
+      assert.ok(capturedPrompt.includes('scar'));
+      assert.ok(!capturedPrompt.includes('Fen Colby'));
     });
 
     it('should include distinguishing features as bullet points', async () => {
@@ -631,8 +633,8 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedPrompt).toContain('wiping her hands on a worn apron');
-      expect(capturedPrompt).toContain('leather-bound notebook');
+      assert.ok(capturedPrompt.includes('wiping her hands on a worn apron'));
+      assert.ok(capturedPrompt.includes('leather-bound notebook'));
     });
 
     it('should still work without personalityLookup (backward compat)', async () => {
@@ -645,8 +647,8 @@ describe('SceneNarrator', () => {
         round: 1,
         playerName: 'Steven',
       });
-      expect(result.narration).toBeDefined();
-      expect(result.source).toBe('llm');
+      assert.notStrictEqual(result.narration, undefined);
+      assert.strictEqual(result.source, 'llm');
     });
 
     it('should include appearance in scene opening prompt', async () => {
@@ -680,9 +682,9 @@ describe('SceneNarrator', () => {
       });
 
       // Should have appearance details
-      expect(capturedPrompt).toContain('Curly auburn');
-      expect(capturedPrompt).toContain('female');
-      expect(capturedPrompt).not.toContain('Mira Barrelbottom');
+      assert.ok(capturedPrompt.includes('Curly auburn'));
+      assert.ok(capturedPrompt.includes('female'));
+      assert.ok(!capturedPrompt.includes('Mira Barrelbottom'));
     });
   });
 
@@ -718,9 +720,9 @@ describe('SceneNarrator', () => {
         ],
       });
 
-      expect(capturedSystemPrompt).toContain('content but watchful');
-      expect(capturedSystemPrompt).toContain('keep the tavern warm');
-      expect(capturedSystemPrompt).toContain('Wiping down the bar');
+      assert.ok(capturedSystemPrompt.includes('content but watchful'));
+      assert.ok(capturedSystemPrompt.includes('keep the tavern warm'));
+      assert.ok(capturedSystemPrompt.includes('Wiping down the bar'));
     });
 
     it('should flag deceptive NPCs in the DM prompt', async () => {
@@ -751,9 +753,9 @@ describe('SceneNarrator', () => {
         ],
       });
 
-      expect(capturedSystemPrompt).toContain('tense');
-      expect(capturedSystemPrompt).toContain('stolen goods');
-      expect(capturedSystemPrompt).toMatch(/DECEPTIVE/i);
+      assert.ok(capturedSystemPrompt.includes('tense'));
+      assert.ok(capturedSystemPrompt.includes('stolen goods'));
+      assert.match(capturedSystemPrompt, /DECEPTIVE/i);
     });
 
     it('should work without npcInnerStates (backward compat)', async () => {
@@ -767,8 +769,8 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
         // no npcInnerStates
       });
-      expect(result.narration).toBeDefined();
-      expect(result.source).toBe('llm');
+      assert.notStrictEqual(result.narration, undefined);
+      assert.strictEqual(result.source, 'llm');
     });
   });
 
@@ -796,7 +798,7 @@ describe('SceneNarrator', () => {
         playerAction: { type: 'speech', content: 'I\'d like a drink, please.' },
       });
 
-      expect(capturedUserMsg).toContain("I'd like a drink, please");
+      assert.ok(capturedUserMsg.includes("I'd like a drink, please"));
     });
 
     it('should include scene memory in user message when provided', async () => {
@@ -820,8 +822,8 @@ describe('SceneNarrator', () => {
         sceneMemory: 'Round 1: The halfling behind the bar greeted the player warmly. Round 2: The player ordered an ale.',
       });
 
-      expect(capturedUserMsg).toContain('greeted the player warmly');
-      expect(capturedUserMsg).toContain('ordered an ale');
+      assert.ok(capturedUserMsg.includes('greeted the player warmly'));
+      assert.ok(capturedUserMsg.includes('ordered an ale'));
     });
   });
 
@@ -834,8 +836,8 @@ describe('SceneNarrator', () => {
         'The halfling behind the bar polishes a glass and glances at you.',
         [{ templateKey: 'mira_barrelbottom', participantName: 'Mira Barrelbottom', displayName: 'the halfling behind the bar' }],
       );
-      expect(result.leaked).toBe(false);
-      expect(result.narration).toContain('halfling behind the bar');
+      assert.strictEqual(result.leaked, false);
+      assert.ok(result.narration.includes('halfling behind the bar'));
     });
 
     it('should detect when a real name appears but display name differs', () => {
@@ -844,8 +846,8 @@ describe('SceneNarrator', () => {
         'Mira Barrelbottom polishes a glass and smiles at you.',
         [{ templateKey: 'mira_barrelbottom', participantName: 'Mira Barrelbottom', displayName: 'the halfling behind the bar' }],
       );
-      expect(result.leaked).toBe(true);
-      expect(result.leakedNames).toContain('Mira Barrelbottom');
+      assert.strictEqual(result.leaked, true);
+      assert.ok(result.leakedNames.includes('Mira Barrelbottom'));
     });
 
     it('should detect partial name leaks (first name only)', () => {
@@ -854,8 +856,8 @@ describe('SceneNarrator', () => {
         'Mira polishes a glass and smiles.',
         [{ templateKey: 'mira_barrelbottom', participantName: 'Mira Barrelbottom', displayName: 'the halfling behind the bar' }],
       );
-      expect(result.leaked).toBe(true);
-      expect(result.leakedNames.length).toBeGreaterThan(0);
+      assert.strictEqual(result.leaked, true);
+      assert.ok(result.leakedNames.length > 0);
     });
 
     it('should NOT flag names when real name equals display name', () => {
@@ -864,7 +866,7 @@ describe('SceneNarrator', () => {
         'Lell Sparrow plays a lovely tune on her lute.',
         [{ templateKey: 'lell_sparrow', participantName: 'Lell Sparrow', displayName: 'Lell Sparrow' }],
       );
-      expect(result.leaked).toBe(false);
+      assert.strictEqual(result.leaked, false);
     });
 
     it('should replace leaked names in narration text', () => {
@@ -873,11 +875,11 @@ describe('SceneNarrator', () => {
         'Mira nods at you warmly.',
         [{ templateKey: 'mira_barrelbottom', participantName: 'Mira Barrelbottom', displayName: 'the halfling behind the bar' }],
       );
-      expect(result.leaked).toBe(true);
+      assert.strictEqual(result.leaked, true);
       // The cleaned narration should use the display name, not the real name
-      expect(result.cleaned).toBeDefined();
-      expect(result.cleaned).not.toMatch(/\bMira\b/);
-      expect(result.cleaned).toContain('the halfling behind the bar');
+      assert.notStrictEqual(result.cleaned, undefined);
+      assert.doesNotMatch(result.cleaned, /\bMira\b/);
+      assert.ok(result.cleaned.includes('the halfling behind the bar'));
     });
 
     it('should handle multiple NPCs with mixed leak status', () => {
@@ -889,9 +891,9 @@ describe('SceneNarrator', () => {
           { templateKey: 'fen_colby', participantName: 'Fen Colby', displayName: 'a quiet man at the bar' },
         ],
       );
-      expect(result.leaked).toBe(true);
-      expect(result.leakedNames).toContain('Fen Colby');
-      expect(result.cleaned).not.toContain('Fen Colby');
+      assert.strictEqual(result.leaked, true);
+      assert.ok(result.leakedNames.includes('Fen Colby'));
+      assert.ok(!result.cleaned.includes('Fen Colby'));
     });
 
     it('should clean leaked names in narrateNpcBatch output', async () => {
@@ -918,10 +920,10 @@ describe('SceneNarrator', () => {
         playerName: 'Aldric',
       });
 
-      expect(result.source).toBe('llm');
-      expect(result.narration).not.toContain('Mira Barrelbottom');
-      expect(result.narration).not.toMatch(/\bMira\b/);
-      expect(result.narration).toContain('the halfling behind the bar');
+      assert.strictEqual(result.source, 'llm');
+      assert.ok(!result.narration.includes('Mira Barrelbottom'));
+      assert.doesNotMatch(result.narration, /\bMira\b/);
+      assert.ok(result.narration.includes('the halfling behind the bar'));
     });
 
     it('should clean leaked names in narrateSceneOpening output', async () => {
@@ -947,10 +949,10 @@ describe('SceneNarrator', () => {
         playerName: 'Aldric',
       });
 
-      expect(result.source).toBe('llm');
-      expect(result.narration).not.toContain('Fen Colby');
-      expect(result.narration).not.toMatch(/\bFen\b/);
-      expect(result.narration).toContain('a quiet man at the bar');
+      assert.strictEqual(result.source, 'llm');
+      assert.ok(!result.narration.includes('Fen Colby'));
+      assert.doesNotMatch(result.narration, /\bFen\b/);
+      assert.ok(result.narration.includes('a quiet man at the bar'));
     });
 
     it('should clean leaked first names in narrateSceneOpening output', async () => {
@@ -976,9 +978,9 @@ describe('SceneNarrator', () => {
         playerName: 'Aldric',
       });
 
-      expect(result.source).toBe('llm');
-      expect(result.narration).not.toMatch(/\bMira\b/);
-      expect(result.narration).toContain('the halfling behind the bar');
+      assert.strictEqual(result.source, 'llm');
+      assert.doesNotMatch(result.narration, /\bMira\b/);
+      assert.ok(result.narration.includes('the halfling behind the bar'));
     });
   });
 
@@ -1019,7 +1021,7 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedUserMsg).not.toMatch(/\bRound \d/i);
+      assert.doesNotMatch(capturedUserMsg, /\bRound \d/i);
     });
 
     it('should NOT contain "Compose a brief DM narration" in user message', async () => {
@@ -1032,8 +1034,8 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedUserMsg).not.toMatch(/compose a brief/i);
-      expect(capturedUserMsg).not.toMatch(/DM narration/i);
+      assert.doesNotMatch(capturedUserMsg, /compose a brief/i);
+      assert.doesNotMatch(capturedUserMsg, /DM narration/i);
     });
 
     it('should NOT contain game-mechanic action labels like [SPEECH] or [ACT]', async () => {
@@ -1048,11 +1050,11 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedUserMsg).not.toMatch(/\[SPEECH\]/i);
-      expect(capturedUserMsg).not.toMatch(/\[ACT\]/i);
-      expect(capturedUserMsg).not.toMatch(/\[OBSERVE\]/i);
-      expect(capturedUserMsg).not.toMatch(/\[PASS\]/i);
-      expect(capturedUserMsg).not.toMatch(/\[LEAVE\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[SPEECH\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[ACT\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[OBSERVE\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[PASS\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[LEAVE\]/i);
     });
 
     it('should use natural prose for speech actions (quoted with attribution)', async () => {
@@ -1066,8 +1068,8 @@ describe('SceneNarrator', () => {
       });
 
       // Should describe speech naturally, e.g. 'Mira says: "Welcome to my tavern!"'
-      expect(capturedUserMsg).toMatch(/says|spoke|speaking/i);
-      expect(capturedUserMsg).toContain('Welcome to my tavern!');
+      assert.match(capturedUserMsg, /says|spoke|speaking/i);
+      assert.ok(capturedUserMsg.includes('Welcome to my tavern!'));
     });
 
     it('should use natural prose for act actions (no brackets)', async () => {
@@ -1081,9 +1083,9 @@ describe('SceneNarrator', () => {
       });
 
       // Should describe the action naturally
-      expect(capturedUserMsg).toContain('Fen');
-      expect(capturedUserMsg).toContain('slides an ale across the bar');
-      expect(capturedUserMsg).not.toMatch(/\[ACT\]/);
+      assert.ok(capturedUserMsg.includes('Fen'));
+      assert.ok(capturedUserMsg.includes('slides an ale across the bar'));
+      assert.doesNotMatch(capturedUserMsg, /\[ACT\]/);
     });
 
     it('should omit pass actions from the action summary', async () => {
@@ -1098,8 +1100,8 @@ describe('SceneNarrator', () => {
       });
 
       // Pass actions should not appear in the action descriptions
-      expect(capturedUserMsg).not.toMatch(/Fen/);
-      expect(capturedUserMsg).toContain('Mira');
+      assert.doesNotMatch(capturedUserMsg, /Fen/);
+      assert.ok(capturedUserMsg.includes('Mira'));
     });
 
     it('should describe leave actions naturally', async () => {
@@ -1112,8 +1114,8 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedUserMsg).toMatch(/Fen/);
-      expect(capturedUserMsg).toMatch(/leave|left|depart|exit|slip/i);
+      assert.match(capturedUserMsg, /Fen/);
+      assert.match(capturedUserMsg, /leave|left|depart|exit|slip/i);
     });
 
     it('should contain storytelling instruction framing', async () => {
@@ -1127,7 +1129,7 @@ describe('SceneNarrator', () => {
       });
 
       // User message must tell the LLM to continue telling the story
-      expect(capturedUserMsg).toMatch(/continue|tell|narrate|story/i);
+      assert.match(capturedUserMsg, /continue|tell|narrate|story/i);
     });
 
     it('should include player action context naturally when provided', async () => {
@@ -1141,9 +1143,9 @@ describe('SceneNarrator', () => {
         playerAction: { type: 'speech', content: 'I\'d like an ale, please.' },
       });
 
-      expect(capturedUserMsg).toContain("I'd like an ale, please");
+      assert.ok(capturedUserMsg.includes("I'd like an ale, please"));
       // Should NOT have game-mechanic framing around it
-      expect(capturedUserMsg).not.toMatch(/\[SPEECH\]/i);
+      assert.doesNotMatch(capturedUserMsg, /\[SPEECH\]/i);
     });
   });
 
@@ -1173,7 +1175,7 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedUserMsg).not.toMatch(/write a brief atmospheric opening/i);
+      assert.doesNotMatch(capturedUserMsg, /write a brief atmospheric opening/i);
     });
 
     it('should contain storytelling framing for scene opening', async () => {
@@ -1184,7 +1186,7 @@ describe('SceneNarrator', () => {
       });
 
       // Opening should tell the LLM to set the stage as a storyteller
-      expect(capturedUserMsg).toMatch(/story|scene|stage|walk|enter|arriv/i);
+      assert.match(capturedUserMsg, /story|scene|stage|walk|enter|arriv/i);
     });
 
     it('should accept npcInnerStates and pass them to system prompt', async () => {
@@ -1210,8 +1212,8 @@ describe('SceneNarrator', () => {
       });
 
       // Inner states should appear in system prompt (DM omniscience)
-      expect(capturedSystemPrompt).toContain('busy but cheerful');
-      expect(capturedSystemPrompt).toContain('watchful');
+      assert.ok(capturedSystemPrompt.includes('busy but cheerful'));
+      assert.ok(capturedSystemPrompt.includes('watchful'));
     });
 
     it('should use maxTokens >= 300 for scene opening', async () => {
@@ -1231,7 +1233,7 @@ describe('SceneNarrator', () => {
         playerName: 'Steven',
       });
 
-      expect(capturedMaxTokens).toBeGreaterThanOrEqual(300);
+      assert.ok(capturedMaxTokens >= 300);
     });
   });
 
@@ -1276,7 +1278,7 @@ describe('SceneNarrator', () => {
 
       await innerEngine.advanceNpcTurns(scene.id);
 
-      expect(openingCalled).toBe(true);
+      assert.strictEqual(openingCalled, true);
     });
 
     it('should NOT call narrateSceneOpening on second advanceNpcTurns call', async () => {
@@ -1318,7 +1320,7 @@ describe('SceneNarrator', () => {
       await innerEngine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello.' });
 
       // opening should only have been called once
-      expect(openingCallCount).toBe(1);
+      assert.strictEqual(openingCallCount, 1);
     });
 
     it('should include scene opening narration in transcript', async () => {
@@ -1357,8 +1359,8 @@ describe('SceneNarrator', () => {
 
       // First entry should be the DM opening narration
       const openingEntry = transcript.find(e => e.participantId === 'dm' && e.content.includes('oak door'));
-      expect(openingEntry).toBeDefined();
-      expect(openingEntry.type).toBe('narration');
+      assert.notStrictEqual(openingEntry, undefined);
+      assert.strictEqual(openingEntry.type, 'narration');
     });
 
     it('should pass ALL participant inner states to narrateNpcBatch, not just actors', async () => {
@@ -1406,14 +1408,14 @@ describe('SceneNarrator', () => {
         type: 'speech', content: 'Good evening.',
       });
 
-      expect(capturedBatchArgs).toBeDefined();
-      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
+      assert.notStrictEqual(capturedBatchArgs, undefined);
+      assert.notStrictEqual(capturedBatchArgs.npcInnerStates, undefined);
       // Should have BOTH NPCs, not just actors
-      expect(capturedBatchArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+      assert.ok(capturedBatchArgs.npcInnerStates.length >= 2);
 
       const names = capturedBatchArgs.npcInnerStates.map(s => s.displayName);
-      expect(names).toContain('Mira');
-      expect(names).toContain('Fen');
+      assert.ok(names.includes('Mira'));
+      assert.ok(names.includes('Fen'));
     });
 
     it('should pass ALL participant inner states to narrateSceneOpening', async () => {
@@ -1457,9 +1459,9 @@ describe('SceneNarrator', () => {
 
       await innerEngine.advanceNpcTurns(scene.id);
 
-      expect(capturedOpeningArgs).toBeDefined();
-      expect(capturedOpeningArgs.npcInnerStates).toBeDefined();
-      expect(capturedOpeningArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+      assert.notStrictEqual(capturedOpeningArgs, undefined);
+      assert.notStrictEqual(capturedOpeningArgs.npcInnerStates, undefined);
+      assert.ok(capturedOpeningArgs.npcInnerStates.length >= 2);
     });
   });
 
@@ -1479,8 +1481,8 @@ describe('SceneNarrator', () => {
       });
 
       // Should NOT reject — must return a non-empty fallback narration
-      expect(result.narration).toBeTruthy();
-      expect(result.source).toBe('fallback');
+      assert.ok(result.narration);
+      assert.strictEqual(result.source, 'fallback');
     });
 
     it('should include opening narration in transcript after advanceNpcTurns', async () => {
@@ -1522,8 +1524,8 @@ describe('SceneNarrator', () => {
       const openingEntry = json.transcript.find(
         e => e.participantId === 'dm' && e.type === 'narration' && e.content === openingNarration,
       );
-      expect(openingEntry).toBeDefined();
-      expect(json.transcript.length).toBeGreaterThanOrEqual(1);
+      assert.notStrictEqual(openingEntry, undefined);
+      assert.ok(json.transcript.length >= 1);
     });
   });
 
@@ -1541,11 +1543,11 @@ describe('SceneNarrator', () => {
       });
 
       const history = narrator.getNarratorHistory('scene_1');
-      expect(history).toBeDefined();
-      expect(history.length).toBe(2); // user + assistant
-      expect(history[0].role).toBe('user');
-      expect(history[1].role).toBe('assistant');
-      expect(history[1].content).toBe('You push open the door. Warmth hits you.');
+      assert.notStrictEqual(history, undefined);
+      assert.strictEqual(history.length, 2); // user + assistant
+      assert.strictEqual(history[0].role, 'user');
+      assert.strictEqual(history[1].role, 'assistant');
+      assert.strictEqual(history[1].content, 'You push open the door. Warmth hits you.');
     });
 
     it('should include prior history in messages for narrateNpcBatch after opening', async () => {
@@ -1590,12 +1592,12 @@ describe('SceneNarrator', () => {
       });
 
       // The second call should include the opening exchange as prior history
-      expect(capturedMessages).toBeDefined();
-      expect(capturedMessages.length).toBe(3); // prior user + prior assistant + current user
-      expect(capturedMessages[0].role).toBe('user');
-      expect(capturedMessages[1].role).toBe('assistant');
-      expect(capturedMessages[1].content).toBe('You step inside a warm tavern.');
-      expect(capturedMessages[2].role).toBe('user');
+      assert.notStrictEqual(capturedMessages, undefined);
+      assert.strictEqual(capturedMessages.length, 3); // prior user + prior assistant + current user
+      assert.strictEqual(capturedMessages[0].role, 'user');
+      assert.strictEqual(capturedMessages[1].role, 'assistant');
+      assert.strictEqual(capturedMessages[1].content, 'You step inside a warm tavern.');
+      assert.strictEqual(capturedMessages[2].role, 'user');
     });
 
     it('should accumulate history across multiple narrateNpcBatch calls', async () => {
@@ -1650,13 +1652,13 @@ describe('SceneNarrator', () => {
       });
 
       // Third call should see all 4 prior messages + 1 current = 5
-      expect(capturedMessages).toBeDefined();
-      expect(capturedMessages.length).toBe(5);
-      expect(capturedMessages[0].role).toBe('user');     // opening user
-      expect(capturedMessages[1].role).toBe('assistant'); // opening response
-      expect(capturedMessages[2].role).toBe('user');     // batch 1 user
-      expect(capturedMessages[3].role).toBe('assistant'); // batch 1 response
-      expect(capturedMessages[4].role).toBe('user');     // batch 2 user (current)
+      assert.notStrictEqual(capturedMessages, undefined);
+      assert.strictEqual(capturedMessages.length, 5);
+      assert.strictEqual(capturedMessages[0].role, 'user');     // opening user
+      assert.strictEqual(capturedMessages[1].role, 'assistant'); // opening response
+      assert.strictEqual(capturedMessages[2].role, 'user');     // batch 1 user
+      assert.strictEqual(capturedMessages[3].role, 'assistant'); // batch 1 response
+      assert.strictEqual(capturedMessages[4].role, 'user');     // batch 2 user (current)
     });
 
     it('should keep separate histories for different scenes', async () => {
@@ -1679,10 +1681,10 @@ describe('SceneNarrator', () => {
 
       const history1 = narrator.getNarratorHistory('scene_1');
       const history2 = narrator.getNarratorHistory('scene_2');
-      expect(history1.length).toBe(2);
-      expect(history2.length).toBe(2);
-      expect(history1[1].content).toBe('Opening scene 1.');
-      expect(history2[1].content).toBe('Opening scene 2.');
+      assert.strictEqual(history1.length, 2);
+      assert.strictEqual(history2.length, 2);
+      assert.strictEqual(history1[1].content, 'Opening scene 1.');
+      assert.strictEqual(history2[1].content, 'Opening scene 2.');
     });
 
     it('should clear history for a specific scene via clearNarratorHistory', async () => {
@@ -1695,10 +1697,10 @@ describe('SceneNarrator', () => {
         sceneId: 'scene_1',
       });
 
-      expect(narrator.getNarratorHistory('scene_1').length).toBe(2);
+      assert.strictEqual(narrator.getNarratorHistory('scene_1').length, 2);
 
       narrator.clearNarratorHistory('scene_1');
-      expect(narrator.getNarratorHistory('scene_1').length).toBe(0);
+      assert.strictEqual(narrator.getNarratorHistory('scene_1').length, 0);
     });
 
     it('should include anti-repetition directive in follow-up narration when history exists', async () => {
@@ -1737,9 +1739,9 @@ describe('SceneNarrator', () => {
 
       // The user message in the follow-up call should contain anti-repetition language
       const lastUserMsg = capturedMessages[capturedMessages.length - 1];
-      expect(lastUserMsg.role).toBe('user');
-      expect(lastUserMsg.content).toMatch(/do not|don't|never/i);
-      expect(lastUserMsg.content).toMatch(/re-?describe|re-?set|repeat|scene.*(already|been)|setting.*(already|been)/i);
+      assert.strictEqual(lastUserMsg.role, 'user');
+      assert.match(lastUserMsg.content, /do not|don't|never/i);
+      assert.match(lastUserMsg.content, /re-?describe|re-?set|repeat|scene.*(already|been)|setting.*(already|been)/i);
     });
 
     it('should NOT include anti-repetition directive when there is no prior history', async () => {
@@ -1766,7 +1768,7 @@ describe('SceneNarrator', () => {
       });
 
       const userMsg = capturedMessages[0].content;
-      expect(userMsg).not.toMatch(/re-?describe|re-?set/i);
+      assert.doesNotMatch(userMsg, /re-?describe|re-?set/i);
     });
 
     it('should work without sceneId (backward compat — no history threading)', async () => {
@@ -1804,9 +1806,9 @@ describe('SceneNarrator', () => {
       });
 
       // Without sceneId, should still work — just single message (no history)
-      expect(capturedMessages).toBeDefined();
-      expect(capturedMessages.length).toBe(1);
-      expect(capturedMessages[0].role).toBe('user');
+      assert.notStrictEqual(capturedMessages, undefined);
+      assert.strictEqual(capturedMessages.length, 1);
+      assert.strictEqual(capturedMessages[0].role, 'user');
     });
 
     it('should not include history in messages on fallback narration', async () => {
@@ -1838,10 +1840,10 @@ describe('SceneNarrator', () => {
       });
 
       // Should fall back gracefully
-      expect(result.source).toBe('fallback');
+      assert.strictEqual(result.source, 'fallback');
       // History should NOT include the failed call's assistant message
       const history = narrator.getNarratorHistory('scene_1');
-      expect(history.length).toBe(2); // Only the opening exchange
+      assert.strictEqual(history.length, 2); // Only the opening exchange
     });
   });
 });

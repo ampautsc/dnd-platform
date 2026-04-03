@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { EncounterSessionService } from '../../src/npc/EncounterSessionService.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
 import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.js';
@@ -101,12 +103,12 @@ describe('EncounterSessionService', () => {
         playerName: 'Kael',
       });
 
-      expect(result.encounterId).toMatch(/^enc_/);
-      expect(result.npcs).toHaveLength(1);
-      expect(result.npcs[0].templateKey).toBe('bree_millhaven');
-      expect(result.npcs[0].name).toBe('Bree Millhaven');
-      expect(result.status).toBe('active');
-      expect(result.messages).toEqual([]);
+      assert.match(result.encounterId, /^enc_/);
+      assert.strictEqual(result.npcs.length, 1);
+      assert.strictEqual(result.npcs[0].templateKey, 'bree_millhaven');
+      assert.strictEqual(result.npcs[0].name, 'Bree Millhaven');
+      assert.strictEqual(result.status, 'active');
+      assert.deepStrictEqual(result.messages, []);
     });
 
     it('should use default playerName "Adventurer" when not provided', async () => {
@@ -115,7 +117,7 @@ describe('EncounterSessionService', () => {
       });
       // The player name is saved internally; verify via getEncounter
       const session = service.getEncounter(result.encounterId);
-      expect(session).toBeDefined();
+      assert.notStrictEqual(session, undefined);
     });
 
     it('should throw INVALID_INPUT for empty npcTemplateKeys', async () => {
@@ -123,7 +125,7 @@ describe('EncounterSessionService', () => {
         await service.createEncounter({ npcTemplateKeys: [] });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('INVALID_INPUT');
+        assert.strictEqual(err.code, 'INVALID_INPUT');
       }
     });
 
@@ -132,7 +134,7 @@ describe('EncounterSessionService', () => {
         await service.createEncounter({});
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('INVALID_INPUT');
+        assert.strictEqual(err.code, 'INVALID_INPUT');
       }
     });
 
@@ -141,7 +143,7 @@ describe('EncounterSessionService', () => {
         await service.createEncounter({ npcTemplateKeys: ['unknown_npc'] });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('NPC_NOT_FOUND');
+        assert.strictEqual(err.code, 'NPC_NOT_FOUND');
       }
     });
 
@@ -153,7 +155,7 @@ describe('EncounterSessionService', () => {
 
       // Check that revealedInfo has appearance set via encounterMemory
       const revealed = deps.encounterMemory.getRevealedInfo(result.encounterId, 'bree_millhaven');
-      expect(revealed.appearance).toBeDefined();
+      assert.notStrictEqual(revealed.appearance, undefined);
     });
 
     it('should support multiple NPCs in one encounter', async () => {
@@ -161,9 +163,9 @@ describe('EncounterSessionService', () => {
         npcTemplateKeys: ['bree_millhaven', 'hodge_fence'],
       });
 
-      expect(result.npcs).toHaveLength(2);
-      expect(result.npcs.map(n => n.templateKey)).toContain('bree_millhaven');
-      expect(result.npcs.map(n => n.templateKey)).toContain('hodge_fence');
+      assert.strictEqual(result.npcs.length, 2);
+      assert.ok(result.npcs.map(n => n.templateKey).includes('bree_millhaven'));
+      assert.ok(result.npcs.map(n => n.templateKey).includes('hodge_fence'));
     });
 
     it('should populate worldContext with defaults', async () => {
@@ -171,8 +173,8 @@ describe('EncounterSessionService', () => {
         npcTemplateKeys: ['bree_millhaven'],
       });
 
-      expect(result.worldContext).toBeDefined();
-      expect(result.worldContext.location).toBeDefined();
+      assert.notStrictEqual(result.worldContext, undefined);
+      assert.notStrictEqual(result.worldContext.location, undefined);
     });
 
     it('should accept custom worldContext', async () => {
@@ -181,8 +183,8 @@ describe('EncounterSessionService', () => {
         worldContext: { location: 'The Rusty Nail tavern', timeOfDay: 'evening', tone: 'tense' },
       });
 
-      expect(result.worldContext.location).toBe('The Rusty Nail tavern');
-      expect(result.worldContext.timeOfDay).toBe('evening');
+      assert.strictEqual(result.worldContext.location, 'The Rusty Nail tavern');
+      assert.strictEqual(result.worldContext.timeOfDay, 'evening');
     });
 
     it('should enforce MAX_SESSIONS limit', async () => {
@@ -202,7 +204,7 @@ describe('EncounterSessionService', () => {
         await sessionService.createEncounter({ npcTemplateKeys: ['bree_millhaven'] });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('MAX_SESSIONS');
+        assert.strictEqual(err.code, 'MAX_SESSIONS');
       }
     });
   });
@@ -215,8 +217,8 @@ describe('EncounterSessionService', () => {
         npcTemplateKeys: ['bree_millhaven'],
       });
       const result = service.getEncounter(created.encounterId);
-      expect(result.encounterId).toBe(created.encounterId);
-      expect(result.status).toBe('active');
+      assert.strictEqual(result.encounterId, created.encounterId);
+      assert.strictEqual(result.status, 'active');
     });
 
     it('should throw ENCOUNTER_NOT_FOUND for unknown ID', () => {
@@ -224,7 +226,7 @@ describe('EncounterSessionService', () => {
         service.getEncounter('enc_nonexistent');
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('ENCOUNTER_NOT_FOUND');
+        assert.strictEqual(err.code, 'ENCOUNTER_NOT_FOUND');
       }
     });
   });
@@ -246,11 +248,11 @@ describe('EncounterSessionService', () => {
         text: 'Hello, what is this place?',
       });
 
-      expect(result.playerMessage.sender).toBe('player');
-      expect(result.playerMessage.senderName).toBe('Kael');
-      expect(result.playerMessage.text).toBe('Hello, what is this place?');
-      expect(result.npcResponses).toHaveLength(1);
-      expect(result.npcResponses[0].sender).toBe('bree_millhaven');
+      assert.strictEqual(result.playerMessage.sender, 'player');
+      assert.strictEqual(result.playerMessage.senderName, 'Kael');
+      assert.strictEqual(result.playerMessage.text, 'Hello, what is this place?');
+      assert.strictEqual(result.npcResponses.length, 1);
+      assert.strictEqual(result.npcResponses[0].sender, 'bree_millhaven');
     });
 
     it('should address specific NPCs when addressedTo is provided', async () => {
@@ -267,8 +269,8 @@ describe('EncounterSessionService', () => {
         addressedTo: ['hodge_fence'],
       });
 
-      expect(result.npcResponses).toHaveLength(1);
-      expect(result.npcResponses[0].sender).toBe('hodge_fence');
+      assert.strictEqual(result.npcResponses.length, 1);
+      assert.strictEqual(result.npcResponses[0].sender, 'hodge_fence');
     });
 
     it('should fall back to silent response when NPC response fails', async () => {
@@ -297,9 +299,9 @@ describe('EncounterSessionService', () => {
         text: 'Hello there!',
       });
 
-      expect(result.npcResponses).toHaveLength(1);
-      expect(result.npcResponses[0].source).toBe('fallback');
-      expect(result.npcResponses[0].text).toBeDefined();
+      assert.strictEqual(result.npcResponses.length, 1);
+      assert.strictEqual(result.npcResponses[0].source, 'fallback');
+      assert.notStrictEqual(result.npcResponses[0].text, undefined);
     });
 
     it('should throw ENCOUNTER_NOT_FOUND for unknown encounter', async () => {
@@ -307,7 +309,7 @@ describe('EncounterSessionService', () => {
         await service.sendMessage('enc_fake', { text: 'hi' });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('ENCOUNTER_NOT_FOUND');
+        assert.strictEqual(err.code, 'ENCOUNTER_NOT_FOUND');
       }
     });
 
@@ -321,7 +323,7 @@ describe('EncounterSessionService', () => {
         await service.sendMessage(created.encounterId, { text: 'hi' });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('ENCOUNTER_ENDED');
+        assert.strictEqual(err.code, 'ENCOUNTER_ENDED');
       }
     });
 
@@ -334,7 +336,7 @@ describe('EncounterSessionService', () => {
         await service.sendMessage(created.encounterId, { text: '' });
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('INVALID_INPUT');
+        assert.strictEqual(err.code, 'INVALID_INPUT');
       }
     });
 
@@ -354,7 +356,7 @@ describe('EncounterSessionService', () => {
 
       const session = service.getEncounter(created.encounterId);
       // 2 player messages + 2 NPC responses = 4 total
-      expect(session.messages).toHaveLength(4);
+      assert.strictEqual(session.messages.length, 4);
     });
   });
 
@@ -367,9 +369,9 @@ describe('EncounterSessionService', () => {
       });
 
       const result = service.endEncounter(created.encounterId);
-      expect(result.encounterId).toBe(created.encounterId);
-      expect(result.status).toBe('ended');
-      expect(result.messageCount).toBe(0);
+      assert.strictEqual(result.encounterId, created.encounterId);
+      assert.strictEqual(result.status, 'ended');
+      assert.strictEqual(result.messageCount, 0);
     });
 
     it('should throw ENCOUNTER_NOT_FOUND for unknown ID', () => {
@@ -377,7 +379,7 @@ describe('EncounterSessionService', () => {
         service.endEncounter('enc_fake');
         expect.fail('should have thrown');
       } catch (err) {
-        expect(err.code).toBe('ENCOUNTER_NOT_FOUND');
+        assert.strictEqual(err.code, 'ENCOUNTER_NOT_FOUND');
       }
     });
   });
@@ -390,11 +392,11 @@ describe('EncounterSessionService', () => {
       await service.createEncounter({ npcTemplateKeys: ['hodge_fence'] });
 
       const list = service.listEncounters();
-      expect(list).toHaveLength(2);
-      expect(list[0]).toHaveProperty('encounterId');
-      expect(list[0]).toHaveProperty('npcs');
-      expect(list[0]).toHaveProperty('status');
-      expect(list[0]).toHaveProperty('messageCount');
+      assert.strictEqual(list.length, 2);
+      assert.notStrictEqual(list[0]['encounterId'], undefined);
+      assert.notStrictEqual(list[0]['npcs'], undefined);
+      assert.notStrictEqual(list[0]['status'], undefined);
+      assert.notStrictEqual(list[0]['messageCount'], undefined);
     });
   });
 
@@ -413,8 +415,8 @@ describe('EncounterSessionService', () => {
       await service.createEncounter({ npcTemplateKeys: ['hodge_fence'] });
 
       const list = service.listEncounters();
-      expect(list).toHaveLength(1);
-      expect(list[0].npcs[0].templateKey).toBe('hodge_fence');
+      assert.strictEqual(list.length, 1);
+      assert.strictEqual(list[0].npcs[0].templateKey, 'hodge_fence');
     });
   });
 
@@ -454,8 +456,8 @@ describe('EncounterSessionService', () => {
       });
 
       const rel = repo.getRelationship('player', 'bree_millhaven');
-      expect(rel).not.toBeNull();
-      expect(rel.displayLabel).toBe('a cheerful halfling with flour-dusted hands');
+      assert.notStrictEqual(rel, null);
+      assert.strictEqual(rel.displayLabel, 'a cheerful halfling with flour-dusted hands');
     });
 
     it('should promote stranger NPCs to recognized on encounter creation', async () => {
@@ -465,7 +467,7 @@ describe('EncounterSessionService', () => {
       });
 
       const rel = repo.getRelationship('player', 'bree_millhaven');
-      expect(rel.recognitionTier).toBe('recognized');
+      assert.strictEqual(rel.recognitionTier, 'recognized');
     });
 
     it('should use display labels for NPC names in createEncounter response', async () => {
@@ -474,8 +476,8 @@ describe('EncounterSessionService', () => {
         playerName: 'Hero',
       });
 
-      expect(result.npcs[0].name).toBe('a cheerful halfling with flour-dusted hands');
-      expect(result.npcs[0].name).not.toBe('Bree Millhaven');
+      assert.strictEqual(result.npcs[0].name, 'a cheerful halfling with flour-dusted hands');
+      assert.notStrictEqual(result.npcs[0].name, 'Bree Millhaven');
     });
 
     it('should use display labels for senderName in NPC responses', async () => {
@@ -488,7 +490,7 @@ describe('EncounterSessionService', () => {
         text: 'Hello there!',
       });
 
-      expect(response.npcResponses[0].senderName).toBe('a cheerful halfling with flour-dusted hands');
+      assert.strictEqual(response.npcResponses[0].senderName, 'a cheerful halfling with flour-dusted hands');
     });
 
     it('should use real names when NPC is acquaintance', async () => {
@@ -504,12 +506,12 @@ describe('EncounterSessionService', () => {
         playerName: 'Hero',
       });
 
-      expect(result.npcs[0].name).toBe('Bree Millhaven');
+      assert.strictEqual(result.npcs[0].name, 'Bree Millhaven');
 
       const response = await repoService.sendMessage(result.encounterId, {
         text: 'Hey Bree!',
       });
-      expect(response.npcResponses[0].senderName).toBe('Bree Millhaven');
+      assert.strictEqual(response.npcResponses[0].senderName, 'Bree Millhaven');
     });
 
     it('should use display labels in getEncounter response', async () => {
@@ -519,7 +521,7 @@ describe('EncounterSessionService', () => {
       });
 
       const encounter = repoService.getEncounter(created.encounterId);
-      expect(encounter.npcs[0].name).toBe('a cheerful halfling with flour-dusted hands');
+      assert.strictEqual(encounter.npcs[0].name, 'a cheerful halfling with flour-dusted hands');
     });
 
     it('should still work without relationshipRepo (backward compat)', async () => {
@@ -529,7 +531,7 @@ describe('EncounterSessionService', () => {
       });
 
       // Without repo, uses real name
-      expect(result.npcs[0].name).toBe('Bree Millhaven');
+      assert.strictEqual(result.npcs[0].name, 'Bree Millhaven');
     });
   });
 });

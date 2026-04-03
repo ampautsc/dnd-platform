@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createNpcScheduler } from '../../src/npc/NpcScheduler.js';
 
 /**
@@ -36,7 +38,7 @@ describe('NpcScheduler', () => {
     });
 
     const result = scheduler.getScheduleEntry('bree_millhaven', 1);
-    expect(result).toEqual({ location: 'Bakery', activity: 'Opening shop', moodHint: 'busy' });
+    assert.deepStrictEqual(result, { location: 'Bakery', activity: 'Opening shop', moodHint: 'busy' });
   });
 
   it('falls back to friendly default schedule for unknown template', () => {
@@ -51,7 +53,7 @@ describe('NpcScheduler', () => {
     });
 
     const result = scheduler.getScheduleEntry('unknown_npc', 0, 'friendly');
-    expect(result).toEqual({ location: 'Inn', activity: 'Relaxing', moodHint: 'calm' });
+    assert.deepStrictEqual(result, { location: 'Inn', activity: 'Relaxing', moodHint: 'calm' });
   });
 
   it('falls back to enemy default schedule for unknown enemy template', () => {
@@ -66,7 +68,7 @@ describe('NpcScheduler', () => {
     });
 
     const result = scheduler.getScheduleEntry('unknown_enemy', 0, 'enemy');
-    expect(result).toEqual({ location: 'Hideout', activity: 'Plotting', moodHint: 'hostile' });
+    assert.deepStrictEqual(result, { location: 'Hideout', activity: 'Plotting', moodHint: 'hostile' });
   });
 
   it('returns sleeping fallback for out-of-range hour', () => {
@@ -81,7 +83,7 @@ describe('NpcScheduler', () => {
     });
 
     const result = scheduler.getScheduleEntry('unknown_npc', 30, 'friendly');
-    expect(result).toEqual({ location: 'home', activity: 'sleeping', moodHint: null });
+    assert.deepStrictEqual(result, { location: 'home', activity: 'sleeping', moodHint: null });
   });
 
   it('defaults npcType to friendly', () => {
@@ -96,7 +98,7 @@ describe('NpcScheduler', () => {
     });
 
     const result = scheduler.getScheduleEntry('unknown_npc', 0);
-    expect(result).toEqual({ location: 'Inn', activity: 'Relaxing', moodHint: 'calm' });
+    assert.deepStrictEqual(result, { location: 'Inn', activity: 'Relaxing', moodHint: 'calm' });
   });
 
   it('returns full schedule for known template', () => {
@@ -139,7 +141,7 @@ describe('NpcScheduler', () => {
     schedule[0].location = 'Changed';
 
     const reread = scheduler.getFullSchedule('bree_millhaven');
-    expect(reread[0].location).toBe('Home');
+    assert.strictEqual(reread[0].location, 'Home');
   });
 
   it('exposes NPC_SCHEDULES from scheduler instance', () => {
@@ -157,6 +159,6 @@ describe('NpcScheduler', () => {
       ],
     });
 
-    expect(scheduler.NPC_SCHEDULES.bree_millhaven).toBeDefined();
+    assert.notStrictEqual(scheduler.NPC_SCHEDULES.bree_millhaven, undefined);
   });
 });

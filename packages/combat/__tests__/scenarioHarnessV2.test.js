@@ -9,7 +9,8 @@
  *   5. Runs all 8 scenarios with a real build
  */
 
-import { describe, it, beforeEach, expect } from 'vitest'
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
 import * as dice from '../src/engine/dice.js'
 import {
   SCENARIOS,
@@ -95,8 +96,8 @@ describe('createScenarioState — v2', () => {
     const scenario = SCENARIOS.find(s => s.id === 'undead-swarm')
     const { state, profileMap } = createScenarioState(build, scenario)
 
-    expect(state).toBeInstanceOf(GameState)
-    expect(typeof profileMap).toBe('object')
+    assert.ok(state instanceof GameState)
+    assert.strictEqual(typeof profileMap, 'object')
   })
 
   it('GameState has correct number of combatants for undead-swarm', () => {
@@ -105,7 +106,7 @@ describe('createScenarioState — v2', () => {
     const { state } = createScenarioState(build, scenario)
 
     // 1 bard + 4 zombie + 4 skeleton + 2 ghoul = 11
-    expect(state.combatantCount).toBe(11)
+    assert.strictEqual(state.combatantCount, 11)
   })
 
   it('bard is party side, enemies are enemy side', () => {
@@ -114,13 +115,13 @@ describe('createScenarioState — v2', () => {
     const { state } = createScenarioState(build, scenario)
 
     const bard = state.getCombatant('bard-0')
-    expect(bard).toBeTruthy()
-    expect(bard.side).toBe('party')
+    assert.ok(bard)
+    assert.strictEqual(bard.side, 'party')
 
     const all = state.getAllCombatants()
     const enemies = all.filter(c => c.side === 'enemy')
-    expect(enemies.length).toBe(1)
-    expect(enemies[0].id.startsWith('young_red_dragon')).toBe(true)
+    assert.strictEqual(enemies.length, 1)
+    assert.strictEqual(enemies[0].id.startsWith('young_red_dragon'), true)
   })
 
   it('profileMap maps bard to lore_bard', () => {
@@ -128,7 +129,7 @@ describe('createScenarioState — v2', () => {
     const scenario = SCENARIOS.find(s => s.id === 'dragon-assault')
     const { profileMap } = createScenarioState(build, scenario)
 
-    expect(profileMap['bard-0']).toBe('lore_bard')
+    assert.strictEqual(profileMap['bard-0'], 'lore_bard')
   })
 
   it('profileMap maps every enemy to a valid profile', () => {
@@ -138,7 +139,7 @@ describe('createScenarioState — v2', () => {
 
     const enemies = state.getAllCombatants().filter(c => c.side === 'enemy')
     for (const enemy of enemies) {
-      expect(profileMap[enemy.id]).toBeTruthy()
+      assert.ok(profileMap[enemy.id])
     }
   })
 
@@ -150,7 +151,7 @@ describe('createScenarioState — v2', () => {
     const all = state.getAllCombatants()
     const ids = all.map(c => c.id)
     const unique = new Set(ids)
-    expect(unique.size).toBe(ids.length)
+    assert.strictEqual(unique.size, ids.length)
   })
 })
 
@@ -170,15 +171,15 @@ describe('simulateScenario v2 — result shape', () => {
 
     const result = simulateScenario(build, scenario, { numRuns: 1 })
 
-    expect(result).toBeTruthy()
-    expect(result.scenarioId).toBe('undead-swarm')
-    expect(result.scenarioName).toBe(scenario.name)
-    expect(result.numRuns).toBe(1)
-    expect(typeof result.winRate).toBe('number')
-    expect(typeof result.avgRounds).toBe('number')
-    expect(typeof result.avgBardHpPct).toBe('number')
-    expect(Array.isArray(result.runs)).toBe(true)
-    expect(result.runs.length).toBe(1)
+    assert.ok(result)
+    assert.strictEqual(result.scenarioId, 'undead-swarm')
+    assert.strictEqual(result.scenarioName, scenario.name)
+    assert.strictEqual(result.numRuns, 1)
+    assert.strictEqual(typeof result.winRate, 'number')
+    assert.strictEqual(typeof result.avgRounds, 'number')
+    assert.strictEqual(typeof result.avgBardHpPct, 'number')
+    assert.strictEqual(Array.isArray(result.runs), true)
+    assert.strictEqual(result.runs.length, 1)
   })
 
   it('each run has winner, rounds, bardHpPct, analytics', () => {
@@ -188,15 +189,15 @@ describe('simulateScenario v2 — result shape', () => {
     const result = simulateScenario(build, scenario, { numRuns: 1 })
     const run = result.runs[0]
 
-    expect(['party', 'enemy', 'draw']).toContain(run.winner)
-    expect(typeof run.rounds).toBe('number')
-    expect(run.rounds).toBeGreaterThanOrEqual(1)
-    expect(run.rounds).toBeLessThanOrEqual(20)
-    expect(typeof run.bardHpPct).toBe('number')
-    expect(run.bardHpPct).toBeGreaterThanOrEqual(0)
-    expect(run.bardHpPct).toBeLessThanOrEqual(1)
-    expect(Array.isArray(run.analytics)).toBe(true)
-    expect(run.analytics.length).toBeGreaterThan(0)
+    assert.ok(['party', 'enemy', 'draw'].includes(run.winner))
+    assert.strictEqual(typeof run.rounds, 'number')
+    assert.ok(run.rounds >= 1)
+    assert.ok(run.rounds <= 20)
+    assert.strictEqual(typeof run.bardHpPct, 'number')
+    assert.ok(run.bardHpPct >= 0)
+    assert.ok(run.bardHpPct <= 1)
+    assert.strictEqual(Array.isArray(run.analytics), true)
+    assert.ok(run.analytics.length > 0)
   })
 
   it('analytics entries have expected fields', () => {
@@ -206,16 +207,16 @@ describe('simulateScenario v2 — result shape', () => {
     const result = simulateScenario(build, scenario, { numRuns: 1 })
     const analytic = result.runs[0].analytics[0]
 
-    expect(typeof analytic.id).toBe('string')
-    expect(typeof analytic.name).toBe('string')
-    expect(typeof analytic.side).toBe('string')
-    expect(typeof analytic.survived).toBe('boolean')
-    expect(typeof analytic.finalHP).toBe('number')
-    expect(typeof analytic.maxHP).toBe('number')
-    expect(typeof analytic.damageDealt).toBe('number')
-    expect(typeof analytic.attacksMade).toBe('number')
-    expect(typeof analytic.hitRate).toBe('number')
-    expect(typeof analytic.spellsCast).toBe('number')
+    assert.strictEqual(typeof analytic.id, 'string')
+    assert.strictEqual(typeof analytic.name, 'string')
+    assert.strictEqual(typeof analytic.side, 'string')
+    assert.strictEqual(typeof analytic.survived, 'boolean')
+    assert.strictEqual(typeof analytic.finalHP, 'number')
+    assert.strictEqual(typeof analytic.maxHP, 'number')
+    assert.strictEqual(typeof analytic.damageDealt, 'number')
+    assert.strictEqual(typeof analytic.attacksMade, 'number')
+    assert.strictEqual(typeof analytic.hitRate, 'number')
+    assert.strictEqual(typeof analytic.spellsCast, 'number')
   })
 
   it('first N runs include combat log and positionSnapshots', () => {
@@ -225,14 +226,14 @@ describe('simulateScenario v2 — result shape', () => {
     const result = simulateScenario(build, scenario, { numRuns: 3, logRuns: 2 })
 
     // First 2 runs should have logs
-    expect(Array.isArray(result.runs[0].log)).toBe(true)
-    expect(result.runs[0].log.length).toBeGreaterThan(0)
-    expect(Array.isArray(result.runs[0].positionSnapshots)).toBe(true)
+    assert.strictEqual(Array.isArray(result.runs[0].log), true)
+    assert.ok(result.runs[0].log.length > 0)
+    assert.strictEqual(Array.isArray(result.runs[0].positionSnapshots), true)
 
-    expect(Array.isArray(result.runs[1].log)).toBe(true)
+    assert.strictEqual(Array.isArray(result.runs[1].log), true)
 
     // Third run should NOT have log
-    expect(result.runs[2].log).toBeUndefined()
+    assert.strictEqual(result.runs[2].log, undefined)
   })
 
   it('winRate is between 0 and 1', () => {
@@ -240,8 +241,8 @@ describe('simulateScenario v2 — result shape', () => {
     const scenario = SCENARIOS.find(s => s.id === 'werewolf-pack')
 
     const result = simulateScenario(build, scenario, { numRuns: 3 })
-    expect(result.winRate).toBeGreaterThanOrEqual(0)
-    expect(result.winRate).toBeLessThanOrEqual(1)
+    assert.ok(result.winRate >= 0)
+    assert.ok(result.winRate <= 1)
   })
 
   it('bardHpPct is between 0 and 1', () => {
@@ -249,8 +250,8 @@ describe('simulateScenario v2 — result shape', () => {
     const scenario = SCENARIOS.find(s => s.id === 'werewolf-pack')
 
     const result = simulateScenario(build, scenario, { numRuns: 3 })
-    expect(result.avgBardHpPct).toBeGreaterThanOrEqual(0)
-    expect(result.avgBardHpPct).toBeLessThanOrEqual(1)
+    assert.ok(result.avgBardHpPct >= 0)
+    assert.ok(result.avgBardHpPct <= 1)
   })
 })
 
@@ -268,7 +269,7 @@ describe('simulateAllScenarios v2 — all 8 scenarios', () => {
     const build = mockBuild()
     const results = simulateAllScenarios(build, { numRuns: 1 })
 
-    expect(results.length).toBe(8)
+    assert.strictEqual(results.length, 8)
 
     const expectedIds = [
       'undead-swarm', 'werewolf-pack', 'cult-fanatics', 'dragon-assault',
@@ -277,9 +278,9 @@ describe('simulateAllScenarios v2 — all 8 scenarios', () => {
 
     for (const id of expectedIds) {
       const r = results.find(r => r.scenarioId === id)
-      expect(r).toBeTruthy()
-      expect(r.numRuns).toBe(1)
-      expect(r.runs.length).toBe(1)
+      assert.ok(r)
+      assert.strictEqual(r.numRuns, 1)
+      assert.strictEqual(r.runs.length, 1)
     }
   })
 
@@ -289,7 +290,7 @@ describe('simulateAllScenarios v2 — all 8 scenarios', () => {
 
     for (const r of results) {
       const run = r.runs[0]
-      expect(['party', 'enemy', 'draw']).toContain(run.winner)
+      assert.ok(['party', 'enemy', 'draw'].includes(run.winner))
     }
   })
 
@@ -299,8 +300,8 @@ describe('simulateAllScenarios v2 — all 8 scenarios', () => {
 
     for (const r of results) {
       const run = r.runs[0]
-      expect(run.rounds).toBeGreaterThanOrEqual(1)
-      expect(run.rounds).toBeLessThanOrEqual(20)
+      assert.ok(run.rounds >= 1)
+      assert.ok(run.rounds <= 20)
     }
   })
 })
@@ -312,11 +313,11 @@ describe('simulateAllScenarios v2 — all 8 scenarios', () => {
 
 describe('v2 harness — scenario consistency', () => {
   it('uses the same SCENARIOS as v1 harness', () => {
-    expect(SCENARIOS).toBe(V1_SCENARIOS)
+    assert.strictEqual(SCENARIOS, V1_SCENARIOS)
   })
 
   it('uses the same MONSTER_PROFILES as v1 harness', () => {
-    expect(MONSTER_PROFILES).toBe(V1_MONSTER_PROFILES)
+    assert.strictEqual(MONSTER_PROFILES, V1_MONSTER_PROFILES)
   })
 })
 
@@ -336,12 +337,12 @@ describe('simulateScenario v2 — multiple runs aggregation', () => {
 
     const result = simulateScenario(build, scenario, { numRuns: 5 })
 
-    expect(result.numRuns).toBe(5)
-    expect(result.runs.length).toBe(5)
+    assert.strictEqual(result.numRuns, 5)
+    assert.strictEqual(result.runs.length, 5)
 
     // With average dice all runs should produce identical results
     const winners = new Set(result.runs.map(r => r.winner))
-    expect(winners.size).toBe(1)
+    assert.strictEqual(winners.size, 1)
   })
 
   it('avgRounds is the mean of all runs', () => {
@@ -351,6 +352,6 @@ describe('simulateScenario v2 — multiple runs aggregation', () => {
     const result = simulateScenario(build, scenario, { numRuns: 3 })
 
     const manualAvg = result.runs.reduce((s, r) => s + r.rounds, 0) / result.runs.length
-    expect(Math.abs(result.avgRounds - manualAvg)).toBeLessThan(0.2)
+    assert.ok(Math.abs(result.avgRounds - manualAvg) < 0.2)
   })
 })

@@ -58,6 +58,12 @@ export {
   TRIGGER_EVENT, NPC_TYPE, EMOTIONAL_STATE, RESPONSE_FORMAT,
   buildContextPackage, buildSystemPrompt, buildUserPrompt, getTokenModulation,
 } from './llm/CharacterContextPackage.js';
+export { LocalLlamaProvider, REACTION_SCHEMA } from './ambient/ReactionProvider.js';
+export { GroqReactionProvider } from './ambient/GroqReactionProvider.js';
+export { buildReactionPrompt, getPromptFields } from './ambient/buildReactionPrompt.js';
+export { NpcReactionEvaluator } from './ambient/NpcReactionEvaluator.js';
+export { ReactionPriorityResolver, defaultD20, createSeededD20, getChaMod } from './ambient/ReactionPriorityResolver.js';
+export { AmbientSceneEngine } from './ambient/AmbientSceneEngine.js';
 
 export function createDmEngine(options = {}) {
   const gameLog = createGameLog();
@@ -114,6 +120,24 @@ export function createDmEngine(options = {}) {
   const imagePromptBuilder = options.imagePromptBuilder || createImagePromptBuilder();
   const narrationGenerator = options.narrationGenerator || createNarrationGenerator({ provider, imagePromptBuilder });
 
+  // Ambient reaction engine — no default; caller must provide evaluator + priorityResolver.
+  // When injected, wire Tier 2 paid responses through the existing characterResponseService.
+  let ambientEngine = options.ambientEngine || null;
+  if (ambientEngine && !ambientEngine.responseGenerator) {
+    ambientEngine.responseGenerator = async (npcKey, personality, utterance, reactionContext) => {
+      try {
+        return await characterResponseService.generateResponse({
+          personality,
+          triggerEvent: 'ambient_speak',
+          maxTokens: 100,
+          additionalContext: `Bar talk. Reacting to: "${utterance}". Strength: ${reactionContext.reactionStrength}/5. 1-2 sentences. Stay in character.`,
+        });
+      } catch {
+        return null;
+      }
+    };
+  }
+
   return {
     gameLog,
     sessionManager,
@@ -137,5 +161,6 @@ export function createDmEngine(options = {}) {
     narrationGenerator,
     relationshipRepo,
     memorySynthesizer,
+    ambientEngine,
   };
 }

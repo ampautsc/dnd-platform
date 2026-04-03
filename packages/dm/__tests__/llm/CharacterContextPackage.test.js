@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import {
     TRIGGER_EVENT,
     NPC_TYPE,
@@ -59,28 +61,28 @@ function makeSituation(overrides = {}) {
 describe('CharacterContextPackage', () => {
     describe('enums', () => {
         it('should freeze TRIGGER_EVENT', () => {
-            expect(Object.isFrozen(TRIGGER_EVENT)).toBe(true);
-            expect(TRIGGER_EVENT.COMBAT_START).toBe('combat_start');
-            expect(TRIGGER_EVENT.PLAYER_ADDRESSED).toBe('player_addressed');
-            expect(TRIGGER_EVENT.NEAR_DEATH).toBe('near_death');
+            assert.strictEqual(Object.isFrozen(TRIGGER_EVENT), true);
+            assert.strictEqual(TRIGGER_EVENT.COMBAT_START, 'combat_start');
+            assert.strictEqual(TRIGGER_EVENT.PLAYER_ADDRESSED, 'player_addressed');
+            assert.strictEqual(TRIGGER_EVENT.NEAR_DEATH, 'near_death');
         });
 
         it('should freeze NPC_TYPE', () => {
-            expect(Object.isFrozen(NPC_TYPE)).toBe(true);
-            expect(NPC_TYPE.ENEMY).toBe('enemy');
-            expect(NPC_TYPE.FRIENDLY).toBe('friendly');
+            assert.strictEqual(Object.isFrozen(NPC_TYPE), true);
+            assert.strictEqual(NPC_TYPE.ENEMY, 'enemy');
+            assert.strictEqual(NPC_TYPE.FRIENDLY, 'friendly');
         });
 
         it('should freeze EMOTIONAL_STATE', () => {
-            expect(Object.isFrozen(EMOTIONAL_STATE)).toBe(true);
-            expect(EMOTIONAL_STATE.CALM).toBe('calm');
-            expect(EMOTIONAL_STATE.ENRAGED).toBe('enraged');
+            assert.strictEqual(Object.isFrozen(EMOTIONAL_STATE), true);
+            assert.strictEqual(EMOTIONAL_STATE.CALM, 'calm');
+            assert.strictEqual(EMOTIONAL_STATE.ENRAGED, 'enraged');
         });
 
         it('should freeze RESPONSE_FORMAT', () => {
-            expect(Object.isFrozen(RESPONSE_FORMAT)).toBe(true);
-            expect(RESPONSE_FORMAT.SPOKEN).toBe('spoken');
-            expect(RESPONSE_FORMAT.THOUGHT).toBe('thought');
+            assert.strictEqual(Object.isFrozen(RESPONSE_FORMAT), true);
+            assert.strictEqual(RESPONSE_FORMAT.SPOKEN, 'spoken');
+            assert.strictEqual(RESPONSE_FORMAT.THOUGHT, 'thought');
         });
     });
 
@@ -92,61 +94,61 @@ describe('CharacterContextPackage', () => {
                 { maxTokens: 80, format: 'spoken' }
             );
 
-            expect(pkg.character.id).toBe('npc-tharg');
-            expect(pkg.character.name).toBe('Tharg');
-            expect(pkg.character.personality.voice).toBe('gruff');
-            expect(pkg.character.stats.intelligence).toBe(8);
-            expect(pkg.situationalContext.triggerEvent).toBe('player_addressed');
-            expect(pkg.responseConstraints.maxTokens).toBe(80);
+            assert.strictEqual(pkg.character.id, 'npc-tharg');
+            assert.strictEqual(pkg.character.name, 'Tharg');
+            assert.strictEqual(pkg.character.personality.voice, 'gruff');
+            assert.strictEqual(pkg.character.stats.intelligence, 8);
+            assert.strictEqual(pkg.situationalContext.triggerEvent, 'player_addressed');
+            assert.strictEqual(pkg.responseConstraints.maxTokens, 80);
         });
 
         it('should throw on missing character.id', () => {
-            expect(() => buildContextPackage(
+            assert.throws(() => buildContextPackage(
                 { ...makeCharacter(), id: '' },
                 makeSituation()
-            )).toThrow(/character.id/);
+            ), /character.id/);
         });
 
         it('should throw on missing character.name', () => {
-            expect(() => buildContextPackage(
+            assert.throws(() => buildContextPackage(
                 { ...makeCharacter(), name: '' },
                 makeSituation()
-            )).toThrow(/character.name/);
+            ), /character.name/);
         });
 
         it('should throw on missing character.race', () => {
-            expect(() => buildContextPackage(
+            assert.throws(() => buildContextPackage(
                 { ...makeCharacter(), race: '' },
                 makeSituation()
-            )).toThrow(/character.race/);
+            ), /character.race/);
         });
 
         it('should throw on invalid triggerEvent', () => {
-            expect(() => buildContextPackage(
+            assert.throws(() => buildContextPackage(
                 makeCharacter(),
                 { ...makeSituation(), triggerEvent: 'not_a_trigger' }
-            )).toThrow(/triggerEvent/);
+            ), /triggerEvent/);
         });
 
         it('should throw on invalid emotionalState', () => {
-            expect(() => buildContextPackage(
+            assert.throws(() => buildContextPackage(
                 makeCharacter(),
                 { ...makeSituation(), emotionalState: 'not_a_state' }
-            )).toThrow(/emotionalState/);
+            ), /emotionalState/);
         });
 
         it('should default stats to 10 when not provided', () => {
             const charNoStats = makeCharacter({ stats: {} });
             const pkg = buildContextPackage(charNoStats, makeSituation());
 
-            expect(pkg.character.stats.intelligence).toBe(10);
-            expect(pkg.character.stats.wisdom).toBe(10);
-            expect(pkg.character.stats.charisma).toBe(10);
+            assert.strictEqual(pkg.character.stats.intelligence, 10);
+            assert.strictEqual(pkg.character.stats.wisdom, 10);
+            assert.strictEqual(pkg.character.stats.charisma, 10);
         });
 
         it('should default maxTokens to 60', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
-            expect(pkg.responseConstraints.maxTokens).toBe(60);
+            assert.strictEqual(pkg.responseConstraints.maxTokens, 60);
         });
     });
 
@@ -155,34 +157,34 @@ describe('CharacterContextPackage', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildSystemPrompt(pkg);
 
-            expect(prompt).toContain('Tharg');
-            expect(prompt).toContain('Orc');
-            expect(prompt).toContain('brutal orc warlord');
-            expect(prompt).toContain('chaotic evil');
+            assert.ok(prompt.includes('Tharg'));
+            assert.ok(prompt.includes('Orc'));
+            assert.ok(prompt.includes('brutal orc warlord'));
+            assert.ok(prompt.includes('chaotic evil'));
         });
 
         it('should include speech patterns and motivations', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildSystemPrompt(pkg);
 
-            expect(prompt).toContain('speaks in third person');
-            expect(prompt).toContain('domination');
+            assert.ok(prompt.includes('speaks in third person'));
+            assert.ok(prompt.includes('domination'));
         });
 
         it('should include response guidance', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildSystemPrompt(pkg);
 
-            expect(prompt).toContain('RESPONSE GUIDANCE');
-            expect(prompt).toContain('Stay in character');
+            assert.ok(prompt.includes('RESPONSE GUIDANCE'));
+            assert.ok(prompt.includes('Stay in character'));
         });
 
         it('should include secrets section when present', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildSystemPrompt(pkg);
 
-            expect(prompt).toContain('KNOWLEDGE AND SECRETS');
-            expect(prompt).toContain('knows where the treasure is');
+            assert.ok(prompt.includes('KNOWLEDGE AND SECRETS'));
+            assert.ok(prompt.includes('knows where the treasure is'));
         });
     });
 
@@ -191,16 +193,16 @@ describe('CharacterContextPackage', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildUserPrompt(pkg);
 
-            expect(prompt).toContain('PLAYER ADDRESSED');
-            expect(prompt).toContain('calm');
+            assert.ok(prompt.includes('PLAYER ADDRESSED'));
+            assert.ok(prompt.includes('calm'));
         });
 
         it('should include location and time', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildUserPrompt(pkg);
 
-            expect(prompt).toContain('dark dungeon');
-            expect(prompt).toContain('midnight');
+            assert.ok(prompt.includes('dark dungeon'));
+            assert.ok(prompt.includes('midnight'));
         });
 
         it('should include HP description', () => {
@@ -210,8 +212,8 @@ describe('CharacterContextPackage', () => {
             );
             const prompt = buildUserPrompt(pkg);
 
-            expect(prompt).toContain('near death');
-            expect(prompt).toContain('poisoned');
+            assert.ok(prompt.includes('near death'));
+            assert.ok(prompt.includes('poisoned'));
         });
 
         it('should include avoidRepetition when present', () => {
@@ -222,34 +224,34 @@ describe('CharacterContextPackage', () => {
             );
             const prompt = buildUserPrompt(pkg);
 
-            expect(prompt).toContain('Die fool!');
-            expect(prompt).toContain('You dare?');
+            assert.ok(prompt.includes('Die fool!'));
+            assert.ok(prompt.includes('You dare?'));
         });
 
         it('should end with respond-as instruction', () => {
             const pkg = buildContextPackage(makeCharacter(), makeSituation());
             const prompt = buildUserPrompt(pkg);
 
-            expect(prompt).toContain('Respond as Tharg now');
+            assert.ok(prompt.includes('Respond as Tharg now'));
         });
     });
 
     describe('getTokenModulation', () => {
         it('should return higher multiplier for near_death', () => {
-            expect(getTokenModulation('near_death')).toBeGreaterThan(1.0);
+            assert.ok(getTokenModulation('near_death') > 1.0);
         });
 
         it('should return higher multiplier for ally_died', () => {
-            expect(getTokenModulation('ally_died')).toBeGreaterThan(1.0);
+            assert.ok(getTokenModulation('ally_died') > 1.0);
         });
 
         it('should return 1.0 for normal triggers', () => {
-            expect(getTokenModulation('combat_start')).toBe(1.0);
-            expect(getTokenModulation('round_start')).toBe(1.0);
+            assert.strictEqual(getTokenModulation('combat_start'), 1.0);
+            assert.strictEqual(getTokenModulation('round_start'), 1.0);
         });
 
         it('should return 1.0 for unknown triggers', () => {
-            expect(getTokenModulation('whatever')).toBe(1.0);
+            assert.strictEqual(getTokenModulation('whatever'), 1.0);
         });
     });
 });

@@ -6,7 +6,9 @@
  * - accepts valid JWT and joins room
  * - broadcasts channel envelopes to room members
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { io as ioClient } from 'socket.io-client';
 import jwt from 'jsonwebtoken';
 import { createGatewayServer } from '../../src/index.js';
@@ -41,7 +43,7 @@ describe('Gateway Socket Server', () => {
     });
 
     const error = await waitForEvent(socket, 'connect_error');
-    expect(String(error.message)).toMatch(/auth|token|invalid/i);
+    assert.match(String(error.message), /auth|token|invalid/i);
     socket.close();
   });
 
@@ -58,8 +60,8 @@ describe('Gateway Socket Server', () => {
 
     socket.emit('room:join', { sessionId: 'session-1', role: 'player' });
     const joined = await waitForEvent(socket, 'room:joined');
-    expect(joined.sessionId).toBe('session-1');
-    expect(joined.userId).toBe('u1');
+    assert.strictEqual(joined.sessionId, 'session-1');
+    assert.strictEqual(joined.userId, 'u1');
 
     socket.close();
   });
@@ -92,8 +94,8 @@ describe('Gateway Socket Server', () => {
     socketA.emit('channel:message', envelope);
 
     const received = await receivedPromise;
-    expect(received.channel).toBe('chat');
-    expect(received.payload.text).toBe('hello room');
+    assert.strictEqual(received.channel, 'chat');
+    assert.strictEqual(received.payload.text, 'hello room');
 
     socketA.close();
     socketB.close();

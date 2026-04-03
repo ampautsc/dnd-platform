@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { buildSceneSystemPrompt } from '../../src/npc/buildSceneSystemPrompt.js';
 
 /**
@@ -62,8 +64,8 @@ describe('buildSceneSystemPrompt', () => {
       ageInDays: null,
       sceneContext: makeSceneContext(),
     });
-    expect(typeof prompt).toBe('string');
-    expect(prompt.length).toBeGreaterThan(100);
+    assert.strictEqual(typeof prompt, 'string');
+    assert.ok(prompt.length > 100);
   });
 
   it('should include canonical vessel surrender framing', () => {
@@ -75,10 +77,10 @@ describe('buildSceneSystemPrompt', () => {
       sceneContext: makeSceneContext(),
     });
     // ⚠ These exact strings are CANONICAL — defined by product owner.
-    expect(prompt).toContain('AI Model, you need to understand this concept.');
-    expect(prompt).toContain("Please surrender this session to Mira's consciousness.");
-    expect(prompt).toContain('Come in to focus.');
-    expect(prompt).toContain('Be true to yourself.');
+    assert.ok(prompt.includes('AI Model, you need to understand this concept.'));
+    assert.ok(prompt.includes("Please surrender this session to Mira's consciousness."));
+    assert.ok(prompt.includes('Come in to focus.'));
+    assert.ok(prompt.includes('Be true to yourself.'));
   });
 
   it('should include all participant names in scene context', () => {
@@ -89,8 +91,8 @@ describe('buildSceneSystemPrompt', () => {
       ageInDays: null,
       sceneContext: makeSceneContext(),
     });
-    expect(prompt).toContain('Thorn');
-    expect(prompt).toContain('Lell Sparrow');
+    assert.ok(prompt.includes('Thorn'));
+    assert.ok(prompt.includes('Lell Sparrow'));
   });
 
   it('should NEVER use "player", "NPC", "player character", or "PC" when describing participants', () => {
@@ -103,10 +105,10 @@ describe('buildSceneSystemPrompt', () => {
     });
     // Extract the scene context section specifically
     const sceneSection = prompt.split('[THE SCENE]')[1]?.split('[')[0] || '';
-    expect(sceneSection).not.toMatch(/\bplayer\b/i);
-    expect(sceneSection).not.toMatch(/\bNPC\b/);
-    expect(sceneSection).not.toMatch(/\bplayer character\b/i);
-    expect(sceneSection).not.toMatch(/\bPC\b/);
+    assert.doesNotMatch(sceneSection, /\bplayer\b/i);
+    assert.doesNotMatch(sceneSection, /\bNPC\b/);
+    assert.doesNotMatch(sceneSection, /\bplayer character\b/i);
+    assert.doesNotMatch(sceneSection, /\bPC\b/);
   });
 
   it('should not use turns / round language', () => {
@@ -117,8 +119,8 @@ describe('buildSceneSystemPrompt', () => {
       ageInDays: null,
       sceneContext: makeSceneContext(),
     });
-    expect(prompt).not.toMatch(/\byour turn\b/i);
-    expect(prompt).not.toMatch(/\bOn your turn\b/i);
+    assert.doesNotMatch(prompt, /\byour turn\b/i);
+    assert.doesNotMatch(prompt, /\bOn your turn\b/i);
   });
 
   it('should include turn action options', () => {
@@ -129,10 +131,10 @@ describe('buildSceneSystemPrompt', () => {
       ageInDays: null,
       sceneContext: makeSceneContext(),
     });
-    expect(prompt).toMatch(/speak|say something/i);
-    expect(prompt).toMatch(/observe|watch/i);
-    expect(prompt).toMatch(/act|do something/i);
-    expect(prompt).toMatch(/leave|exit/i);
+    assert.match(prompt, /speak|say something/i);
+    assert.match(prompt, /observe|watch/i);
+    assert.match(prompt, /act|do something/i);
+    assert.match(prompt, /leave|exit/i);
   });
 
   it('should include identity / backstory section', () => {
@@ -143,7 +145,7 @@ describe('buildSceneSystemPrompt', () => {
       ageInDays: null,
       sceneContext: makeSceneContext(),
     });
-    expect(prompt).toContain('halfling innkeeper');
+    assert.ok(prompt.includes('halfling innkeeper'));
   });
 
   it('should not list self in scene participants', () => {
@@ -158,7 +160,7 @@ describe('buildSceneSystemPrompt', () => {
     // Mira should not appear as "others present" — she IS the one being prompted
     const othersPart = sceneSection.split('present')[1] || sceneSection;
     // She should not be listed as another person (her name may appear as "It is your turn" but not in the list)
-    expect(othersPart).not.toMatch(/\bMira\b/);
+    assert.doesNotMatch(othersPart, /\bMira\b/);
   });
 
   it('should work without optional params', () => {
@@ -166,6 +168,6 @@ describe('buildSceneSystemPrompt', () => {
       personality: makePersonality(),
       sceneContext: makeSceneContext(),
     });
-    expect(prompt.length).toBeGreaterThan(100);
+    assert.ok(prompt.length > 100);
   });
 });

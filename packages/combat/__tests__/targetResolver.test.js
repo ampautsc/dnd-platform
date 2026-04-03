@@ -3,7 +3,8 @@
  * Tests AoE target resolution: basic shapes, friendly fire, flying, edge cases.
  */
 
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import { resolveAoETargets } from '../src/engine/targetResolver.js'
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -45,9 +46,9 @@ describe('resolveAoETargets — basic target resolution', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, e1, e2])
-    expect(targets.length).toBe(2)
-    expect(targets).toContain(e1)
-    expect(targets).toContain(e2)
+    assert.strictEqual(targets.length, 2)
+    assert.ok(targets.includes(e1))
+    assert.ok(targets.includes(e2))
   })
 
   it('excludes enemies outside the AoE radius', () => {
@@ -57,8 +58,8 @@ describe('resolveAoETargets — basic target resolution', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, e1, e2])
-    expect(targets.length).toBe(1)
-    expect(targets).toContain(e1)
+    assert.strictEqual(targets.length, 1)
+    assert.ok(targets.includes(e1))
   })
 
   it('excludes the caster from AoE targets', () => {
@@ -67,9 +68,9 @@ describe('resolveAoETargets — basic target resolution', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, e1])
-    expect(targets.length).toBe(1)
-    expect(targets).toContain(e1)
-    expect(targets).not.toContain(caster)
+    assert.strictEqual(targets.length, 1)
+    assert.ok(targets.includes(e1))
+    assert.ok(!targets.includes(caster))
   })
 
   it('excludes dead combatants', () => {
@@ -79,8 +80,8 @@ describe('resolveAoETargets — basic target resolution', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, dead, alive])
-    expect(targets.length).toBe(1)
-    expect(targets).toContain(alive)
+    assert.strictEqual(targets.length, 1)
+    assert.ok(targets.includes(alive))
   })
 
   it('returns empty array when no combatants in range', () => {
@@ -88,7 +89,7 @@ describe('resolveAoETargets — basic target resolution', () => {
     const far = makeCombatant({ name: 'Far', position: { x: 50, y: 50 } })
     const aoeCenter = { x: 10, y: 0 }
 
-    expect(resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, far]).length).toBe(0)
+    assert.strictEqual(resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, far]).length, 0)
   })
 })
 
@@ -111,10 +112,10 @@ describe('resolveAoETargets — sphere (Fireball)', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, fireball, aoeCenter, [caster, e1, e2, e3])
-    expect(targets.length).toBe(2)
-    expect(targets).toContain(e1)
-    expect(targets).toContain(e2)
-    expect(targets).not.toContain(e3)
+    assert.strictEqual(targets.length, 2)
+    assert.ok(targets.includes(e1))
+    assert.ok(targets.includes(e2))
+    assert.ok(!targets.includes(e3))
   })
 
   it('can include allies in the AoE (friendly fire)', () => {
@@ -126,12 +127,12 @@ describe('resolveAoETargets — sphere (Fireball)', () => {
 
     // Default: excludeFriendly true — allies excluded
     const targets = resolveAoETargets(caster, fireball, aoeCenter, all)
-    expect(targets).not.toContain(ally)
+    assert.ok(!targets.includes(ally))
 
     // With excludeFriendly false, allies included
     const allTargets = resolveAoETargets(caster, fireball, aoeCenter, all, { excludeFriendly: false })
-    expect(allTargets).toContain(ally)
-    expect(allTargets).toContain(enemy)
+    assert.ok(allTargets.includes(ally))
+    assert.ok(allTargets.includes(enemy))
   })
 })
 
@@ -154,9 +155,9 @@ describe('resolveAoETargets — cone (Cone of Cold)', () => {
     const aoeCenter = { x: 0, y: 0 }
 
     const targets = resolveAoETargets(caster, coneOfCold, aoeCenter, [caster, close, edge, far])
-    expect(targets.length).toBe(2)
-    expect(targets).toContain(close)
-    expect(targets).toContain(edge)
+    assert.strictEqual(targets.length, 2)
+    assert.ok(targets.includes(close))
+    assert.ok(targets.includes(edge))
   })
 })
 
@@ -179,9 +180,9 @@ describe('resolveAoETargets — cylinder (Ice Storm)', () => {
     const aoeCenter = { x: 10, y: 0 }
 
     const targets = resolveAoETargets(caster, iceStorm, aoeCenter, [caster, near, edge, out])
-    expect(targets.length).toBe(2)
-    expect(targets).toContain(near)
-    expect(targets).toContain(edge)
+    assert.strictEqual(targets.length, 2)
+    assert.ok(targets.includes(near))
+    assert.ok(targets.includes(edge))
   })
 })
 
@@ -204,7 +205,7 @@ describe('resolveAoETargets — edge cases', () => {
 
     // Should not throw — defaults to (0,0)
     const targets = resolveAoETargets(caster, cubeSpell, aoeCenter, [caster, noPos])
-    expect(targets.length).toBeGreaterThanOrEqual(0)
+    assert.ok(targets.length >= 0)
   })
 
   it('returns empty for wall-type spells (no auto-targeting)', () => {
@@ -216,7 +217,7 @@ describe('resolveAoETargets — edge cases', () => {
     const caster = makeCaster()
     const e1 = makeCombatant({ name: 'E1', position: { x: 5, y: 0 } })
 
-    expect(resolveAoETargets(caster, wallSpell, { x: 5, y: 0 }, [caster, e1]).length).toBe(0)
+    assert.strictEqual(resolveAoETargets(caster, wallSpell, { x: 5, y: 0 }, [caster, e1]).length, 0)
   })
 })
 
@@ -236,8 +237,8 @@ describe('resolveAoETargets — flying creatures', () => {
     const groundEnemy = makeCombatant({ name: 'GroundEnemy', position: { x: 10, y: 0 } })
 
     const targets = resolveAoETargets(caster, hp, { x: 10, y: 0 }, [caster, flyingEnemy, groundEnemy])
-    expect(targets).not.toContain(flyingEnemy)
-    expect(targets).toContain(groundEnemy)
+    assert.ok(!targets.includes(flyingEnemy))
+    assert.ok(targets.includes(groundEnemy))
   })
 
   it('Fireball (20ft sphere) does NOT hit flying creature', () => {
@@ -249,7 +250,7 @@ describe('resolveAoETargets — flying creatures', () => {
     const caster = makeCaster()
     const flyingEnemy = makeCombatant({ name: 'FlyingEnemy', position: { x: 10, y: 0 }, flying: true })
 
-    expect(resolveAoETargets(caster, fb, { x: 10, y: 0 }, [caster, flyingEnemy]).length).toBe(0)
+    assert.strictEqual(resolveAoETargets(caster, fb, { x: 10, y: 0 }, [caster, flyingEnemy]).length, 0)
   })
 
   it('Cone of Cold (60ft cone) CAN hit flying creature', () => {
@@ -262,7 +263,7 @@ describe('resolveAoETargets — flying creatures', () => {
     const flyingEnemy = makeCombatant({ name: 'FlyingEnemy', position: { x: 8, y: 0 }, flying: true })
 
     const targets = resolveAoETargets(caster, coc, { x: 0, y: 0 }, [caster, flyingEnemy])
-    expect(targets).toContain(flyingEnemy)
+    assert.ok(targets.includes(flyingEnemy))
   })
 
   it('Ice Storm (cylinder 20r/40h) CAN hit flying creature within radius', () => {
@@ -275,7 +276,7 @@ describe('resolveAoETargets — flying creatures', () => {
     const flyingEnemy = makeCombatant({ name: 'FlyingEnemy', position: { x: 10, y: 0 }, flying: true })
 
     const targets = resolveAoETargets(caster, is, { x: 10, y: 0 }, [caster, flyingEnemy])
-    expect(targets).toContain(flyingEnemy)
+    assert.ok(targets.includes(flyingEnemy))
   })
 
   it('grounded creature is still hit normally even when others fly', () => {
@@ -289,7 +290,7 @@ describe('resolveAoETargets — flying creatures', () => {
     const ground = makeCombatant({ name: 'Ground', position: { x: 10, y: 0 } })
 
     const targets = resolveAoETargets(caster, fb, { x: 10, y: 0 }, [caster, flyer, ground])
-    expect(targets).not.toContain(flyer)
-    expect(targets).toContain(ground)
+    assert.ok(!targets.includes(flyer))
+    assert.ok(targets.includes(ground))
   })
 })

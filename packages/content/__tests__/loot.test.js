@@ -3,25 +3,27 @@
  * Written BEFORE implementation (TDD Rule #4).
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { getLootTable, hasLootTable, getAllLootTableKeys, LOOT_TABLES } from '../src/loot/index.js';
 
 describe('loot table data integrity', () => {
   it('every loot table is a non-empty array', () => {
     for (const [key, table] of Object.entries(LOOT_TABLES)) {
-      expect(Array.isArray(table), `${key} is not an array`).toBe(true);
-      expect(table.length, `${key} is empty`).toBeGreaterThan(0);
+      assert.strictEqual(Array.isArray(table), true, `${key} is not an array`);
+      assert.ok(table.length > 0, `${key} is empty`);
     }
   });
 
   it('every loot entry has type, chance', () => {
     for (const [key, table] of Object.entries(LOOT_TABLES)) {
       for (const entry of table) {
-        expect(entry, `${key} entry missing type`).toHaveProperty('type');
-        expect(entry, `${key} entry missing chance`).toHaveProperty('chance');
-        expect(['item', 'currency'], `${key} has invalid type '${entry.type}'`).toContain(entry.type);
-        expect(entry.chance).toBeGreaterThanOrEqual(0);
-        expect(entry.chance).toBeLessThanOrEqual(1);
+        assert.notStrictEqual(entry['type'], undefined, `${key} entry missing type`);
+        assert.notStrictEqual(entry['chance'], undefined, `${key} entry missing chance`);
+        assert.ok(['item', 'currency'].includes(entry.type), `${key} has invalid type '${entry.type}'`);
+        assert.ok(entry.chance >= 0);
+        assert.ok(entry.chance <= 1);
       }
     }
   });
@@ -30,8 +32,8 @@ describe('loot table data integrity', () => {
     for (const [key, table] of Object.entries(LOOT_TABLES)) {
       for (const entry of table) {
         if (entry.type === 'item') {
-          expect(entry, `${key} item missing itemId`).toHaveProperty('itemId');
-          expect(entry, `${key} item missing quantity`).toHaveProperty('quantity');
+          assert.notStrictEqual(entry['itemId'], undefined, `${key} item missing itemId`);
+          assert.notStrictEqual(entry['quantity'], undefined, `${key} item missing quantity`);
         }
       }
     }
@@ -41,8 +43,8 @@ describe('loot table data integrity', () => {
     for (const [key, table] of Object.entries(LOOT_TABLES)) {
       for (const entry of table) {
         if (entry.type === 'currency') {
-          expect(entry, `${key} currency missing currency`).toHaveProperty('currency');
-          expect(entry, `${key} currency missing amount`).toHaveProperty('amount');
+          assert.notStrictEqual(entry['currency'], undefined, `${key} currency missing currency`);
+          assert.notStrictEqual(entry['amount'], undefined, `${key} currency missing amount`);
         }
       }
     }
@@ -52,29 +54,29 @@ describe('loot table data integrity', () => {
 describe('getLootTable', () => {
   it('returns loot table for zombie', () => {
     const table = getLootTable('zombie');
-    expect(table.length).toBeGreaterThan(0);
+    assert.ok(table.length > 0);
   });
 
   it('returns empty array for unknown creature', () => {
-    expect(getLootTable('ancient_gold_dragon')).toEqual([]);
+    assert.deepStrictEqual(getLootTable('ancient_gold_dragon'), []);
   });
 });
 
 describe('hasLootTable', () => {
   it('returns true for zombie', () => {
-    expect(hasLootTable('zombie')).toBe(true);
+    assert.strictEqual(hasLootTable('zombie'), true);
   });
 
   it('returns false for unknown', () => {
-    expect(hasLootTable('ancient_gold_dragon')).toBe(false);
+    assert.strictEqual(hasLootTable('ancient_gold_dragon'), false);
   });
 });
 
 describe('getAllLootTableKeys', () => {
   it('returns all creature keys that have loot', () => {
     const keys = getAllLootTableKeys();
-    expect(keys.length).toBeGreaterThanOrEqual(10);
-    expect(keys).toContain('zombie');
-    expect(keys).toContain('bandit');
+    assert.ok(keys.length >= 10);
+    assert.ok(keys.includes('zombie'));
+    assert.ok(keys.includes('bandit'));
   });
 });

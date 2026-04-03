@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { MockProvider } from '../../src/llm/MockProvider.js';
 
 describe('MockProvider', () => {
@@ -11,7 +13,7 @@ describe('MockProvider', () => {
     it('should generate a predefined response', async () => {
         provider.setMockResponse('Hello world');
         const response = await provider.generateResponse({ prompt: 'say hi' });
-        expect(response.text).toBe('Hello world');
+        assert.strictEqual(response.text, 'Hello world');
     });
 
     it('should track call history', async () => {
@@ -19,16 +21,16 @@ describe('MockProvider', () => {
         await provider.generateResponse({ prompt: 'say hi' });
         await provider.generateResponse({ prompt: 'say bye' });
         
-        expect(provider.getHistory().length).toBe(2);
-        expect(provider.getHistory()[0].prompt).toBe('say hi');
-        expect(provider.getHistory()[1].prompt).toBe('say bye');
+        assert.strictEqual(provider.getHistory().length, 2);
+        assert.strictEqual(provider.getHistory()[0].prompt, 'say hi');
+        assert.strictEqual(provider.getHistory()[1].prompt, 'say bye');
     });
 
     it('should allow clearing history', async () => {
         provider.setMockResponse('foo');
         await provider.generateResponse({ prompt: 'bar' });
         provider.clearHistory();
-        expect(provider.getHistory().length).toBe(0);
+        assert.strictEqual(provider.getHistory().length, 0);
     });
 
     it('should support sequence of responses', async () => {
@@ -38,8 +40,8 @@ describe('MockProvider', () => {
         const r2 = await provider.generateResponse({ prompt: '2' });
         const r3 = await provider.generateResponse({ prompt: '3' });
         
-        expect(r1.text).toBe('First');
-        expect(r2.text).toBe('Second');
-        expect(r3.text).toBe('Second'); // Should hold last response if sequence runs out
+        assert.strictEqual(r1.text, 'First');
+        assert.strictEqual(r2.text, 'Second');
+        assert.strictEqual(r3.text, 'Second'); // Should hold last response if sequence runs out
     });
 });

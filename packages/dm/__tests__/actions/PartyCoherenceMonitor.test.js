@@ -13,7 +13,9 @@
  * 7. getPartyPositions() returns a cloned map of all positions — mutations don't leak.
  * 8. clearPosition(playerId) removes a player from tracking.
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createPartyCoherenceMonitor } from '../../src/actions/PartyCoherenceMonitor.js';
 
 describe('PartyCoherenceMonitor', () => {
@@ -23,13 +25,13 @@ describe('PartyCoherenceMonitor', () => {
     const monitor = createPartyCoherenceMonitor();
     monitor.updatePosition('p1', { x: 0, y: 0 });
 
-    expect(monitor.getPosition('p1')).toEqual({ x: 0, y: 0 });
+    assert.deepStrictEqual(monitor.getPosition('p1'), { x: 0, y: 0 });
   });
 
   it('returns null for an unknown player', () => {
     const monitor = createPartyCoherenceMonitor();
 
-    expect(monitor.getPosition('unknown')).toBeNull();
+    assert.strictEqual(monitor.getPosition('unknown'), null);
   });
 
   it('overwrites position on repeated update', () => {
@@ -37,7 +39,7 @@ describe('PartyCoherenceMonitor', () => {
     monitor.updatePosition('p1', { x: 0, y: 0 });
     monitor.updatePosition('p1', { x: 5, y: 5 });
 
-    expect(monitor.getPosition('p1')).toEqual({ x: 5, y: 5 });
+    assert.deepStrictEqual(monitor.getPosition('p1'), { x: 5, y: 5 });
   });
 
   // ── evaluateAction ─────────────────────────────────────────────────
@@ -51,7 +53,7 @@ describe('PartyCoherenceMonitor', () => {
     // Centroid of p2+p3 (excluding p1) = (5, 5)
     // Proposed (10, 10) → distance from (5,5) = sqrt(50) ≈ 7.07 → within 30
     const result = monitor.evaluateAction('p1', { x: 10, y: 10 });
-    expect(result.allowed).toBe(true);
+    assert.strictEqual(result.allowed, true);
   });
 
   it('rejects move that exceeds threshold from party centroid', () => {
@@ -64,10 +66,10 @@ describe('PartyCoherenceMonitor', () => {
     // Proposed (100, 100) → distance ≈ 137.9 → exceeds 10
     const result = monitor.evaluateAction('p1', { x: 100, y: 100 });
 
-    expect(result.allowed).toBe(false);
-    expect(result.warning).toMatch(/split/i);
-    expect(result.distanceFromParty).toBeGreaterThan(10);
-    expect(result.threshold).toBe(10);
+    assert.strictEqual(result.allowed, false);
+    assert.match(result.warning, /split/i);
+    assert.ok(result.distanceFromParty > 10);
+    assert.strictEqual(result.threshold, 10);
   });
 
   it('always allows move for solo player (no party to split from)', () => {
@@ -75,7 +77,7 @@ describe('PartyCoherenceMonitor', () => {
     monitor.updatePosition('p1', { x: 0, y: 0 });
 
     const result = monitor.evaluateAction('p1', { x: 999, y: 999 });
-    expect(result.allowed).toBe(true);
+    assert.strictEqual(result.allowed, true);
   });
 
   it('uses default threshold of 30 when none provided', () => {
@@ -85,12 +87,12 @@ describe('PartyCoherenceMonitor', () => {
 
     // Moving 25 units away → within default 30
     const close = monitor.evaluateAction('p1', { x: 25, y: 0 });
-    expect(close.allowed).toBe(true);
+    assert.strictEqual(close.allowed, true);
 
     // Moving 35 units away → exceeds default 30
     const far = monitor.evaluateAction('p1', { x: 35, y: 0 });
-    expect(far.allowed).toBe(false);
-    expect(far.threshold).toBe(30);
+    assert.strictEqual(far.allowed, false);
+    assert.strictEqual(far.threshold, 30);
   });
 
   // ── confirmSplit ───────────────────────────────────────────────────
@@ -99,7 +101,7 @@ describe('PartyCoherenceMonitor', () => {
     const monitor = createPartyCoherenceMonitor();
     const result = monitor.confirmSplit('p1');
 
-    expect(result).toEqual({ confirmed: true, playerId: 'p1' });
+    assert.deepStrictEqual(result, { confirmed: true, playerId: 'p1' });
   });
 
   // ── getPartyPositions ──────────────────────────────────────────────
@@ -117,7 +119,7 @@ describe('PartyCoherenceMonitor', () => {
 
     // Mutating returned object must not affect internal state
     positions.p1.x = 999;
-    expect(monitor.getPosition('p1')).toEqual({ x: 1, y: 2 });
+    assert.deepStrictEqual(monitor.getPosition('p1'), { x: 1, y: 2 });
   });
 
   // ── clearPosition ─────────────────────────────────────────────────
@@ -127,7 +129,7 @@ describe('PartyCoherenceMonitor', () => {
     monitor.updatePosition('p1', { x: 0, y: 0 });
     monitor.clearPosition('p1');
 
-    expect(monitor.getPosition('p1')).toBeNull();
+    assert.strictEqual(monitor.getPosition('p1'), null);
   });
 
   // ── evaluateAction for untracked mover ─────────────────────────────
@@ -137,6 +139,6 @@ describe('PartyCoherenceMonitor', () => {
     monitor.updatePosition('p2', { x: 0, y: 0 });
 
     const result = monitor.evaluateAction('unknown-player', { x: 999, y: 999 });
-    expect(result.allowed).toBe(true);
+    assert.strictEqual(result.allowed, true);
   });
 });

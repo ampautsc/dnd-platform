@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import {
   SPECIES,
   getSpecies,
@@ -14,84 +15,94 @@ describe('SPECIES data integrity', () => {
   const slugs = getAllSpeciesSlugs()
 
   it('has at least 71 species', () => {
-    expect(slugs.length).toBeGreaterThanOrEqual(71)
+    assert.ok(slugs.length >= 71)
   })
 
-  it.each(slugs)('%s has required fields', (slug) => {
+  for (const slug of slugs) {
+    it(`${slug} has required fields`, () => {
     const s = getSpecies(slug)
     for (const field of REQUIRED_FIELDS) {
-      expect(s[field], `missing ${field}`).toBeDefined()
+      assert.notStrictEqual(s[field], undefined, `missing ${field}`)
     }
-  })
+    });
+  }
 
-  it.each(slugs)('%s slug matches key', (slug) => {
-    expect(getSpecies(slug).slug).toBe(slug)
-  })
+  for (const slug of slugs) {
+    it(`${slug} slug matches key`, () => {
+    assert.strictEqual(getSpecies(slug).slug, slug)
+    });
+  }
 
-  it.each(slugs)('%s has non-empty name', (slug) => {
-    expect(typeof getSpecies(slug).name).toBe('string')
-    expect(getSpecies(slug).name.length).toBeGreaterThan(0)
-  })
+  for (const slug of slugs) {
+    it(`${slug} has non-empty name`, () => {
+    assert.strictEqual(typeof getSpecies(slug).name, 'string')
+    assert.ok(getSpecies(slug).name.length > 0)
+    });
+  }
 
-  it.each(slugs)('%s size is an array', (slug) => {
-    expect(Array.isArray(getSpecies(slug).size)).toBe(true)
-    expect(getSpecies(slug).size.length).toBeGreaterThan(0)
-  })
+  for (const slug of slugs) {
+    it(`${slug} size is an array`, () => {
+    assert.strictEqual(Array.isArray(getSpecies(slug).size), true)
+    assert.ok(getSpecies(slug).size.length > 0)
+    });
+  }
 
-  it.each(slugs)('%s speed has walk', (slug) => {
+  for (const slug of slugs) {
+    it(`${slug} speed has walk`, () => {
     const speed = getSpecies(slug).speed
-    expect(typeof speed).toBe('object')
-    expect(typeof speed.walk).toBe('number')
-    expect(speed.walk).toBeGreaterThan(0)
-  })
+    assert.strictEqual(typeof speed, 'object')
+    assert.strictEqual(typeof speed.walk, 'number')
+    assert.ok(speed.walk > 0)
+    });
+  }
 })
 
 describe('species spot checks', () => {
   it('dragonborn is PHB Medium with 30 walk', () => {
     const d = getSpecies('dragonborn')
-    expect(d.name).toBe('Dragonborn')
-    expect(d.source).toBe('PHB')
-    expect(d.size).toContain('Medium')
-    expect(d.speed.walk).toBe(30)
+    assert.strictEqual(d.name, 'Dragonborn')
+    assert.strictEqual(d.source, 'PHB')
+    assert.ok(d.size.includes('Medium'))
+    assert.strictEqual(d.speed.walk, 30)
   })
 
   it('elf has darkvision', () => {
     const e = getSpecies('elf')
-    expect(e.darkvision).toBeGreaterThan(0)
+    assert.ok(e.darkvision > 0)
   })
 
   it('halfling is Small', () => {
     const h = getSpecies('halfling')
     const sizes = h.size.map(s => s.toLowerCase())
-    expect(sizes).toContain('small')
+    assert.ok(sizes.includes('small'))
   })
 })
 
 describe('species registry API', () => {
   it('getSpecies returns species by slug', () => {
-    expect(getSpecies('dwarf').name).toBe('Dwarf')
+    assert.strictEqual(getSpecies('dwarf').name, 'Dwarf')
   })
 
   it('getSpecies returns undefined for unknown', () => {
-    expect(getSpecies('android')).toBeUndefined()
+    assert.strictEqual(getSpecies('android'), undefined)
   })
 
   it('hasSpecies returns true for existing', () => {
-    expect(hasSpecies('elf')).toBe(true)
+    assert.strictEqual(hasSpecies('elf'), true)
   })
 
   it('hasSpecies returns false for missing', () => {
-    expect(hasSpecies('android')).toBe(false)
+    assert.strictEqual(hasSpecies('android'), false)
   })
 
   it('getSpeciesBySource filters by source book', () => {
     const phb = getSpeciesBySource('PHB')
-    expect(phb.length).toBeGreaterThan(0)
-    expect(phb.every(s => s.source === 'PHB')).toBe(true)
+    assert.ok(phb.length > 0)
+    assert.strictEqual(phb.every(s => s.source === 'PHB'), true)
   })
 
   it('getSpeciesWithFlight returns flying species', () => {
     const flyers = getSpeciesWithFlight()
-    expect(flyers.every(s => s.hasFlight === true)).toBe(true)
+    assert.strictEqual(flyers.every(s => s.hasFlight === true), true)
   })
 })

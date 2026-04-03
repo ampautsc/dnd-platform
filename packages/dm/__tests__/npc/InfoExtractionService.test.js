@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { InfoExtractionService } from '../../src/npc/InfoExtractionService.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
 
@@ -61,12 +63,12 @@ describe('InfoExtractionService', () => {
     it('should use LLM to generate appearance', async () => {
       provider.setMockResponse('A small halfling with bright green eyes and flour-dusted clothes.');
       const result = await service.generateAppearance(makePersonality());
-      expect(result).toBe('A small halfling with bright green eyes and flour-dusted clothes.');
-      expect(provider.getHistory()).toHaveLength(1);
+      assert.strictEqual(result, 'A small halfling with bright green eyes and flour-dusted clothes.');
+      assert.strictEqual(provider.getHistory().length, 1);
       const call = provider.getHistory()[0];
-      expect(call.systemPrompt).toContain('physical appearance');
-      expect(call.userPrompt).toContain('Bree Millhaven');
-      expect(call.userPrompt).toContain('Halfling');
+      assert.ok(call.systemPrompt.includes('physical appearance'));
+      assert.ok(call.userPrompt.includes('Bree Millhaven'));
+      assert.ok(call.userPrompt.includes('Halfling'));
     });
 
     it('should fall back to race description when LLM throws', async () => {
@@ -76,34 +78,34 @@ describe('InfoExtractionService', () => {
         provider: { generateResponse: () => { throw new Error('down'); } },
       });
       const result = await broken.generateAppearance(makePersonality());
-      expect(result).toContain('Bree Millhaven');
-      expect(result).toContain('halfling');
+      assert.ok(result.includes('Bree Millhaven'));
+      assert.ok(result.includes('halfling'));
     });
 
     it('should fall back when LLM returns empty string', async () => {
       provider.setMockResponse('   ');
       const result = await service.generateAppearance(makePersonality());
-      expect(result).toContain('Bree Millhaven');
-      expect(result).toContain('halfling');
+      assert.ok(result.includes('Bree Millhaven'));
+      assert.ok(result.includes('halfling'));
     });
 
     it('should handle missing personality fields gracefully', async () => {
       provider.setMockResponse('A mysterious figure.');
       const result = await service.generateAppearance({ name: 'Unknown' });
-      expect(result).toBe('A mysterious figure.');
+      assert.strictEqual(result, 'A mysterious figure.');
     });
 
     it('should have race-based fallbacks for known races', () => {
       // Test the static fallback directly
       const result = service._fallbackAppearance('Test', 'Elf');
-      expect(result).toContain('elf');
-      expect(result).toContain('Test');
+      assert.ok(result.includes('elf'));
+      assert.ok(result.includes('Test'));
     });
 
     it('should handle unknown races in fallback', () => {
       const result = service._fallbackAppearance('Zyx', 'Kenku');
-      expect(result).toContain('kenku');
-      expect(result).toContain('Zyx');
+      assert.ok(result.includes('kenku'));
+      assert.ok(result.includes('Zyx'));
     });
   });
 
@@ -117,7 +119,7 @@ describe('InfoExtractionService', () => {
         currentRevealed: {},
         playerMessage: 'hello',
       });
-      expect(result).toEqual({ reveals: {} });
+      assert.deepStrictEqual(result, { reveals: {} });
     });
 
     it('should return empty reveals for null personality', async () => {
@@ -127,7 +129,7 @@ describe('InfoExtractionService', () => {
         currentRevealed: {},
         playerMessage: 'hello',
       });
-      expect(result).toEqual({ reveals: {} });
+      assert.deepStrictEqual(result, { reveals: {} });
     });
 
     it('should use LLM to extract revealed info and parse JSON result', async () => {
@@ -150,9 +152,9 @@ describe('InfoExtractionService', () => {
         playerMessage: 'We just arrived in town.',
       });
 
-      expect(result.reveals.disposition).toBe('Friendly but cautious');
-      expect(result.reveals.voice).toBe('warm country accent');
-      expect(result.reveals.backstory).toBeUndefined();
+      assert.strictEqual(result.reveals.disposition, 'Friendly but cautious');
+      assert.strictEqual(result.reveals.voice, 'warm country accent');
+      assert.strictEqual(result.reveals.backstory, undefined);
     });
 
     it('should filter out already-known array items from extraction', async () => {
@@ -170,7 +172,7 @@ describe('InfoExtractionService', () => {
       });
 
       // Only the NEW item should be in reveals
-      expect(result.reveals.fears).toEqual(['Being alone forever']);
+      assert.deepStrictEqual(result.reveals.fears, ['Being alone forever']);
     });
 
     it('should fall back to heuristic extraction when LLM throws', async () => {
@@ -186,7 +188,7 @@ describe('InfoExtractionService', () => {
       });
 
       // Heuristic should detect backstory from "remember" keyword
-      expect(result.reveals.backstory).toBeDefined();
+      assert.notStrictEqual(result.reveals.backstory, undefined);
     });
 
     it('should handle malformed JSON from LLM gracefully', async () => {
@@ -197,7 +199,7 @@ describe('InfoExtractionService', () => {
         currentRevealed: {},
         playerMessage: 'hi',
       });
-      expect(result).toEqual({ reveals: {} });
+      assert.deepStrictEqual(result, { reveals: {} });
     });
   });
 
@@ -207,8 +209,8 @@ describe('InfoExtractionService', () => {
     it('should detect voice from first long response', () => {
       const text = 'Well now, let me tell you a thing or two about this town. We have had some troubles lately, but nothing we cannot handle ourselves.';
       const result = service._heuristicExtraction(text, makePersonality(), {});
-      expect(result.reveals.voice).toBeDefined();
-      expect(result.reveals.voice).toContain('warm');
+      assert.notStrictEqual(result.reveals.voice, undefined);
+      assert.ok(result.reveals.voice.includes('warm'));
     });
 
     it('should not detect voice if already revealed', () => {
@@ -216,13 +218,13 @@ describe('InfoExtractionService', () => {
       const result = service._heuristicExtraction(text, makePersonality(), {
         voice: 'already known',
       });
-      expect(result.reveals.voice).toBeUndefined();
+      assert.strictEqual(result.reveals.voice, undefined);
     });
 
     it('should detect backstory from memory keywords', () => {
       const text = 'I remember when the town was different, years ago...';
       const result = service._heuristicExtraction(text, makePersonality(), {});
-      expect(result.reveals.backstory).toBeDefined();
+      assert.notStrictEqual(result.reveals.backstory, undefined);
     });
 
     it('should not detect backstory if already revealed', () => {
@@ -230,14 +232,14 @@ describe('InfoExtractionService', () => {
       const result = service._heuristicExtraction(text, makePersonality(), {
         backstory: 'already known backstory',
       });
-      expect(result.reveals.backstory).toBeUndefined();
+      assert.strictEqual(result.reveals.backstory, undefined);
     });
 
     it('should detect fears from fear keywords', () => {
       const text = 'I am afraid of what might come next.';
       const result = service._heuristicExtraction(text, makePersonality(), {});
-      expect(result.reveals.fears).toBeDefined();
-      expect(result.reveals.fears).toHaveLength(1);
+      assert.notStrictEqual(result.reveals.fears, undefined);
+      assert.strictEqual(result.reveals.fears.length, 1);
     });
 
     it('should reveal next unrevealed fear only', () => {
@@ -245,7 +247,7 @@ describe('InfoExtractionService', () => {
       const result = service._heuristicExtraction(text, makePersonality(), {
         fears: ['Losing the farm'],
       });
-      expect(result.reveals.fears).toEqual(['Being alone forever']);
+      assert.deepStrictEqual(result.reveals.fears, ['Being alone forever']);
     });
   });
 
@@ -253,8 +255,8 @@ describe('InfoExtractionService', () => {
 
   describe('_summarizeRevealed', () => {
     it('should return "Nothing known yet." for null/empty', () => {
-      expect(service._summarizeRevealed(null)).toBe('Nothing known yet.');
-      expect(service._summarizeRevealed({})).toBe('Nothing known yet.');
+      assert.strictEqual(service._summarizeRevealed(null), 'Nothing known yet.');
+      assert.strictEqual(service._summarizeRevealed({}), 'Nothing known yet.');
     });
 
     it('should build multi-line summary of known info', () => {
@@ -269,14 +271,14 @@ describe('InfoExtractionService', () => {
         speechPatterns: ['Farming metaphors'],
       };
       const result = service._summarizeRevealed(revealed);
-      expect(result).toContain('Appearance: A small halfling.');
-      expect(result).toContain('Demeanor: Friendly.');
-      expect(result).toContain('Background: Farm kid.');
-      expect(result).toContain('Voice: Warm.');
-      expect(result).toContain('Motivations: Protect village');
-      expect(result).toContain('Fears: Losing farm');
-      expect(result).toContain('Mannerisms: Fidgets');
-      expect(result).toContain('Speech: Farming metaphors');
+      assert.ok(result.includes('Appearance: A small halfling.'));
+      assert.ok(result.includes('Demeanor: Friendly.'));
+      assert.ok(result.includes('Background: Farm kid.'));
+      assert.ok(result.includes('Voice: Warm.'));
+      assert.ok(result.includes('Motivations: Protect village'));
+      assert.ok(result.includes('Fears: Losing farm'));
+      assert.ok(result.includes('Mannerisms: Fidgets'));
+      assert.ok(result.includes('Speech: Farming metaphors'));
     });
   });
 
@@ -285,21 +287,21 @@ describe('InfoExtractionService', () => {
   describe('_buildPersonalityReference', () => {
     it('should include name, race, and personality fields', () => {
       const result = service._buildPersonalityReference(makePersonality());
-      expect(result).toContain('Name: Bree Millhaven');
-      expect(result).toContain('Race: Halfling');
-      expect(result).toContain('Disposition:');
-      expect(result).toContain('Voice:');
-      expect(result).toContain('Backstory:');
-      expect(result).toContain('Motivations:');
-      expect(result).toContain('Fears:');
-      expect(result).toContain('Mannerisms:');
-      expect(result).toContain('Speech patterns:');
+      assert.ok(result.includes('Name: Bree Millhaven'));
+      assert.ok(result.includes('Race: Halfling'));
+      assert.ok(result.includes('Disposition:'));
+      assert.ok(result.includes('Voice:'));
+      assert.ok(result.includes('Backstory:'));
+      assert.ok(result.includes('Motivations:'));
+      assert.ok(result.includes('Fears:'));
+      assert.ok(result.includes('Mannerisms:'));
+      assert.ok(result.includes('Speech patterns:'));
     });
 
     it('should handle missing personality gracefully', () => {
       const result = service._buildPersonalityReference({ name: 'Ghost', race: 'Unknown' });
-      expect(result).toContain('Name: Ghost');
-      expect(result).toContain('Race: Unknown');
+      assert.ok(result.includes('Name: Ghost'));
+      assert.ok(result.includes('Race: Unknown'));
     });
   });
 
@@ -316,10 +318,10 @@ describe('InfoExtractionService', () => {
         },
       });
       const result = service._parseExtractionResult(raw, makePersonality(), {});
-      expect(result.reveals.disposition).toBe('Gruff but kind');
-      expect(result.reveals.motivations).toEqual(['Save the town']);
-      expect(result.reveals.fears).toBeUndefined();
-      expect(result.reveals.voice).toBeUndefined();
+      assert.strictEqual(result.reveals.disposition, 'Gruff but kind');
+      assert.deepStrictEqual(result.reveals.motivations, ['Save the town']);
+      assert.strictEqual(result.reveals.fears, undefined);
+      assert.strictEqual(result.reveals.voice, undefined);
     });
 
     it('should extract JSON from text with surrounding noise', () => {
@@ -327,18 +329,18 @@ describe('InfoExtractionService', () => {
         reveals: { disposition: 'Stern' },
       }) + '\nDone.';
       const result = service._parseExtractionResult(raw, makePersonality(), {});
-      expect(result.reveals.disposition).toBe('Stern');
+      assert.strictEqual(result.reveals.disposition, 'Stern');
     });
 
     it('should return empty reveals for invalid JSON', () => {
       const result = service._parseExtractionResult('not json', makePersonality(), {});
-      expect(result).toEqual({ reveals: {} });
+      assert.deepStrictEqual(result, { reveals: {} });
     });
 
     it('should return empty reveals when parsed object has no reveals key', () => {
       const raw = JSON.stringify({ info: 'wrong shape' });
       const result = service._parseExtractionResult(raw, makePersonality(), {});
-      expect(result).toEqual({ reveals: {} });
+      assert.deepStrictEqual(result, { reveals: {} });
     });
 
     it('should filter out already-known array items', () => {
@@ -350,7 +352,7 @@ describe('InfoExtractionService', () => {
       const result = service._parseExtractionResult(raw, makePersonality(), {
         mannerisms: ['Fidgets with her apron strings'],
       });
-      expect(result.reveals.mannerisms).toEqual(['Squints when thinking']);
+      assert.deepStrictEqual(result.reveals.mannerisms, ['Squints when thinking']);
     });
 
     it('should ignore unknown fields in reveals', () => {
@@ -361,8 +363,8 @@ describe('InfoExtractionService', () => {
         },
       });
       const result = service._parseExtractionResult(raw, makePersonality(), {});
-      expect(result.reveals.disposition).toBe('Kind');
-      expect(result.reveals.unknownField).toBeUndefined();
+      assert.strictEqual(result.reveals.disposition, 'Kind');
+      assert.strictEqual(result.reveals.unknownField, undefined);
     });
   });
 });

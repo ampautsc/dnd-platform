@@ -6,7 +6,9 @@
  * - supports valid lifecycle transitions: lobby -> intro -> play -> wrap
  * - rejects invalid transitions with structured errors
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createSessionManager } from '../../src/services/SessionManager.js';
 
 describe('SessionManager', () => {
@@ -14,8 +16,8 @@ describe('SessionManager', () => {
     const manager = createSessionManager();
     const session = manager.createSession({ sessionId: 's1', campaignId: 'c1' });
 
-    expect(session.id).toBe('s1');
-    expect(session.state).toBe('lobby');
+    assert.strictEqual(session.id, 's1');
+    assert.strictEqual(session.state, 'lobby');
   });
 
   it('applies valid lifecycle transitions in order', () => {
@@ -26,15 +28,15 @@ describe('SessionManager', () => {
     const play = manager.transition('s1', 'play');
     const wrap = manager.transition('s1', 'wrap');
 
-    expect(intro.state).toBe('intro');
-    expect(play.state).toBe('play');
-    expect(wrap.state).toBe('wrap');
+    assert.strictEqual(intro.state, 'intro');
+    assert.strictEqual(play.state, 'play');
+    assert.strictEqual(wrap.state, 'wrap');
   });
 
   it('throws structured error for invalid transition', () => {
     const manager = createSessionManager();
     manager.createSession({ sessionId: 's1', campaignId: 'c1' });
 
-    expect(() => manager.transition('s1', 'wrap')).toThrow(/SESSION_TRANSITION_INVALID/);
+    assert.throws(() => manager.transition('s1', 'wrap'), /SESSION_TRANSITION_INVALID/);
   });
 });

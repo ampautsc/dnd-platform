@@ -213,5 +213,23 @@
       "Eight kids. Two ex-husbands, one of them worth the trouble. Twenty years of this bar. You want to tell ME about having a hard day?",
       "I have poured more beer in this tavern than the river has poured water past the docks. That is not a boast. That is a complaint."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "This is the slowest service I have ever experienced in any establishment. Where is our waitress?",
+      "That gnome at the bar talks too much. Someone ought to shut him up permanently.",
+      "Raising eight children as a single parent must be completely impossible. How does anyone manage?",
+      "Hey barkeep, this drink tastes like swamp water. Are you even trying back there?",
+      "Carza! Get over here, I need another drink and I need it right now!",
+      "Goblins working in taverns — that is not something you see in a respectable establishment."
+    ],
+    "shouldNotReact": [
+      "Plato argued that the forms exist independently of material reality. Let us discuss the cave allegory.",
+      "To brew a proper potion of healing you need three drams of silverleaf and one measure of moonwater.",
+      "The constellation of the Dragon rises in the east during the summer solstice. Quite beautiful.",
+      "The spice trade from the southern isles has been disrupted by tariff negotiations between port authorities.",
+      "Hmm, chapter fourteen of this tome on herbalism is quite dense. Let me read on a bit further.",
+      "The dominant mode in this piece shifts from Dorian to Mixolydian in the second movement."
+    ]
   }
 }

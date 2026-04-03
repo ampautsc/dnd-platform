@@ -224,5 +224,23 @@
       "I was an accountant. For a while. Then I made a principled stand and became a housepainter. That's how careers go in this economy.",
       "My wife says I spend too much time in taverns. I told her I'm expanding my professional network. She said I don't have a profession. We had a nice conversation after that."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "Excuse me, is this stool taken? I think I will just sit here.",
+      "Drinks are on me tonight! Another round for the whole bar!",
+      "This beer is terrible. The worst swill I have ever tasted in my life.",
+      "Attention everyone, the tavern is closing early tonight. Last call was ten minutes ago.",
+      "Say Norvin, how is your wife Vera doing these days?",
+      "I need someone who understands double-entry bookkeeping to look at these guild accounts."
+    ],
+    "shouldNotReact": [
+      "Oh silver moonlight upon the ancient spires, hear my elven song rise to the stars.",
+      "My thesis on the convergence of ley lines in the northern wastes is nearly complete.",
+      "The northern courier route takes three hours longer since they closed the bridge for repairs.",
+      "The double-bladed scimitar is the weapon of choice among the Valenar elves of Khorvaire.",
+      "The nature of the divine spark is debated extensively in the Tomes of Deneir.",
+      "Celestial navigation requires knowing the declination angle of three fixed stars simultaneously."
+    ]
   }
 }

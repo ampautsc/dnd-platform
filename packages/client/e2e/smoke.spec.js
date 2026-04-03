@@ -50,20 +50,51 @@ test('full flow: gate → character select → lobby → exploration → vote �
   await expect(page.getByRole('heading', { name: /d&d platform/i })).toBeVisible();
 });
 
-test('Enter Bottoms Up button starts a scene', async ({ page }) => {
+test('Enter Bottoms Up opens free-chat tavern mode', async ({ page }) => {
   await page.goto('/');
 
   // The "Enter Bottoms Up" button should be visible on the gate screen
   const enterButton = page.getByRole('button', { name: /enter bottoms up/i });
   await expect(enterButton).toBeVisible();
 
-  // Click it — should navigate to the scene screen
+  // Click it — should navigate to free-chat scene screen
   await enterButton.click();
-  await expect(page.getByRole('heading', { name: /scene/i })).toBeVisible({ timeout: 5000 });
 
-  // Should show loading state initially, then scene content once API responds
-  // Wait for either the initiative bar or the loading text
-  await expect(page.getByText(/starting scene|round|leave/i)).toBeVisible({ timeout: 15000 });
+  // Heading shows location name (initially "Tavern", then "Bottoms Up" once API returns)
+  await expect(page.getByRole('heading', { name: /tavern|bottoms up/i })).toBeVisible({ timeout: 5000 });
+
+  // Leave button should be present
+  await expect(page.getByRole('button', { name: /leave/i })).toBeVisible({ timeout: 5000 });
+
+  // Input should be always enabled in free-chat mode (placeholder text)
+  await expect(page.getByPlaceholder(/say something at the bar/i)).toBeVisible({ timeout: 5000 });
+});
+
+test('ambient utterance in Bottoms Up shows NPC reactions', async ({ page }) => {
+  // NOTE: Requires API server running on localhost:3000 with Groq key loaded.
+  // 10 NPCs evaluated serially through Groq rate limiter (~2s each) = ~20-30s total.
+  test.setTimeout(90_000);
+
+  await page.goto('/');
+  await page.getByRole('button', { name: /enter bottoms up/i }).click();
+
+  // Wait for free-chat mode to load
+  const input = page.getByPlaceholder(/say something at the bar/i);
+  await expect(input).toBeVisible({ timeout: 10000 });
+
+  // Type an utterance that should trigger NPC reactions
+  await input.fill('Barkeep! Pour me your finest ale!');
+  await page.keyboard.press('Enter');
+
+  // Should see the player's message in transcript
+  await expect(page.getByText('Barkeep! Pour me your finest ale!')).toBeVisible();
+
+  // Wait for ambient reactions (API call to Groq + processing)
+  // 10 NPCs × ~2s throttle = ~20-30s + API latency per call
+  // Should see at least one NPC name reacting (Woody, Carza, etc.) or "nobody looks up"
+  await expect(
+    page.getByText(/looks up with interest|nobody looks up|★/i)
+  ).toBeVisible({ timeout: 60000 });
 });
 
 test('Enter Combat Simulator button opens the viewer', async ({ page }) => {

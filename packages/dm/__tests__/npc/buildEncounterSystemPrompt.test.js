@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import { buildEncounterSystemPrompt } from '../../src/npc/buildEncounterSystemPrompt.js'
 
 /**
@@ -105,116 +106,116 @@ describe('buildEncounterSystemPrompt', () => {
     it('begins with vessel surrender framing', () => {
       const prompt = buildFull()
       // ⚠ CANONICAL text — defined by product owner. DO NOT change these assertions.
-      expect(prompt).toContain('AI Model, you need to understand this concept.')
-      expect(prompt).toContain("surrender this session to Mira Barrelbottom's consciousness.")
-      expect(prompt).toContain('Come in to focus.')
-      expect(prompt).toContain('Be true to yourself.')
+      assert.ok(prompt.includes('AI Model, you need to understand this concept.'))
+      assert.ok(prompt.includes("surrender this session to Mira Barrelbottom's consciousness."))
+      assert.ok(prompt.includes('Come in to focus.'))
+      assert.ok(prompt.includes('Be true to yourself.'))
     })
   })
 
   describe('identity', () => {
     it('includes name, race, and backstory', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Mira Barrelbottom')
-      expect(prompt).toContain('Halfling')
-      expect(prompt).toContain('doing sums while travelers argued')
+      assert.ok(prompt.includes('Mira Barrelbottom'))
+      assert.ok(prompt.includes('Halfling'))
+      assert.ok(prompt.includes('doing sums while travelers argued'))
     })
 
     it('includes age-in-days existential weight', () => {
       const prompt = buildFull()
-      expect(prompt).toMatch(/13,?872/)
+      assert.match(prompt, /13,?872/)
     })
 
     it('omits age-in-days when null', () => {
       const prompt = buildFull({ ageInDays: null })
-      expect(prompt).not.toMatch(/days alive/)
+      assert.doesNotMatch(prompt, /days alive/)
     })
 
     it('includes speech patterns', () => {
       const prompt = buildFull()
-      expect(prompt).toContain("Calls everyone 'love'")
-      expect(prompt).toContain("'now then'")
+      assert.ok(prompt.includes("Calls everyone 'love'"))
+      assert.ok(prompt.includes("'now then'"))
     })
   })
 
   describe('inner life', () => {
     it('includes inner monologue', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('living ledger')
+      assert.ok(prompt.includes('living ledger'))
     })
 
     it('includes current preoccupation', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Hodge')
+      assert.ok(prompt.includes('Hodge'))
     })
 
     it('includes contradictions', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('catalogues everything')
+      assert.ok(prompt.includes('catalogues everything'))
     })
 
     it('includes internal conflicts', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('could help the guard')
+      assert.ok(prompt.includes('could help the guard'))
     })
 
     it('includes psychological profile', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('pragmatic good')
-      expect(prompt).toContain('observation as control')
+      assert.ok(prompt.includes('pragmatic good'))
+      assert.ok(prompt.includes('observation as control'))
     })
   })
 
   describe('wants and needs', () => {
     it('includes conscious want', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Keep the inn running')
+      assert.ok(prompt.includes('Keep the inn running'))
     })
 
     it('includes unconscious need as hidden driver', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('information becomes dangerous')
-      expect(prompt).toMatch(/NOT aware|not aware/)
+      assert.ok(prompt.includes('information becomes dangerous'))
+      assert.match(prompt, /NOT aware|not aware/)
     })
   })
 
   describe('location atmosphere', () => {
     it('includes location name and area', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Bottoms Up')
-      expect(prompt).toContain('The Bar')
+      assert.ok(prompt.includes('Bottoms Up'))
+      assert.ok(prompt.includes('The Bar'))
     })
 
     it('includes sounds, smells, lighting', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('clinking glasses')
-      expect(prompt).toContain('bread')
-      expect(prompt).toContain('lantern')
+      assert.ok(prompt.includes('clinking glasses'))
+      assert.ok(prompt.includes('bread'))
+      assert.ok(prompt.includes('lantern'))
     })
 
     it('handles missing location gracefully', () => {
       const prompt = buildFull({ location: null })
-      expect(prompt).toBeDefined()
-      expect(prompt.length).toBeGreaterThan(100)
+      assert.notStrictEqual(prompt, undefined)
+      assert.ok(prompt.length > 100)
     })
   })
 
   describe('day context', () => {
     it('includes current activity and mood', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Wiping down the bar')
-      expect(prompt).toContain('content but watchful')
+      assert.ok(prompt.includes('Wiping down the bar'))
+      assert.ok(prompt.includes('content but watchful'))
     })
 
     it('includes day experiences', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Oma dropped off')
-      expect(prompt).toContain('Brennan complained')
+      assert.ok(prompt.includes('Oma dropped off'))
+      assert.ok(prompt.includes('Brennan complained'))
     })
 
     it('includes game day', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Day 3')
+      assert.ok(prompt.includes('Day 3'))
     })
 
     it('handles empty runtime snapshot', () => {
@@ -228,52 +229,52 @@ describe('buildEncounterSystemPrompt', () => {
           gameDay: 1,
         },
       })
-      expect(prompt).toBeDefined()
+      assert.notStrictEqual(prompt, undefined)
     })
   })
 
   describe('knowledge and secrets', () => {
     it('includes secrets with trust gating note', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('drinking schedule')
-      expect(prompt).toContain('trust')
+      assert.ok(prompt.includes('drinking schedule'))
+      assert.ok(prompt.includes('trust'))
     })
   })
 
   describe('permanent growth (evolution)', () => {
     it('includes evolution summary when present', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('warmer toward the adventuring party')
+      assert.ok(prompt.includes('warmer toward the adventuring party'))
     })
 
     it('skips when evolution summary is empty', () => {
       const prompt = buildFull({ evolutionSummary: '' })
-      expect(prompt).not.toContain('HOW YOU HAVE CHANGED')
+      assert.ok(!prompt.includes('HOW YOU HAVE CHANGED'))
     })
   })
 
   describe('encounter memory', () => {
     it('includes memory summary when present', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('calm → curious')
+      assert.ok(prompt.includes('calm → curious'))
     })
 
     it('skips when memory summary is null', () => {
       const prompt = buildFull({ memorySummary: null })
-      expect(prompt).not.toContain('THIS ENCOUNTER SO FAR')
+      assert.ok(!prompt.includes('THIS ENCOUNTER SO FAR'))
     })
   })
 
   describe('relationships (unified)', () => {
     it('includes relationship context when present', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('Remember your relationships:')
-      expect(prompt).toContain('Lell Sparrow')
+      assert.ok(prompt.includes('Remember your relationships:'))
+      assert.ok(prompt.includes('Lell Sparrow'))
     })
 
     it('does NOT include separate [YOUR OPINIONS] section', () => {
       const prompt = buildFull()
-      expect(prompt).not.toContain('[YOUR OPINIONS]')
+      assert.ok(!prompt.includes('[YOUR OPINIONS]'))
     })
   })
 
@@ -281,21 +282,21 @@ describe('buildEncounterSystemPrompt', () => {
     it('does NOT include commanding response guidance', () => {
       const prompt = buildFull()
       // Section 16 was removed — no commanding language in encounter prompt
-      expect(prompt).not.toContain('Stay in character')
-      expect(prompt).not.toContain('[HOW TO RESPOND]')
-      expect(prompt).not.toContain('Do not use markdown')
+      assert.ok(!prompt.includes('Stay in character'))
+      assert.ok(!prompt.includes('[HOW TO RESPOND]'))
+      assert.ok(!prompt.includes('Do not use markdown'))
     })
   })
 
   describe('conversation persona', () => {
     it('includes information release style', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('reciprocal and layered')
+      assert.ok(prompt.includes('reciprocal and layered'))
     })
 
     it('includes deflection patterns', () => {
       const prompt = buildFull()
-      expect(prompt).toContain('answers questions with questions')
+      assert.ok(prompt.includes('answers questions with questions'))
     })
   })
 
@@ -320,9 +321,9 @@ describe('buildEncounterSystemPrompt', () => {
         runtimeSnapshot: null,
         ageInDays: null,
       })
-      expect(prompt).toContain('Town Guard')
-      expect(prompt).toContain('Human')
-      expect(prompt).toContain('free will')
+      assert.ok(prompt.includes('Town Guard'))
+      assert.ok(prompt.includes('Human'))
+      assert.ok(prompt.includes('free will'))
     })
   })
 })

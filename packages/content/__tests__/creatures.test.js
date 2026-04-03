@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import {
   CREATURE_TEMPLATES,
   getTemplate,
@@ -23,15 +24,15 @@ const WEAPON_TYPES = ['melee', 'ranged']
 
 describe('computeModifier', () => {
   it('returns correct modifier for standard scores', () => {
-    expect(computeModifier(10)).toBe(0)
-    expect(computeModifier(11)).toBe(0)
-    expect(computeModifier(1)).toBe(-5)
-    expect(computeModifier(20)).toBe(5)
-    expect(computeModifier(8)).toBe(-1)
-    expect(computeModifier(14)).toBe(2)
-    expect(computeModifier(15)).toBe(2)
-    expect(computeModifier(16)).toBe(3)
-    expect(computeModifier(30)).toBe(10)
+    assert.strictEqual(computeModifier(10), 0)
+    assert.strictEqual(computeModifier(11), 0)
+    assert.strictEqual(computeModifier(1), -5)
+    assert.strictEqual(computeModifier(20), 5)
+    assert.strictEqual(computeModifier(8), -1)
+    assert.strictEqual(computeModifier(14), 2)
+    assert.strictEqual(computeModifier(15), 2)
+    assert.strictEqual(computeModifier(16), 3)
+    assert.strictEqual(computeModifier(30), 10)
   })
 })
 
@@ -39,139 +40,153 @@ describe('CREATURE_TEMPLATES data integrity', () => {
   const keys = Object.keys(CREATURE_TEMPLATES)
 
   it('has at least 16 templates', () => {
-    expect(keys.length).toBeGreaterThanOrEqual(16)
+    assert.ok(keys.length >= 16)
   })
 
-  it.each(keys)('%s has required identity fields', (key) => {
+  for (const key of keys) {
+    it(`${key} has required identity fields`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(t.id).toBe(key)
-    expect(typeof t.name).toBe('string')
-    expect(t.name.length).toBeGreaterThan(0)
-    expect(VALID_SIDES).toContain(t.side)
-    expect(VALID_TYPES).toContain(t.type)
-    expect(typeof t.cr).toBe('number')
-    expect(t.cr).toBeGreaterThanOrEqual(0)
-  })
+    assert.strictEqual(t.id, key)
+    assert.strictEqual(typeof t.name, 'string')
+    assert.ok(t.name.length > 0)
+    assert.ok(VALID_SIDES.includes(t.side))
+    assert.ok(VALID_TYPES.includes(t.type))
+    assert.strictEqual(typeof t.cr, 'number')
+    assert.ok(t.cr >= 0)
+    });
+  }
 
-  it.each(keys)('%s has valid abilities', (key) => {
+  for (const key of keys) {
+    it(`${key} has valid abilities`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(t.abilities).toBeDefined()
+    assert.notStrictEqual(t.abilities, undefined)
     for (const ab of ABILITY_KEYS) {
-      expect(typeof t.abilities[ab]).toBe('number')
-      expect(t.abilities[ab]).toBeGreaterThanOrEqual(1)
-      expect(t.abilities[ab]).toBeLessThanOrEqual(30)
+      assert.strictEqual(typeof t.abilities[ab], 'number')
+      assert.ok(t.abilities[ab] >= 1)
+      assert.ok(t.abilities[ab] <= 30)
     }
-  })
+    });
+  }
 
-  it.each(keys)('%s has profBonus hp ac speed', (key) => {
+  for (const key of keys) {
+    it(`${key} has profBonus hp ac speed`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(typeof t.profBonus).toBe('number')
-    expect(t.profBonus).toBeGreaterThanOrEqual(2)
-    expect(typeof t.hp).toBe('object')
-    expect(typeof t.hp.max).toBe('number')
-    expect(t.hp.max).toBeGreaterThan(0)
-    expect(typeof t.hp.formula).toBe('string')
+    assert.strictEqual(typeof t.profBonus, 'number')
+    assert.ok(t.profBonus >= 2)
+    assert.strictEqual(typeof t.hp, 'object')
+    assert.strictEqual(typeof t.hp.max, 'number')
+    assert.ok(t.hp.max > 0)
+    assert.strictEqual(typeof t.hp.formula, 'string')
     const acBase = typeof t.ac === 'object' ? t.ac.base : t.ac
-    expect(typeof acBase).toBe('number')
-    expect(acBase).toBeGreaterThanOrEqual(1)
-    expect(typeof t.speed).toBe('number')
-    expect(t.speed).toBeGreaterThan(0)
-  })
+    assert.strictEqual(typeof acBase, 'number')
+    assert.ok(acBase >= 1)
+    assert.strictEqual(typeof t.speed, 'number')
+    assert.ok(t.speed > 0)
+    });
+  }
 
-  it.each(keys)('%s has saves for all six abilities', (key) => {
+  for (const key of keys) {
+    it(`${key} has saves for all six abilities`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(t.saves).toBeDefined()
+    assert.notStrictEqual(t.saves, undefined)
     for (const s of ABILITY_KEYS) {
-      expect(typeof t.saves[s]).toBe('number')
+      assert.strictEqual(typeof t.saves[s], 'number')
     }
-  })
+    });
+  }
 
-  it.each(keys)('%s has valid weapons', (key) => {
+  for (const key of keys) {
+    it(`${key} has valid weapons`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(Array.isArray(t.weapons)).toBe(true)
+    assert.strictEqual(Array.isArray(t.weapons), true)
     for (const w of t.weapons) {
-      expect(typeof w.name).toBe('string')
-      expect(typeof w.attackBonus).toBe('number')
-      expect(typeof w.damageDice).toBe('string')
-      expect(typeof w.damageBonus).toBe('number')
-      expect(typeof w.range).toBe('number')
-      expect(WEAPON_TYPES).toContain(w.type)
+      assert.strictEqual(typeof w.name, 'string')
+      assert.strictEqual(typeof w.attackBonus, 'number')
+      assert.strictEqual(typeof w.damageDice, 'string')
+      assert.strictEqual(typeof w.damageBonus, 'number')
+      assert.strictEqual(typeof w.range, 'number')
+      assert.ok(WEAPON_TYPES.includes(w.type))
     }
-  })
+    });
+  }
 
-  it.each(keys)('%s has tags and features', (key) => {
+  for (const key of keys) {
+    it(`${key} has tags and features`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(Array.isArray(t.tags)).toBe(true)
-    expect(typeof t.features).toBe('object')
-  })
+    assert.strictEqual(Array.isArray(t.tags), true)
+    assert.strictEqual(typeof t.features, 'object')
+    });
+  }
 
-  it.each(keys)('%s multiattack is non-negative integer', (key) => {
+  for (const key of keys) {
+    it(`${key} multiattack is non-negative integer`, () => {
     const t = CREATURE_TEMPLATES[key]
-    expect(typeof t.multiattack).toBe('number')
-    expect(t.multiattack).toBeGreaterThanOrEqual(0)
-    expect(Number.isInteger(t.multiattack)).toBe(true)
-  })
+    assert.strictEqual(typeof t.multiattack, 'number')
+    assert.ok(t.multiattack >= 0)
+    assert.strictEqual(Number.isInteger(t.multiattack), true)
+    });
+  }
 })
 
 describe('specific template spot checks', () => {
   it('bard is party caster with all features', () => {
     const bard = CREATURE_TEMPLATES['gem_dragonborn_lore_bard_8']
-    expect(bard.side).toBe('party')
-    expect(bard.characterLevel).toBe(8)
-    expect(bard.features.spellcasting).toBeDefined()
-    expect(bard.features.spellcasting.spellsKnown.length).toBeGreaterThan(5)
-    expect(bard.features.bardicInspiration).toBeDefined()
-    expect(bard.features.breathWeapon).toBeDefined()
-    expect(bard.features.gemFlight).toBeDefined()
-    expect(bard.features.dragonFear).toBeDefined()
-    expect(bard.features.hasWarCaster).toBe(true)
-    expect(bard.features.hasResilientCon).toBe(true)
+    assert.strictEqual(bard.side, 'party')
+    assert.strictEqual(bard.characterLevel, 8)
+    assert.notStrictEqual(bard.features.spellcasting, undefined)
+    assert.ok(bard.features.spellcasting.spellsKnown.length > 5)
+    assert.notStrictEqual(bard.features.bardicInspiration, undefined)
+    assert.notStrictEqual(bard.features.breathWeapon, undefined)
+    assert.notStrictEqual(bard.features.gemFlight, undefined)
+    assert.notStrictEqual(bard.features.dragonFear, undefined)
+    assert.strictEqual(bard.features.hasWarCaster, true)
+    assert.strictEqual(bard.features.hasResilientCon, true)
   })
 
   it('lich has legendary features and magic resistance', () => {
     const lich = CREATURE_TEMPLATES['lich']
-    expect(lich.cr).toBe(21)
-    expect(lich.type).toBe('undead')
-    expect(lich.features.legendaryResistance).toBeDefined()
-    expect(lich.features.legendaryResistance.uses).toBe(3)
-    expect(lich.features.legendaryActions).toBeDefined()
-    expect(lich.features.magicResistance).toBe(true)
-    expect(lich.features.immuneCharmed).toBe(true)
+    assert.strictEqual(lich.cr, 21)
+    assert.strictEqual(lich.type, 'undead')
+    assert.notStrictEqual(lich.features.legendaryResistance, undefined)
+    assert.strictEqual(lich.features.legendaryResistance.uses, 3)
+    assert.notStrictEqual(lich.features.legendaryActions, undefined)
+    assert.strictEqual(lich.features.magicResistance, true)
+    assert.strictEqual(lich.features.immuneCharmed, true)
   })
 
   it('dragon has breath weapon and flying tag', () => {
     const dragon = CREATURE_TEMPLATES['young_red_dragon']
-    expect(dragon.tags).toContain('flying')
-    expect(dragon.features.breathWeapon).toBeDefined()
-    expect(dragon.features.breathWeapon.damageType).toBe('fire')
-    expect(dragon.features.breathWeapon.recharge).toBe('5-6')
+    assert.ok(dragon.tags.includes('flying'))
+    assert.notStrictEqual(dragon.features.breathWeapon, undefined)
+    assert.strictEqual(dragon.features.breathWeapon.damageType, 'fire')
+    assert.strictEqual(dragon.features.breathWeapon.recharge, '5-6')
   })
 
   it('cult fanatic has darkDevotion and spiritualWeapon', () => {
     const cf = CREATURE_TEMPLATES['cult_fanatic']
-    expect(cf.features.darkDevotion).toBe(true)
-    expect(cf.features.spiritualWeapon).toBeNull()
+    assert.strictEqual(cf.features.darkDevotion, true)
+    assert.strictEqual(cf.features.spiritualWeapon, null)
   })
 })
 
 describe('template registry', () => {
   it('getTemplateKeys returns all keys', () => {
     const keys = getTemplateKeys()
-    expect(Array.isArray(keys)).toBe(true)
-    expect(keys.length).toBeGreaterThanOrEqual(16)
-    expect(keys).toContain('zombie')
-    expect(keys).toContain('lich')
-    expect(keys).toContain('gem_dragonborn_lore_bard_8')
+    assert.strictEqual(Array.isArray(keys), true)
+    assert.ok(keys.length >= 16)
+    assert.ok(keys.includes('zombie'))
+    assert.ok(keys.includes('lich'))
+    assert.ok(keys.includes('gem_dragonborn_lore_bard_8'))
   })
 
   it('getTemplate returns raw template', () => {
     const t = getTemplate('zombie')
-    expect(t.name).toBe('Zombie')
-    expect(t.cr).toBe(0.25)
+    assert.strictEqual(t.name, 'Zombie')
+    assert.strictEqual(t.cr, 0.25)
   })
 
   it('getTemplate throws for unknown key', () => {
-    expect(() => getTemplate('unicorn')).toThrow('Unknown creature template')
+    assert.throws(() => getTemplate('unicorn'), 'Unknown creature template')
   })
 
   it('registerTemplate adds a template', () => {
@@ -183,151 +198,151 @@ describe('template registry', () => {
       saves: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
       multiattack: 0, weapons: [], tags: [], features: {},
     })
-    expect(getTemplate(key).name).toBe('Test')
+    assert.strictEqual(getTemplate(key).name, 'Test')
     delete CREATURE_TEMPLATES[key]
   })
 
   it('registerTemplate throws for duplicate', () => {
-    expect(() => registerTemplate('zombie', {})).toThrow('Template already exists')
+    assert.throws(() => registerTemplate('zombie', {}), 'Template already exists')
   })
 })
 
 describe('createCreature', () => {
   it('sets currentHP and maxHP from template', () => {
     const z = createCreature('zombie')
-    expect(z.currentHP).toBe(22)
-    expect(z.maxHP).toBe(22)
+    assert.strictEqual(z.currentHP, 22)
+    assert.strictEqual(z.maxHP, 22)
   })
 
   it('computes ability modifiers', () => {
     const z = createCreature('zombie')
-    expect(z.strMod).toBe(1)
-    expect(z.dexMod).toBe(-2)
-    expect(z.conMod).toBe(3)
+    assert.strictEqual(z.strMod, 1)
+    assert.strictEqual(z.dexMod, -2)
+    assert.strictEqual(z.conMod, 3)
   })
 
   it('resolves AC from object or number', () => {
     const bard = createCreature('gem_dragonborn_lore_bard_8')
-    expect(bard.ac).toBe(14)
+    assert.strictEqual(bard.ac, 14)
     const zombie = createCreature('zombie')
-    expect(zombie.ac).toBe(8)
+    assert.strictEqual(zombie.ac, 8)
   })
 
   it('includes runtime state fields', () => {
     const z = createCreature('zombie')
-    expect(z.conditions).toEqual([])
-    expect(z.concentrating).toBeNull()
-    expect(z.flying).toBe(false)
-    expect(z.usedAction).toBe(false)
-    expect(z.usedBonusAction).toBe(false)
-    expect(z.totalDamageDealt).toBe(0)
-    expect(z.totalDamageTaken).toBe(0)
+    assert.deepStrictEqual(z.conditions, [])
+    assert.strictEqual(z.concentrating, null)
+    assert.strictEqual(z.flying, false)
+    assert.strictEqual(z.usedAction, false)
+    assert.strictEqual(z.usedBonusAction, false)
+    assert.strictEqual(z.totalDamageDealt, 0)
+    assert.strictEqual(z.totalDamageTaken, 0)
   })
 
   it('deep clones weapons', () => {
     const z1 = createCreature('zombie')
     const z2 = createCreature('zombie')
     z1.weapons[0].name = 'MODIFIED'
-    expect(z2.weapons[0].name).toBe('Slam')
+    assert.strictEqual(z2.weapons[0].name, 'Slam')
   })
 
   it('sets movementRemaining from speed', () => {
     const z = createCreature('zombie')
-    expect(z.movementRemaining).toBe(20)
+    assert.strictEqual(z.movementRemaining, 20)
     const giant = createCreature('hill_giant')
-    expect(giant.movementRemaining).toBe(40)
+    assert.strictEqual(giant.movementRemaining, 40)
   })
 
   it('populates spellcasting for casters', () => {
     const mage = createCreature('mage')
-    expect(mage.spellSaveDC).toBe(14)
-    expect(mage.spellAttackBonus).toBe(6)
-    expect(mage.spellSlots).toBeDefined()
-    expect(mage.maxSlots).toBeDefined()
-    expect(mage.spellsKnown.length).toBeGreaterThan(0)
-    expect(mage.cantrips.length).toBeGreaterThan(0)
+    assert.strictEqual(mage.spellSaveDC, 14)
+    assert.strictEqual(mage.spellAttackBonus, 6)
+    assert.notStrictEqual(mage.spellSlots, undefined)
+    assert.notStrictEqual(mage.maxSlots, undefined)
+    assert.ok(mage.spellsKnown.length > 0)
+    assert.ok(mage.cantrips.length > 0)
   })
 
   it('non-casters lack spell fields', () => {
     const z = createCreature('zombie')
-    expect(z.spellSaveDC).toBeUndefined()
-    expect(z.spellSlots).toBeUndefined()
+    assert.strictEqual(z.spellSaveDC, undefined)
+    assert.strictEqual(z.spellSlots, undefined)
   })
 
   it('applies bardicInspiration', () => {
     const bard = createCreature('gem_dragonborn_lore_bard_8')
-    expect(bard.bardicInspiration).toBeDefined()
-    expect(bard.bardicInspirationUses).toBe(4)
+    assert.notStrictEqual(bard.bardicInspiration, undefined)
+    assert.strictEqual(bard.bardicInspirationUses, 4)
   })
 
   it('applies breathWeapon', () => {
     const dragon = createCreature('young_red_dragon')
-    expect(dragon.breathWeapon).toBeDefined()
-    expect(dragon.breathWeapon.damageType).toBe('fire')
+    assert.notStrictEqual(dragon.breathWeapon, undefined)
+    assert.strictEqual(dragon.breathWeapon.damageType, 'fire')
   })
 
   it('applies legendary features', () => {
     const lich = createCreature('lich')
-    expect(lich.legendaryResistance).toEqual({ uses: 3, max: 3 })
-    expect(lich.legendaryActions).toEqual({ uses: 3, max: 3 })
-    expect(lich.magicResistance).toBe(true)
-    expect(lich.immuneCharmed).toBe(true)
+    assert.deepStrictEqual(lich.legendaryResistance, { uses: 3, max: 3 })
+    assert.deepStrictEqual(lich.legendaryActions, { uses: 3, max: 3 })
+    assert.strictEqual(lich.magicResistance, true)
+    assert.strictEqual(lich.immuneCharmed, true)
   })
 
   it('flying tag starts airborne', () => {
     const dragon = createCreature('young_red_dragon')
-    expect(dragon.flying).toBe(true)
+    assert.strictEqual(dragon.flying, true)
     const zombie = createCreature('zombie')
-    expect(zombie.flying).toBe(false)
+    assert.strictEqual(zombie.flying, false)
   })
 
   it('accepts id name position overrides', () => {
     const z = createCreature('zombie', {
       id: 'z99', name: 'Rotten One', position: { x: 5, y: 3 },
     })
-    expect(z.id).toBe('z99')
-    expect(z.name).toBe('Rotten One')
-    expect(z.position).toEqual({ x: 5, y: 3 })
+    assert.strictEqual(z.id, 'z99')
+    assert.strictEqual(z.name, 'Rotten One')
+    assert.deepStrictEqual(z.position, { x: 5, y: 3 })
   })
 
   it('accepts arbitrary overrides', () => {
     const z = createCreature('zombie', { currentHP: 1 })
-    expect(z.currentHP).toBe(1)
+    assert.strictEqual(z.currentHP, 1)
   })
 
   it('deep clones spell slots', () => {
     const m1 = createCreature('mage')
     const m2 = createCreature('mage')
     m1.spellSlots[1] = 0
-    expect(m2.spellSlots[1]).toBe(4)
+    assert.strictEqual(m2.spellSlots[1], 4)
   })
 })
 
 describe('legacy API', () => {
   it('contains goblin', () => {
     const goblin = legacyCreatures.goblin
-    expect(goblin).toBeDefined()
-    expect(goblin.name).toBe('Goblin')
-    expect(goblin.challengeRating).toBe(0.25)
+    assert.notStrictEqual(goblin, undefined)
+    assert.strictEqual(goblin.name, 'Goblin')
+    assert.strictEqual(goblin.challengeRating, 0.25)
   })
 
   it('getCreature returns goblin', () => {
     const g = getCreature('goblin')
-    expect(g.name).toBe('Goblin')
+    assert.strictEqual(g.name, 'Goblin')
   })
 
   it('getCreature returns null for unknown', () => {
-    expect(getCreature('ancient_dragon')).toBeNull()
+    assert.strictEqual(getCreature('ancient_dragon'), null)
   })
 
   it('listCreatures returns keys', () => {
     const list = listCreatures()
-    expect(list).toContain('goblin')
+    assert.ok(list.includes('goblin'))
   })
 
   it('getCreaturesByCR filters correctly', () => {
     const lowCR = getCreaturesByCR(0, 1)
-    expect(lowCR.every(c => c.challengeRating <= 1)).toBe(true)
-    expect(lowCR.some(c => c.name === 'Goblin')).toBe(true)
+    assert.strictEqual(lowCR.every(c => c.challengeRating <= 1), true)
+    assert.strictEqual(lowCR.some(c => c.name === 'Goblin'), true)
   })
 })

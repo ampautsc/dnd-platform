@@ -18,12 +18,7 @@
     "./builds": "./src/builds/index.js"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "node --test __tests__/**/*.test.js",
     "build:npcs": "node scripts/generate-pop-culture-npcs.js"
-  },
-  "devDependencies": {
-    "vitest": "^3.1.1"
   }
 }

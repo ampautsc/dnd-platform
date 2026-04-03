@@ -211,5 +211,23 @@
       "Back in Tallgrove, the most exciting thing that happened was when old Grandpa Oakham's cow got into the temple garden. Here, exciting things happen every night. I like it. Except when people throw things.",
       "Coach said every bar has a personality. This one is loud and kind and a little bit messy. That is also how I would describe most of the people in it. Including me."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "Excuse me, could I please get a pint of ale? Thank you very kindly.",
+      "Did you ever know the old man who used to tend bar here? Everyone called him Coach.",
+      "I grew up on a farm in the countryside. Nothing like fresh air and honest work every day.",
+      "It is raining cats and dogs outside tonight! The weather is absolutely terrible.",
+      "You are doing a wonderful job with the drinks tonight. Really, keep it up, young man.",
+      "I do not know anyone in this town and I have nowhere to sleep tonight. I am a bit lost."
+    ],
+    "shouldNotReact": [
+      "The duke is consolidating power by blackmailing three of the five council members. We must act carefully.",
+      "The convergence of ley lines amplifies transmutation by a factor of seven. Consult Mordenkainen's writings.",
+      "The compound interest on the guild loan at twelve percent over eight years exceeds the principal by forty percent.",
+      "The contract specifies elimination of the target within seventy-two hours. Half up front, half on completion.",
+      "The fall of the Netherese Empire in negative three hundred fifty-eight Dale Reckoning altered the Weave fundamentally.",
+      "Hegel's dialectic argues that historical progress emerges from the synthesis of opposing contradictions."
+    ]
   }
 }

@@ -6,7 +6,9 @@
  * - preserves insertion order
  * - can return events since a given timestamp
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createGameLog } from '../../src/services/GameLog.js';
 
 describe('GameLog', () => {
@@ -17,10 +19,10 @@ describe('GameLog', () => {
     log.record({ type: 'scene.changed', payload: { scene: 'intro' }, timestamp: '2026-03-16T10:01:00.000Z' });
 
     const events = log.getAll();
-    expect(events).toHaveLength(2);
-    expect(events[0].type).toBe('session.started');
-    expect(events[1].type).toBe('scene.changed');
-    expect(events[0].timestamp).toBe('2026-03-16T10:00:00.000Z');
+    assert.strictEqual(events.length, 2);
+    assert.strictEqual(events[0].type, 'session.started');
+    assert.strictEqual(events[1].type, 'scene.changed');
+    assert.strictEqual(events[0].timestamp, '2026-03-16T10:00:00.000Z');
   });
 
   it('returns events since an iso timestamp', () => {
@@ -31,6 +33,6 @@ describe('GameLog', () => {
     log.record({ type: 'c', payload: {}, timestamp: '2026-03-16T10:10:00.000Z' });
 
     const events = log.getSince('2026-03-16T10:04:00.000Z');
-    expect(events.map((event) => event.type)).toEqual(['b', 'c']);
+    assert.deepStrictEqual(events.map((event) => event.type), ['b', 'c']);
   });
 });

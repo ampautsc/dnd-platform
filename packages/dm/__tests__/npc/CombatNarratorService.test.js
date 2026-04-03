@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { CombatNarratorService } from '../../src/npc/CombatNarratorService.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
 import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.js';
@@ -87,8 +89,8 @@ describe('CombatNarratorService', () => {
 
   describe('processStateTransition', () => {
     it('should return empty array for null inputs', async () => {
-      expect(await service.processStateTransition(null, null, null, null, null)).toEqual([]);
-      expect(await service.processStateTransition('s1', null, makeState([]), 'a', null)).toEqual([]);
+      assert.deepStrictEqual(await service.processStateTransition(null, null, null, null, null), []);
+      assert.deepStrictEqual(await service.processStateTransition('s1', null, makeState([]), 'a', null), []);
     });
 
     it('should detect NEAR_DEATH when HP drops to ≤ 25%', async () => {
@@ -107,8 +109,8 @@ describe('CombatNarratorService', () => {
         type: 'attack', targetId: 'bandit-1', hit: true,
       });
 
-      expect(result.length).toBeGreaterThanOrEqual(1);
-      expect(result[0]).toContain('Bandit Captain');
+      assert.ok(result.length >= 1);
+      assert.ok(result[0].includes('Bandit Captain'));
     });
 
     it('should detect ATTACKED when >25% maxHP damage dealt', async () => {
@@ -127,8 +129,8 @@ describe('CombatNarratorService', () => {
         type: 'attack', targetId: 'bandit-1', hit: true,
       });
 
-      expect(result.length).toBeGreaterThanOrEqual(1);
-      expect(result[0]).toContain('Bandit Captain');
+      assert.ok(result.length >= 1);
+      assert.ok(result[0].includes('Bandit Captain'));
     });
 
     it('should detect ALLY_DIED when teammate dies', async () => {
@@ -147,10 +149,10 @@ describe('CombatNarratorService', () => {
 
       const result = await service.processStateTransition('s1', prev, next, 'bandit-1', null);
 
-      expect(result.length).toBeGreaterThanOrEqual(1);
+      assert.ok(result.length >= 1);
       // Guard Sergeant should react to ally dying
       const sergeantNarration = result.find(r => r.includes('Guard Sergeant'));
-      expect(sergeantNarration).toBeDefined();
+      assert.notStrictEqual(sergeantNarration, undefined);
     });
 
     it('should detect ENEMY_DIED when foe dies', async () => {
@@ -167,9 +169,9 @@ describe('CombatNarratorService', () => {
 
       const result = await service.processStateTransition('s1', prev, next, 'guard-1', null);
 
-      expect(result.length).toBeGreaterThanOrEqual(1);
+      assert.ok(result.length >= 1);
       // Guard reacts to enemy dying
-      expect(result.find(r => r.includes('Town Guard'))).toBeDefined();
+      assert.notStrictEqual(result.find(r => r.includes('Town Guard')), undefined);
     });
 
     it('should skip player characters (non-NPC) for dialogue generation', async () => {
@@ -190,7 +192,7 @@ describe('CombatNarratorService', () => {
 
       // Player shouldn't generate dialogue even if near death
       const playerLine = result.find(r => r.includes('player-1'));
-      expect(playerLine).toBeUndefined();
+      assert.strictEqual(playerLine, undefined);
     });
 
     it('should skip combatants without personalities', async () => {
@@ -213,7 +215,7 @@ describe('CombatNarratorService', () => {
         type: 'attack', targetId: 'goblin-1', hit: true,
       });
 
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it('should deduplicate triggers — highest priority wins per combatant', async () => {
@@ -235,7 +237,7 @@ describe('CombatNarratorService', () => {
 
       // Should only get ONE narration for bandit (not two for ATTACKED + NEAR_DEATH)
       const banditLines = result.filter(r => r.includes('Bandit Captain'));
-      expect(banditLines).toHaveLength(1);
+      assert.strictEqual(banditLines.length, 1);
     });
   });
 
@@ -253,9 +255,9 @@ describe('CombatNarratorService', () => {
       const result = await service.processCombatEnd('s1', finalState);
 
       // Only the guard (alive) should speak
-      expect(result.length).toBeGreaterThanOrEqual(1);
-      expect(result.find(r => r.includes('Town Guard'))).toBeDefined();
-      expect(result.find(r => r.includes('Bandit Captain'))).toBeUndefined();
+      assert.ok(result.length >= 1);
+      assert.notStrictEqual(result.find(r => r.includes('Town Guard')), undefined);
+      assert.strictEqual(result.find(r => r.includes('Bandit Captain')), undefined);
     });
 
     it('should return empty array when no NPCs have personalities', async () => {
@@ -272,7 +274,7 @@ describe('CombatNarratorService', () => {
       ]);
 
       const result = await service2.processCombatEnd('s1', finalState);
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it('should skip dead combatants', async () => {
@@ -284,7 +286,7 @@ describe('CombatNarratorService', () => {
       ]);
 
       const result = await service.processCombatEnd('s1', finalState);
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
   });
 });

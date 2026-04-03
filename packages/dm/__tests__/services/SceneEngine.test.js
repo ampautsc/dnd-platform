@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, beforeEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { SceneEngine } from '../../src/services/SceneEngine.js';
 import { SceneNarrator } from '../../src/services/SceneNarrator.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
@@ -118,10 +120,10 @@ describe('SceneEngine', () => {
         worldContext: { location: 'Tavern', timeOfDay: 'evening', tone: 'casual' },
       });
 
-      expect(state.status).toBe('pending');
-      expect(state.id).toMatch(/^scene_/);
-      expect(state.participantCount).toBe(2);
-      expect(state.worldContext.location).toBe('Tavern');
+      assert.strictEqual(state.status, 'pending');
+      assert.match(state.id, /^scene_/);
+      assert.strictEqual(state.participantCount, 2);
+      assert.strictEqual(state.worldContext.location, 'Tavern');
     });
 
     it('should throw INVALID_INPUT if participants is empty', () => {
@@ -147,10 +149,10 @@ describe('SceneEngine', () => {
       });
 
       const started = engine.startScene(scene.id);
-      expect(started.status).toBe('active');
-      expect(started.round).toBe(1);
-      expect(started.initiativeOrder).toHaveLength(2);
-      expect(started.initiativeRolls.size).toBe(2);
+      assert.strictEqual(started.status, 'active');
+      assert.strictEqual(started.round, 1);
+      assert.strictEqual(started.initiativeOrder.length, 2);
+      assert.strictEqual(started.initiativeRolls.size, 2);
     });
 
     it('should throw SCENE_NOT_FOUND for unknown id', () => {
@@ -170,7 +172,7 @@ describe('SceneEngine', () => {
         ],
       });
       const fetched = engine.getScene(scene.id);
-      expect(fetched.id).toBe(scene.id);
+      assert.strictEqual(fetched.id, scene.id);
     });
 
     it('should throw SCENE_NOT_FOUND for unknown id', () => {
@@ -207,9 +209,9 @@ describe('SceneEngine', () => {
       const playerEntry = result.sceneState.transcript.find(
         t => t.participantId === 'player_1'
       );
-      expect(playerEntry).toBeDefined();
-      expect(playerEntry.content).toBe('Hello everyone!');
-      expect(playerEntry.type).toBe('speech');
+      assert.notStrictEqual(playerEntry, undefined);
+      assert.strictEqual(playerEntry.content, 'Hello everyone!');
+      assert.strictEqual(playerEntry.type, 'speech');
     });
 
     it('should auto-resolve NPC turns after player action', async () => {
@@ -219,13 +221,13 @@ describe('SceneEngine', () => {
       });
 
       // NPC actions should be generated
-      expect(result.npcActions.length).toBeGreaterThanOrEqual(1);
+      assert.ok(result.npcActions.length >= 1);
 
       // Transcript should have entries for NPCs
       const npcEntries = result.sceneState.transcript.filter(
         t => !t.participantId.startsWith('player')
       );
-      expect(npcEntries.length).toBeGreaterThanOrEqual(1);
+      assert.ok(npcEntries.length >= 1);
     });
 
     it('should reject action from wrong participant', async () => {
@@ -248,10 +250,10 @@ describe('SceneEngine', () => {
       });
 
       // Should have resolved both NPCs
-      expect(result.npcActions).toHaveLength(2);
+      assert.strictEqual(result.npcActions.length, 2);
 
       // After all NPCs go, it should be player's turn again
-      expect(result.sceneState.isPlayerTurn).toBe(true);
+      assert.strictEqual(result.sceneState.isPlayerTurn, true);
     });
 
     it('should increment round when turn order cycles', async () => {
@@ -259,13 +261,13 @@ describe('SceneEngine', () => {
       const r1 = await engine.submitAction(sceneId, 'player_1', {
         type: 'speech', content: 'Round 1.',
       });
-      expect(r1.sceneState.round).toBe(2);
+      assert.strictEqual(r1.sceneState.round, 2);
 
       // Second round
       const r2 = await engine.submitAction(sceneId, 'player_1', {
         type: 'speech', content: 'Round 2.',
       });
-      expect(r2.sceneState.round).toBe(3);
+      assert.strictEqual(r2.sceneState.round, 3);
     });
   });
 
@@ -282,8 +284,8 @@ describe('SceneEngine', () => {
       engine.startScene(scene.id);
 
       const ended = engine.endScene(scene.id, 'dm_ended');
-      expect(ended.status).toBe('ended');
-      expect(ended.endReason).toBe('dm_ended');
+      assert.strictEqual(ended.status, 'ended');
+      assert.strictEqual(ended.endReason, 'dm_ended');
     });
   });
 
@@ -305,8 +307,8 @@ describe('SceneEngine', () => {
 
       // Round 2 → should trigger cap
       const result = await engine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'R2' });
-      expect(result.sceneState.status).toBe('ended');
-      expect(result.sceneState.endReason).toBe('round_cap');
+      assert.strictEqual(result.sceneState.status, 'ended');
+      assert.strictEqual(result.sceneState.endReason, 'round_cap');
     });
   });
 
@@ -325,10 +327,10 @@ describe('SceneEngine', () => {
         ],
       });
       const list = engine.listScenes();
-      expect(list).toHaveLength(2);
-      expect(list[0]).toHaveProperty('sceneId');
-      expect(list[0]).toHaveProperty('status');
-      expect(list[0]).toHaveProperty('participantCount');
+      assert.strictEqual(list.length, 2);
+      assert.notStrictEqual(list[0]['sceneId'], undefined);
+      assert.notStrictEqual(list[0]['status'], undefined);
+      assert.notStrictEqual(list[0]['participantCount'], undefined);
     });
   });
 
@@ -347,13 +349,13 @@ describe('SceneEngine', () => {
 
       // Mira should go first
       const started = engine.getScene(scene.id);
-      expect(started.pendingAction).toBe('npc_mira');
+      assert.strictEqual(started.pendingAction, 'npc_mira');
 
       // Advance NPC turns
       const result = await engine.advanceNpcTurns(scene.id);
-      expect(result.sceneState.pendingAction).toBe('player_1');
-      expect(result.npcActions.length).toBeGreaterThanOrEqual(1);
-      expect(result.sceneState.transcript.length).toBeGreaterThanOrEqual(1);
+      assert.strictEqual(result.sceneState.pendingAction, 'player_1');
+      assert.ok(result.npcActions.length >= 1);
+      assert.ok(result.sceneState.transcript.length >= 1);
     });
 
     it('should resolve multiple NPC turns before the player', async () => {
@@ -368,8 +370,8 @@ describe('SceneEngine', () => {
       engine.startScene(scene.id);
 
       const result = await engine.advanceNpcTurns(scene.id);
-      expect(result.npcActions).toHaveLength(2);
-      expect(result.sceneState.pendingAction).toBe('player_1');
+      assert.strictEqual(result.npcActions.length, 2);
+      assert.strictEqual(result.sceneState.pendingAction, 'player_1');
     });
 
     it('should be a no-op when it is already the player turn (except scene opening)', async () => {
@@ -382,11 +384,11 @@ describe('SceneEngine', () => {
       engine.startScene(scene.id);
 
       const result = await engine.advanceNpcTurns(scene.id);
-      expect(result.npcActions).toHaveLength(0);
+      assert.strictEqual(result.npcActions.length, 0);
       // Scene opening narration is added even when no NPCs act
       const dmEntries = result.sceneState.transcript.filter(e => e.participantId === 'dm');
-      expect(dmEntries.length).toBeGreaterThanOrEqual(1);
-      expect(result.sceneState.pendingAction).toBe('player_1');
+      assert.ok(dmEntries.length >= 1);
+      assert.strictEqual(result.sceneState.pendingAction, 'player_1');
     });
   });
 
@@ -404,9 +406,9 @@ describe('SceneEngine', () => {
 
       const result = await engine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello!' });
       // Private transcript should contain raw NPC output
-      expect(result.sceneState.privateTranscript.length).toBeGreaterThanOrEqual(1);
+      assert.ok(result.sceneState.privateTranscript.length >= 1);
       const npcEntry = result.sceneState.privateTranscript.find(e => e.participantId === 'npc_mira');
-      expect(npcEntry).toBeDefined();
+      assert.notStrictEqual(npcEntry, undefined);
     });
 
     it('should store player actions in both transcripts', async () => {
@@ -422,8 +424,8 @@ describe('SceneEngine', () => {
       // Player action should be in both transcripts
       const playerInPrivate = result.sceneState.privateTranscript.find(e => e.participantId === 'player_1');
       const playerInPublic = result.sceneState.transcript.find(e => e.participantId === 'player_1');
-      expect(playerInPrivate).toBeDefined();
-      expect(playerInPublic).toBeDefined();
+      assert.notStrictEqual(playerInPrivate, undefined);
+      assert.notStrictEqual(playerInPublic, undefined);
     });
 
     it('should include DM narration in public transcript for NPC turns', async () => {
@@ -438,8 +440,8 @@ describe('SceneEngine', () => {
       const result = await engine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello!' });
       // Public transcript should have a DM narration entry (not raw NPC output)
       const dmEntry = result.sceneState.transcript.find(e => e.participantId === 'dm');
-      expect(dmEntry).toBeDefined();
-      expect(dmEntry.type).toBe('narration');
+      assert.notStrictEqual(dmEntry, undefined);
+      assert.strictEqual(dmEntry.type, 'narration');
     });
   });
 
@@ -473,7 +475,7 @@ describe('SceneEngine', () => {
         for (const msg of userMessages) {
           if (msg.content.includes('Mira')) {
             // Should see the action type label but not raw inner narrative dump
-            expect(msg.content).not.toContain('thinking about secrets');
+            assert.ok(!msg.content.includes('thinking about secrets'));
           }
         }
       }
@@ -496,7 +498,7 @@ describe('SceneEngine', () => {
 
       const result = await engine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello!' });
       // Mira should have been removed from participants after leaving
-      expect(result.sceneState.allParticipants.find(p => p.id === 'npc_mira')).toBeUndefined();
+      assert.strictEqual(result.sceneState.allParticipants.find(p => p.id === 'npc_mira'), undefined);
     });
 
     it('should handle all NPCs leaving (scene should end or player is alone)', async () => {
@@ -512,8 +514,8 @@ describe('SceneEngine', () => {
 
       const result = await engine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Bye!' });
       // Scene should end when no NPCs remain
-      expect(result.sceneState.status).toBe('ended');
-      expect(result.sceneState.endReason).toBe('all_left');
+      assert.strictEqual(result.sceneState.status, 'ended');
+      assert.strictEqual(result.sceneState.endReason, 'all_left');
     });
   });
 
@@ -570,11 +572,11 @@ describe('SceneEngine', () => {
 
       await locEngine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello!' });
 
-      expect(capturedSystemPrompt).not.toBeNull();
-      expect(capturedSystemPrompt).toContain("The Bottom's Up");
-      expect(capturedSystemPrompt).toContain('Warm lantern glow');
-      expect(capturedSystemPrompt).toContain('Clinking glasses');
-      expect(capturedSystemPrompt).toContain('Fresh bread');
+      assert.notStrictEqual(capturedSystemPrompt, null);
+      assert.ok(capturedSystemPrompt.includes("The Bottom's Up"));
+      assert.ok(capturedSystemPrompt.includes('Warm lantern glow'));
+      assert.ok(capturedSystemPrompt.includes('Clinking glasses'));
+      assert.ok(capturedSystemPrompt.includes('Fresh bread'));
     });
 
     it('should include time of day in NPC prompt when worldContext has timeOfDay', async () => {
@@ -609,8 +611,8 @@ describe('SceneEngine', () => {
 
       await locEngine.submitAction(scene.id, 'player_1', { type: 'speech', content: 'Hello!' });
 
-      expect(capturedSystemPrompt).not.toBeNull();
-      expect(capturedSystemPrompt).toContain('late evening');
+      assert.notStrictEqual(capturedSystemPrompt, null);
+      assert.ok(capturedSystemPrompt.includes('late evening'));
     });
 
     it('should include scene premise in first NPC message when provided', async () => {
@@ -646,10 +648,10 @@ describe('SceneEngine', () => {
       // NPC goes first — they should see the scene premise
       await locEngine.advanceNpcTurns(scene.id);
 
-      expect(capturedMessages).not.toBeNull();
+      assert.notStrictEqual(capturedMessages, null);
       const firstMsg = capturedMessages[0];
-      expect(firstMsg.role).toBe('user');
-      expect(firstMsg.content).toContain('dragonborn pushes open the tavern door');
+      assert.strictEqual(firstMsg.role, 'user');
+      assert.ok(firstMsg.content.includes('dragonborn pushes open the tavern door'));
     });
   });
 
@@ -694,8 +696,8 @@ describe('SceneEngine', () => {
       });
 
       const rel = repo.getRelationship('player', 'mira');
-      expect(rel).not.toBeNull();
-      expect(rel.displayLabel).toBe('a compact halfling standing on a step-stool behind the bar');
+      assert.notStrictEqual(rel, null);
+      assert.strictEqual(rel.displayLabel, 'a compact halfling standing on a step-stool behind the bar');
     });
 
     it('should promote stranger NPCs to recognized when scene is created', () => {
@@ -707,7 +709,7 @@ describe('SceneEngine', () => {
       });
 
       const rel = repo.getRelationship('player', 'mira');
-      expect(rel.recognitionTier).toBe('recognized');
+      assert.strictEqual(rel.recognitionTier, 'recognized');
     });
 
     it('should not overwrite existing display labels on repeated scene creation', () => {
@@ -726,7 +728,7 @@ describe('SceneEngine', () => {
       });
 
       const rel = repo.getRelationship('player', 'mira');
-      expect(rel.displayLabel).toBe('the cheerful barmaid');
+      assert.strictEqual(rel.displayLabel, 'the cheerful barmaid');
     });
 
     it('should use display labels in npcActions when NPC is a stranger/recognized', async () => {
@@ -743,9 +745,9 @@ describe('SceneEngine', () => {
       });
 
       const miraAction = result.npcActions.find(a => a.participantId === 'npc_mira');
-      expect(miraAction).toBeDefined();
-      expect(miraAction.participantName).toBe('a compact halfling standing on a step-stool behind the bar');
-      expect(miraAction.participantName).not.toBe('Mira');
+      assert.notStrictEqual(miraAction, undefined);
+      assert.strictEqual(miraAction.participantName, 'a compact halfling standing on a step-stool behind the bar');
+      assert.notStrictEqual(miraAction.participantName, 'Mira');
     });
 
     it('should use real names in npcActions when NPC is acquaintance', async () => {
@@ -770,7 +772,7 @@ describe('SceneEngine', () => {
       });
 
       const miraAction = result.npcActions.find(a => a.participantId === 'npc_mira');
-      expect(miraAction.participantName).toBe('Mira');
+      assert.strictEqual(miraAction.participantName, 'Mira');
     });
 
     it('should use display labels in public transcript entries', async () => {
@@ -803,9 +805,9 @@ describe('SceneEngine', () => {
 
       // Public transcript NPC entry should use display label
       const miraEntry = result.sceneState.transcript.find(e => e.participantId === 'npc_mira');
-      expect(miraEntry).toBeDefined();
-      expect(miraEntry.participantName).toBe('a stranger in the crowd');
-      expect(miraEntry.participantName).not.toBe('Mira');
+      assert.notStrictEqual(miraEntry, undefined);
+      assert.strictEqual(miraEntry.participantName, 'a stranger in the crowd');
+      assert.notStrictEqual(miraEntry.participantName, 'Mira');
     });
 
     it('should keep real names in private transcript entries', async () => {
@@ -823,12 +825,12 @@ describe('SceneEngine', () => {
 
       // Private transcript should keep real names (for DM/engine use)
       const miraPrivate = result.sceneState.privateTranscript.find(e => e.participantId === 'npc_mira');
-      expect(miraPrivate).toBeDefined();
-      expect(miraPrivate.participantName).toBe('Mira');
+      assert.notStrictEqual(miraPrivate, undefined);
+      assert.strictEqual(miraPrivate.participantName, 'Mira');
     });
 
     it('should pass display labels to SceneNarrator in npcActions', async () => {
-      const narratorSpy = vi.spyOn(deps.sceneNarrator, 'narrateNpcBatch');
+      const narratorSpy = mock.method(deps.sceneNarrator, 'narrateNpcBatch');
 
       const scene = repoEngine.createScene({
         participants: [
@@ -842,10 +844,10 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Hello!',
       });
 
-      expect(narratorSpy).toHaveBeenCalled();
+      assert.ok(narratorSpy.mock.calls.length > 0);
       const callArgs = narratorSpy.mock.calls[0][0];
       const miraAction = callArgs.npcActions.find(a => a.participantId === 'npc_mira');
-      expect(miraAction.participantName).toBe('a compact halfling standing on a step-stool behind the bar');
+      assert.strictEqual(miraAction.participantName, 'a compact halfling standing on a step-stool behind the bar');
     });
 
     it('should resolve participant names in resolveForPlayer output', () => {
@@ -864,9 +866,9 @@ describe('SceneEngine', () => {
       const lell = resolved.participants.find(p => p.id === 'npc_lell');
       const player = resolved.participants.find(p => p.id === 'player_1');
 
-      expect(mira.name).toBe('a compact halfling standing on a step-stool behind the bar');
-      expect(lell.name).toBe('a lean figure in a patched traveling cloak, lute on their back');
-      expect(player.name).toBe('Thorn'); // Player name unchanged
+      assert.strictEqual(mira.name, 'a compact halfling standing on a step-stool behind the bar');
+      assert.strictEqual(lell.name, 'a lean figure in a patched traveling cloak, lute on their back');
+      assert.strictEqual(player.name, 'Thorn'); // Player name unchanged
     });
 
     it('should resolve names in advanceNpcTurns npcActions', async () => {
@@ -881,8 +883,8 @@ describe('SceneEngine', () => {
 
       const result = await repoEngine.advanceNpcTurns(scene.id);
       const miraAction = result.npcActions.find(a => a.participantId === 'npc_mira');
-      expect(miraAction).toBeDefined();
-      expect(miraAction.participantName).toBe('a compact halfling standing on a step-stool behind the bar');
+      assert.notStrictEqual(miraAction, undefined);
+      assert.strictEqual(miraAction.participantName, 'a compact halfling standing on a step-stool behind the bar');
     });
 
     it('should still work without relationshipRepo (backward compat)', async () => {
@@ -900,7 +902,7 @@ describe('SceneEngine', () => {
       });
 
       const miraAction = result.npcActions.find(a => a.participantId === 'npc_mira');
-      expect(miraAction.participantName).toBe('Mira');
+      assert.strictEqual(miraAction.participantName, 'Mira');
     });
   });
 
@@ -943,15 +945,15 @@ describe('SceneEngine', () => {
       });
 
       // Verify narrator received inner state data
-      expect(capturedBatchArgs).toBeDefined();
-      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
-      expect(capturedBatchArgs.npcInnerStates.length).toBe(1);
+      assert.notStrictEqual(capturedBatchArgs, undefined);
+      assert.notStrictEqual(capturedBatchArgs.npcInnerStates, undefined);
+      assert.strictEqual(capturedBatchArgs.npcInnerStates.length, 1);
 
       const miraState = capturedBatchArgs.npcInnerStates[0];
-      expect(miraState.displayName).toBe('Mira');
-      expect(miraState.mood).toBe('content but watchful');
-      expect(miraState.currentActivity).toBe('Wiping down the bar');
-      expect(miraState.consciousWant).toBe('Peace');
+      assert.strictEqual(miraState.displayName, 'Mira');
+      assert.strictEqual(miraState.mood, 'content but watchful');
+      assert.strictEqual(miraState.currentActivity, 'Wiping down the bar');
+      assert.strictEqual(miraState.consciousWant, 'Peace');
     });
 
     it('should include secrets from personality data in inner states', async () => {
@@ -992,9 +994,9 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Who are you?',
       });
 
-      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
+      assert.notStrictEqual(capturedBatchArgs.npcInnerStates, undefined);
       const spyState = capturedBatchArgs.npcInnerStates[0];
-      expect(spyState.secrets).toContain('Works for the Shadow Guild');
+      assert.ok(spyState.secrets.includes('Works for the Shadow Guild'));
     });
 
     it('should include gender, race, and appearance data from personality in inner states', async () => {
@@ -1048,15 +1050,15 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Hello.',
       });
 
-      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
+      assert.notStrictEqual(capturedBatchArgs.npcInnerStates, undefined);
       const miraState = capturedBatchArgs.npcInnerStates[0];
-      expect(miraState.gender).toBe('female');
-      expect(miraState.race).toBe('Halfling');
-      expect(miraState.appearance).toBeDefined();
-      expect(miraState.appearance.build).toBe('Compact and sturdy, halfling frame');
-      expect(miraState.appearance.hair).toBe('Curly auburn, pinned back with a wooden clip');
-      expect(miraState.appearance.typicalAttire).toBe('A practical dress with rolled sleeves');
-      expect(miraState.appearance.distinguishingFeatures).toContain('Constantly wiping her hands on a worn apron');
+      assert.strictEqual(miraState.gender, 'female');
+      assert.strictEqual(miraState.race, 'Halfling');
+      assert.notStrictEqual(miraState.appearance, undefined);
+      assert.strictEqual(miraState.appearance.build, 'Compact and sturdy, halfling frame');
+      assert.strictEqual(miraState.appearance.hair, 'Curly auburn, pinned back with a wooden clip');
+      assert.strictEqual(miraState.appearance.typicalAttire, 'A practical dress with rolled sleeves');
+      assert.ok(miraState.appearance.distinguishingFeatures.includes('Constantly wiping her hands on a worn apron'));
     });
   });
 
@@ -1135,25 +1137,25 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Hello.',
       });
 
-      expect(capturedBatchArgs.npcInnerStates).toBeDefined();
-      expect(capturedBatchArgs.npcInnerStates.length).toBeGreaterThanOrEqual(2);
+      assert.notStrictEqual(capturedBatchArgs.npcInnerStates, undefined);
+      assert.ok(capturedBatchArgs.npcInnerStates.length >= 2);
 
       const miraState = capturedBatchArgs.npcInnerStates.find(s => s.displayName === 'the halfling behind the bar');
-      expect(miraState).toBeDefined();
-      expect(miraState.relationships).toBeDefined();
-      expect(miraState.relationships.length).toBeGreaterThanOrEqual(1);
+      assert.notStrictEqual(miraState, undefined);
+      assert.notStrictEqual(miraState.relationships, undefined);
+      assert.ok(miraState.relationships.length >= 1);
 
       const miraToFen = miraState.relationships.find(r => r.targetDisplayName === 'a quiet man at the bar');
-      expect(miraToFen).toBeDefined();
-      expect(miraToFen.opinion).toBe('Part of the furniture. Mostly harmless. Occasionally useful.');
-      expect(miraToFen.recognitionTier).toBe('familiar');
+      assert.notStrictEqual(miraToFen, undefined);
+      assert.strictEqual(miraToFen.opinion, 'Part of the furniture. Mostly harmless. Occasionally useful.');
+      assert.strictEqual(miraToFen.recognitionTier, 'familiar');
 
       const fenState = capturedBatchArgs.npcInnerStates.find(s => s.displayName === 'a quiet man at the bar');
-      expect(fenState).toBeDefined();
-      expect(fenState.relationships).toBeDefined();
+      assert.notStrictEqual(fenState, undefined);
+      assert.notStrictEqual(fenState.relationships, undefined);
       const fenToMira = fenState.relationships.find(r => r.targetDisplayName === 'the halfling behind the bar');
-      expect(fenToMira).toBeDefined();
-      expect(fenToMira.opinion).toBe('Tolerates me. Kinder than she has to be.');
+      assert.notStrictEqual(fenToMira, undefined);
+      assert.strictEqual(fenToMira.opinion, 'Tolerates me. Kinder than she has to be.');
     });
 
     it('should return null relationships when no repo is wired', async () => {
@@ -1187,7 +1189,7 @@ describe('SceneEngine', () => {
       });
 
       const miraState = capturedBatchArgs.npcInnerStates[0];
-      expect(miraState.relationships).toBeNull();
+      assert.strictEqual(miraState.relationships, null);
     });
   });
 
@@ -1224,10 +1226,10 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Good evening, may I have an ale?',
       });
 
-      expect(capturedBatchArgs).toBeDefined();
-      expect(capturedBatchArgs.playerAction).toBeDefined();
-      expect(capturedBatchArgs.playerAction.type).toBe('speech');
-      expect(capturedBatchArgs.playerAction.content).toBe('Good evening, may I have an ale?');
+      assert.notStrictEqual(capturedBatchArgs, undefined);
+      assert.notStrictEqual(capturedBatchArgs.playerAction, undefined);
+      assert.strictEqual(capturedBatchArgs.playerAction.type, 'speech');
+      assert.strictEqual(capturedBatchArgs.playerAction.content, 'Good evening, may I have an ale?');
     });
   });
 
@@ -1262,8 +1264,8 @@ describe('SceneEngine', () => {
       innerEngine.startScene(scene.id);
       await innerEngine.advanceNpcTurns(scene.id);
 
-      expect(capturedArgs).toBeDefined();
-      expect(capturedArgs.sceneId).toBe(scene.id);
+      assert.notStrictEqual(capturedArgs, undefined);
+      assert.strictEqual(capturedArgs.sceneId, scene.id);
     });
 
     it('should pass sceneId to narrateNpcBatch in advanceNpcTurns', async () => {
@@ -1294,8 +1296,8 @@ describe('SceneEngine', () => {
       innerEngine.startScene(scene.id);
       await innerEngine.advanceNpcTurns(scene.id);
 
-      expect(capturedBatchArgs).toBeDefined();
-      expect(capturedBatchArgs.sceneId).toBe(scene.id);
+      assert.notStrictEqual(capturedBatchArgs, undefined);
+      assert.strictEqual(capturedBatchArgs.sceneId, scene.id);
     });
 
     it('should pass sceneId to narrateNpcBatch in submitAction', async () => {
@@ -1328,8 +1330,8 @@ describe('SceneEngine', () => {
         type: 'speech', content: 'Hello!',
       });
 
-      expect(capturedBatchArgs).toBeDefined();
-      expect(capturedBatchArgs.sceneId).toBe(scene.id);
+      assert.notStrictEqual(capturedBatchArgs, undefined);
+      assert.strictEqual(capturedBatchArgs.sceneId, scene.id);
     });
 
     it('should clear narrator history on endScene', async () => {
@@ -1361,14 +1363,14 @@ describe('SceneEngine', () => {
 
       // After opening, narrator should have history
       const historyBefore = narrator.getNarratorHistory(scene.id);
-      expect(historyBefore.length).toBeGreaterThan(0);
+      assert.ok(historyBefore.length > 0);
 
       // End the scene
       innerEngine.endScene(scene.id, 'player_left');
 
       // History should be cleared
       const historyAfter = narrator.getNarratorHistory(scene.id);
-      expect(historyAfter.length).toBe(0);
+      assert.strictEqual(historyAfter.length, 0);
     });
   });
 });

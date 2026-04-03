@@ -7,7 +7,9 @@
  * - falls back to nearest earlier hour when exact hour missing
  * - returns null for unknown NPC
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createNpcScheduler } from '../../src/npcs/NpcScheduler.js';
 
 const schedules = {
@@ -23,23 +25,23 @@ describe('NpcScheduler', () => {
   it('returns exact hour schedule when available', () => {
     const scheduler = createNpcScheduler({ schedules });
     const state = scheduler.getNpcStateAtHour('bree-millhaven', 8);
-    expect(state).toEqual({ location: 'Bakery', activity: 'Baking', mood: 'focused' });
+    assert.deepStrictEqual(state, { location: 'Bakery', activity: 'Baking', mood: 'focused' });
   });
 
   it('falls back to nearest earlier hour when exact hour is missing', () => {
     const scheduler = createNpcScheduler({ schedules });
     const state = scheduler.getNpcStateAtHour('bree-millhaven', 10);
-    expect(state).toEqual({ location: 'Bakery', activity: 'Baking', mood: 'focused' });
+    assert.deepStrictEqual(state, { location: 'Bakery', activity: 'Baking', mood: 'focused' });
   });
 
   it('wraps around to previous day for early hours with no earlier entry', () => {
     const scheduler = createNpcScheduler({ schedules });
     const state = scheduler.getNpcStateAtHour('bree-millhaven', 1);
-    expect(state).toEqual({ location: 'Home', activity: 'Sleeping', mood: 'calm' });
+    assert.deepStrictEqual(state, { location: 'Home', activity: 'Sleeping', mood: 'calm' });
   });
 
   it('returns null for unknown npc', () => {
     const scheduler = createNpcScheduler({ schedules });
-    expect(scheduler.getNpcStateAtHour('unknown-npc', 8)).toBeNull();
+    assert.strictEqual(scheduler.getNpcStateAtHour('unknown-npc', 8), null);
   });
 });

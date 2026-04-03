@@ -18,6 +18,7 @@ import { getCreature, listCreatures, createCreature } from '@dnd-platform/conten
 import { getAllItems, getItem } from '@dnd-platform/content/items';
 import { getSpecies, getAllSpeciesSlugs } from '@dnd-platform/content/species';
 import { getNpc, getAllNpcKeys } from '@dnd-platform/content/npcs';
+import { getLocation } from '@dnd-platform/content/locations';
 
 export function createContentRoutes() {
   const router = Router();
@@ -93,6 +94,13 @@ export function createContentRoutes() {
     const npc = getNpc(req.params.key);
     if (!npc) return res.status(404).json({ error: 'NPC not found' });
     res.json({ npc });
+  });
+
+  // Locations
+  router.get('/locations/:id', (req, res) => {
+    const location = getLocation(req.params.id);
+    if (!location) return res.status(404).json({ error: 'Location not found' });
+    res.json(location);
   });
 
   return router;

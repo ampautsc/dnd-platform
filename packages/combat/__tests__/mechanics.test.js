@@ -3,12 +3,13 @@
  * Tests saving throws, attack rolls, damage, concentration, conditions, breakConcentration.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, it, before, after } from 'node:test';
+import assert from 'node:assert/strict';
 import * as dice from '../src/engine/dice.js'
 import * as mech from '../src/engine/mechanics.js'
 
-beforeAll(() => dice.setDiceMode('average'))
-afterAll(() => dice.setDiceMode('random'))
+before(() => dice.setDiceMode('average'))
+after(() => dice.setDiceMode('random'))
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Helper — minimal creature for testing
@@ -38,18 +39,18 @@ function makeCreature(overrides = {}) {
 describe('makeAbilityCheck', () => {
   it('succeeds when total >= DC', () => {
     const result = mech.makeAbilityCheck(3, 13)
-    expect(result.roll).toBe(10.5)
-    expect(result.total).toBe(13.5)
-    expect(result.dc).toBe(13)
-    expect(result.success).toBe(true)
+    assert.strictEqual(result.roll, 10.5)
+    assert.strictEqual(result.total, 13.5)
+    assert.strictEqual(result.dc, 13)
+    assert.strictEqual(result.success, true)
   })
 
   it('fails when total < DC', () => {
-    expect(mech.makeAbilityCheck(0, 15).success).toBe(false)
+    assert.strictEqual(mech.makeAbilityCheck(0, 15).success, false)
   })
 
   it('succeeds when total exactly equals DC', () => {
-    expect(mech.makeAbilityCheck(5, 15).success).toBe(true)
+    assert.strictEqual(mech.makeAbilityCheck(5, 15).success, true)
   })
 })
 
@@ -60,39 +61,39 @@ describe('makeAbilityCheck', () => {
 describe('makeSavingThrow', () => {
   it('normal save — no advantage or disadvantage', () => {
     const result = mech.makeSavingThrow(5, 14)
-    expect(result.result).toBe(10.5)
-    expect(result.saveBonus).toBe(5)
-    expect(result.total).toBe(15.5)
-    expect(result.success).toBe(true)
-    expect(result.type).toBe('normal')
+    assert.strictEqual(result.result, 10.5)
+    assert.strictEqual(result.saveBonus, 5)
+    assert.strictEqual(result.total, 15.5)
+    assert.strictEqual(result.success, true)
+    assert.strictEqual(result.type, 'normal')
   })
 
   it('save fails when total < DC', () => {
     const result = mech.makeSavingThrow(0, 14)
-    expect(result.total).toBe(10.5)
-    expect(result.saveBonus).toBe(0)
-    expect(result.success).toBe(false)
+    assert.strictEqual(result.total, 10.5)
+    assert.strictEqual(result.saveBonus, 0)
+    assert.strictEqual(result.success, false)
   })
 
   it('returns saveBonus in result', () => {
     const result = mech.makeSavingThrow(-1, 10)
-    expect(result.saveBonus).toBe(-1)
-    expect(typeof result.saveBonus).toBe('number')
-    expect(result.total).toBe(10.5 + (-1))
+    assert.strictEqual(result.saveBonus, -1)
+    assert.strictEqual(typeof result.saveBonus, 'number')
+    assert.strictEqual(result.total, 10.5 + (-1))
   })
 
   it('advantage save returns type "advantage"', () => {
     const result = mech.makeSavingThrow(3, 10, true, false)
-    expect(result.type).toBe('advantage')
-    expect(result.success).toBe(true)
+    assert.strictEqual(result.type, 'advantage')
+    assert.strictEqual(result.success, true)
   })
 
   it('disadvantage save returns type "disadvantage"', () => {
-    expect(mech.makeSavingThrow(3, 10, false, true).type).toBe('disadvantage')
+    assert.strictEqual(mech.makeSavingThrow(3, 10, false, true).type, 'disadvantage')
   })
 
   it('both advantage and disadvantage cancel to normal', () => {
-    expect(mech.makeSavingThrow(3, 10, true, true).type).toBe('normal')
+    assert.strictEqual(mech.makeSavingThrow(3, 10, true, true).type, 'normal')
   })
 })
 
@@ -103,42 +104,42 @@ describe('makeSavingThrow', () => {
 describe('makeAttackRoll', () => {
   it('hits when total >= target AC', () => {
     const result = mech.makeAttackRoll(5, 15)
-    expect(result.natural).toBe(10.5)
-    expect(result.total).toBe(15.5)
-    expect(result.hits).toBe(true)
-    expect(result.isCrit).toBe(false)
-    expect(result.isMiss).toBe(false)
+    assert.strictEqual(result.natural, 10.5)
+    assert.strictEqual(result.total, 15.5)
+    assert.strictEqual(result.hits, true)
+    assert.strictEqual(result.isCrit, false)
+    assert.strictEqual(result.isMiss, false)
   })
 
   it('misses when total < target AC', () => {
-    expect(mech.makeAttackRoll(2, 15).hits).toBe(false)
+    assert.strictEqual(mech.makeAttackRoll(2, 15).hits, false)
   })
 
   it('advantage sets type correctly', () => {
-    expect(mech.makeAttackRoll(5, 15, true, false).type).toBe('advantage')
+    assert.strictEqual(mech.makeAttackRoll(5, 15, true, false).type, 'advantage')
   })
 
   it('disadvantage sets type correctly', () => {
-    expect(mech.makeAttackRoll(5, 15, false, true).type).toBe('disadvantage')
+    assert.strictEqual(mech.makeAttackRoll(5, 15, false, true).type, 'disadvantage')
   })
 
   it('both cancel to normal', () => {
-    expect(mech.makeAttackRoll(5, 15, true, true).type).toBe('normal')
+    assert.strictEqual(mech.makeAttackRoll(5, 15, true, true).type, 'normal')
   })
 })
 
 describe('makeAttackRoll — natural 20 and natural 1 (random mode)', () => {
-  beforeAll(() => dice.setDiceMode('random'))
-  afterAll(() => dice.setDiceMode('average'))
+  before(() => dice.setDiceMode('random'))
+  after(() => dice.setDiceMode('average'))
 
   it('natural 20 always hits regardless of AC', () => {
     const orig = Math.random
     Math.random = () => (20 - 1) / 20
     try {
       const result = mech.makeAttackRoll(0, 30)
-      expect(result.natural).toBe(20)
-      expect(result.isCrit).toBe(true)
-      expect(result.hits).toBe(true)
+      assert.strictEqual(result.natural, 20)
+      assert.strictEqual(result.isCrit, true)
+      assert.strictEqual(result.hits, true)
     } finally {
       Math.random = orig
     }
@@ -149,9 +150,9 @@ describe('makeAttackRoll — natural 20 and natural 1 (random mode)', () => {
     Math.random = () => 0
     try {
       const result = mech.makeAttackRoll(30, 10)
-      expect(result.natural).toBe(1)
-      expect(result.isMiss).toBe(true)
-      expect(result.hits).toBe(false)
+      assert.strictEqual(result.natural, 1)
+      assert.strictEqual(result.isMiss, true)
+      assert.strictEqual(result.hits, false)
     } finally {
       Math.random = orig
     }
@@ -165,34 +166,34 @@ describe('makeAttackRoll — natural 20 and natural 1 (random mode)', () => {
 describe('rollDamage', () => {
   it('1d8+3 in average mode = 4.5 + 3 = 7.5', () => {
     const result = mech.rollDamage('1d8', 3)
-    expect(result.rolls).toEqual([4.5])
-    expect(result.bonus).toBe(3)
-    expect(result.total).toBe(7.5)
-    expect(result.crit).toBe(false)
+    assert.deepStrictEqual(result.rolls, [4.5])
+    assert.strictEqual(result.bonus, 3)
+    assert.strictEqual(result.total, 7.5)
+    assert.strictEqual(result.crit, false)
   })
 
   it('2d6+2 in average mode = 7 + 2 = 9', () => {
     const result = mech.rollDamage('2d6', 2)
-    expect(result.rolls).toEqual([3.5, 3.5])
-    expect(result.total).toBe(9)
+    assert.deepStrictEqual(result.rolls, [3.5, 3.5])
+    assert.strictEqual(result.total, 9)
   })
 
   it('crit doubles dice count: 1d8 crit → 2d8', () => {
     const result = mech.rollDamage('1d8', 3, true)
-    expect(result.rolls.length).toBe(2)
-    expect(result.rolls).toEqual([4.5, 4.5])
-    expect(result.total).toBe(12) // 4.5+4.5+3
-    expect(result.crit).toBe(true)
+    assert.strictEqual(result.rolls.length, 2)
+    assert.deepStrictEqual(result.rolls, [4.5, 4.5])
+    assert.strictEqual(result.total, 12) // 4.5+4.5+3
+    assert.strictEqual(result.crit, true)
   })
 
   it('3d10 crit → 6d10', () => {
     const result = mech.rollDamage('3d10', 0, true)
-    expect(result.rolls.length).toBe(6)
-    expect(result.total).toBe(33) // 6*5.5
+    assert.strictEqual(result.rolls.length, 6)
+    assert.strictEqual(result.total, 33) // 6*5.5
   })
 
   it('rejects invalid dice string', () => {
-    expect(() => mech.rollDamage('banana', 0)).toThrow(/Invalid dice string/)
+    assert.throws(() => mech.rollDamage('banana', 0), /Invalid dice string/)
   })
 })
 
@@ -204,27 +205,27 @@ describe('concentrationSave', () => {
   it('DC is 10 for low damage', () => {
     const creature = makeCreature({ saves: { con: 5 } })
     const result = mech.concentrationSave(creature, 8)
-    expect(result.dc).toBe(10)
-    expect(result.total).toBe(15.5)
-    expect(result.success).toBe(true)
+    assert.strictEqual(result.dc, 10)
+    assert.strictEqual(result.total, 15.5)
+    assert.strictEqual(result.success, true)
   })
 
   it('DC scales with high damage', () => {
     const creature = makeCreature({ saves: { con: 2 } })
     const result = mech.concentrationSave(creature, 30)
-    expect(result.dc).toBe(15)
-    expect(result.total).toBe(12.5)
-    expect(result.success).toBe(false)
+    assert.strictEqual(result.dc, 15)
+    assert.strictEqual(result.total, 12.5)
+    assert.strictEqual(result.success, false)
   })
 
   it('War Caster grants advantage', () => {
     const creature = makeCreature({ saves: { con: 3 }, hasWarCaster: true })
-    expect(mech.concentrationSave(creature, 10).type).toBe('advantage')
+    assert.strictEqual(mech.concentrationSave(creature, 10).type, 'advantage')
   })
 
   it('no War Caster = normal roll', () => {
     const creature = makeCreature({ saves: { con: 3 } })
-    expect(mech.concentrationSave(creature, 10).type).toBe('normal')
+    assert.strictEqual(mech.concentrationSave(creature, 10).type, 'normal')
   })
 })
 
@@ -234,37 +235,37 @@ describe('concentrationSave', () => {
 
 describe('isIncapacitated', () => {
   it('returns false with no conditions', () => {
-    expect(mech.isIncapacitated(makeCreature())).toBe(false)
+    assert.strictEqual(mech.isIncapacitated(makeCreature()), false)
   })
 
   for (const cond of ['paralyzed', 'stunned', 'unconscious', 'charmed_hp', 'incapacitated']) {
     it(`returns true for "${cond}"`, () => {
-      expect(mech.isIncapacitated(makeCreature({ conditions: [cond] }))).toBe(true)
+      assert.strictEqual(mech.isIncapacitated(makeCreature({ conditions: [cond] })), true)
     })
   }
 
   it('returns false for non-incapacitating conditions', () => {
-    expect(mech.isIncapacitated(makeCreature({ conditions: ['invisible', 'frightened'] }))).toBe(false)
+    assert.strictEqual(mech.isIncapacitated(makeCreature({ conditions: ['invisible', 'frightened'] })), false)
   })
 })
 
 describe('isAlive', () => {
   it('returns true when HP > 0', () => {
-    expect(mech.isAlive(makeCreature({ currentHP: 1 }))).toBe(true)
+    assert.strictEqual(mech.isAlive(makeCreature({ currentHP: 1 })), true)
   })
 
   it('returns false when HP = 0', () => {
-    expect(mech.isAlive(makeCreature({ currentHP: 0 }))).toBe(false)
+    assert.strictEqual(mech.isAlive(makeCreature({ currentHP: 0 })), false)
   })
 })
 
 describe('hasCondition', () => {
   it('returns true when creature has the condition', () => {
-    expect(mech.hasCondition(makeCreature({ conditions: ['paralyzed'] }), 'paralyzed')).toBe(true)
+    assert.strictEqual(mech.hasCondition(makeCreature({ conditions: ['paralyzed'] }), 'paralyzed'), true)
   })
 
   it('returns false when creature lacks the condition', () => {
-    expect(mech.hasCondition(makeCreature(), 'paralyzed')).toBe(false)
+    assert.strictEqual(mech.hasCondition(makeCreature(), 'paralyzed'), false)
   })
 })
 
@@ -272,25 +273,25 @@ describe('addCondition', () => {
   it('adds a new condition', () => {
     const c = makeCreature()
     mech.addCondition(c, 'invisible')
-    expect(c.conditions).toContain('invisible')
+    assert.ok(c.conditions.includes('invisible'))
   })
 
   it('does not duplicate an existing condition', () => {
     const c = makeCreature({ conditions: ['invisible'] })
     mech.addCondition(c, 'invisible')
-    expect(c.conditions.filter(x => x === 'invisible').length).toBe(1)
+    assert.strictEqual(c.conditions.filter(x => x === 'invisible').length, 1)
   })
 })
 
 describe('removeCondition', () => {
   it('removes an existing condition and returns true', () => {
     const c = makeCreature({ conditions: ['paralyzed', 'invisible'] })
-    expect(mech.removeCondition(c, 'paralyzed')).toBe(true)
-    expect(c.conditions).not.toContain('paralyzed')
+    assert.strictEqual(mech.removeCondition(c, 'paralyzed'), true)
+    assert.ok(!c.conditions.includes('paralyzed'))
   })
 
   it('returns false for non-existent condition', () => {
-    expect(mech.removeCondition(makeCreature(), 'paralyzed')).toBe(false)
+    assert.strictEqual(mech.removeCondition(makeCreature(), 'paralyzed'), false)
   })
 })
 
@@ -298,13 +299,13 @@ describe('removeAllConditions', () => {
   it('removes all instances of named conditions', () => {
     const c = makeCreature({ conditions: ['charmed_hp', 'incapacitated', 'invisible'] })
     mech.removeAllConditions(c, 'charmed_hp', 'incapacitated')
-    expect(c.conditions).toEqual(['invisible'])
+    assert.deepStrictEqual(c.conditions, ['invisible'])
   })
 
   it('leaves creature unchanged if no matching conditions', () => {
     const c = makeCreature({ conditions: ['invisible'] })
     mech.removeAllConditions(c, 'paralyzed')
-    expect(c.conditions).toEqual(['invisible'])
+    assert.deepStrictEqual(c.conditions, ['invisible'])
   })
 })
 
@@ -316,8 +317,8 @@ describe('getActiveEnemies', () => {
       makeCreature({ name: 'incap', currentHP: 10, conditions: ['paralyzed'] }),
     ]
     const active = mech.getActiveEnemies(enemies)
-    expect(active.length).toBe(1)
-    expect(active[0].name).toBe('alive')
+    assert.strictEqual(active.length, 1)
+    assert.strictEqual(active[0].name, 'alive')
   })
 })
 
@@ -328,7 +329,7 @@ describe('getAllAliveEnemies', () => {
       makeCreature({ name: 'dead', currentHP: 0 }),
       makeCreature({ name: 'incap', currentHP: 10, conditions: ['paralyzed'] }),
     ]
-    expect(mech.getAllAliveEnemies(enemies).length).toBe(2)
+    assert.strictEqual(mech.getAllAliveEnemies(enemies).length, 2)
   })
 })
 
@@ -342,42 +343,42 @@ describe('breakConcentration', () => {
     const t1 = makeCreature({ conditions: ['charmed_hp', 'incapacitated'] })
     const t2 = makeCreature({ conditions: ['charmed_hp', 'incapacitated'] })
     mech.breakConcentration(caster, [caster, t1, t2])
-    expect(caster.concentrating).toBeNull()
-    expect(t1.conditions).toEqual([])
-    expect(t2.conditions).toEqual([])
+    assert.strictEqual(caster.concentrating, null)
+    assert.deepStrictEqual(t1.conditions, [])
+    assert.deepStrictEqual(t2.conditions, [])
   })
 
   it('Hypnotic Pattern — preserves unrelated conditions', () => {
     const caster = makeCreature({ concentrating: 'Hypnotic Pattern' })
     const t = makeCreature({ conditions: ['charmed_hp', 'incapacitated', 'invisible'] })
     mech.breakConcentration(caster, [caster, t])
-    expect(t.conditions).toEqual(['invisible'])
+    assert.deepStrictEqual(t.conditions, ['invisible'])
   })
 
   it('Hold Person — removes paralyzed', () => {
     const caster = makeCreature({ concentrating: 'Hold Person' })
     const t = makeCreature({ conditions: ['paralyzed'] })
     mech.breakConcentration(caster, [caster, t])
-    expect(t.conditions).toEqual([])
+    assert.deepStrictEqual(t.conditions, [])
   })
 
   it('Greater Invisibility — removes invisible from caster', () => {
     const caster = makeCreature({ concentrating: 'Greater Invisibility', conditions: ['invisible'] })
     mech.breakConcentration(caster, [caster])
-    expect(caster.conditions).toEqual([])
+    assert.deepStrictEqual(caster.conditions, [])
   })
 
   it('Shield of Faith — reduces AC by 2', () => {
     const caster = makeCreature({ ac: 16, concentrating: 'Shield of Faith' })
     mech.breakConcentration(caster, [caster])
-    expect(caster.ac).toBe(14)
+    assert.strictEqual(caster.ac, 14)
   })
 
   it('resets concentration state', () => {
     const caster = makeCreature({ concentrating: 'Hold Person', concentrationRoundsRemaining: 5 })
     mech.breakConcentration(caster, [caster])
-    expect(caster.concentrating).toBeNull()
-    expect(caster.concentrationRoundsRemaining).toBe(0)
+    assert.strictEqual(caster.concentrating, null)
+    assert.strictEqual(caster.concentrationRoundsRemaining, 0)
   })
 })
 
@@ -389,30 +390,30 @@ describe('distanceBetween', () => {
   it('ground-to-ground uses Chebyshev distance * 5', () => {
     const a = makeCreature({ position: { x: 0, y: 0 } })
     const b = makeCreature({ position: { x: 3, y: 2 } })
-    expect(mech.distanceBetween(a, b)).toBe(15)
+    assert.strictEqual(mech.distanceBetween(a, b), 15)
   })
 
   it('flying to ground uses 3D distance (30ft altitude)', () => {
     const a = makeCreature({ flying: true, position: { x: 0, y: 0 } })
     const b = makeCreature({ flying: false, position: { x: 0, y: 0 } })
-    expect(mech.distanceBetween(a, b)).toBe(30)
+    assert.strictEqual(mech.distanceBetween(a, b), 30)
   })
 
   it('ground to flying uses 3D distance', () => {
     const a = makeCreature({ flying: false })
     const b = makeCreature({ flying: true })
-    expect(mech.distanceBetween(a, b)).toBe(30)
+    assert.strictEqual(mech.distanceBetween(a, b), 30)
   })
 
   it('flying vs ground with horizontal offset uses Euclidean 3D', () => {
     const a = makeCreature({ flying: true, position: { x: 4, y: 0 } })
     const b = makeCreature({ flying: false, position: { x: 0, y: 0 } })
-    expect(mech.distanceBetween(a, b)).toBe(35) // sqrt(400+900) ≈ 36.06 → round to 35
+    assert.strictEqual(mech.distanceBetween(a, b), 35) // sqrt(400+900) ≈ 36.06 → round to 35
   })
 
   it('same position = 0ft', () => {
     const a = makeCreature({ position: { x: 2, y: 3 } })
     const b = makeCreature({ position: { x: 2, y: 3 } })
-    expect(mech.distanceBetween(a, b)).toBe(0)
+    assert.strictEqual(mech.distanceBetween(a, b), 0)
   })
 })

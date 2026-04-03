@@ -18,12 +18,14 @@
  *  - provider.generateResponse({ systemPrompt, userPrompt, ...rest }) → { text }
  *  - logEntries: Array<{ type: string, payload: object, timestamp: string }>
  */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createChapterGenerator } from '../../src/story/ChapterGenerator.js';
 
 function makeMockProvider(responseText = 'Once upon a time…') {
   return {
-    generateResponse: vi.fn().mockResolvedValue({ text: responseText }),
+    generateResponse: mock.fn().mockResolvedValue({ text: responseText }),
   };
 }
 
@@ -48,11 +50,11 @@ describe('ChapterGenerator', () => {
       chapterNumber: 1,
     });
 
-    expect(chapter.sessionId).toBe('s1');
-    expect(chapter.chapterNumber).toBe(1);
-    expect(chapter.prose).toBe('The adventurers gathered in the dim tavern.');
-    expect(typeof chapter.generatedAt).toBe('string');
-    expect(() => new Date(chapter.generatedAt)).not.toThrow();
+    assert.strictEqual(chapter.sessionId, 's1');
+    assert.strictEqual(chapter.chapterNumber, 1);
+    assert.strictEqual(chapter.prose, 'The adventurers gathered in the dim tavern.');
+    assert.strictEqual(typeof chapter.generatedAt, 'string');
+    assert.doesNotThrow(() => new Date(chapter.generatedAt));
   });
 
   it('passes sessionId and chapterNumber in the provider request', async () => {
@@ -66,9 +68,9 @@ describe('ChapterGenerator', () => {
     });
 
     const call = provider.generateResponse.mock.calls[0][0];
-    expect(call.systemPrompt).toContain('chapter');
-    expect(call.userPrompt).toContain('s42');
-    expect(call.userPrompt).toContain('7');
+    assert.ok(call.systemPrompt.includes('chapter'));
+    assert.ok(call.userPrompt.includes('s42'));
+    assert.ok(call.userPrompt.includes('7'));
   });
 
   it('includes serialized log entries in the user prompt', async () => {
@@ -80,9 +82,9 @@ describe('ChapterGenerator', () => {
 
     const call = provider.generateResponse.mock.calls[0][0];
     // Each event type should appear in the prompt
-    expect(call.userPrompt).toContain('session.started');
-    expect(call.userPrompt).toContain('scene.changed');
-    expect(call.userPrompt).toContain('action.resolved');
+    assert.ok(call.userPrompt.includes('session.started'));
+    assert.ok(call.userPrompt.includes('scene.changed'));
+    assert.ok(call.userPrompt.includes('action.resolved'));
   });
 
   it('returns fallback prose for empty log without calling provider', async () => {
@@ -95,13 +97,13 @@ describe('ChapterGenerator', () => {
       chapterNumber: 1,
     });
 
-    expect(chapter.prose).toMatch(/no events|no significant events|nothing/i);
-    expect(provider.generateResponse).not.toHaveBeenCalled();
+    assert.match(chapter.prose, /no events|no significant events|nothing/i);
+    assert.strictEqual(provider.generateResponse.mock.calls.length, 0);
   });
 
   it('propagates provider errors to the caller', async () => {
     const provider = {
-      generateResponse: vi.fn().mockRejectedValue(new Error('LLM_UNAVAILABLE')),
+      generateResponse: mock.fn().mockRejectedValue(new Error('LLM_UNAVAILABLE')),
     };
     const gen = createChapterGenerator({ provider });
 
@@ -121,7 +123,7 @@ describe('ChapterGenerator', () => {
       chapterNumber: 1,
     });
 
-    expect(chapter.generatedAt).toBe(fixed);
+    assert.strictEqual(chapter.generatedAt, fixed);
   });
 
   // ── generateSummary ────────────────────────────────────────────────
@@ -132,10 +134,10 @@ describe('ChapterGenerator', () => {
 
     const summary = await gen.generateSummary({ logEntries: sampleLogEntries() });
 
-    expect(summary).toBe('The party persuaded the innkeeper and moved on.');
-    expect(provider.generateResponse).toHaveBeenCalledTimes(1);
+    assert.strictEqual(summary, 'The party persuaded the innkeeper and moved on.');
+    assert.strictEqual(provider.generateResponse.mock.calls.length, 1);
     const call = provider.generateResponse.mock.calls[0][0];
-    expect(call.systemPrompt).toMatch(/summary|summarize/i);
+    assert.match(call.systemPrompt, /summary|summarize/i);
   });
 
   it('returns fallback summary for empty log without calling provider', async () => {
@@ -144,8 +146,8 @@ describe('ChapterGenerator', () => {
 
     const summary = await gen.generateSummary({ logEntries: [] });
 
-    expect(summary).toMatch(/no events|nothing|no significant/i);
-    expect(provider.generateResponse).not.toHaveBeenCalled();
+    assert.match(summary, /no events|nothing|no significant/i);
+    assert.strictEqual(provider.generateResponse.mock.calls.length, 0);
   });
 
   // ── edge: single-event log ────────────────────────────────────────
@@ -160,7 +162,7 @@ describe('ChapterGenerator', () => {
       chapterNumber: 1,
     });
 
-    expect(chapter.prose).toBe('A brief beginning.');
-    expect(provider.generateResponse).toHaveBeenCalledTimes(1);
+    assert.strictEqual(chapter.prose, 'A brief beginning.');
+    assert.strictEqual(provider.generateResponse.mock.calls.length, 1);
   });
 });

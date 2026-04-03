@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.js';
 
 describe('CharacterContextBuilder', () => {
@@ -9,10 +11,10 @@ describe('CharacterContextBuilder', () => {
         
         const context = builder.buildContext(npcPersonality, gameState);
         
-        expect(context).toContain('You are Tharg');
-        expect(context).toContain('A gruff orc.');
-        expect(context).toContain('Tavern');
-        expect(context).toContain('Player ordered ale');
+        assert.ok(context.includes('You are Tharg'));
+        assert.ok(context.includes('A gruff orc.'));
+        assert.ok(context.includes('Tavern'));
+        assert.ok(context.includes('Player ordered ale'));
     });
 
     it('should handle empty game state', () => {
@@ -21,7 +23,7 @@ describe('CharacterContextBuilder', () => {
         
         const context = builder.buildContext(npcPersonality, null);
         
-        expect(context).toContain('You are Grom');
-        expect(context).toContain('A silent type.');
+        assert.ok(context.includes('You are Grom'));
+        assert.ok(context.includes('A silent type.'));
     });
 });

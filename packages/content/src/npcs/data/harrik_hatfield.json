@@ -210,5 +210,23 @@
       "I once convinced a man he had already paid me for information I had not yet provided. He thanked me. The human mind is a remarkable thing.",
       "This bar is the only place I do not work. Which means it is the most expensive room I have ever sat in, measured in opportunities not taken."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "I bet fifty gold coins that nobody in this bar can beat me at three-card monte. Any takers?",
+      "I just inherited a thousand gold pieces and I genuinely have no idea what to do with it all.",
+      "Someone swindled me out of two hundred gold with a fake deed to property that does not exist.",
+      "I desperately need someone trustworthy to deliver this valuable package. I will pay very handsomely.",
+      "That tiefling with the hat is cheating at cards! I saw him palm an ace just now!",
+      "I am willing to invest in the right opportunity. I have coin and I need a partner I can trust completely."
+    ],
+    "shouldNotReact": [
+      "The wheat harvest this year is down fifteen percent due to drought. The barley yield is similarly affected.",
+      "Morning prayers at the Temple of Torm begin at dawn. Vespers are at sunset. All are welcome to attend.",
+      "The mortar between courses must cure for fourteen days before you apply the next layer of stone.",
+      "The silverleaf fern belongs to the family Polypodiaceae and requires shade and moist soil to thrive.",
+      "The Dorian mode creates a melancholy quality distinct from the Aeolian. Listen carefully to the interval.",
+      "My dairy herd has been producing well this season. The pasture rotation schedule has been a real success."
+    ]
   }
 }

@@ -64,6 +64,12 @@ export function App() {
   const [sceneProcessing, setSceneProcessing] = useState(false);
   const [selectedNpcs, setSelectedNpcs] = useState([]);
 
+  // Ambient / free-chat mode state
+  const [freeChatMode, setFreeChatMode] = useState(false);
+  const [ambientLocationId, setAmbientLocationId] = useState(null);
+  const [ambientLocationName, setAmbientLocationName] = useState('');
+  const [ambientPresentNpcs, setAmbientPresentNpcs] = useState([]);
+
   const handleJoin = useCallback((payload) => {
     navigate(SCREENS.CHARACTER_SELECT, { playerName: payload.playerName, code: payload.code });
   }, [navigate]);
@@ -259,30 +265,116 @@ export function App() {
     navigate(SCREENS.GATE);
   }, [sceneState?.id, navigate]);
 
-  // ── Enter a location scene (e.g. Bottoms Up) ──
+  // ── Enter a location in free-chat (ambient) mode ──
   const handleEnterLocation = useCallback((locationId, locationImage) => {
     setSceneState(null);
+    setFreeChatMode(true);
+    setAmbientLocationId(locationId);
     setSceneProcessing(true);
     navigate(SCREENS.NPC_SCENE, { locationImage });
 
-    fetch('/api/scenes/at-location', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ locationId }),
-    })
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
+    // Fetch location info to get NPC list for display
+    fetch(`/api/content/locations/${locationId}`)
+      .then(r => r.ok ? r.json() : Promise.reject(r))
+      .then(loc => {
+        setAmbientLocationName(loc.name || locationId);
+        // Build NPC display list from regulars
+        const npcPromises = (loc.regulars || []).map(key =>
+          fetch(`/api/content/npcs/${key}`).then(r => r.ok ? r.json().then(d => d.npc) : null).catch(() => null)
+        );
+        return Promise.all(npcPromises);
       })
-      .then(started => {
-        setSceneState(started);
+      .then(npcs => {
+        const present = npcs.filter(Boolean).map(n => ({
+          templateKey: n.templateKey,
+          name: n.name,
+          role: n.race || '',
+        }));
+        setAmbientPresentNpcs(present);
         setSceneProcessing(false);
       })
       .catch(() => {
-        setSceneState({ error: true });
+        setAmbientLocationName(locationId);
         setSceneProcessing(false);
       });
   }, [navigate]);
+
+  // ── Ambient utterance handler — called by NpcScene in free-chat mode ──
+  const handleAmbientUtterance = useCallback((text, appendToTranscript) => {
+    if (!ambientLocationId) return;
+    setSceneProcessing(true);
+
+    fetch('/api/ambient/utterance', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        locationId: ambientLocationId,
+        utterance: text,
+        speakerName: 'Adventurer',
+      }),
+    })
+      .then(r => {
+        if (r.status === 429) {
+          appendToTranscript([{
+            id: `rate_${Date.now()}`,
+            participantId: 'dm',
+            participantName: 'System',
+            type: 'narration',
+            content: 'The tavern is too noisy right now… try again in a moment.',
+          }]);
+          return null;
+        }
+        return r.ok ? r.json() : Promise.reject(r);
+      })
+      .then(data => {
+        if (!data) return; // rate-limited, already handled
+        if (data.reactions.length === 0) {
+          // Nobody reacted — show atmosphere text
+          appendToTranscript([{
+            id: `ambient_${Date.now()}`,
+            participantId: 'dm',
+            participantName: 'Narrator',
+            type: 'narration',
+            content: '… nobody looks up from their drink.',
+          }]);
+        } else {
+          // Merge Tier 2 dialogue onto Tier 1 reactions by npcKey
+          const dialogueMap = {};
+          for (const resp of (data.responses || [])) {
+            dialogueMap[resp.npcKey] = resp.dialogue;
+          }
+          const strengthFlavor = [
+            '',
+            'glances over briefly.',
+            'looks your way.',
+            'turns toward you with interest.',
+            'leans in, clearly engaged.',
+            'locks eyes with you immediately.',
+          ];
+          const strengthColors = ['#ccc', '#b8860b', '#cd853f', '#d4a017', '#daa520', '#ffd700'];
+          const entries = data.reactions.map((r, i) => ({
+            id: `ambient_${Date.now()}_${i}`,
+            participantId: `npc_${r.npcKey}`,
+            participantName: r.npcName,
+            type: 'ambient_reaction',
+            content: dialogueMap[r.npcKey] || `*${strengthFlavor[r.reactionStrength] || 'looks your way.'}*`,
+            reactionStrength: r.reactionStrength,
+            strengthColor: strengthColors[r.reactionStrength] || '#b8860b',
+          }));
+          appendToTranscript(entries);
+        }
+      })
+      .catch(() => {
+        appendToTranscript([{
+          id: `err_${Date.now()}`,
+          participantId: 'dm',
+          participantName: 'System',
+          type: 'narration',
+          content: 'Something went wrong reaching the tavern NPCs…',
+        }]);
+      })
+      .finally(() => setSceneProcessing(false));
+  }, [ambientLocationId]);
 
   if (screen === SCREENS.COMBAT_SIMULATOR) {
     return <CombatSimulator onLeave={() => navigate(SCREENS.GATE)} />;
@@ -479,13 +571,22 @@ export function App() {
 
       {screen === SCREENS.NPC_SCENE && (
         <>
-          <h1>Scene</h1>
+          <h1>{freeChatMode ? (ambientLocationName || 'Tavern') : 'Scene'}</h1>
           <NpcScene
             scene={sceneState}
             onAction={handleSceneAction}
-            onLeave={handleSceneLeave}
+            onAmbient={handleAmbientUtterance}
+            onLeave={freeChatMode ? () => {
+              setFreeChatMode(false);
+              setAmbientLocationId(null);
+              setAmbientPresentNpcs([]);
+              navigate(SCREENS.GATE);
+            } : handleSceneLeave}
             processing={sceneProcessing}
             locationImage={screenData.locationImage}
+            freeChatMode={freeChatMode}
+            locationName={ambientLocationName}
+            presentNpcs={ambientPresentNpcs}
           />
         </>
       )}

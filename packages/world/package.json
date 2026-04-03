@@ -9,13 +9,9 @@
     ".": "./src/index.js"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "node --test __tests__/**/*.test.js"
   },
   "dependencies": {
     "@dnd-platform/content": "^0.1.0"
-  },
-  "devDependencies": {
-    "vitest": "^3.1.1"
   }
 }

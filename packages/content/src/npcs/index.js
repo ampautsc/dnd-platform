@@ -193,6 +193,14 @@ const NPC_FILES = [
   'frasier_crane',
   'harry_the_hat',
   'rebecca_howe',
+  'samren_malondar',
+  'norvin_stonebottom',
+  'clifton_rattleknow',
+  'carza_bitetongue',
+  'frasirel_cranewing',
+  'rebeciel_ashgrace',
+  'woody_tallfield',
+  'harrik_hatfield',
 ]
 
 // ─── Registry ───────────────────────────────────────────────────────────────

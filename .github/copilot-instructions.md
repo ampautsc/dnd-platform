@@ -215,6 +215,7 @@ Load these files with `read_file` when a task matches the listed tags.
 - `.github/instructions/architecture.instructions.md` — #architecture #testing #services #api #layers #tdd
 
 ### Code Skills
+- `skills/code/skip-local-model-tests.md` — #testing #llm #local-model #memory #oom #node-llama-cpp #skip #ci #groq
 - `skills/code/service-health-verification.md` — #validation #server #health-check #deployment
 - `skills/code/npc-consciousness-creation.md` — #npc #consciousness #llm #character #roleplay #system-prompt
 - `skills/code/polymorph-data-propagation.md` — #dnd #combat #polymorph #beast-form #data-propagation #multiattack
@@ -232,6 +233,10 @@ Load these files with `read_file` when a task matches the listed tags.
 - `skills/code/dm-consciousness-prompt-architecture.md` — #dm #consciousness #narrator #prompt #omniscient #inner-state #scene #llm #vessel-surrender #perception-boundary #information-filter #appearance
 - `skills/code/npc-vessel-surrender-canonical-prompt.md` — #npc #vessel-surrender #canonical #locked-text #consciousness #prompt #remember-structure #llm
 - `skills/code/npc-consciousness-json-authoring.md` — #npc #consciousness #json #content #character #authoring #cache #token-budget #analytical-register #tdd
+- `skills/code/npc-scenario-driven-testing.md` — #npc #testing #tdd #scenarios #data-driven #json #content #reaction #ambient
+- `skills/code/groq-free-api-provider-pattern.md` — #groq #llm #free-api #provider #openai-compatible #classification #ambient #reaction
+- `skills/code/anthropic-prompt-caching.md` — #anthropic #prompt-caching #llm #cache #system-prompt #usage #tokens #haiku
+- `skills/code/xml-prompt-engineering.md` — #prompt #xml #engineering #llm #token-optimization #caching #semantic-clarity #anthropic #openai #google #structure #context
 
 ### Problem-Solving Skills
 - `skills/problem-solving/llm-model-evaluation.md` — #llm #evaluation #model-selection #quality #testing

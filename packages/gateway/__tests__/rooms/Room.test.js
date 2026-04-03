@@ -9,7 +9,9 @@
  * - event buffer stores latest N events (default 100)
  * - getEventsSince(timestamp) returns buffered events after timestamp
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createRoom } from '../../src/rooms/Room.js';
 
 describe('Room', () => {
@@ -18,11 +20,11 @@ describe('Room', () => {
     room.joinMember({ userId: 'u1', socketId: 's1', role: 'player' });
     room.joinMember({ userId: 'u2', socketId: 's2', role: 'player' });
 
-    expect(room.getMembers()).toHaveLength(2);
+    assert.strictEqual(room.getMembers().length, 2);
 
     room.leaveMember('u1');
-    expect(room.getMembers()).toHaveLength(1);
-    expect(room.getMembers()[0].userId).toBe('u2');
+    assert.strictEqual(room.getMembers().length, 1);
+    assert.strictEqual(room.getMembers()[0].userId, 'u2');
   });
 
   it('keeps latest events in bounded buffer', () => {
@@ -32,9 +34,9 @@ describe('Room', () => {
     room.addEvent({ type: 'c', timestamp: '2026-03-16T00:00:02.000Z' });
 
     const events = room.getBufferedEvents();
-    expect(events).toHaveLength(2);
-    expect(events[0].type).toBe('b');
-    expect(events[1].type).toBe('c');
+    assert.strictEqual(events.length, 2);
+    assert.strictEqual(events[0].type, 'b');
+    assert.strictEqual(events[1].type, 'c');
   });
 
   it('returns events since a timestamp', () => {
@@ -44,6 +46,6 @@ describe('Room', () => {
     room.addEvent({ type: 'c', timestamp: '2026-03-16T00:00:02.000Z' });
 
     const events = room.getEventsSince('2026-03-16T00:00:00.500Z');
-    expect(events.map(e => e.type)).toEqual(['b', 'c']);
+    assert.deepStrictEqual(events.map(e => e.type), ['b', 'c']);
   });
 });

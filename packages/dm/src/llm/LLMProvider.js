@@ -19,10 +19,18 @@ function llmDebugLog(entry) {
             `TIMESTAMP: ${new Date().toISOString()}`,
             `npcId: ${entry.npcId ?? '(none)'}  npcName: ${entry.npcName ?? '(none)'}  model: ${entry.model}  maxTokens: ${entry.maxTokens}`,
             `${separator}`,
-            '--- SYSTEM PROMPT ---',
-            entry.systemPrompt || '(none)',
-            '--- END SYSTEM PROMPT ---',
         ];
+        if (Array.isArray(entry.systemBlocks) && entry.systemBlocks.length > 0) {
+            entry.systemBlocks.forEach((b, i) => {
+                lines.push(`--- SYSTEM BLOCK ${i + 1} ---`);
+                lines.push(b.text || '(empty)');
+                lines.push(`--- END SYSTEM BLOCK ${i + 1} ---`);
+            });
+        } else {
+            lines.push('--- SYSTEM PROMPT ---');
+            lines.push(entry.systemPrompt || '(none)');
+            lines.push('--- END SYSTEM PROMPT ---');
+        }
         if (Array.isArray(entry.messages)) {
             entry.messages.forEach(m => {
                 lines.push(`--- ${m.role.toUpperCase()} ---`);
@@ -84,8 +92,24 @@ export class LLMProvider {
             ? request.messages
             : [{ role: 'user', content: request.userPrompt }];
 
-        // System prompt with optional cache control for long prompts
-        const system = request.systemPrompt || '';
+        // System prompt with prompt caching enabled.
+        // Supports two modes:
+        //   1. systemBlocks: array of { text } objects → multiple content blocks,
+        //      each with its own cache_control breakpoint. Use this to separate
+        //      shared static content (world knowledge) from per-NPC content.
+        //   2. systemPrompt: single string → one content block (legacy path).
+        // systemBlocks takes precedence when provided.
+        let system;
+        if (Array.isArray(request.systemBlocks)) {
+            system = request.systemBlocks
+                .filter(b => b.text)
+                .map(b => ({ type: 'text', text: b.text, cache_control: { type: 'ephemeral' } }));
+        } else {
+            const systemText = request.systemPrompt || '';
+            system = systemText
+                ? [{ type: 'text', text: systemText, cache_control: { type: 'ephemeral' } }]
+                : [];
+        }
 
         const response = await this.anthropicClient.messages.create({
             model: request.model,
@@ -94,12 +118,57 @@ export class LLMProvider {
             messages,
         });
         const text = response.content[0].text;
-        return {
+
+        const result = {
             text,
             content: text,
             model: response.model,
             usage: response.usage,
         };
+
+        // Log the raw Anthropic SDK response — every field, nothing stripped.
+        // The SDK uses a class with non-enumerable properties, so we force them
+        // into a plain object so JSON.stringify catches everything.
+        const rawForLog = {
+            id: response.id,
+            type: response.type,
+            role: response.role,
+            model: response.model,
+            stop_reason: response.stop_reason,
+            stop_sequence: response.stop_sequence,
+            content: response.content,
+            usage: response.usage,
+        };
+        this._logResponse(request, rawForLog);
+
+        return result;
+    }
+
+    /**
+     * Log the raw Anthropic SDK response — nothing stripped, nothing reinterpreted.
+     * @param {object} request - The original request
+     * @param {object} rawResponse - The raw response object
+     */
+    _logResponse(request, rawResponse) {
+        try {
+            const date = new Date().toISOString().slice(0, 10);
+            const logDir = resolve(__dirname, '../../../../logs');
+            mkdirSync(logDir, { recursive: true });
+            const logPath = resolve(logDir, `llm-${date}.log`);
+            const separator = '-'.repeat(80);
+            const lines = [
+                `\n${separator}`,
+                `RESPONSE — ${new Date().toISOString()}`,
+                `npcId: ${request.npcId ?? '(none)'}  npcName: ${request.npcName ?? '(none)'}`,
+                `${separator}`,
+                '--- RAW ANTHROPIC RESPONSE ---',
+                JSON.stringify(rawResponse, null, 2),
+                '--- END RAW ANTHROPIC RESPONSE ---',
+            ];
+            appendFileSync(logPath, lines.join('\n') + '\n', 'utf8');
+        } catch {
+            // never crash the server over logging
+        }
     }
 
     async callOpenAI(request) {

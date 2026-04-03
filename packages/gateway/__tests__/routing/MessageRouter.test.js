@@ -6,13 +6,15 @@
  * - throws on unknown channel
  * - passes full envelope to handler
  */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createMessageRouter } from '../../src/routing/MessageRouter.js';
 
 describe('MessageRouter', () => {
   it('routes envelopes to the matching channel handler', () => {
-    const narrationHandler = vi.fn();
-    const combatHandler = vi.fn();
+    const narrationHandler = mock.fn();
+    const combatHandler = mock.fn();
 
     const router = createMessageRouter({
       narration: narrationHandler,
@@ -29,15 +31,16 @@ describe('MessageRouter', () => {
 
     router.route(envelope, { roomId: 'session-1' });
 
-    expect(combatHandler).toHaveBeenCalledTimes(1);
-    expect(combatHandler).toHaveBeenCalledWith(envelope, { roomId: 'session-1' });
-    expect(narrationHandler).not.toHaveBeenCalled();
+    assert.strictEqual(combatHandler.mock.calls.length, 1);
+    assert.deepStrictEqual(combatHandler.mock.calls.at(-1).arguments, [envelope, { roomId: 'session-1' }]);
+    assert.strictEqual(narrationHandler.mock.calls.length, 0);
   });
 
   it('throws on unknown channel', () => {
     const router = createMessageRouter({});
-    expect(() =>
-      router.route({ channel: 'unknown', type: 'x', payload: {}, timestamp: '', senderId: 'u1' }, {})
-    ).toThrow(/unknown channel/i);
+    assert.throws(() =>
+      router.route({ channel: 'unknown', type: 'x', payload: {}, timestamp: '', senderId: 'u1' }, {}),
+      /unknown channel/i
+    );
   });
 });

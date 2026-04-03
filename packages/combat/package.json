@@ -27,11 +27,6 @@
     "@dnd-platform/content": "^0.1.0"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
-  },
-  "devDependencies": {
-    "vitest": "^3.1.1"
+    "test": "node --test __tests__/aoeGeometry.test.js __tests__/dice.test.js __tests__/encounterRunner.test.js __tests__/GameState.test.js __tests__/mechanics.test.js __tests__/scenarioHarness.test.js __tests__/scenarioHarnessV2.test.js __tests__/spellResolver.test.js __tests__/tactics.test.js __tests__/targetResolver.test.js"
   }
 }

@@ -17,6 +17,7 @@ import { createCharacterRoutes } from './routes/characters.js';
 import { createContentRoutes } from './routes/content.js';
 import { createEncounterRoutes } from './routes/encounters.js';
 import { createSceneRoutes } from './routes/scenes.js';
+import { createAmbientRoutes } from './routes/ambient.js';
 import { createAuthMiddleware } from './middleware/auth.js';
 import combatSessionsRouter from './routes/combatSessions.js';
 
@@ -49,6 +50,11 @@ export function createApp(deps) {
   // Scene routes (optional — only mounted when sceneController is provided)
   if (deps.sceneController) {
     app.use('/api/scenes', requireAuth, createSceneRoutes(deps.sceneController));
+  }
+
+  // Ambient reaction routes (optional — only mounted when ambientController is provided)
+  if (deps.ambientController) {
+    app.use('/api/ambient', requireAuth, createAmbientRoutes(deps.ambientController));
   }
 
   // 404 handler

@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { rollSceneInitiative } from '../../src/services/SceneInitiative.js';
 
 /**
@@ -23,19 +25,19 @@ function makeParticipants() {
 describe('rollSceneInitiative', () => {
   it('should return order and rolls for all participants', () => {
     const result = rollSceneInitiative(makeParticipants());
-    expect(result.order).toHaveLength(3);
-    expect(result.rolls.size).toBe(3);
+    assert.strictEqual(result.order.length, 3);
+    assert.strictEqual(result.rolls.size, 3);
   });
 
   it('should include roll, mod, and total in each roll entry', () => {
     const result = rollSceneInitiative(makeParticipants());
     for (const [, roll] of result.rolls) {
-      expect(roll).toHaveProperty('roll');
-      expect(roll).toHaveProperty('mod');
-      expect(roll).toHaveProperty('total');
-      expect(roll.total).toBe(roll.roll + roll.mod);
-      expect(roll.roll).toBeGreaterThanOrEqual(1);
-      expect(roll.roll).toBeLessThanOrEqual(20);
+      assert.notStrictEqual(roll['roll'], undefined);
+      assert.notStrictEqual(roll['mod'], undefined);
+      assert.notStrictEqual(roll['total'], undefined);
+      assert.strictEqual(roll.total, roll.roll + roll.mod);
+      assert.ok(roll.roll >= 1);
+      assert.ok(roll.roll <= 20);
     }
   });
 
@@ -45,22 +47,22 @@ describe('rollSceneInitiative', () => {
     let i = 0;
     const result = rollSceneInitiative(makeParticipants(), () => fixedRolls[i++]);
     // totals: mira=12, player=16, lell=8
-    expect(result.order).toEqual(['player_1', 'npc_mira', 'npc_lell']);
+    assert.deepStrictEqual(result.order, ['player_1', 'npc_mira', 'npc_lell']);
   });
 
   it('should use CHA modifier from each participant', () => {
     // Everyone rolls the same — order determined by CHA mod
     const result = rollSceneInitiative(makeParticipants(), () => 10);
     // totals: mira=12, player=11, lell=13
-    expect(result.order[0]).toBe('npc_lell');
-    expect(result.order[1]).toBe('npc_mira');
-    expect(result.order[2]).toBe('player_1');
+    assert.strictEqual(result.order[0], 'npc_lell');
+    assert.strictEqual(result.order[1], 'npc_mira');
+    assert.strictEqual(result.order[2], 'player_1');
   });
 
   it('should handle single participant', () => {
     const result = rollSceneInitiative([{ id: 'solo', name: 'Solo', chaMod: 0, isPlayer: true }]);
-    expect(result.order).toEqual(['solo']);
-    expect(result.rolls.size).toBe(1);
+    assert.deepStrictEqual(result.order, ['solo']);
+    assert.strictEqual(result.rolls.size, 1);
   });
 
   it('should handle ties by higher CHA mod first', () => {
@@ -70,6 +72,6 @@ describe('rollSceneInitiative', () => {
     ];
     // Both roll 10: a total=11, b total=13 → b wins
     const result = rollSceneInitiative(participants, () => 10);
-    expect(result.order[0]).toBe('b');
+    assert.strictEqual(result.order[0], 'b');
   });
 });

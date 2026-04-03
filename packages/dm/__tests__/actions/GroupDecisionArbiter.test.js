@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createGroupDecisionArbiter } from '../../src/actions/GroupDecisionArbiter.js';
 
 /**
@@ -46,13 +48,13 @@ describe('GroupDecisionArbiter', () => {
       playerIds: ['p1', 'p2', 'p3'],
     });
 
-    expect(decision.status).toBe('open');
-    expect(decision.deadlineAt).toBe(31_000);
-    expect(decision.votes).toEqual({});
+    assert.strictEqual(decision.status, 'open');
+    assert.strictEqual(decision.deadlineAt, 31_000);
+    assert.deepStrictEqual(decision.votes, {});
   });
 
   it('throws INVALID_INPUT for missing required start fields', () => {
-    expect(() => arbiter.startDecision({ decisionId: '', options: [], playerIds: [] })).toThrow(/INVALID_INPUT/);
+    assert.throws(() => arbiter.startDecision({ decisionId: '', options: [], playerIds: [] }), /INVALID_INPUT/);
   });
 
   it('records votes and allows replacing previous vote', () => {
@@ -71,11 +73,11 @@ describe('GroupDecisionArbiter', () => {
     arbiter.castVote('d1', { playerId: 'p1', optionId: 'town' });
 
     const decision = arbiter.getDecision('d1');
-    expect(decision.votes).toEqual({ p1: 'town' });
+    assert.deepStrictEqual(decision.votes, { p1: 'town' });
   });
 
   it('throws DECISION_NOT_FOUND for unknown decision', () => {
-    expect(() => arbiter.castVote('missing', { playerId: 'p1', optionId: 'x' })).toThrow(/DECISION_NOT_FOUND/);
+    assert.throws(() => arbiter.castVote('missing', { playerId: 'p1', optionId: 'x' }), /DECISION_NOT_FOUND/);
   });
 
   it('throws PLAYER_NOT_ELIGIBLE for non-member voter', () => {
@@ -87,7 +89,7 @@ describe('GroupDecisionArbiter', () => {
       playerIds: ['p1'],
     });
 
-    expect(() => arbiter.castVote('d1', { playerId: 'p2', optionId: 'forest' })).toThrow(/PLAYER_NOT_ELIGIBLE/);
+    assert.throws(() => arbiter.castVote('d1', { playerId: 'p2', optionId: 'forest' }), /PLAYER_NOT_ELIGIBLE/);
   });
 
   it('throws INVALID_OPTION for unknown optionId', () => {
@@ -99,7 +101,7 @@ describe('GroupDecisionArbiter', () => {
       playerIds: ['p1'],
     });
 
-    expect(() => arbiter.castVote('d1', { playerId: 'p1', optionId: 'town' })).toThrow(/INVALID_OPTION/);
+    assert.throws(() => arbiter.castVote('d1', { playerId: 'p1', optionId: 'town' }), /INVALID_OPTION/);
   });
 
   it('resolves to majority winner', () => {
@@ -119,10 +121,10 @@ describe('GroupDecisionArbiter', () => {
     arbiter.castVote('d1', { playerId: 'p3', optionId: 'town' });
 
     const result = arbiter.resolveDecision('d1');
-    expect(result.outcome).toBe('majority');
-    expect(result.winnerOptionId).toBe('forest');
-    expect(result.status).toBe('closed');
-    expect(result.resolvedAt).toBe(1000);
+    assert.strictEqual(result.outcome, 'majority');
+    assert.strictEqual(result.winnerOptionId, 'forest');
+    assert.strictEqual(result.status, 'closed');
+    assert.strictEqual(result.resolvedAt, 1000);
   });
 
   it('resolves tie when top vote counts match', () => {
@@ -141,8 +143,8 @@ describe('GroupDecisionArbiter', () => {
     arbiter.castVote('d1', { playerId: 'p2', optionId: 'town' });
 
     const result = arbiter.resolveDecision('d1');
-    expect(result.outcome).toBe('tie');
-    expect(result.winnerOptionId).toBeNull();
+    assert.strictEqual(result.outcome, 'tie');
+    assert.strictEqual(result.winnerOptionId, null);
   });
 
   it('resolves no_votes when none cast', () => {
@@ -155,8 +157,8 @@ describe('GroupDecisionArbiter', () => {
     });
 
     const result = arbiter.resolveDecision('d1');
-    expect(result.outcome).toBe('no_votes');
-    expect(result.winnerOptionId).toBeNull();
+    assert.strictEqual(result.outcome, 'no_votes');
+    assert.strictEqual(result.winnerOptionId, null);
   });
 
   it('prevents votes after decision is closed', () => {
@@ -169,7 +171,7 @@ describe('GroupDecisionArbiter', () => {
     });
 
     arbiter.resolveDecision('d1');
-    expect(() => arbiter.castVote('d1', { playerId: 'p1', optionId: 'forest' })).toThrow(/DECISION_CLOSED/);
+    assert.throws(() => arbiter.castVote('d1', { playerId: 'p1', optionId: 'forest' }), /DECISION_CLOSED/);
   });
 
   it('allows resolving after timeout using nowFn', () => {
@@ -184,7 +186,7 @@ describe('GroupDecisionArbiter', () => {
 
     now = 2_000;
     const result = arbiter.resolveDecision('d1');
-    expect(result.status).toBe('closed');
-    expect(result.resolvedAt).toBe(2_000);
+    assert.strictEqual(result.status, 'closed');
+    assert.strictEqual(result.resolvedAt, 2_000);
   });
 });

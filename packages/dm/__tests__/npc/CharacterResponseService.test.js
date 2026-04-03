@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { CharacterResponseService } from '../../src/npc/CharacterResponseService.js';
 import { MockProvider } from '../../src/llm/MockProvider.js';
 import { CharacterContextBuilder } from '../../src/npc/CharacterContextBuilder.js';
@@ -65,13 +67,13 @@ describe('CharacterResponseService', () => {
 
             const result = await service.generateResponse(ctxPkg, { personality });
 
-            expect(result.text).toBe('Greetings, traveler. What brings you to my tavern?');
-            expect(result.source).toBe('llm');
-            expect(result.npcId).toBe('npc-tharg');
-            expect(result.npcName).toBe('Tharg');
-            expect(result.triggerEvent).toBe('player_addressed');
-            expect(typeof result.latencyMs).toBe('number');
-            expect(result.latencyMs).toBeGreaterThanOrEqual(0);
+            assert.strictEqual(result.text, 'Greetings, traveler. What brings you to my tavern?');
+            assert.strictEqual(result.source, 'llm');
+            assert.strictEqual(result.npcId, 'npc-tharg');
+            assert.strictEqual(result.npcName, 'Tharg');
+            assert.strictEqual(result.triggerEvent, 'player_addressed');
+            assert.strictEqual(typeof result.latencyMs, 'number');
+            assert.ok(result.latencyMs >= 0);
         });
 
         it('should fall back to a canned response when provider throws', async () => {
@@ -82,11 +84,11 @@ describe('CharacterResponseService', () => {
 
             const result = await service.generateResponse(ctxPkg, { personality });
 
-            expect(result.source).toBe('fallback');
-            expect(result.text).toBeTruthy();
-            expect(typeof result.text).toBe('string');
+            assert.strictEqual(result.source, 'fallback');
+            assert.ok(result.text);
+            assert.strictEqual(typeof result.text, 'string');
             // Should be one of the personality's fallback lines for this trigger
-            expect(personality.fallbackLines.player_addressed).toContain(result.text);
+            assert.ok(personality.fallbackLines.player_addressed.includes(result.text));
         });
 
         it('should fall back when provider returns empty text', async () => {
@@ -96,8 +98,8 @@ describe('CharacterResponseService', () => {
 
             const result = await service.generateResponse(ctxPkg, { personality });
 
-            expect(result.source).toBe('fallback');
-            expect(result.text).toBeTruthy();
+            assert.strictEqual(result.source, 'fallback');
+            assert.ok(result.text);
         });
 
         it('should use global fallback lines if personality has none for the trigger', async () => {
@@ -112,9 +114,9 @@ describe('CharacterResponseService', () => {
 
             const result = await service.generateResponse(ctxPkg, { personality });
 
-            expect(result.source).toBe('fallback');
-            expect(result.text).toBeTruthy();
-            expect(typeof result.text).toBe('string');
+            assert.strictEqual(result.source, 'fallback');
+            assert.ok(result.text);
+            assert.strictEqual(typeof result.text, 'string');
         });
     });
 
@@ -127,7 +129,7 @@ describe('CharacterResponseService', () => {
             await service.generateResponse(ctxPkg, { sessionId: 'sess-1', personality });
             const recent = service.getRecentResponses('sess-1', 'npc-tharg');
 
-            expect(recent).toContain('First response');
+            assert.ok(recent.includes('First response'));
         });
 
         it('should pass recent responses as avoidRepetition to the provider', async () => {
@@ -140,9 +142,9 @@ describe('CharacterResponseService', () => {
 
             // Check that the provider received avoidRepetition data on the second call
             const history = provider.getHistory();
-            expect(history.length).toBe(2);
+            assert.strictEqual(history.length, 2);
             // Second call should have had avoidRepetition populated
-            expect(history[1].avoidRepetition).toContain('First line');
+            assert.ok(history[1].avoidRepetition.includes('First line'));
         });
 
         it('should limit stored recent responses to MAX_STORED_RESPONSES', async () => {
@@ -155,7 +157,7 @@ describe('CharacterResponseService', () => {
             }
 
             const recent = service.getRecentResponses('sess-1', 'npc-tharg');
-            expect(recent.length).toBeLessThanOrEqual(5);
+            assert.ok(recent.length <= 5);
         });
     });
 
@@ -166,10 +168,10 @@ describe('CharacterResponseService', () => {
             const personality = makePersonality();
 
             await service.generateResponse(ctxPkg, { sessionId: 'sess-1', personality });
-            expect(service.getRecentResponses('sess-1', 'npc-tharg').length).toBe(1);
+            assert.strictEqual(service.getRecentResponses('sess-1', 'npc-tharg').length, 1);
 
             service.clearSessionCache('sess-1');
-            expect(service.getRecentResponses('sess-1', 'npc-tharg').length).toBe(0);
+            assert.strictEqual(service.getRecentResponses('sess-1', 'npc-tharg').length, 0);
         });
     });
 
@@ -178,15 +180,15 @@ describe('CharacterResponseService', () => {
             const personality = makePersonality();
             const line = service.selectFallbackLine(personality, 'player_addressed');
 
-            expect(personality.fallbackLines.player_addressed).toContain(line);
+            assert.ok(personality.fallbackLines.player_addressed.includes(line));
         });
 
         it('should use global defaults when personality has no lines for trigger', () => {
             const personality = makePersonality({ fallbackLines: {} });
             const line = service.selectFallbackLine(personality, 'combat_start');
 
-            expect(typeof line).toBe('string');
-            expect(line.length).toBeGreaterThan(0);
+            assert.strictEqual(typeof line, 'string');
+            assert.ok(line.length > 0);
         });
 
         it('should avoid recently used lines when possible', () => {
@@ -197,7 +199,7 @@ describe('CharacterResponseService', () => {
             });
 
             const line = service.selectFallbackLine(personality, 'player_addressed', ['Line A']);
-            expect(line).toBe('Line B');
+            assert.strictEqual(line, 'Line B');
         });
     });
 });

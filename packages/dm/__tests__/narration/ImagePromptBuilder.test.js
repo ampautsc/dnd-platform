@@ -13,7 +13,9 @@
  * 9. All fields in the returned object are strings (never undefined).
  * 10. Prompt includes the mood/tone when provided.
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
 import { createImagePromptBuilder } from '../../src/narration/ImagePromptBuilder.js';
 
 describe('ImagePromptBuilder', () => {
@@ -29,33 +31,33 @@ describe('ImagePromptBuilder', () => {
       environment: 'medieval village',
     });
 
-    expect(typeof result.prompt).toBe('string');
-    expect(result.prompt).toContain('tavern');
-    expect(result.prompt).toContain('Elara');
-    expect(result.prompt).toContain('tense');
-    expect(result.prompt).toContain('negotiating');
+    assert.strictEqual(typeof result.prompt, 'string');
+    assert.ok(result.prompt.includes('tavern'));
+    assert.ok(result.prompt.includes('Elara'));
+    assert.ok(result.prompt.includes('tense'));
+    assert.ok(result.prompt.includes('negotiating'));
   });
 
   it('returns default fantasy illustration style', () => {
     const builder = createImagePromptBuilder();
     const result = builder.buildPrompt({ scene: 'A forest clearing' });
 
-    expect(result.style).toBe('fantasy illustration');
+    assert.strictEqual(result.style, 'fantasy illustration');
   });
 
   it('accepts a custom default style via factory options', () => {
     const builder = createImagePromptBuilder({ defaultStyle: 'dark oil painting' });
     const result = builder.buildPrompt({ scene: 'A castle gate' });
 
-    expect(result.style).toBe('dark oil painting');
+    assert.strictEqual(result.style, 'dark oil painting');
   });
 
   it('includes a negative prompt string', () => {
     const builder = createImagePromptBuilder();
     const result = builder.buildPrompt({ scene: 'A mountain pass' });
 
-    expect(typeof result.negativePrompt).toBe('string');
-    expect(result.negativePrompt.length).toBeGreaterThan(0);
+    assert.strictEqual(typeof result.negativePrompt, 'string');
+    assert.ok(result.negativePrompt.length > 0);
   });
 
   // ── edge cases ─────────────────────────────────────────────────────
@@ -64,18 +66,18 @@ describe('ImagePromptBuilder', () => {
     const builder = createImagePromptBuilder();
     const result = builder.buildPrompt({});
 
-    expect(typeof result.prompt).toBe('string');
-    expect(result.prompt.length).toBeGreaterThan(0);
-    expect(result.style).toBe('fantasy illustration');
-    expect(typeof result.negativePrompt).toBe('string');
+    assert.strictEqual(typeof result.prompt, 'string');
+    assert.ok(result.prompt.length > 0);
+    assert.strictEqual(result.style, 'fantasy illustration');
+    assert.strictEqual(typeof result.negativePrompt, 'string');
   });
 
   it('returns fallback prompt when scene is empty string', () => {
     const builder = createImagePromptBuilder();
     const result = builder.buildPrompt({ scene: '' });
 
-    expect(typeof result.prompt).toBe('string');
-    expect(result.prompt.length).toBeGreaterThan(0);
+    assert.strictEqual(typeof result.prompt, 'string');
+    assert.ok(result.prompt.length > 0);
   });
 
   it('handles empty characters array (environment-only prompt)', () => {
@@ -87,9 +89,9 @@ describe('ImagePromptBuilder', () => {
       environment: 'jungle',
     });
 
-    expect(result.prompt).toContain('ruin');
-    expect(result.prompt).toContain('mysterious');
-    expect(result.prompt).not.toContain('undefined');
+    assert.ok(result.prompt.includes('ruin'));
+    assert.ok(result.prompt.includes('mysterious'));
+    assert.ok(!result.prompt.includes('undefined'));
   });
 
   it('serializes multiple characters into the prompt', () => {
@@ -102,9 +104,9 @@ describe('ImagePromptBuilder', () => {
       ],
     });
 
-    expect(result.prompt).toContain('Thorin');
-    expect(result.prompt).toContain('Lyra');
-    expect(result.prompt).toContain('dwarven fighter');
+    assert.ok(result.prompt.includes('Thorin'));
+    assert.ok(result.prompt.includes('Lyra'));
+    assert.ok(result.prompt.includes('dwarven fighter'));
   });
 
   it('includes mood/tone in the prompt when provided', () => {
@@ -114,15 +116,15 @@ describe('ImagePromptBuilder', () => {
       mood: 'foreboding',
     });
 
-    expect(result.prompt).toContain('foreboding');
+    assert.ok(result.prompt.includes('foreboding'));
   });
 
   it('all returned fields are strings (never undefined)', () => {
     const builder = createImagePromptBuilder();
     const result = builder.buildPrompt({ scene: 'test' });
 
-    expect(typeof result.prompt).toBe('string');
-    expect(typeof result.style).toBe('string');
-    expect(typeof result.negativePrompt).toBe('string');
+    assert.strictEqual(typeof result.prompt, 'string');
+    assert.strictEqual(typeof result.style, 'string');
+    assert.strictEqual(typeof result.negativePrompt, 'string');
   });
 });

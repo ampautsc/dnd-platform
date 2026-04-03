@@ -213,5 +213,23 @@
       "I left a distinguished academic position for this tavern. My former colleagues would be horrified. I, however, have never been more — well, I would not say 'happy.' Let us say 'comprehensively situated.'",
       "You know, in my professional opinion, the social dynamics of this establishment would make a fascinating case study. I have the notes. I lack only the will to organize them into something publishable."
     ]
+  },
+  "reactionScenarios": {
+    "shouldReact": [
+      "I cannot sleep anymore. Every night the nightmares come and I wake up screaming.",
+      "Do you think the mind can truly heal itself, or does it always require outside intervention?",
+      "I am fine. Completely fine. Nothing is wrong. Why does everyone keep asking me that?",
+      "I studied at the finest academy in the realm. My credentials speak entirely for themselves.",
+      "My father died in the war. I have not spoken about it to anyone in years.",
+      "He keeps drinking more every night and insisting he is perfectly happy. Everyone can see it but him."
+    ],
+    "shouldNotReact": [
+      "To properly maintain a greatsword you oil the blade twice weekly and check the tang for stress fractures.",
+      "The copper vein in the eastern mines runs seventeen meters deep. We need more picks and shovels.",
+      "I am selling three draft horses, all in good health. Fifteen gold each, firm on the price.",
+      "You roast the lamb at low heat for four hours, basting every thirty minutes with rosemary butter.",
+      "The currents off the southern coast shift with the tides. Navigate by the stars after midnight.",
+      "Silverleaf and thyme must be harvested before dawn or the volatile oils in the leaves dissipate."
+    ]
   }
 }

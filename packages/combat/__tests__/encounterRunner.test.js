@@ -4,14 +4,15 @@
  * turn processing, and action resolution.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, it, before, after } from 'node:test';
+import assert from 'node:assert/strict';
 import * as dice from '../src/engine/dice.js'
 import * as mech from '../src/engine/mechanics.js'
 import { createCreature } from '@dnd-platform/content/creatures'
 import * as runner from '../src/engine/encounterRunner.js'
 
-beforeAll(() => dice.setDiceMode('average'))
-afterAll(() => dice.setDiceMode('random'))
+before(() => dice.setDiceMode('average'))
+after(() => dice.setDiceMode('random'))
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Helpers
@@ -61,16 +62,16 @@ describe('rollInitiative', () => {
   it('returns all combatants sorted by total', () => {
     const combatants = [makeBard(), makeFanatic(1), makeFanatic(2)]
     const result = runner.rollInitiative(combatants)
-    expect(result.length).toBe(3)
+    assert.strictEqual(result.length, 3)
     // In average mode all d20 = 10.5, so sorted by DEX mod
-    expect(result.every(r => typeof r.total === 'number')).toBe(true)
+    assert.strictEqual(result.every(r => typeof r.total === 'number'), true)
   })
 
   it('includes roll, mod, and total', () => {
     const result = runner.rollInitiative([makeBard()])
-    expect(result[0].roll).toBe(10.5)
-    expect(result[0].mod).toBe(2) // bard DEX mod
-    expect(result[0].total).toBe(12.5)
+    assert.strictEqual(result[0].roll, 10.5)
+    assert.strictEqual(result[0].mod, 2) // bard DEX mod
+    assert.strictEqual(result[0].total, 12.5)
   })
 })
 
@@ -88,24 +89,24 @@ describe('resetTurnState', () => {
 
     runner.resetTurnState(c)
 
-    expect(c.usedAction).toBe(false)
-    expect(c.usedBonusAction).toBe(false)
-    expect(c.movementRemaining).toBe(c.speed)
-    expect(c.reactedThisRound).toBe(false)
+    assert.strictEqual(c.usedAction, false)
+    assert.strictEqual(c.usedBonusAction, false)
+    assert.strictEqual(c.movementRemaining, c.speed)
+    assert.strictEqual(c.reactedThisRound, false)
   })
 
   it('clears vm_disadvantage', () => {
     const c = makeFanatic()
     c.conditions.push('vm_disadvantage')
     runner.resetTurnState(c)
-    expect(c.conditions.includes('vm_disadvantage')).toBe(false)
+    assert.strictEqual(c.conditions.includes('vm_disadvantage'), false)
   })
 
   it('clears dodging from previous turn', () => {
     const c = makeBard()
     c.conditions.push('dodging')
     runner.resetTurnState(c)
-    expect(c.conditions.includes('dodging')).toBe(false)
+    assert.strictEqual(c.conditions.includes('dodging'), false)
   })
 })
 
@@ -122,8 +123,8 @@ describe('processStartOfTurn', () => {
     const log = []
 
     runner.processStartOfTurn(bard, [bard], log)
-    expect(bard.gemFlight.roundsRemaining).toBe(1)
-    expect(bard.flying).toBe(true)
+    assert.strictEqual(bard.gemFlight.roundsRemaining, 1)
+    assert.strictEqual(bard.flying, true)
   })
 
   it('ends gem flight when duration expires', () => {
@@ -134,8 +135,8 @@ describe('processStartOfTurn', () => {
     const log = []
 
     runner.processStartOfTurn(bard, [bard], log)
-    expect(bard.gemFlight.active).toBe(false)
-    expect(bard.flying).toBe(false)
+    assert.strictEqual(bard.gemFlight.active, false)
+    assert.strictEqual(bard.flying, false)
   })
 
   it('decrement concentration timer and break when expired', () => {
@@ -147,8 +148,8 @@ describe('processStartOfTurn', () => {
     const log = []
 
     runner.processStartOfTurn(bard, [bard, f1], log)
-    expect(bard.concentrating).toBe(null)
-    expect(f1.conditions.includes('paralyzed')).toBe(false)
+    assert.strictEqual(bard.concentrating, null)
+    assert.strictEqual(f1.conditions.includes('paralyzed'), false)
   })
 
   it('handles falling when paralyzed and flying', () => {
@@ -159,10 +160,10 @@ describe('processStartOfTurn', () => {
     const log = []
 
     runner.processStartOfTurn(bard, [bard], log)
-    expect(bard.flying).toBe(false)
-    expect(bard.conditions.includes('prone')).toBe(true)
+    assert.strictEqual(bard.flying, false)
+    assert.strictEqual(bard.conditions.includes('prone'), true)
     // Took falling damage (2d6 average = 7)
-    expect(bard.currentHP).toBeLessThan(67)
+    assert.ok(bard.currentHP < 67)
   })
 })
 
@@ -181,8 +182,8 @@ describe('processEndOfTurnSaves', () => {
 
     // f1 WIS save: 10.5 + 1 = 11.5 < 15 → FAIL, still paralyzed
     runner.processEndOfTurnSaves(f1, [bard, f1], log)
-    expect(f1.conditions.includes('paralyzed')).toBe(true)
-    expect(log.some(l => l.includes('FAIL'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('paralyzed'), true)
+    assert.strictEqual(log.some(l => l.includes('FAIL')), true)
   })
 
   it('paralyzed creature breaks free on successful save', () => {
@@ -195,7 +196,7 @@ describe('processEndOfTurnSaves', () => {
 
     // bard WIS save: 10.5 + 1 = 11.5 >= 5 → SUCCESS
     runner.processEndOfTurnSaves(bard, [f1, bard], log)
-    expect(bard.conditions.includes('paralyzed')).toBe(false)
+    assert.strictEqual(bard.conditions.includes('paralyzed'), false)
   })
 })
 
@@ -209,8 +210,8 @@ describe('checkVictory', () => {
     const f1 = makeFanatic(1)
     f1.currentHP = 0
     const result = runner.checkVictory([bard, f1], 1)
-    expect(result.over).toBe(true)
-    expect(result.winner).toBe('party')
+    assert.strictEqual(result.over, true)
+    assert.strictEqual(result.winner, 'party')
   })
 
   it('enemy wins when party dead', () => {
@@ -218,13 +219,13 @@ describe('checkVictory', () => {
     bard.currentHP = 0
     const f1 = makeFanatic(1)
     const result = runner.checkVictory([bard, f1], 1)
-    expect(result.over).toBe(true)
-    expect(result.winner).toBe('enemy')
+    assert.strictEqual(result.over, true)
+    assert.strictEqual(result.winner, 'enemy')
   })
 
   it('combat continues when both sides alive', () => {
     const result = runner.checkVictory([makeBard(), makeFanatic(1)], 1)
-    expect(result.over).toBe(false)
+    assert.strictEqual(result.over, false)
   })
 
   it('incapacitation at round 15+ is a stalemate (draw), not a win', () => {
@@ -232,8 +233,8 @@ describe('checkVictory', () => {
     const f1 = makeFanatic(1)
     f1.conditions.push('charmed_hp', 'incapacitated')
     const result = runner.checkVictory([bard, f1], 15)
-    expect(result.over).toBe(true)
-    expect(result.winner).toBe('draw')
+    assert.strictEqual(result.over, true)
+    assert.strictEqual(result.winner, 'draw')
   })
 
   it('combat continues if enemies incapacitated but < 15 rounds', () => {
@@ -241,7 +242,7 @@ describe('checkVictory', () => {
     const f1 = makeFanatic(1)
     f1.conditions.push('charmed_hp', 'incapacitated')
     const result = runner.checkVictory([bard, f1], 10)
-    expect(result.over).toBe(false)
+    assert.strictEqual(result.over, false)
   })
 })
 
@@ -262,9 +263,9 @@ describe('resolveWeaponAttack', () => {
     runner.resolveWeaponAttack(f1, { target: bard, weapon: f1.weapon }, [f1, bard], log)
     // Dagger: +4 attack, average 10.5 + 4 = 14.5 vs AC 10 → HIT
     // 1d4 + 2 average = 2.5 + 2 = 4.5
-    expect(bard.currentHP).toBeLessThan(67)
-    expect(f1.attacksMade).toBe(1)
-    expect(f1.attacksHit).toBe(1)
+    assert.ok(bard.currentHP < 67)
+    assert.strictEqual(f1.attacksMade, 1)
+    assert.strictEqual(f1.attacksHit, 1)
   })
 
   it('misses when total < AC', () => {
@@ -278,8 +279,8 @@ describe('resolveWeaponAttack', () => {
     const log = []
 
     runner.resolveWeaponAttack(f1, { target: bard, weapon: f1.weapon }, [f1, bard], log)
-    expect(bard.currentHP).toBe(67)
-    expect(f1.attacksHit).toBe(0)
+    assert.strictEqual(bard.currentHP, 67)
+    assert.strictEqual(f1.attacksHit, 0)
   })
 
   it('grants advantage when attacker is invisible', () => {
@@ -293,7 +294,7 @@ describe('resolveWeaponAttack', () => {
 
     runner.resolveWeaponAttack(bard, { target: f1, weapon: bard.weapon }, [bard, f1], log)
     // In average mode advantage/disadvantage don't change value, but the mechanic is exercised
-    expect(bard.attacksMade).toBe(1)
+    assert.strictEqual(bard.attacksMade, 1)
   })
 
   it('grants advantage and auto-crit vs paralyzed within 5ft', () => {
@@ -308,7 +309,7 @@ describe('resolveWeaponAttack', () => {
 
     runner.resolveWeaponAttack(f1, { target: bard, weapon: f1.weapon }, [f1, bard], log)
     // Should hit with crit damage (doubled dice)
-    expect(log.some(l => l.includes('CRITICAL') || l.includes('HIT'))).toBe(true)
+    assert.strictEqual(log.some(l => l.includes('CRITICAL') || l.includes('HIT')), true)
   })
 })
 
@@ -325,8 +326,8 @@ describe('resolveBreathWeapon', () => {
     runner.resolveBreathWeapon(bard, { targets: [f1] }, [bard, f1], log)
     // DC 14 DEX save, f1 DEX +2, average 10.5 + 2 = 12.5 < 14 → FAIL, full damage
     // 2d10 average = 11
-    expect(f1.currentHP).toBe(33 - 11)
-    expect(bard.breathWeapon.uses).toBe(2)
+    assert.strictEqual(f1.currentHP, 33 - 11)
+    assert.strictEqual(bard.breathWeapon.uses, 2)
   })
 
   it('resolves targets from aoeCenter using geometry engine', () => {
@@ -338,10 +339,10 @@ describe('resolveBreathWeapon', () => {
     // aoeCenter is caster position (self-origin cone)
     runner.resolveBreathWeapon(bard, { aoeCenter: { x: 0, y: 0 } }, [bard, f1, f2], log)
 
-    expect(bard.breathWeapon.uses).toBe(2)
+    assert.strictEqual(bard.breathWeapon.uses, 2)
     // f1 should take damage (within cone), f2 should not (outside cone)
-    expect(f1.currentHP).toBeLessThan(33)
-    expect(f2.currentHP).toBe(33)
+    assert.ok(f1.currentHP < 33)
+    assert.strictEqual(f2.currentHP, 33)
   })
 
   it('falls back to action.targets when no aoeCenter', () => {
@@ -352,8 +353,8 @@ describe('resolveBreathWeapon', () => {
 
     // Legacy path: explicit targets array
     runner.resolveBreathWeapon(bard, { targets: [f1] }, [bard, f1, f2], log)
-    expect(f1.currentHP).toBeLessThan(33)
-    expect(f2.currentHP).toBe(33)
+    assert.ok(f1.currentHP < 33)
+    assert.strictEqual(f2.currentHP, 33)
   })
 })
 
@@ -369,7 +370,7 @@ describe('resolveShakeAwake', () => {
     const log = []
 
     runner.resolveShakeAwake(f1, { target: f2 }, log)
-    expect(f2.conditions).toEqual([])
+    assert.deepStrictEqual(f2.conditions, [])
   })
 })
 
@@ -390,11 +391,11 @@ describe('runEncounter — party vs enemies with simple AI', () => {
       verbose: false,
     })
 
-    expect(['party', 'enemy', 'draw'].includes(result.winner)).toBe(true)
-    expect(result.rounds).toBeGreaterThanOrEqual(1)
-    expect(Array.isArray(result.log)).toBe(true)
-    expect(Array.isArray(result.analytics)).toBe(true)
-    expect(result.analytics.length).toBe(2)
+    assert.strictEqual(['party', 'enemy', 'draw'].includes(result.winner), true)
+    assert.ok(result.rounds >= 1)
+    assert.strictEqual(Array.isArray(result.log), true)
+    assert.strictEqual(Array.isArray(result.analytics), true)
+    assert.strictEqual(result.analytics.length, 2)
   })
 
   it('party wins when fanatic has 1 HP', () => {
@@ -410,8 +411,8 @@ describe('runEncounter — party vs enemies with simple AI', () => {
     })
 
     // Crossbow 1d8+2 avg = 6.5, should kill 1 HP target in round 1
-    expect(result.winner).toBe('party')
-    expect(result.rounds).toBe(1)
+    assert.strictEqual(result.winner, 'party')
+    assert.strictEqual(result.rounds, 1)
   })
 
   it('ends as draw after maxRounds if no one dies', () => {
@@ -426,8 +427,8 @@ describe('runEncounter — party vs enemies with simple AI', () => {
       verbose: false,
     })
 
-    expect(result.winner).toBe('draw')
-    expect(result.rounds).toBe(3)
+    assert.strictEqual(result.winner, 'draw')
+    assert.strictEqual(result.rounds, 3)
   })
 })
 
@@ -458,7 +459,7 @@ describe('runEncounter — spell casting integration', () => {
     // After HP, fanatics should be charmed (though with Dark Devotion advantage, they still fail DC 15)
     // In average mode: 10.5 (adv) + 1 = 11.5 < 15 → both fail
     // Incapacitation is now a stalemate (draw), not a win
-    expect(result.winner).toBe('draw')
+    assert.strictEqual(result.winner, 'draw')
   })
 
   it('bard can cast Hypnotic Pattern with aoeCenter (engine-resolved targets)', () => {
@@ -489,7 +490,7 @@ describe('runEncounter — spell casting integration', () => {
 
     // Both fanatics within 15ft (cube half-side) of center (5,0)
     // f1 at (5,0) = 0ft from center, f2 at (6,0) = 5ft from center
-    expect(result.winner).toBe('draw')
+    assert.strictEqual(result.winner, 'draw')
   })
 })
 
@@ -505,9 +506,9 @@ describe('buildAnalytics', () => {
     bard.attacksHit = 3
 
     const analytics = runner.buildAnalytics([bard])
-    expect(analytics[0].name).toBe(bard.name)
-    expect(analytics[0].damageDealt).toBe(25)
-    expect(analytics[0].hitRate).toBe(60)
+    assert.strictEqual(analytics[0].name, bard.name)
+    assert.strictEqual(analytics[0].damageDealt, 25)
+    assert.strictEqual(analytics[0].hitRate, 60)
   })
 })
 
@@ -523,9 +524,9 @@ describe('resolveDragonFear', () => {
     const log = []
 
     runner.resolveDragonFear(bard, { targets: [f1] }, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(true)
-    expect(bard.dragonFear.uses).toBe(0)
-    expect(log.some(l => l.includes('FRIGHTENED'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), true)
+    assert.strictEqual(bard.dragonFear.uses, 0)
+    assert.strictEqual(log.some(l => l.includes('FRIGHTENED')), true)
   })
 
   it('does not apply frightened when target succeeds WIS save', () => {
@@ -535,8 +536,8 @@ describe('resolveDragonFear', () => {
     const log = []
 
     runner.resolveDragonFear(bard, { targets: [f1] }, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(false)
-    expect(log.some(l => l.includes('SUCCESS'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), false)
+    assert.strictEqual(log.some(l => l.includes('SUCCESS')), true)
   })
 
   it('skips targets already frightened', () => {
@@ -547,8 +548,8 @@ describe('resolveDragonFear', () => {
 
     runner.resolveDragonFear(bard, { targets: [f1] }, [bard, f1], log)
     // Still 1 'frightened' condition, not doubled
-    expect(f1.conditions.filter(c => c === 'frightened').length).toBe(1)
-    expect(log.some(l => l.includes('Already frightened'))).toBe(true)
+    assert.strictEqual(f1.conditions.filter(c => c === 'frightened').length, 1)
+    assert.strictEqual(log.some(l => l.includes('Already frightened')), true)
   })
 
   it('skips targets immune to frightened', () => {
@@ -558,8 +559,8 @@ describe('resolveDragonFear', () => {
     const log = []
 
     runner.resolveDragonFear(bard, { targets: [f1] }, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(false)
-    expect(log.some(l => l.includes('Immune'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), false)
+    assert.strictEqual(log.some(l => l.includes('Immune')), true)
   })
 
   it('does nothing when no Dragon Fear uses remain', () => {
@@ -569,8 +570,8 @@ describe('resolveDragonFear', () => {
     const log = []
 
     runner.resolveDragonFear(bard, { targets: [f1] }, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(false)
-    expect(log.some(l => l.includes('no uses remaining'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), false)
+    assert.strictEqual(log.some(l => l.includes('no uses remaining')), true)
   })
 
   it('resolves targets from aoeCenter using geometry engine', () => {
@@ -581,11 +582,11 @@ describe('resolveDragonFear', () => {
 
     runner.resolveDragonFear(bard, { aoeCenter: { x: 0, y: 0 } }, [bard, f1, f2], log)
 
-    expect(bard.dragonFear.uses).toBe(0)
+    assert.strictEqual(bard.dragonFear.uses, 0)
     // f1 within 30ft cone — should be targeted (frightened on fail)
-    expect(f1.conditions.includes('frightened')).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), true)
     // f2 outside 30ft cone — should NOT be targeted
-    expect(f2.conditions.includes('frightened')).toBe(false)
+    assert.strictEqual(f2.conditions.includes('frightened'), false)
   })
 
   it('engine-resolved targeting skips flying creature for 15ft breath cone', () => {
@@ -597,8 +598,8 @@ describe('resolveDragonFear', () => {
 
     // Breath weapon uses 15ft cone — can't reach 30ft altitude
     runner.resolveBreathWeapon(bard, { aoeCenter: { x: 0, y: 0 } }, [bard, f1, f2], log)
-    expect(f1.currentHP).toBeLessThan(33)
-    expect(f2.currentHP).toBe(33)
+    assert.ok(f1.currentHP < 33)
+    assert.strictEqual(f2.currentHP, 33)
   })
 })
 
@@ -615,8 +616,8 @@ describe('processEndOfTurnSaves — Dragon Fear frightened', () => {
 
     // f1 WIS save: 10.5 + 1 = 11.5 < 15 → FAIL → stays frightened
     runner.processEndOfTurnSaves(f1, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(true)
-    expect(log.some(l => l.includes('Dragon Fear'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), true)
+    assert.strictEqual(log.some(l => l.includes('Dragon Fear')), true)
   })
 
   it('frightened creature breaks free on successful save', () => {
@@ -628,8 +629,8 @@ describe('processEndOfTurnSaves — Dragon Fear frightened', () => {
 
     // f1 WIS save: 10.5 + 1 = 11.5 >= 5 → SUCCESS
     runner.processEndOfTurnSaves(f1, [bard, f1], log)
-    expect(f1.conditions.includes('frightened')).toBe(false)
-    expect(log.some(l => l.includes('no longer frightened'))).toBe(true)
+    assert.strictEqual(f1.conditions.includes('frightened'), false)
+    assert.strictEqual(log.some(l => l.includes('no longer frightened')), true)
   })
 })
 
@@ -650,8 +651,8 @@ describe('runEncounter — positionSnapshots', () => {
       verbose: false,
     })
 
-    expect(Array.isArray(result.positionSnapshots)).toBe(true)
-    expect(result.positionSnapshots.length).toBeGreaterThanOrEqual(2) // start + at least 1 round end
+    assert.strictEqual(Array.isArray(result.positionSnapshots), true)
+    assert.ok(result.positionSnapshots.length >= 2) // start + at least 1 round end
   })
 
   it('initial snapshot has round 0 and all combatants', () => {
@@ -667,9 +668,9 @@ describe('runEncounter — positionSnapshots', () => {
     })
 
     const startSnap = result.positionSnapshots[0]
-    expect(startSnap.round).toBe(0)
-    expect(startSnap.phase).toBe('start')
-    expect(startSnap.combatants.length).toBe(2)
+    assert.strictEqual(startSnap.round, 0)
+    assert.strictEqual(startSnap.phase, 'start')
+    assert.strictEqual(startSnap.combatants.length, 2)
   })
 
   it('snapshots include HP, conditions, and position', () => {
@@ -686,10 +687,10 @@ describe('runEncounter — positionSnapshots', () => {
 
     const snap = result.positionSnapshots[0]
     const bardSnap = snap.combatants.find(c => c.side === 'party')
-    expect(typeof bardSnap.currentHP).toBe('number')
-    expect(typeof bardSnap.maxHP).toBe('number')
-    expect(Array.isArray(bardSnap.conditions)).toBe(true)
-    expect(typeof bardSnap.position).toBe('object')
+    assert.strictEqual(typeof bardSnap.currentHP, 'number')
+    assert.strictEqual(typeof bardSnap.maxHP, 'number')
+    assert.strictEqual(Array.isArray(bardSnap.conditions), true)
+    assert.strictEqual(typeof bardSnap.position, 'object')
   })
 })
 
@@ -718,9 +719,9 @@ describe('runEncounter — incapacitated creatures get end-of-turn saves', () =>
 
     // Bard should have broken free via end-of-turn save (DC 1, average roll is 10.5)
     const logText = result.log.join('\n')
-    expect(logText).toContain('WIS save vs Hold Person')
-    expect(logText).toContain('SUCCESS')
-    expect(bard.conditions.includes('paralyzed')).toBe(false)
+    assert.ok(logText.includes('WIS save vs Hold Person'))
+    assert.ok(logText.includes('SUCCESS'))
+    assert.strictEqual(bard.conditions.includes('paralyzed'), false)
   })
 
   it('incapacitated creature turn is skipped but saves still happen', () => {
@@ -741,9 +742,9 @@ describe('runEncounter — incapacitated creatures get end-of-turn saves', () =>
     })
 
     const logText = result.log.join('\n')
-    expect(logText).toContain('is incapacitated')
-    expect(logText).toContain('WIS save vs Hold Person')
-    expect(logText).toContain('FAIL')
+    assert.ok(logText.includes('is incapacitated'))
+    assert.ok(logText.includes('WIS save vs Hold Person'))
+    assert.ok(logText.includes('FAIL'))
   })
 })
 
@@ -763,8 +764,8 @@ describe('resolveWeaponAttack — range enforcement', () => {
 
     const hpBefore = bard.currentHP
     runner.resolveWeaponAttack(f1, { target: bard, weapon: f1.weapon }, [f1, bard], log)
-    expect(bard.currentHP).toBe(hpBefore)
-    expect(log.some(l => l.includes("can't reach"))).toBe(true)
+    assert.strictEqual(bard.currentHP, hpBefore)
+    assert.strictEqual(log.some(l => l.includes("can't reach")), true)
   })
 
   it('allows melee attack when target is within 5ft', () => {
@@ -776,7 +777,7 @@ describe('resolveWeaponAttack — range enforcement', () => {
     const log = []
 
     runner.resolveWeaponAttack(f1, { target: bard, weapon: f1.weapon }, [f1, bard], log)
-    expect(bard.currentHP).toBeLessThan(67)
+    assert.ok(bard.currentHP < 67)
   })
 
   it('allows ranged attack at distance using weapon range', () => {
@@ -790,7 +791,7 @@ describe('resolveWeaponAttack — range enforcement', () => {
     const log = []
 
     runner.resolveWeaponAttack(bard, { target: f1, weapon: crossbow }, [bard, f1], log)
-    expect(f1.currentHP).toBeLessThan(f1.maxHP)
+    assert.ok(f1.currentHP < f1.maxHP)
   })
 })
 
@@ -827,6 +828,6 @@ describe('runEncounter — movement uses creature speed', () => {
     })
 
     // After one round, bard should have moved 6 squares (speed 30 / 5 = 6), not just 1
-    expect(bard.position.x).toBeGreaterThanOrEqual(6)
+    assert.ok(bard.position.x >= 6)
   })
 })

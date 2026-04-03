@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "plan-tool": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "tools/plan-mcp/server.mjs",
+        "${workspaceFolder}"
+      ]
+    }
+  }
+}
