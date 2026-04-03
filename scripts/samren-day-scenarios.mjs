@@ -32,14 +32,29 @@
  *   blocks below 4,096 tokens won't be cached cross-NPC.
  */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { buildNpcContextBlocks, buildNpcDayUserPrompt } from '../packages/dm/src/npc/buildNpcContextBlocks.js';
 import { LLMProvider } from '../packages/dm/src/llm/LLMProvider.js';
+
+// ── Load API key from .keys/anthropic.env if not already set ────────────────
+
+const __dir = dirname(fileURLToPath(import.meta.url));
+const root = resolve(__dir, '..');
+for (const candidate of ['.keys/anthropic.env', '.keys/anthropic.key']) {
+  const envFile = resolve(root, candidate);
+  if (!process.env.ANTHROPIC_API_KEY && existsSync(envFile)) {
+    const match = readFileSync(envFile, 'utf8').match(/ANTHROPIC_API_KEY=(.+)/);
+    if (match) process.env.ANTHROPIC_API_KEY = match[1].trim();
+  }
+}
 
 // ── Verify API key ───────────────────────────────────────────────────────────
 
 if (!process.env.ANTHROPIC_API_KEY) {
   console.error('\n  ✗ ANTHROPIC_API_KEY is not set.');
+  console.error('  Set the environment variable or create .keys/anthropic.env with ANTHROPIC_API_KEY=sk-ant-...');
   process.exit(1);
 }
 
