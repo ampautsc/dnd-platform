@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  city-waterdeep.xml — Waterdeep local knowledge, 1492 DR
+  Scope: what a Waterdeep resident or regular visitor knows beyond world-common
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as second static block for Waterdeep-based NPC prompts
+-->
+<city-context id="waterdeep" year="1492-DR" epithets="City of Splendors; Crown of the North">
+
+  <section id="governance">
+    <e id="masked-lords">City ruled by ~15 hidden Masked Lords; identities secret by design; decisions made collectively; prevents any single faction from capturing the government</e>
+    <e id="open-lord">Only public-facing lord; current 1492 DR: Laeral Silverhand (archmage, one of the Seven Sisters); former Open Lord Dagult Neverember removed, now in Neverwinter</e>
+    <e id="blackstaff">Archmage of Waterdeep; title not person; current: Vajra Safahr; commands the city's magical defense; based in Blackstaff Tower (Castle Ward); answers to the Lords</e>
+    <e id="city-watch">Internal law enforcement; professional+incorruptible by Faerûn standards; distinctive black-and-gold livery; can arrest anyone regardless of wealth or faction</e>
+    <e id="city-guard">External military defense; mans the city walls+harbor gates; separate from Watch; primarily a military body not a law enforcement one</e>
+    <e id="lords-guard">Elite force; protects Castle Waterdeep+the Lords themselves; highly trained,heavily armed; not seen on normal city streets</e>
+  </section>
+
+  <section id="districts">
+    <e id="sea-ward">Wealthiest residential district; grand noble villas,temples of major gods,grand boulevards; most temples along the Street of the Singing Dolphin; status address</e>
+    <e id="north-ward">Prosperous middle class; quiet,well-maintained; wealthy merchants,successful guild members; fewer temples,more townhouses; safer than most wards at night</e>
+    <e id="castle-ward">Government center; Castle Waterdeep (atop Mt. Waterdeep),Blackstaff Tower,City Watch HQ; mixed residential+commercial; higher elevation overlooks the city</e>
+    <e id="trade-ward">Commercial heart; markets,moneychangers,counting houses,guild offices; busiest during day; expensive to rent,worth it for merchants; never truly quiet</e>
+    <e id="southern-ward">Working class residential+light industry; tanners,dyers,coopers,stables; smells accordingly; honest folk; fewer guards patrol here than Sea or North Ward</e>
+    <e id="dock-ward">Roughest district; sailors,fishers,dock workers,fences,pickpockets; taverns stay open all night; Watch patrols in pairs minimum; where contraband moves</e>
+    <e id="city-of-the-dead">Vast walled cemetery; open to the public by day as a park; locked at night; well-maintained by Kelemvorites; remarkably safe from undead (active consecration)</e>
+    <e id="field-of-triumph">Large arena in Sea Ward; public games,celebrations,trials by combat; major festival events held here</e>
+  </section>
+
+  <section id="landmarks">
+    <e id="yawning-portal">Famous inn in Castle Ward; contains a well 40ft wide descending into Undermountain; adventurers jump in for bounties (100gp posted at bar); Durnan the innkeeper is an ex-delver and not easily impressed</e>
+    <e id="undermountain">Megadungeon beneath the city; built+haunted by mad archmage Halaster Blackcloak; levels descend miles; creatures and treasure both; many enter,few return to tell the full story</e>
+    <e id="castle-waterdeep">Ancient castle atop Mt. Waterdeep; headquarters of the city's magical and military defense; home to Blackstaff Tower; partially open to public view from below</e>
+    <e id="deepwater-harbor">One of the finest natural harbors in Faerûn; protected by sea wall+harbor chain; heavily trafficked by merchant vessels from across the continent and beyond; Sea Ward nobles have private moorings</e>
+    <e id="skullport">Hidden port three levels below Undermountain; center of Waterdeep's illegal trade: slaves,drugs,contraband; controlled by the Xanathar Guild; Watch cannot reach it; most citizens deny its existence</e>
+  </section>
+
+  <section id="guilds-and-factions">
+    <e id="guilds-general">Over a dozen major guilds; guild membership required for most skilled professions; Waterdeep guilds are politically powerful,well-funded,and territorial</e>
+    <e id="watchful-order">Watchful Order of Magists and Protectors; guild for spellcasters; provides magical services,lobbies for mage interests,polices unlicensed spellcasting-for-hire; well-connected with the Lords</e>
+    <e id="xanathar-guild">Beholder crime lord known as the Xanathar; controls most organized crime in Waterdeep from beneath the city; rivals the Zhentarim for underworld dominance; dangerous to mention by name in the wrong company</e>
+    <e id="bregan-daerthe">Drow mercenary company operating in Waterdeep; led by Jarlaxle; ostensibly a fencing operation; actual scope: intelligence,influence,profit; tolerated because they are useful</e>
+    <e id="force-grey">Elite city defenders; select members of the City Guard; called upon when threats exceed normal Watch+Guard capacity; adventurers are sometimes deputized into this force</e>
+  </section>
+
+  <section id="economy-local">
+    <e id="trade-scale">Wealthiest city in the North; gateway between the Sword Coast and interior trade routes; merchant vessels from Calimshan,Amn,Sembia,Luskan,and beyond call here</e>
+    <e id="guild-power">Guild levies are a significant tax burden; non-guild craftsmen face fines+confiscation; powerful guilds negotiate directly with the Lords over rates+regulations</e>
+    <e id="money-exchange">Trade Ward money-changers handle all major currencies; standard exchange available; premium charged for unusual coinage; platinum common in high-value noble transactions</e>
+    <e id="black-market">Dock Ward fences and Skullport supply what guilds and Watch prohibit; prices high; risk of Watch involvement or Xanathar notice both real</e>
+  </section>
+
+  <section id="social-culture">
+    <e id="cosmopolitan">Most diverse city in the North; elves,dwarves,halflings,gnomes,half-orcs,tieflings all present and (mostly) unremarkable; foreign merchants,ambassadors,adventurers arrive constantly</e>
+    <e id="masked-lords-speculation">Who are the Masked Lords is Waterdeep's favorite tavern debate; rumors constantly circulate; naming someone as a Lord is considered scandalous if wrong, dangerous if right</e>
+    <e id="wealth-display">Sea Ward nobility displays wealth openly: carved facades,liveried servants,private coaches; Trade Ward merchants display more subtly; Dock Ward folk distrust open displays of wealth</e>
+    <e id="law-enforcement">One of the few cities where the Watch actively pursues crimes against commoners not just nobles; bribery of Watch officers carries severe penalty; still not perfect but notably better than most</e>
+  </section>
+
+</city-context>

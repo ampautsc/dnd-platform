@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  city-neverwinter.xml — Neverwinter local knowledge, 1492 DR
+  Scope: what a Neverwinter resident or regular visitor knows beyond world-common
+  Format: dense key-value fragments; no prose; no complete sentences
+  Cache-target: inject as second static block for Neverwinter-based NPC prompts
+-->
+<city-context id="neverwinter" year="1492-DR" epithets="Jewel of the North; the City That Never Sleeps; the Shining City (pre-disaster)">
+
+  <section id="governance">
+    <e id="lord-protector">Dagult Neverember; self-proclaimed rightful heir to the Neverwinter throne (contested); rules as Lord Protector; simultaneously Open Lord of Waterdeep until removed; currently focused on Neverwinter reconstruction</e>
+    <e id="neverwinter-nine">Neverember's elite personal guard+enforcers; named for the legendary nine heroes of old Neverwinter; function as secret police as much as bodyguards; widely mistrusted by citizens</e>
+    <e id="legitimacy-question">Neverember's hereditary claim is disputed; no surviving member of the old Alagondar noble line acknowledged; many citizens resent autocratic rule while accepting it as necessary for reconstruction</e>
+    <e id="new-neverwinter">Political faction supporting Neverember's rebuilding project; loyal to the Lord Protector; often wealthy newcomers who arrived after the disaster and have no attachment to the old city</e>
+    <e id="sons-of-alagondar">Resistance faction; claim to defend old Neverwinter's independence; see Neverember as an occupier; conduct sporadic sabotage; popular sympathy among long-term residents</e>
+  </section>
+
+  <section id="geography-local">
+    <e id="river">River Neverwinter stays warm year-round due to geothermal vents upstream; never freezes; gives the city its name; source of the city's unique climate advantage; vital for winter trade when other northern rivers ice over</e>
+    <e id="protectors-enclave">Main restored district; administrative center,markets,docks; Neverember's government operates here; safest part of the city; where visitors typically stay</e>
+    <e id="blacklake-district">Formerly wealthy residential district; damaged in disaster; partially restored; wealthier citizens+Neverember loyalists moving back in; still has abandoned sections</e>
+    <e id="tower-district">Northern district; largely ruined; dangerous due to remnant monsters and structural instability; Sons of Alagondar use ruins for hideouts; officially off-limits but unofficially entered constantly</e>
+    <e id="blighted-witchwood">Forest to the east; corrupted by the disaster's magical fallout; plagued beasts,undead,and stranger things; not a safe place to enter without preparation</e>
+    <e id="chasm">Massive rift that tore open in the city during the disaster; sealed/bridged by 1492 but the area remains unstable and psychically disturbing; a vivid reminder of the catastrophe</e>
+  </section>
+
+  <section id="history-local">
+    <e id="mount-hotenow">Volcano to the NE; erupted ~1451 DR; pyroclastic flows destroyed much of the city; thousands killed; triggered the Chasm opening; the defining event for all current residents</e>
+    <e id="spellplague-impact">Spellplague 1385 DR already weakened the city before Hotenow; combination of planar disruptions+volcanic destruction left the city near-abandoned for decades</e>
+    <e id="reconstruction">Neverember began serious rebuilding ~1467 DR; brought in workers,soldiers,merchants from Waterdeep and elsewhere; city is functional but far from its former glory; ongoing construction visible everywhere</e>
+    <e id="population">Significantly smaller than pre-disaster; mix of original survivors,returning former residents,and new arrivals attracted by cheap land+opportunity; social tensions between old-timers and newcomers</e>
+    <e id="castle-never">The old castle; partially rebuilt; Neverember uses it as his seat; some wings still ruined; legendary for its size and former glory; adventurers explore unreconstructed sections (unofficially)</e>
+  </section>
+
+  <section id="landmarks">
+    <e id="hall-of-justice">Tyr's temple; restored early in reconstruction; serves as courts+civic center; one of the most intact major buildings; Neverember uses its legitimacy for official functions</e>
+    <e id="protectors-enclave-market">Main market in the Enclave; largest concentration of active merchants; prices slightly higher than comparable Sword Coast cities (supply logistics); most reliable source of standard goods</e>
+    <e id="driftwood-tavern">Popular tavern in Protector's Enclave; gathering point for adventurers+mercenaries; job board; Neverember's agents known to recruit here; owner: Madame Rosene</e>
+    <e id="river-district">Along the Neverwinter River; warehouses,fishing operations,small boat traffic; less affected by disaster than interior districts; working-class,practical,mistrustful of outsiders</e>
+  </section>
+
+  <section id="factions-local">
+    <e id="neverwinter-guard">Neverember's city guard; funded by Waterdeep gold via the Lord Protector; reasonably paid and reasonably disciplined; loyalty is to Neverember not the city; not a city Watch in traditional sense</e>
+    <e id="mintarn-mercenaries">Mercenaries from Mintarn island hired by Neverember to supplement the guard; competent but seen as foreign occupiers by old-time residents; rotating contracts mean no permanent loyalty</e>
+    <e id="harpers-presence">Harpers active in Neverwinter; concerned about Neverember's consolidation of power; also monitoring Blighted Witchwood and Underdark connections under the city; operate quietly</e>
+  </section>
+
+  <section id="economy-local">
+    <e id="reconstruction-economy">Massive building demand=jobs for laborers,craftsmen,merchants; wages slightly above Sword Coast average due to demand; Neverember spending Waterdeep treasury gold to fund growth</e>
+    <e id="harbor">Harbor rebuilt and operational; less traffic than pre-disaster but growing; river advantage means it functions year-round when northern ports are iced; strategic value acknowledged by Lords' Alliance</e>
+    <e id="land-cheap">Property prices low relative to Waterdeep or Baldur's Gate; opportunity for those willing to accept risk and ongoing instability; Neverember grants land to attract settlers</e>
+    <e id="supply-constraints">Some goods harder to find than in larger cities; magical items especially limited; adventurers wanting exotic equipment often need to commission or travel to Waterdeep</e>
+  </section>
+
+  <section id="social-culture">
+    <e id="resilience">Residents who stayed through or returned after the disaster have a particular hardness and civic pride; not easily impressed; distrust easy promises; respect demonstrated competence</e>
+    <e id="political-tension">Open support for Sons of Alagondar can lead to arrest by Neverwinter Nine; open criticism of Neverember is risky; most citizens navigate with careful neutrality; tavern conversations guarded</e>
+    <e id="adventurers-reception">Unusually welcoming; reconstruction creates constant demand for cleared ruins,explored threats,recovered artifacts; adventurers are economically valuable here in ways they aren't elsewhere</e>
+    <e id="frontier-feel">Despite being a named city, Neverwinter in 1492 has a frontier quality; rules are enforced selectively; the Watch's reach doesn't extend everywhere; self-reliance valued</e>
+  </section>
+
+</city-context>
