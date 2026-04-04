@@ -17,6 +17,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy Gateway to App Service
+    permissions:
+      contents: read
 
     steps:
       - uses: actions/checkout@v4

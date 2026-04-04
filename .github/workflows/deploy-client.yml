@@ -21,6 +21,8 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     runs-on: ubuntu-latest
     name: Build and Deploy
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,6 +53,7 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close PR Preview
+    permissions: {}
     steps:
       - name: Close Pull Request
         uses: Azure/static-web-apps-deploy@v1

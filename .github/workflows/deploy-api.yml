@@ -23,6 +23,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy API to App Service
+    permissions:
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
