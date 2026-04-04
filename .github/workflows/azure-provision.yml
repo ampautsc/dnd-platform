@@ -1,0 +1,244 @@
+name: Provision Azure Infrastructure
+
+# One-time workflow. Run it once to create all Azure resources and wire up
+# GitHub secrets/variables automatically. After it completes, the deploy
+# workflows (deploy-client, deploy-api, deploy-gateway) are ready to use.
+#
+# Prerequisites (add these two GitHub secrets before running):
+#   AZURE_CREDENTIALS  — Service principal JSON from:
+#                        az ad sp create-for-rbac --name dnd-deploy \
+#                          --role contributor \
+#                          --scopes /subscriptions/<YOUR_SUB_ID> \
+#                          --sdk-auth
+#   GH_PAT             — GitHub Personal Access Token with repo scope
+#                        (Settings → Developer settings → Personal access tokens)
+
+on:
+  workflow_dispatch:
+    inputs:
+      resource_prefix:
+        description: 'Prefix for Azure resource names (must be globally unique, e.g. dnd-yourname)'
+        required: false
+        default: 'dnd-platform'
+      location:
+        description: 'Azure region'
+        required: false
+        default: 'eastus'
+      anthropic_api_key:
+        description: 'Anthropic API key (optional — enables real LLM narration)'
+        required: false
+        default: ''
+      groq_api_key:
+        description: 'Groq API key (optional — enables ambient NPC reactions)'
+        required: false
+        default: ''
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Derive stable resource names from the prefix input
+      - name: Set resource names
+        id: names
+        run: |
+          PREFIX="${{ inputs.resource_prefix }}"
+          echo "rg=${PREFIX}-rg"        >> "$GITHUB_OUTPUT"
+          echo "plan=${PREFIX}-plan"    >> "$GITHUB_OUTPUT"
+          echo "api=${PREFIX}-api"      >> "$GITHUB_OUTPUT"
+          echo "gateway=${PREFIX}-gw"   >> "$GITHUB_OUTPUT"
+          echo "swa=${PREFIX}-client"   >> "$GITHUB_OUTPUT"
+
+      # ── Infrastructure ────────────────────────────────────────────────────────
+
+      - name: Create Resource Group
+        run: |
+          az group create \
+            --name "${{ steps.names.outputs.rg }}" \
+            --location "${{ inputs.location }}"
+
+      - name: Create App Service Plan (Linux B1)
+        run: |
+          az appservice plan create \
+            --name "${{ steps.names.outputs.plan }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --sku B1 \
+            --is-linux
+
+      # Generate a strong JWT secret at provision time (never stored in plaintext)
+      - name: Generate JWT secret
+        id: jwt
+        run: |
+          JWT=$(openssl rand -hex 32)
+          echo "::add-mask::$JWT"
+          echo "secret=$JWT" >> "$GITHUB_OUTPUT"
+
+      # ── API App Service ───────────────────────────────────────────────────────
+
+      - name: Create API App Service
+        run: |
+          az webapp create \
+            --name "${{ steps.names.outputs.api }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --plan "${{ steps.names.outputs.plan }}" \
+            --runtime "NODE:20-lts"
+
+      - name: Configure API app settings
+        run: |
+          az webapp config appsettings set \
+            --name "${{ steps.names.outputs.api }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --settings \
+              NODE_ENV=production \
+              WEBSITES_PORT=8080 \
+              PORT=8080 \
+              SCM_DO_BUILD_DURING_DEPLOYMENT=true \
+              WEBSITES_ENABLE_APP_SERVICE_STORAGE=true \
+              DB_PATH=/home/data/dnd-platform.db \
+              JWT_SECRET="${{ steps.jwt.outputs.secret }}" \
+              ANTHROPIC_API_KEY="${{ inputs.anthropic_api_key }}" \
+              GROQ_API_KEY="${{ inputs.groq_api_key }}"
+
+      - name: Set API startup command
+        run: |
+          az webapp config set \
+            --name "${{ steps.names.outputs.api }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --startup-file "node packages/api/src/index.js"
+
+      # ── Gateway App Service ───────────────────────────────────────────────────
+
+      - name: Create Gateway App Service
+        run: |
+          az webapp create \
+            --name "${{ steps.names.outputs.gateway }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --plan "${{ steps.names.outputs.plan }}" \
+            --runtime "NODE:20-lts"
+
+      - name: Configure Gateway app settings
+        run: |
+          az webapp config appsettings set \
+            --name "${{ steps.names.outputs.gateway }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --settings \
+              NODE_ENV=production \
+              WEBSITES_PORT=8080 \
+              PORT=8080 \
+              SCM_DO_BUILD_DURING_DEPLOYMENT=true \
+              JWT_SECRET="${{ steps.jwt.outputs.secret }}"
+
+      - name: Set Gateway startup command and enable WebSockets
+        run: |
+          az webapp config set \
+            --name "${{ steps.names.outputs.gateway }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --startup-file "node packages/gateway/src/index.js" \
+            --web-sockets-enabled true
+
+      # ── Static Web App (client) ───────────────────────────────────────────────
+
+      - name: Create Static Web App (Standard tier)
+        id: swa
+        run: |
+          az staticwebapp create \
+            --name "${{ steps.names.outputs.swa }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --location "${{ inputs.location }}" \
+            --sku Standard
+
+          TOKEN=$(az staticwebapp secrets list \
+            --name "${{ steps.names.outputs.swa }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --query "properties.apiKey" -o tsv)
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+          SWA_HOST=$(az staticwebapp show \
+            --name "${{ steps.names.outputs.swa }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --query defaultHostname -o tsv)
+          echo "url=https://$SWA_HOST" >> "$GITHUB_OUTPUT"
+
+      # Link the API App Service as the SWA's backend.
+      # This makes SWA transparently proxy /api/* requests to the App Service,
+      # so the React client never needs an explicit API base URL.
+      - name: Link API backend to Static Web App
+        run: |
+          API_ID=$(az webapp show \
+            --name "${{ steps.names.outputs.api }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --query id -o tsv)
+
+          az staticwebapp backends link \
+            --name "${{ steps.names.outputs.swa }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --backend-resource-id "$API_ID" \
+            --backend-region "${{ inputs.location }}"
+
+      # ── Store config in GitHub ────────────────────────────────────────────────
+      # Secrets: sensitive values (tokens, keys)
+      # Variables: non-sensitive config (resource names) used by deploy workflows
+
+      - name: Store GitHub secrets
+        run: |
+          echo "${{ steps.swa.outputs.token }}" \
+            | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN \
+                --repo "${{ github.repository }}"
+
+      - name: Store GitHub variables
+        run: |
+          gh variable set AZURE_RESOURCE_GROUP \
+            --body "${{ steps.names.outputs.rg }}" \
+            --repo "${{ github.repository }}"
+
+          gh variable set AZURE_API_APP_NAME \
+            --body "${{ steps.names.outputs.api }}" \
+            --repo "${{ github.repository }}"
+
+          gh variable set AZURE_GATEWAY_APP_NAME \
+            --body "${{ steps.names.outputs.gateway }}" \
+            --repo "${{ github.repository }}"
+
+          gh variable set AZURE_SWA_NAME \
+            --body "${{ steps.names.outputs.swa }}" \
+            --repo "${{ github.repository }}"
+
+      # ── Summary ───────────────────────────────────────────────────────────────
+
+      - name: Print deployment summary
+        run: |
+          API_HOST=$(az webapp show \
+            --name "${{ steps.names.outputs.api }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --query defaultHostName -o tsv)
+
+          GW_HOST=$(az webapp show \
+            --name "${{ steps.names.outputs.gateway }}" \
+            --resource-group "${{ steps.names.outputs.rg }}" \
+            --query defaultHostName -o tsv)
+
+          {
+            echo "## ✅ Azure Infrastructure Provisioned"
+            echo ""
+            echo "| Service | URL |"
+            echo "|---|---|"
+            echo "| 🎮 Client | ${{ steps.swa.outputs.url }} |"
+            echo "| 🧩 API    | https://${API_HOST} |"
+            echo "| ⚡ Gateway | https://${GW_HOST} |"
+            echo ""
+            echo "GitHub secrets and variables have been set automatically."
+            echo ""
+            echo "Push to \`master\` to trigger the deploy workflows."
+          } >> "$GITHUB_STEP_SUMMARY"

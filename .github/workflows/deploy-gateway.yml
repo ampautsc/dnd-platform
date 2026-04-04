@@ -1,0 +1,35 @@
+name: Deploy Gateway
+
+# Deploys the Socket.IO WebSocket gateway to Azure App Service.
+# Triggers when the gateway package changes on master.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'packages/gateway/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-gateway.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Gateway to App Service
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_GATEWAY_APP_NAME }}
+          package: '.'
