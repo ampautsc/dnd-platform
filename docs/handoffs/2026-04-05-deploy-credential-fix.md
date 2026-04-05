@@ -1,11 +1,91 @@
 # Handoff — 2026-04-05: Deploy Credential Fix + Post-Merge Instructions
 
 > This document covers:
-> 1. What the just-merged PR fixed
-> 2. **Exact step-by-step instructions to get the platform live** (with direct links)
-> 3. What you will see when it works
-> 4. What still needs work after it's live
-> 5. The honest bet result
+> 1. **What to do RIGHT NOW, before merging** (create 2 secrets — takes 5 minutes)
+> 2. What to do immediately after merging (run 1 workflow, then 3 deploys)
+> 3. What the PR fixed
+> 4. What you will see when it works
+> 5. What still needs work after it's live
+> 6. The honest bet result
+
+---
+
+## ⚡ Do This Before You Merge (5 minutes)
+
+The two secrets below can and should be created before the merge. That way, the
+moment you click Merge, you can immediately run the provision workflow with no
+extra steps. These secrets don't depend on anything being on master.
+
+### Create Secret 1 — Azure Service Principal
+
+Open **Azure Cloud Shell**: https://shell.azure.com
+
+Paste this exactly:
+```bash
+az ad sp create-for-rbac \
+  --name dnd-platform-deploy \
+  --role contributor \
+  --scopes /subscriptions/$(az account show --query id -o tsv) \
+  --sdk-auth
+```
+
+Copy the entire JSON output. Go to:
+```
+https://github.com/ampautsc/dnd-platform/settings/secrets/actions/new
+```
+- **Name**: `AZURE_CREDENTIALS`
+- **Value**: paste the entire JSON blob
+
+### Create Secret 2 — GitHub PAT
+
+Go to:
+```
+https://github.com/settings/tokens?type=beta
+```
+- **Token name**: `dnd-platform-deploy`
+- **Repository access**: Only select repositories → `ampautsc/dnd-platform`
+- **Permissions**: Repository secrets → Read and write, Variables → Read and write
+
+Click **Generate token**. Copy it. Go to:
+```
+https://github.com/ampautsc/dnd-platform/settings/secrets/actions/new
+```
+- **Name**: `GH_PAT`
+- **Value**: the token
+
+**Now merge the PR.** Both secrets exist. Nothing blocks you.
+
+---
+
+## After Merging — Run the Provision Workflow
+
+Go to:
+```
+https://github.com/ampautsc/dnd-platform/actions/workflows/azure-provision.yml
+```
+
+Click **Run workflow**. Fill in:
+| Input | Value |
+|---|---|
+| `resource_prefix` | `dnd-amp` (if Azure says name taken, try `dnd-amp2`) |
+| `location` | `eastus` |
+| `anthropic_api_key` | Optional — paste from Anthropic console for real LLM narration |
+| `groq_api_key` | Optional — paste from https://console.groq.com for ambient NPCs |
+
+Takes 3–5 minutes. When it finishes green, click the run → scroll to **Summary** → your live URLs appear.
+
+Then trigger the three deploy workflows manually (once each):
+- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-client.yml → Run workflow
+- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-api.yml → Run workflow
+- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-gateway.yml → Run workflow
+
+Wait for all three green. Open the Client URL from the provision summary. The app is live.
+
+**Health check:**
+```
+https://dnd-amp-api.azurewebsites.net/health
+```
+Should return: `{"status":"ok","llm":"mock","ambient":"disabled"}`
 
 ---
 
@@ -49,155 +129,6 @@ Everything below was tested in the sandbox immediately before writing this file:
 | DB directory auto-creation (`mkdirSync recursive`) | ✅ Handles `/home/data/` on Azure automatically |
 | `staticwebapp.config.json` excludes `/api/*` from SPA fallback | ✅ Backend link proxies correctly |
 | All API routes the client calls exist | ✅ `/api/content`, `/api/combat`, `/api/scenes`, `/api/encounters`, `/api/ambient`, `/api/auth` |
-
----
-
-## Exact Steps to Go Live
-
-> **Prerequisites:** You need an Azure subscription and a GitHub account with admin access
-> to this repo. Both are required. If you don't have an Azure account, create one at
-> https://azure.microsoft.com/free (free tier works — B1 App Service plan is ~$13/month
-> if not using free credits).
-
----
-
-### Step 1 — Create Azure Service Principal
-
-Open **Azure Cloud Shell**: https://shell.azure.com
-
-Paste this exactly:
-```bash
-az ad sp create-for-rbac \
-  --name dnd-platform-deploy \
-  --role contributor \
-  --scopes /subscriptions/$(az account show --query id -o tsv) \
-  --sdk-auth
-```
-
-You'll get a JSON block like:
-```json
-{
-  "clientId": "...",
-  "clientSecret": "...",
-  "subscriptionId": "...",
-  "tenantId": "...",
-  ...
-}
-```
-**Copy the entire JSON blob. Keep this tab open.**
-
----
-
-### Step 2 — Add AZURE_CREDENTIALS Secret
-
-Go to your repo secrets page:
-```
-https://github.com/ampautsc/dnd-platform/settings/secrets/actions/new
-```
-
-- **Name**: `AZURE_CREDENTIALS`
-- **Value**: paste the entire JSON blob from Step 1
-
-Click **Add secret**.
-
----
-
-### Step 3 — Create a GitHub Personal Access Token
-
-Go to:
-```
-https://github.com/settings/tokens?type=beta
-```
-
-Click **Generate new token**. Settings:
-- **Token name**: `dnd-platform-deploy`
-- **Repository access**: Only select repositories → `ampautsc/dnd-platform`
-- **Permissions** (expand "Repository permissions"):
-  - Secrets → **Read and write**
-  - Variables → **Read and write**
-
-Click **Generate token**. Copy the token (starts with `github_pat_`). **You only see it once.**
-
----
-
-### Step 4 — Add GH_PAT Secret
-
-Go back to:
-```
-https://github.com/ampautsc/dnd-platform/settings/secrets/actions/new
-```
-
-- **Name**: `GH_PAT`
-- **Value**: the token from Step 3
-
-Click **Add secret**.
-
----
-
-### Step 5 — Run the Provision Workflow
-
-Go to:
-```
-https://github.com/ampautsc/dnd-platform/actions/workflows/azure-provision.yml
-```
-
-Click **Run workflow** (the dropdown on the right).
-
-Fill in the inputs:
-| Input | Value |
-|---|---|
-| `resource_prefix` | `dnd-amp` (or any short globally unique prefix — if it fails saying a name is taken, re-run with e.g. `dnd-amp2`) |
-| `location` | `eastus` (default, leave it) |
-| `anthropic_api_key` | Optional. Paste from your Anthropic console if you have one. Leave blank for mock LLM. |
-| `groq_api_key` | Optional. Paste from https://console.groq.com if you have one. Leave blank to skip ambient NPC reactions. |
-
-Click **Run workflow**. It will take 3–5 minutes.
-
----
-
-### Step 6 — Check the Workflow Summary
-
-When it finishes green, click the workflow run → scroll to the bottom → **Summary** section.
-
-You'll see a table like:
-```
-| Service  | URL                                          |
-|----------|----------------------------------------------|
-| 🎮 Client | https://dnd-amp-client.azurestaticapps.net   |
-| 🧩 API    | https://dnd-amp-api.azurewebsites.net        |
-| ⚡ Gateway | https://dnd-amp-gw.azurewebsites.net         |
-```
-
-The Client URL is the one you open in a browser.
-
----
-
-### Step 7 — Trigger the Deploy Workflows
-
-The provision workflow creates the infrastructure but doesn't deploy the code.
-The deploy workflows trigger automatically on pushes to master. Since you just merged,
-you may need to trigger them manually once:
-
-Run each of these:
-- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-client.yml → **Run workflow**
-- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-api.yml → **Run workflow**
-- https://github.com/ampautsc/dnd-platform/actions/workflows/deploy-gateway.yml → **Run workflow**
-
-Wait for all three to go green (1–3 minutes each).
-
----
-
-### Step 8 — Open the App
-
-Go to the Client URL from Step 6. You should see the D&D platform UI.
-
-**Health check (confirm the API is up):**
-```
-https://dnd-amp-api.azurewebsites.net/health
-```
-(replace `dnd-amp` with your prefix)
-
-Should return: `{"status":"ok","llm":"mock","ambient":"disabled"}`
 
 ---
 
