@@ -14,6 +14,11 @@ name: Provision Azure Infrastructure
 #                        (Settings → Developer settings → Personal access tokens)
 
 on:
+  push:
+    branches:
+      - copilot/fix-deployment-pipeline-issues
+    paths:
+      - '.github/workflows/azure-provision.yml'
   workflow_dispatch:
     inputs:
       resource_prefix:
@@ -63,7 +68,7 @@ jobs:
       - name: Set resource names
         id: names
         run: |
-          PREFIX="${{ inputs.resource_prefix }}"
+          PREFIX="${{ inputs.resource_prefix || 'dnd-platform' }}"
           echo "rg=${PREFIX}-rg"        >> "$GITHUB_OUTPUT"
           echo "plan=${PREFIX}-plan"    >> "$GITHUB_OUTPUT"
           echo "api=${PREFIX}-api"      >> "$GITHUB_OUTPUT"
@@ -76,15 +81,15 @@ jobs:
         run: |
           az group create \
             --name "${{ steps.names.outputs.rg }}" \
-            --location "${{ inputs.location }}"
+            --location "${{ inputs.location || 'eastus' }}"
 
       - name: Create App Service Plan
         id: plan
         run: |
-          DESIRED_SKU="${{ inputs.sku }}"
+          DESIRED_SKU="${{ inputs.sku || 'B1' }}"
           PLAN="${{ steps.names.outputs.plan }}"
           RG="${{ steps.names.outputs.rg }}"
-          LOCATION="${{ inputs.location }}"
+          LOCATION="${{ inputs.location || 'eastus' }}"
           SUB_ID=$(az account show --query id -o tsv)
 
           # ── Quota family for each SKU tier ──
@@ -315,7 +320,7 @@ jobs:
           az staticwebapp create \
             --name "${{ steps.names.outputs.swa }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
-            --location "${{ inputs.location }}" \
+            --location "${{ inputs.location || 'eastus' }}" \
             --sku Standard
 
           TOKEN=$(az staticwebapp secrets list \
@@ -345,7 +350,7 @@ jobs:
             --name "${{ steps.names.outputs.swa }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
             --backend-resource-id "$API_ID" \
-            --backend-region "${{ inputs.location }}"
+            --backend-region "${{ inputs.location || 'eastus' }}"
 
       # ── Store config in GitHub ────────────────────────────────────────────────
       # Secrets: sensitive values (tokens, keys)
