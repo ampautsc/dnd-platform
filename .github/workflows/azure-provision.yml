@@ -350,7 +350,7 @@ jobs:
           az staticwebapp create \
             --name "${{ steps.names.outputs.swa }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
-            --location "${{ inputs.location || 'eastus' }}" \
+            --location "eastus2" \
             --sku Standard
 
           TOKEN=$(az staticwebapp secrets list \
