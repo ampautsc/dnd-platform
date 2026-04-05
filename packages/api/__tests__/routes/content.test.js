@@ -12,7 +12,8 @@
  * - GET /api/content/species/:id → returns specific species or 404
  * - Content routes do NOT require auth (public read-only)
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -39,47 +40,47 @@ describe('Content Routes', () => {
   describe('GET /api/content/spells', () => {
     it('should return an array of spells', async () => {
       const res = await request.get('/api/content/spells');
-      expect(res.status).toBe(200);
-      expect(Array.isArray(res.body.spells)).toBe(true);
-      expect(res.body.spells.length).toBeGreaterThan(0);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(Array.isArray(res.body.spells), true);
+      assert.ok(res.body.spells.length > 0);
     });
 
     it('should return spells with expected fields', async () => {
       const res = await request.get('/api/content/spells');
       const spell = res.body.spells[0];
-      expect(spell).toHaveProperty('name');
-      expect(spell).toHaveProperty('level');
+      assert.notStrictEqual(spell['name'], undefined);
+      assert.notStrictEqual(spell['level'], undefined);
     });
   });
 
   describe('GET /api/content/spells/:id', () => {
     it('should return a specific spell by name', async () => {
       const res = await request.get('/api/content/spells/Fireball');
-      expect(res.status).toBe(200);
-      expect(res.body.spell.name).toBe('Fireball');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.spell.name, 'Fireball');
     });
 
     it('should return 404 for unknown spell', async () => {
       const res = await request.get('/api/content/spells/Nonexistent%20Spell');
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
   });
 
   describe('GET /api/content/creatures', () => {
     it('should return an array of creatures', async () => {
       const res = await request.get('/api/content/creatures');
-      expect(res.status).toBe(200);
-      expect(Array.isArray(res.body.creatures)).toBe(true);
-      expect(res.body.creatures.length).toBeGreaterThan(0);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(Array.isArray(res.body.creatures), true);
+      assert.ok(res.body.creatures.length > 0);
     });
   });
 
   describe('GET /api/content/items', () => {
     it('should return an array of items', async () => {
       const res = await request.get('/api/content/items');
-      expect(res.status).toBe(200);
-      expect(Array.isArray(res.body.items)).toBe(true);
-      expect(res.body.items.length).toBeGreaterThan(0);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(Array.isArray(res.body.items), true);
+      assert.ok(res.body.items.length > 0);
     });
   });
 
@@ -89,48 +90,48 @@ describe('Content Routes', () => {
       const listRes = await request.get('/api/content/items');
       const firstItem = listRes.body.items[0];
       const res = await request.get(`/api/content/items/${firstItem.id}`);
-      expect(res.status).toBe(200);
-      expect(res.body.item.id).toBe(firstItem.id);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.item.id, firstItem.id);
     });
 
     it('should return 404 for unknown item', async () => {
       const res = await request.get('/api/content/items/nonexistent');
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
   });
 
   describe('GET /api/content/species', () => {
     it('should return an array of species', async () => {
       const res = await request.get('/api/content/species');
-      expect(res.status).toBe(200);
-      expect(Array.isArray(res.body.species)).toBe(true);
-      expect(res.body.species.length).toBeGreaterThan(0);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(Array.isArray(res.body.species), true);
+      assert.ok(res.body.species.length > 0);
     });
   });
 
   describe('no auth required', () => {
     it('should access content routes without Bearer token', async () => {
       const res = await request.get('/api/content/spells');
-      expect(res.status).toBe(200);
+      assert.strictEqual(res.status, 200);
     });
   });
 
   describe('GET /api/content/npcs', () => {
     it('should return an array of NPC summaries', async () => {
       const res = await request.get('/api/content/npcs');
-      expect(res.status).toBe(200);
-      expect(Array.isArray(res.body.npcs)).toBe(true);
-      expect(res.body.npcs.length).toBeGreaterThan(0);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(Array.isArray(res.body.npcs), true);
+      assert.ok(res.body.npcs.length > 0);
     });
 
     it('should return summary fields only (not full data)', async () => {
       const res = await request.get('/api/content/npcs');
       const npc = res.body.npcs[0];
-      expect(npc).toHaveProperty('templateKey');
-      expect(npc).toHaveProperty('name');
-      expect(npc).toHaveProperty('race');
-      expect(npc).toHaveProperty('npcType');
-      expect(npc).toHaveProperty('personality');
+      assert.notStrictEqual(npc['templateKey'], undefined);
+      assert.notStrictEqual(npc['name'], undefined);
+      assert.notStrictEqual(npc['race'], undefined);
+      assert.notStrictEqual(npc['npcType'], undefined);
+      assert.notStrictEqual(npc['personality'], undefined);
       // Full data fields should not be present in summary
       expect(npc).not.toHaveProperty('consciousnessContext');
       expect(npc).not.toHaveProperty('fallbackLines');
@@ -140,15 +141,15 @@ describe('Content Routes', () => {
   describe('GET /api/content/npcs/:key', () => {
     it('should return full NPC data by templateKey', async () => {
       const res = await request.get('/api/content/npcs/bree_millhaven');
-      expect(res.status).toBe(200);
-      expect(res.body.npc.templateKey).toBe('bree_millhaven');
-      expect(res.body.npc).toHaveProperty('consciousnessContext');
-      expect(res.body.npc).toHaveProperty('personality');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.npc.templateKey, 'bree_millhaven');
+      assert.notStrictEqual(res.body.npc['consciousnessContext'], undefined);
+      assert.notStrictEqual(res.body.npc['personality'], undefined);
     });
 
     it('should return 404 for unknown NPC', async () => {
       const res = await request.get('/api/content/npcs/nonexistent_npc');
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
   });
 });

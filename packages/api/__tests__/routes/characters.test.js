@@ -11,7 +11,8 @@
  * - Users can only access their own characters (403 for others')
  * - 404 for non-existent characters
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -52,11 +53,11 @@ describe('Character Routes', () => {
         .set('Authorization', `Bearer ${user1Jwt}`)
         .send({ name: 'Thorin', className: 'Fighter', level: 5 });
 
-      expect(res.status).toBe(201);
-      expect(res.body.character.name).toBe('Thorin');
-      expect(res.body.character.className).toBe('Fighter');
-      expect(res.body.character.level).toBe(5);
-      expect(res.body.character.id).toBeTruthy();
+      assert.strictEqual(res.status, 201);
+      assert.strictEqual(res.body.character.name, 'Thorin');
+      assert.strictEqual(res.body.character.className, 'Fighter');
+      assert.strictEqual(res.body.character.level, 5);
+      assert.ok(res.body.character.id);
     });
 
     it('should return 400 for missing name', async () => {
@@ -65,7 +66,7 @@ describe('Character Routes', () => {
         .set('Authorization', `Bearer ${user1Jwt}`)
         .send({ className: 'Fighter' });
 
-      expect(res.status).toBe(400);
+      assert.strictEqual(res.status, 400);
     });
 
     it('should return 401 without auth (production mode)', async () => {
@@ -74,7 +75,7 @@ describe('Character Routes', () => {
         .post('/api/characters')
         .send({ name: 'Unauthorized' });
 
-      expect(res.status).toBe(401);
+      assert.strictEqual(res.status, 401);
       vi.unstubAllEnvs();
     });
   });
@@ -92,9 +93,9 @@ describe('Character Routes', () => {
         .get('/api/characters')
         .set('Authorization', `Bearer ${user1Jwt}`);
 
-      expect(res.status).toBe(200);
-      expect(res.body.characters).toHaveLength(1);
-      expect(res.body.characters[0].name).toBe('User1 Char');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.characters.length, 1);
+      assert.strictEqual(res.body.characters[0].name, 'User1 Char');
     });
 
     it('should return empty array for user with no characters', async () => {
@@ -102,8 +103,8 @@ describe('Character Routes', () => {
         .get('/api/characters')
         .set('Authorization', `Bearer ${user1Jwt}`);
 
-      expect(res.status).toBe(200);
-      expect(res.body.characters).toEqual([]);
+      assert.strictEqual(res.status, 200);
+      assert.deepStrictEqual(res.body.characters, []);
     });
   });
 
@@ -117,8 +118,8 @@ describe('Character Routes', () => {
         .get(`/api/characters/${createRes.body.character.id}`)
         .set('Authorization', `Bearer ${user1Jwt}`);
 
-      expect(res.status).toBe(200);
-      expect(res.body.character.name).toBe('Specific');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.character.name, 'Specific');
     });
 
     it('should return 404 for non-existent id', async () => {
@@ -126,7 +127,7 @@ describe('Character Routes', () => {
         .get('/api/characters/nonexistent-id')
         .set('Authorization', `Bearer ${user1Jwt}`);
 
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
 
     it('should return 403 when accessing another user\'s character', async () => {
@@ -138,7 +139,7 @@ describe('Character Routes', () => {
         .get(`/api/characters/${createRes.body.character.id}`)
         .set('Authorization', `Bearer ${user2Jwt}`);
 
-      expect(res.status).toBe(403);
+      assert.strictEqual(res.status, 403);
     });
   });
 
@@ -153,9 +154,9 @@ describe('Character Routes', () => {
         .set('Authorization', `Bearer ${user1Jwt}`)
         .send({ level: 3, name: 'Renamed' });
 
-      expect(res.status).toBe(200);
-      expect(res.body.character.name).toBe('Renamed');
-      expect(res.body.character.level).toBe(3);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.character.name, 'Renamed');
+      assert.strictEqual(res.body.character.level, 3);
     });
 
     it('should return 403 when updating another user\'s character', async () => {
@@ -168,7 +169,7 @@ describe('Character Routes', () => {
         .set('Authorization', `Bearer ${user2Jwt}`)
         .send({ name: 'Stolen' });
 
-      expect(res.status).toBe(403);
+      assert.strictEqual(res.status, 403);
     });
   });
 
@@ -182,13 +183,13 @@ describe('Character Routes', () => {
         .delete(`/api/characters/${createRes.body.character.id}`)
         .set('Authorization', `Bearer ${user1Jwt}`);
 
-      expect(deleteRes.status).toBe(204);
+      assert.strictEqual(deleteRes.status, 204);
 
       // Verify it's gone
       const getRes = await request
         .get(`/api/characters/${createRes.body.character.id}`)
         .set('Authorization', `Bearer ${user1Jwt}`);
-      expect(getRes.status).toBe(404);
+      assert.strictEqual(getRes.status, 404);
     });
 
     it('should return 403 when deleting another user\'s character', async () => {
@@ -200,7 +201,7 @@ describe('Character Routes', () => {
         .delete(`/api/characters/${createRes.body.character.id}`)
         .set('Authorization', `Bearer ${user2Jwt}`);
 
-      expect(res.status).toBe(403);
+      assert.strictEqual(res.status, 403);
     });
   });
 });

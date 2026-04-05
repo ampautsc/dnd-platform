@@ -13,7 +13,8 @@
  *   stored as JSON strings in SQLite but returned as parsed objects
  * - Service is pure logic on top of a database — receives db as dependency
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
 import { createCharacterService } from '../../src/services/CharacterService.js';
 import { initDatabase, closeDatabase } from '../../src/models/database.js';
 
@@ -42,24 +43,24 @@ describe('CharacterService', () => {
         className: 'Fighter',
       });
 
-      expect(char).toHaveProperty('id');
-      expect(char.id).toBeTruthy();
-      expect(char.name).toBe('Thorin Ironforge');
-      expect(char.level).toBe(5);
-      expect(char.className).toBe('Fighter');
-      expect(char.userId).toBe('user-1');
+      assert.notStrictEqual(char['id'], undefined);
+      assert.ok(char.id);
+      assert.strictEqual(char.name, 'Thorin Ironforge');
+      assert.strictEqual(char.level, 5);
+      assert.strictEqual(char.className, 'Fighter');
+      assert.strictEqual(char.userId, 'user-1');
     });
 
     it('should set default values for optional fields', () => {
       const char = characters.create('user-1', { name: 'Minimalist' });
 
-      expect(char.level).toBe(1);
-      expect(char.className).toBe('Fighter');
-      expect(char.baseStats).toEqual({ str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 });
-      expect(char.inventory).toEqual([]);
-      expect(char.currency).toEqual({ cp: 0, sp: 0, gp: 0, pp: 0 });
-      expect(char.maxHp).toBe(10);
-      expect(char.currentHp).toBe(10);
+      assert.strictEqual(char.level, 1);
+      assert.strictEqual(char.className, 'Fighter');
+      assert.deepStrictEqual(char.baseStats, { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 });
+      assert.deepStrictEqual(char.inventory, []);
+      assert.deepStrictEqual(char.currency, { cp: 0, sp: 0, gp: 0, pp: 0 });
+      assert.strictEqual(char.maxHp, 10);
+      assert.strictEqual(char.currentHp, 10);
     });
 
     it('should store and return JSON fields as parsed objects', () => {
@@ -70,15 +71,15 @@ describe('CharacterService', () => {
         currency: { cp: 0, sp: 50, gp: 100, pp: 0 },
       });
 
-      expect(char.baseStats.str).toBe(16);
-      expect(char.inventory).toHaveLength(1);
-      expect(char.inventory[0].itemId).toBe('longsword');
-      expect(char.currency.gp).toBe(100);
+      assert.strictEqual(char.baseStats.str, 16);
+      assert.strictEqual(char.inventory.length, 1);
+      assert.strictEqual(char.inventory[0].itemId, 'longsword');
+      assert.strictEqual(char.currency.gp, 100);
     });
 
     it('should throw if name is missing', () => {
-      expect(() => characters.create('user-1', {})).toThrow(/name/i);
-      expect(() => characters.create('user-1', { name: '' })).toThrow(/name/i);
+      assert.throws(() => characters.create('user-1', {}), /name/i);
+      assert.throws(() => characters.create('user-1', { name: '' }), /name/i);
     });
   });
 
@@ -87,13 +88,13 @@ describe('CharacterService', () => {
       const created = characters.create('user-1', { name: 'Findable' });
       const found = characters.getById(created.id);
 
-      expect(found).not.toBeNull();
-      expect(found.name).toBe('Findable');
-      expect(found.id).toBe(created.id);
+      assert.notStrictEqual(found, null);
+      assert.strictEqual(found.name, 'Findable');
+      assert.strictEqual(found.id, created.id);
     });
 
     it('should return null for non-existent id', () => {
-      expect(characters.getById('nope')).toBeNull();
+      assert.strictEqual(characters.getById('nope'), null);
     });
 
     it('should return parsed JSON fields', () => {
@@ -103,8 +104,8 @@ describe('CharacterService', () => {
       });
       const found = characters.getById(created.id);
 
-      expect(found.baseStats.str).toBe(18);
-      expect(typeof found.baseStats).toBe('object');
+      assert.strictEqual(found.baseStats.str, 18);
+      assert.strictEqual(typeof found.baseStats, 'object');
     });
   });
 
@@ -115,12 +116,12 @@ describe('CharacterService', () => {
       characters.create('user-2', { name: 'Other User Char' });
 
       const user1Chars = characters.getAllByUser('user-1');
-      expect(user1Chars).toHaveLength(2);
-      expect(user1Chars.map(c => c.name).sort()).toEqual(['Char A', 'Char B']);
+      assert.strictEqual(user1Chars.length, 2);
+      assert.deepStrictEqual(user1Chars.map(c => c.name).sort(), ['Char A', 'Char B']);
     });
 
     it('should return empty array for user with no characters', () => {
-      expect(characters.getAllByUser('user-1')).toEqual([]);
+      assert.deepStrictEqual(characters.getAllByUser('user-1'), []);
     });
   });
 
@@ -129,9 +130,9 @@ describe('CharacterService', () => {
       const created = characters.create('user-1', { name: 'Original', level: 1 });
       const updated = characters.update(created.id, { name: 'Renamed', level: 5 });
 
-      expect(updated.name).toBe('Renamed');
-      expect(updated.level).toBe(5);
-      expect(updated.id).toBe(created.id);
+      assert.strictEqual(updated.name, 'Renamed');
+      assert.strictEqual(updated.level, 5);
+      assert.strictEqual(updated.id, created.id);
     });
 
     it('should update JSON fields', () => {
@@ -141,33 +142,33 @@ describe('CharacterService', () => {
         currency: { cp: 0, sp: 0, gp: 250, pp: 5 },
       });
 
-      expect(updated.inventory).toHaveLength(1);
-      expect(updated.inventory[0].itemId).toBe('shield');
-      expect(updated.currency.gp).toBe(250);
+      assert.strictEqual(updated.inventory.length, 1);
+      assert.strictEqual(updated.inventory[0].itemId, 'shield');
+      assert.strictEqual(updated.currency.gp, 250);
     });
 
     it('should not modify unspecified fields', () => {
       const created = characters.create('user-1', { name: 'Partial Update', level: 3 });
       const updated = characters.update(created.id, { level: 4 });
 
-      expect(updated.name).toBe('Partial Update');
-      expect(updated.level).toBe(4);
+      assert.strictEqual(updated.name, 'Partial Update');
+      assert.strictEqual(updated.level, 4);
     });
 
     it('should return null for non-existent id', () => {
-      expect(characters.update('nope', { name: 'Ghost' })).toBeNull();
+      assert.strictEqual(characters.update('nope', { name: 'Ghost' }), null);
     });
   });
 
   describe('remove', () => {
     it('should delete an existing character and return true', () => {
       const created = characters.create('user-1', { name: 'Doomed' });
-      expect(characters.remove(created.id)).toBe(true);
-      expect(characters.getById(created.id)).toBeNull();
+      assert.strictEqual(characters.remove(created.id), true);
+      assert.strictEqual(characters.getById(created.id), null);
     });
 
     it('should return false for non-existent id', () => {
-      expect(characters.remove('nope')).toBe(false);
+      assert.strictEqual(characters.remove('nope'), false);
     });
   });
 });

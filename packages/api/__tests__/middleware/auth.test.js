@@ -7,7 +7,8 @@
  * - Auth middleware sets req.user for valid tokens
  * - Dev bypass: when NODE_ENV !== 'production' and no header, auto-injects dev user
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import { createAuthMiddleware } from '../../src/middleware/auth.js';
 
 function mockRes() {
@@ -19,7 +20,7 @@ function mockRes() {
 
 describe('Auth Middleware', () => {
   const fakeAuthService = {
-    verifyJwt: vi.fn(),
+    verifyJwt: mock.fn(),
   };
 
   beforeEach(() => {
@@ -36,12 +37,12 @@ describe('Auth Middleware', () => {
     const middleware = createAuthMiddleware(fakeAuthService);
     const req = { headers: {} };
     const res = mockRes();
-    const next = vi.fn();
+    const next = mock.fn();
 
     middleware(req, res, next);
 
-    expect(res.statusCode).toBe(401);
-    expect(next).not.toHaveBeenCalled();
+    assert.strictEqual(res.statusCode, 401);
+    assert.strictEqual(next.mock.calls.length, 0);
   });
 
   it('should set req.user for valid tokens', () => {
@@ -50,12 +51,12 @@ describe('Auth Middleware', () => {
     const middleware = createAuthMiddleware(fakeAuthService);
     const req = { headers: { authorization: 'Bearer valid-token' } };
     const res = mockRes();
-    const next = vi.fn();
+    const next = mock.fn();
 
     middleware(req, res, next);
 
-    expect(req.user).toEqual({ userId: 'user-123', email: 'test@example.com' });
-    expect(next).toHaveBeenCalled();
+    assert.deepStrictEqual(req.user, { userId: 'user-123', email: 'test@example.com' });
+    assert.ok(next.mock.calls.length > 0);
   });
 
   it('should auto-inject dev user when NODE_ENV is not production and no header', () => {
@@ -63,13 +64,13 @@ describe('Auth Middleware', () => {
     const middleware = createAuthMiddleware(fakeAuthService);
     const req = { headers: {} };
     const res = mockRes();
-    const next = vi.fn();
+    const next = mock.fn();
 
     middleware(req, res, next);
 
-    expect(req.user).toEqual({ userId: 'dev-user', email: 'dev@localhost' });
-    expect(next).toHaveBeenCalled();
-    expect(fakeAuthService.verifyJwt).not.toHaveBeenCalled();
+    assert.deepStrictEqual(req.user, { userId: 'dev-user', email: 'dev@localhost' });
+    assert.ok(next.mock.calls.length > 0);
+    assert.strictEqual(fakeAuthService.verifyJwt.mock.calls.length, 0);
   });
 
   it('should still validate tokens in dev mode when Authorization header is provided', () => {
@@ -78,12 +79,12 @@ describe('Auth Middleware', () => {
     const middleware = createAuthMiddleware(fakeAuthService);
     const req = { headers: { authorization: 'Bearer real-token' } };
     const res = mockRes();
-    const next = vi.fn();
+    const next = mock.fn();
 
     middleware(req, res, next);
 
-    expect(req.user).toEqual({ userId: 'real-user', email: 'real@example.com' });
-    expect(fakeAuthService.verifyJwt).toHaveBeenCalledWith('real-token');
+    assert.deepStrictEqual(req.user, { userId: 'real-user', email: 'real@example.com' });
+    assert.deepStrictEqual(fakeAuthService.verifyJwt.mock.calls.at(-1).arguments, ['real-token']);
   });
 
   it('should default to dev bypass when NODE_ENV is not set', () => {
@@ -91,11 +92,11 @@ describe('Auth Middleware', () => {
     const middleware = createAuthMiddleware(fakeAuthService);
     const req = { headers: {} };
     const res = mockRes();
-    const next = vi.fn();
+    const next = mock.fn();
 
     middleware(req, res, next);
 
-    expect(req.user.userId).toBe('dev-user');
-    expect(next).toHaveBeenCalled();
+    assert.strictEqual(req.user.userId, 'dev-user');
+    assert.ok(next.mock.calls.length > 0);
   });
 });

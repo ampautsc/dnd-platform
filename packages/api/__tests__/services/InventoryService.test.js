@@ -15,7 +15,8 @@
  * Inventory shape: [{ itemId: string, quantity: number }]
  * Currency shape: { cp: number, sp: number, gp: number, pp: number }
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import {
   addItem,
   removeItem,
@@ -31,25 +32,25 @@ describe('InventoryService', () => {
   describe('addItem', () => {
     it('should add a new item to an empty inventory', () => {
       const result = addItem([], 'longsword', 1);
-      expect(result).toEqual([{ itemId: 'longsword', quantity: 1 }]);
+      assert.deepStrictEqual(result, [{ itemId: 'longsword', quantity: 1 }]);
     });
 
     it('should increment quantity for an existing item', () => {
       const inv = [{ itemId: 'arrow', quantity: 10 }];
       const result = addItem(inv, 'arrow', 5);
-      expect(result).toEqual([{ itemId: 'arrow', quantity: 15 }]);
+      assert.deepStrictEqual(result, [{ itemId: 'arrow', quantity: 15 }]);
     });
 
     it('should not mutate the original inventory', () => {
       const inv = [{ itemId: 'potion', quantity: 2 }];
       const result = addItem(inv, 'potion', 1);
-      expect(inv[0].quantity).toBe(2);
-      expect(result[0].quantity).toBe(3);
+      assert.strictEqual(inv[0].quantity, 2);
+      assert.strictEqual(result[0].quantity, 3);
     });
 
     it('should default quantity to 1', () => {
       const result = addItem([], 'shield');
-      expect(result).toEqual([{ itemId: 'shield', quantity: 1 }]);
+      assert.deepStrictEqual(result, [{ itemId: 'shield', quantity: 1 }]);
     });
   });
 
@@ -57,56 +58,56 @@ describe('InventoryService', () => {
     it('should decrement quantity', () => {
       const inv = [{ itemId: 'arrow', quantity: 10 }];
       const result = removeItem(inv, 'arrow', 3);
-      expect(result).toEqual([{ itemId: 'arrow', quantity: 7 }]);
+      assert.deepStrictEqual(result, [{ itemId: 'arrow', quantity: 7 }]);
     });
 
     it('should remove the entry entirely when quantity reaches 0', () => {
       const inv = [{ itemId: 'potion', quantity: 1 }];
       const result = removeItem(inv, 'potion', 1);
-      expect(result).toEqual([]);
+      assert.deepStrictEqual(result, []);
     });
 
     it('should throw when removing more than available', () => {
       const inv = [{ itemId: 'potion', quantity: 1 }];
-      expect(() => removeItem(inv, 'potion', 5)).toThrow(/insufficient/i);
+      assert.throws(() => removeItem(inv, 'potion', 5), /insufficient/i);
     });
 
     it('should throw when item not in inventory', () => {
-      expect(() => removeItem([], 'ghost-item', 1)).toThrow(/not found/i);
+      assert.throws(() => removeItem([], 'ghost-item', 1), /not found/i);
     });
 
     it('should not mutate the original inventory', () => {
       const inv = [{ itemId: 'arrow', quantity: 10 }];
       removeItem(inv, 'arrow', 3);
-      expect(inv[0].quantity).toBe(10);
+      assert.strictEqual(inv[0].quantity, 10);
     });
   });
 
   describe('hasItem', () => {
     it('should return true if item exists with sufficient quantity', () => {
       const inv = [{ itemId: 'potion', quantity: 3 }];
-      expect(hasItem(inv, 'potion')).toBe(true);
-      expect(hasItem(inv, 'potion', 3)).toBe(true);
+      assert.strictEqual(hasItem(inv, 'potion'), true);
+      assert.strictEqual(hasItem(inv, 'potion', 3), true);
     });
 
     it('should return false if item is missing', () => {
-      expect(hasItem([], 'potion')).toBe(false);
+      assert.strictEqual(hasItem([], 'potion'), false);
     });
 
     it('should return false if quantity is insufficient', () => {
       const inv = [{ itemId: 'potion', quantity: 1 }];
-      expect(hasItem(inv, 'potion', 5)).toBe(false);
+      assert.strictEqual(hasItem(inv, 'potion', 5), false);
     });
   });
 
   describe('getItemCount', () => {
     it('should return the quantity of an item', () => {
       const inv = [{ itemId: 'arrow', quantity: 20 }];
-      expect(getItemCount(inv, 'arrow')).toBe(20);
+      assert.strictEqual(getItemCount(inv, 'arrow'), 20);
     });
 
     it('should return 0 for missing items', () => {
-      expect(getItemCount([], 'arrow')).toBe(0);
+      assert.strictEqual(getItemCount([], 'arrow'), 0);
     });
   });
 
@@ -114,18 +115,18 @@ describe('InventoryService', () => {
     it('should add to the specified currency type', () => {
       const cur = { cp: 0, sp: 0, gp: 50, pp: 0 };
       const result = addCurrency(cur, 'gp', 25);
-      expect(result.gp).toBe(75);
+      assert.strictEqual(result.gp, 75);
     });
 
     it('should not mutate the original', () => {
       const cur = { cp: 0, sp: 0, gp: 50, pp: 0 };
       addCurrency(cur, 'gp', 25);
-      expect(cur.gp).toBe(50);
+      assert.strictEqual(cur.gp, 50);
     });
 
     it('should throw for invalid currency type', () => {
       const cur = { cp: 0, sp: 0, gp: 0, pp: 0 };
-      expect(() => addCurrency(cur, 'electrum', 10)).toThrow(/invalid currency/i);
+      assert.throws(() => addCurrency(cur, 'electrum', 10), /invalid currency/i);
     });
   });
 
@@ -133,31 +134,31 @@ describe('InventoryService', () => {
     it('should subtract from the specified currency type', () => {
       const cur = { cp: 0, sp: 0, gp: 100, pp: 0 };
       const result = removeCurrency(cur, 'gp', 30);
-      expect(result.gp).toBe(70);
+      assert.strictEqual(result.gp, 70);
     });
 
     it('should throw if insufficient funds', () => {
       const cur = { cp: 0, sp: 0, gp: 10, pp: 0 };
-      expect(() => removeCurrency(cur, 'gp', 50)).toThrow(/insufficient/i);
+      assert.throws(() => removeCurrency(cur, 'gp', 50), /insufficient/i);
     });
 
     it('should not mutate the original', () => {
       const cur = { cp: 0, sp: 0, gp: 100, pp: 0 };
       removeCurrency(cur, 'gp', 30);
-      expect(cur.gp).toBe(100);
+      assert.strictEqual(cur.gp, 100);
     });
   });
 
   describe('hasCurrency', () => {
     it('should return true when sufficient', () => {
       const cur = { cp: 0, sp: 0, gp: 100, pp: 0 };
-      expect(hasCurrency(cur, 'gp', 100)).toBe(true);
-      expect(hasCurrency(cur, 'gp', 50)).toBe(true);
+      assert.strictEqual(hasCurrency(cur, 'gp', 100), true);
+      assert.strictEqual(hasCurrency(cur, 'gp', 50), true);
     });
 
     it('should return false when insufficient', () => {
       const cur = { cp: 0, sp: 0, gp: 10, pp: 0 };
-      expect(hasCurrency(cur, 'gp', 50)).toBe(false);
+      assert.strictEqual(hasCurrency(cur, 'gp', 50), false);
     });
   });
 
@@ -173,8 +174,8 @@ describe('InventoryService', () => {
       const rollFn = () => 7;
 
       const result = applyLootDrop(inv, cur, loot, rollFn);
-      expect(result.inventory).toEqual([{ itemId: 'longsword', quantity: 1 }]);
-      expect(result.currency.gp).toBe(7);
+      assert.deepStrictEqual(result.inventory, [{ itemId: 'longsword', quantity: 1 }]);
+      assert.strictEqual(result.currency.gp, 7);
     });
 
     it('should skip items when chance roll fails', () => {
@@ -186,7 +187,7 @@ describe('InventoryService', () => {
       const rollFn = () => 1;
 
       const result = applyLootDrop(inv, cur, loot, rollFn);
-      expect(result.inventory).toEqual([]);
+      assert.deepStrictEqual(result.inventory, []);
     });
 
     it('should not mutate inputs', () => {
@@ -199,8 +200,8 @@ describe('InventoryService', () => {
       const rollFn = () => 4;
 
       applyLootDrop(inv, cur, loot, rollFn);
-      expect(inv[0].quantity).toBe(5);
-      expect(cur.sp).toBe(10);
+      assert.strictEqual(inv[0].quantity, 5);
+      assert.strictEqual(cur.sp, 10);
     });
   });
 });
