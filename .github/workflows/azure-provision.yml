@@ -118,8 +118,10 @@ jobs:
             fi
 
             quota=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0] // {}")
-            limit=$(echo "$quota" | jq '.limit // 0')
-            current=$(echo "$quota" | jq '.currentValue // 0')
+            # Azure CLI sometimes returns limit/currentValue as JSON strings ("4") rather
+            # than numbers (4).  Strip any surrounding quotes so bash arithmetic works.
+            limit=$(echo "$quota" | jq '.limit // 0' | tr -d '"')
+            current=$(echo "$quota" | jq '.currentValue // 0' | tr -d '"')
             echo "Quota ($family) @ $loc: limit=$limit  used=$current  available=$((limit - current))"
 
             [ "$((limit - current))" -ge 1 ]
