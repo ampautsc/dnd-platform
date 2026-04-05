@@ -103,10 +103,14 @@ export async function requestQuotaIncrease({ location, family = 'basicAFamily', 
   const account = await azJson('account', 'show');
   const subId = account.id;
 
-  // Register the Quota resource provider (idempotent)
+  // Register the Quota resource provider (idempotent — safe to fail if already registered)
   try {
     await az('provider', 'register', '--namespace', 'Microsoft.Quota');
-  } catch { /* may already be registered */ }
+  } catch (err) {
+    // Registration may fail if already registered or if permissions are limited.
+    // The subsequent REST call will surface the real error if the provider isn't available.
+    console.error(`Quota provider registration note: ${err.message}`);
+  }
 
   // Submit the quota increase request
   const url = `https://management.azure.com/subscriptions/${subId}/providers/Microsoft.Compute/locations/${location}/providers/Microsoft.Quota/quotas/${family}?api-version=2023-02-01`;
@@ -258,7 +262,7 @@ export async function upgradeAppServicePlan({ targetSku, resourceGroup } = {}) {
   // If upgrading from F1, enable WebSockets on gateway
   if (currentSku === 'F1') {
     const apps = await azJson('webapp', 'list', '--resource-group', rg);
-    const gwApp = apps.find(a => a.name.includes('gw'));
+    const gwApp = apps.find(a => a.name.endsWith('-gw'));
     if (gwApp) {
       await az(
         'webapp', 'config', 'set',

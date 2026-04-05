@@ -98,6 +98,7 @@ jobs:
           }
 
           # ── Check quota availability for a VM family ──
+          # Returns 0 if quota is available, 1 otherwise (including unknown).
           check_quota() {
             local family=$1
             if [ -z "$family" ]; then return 0; fi  # Free tier needs no quota
@@ -105,8 +106,8 @@ jobs:
             local usage limit current
             usage=$(az vm list-usage --location "$LOCATION" -o json 2>/dev/null)
             if [ $? -ne 0 ]; then
-              echo "⚠️  Could not query VM quotas (permissions may be limited)"
-              return 2  # Unknown — try anyway
+              echo "⚠️  Could not query VM quotas (permissions may be limited) — treating as insufficient"
+              return 1
             fi
 
             local quota
@@ -127,17 +128,14 @@ jobs:
             az provider register --namespace Microsoft.Quota 2>/dev/null || true
             sleep 5
 
-            az rest --method put \
+            if az rest --method put \
               --url "https://management.azure.com/subscriptions/$SUB_ID/providers/Microsoft.Compute/locations/$LOCATION/providers/Microsoft.Quota/quotas/$family?api-version=2023-02-01" \
               --body "{
                 \"properties\": {
                   \"limit\": {\"limitObjectType\": \"LimitValue\", \"value\": 4},
                   \"name\": {\"value\": \"$family\"}
                 }
-              }" > /tmp/quota-response.json 2>&1
-
-            local rc=$?
-            if [ $rc -eq 0 ]; then
+              }" > /tmp/quota-response.json 2>&1; then
               local state
               state=$(jq -r '.properties.provisioningState // "unknown"' /tmp/quota-response.json 2>/dev/null)
               echo "   Quota request state: $state"
@@ -145,7 +143,7 @@ jobs:
                 return 0
               fi
             else
-              echo "   Quota request failed (rc=$rc). This may require manual action."
+              echo "   Quota request failed. This may require manual action."
               cat /tmp/quota-response.json 2>/dev/null || true
             fi
             return 1
