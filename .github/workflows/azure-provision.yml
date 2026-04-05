@@ -93,8 +93,10 @@ jobs:
           SUB_ID=$(az account show --query id -o tsv)
 
           # ── Quota family for each SKU tier ──
+          # F1 uses "freeAFamily" — it DOES require quota (limit=0 on new subscriptions).
           sku_to_family() {
             case $1 in
+              F1|F2|F3) echo "freeAFamily" ;;
               B1|B2|B3) echo "basicAFamily" ;;
               S1|S2|S3) echo "standardDSv2Family" ;;
               P1v3|P2v3|P3v3) echo "standardDv3Family" ;;
@@ -103,38 +105,38 @@ jobs:
           }
 
           # ── Check quota availability for a VM family ──
-          # Returns 0 if quota is available, 1 otherwise (including unknown).
+          # Returns 0 if quota is available, 1 otherwise.
           check_quota() {
-            local family=$1
-            if [ -z "$family" ]; then return 0; fi  # Free tier needs no quota
+            local family=$1 loc=${2:-$LOCATION}
+            if [ -z "$family" ]; then return 0; fi
 
-            local usage limit current
-            usage=$(az vm list-usage --location "$LOCATION" -o json 2>/dev/null)
+            local usage limit current quota
+            usage=$(az vm list-usage --location "$loc" -o json 2>/dev/null)
             if [ $? -ne 0 ]; then
               echo "⚠️  Could not query VM quotas (permissions may be limited) — treating as insufficient"
               return 1
             fi
 
-            local quota
             quota=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0] // {}")
             limit=$(echo "$quota" | jq '.limit // 0')
             current=$(echo "$quota" | jq '.currentValue // 0')
-            echo "Quota ($family): limit=$limit  used=$current  available=$((limit - current))"
+            echo "Quota ($family) @ $loc: limit=$limit  used=$current  available=$((limit - current))"
 
             [ "$((limit - current))" -ge 1 ]
           }
 
           # ── Request a quota increase via the Azure Quota REST API ──
+          # Returns 0 if immediately approved (Succeeded/Granting), 1 if InProgress/failed.
           request_quota_increase() {
-            local family=$1
-            echo "📝 Requesting quota increase for $family → 4 vCPUs..."
+            local family=$1 loc=${2:-$LOCATION}
+            echo "📝 Requesting quota increase for $family → 4 vCPUs in $loc..."
 
             # Ensure the Quota resource provider is registered
             az provider register --namespace Microsoft.Quota 2>/dev/null || true
             sleep 5
 
             if az rest --method put \
-              --url "https://management.azure.com/subscriptions/$SUB_ID/providers/Microsoft.Compute/locations/$LOCATION/providers/Microsoft.Quota/quotas/$family?api-version=2023-02-01" \
+              --url "https://management.azure.com/subscriptions/$SUB_ID/providers/Microsoft.Compute/locations/$loc/providers/Microsoft.Quota/quotas/$family?api-version=2023-02-01" \
               --body "{
                 \"properties\": {
                   \"limit\": {\"limitObjectType\": \"LimitValue\", \"value\": 4},
@@ -148,90 +150,116 @@ jobs:
                 return 0
               fi
             else
-              echo "   Quota request failed. This may require manual action."
+              echo "   Quota request failed:"
               cat /tmp/quota-response.json 2>/dev/null || true
             fi
             return 1
           }
 
-          # ── Attempt plan creation with a given SKU ──
-          try_create_plan() {
-            local sku=$1
+          # ── Ensure quota and attempt plan creation with a given SKU in a given location ──
+          # Returns 0 on success (SKU_USED is set), 1 on failure.
+          try_sku_in_location() {
+            local sku=$1 loc=$2
+            local family
+            family=$(sku_to_family "$sku")
+
+            if [ -n "$family" ]; then
+              echo "Checking $sku quota ($family) in $loc..."
+              if ! check_quota "$family" "$loc"; then
+                echo "⚠️  Insufficient quota for $sku in $loc — requesting increase..."
+                if request_quota_increase "$family" "$loc"; then
+                  echo "✅ Quota approved — waiting 30s for propagation..."
+                  sleep 30
+                else
+                  echo "⏳ Quota increase in progress (InProgress). Waiting 60s before attempting plan creation..."
+                  sleep 60
+                fi
+              fi
+            fi
+
             echo ""
-            echo "🔧 Creating App Service Plan with --sku $sku ..."
+            echo "🔧 Creating App Service Plan with --sku $sku in $loc..."
             if az appservice plan create \
-              --name "$PLAN" --resource-group "$RG" --sku "$sku" --is-linux 2>/tmp/plan-error.txt; then
+              --name "$PLAN" --resource-group "$RG" --sku "$sku" --is-linux \
+              --location "$loc" 2>/tmp/plan-error.txt; then
+              SKU_USED="$sku"
+              PLAN_LOCATION="$loc"
               return 0
             else
+              echo "❌ Failed with $sku in $loc:"
+              cat /tmp/plan-error.txt || true
               return 1
             fi
           }
 
           # ═══════════════════════════════════════════════════════════════
-          # Main logic
+          # Main logic — try preferred SKU first, then F1 fallback,
+          # then fall back through alternate regions.
+          # New subscriptions often have 0 quota in eastus but quota in
+          # other regions (eastus2, westus, centralus).
           # ═══════════════════════════════════════════════════════════════
 
-          FAMILY=$(sku_to_family "$DESIRED_SKU")
+          SKU_USED=""
+          PLAN_LOCATION=""
 
-          # If the desired SKU needs quota, check it first
-          if [ -n "$FAMILY" ]; then
-            echo "Checking $DESIRED_SKU quota ($FAMILY) in $LOCATION..."
-            if ! check_quota "$FAMILY"; then
-              echo ""
-              echo "⚠️  Insufficient quota for $DESIRED_SKU."
-              echo "   Attempting automatic quota increase request..."
-              if request_quota_increase "$FAMILY"; then
-                echo "✅ Quota increase approved — waiting 30s for propagation..."
-                sleep 30
-              else
-                echo "⏳ Quota increase may need manual approval."
-                echo "   Will try to create the plan anyway."
+          # Build ordered list of (sku, location) pairs to attempt
+          ATTEMPTS=""
+          # Always try desired SKU in desired location first
+          ATTEMPTS="$DESIRED_SKU $LOCATION"
+          # If not already F1, add F1 in desired location as fallback
+          if [ "$DESIRED_SKU" != "F1" ]; then
+            ATTEMPTS="$ATTEMPTS|F1 $LOCATION"
+          fi
+          # Then try alternate regions for both SKUs
+          for alt_loc in eastus2 westus centralus westeurope; do
+            if [ "$alt_loc" != "$LOCATION" ]; then
+              ATTEMPTS="$ATTEMPTS|$DESIRED_SKU $alt_loc"
+              if [ "$DESIRED_SKU" != "F1" ]; then
+                ATTEMPTS="$ATTEMPTS|F1 $alt_loc"
               fi
             fi
-          fi
+          done
 
-          # Attempt 1: desired SKU
-          if try_create_plan "$DESIRED_SKU"; then
-            echo "✅ App Service Plan created with $DESIRED_SKU"
-            echo "sku_used=$DESIRED_SKU" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo ""
-          echo "❌ Plan creation with $DESIRED_SKU failed."
-          cat /tmp/plan-error.txt || true
-          echo ""
-
-          # Attempt 2: fall back to F1 (Free — no quota needed)
-          if [ "$DESIRED_SKU" != "F1" ]; then
-            echo "⚠️  Falling back to F1 (Free) tier..."
-            if try_create_plan "F1"; then
-              echo "✅ App Service Plan created with F1 (Free tier fallback)"
-              echo "sku_used=F1" >> "$GITHUB_OUTPUT"
-              echo "fallback_used=true" >> "$GITHUB_OUTPUT"
-
-              {
-                echo ""
-                echo "### ⚠️  Running on Free Tier (F1)"
-                echo ""
-                echo "Your subscription does not have **Basic VM** quota in \`$LOCATION\`."
-                echo "The plan was created on the **Free (F1)** tier as a fallback."
-                echo ""
-                echo "**Limitations on F1:**"
-                echo "- ❌ No WebSocket support (Gateway real-time features will not work)"
-                echo "- ❌ 60 CPU minutes per day"
-                echo "- ❌ No custom domains or TLS bindings"
-                echo "- ❌ No always-on (apps sleep after inactivity)"
-                echo ""
-                echo "**To upgrade later:**"
-                echo "1. Request a quota increase: **Actions → Manage Azure Infrastructure → request-quota-increase**"
-                echo "2. Upgrade the plan: **Actions → Manage Azure Infrastructure → upgrade-plan-sku**"
-              } >> "$GITHUB_STEP_SUMMARY"
+          OLD_IFS="$IFS"
+          IFS="|"
+          for attempt in $ATTEMPTS; do
+            IFS="$OLD_IFS"
+            attempt_sku=$(echo "$attempt" | awk '{print $1}')
+            attempt_loc=$(echo "$attempt" | awk '{print $2}')
+            echo ""
+            echo "━━━ Trying $attempt_sku in $attempt_loc ━━━"
+            if try_sku_in_location "$attempt_sku" "$attempt_loc"; then
+              echo "✅ App Service Plan created with $attempt_sku in $attempt_loc"
+              echo "sku_used=$SKU_USED" >> "$GITHUB_OUTPUT"
+              if [ "$attempt_loc" != "$LOCATION" ]; then
+                echo "location_used=$attempt_loc" >> "$GITHUB_OUTPUT"
+              fi
+              if [ "$attempt_sku" = "F1" ] || [ "$attempt_sku" != "$DESIRED_SKU" ] || [ "$attempt_loc" != "$LOCATION" ]; then
+                echo "fallback_used=true" >> "$GITHUB_OUTPUT"
+                if [ "$attempt_sku" = "F1" ]; then
+                  {
+                    echo ""
+                    echo "### ⚠️  Running on Free Tier (F1) in $attempt_loc"
+                    echo ""
+                    echo "Your subscription did not have **Basic VM** quota in any attempted region."
+                    echo "The plan was created on the **Free (F1)** tier as a fallback."
+                    echo ""
+                    echo "**Limitations on F1:**"
+                    echo "- ❌ No WebSocket support (Gateway real-time features will not work)"
+                    echo "- ❌ 60 CPU minutes per day"
+                    echo "- ❌ No always-on (apps sleep after inactivity)"
+                    echo ""
+                    echo "**To upgrade later:** Actions → Manage Azure Infrastructure → upgrade-plan-sku"
+                  } >> "$GITHUB_STEP_SUMMARY"
+                fi
+              fi
               exit 0
             fi
-          fi
+            IFS="|"
+          done
+          IFS="$OLD_IFS"
 
-          echo "❌ All plan creation attempts failed."
+          echo "❌ All plan creation attempts failed across all SKUs and regions."
           cat /tmp/plan-error.txt || true
           exit 1
 
@@ -350,7 +378,7 @@ jobs:
             --name "${{ steps.names.outputs.swa }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
             --backend-resource-id "$API_ID" \
-            --backend-region "${{ inputs.location || 'eastus' }}"
+            --backend-region "${{ steps.plan.outputs.location_used || inputs.location || 'eastus' }}"
 
       # ── Store config in GitHub ────────────────────────────────────────────────
       # Secrets: sensitive values (tokens, keys)
