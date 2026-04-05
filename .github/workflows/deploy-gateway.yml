@@ -1,6 +1,7 @@
 name: Deploy Gateway
 
 # Deploys the Socket.IO WebSocket gateway to Azure App Service.
+# Last triggered: 2026-04-05
 # Triggers when the gateway package changes on master.
 
 on:

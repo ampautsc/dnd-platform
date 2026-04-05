@@ -1,6 +1,7 @@
 name: Deploy API
 
 # Deploys the Express REST API to Azure App Service.
+# Last triggered: 2026-04-05
 # Triggers when API-related packages change on master.
 # App Service uses Oryx to run `npm install` after the source is uploaded,
 # then starts the server with the configured startup command.
