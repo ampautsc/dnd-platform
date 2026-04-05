@@ -54,6 +54,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Validate GH_PAT can write secrets/variables before spending time on Azure work.
+      # Classic PAT needs 'repo' scope. Fine-grained PAT needs Secrets+Variables write.
+      - name: Validate GH_PAT permissions
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          echo "Checking GH_PAT can write repository secrets..."
+          STATUS=$(gh api \
+            --method GET \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/actions/secrets \
+            -f per_page=1 \
+            --silent \
+            -w "%{http_code}" \
+            -o /dev/null 2>/dev/null || echo "000")
+          if [ "$STATUS" = "200" ]; then
+            echo "✅ GH_PAT can read secrets (write assumed — same permission)"
+          else
+            echo "❌ GH_PAT cannot access repository secrets (HTTP $STATUS)"
+            echo ""
+            echo "Fix: regenerate GH_PAT with the correct permissions:"
+            echo "  Classic PAT  → needs 'repo' scope (full control)"
+            echo "  Fine-grained → needs 'Secrets: Read and write' + 'Variables: Read and write'"
+            echo ""
+            echo "Then update the GH_PAT secret in:"
+            echo "  GitHub → Settings → Secrets and variables → Actions → GH_PAT"
+            exit 1
+          fi
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -383,9 +412,31 @@ jobs:
 
       - name: Store GitHub secrets
         run: |
-          echo "${{ steps.swa.outputs.token }}" \
+          if echo "${{ steps.swa.outputs.token }}" \
             | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN \
-                --repo "${{ github.repository }}"
+                --repo "${{ github.repository }}"; then
+            echo "✅ AZURE_STATIC_WEB_APPS_API_TOKEN set"
+          else
+            echo "⚠️  Could not set AZURE_STATIC_WEB_APPS_API_TOKEN automatically"
+            echo "    Set it manually: GitHub → Settings → Secrets and variables → Actions"
+            {
+              echo ""
+              echo "### ⚠️  Manual Step Required — GitHub Secret Not Set"
+              echo ""
+              echo "The workflow could not write \`AZURE_STATIC_WEB_APPS_API_TOKEN\` to your repository."
+              echo "Azure infrastructure was provisioned successfully. Set this secret manually:"
+              echo ""
+              echo "1. Go to **Settings → Secrets and variables → Actions → New repository secret**"
+              echo "2. Name: \`AZURE_STATIC_WEB_APPS_API_TOKEN\`"
+              echo "3. Get the value by running:"
+              echo "   \`\`\`bash"
+              echo "   az staticwebapp secrets list \\"
+              echo "     --name \"${{ steps.names.outputs.swa }}\" \\"
+              echo "     --resource-group \"${{ steps.names.outputs.rg }}\" \\"
+              echo "     --query \"properties.apiKey\" -o tsv"
+              echo "   \`\`\`"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Store GitHub variables
         run: |

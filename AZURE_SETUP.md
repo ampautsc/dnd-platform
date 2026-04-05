@@ -26,10 +26,20 @@ Copy the entire JSON output. In GitHub → **Settings → Secrets and variables 
 
 ## Step 2 — GitHub Personal Access Token
 
+The workflow writes GitHub secrets and variables automatically. The PAT needs write access to both.
+
+**Option A — Fine-grained token (recommended)**
+
 Go to **GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens** and create a token with:
 
 - **Repository access**: this repo only
-- **Permissions**: Repository secrets → Read and write, Variables → Read and write
+- **Permissions**:
+  - Repository secrets → **Read and write**
+  - Repository variables → **Read and write**
+
+**Option B — Classic token**
+
+Go to **GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)** and create a token with the full **`repo`** scope checked. (The `secrets` API is only accessible with full `repo` — not `public_repo` or any sub-scope.)
 
 In the same **Actions secrets** page, create:
 
