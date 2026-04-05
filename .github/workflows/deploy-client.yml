@@ -1,6 +1,7 @@
 name: Deploy Client
 
 # Deploys the React SPA to Azure Static Web Apps.
+# Last triggered: 2026-04-05
 # Triggers on push to master (client or content changes) and on PRs
 # (creates a preview environment; cleaned up when PR closes).
 
@@ -48,6 +49,7 @@ jobs:
           action: upload
           app_location: packages/client/dist
           skip_app_build: true
+          skip_deploy_on_missing_secrets: true
 
   close_pr_environment:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

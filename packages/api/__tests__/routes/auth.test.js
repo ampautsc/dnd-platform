@@ -10,7 +10,8 @@
  * - Invalid/missing tokens → 401
  * - Missing email → 400
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -43,11 +44,11 @@ describe('Auth Routes', () => {
         .post('/api/auth/request-link')
         .send({ email: 'player@example.com' });
 
-      expect(res.status).toBe(200);
-      expect(res.body.message).toMatch(/magic link/i);
-      expect(res.body.expiresAt).toBeTruthy();
+      assert.strictEqual(res.status, 200);
+      assert.match(res.body.message, /magic link/i);
+      assert.ok(res.body.expiresAt);
       // In a real app this would send an email; for now we return the token for testing
-      expect(res.body.token).toBeTruthy();
+      assert.ok(res.body.token);
     });
 
     it('should create a user record if email is new', async () => {
@@ -56,8 +57,8 @@ describe('Auth Routes', () => {
         .send({ email: 'newuser@example.com' });
 
       const user = db.prepare('SELECT * FROM users WHERE email = ?').get('newuser@example.com');
-      expect(user).toBeTruthy();
-      expect(user.email).toBe('newuser@example.com');
+      assert.ok(user);
+      assert.strictEqual(user.email, 'newuser@example.com');
     });
 
     it('should reuse existing user if email exists', async () => {
@@ -65,7 +66,7 @@ describe('Auth Routes', () => {
       await request.post('/api/auth/request-link').send({ email: 'same@example.com' });
 
       const users = db.prepare('SELECT * FROM users WHERE email = ?').all('same@example.com');
-      expect(users).toHaveLength(1);
+      assert.strictEqual(users.length, 1);
     });
 
     it('should return 400 if email is missing', async () => {
@@ -73,8 +74,8 @@ describe('Auth Routes', () => {
         .post('/api/auth/request-link')
         .send({});
 
-      expect(res.status).toBe(400);
-      expect(res.body.error).toMatch(/email/i);
+      assert.strictEqual(res.status, 400);
+      assert.match(res.body.error, /email/i);
     });
   });
 
@@ -89,11 +90,11 @@ describe('Auth Routes', () => {
         .post('/api/auth/verify')
         .send({ token: linkRes.body.token });
 
-      expect(res.status).toBe(200);
-      expect(res.body.jwt).toBeTruthy();
-      expect(res.body.user).toBeTruthy();
-      expect(res.body.user.email).toBe('player@example.com');
-      expect(res.body.user.id).toBeTruthy();
+      assert.strictEqual(res.status, 200);
+      assert.ok(res.body.jwt);
+      assert.ok(res.body.user);
+      assert.strictEqual(res.body.user.email, 'player@example.com');
+      assert.ok(res.body.user.id);
     });
 
     it('should return 401 for an invalid token', async () => {
@@ -101,7 +102,7 @@ describe('Auth Routes', () => {
         .post('/api/auth/verify')
         .send({ token: 'garbage-token' });
 
-      expect(res.status).toBe(401);
+      assert.strictEqual(res.status, 401);
     });
 
     it('should return 400 if token is missing', async () => {
@@ -109,8 +110,8 @@ describe('Auth Routes', () => {
         .post('/api/auth/verify')
         .send({});
 
-      expect(res.status).toBe(400);
-      expect(res.body.error).toMatch(/token/i);
+      assert.strictEqual(res.status, 400);
+      assert.match(res.body.error, /token/i);
     });
   });
 
@@ -128,15 +129,15 @@ describe('Auth Routes', () => {
         .get('/api/auth/me')
         .set('Authorization', `Bearer ${verifyRes.body.jwt}`);
 
-      expect(res.status).toBe(200);
-      expect(res.body.user.email).toBe('me@example.com');
-      expect(res.body.user.id).toBeTruthy();
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.user.email, 'me@example.com');
+      assert.ok(res.body.user.id);
     });
 
     it('should return 401 without Authorization header (production mode)', async () => {
       vi.stubEnv('NODE_ENV', 'production');
       const res = await request.get('/api/auth/me');
-      expect(res.status).toBe(401);
+      assert.strictEqual(res.status, 401);
       vi.unstubAllEnvs();
     });
 
@@ -144,7 +145,7 @@ describe('Auth Routes', () => {
       const res = await request
         .get('/api/auth/me')
         .set('Authorization', 'Bearer invalid.token.here');
-      expect(res.status).toBe(401);
+      assert.strictEqual(res.status, 401);
     });
   });
 });

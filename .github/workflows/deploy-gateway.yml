@@ -1,6 +1,7 @@
 name: Deploy Gateway
 
 # Deploys the Socket.IO WebSocket gateway to Azure App Service.
+# Last triggered: 2026-04-05
 # Triggers when the gateway package changes on master.
 
 on:
@@ -26,7 +27,10 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          client-id: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
+          client-secret: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
+          subscription-id: ${{ fromJson(secrets.AZURE_CREDENTIALS).subscriptionId }}
+          tenant-id: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
 
       - name: Deploy to App Service
         uses: azure/webapps-deploy@v3

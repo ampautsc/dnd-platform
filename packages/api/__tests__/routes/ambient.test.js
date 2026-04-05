@@ -10,7 +10,8 @@
  * - Returns 404 for unknown locationId
  * - Works with mock evaluator (no real Groq calls in CI)
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -84,16 +85,16 @@ describe('Ambient Routes', () => {
       utterance: 'Barkeep! Pour me your finest ale!',
       speakerName: 'Adventurer',
     });
-    expect(res.status).toBe(200);
-    expect(res.body.reactions).toBeDefined();
-    expect(Array.isArray(res.body.reactions)).toBe(true);
-    expect(res.body.reactions.length).toBeGreaterThan(0);
+    assert.strictEqual(res.status, 200);
+    assert.notStrictEqual(res.body.reactions, undefined);
+    assert.strictEqual(Array.isArray(res.body.reactions), true);
+    assert.ok(res.body.reactions.length > 0);
     // Each reaction should have expected shape
     const r = res.body.reactions[0];
-    expect(r.npcKey).toBeDefined();
-    expect(r.npcName).toBeDefined();
-    expect(r.reactionStrength).toBeGreaterThanOrEqual(1);
-    expect(r.priority).toBeDefined();
+    assert.notStrictEqual(r.npcKey, undefined);
+    assert.notStrictEqual(r.npcName, undefined);
+    assert.ok(r.reactionStrength >= 1);
+    assert.notStrictEqual(r.priority, undefined);
   });
 
   it('should return empty reactions for bland utterance', async () => {
@@ -102,24 +103,24 @@ describe('Ambient Routes', () => {
       utterance: 'The weather has been surprisingly pleasant this week.',
       speakerName: 'Adventurer',
     });
-    expect(res.status).toBe(200);
-    expect(res.body.reactions).toEqual([]);
+    assert.strictEqual(res.status, 200);
+    assert.deepStrictEqual(res.body.reactions, []);
   });
 
   it('should return 400 for missing utterance', async () => {
     const res = await request.post('/api/ambient/utterance').send({
       locationId: 'bottoms_up',
     });
-    expect(res.status).toBe(400);
-    expect(res.body.error).toBeDefined();
+    assert.strictEqual(res.status, 400);
+    assert.notStrictEqual(res.body.error, undefined);
   });
 
   it('should return 400 for missing locationId', async () => {
     const res = await request.post('/api/ambient/utterance').send({
       utterance: 'Hello there!',
     });
-    expect(res.status).toBe(400);
-    expect(res.body.error).toBeDefined();
+    assert.strictEqual(res.status, 400);
+    assert.notStrictEqual(res.body.error, undefined);
   });
 
   it('should return 404 for unknown locationId', async () => {
@@ -127,8 +128,8 @@ describe('Ambient Routes', () => {
       locationId: 'nonexistent_place',
       utterance: 'Hello there!',
     });
-    expect(res.status).toBe(404);
-    expect(res.body.error).toBeDefined();
+    assert.strictEqual(res.status, 404);
+    assert.notStrictEqual(res.body.error, undefined);
   });
 
   it('should include npcName on all reactions', async () => {
@@ -137,10 +138,10 @@ describe('Ambient Routes', () => {
       utterance: 'Someone just swindled me out of fifty gold!',
       speakerName: 'Victim',
     });
-    expect(res.status).toBe(200);
+    assert.strictEqual(res.status, 200);
     for (const r of res.body.reactions) {
-      expect(r.npcName).toBeTruthy();
-      expect(typeof r.npcName).toBe('string');
+      assert.ok(r.npcName);
+      assert.strictEqual(typeof r.npcName, 'string');
     }
   });
 
@@ -150,9 +151,9 @@ describe('Ambient Routes', () => {
       utterance: 'There is a fight breaking out! Everyone look!',
       speakerName: 'Panicked patron',
     });
-    expect(res.status).toBe(200);
+    assert.strictEqual(res.status, 200);
     // Priority resolver caps at 3
-    expect(res.body.reactions.length).toBeLessThanOrEqual(3);
+    assert.ok(res.body.reactions.length <= 3);
   });
 
   it('should use default speakerName when not provided', async () => {
@@ -160,8 +161,8 @@ describe('Ambient Routes', () => {
       locationId: 'bottoms_up',
       utterance: 'Barkeep! Another round!',
     });
-    expect(res.status).toBe(200);
+    assert.strictEqual(res.status, 200);
     // Should work without speakerName
-    expect(res.body.reactions).toBeDefined();
+    assert.notStrictEqual(res.body.reactions, undefined);
   });
 });

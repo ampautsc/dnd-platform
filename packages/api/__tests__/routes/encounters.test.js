@@ -13,7 +13,8 @@
  * - POST /api/encounters/:id/end — ends encounter
  * - Encounter routes require auth (dev bypass auto-injects dev user)
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -58,12 +59,12 @@ describe('Encounter Routes', () => {
         .post('/api/encounters')
         .send({ npcTemplateKeys: ['bree_millhaven'], playerName: 'Test Hero' });
 
-      expect(res.status).toBe(201);
-      expect(res.body.encounterId).toBeDefined();
-      expect(res.body.npcs).toHaveLength(1);
-      expect(res.body.npcs[0].name).toBeDefined();
-      expect(res.body.status).toBe('active');
-      expect(res.body.messages).toEqual([]);
+      assert.strictEqual(res.status, 201);
+      assert.notStrictEqual(res.body.encounterId, undefined);
+      assert.strictEqual(res.body.npcs.length, 1);
+      assert.notStrictEqual(res.body.npcs[0].name, undefined);
+      assert.strictEqual(res.body.status, 'active');
+      assert.deepStrictEqual(res.body.messages, []);
     });
 
     it('should return 400 for missing npcTemplateKeys', async () => {
@@ -71,8 +72,8 @@ describe('Encounter Routes', () => {
         .post('/api/encounters')
         .send({});
 
-      expect(res.status).toBe(400);
-      expect(res.body.code).toBe('INVALID_INPUT');
+      assert.strictEqual(res.status, 400);
+      assert.strictEqual(res.body.code, 'INVALID_INPUT');
     });
 
     it('should return 400 for empty npcTemplateKeys array', async () => {
@@ -80,7 +81,7 @@ describe('Encounter Routes', () => {
         .post('/api/encounters')
         .send({ npcTemplateKeys: [] });
 
-      expect(res.status).toBe(400);
+      assert.strictEqual(res.status, 400);
     });
 
     it('should return 404 for unknown NPC templateKey', async () => {
@@ -88,8 +89,8 @@ describe('Encounter Routes', () => {
         .post('/api/encounters')
         .send({ npcTemplateKeys: ['nonexistent_npc'] });
 
-      expect(res.status).toBe(404);
-      expect(res.body.code).toBe('NPC_NOT_FOUND');
+      assert.strictEqual(res.status, 404);
+      assert.strictEqual(res.body.code, 'NPC_NOT_FOUND');
     });
 
     it('should support multiple NPCs in one encounter', async () => {
@@ -97,16 +98,16 @@ describe('Encounter Routes', () => {
         .post('/api/encounters')
         .send({ npcTemplateKeys: ['bree_millhaven', 'torval_grimm'] });
 
-      expect(res.status).toBe(201);
-      expect(res.body.npcs).toHaveLength(2);
+      assert.strictEqual(res.status, 201);
+      assert.strictEqual(res.body.npcs.length, 2);
     });
   });
 
   describe('GET /api/encounters', () => {
     it('should list encounters (empty initially)', async () => {
       const res = await request.get('/api/encounters');
-      expect(res.status).toBe(200);
-      expect(res.body.encounters).toEqual([]);
+      assert.strictEqual(res.status, 200);
+      assert.deepStrictEqual(res.body.encounters, []);
     });
 
     it('should list encounters after creating one', async () => {
@@ -115,8 +116,8 @@ describe('Encounter Routes', () => {
         .send({ npcTemplateKeys: ['bree_millhaven'] });
 
       const res = await request.get('/api/encounters');
-      expect(res.status).toBe(200);
-      expect(res.body.encounters).toHaveLength(1);
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.encounters.length, 1);
     });
   });
 
@@ -128,14 +129,14 @@ describe('Encounter Routes', () => {
       const { encounterId } = createRes.body;
 
       const res = await request.get(`/api/encounters/${encounterId}`);
-      expect(res.status).toBe(200);
-      expect(res.body.encounterId).toBe(encounterId);
-      expect(res.body.status).toBe('active');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.encounterId, encounterId);
+      assert.strictEqual(res.body.status, 'active');
     });
 
     it('should return 404 for unknown encounter', async () => {
       const res = await request.get('/api/encounters/nonexistent');
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
   });
 
@@ -150,14 +151,14 @@ describe('Encounter Routes', () => {
         .post(`/api/encounters/${encounterId}/messages`)
         .send({ text: 'Hello Bree!' });
 
-      expect(res.status).toBe(200);
-      expect(res.body.playerMessage).toBeDefined();
-      expect(res.body.playerMessage.text).toBe('Hello Bree!');
-      expect(res.body.playerMessage.sender).toBe('player');
-      expect(res.body.npcResponses).toBeDefined();
-      expect(res.body.npcResponses.length).toBeGreaterThan(0);
-      expect(res.body.npcResponses[0].sender).toBe('bree_millhaven');
-      expect(res.body.npcResponses[0].text).toBeDefined();
+      assert.strictEqual(res.status, 200);
+      assert.notStrictEqual(res.body.playerMessage, undefined);
+      assert.strictEqual(res.body.playerMessage.text, 'Hello Bree!');
+      assert.strictEqual(res.body.playerMessage.sender, 'player');
+      assert.notStrictEqual(res.body.npcResponses, undefined);
+      assert.ok(res.body.npcResponses.length > 0);
+      assert.strictEqual(res.body.npcResponses[0].sender, 'bree_millhaven');
+      assert.notStrictEqual(res.body.npcResponses[0].text, undefined);
     });
 
     it('should return 400 for empty text', async () => {
@@ -170,7 +171,7 @@ describe('Encounter Routes', () => {
         .post(`/api/encounters/${encounterId}/messages`)
         .send({ text: '' });
 
-      expect(res.status).toBe(400);
+      assert.strictEqual(res.status, 400);
     });
 
     it('should return 404 for unknown encounter', async () => {
@@ -178,7 +179,7 @@ describe('Encounter Routes', () => {
         .post('/api/encounters/nonexistent/messages')
         .send({ text: 'Hello' });
 
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
   });
 
@@ -190,8 +191,8 @@ describe('Encounter Routes', () => {
       const { encounterId } = createRes.body;
 
       const res = await request.post(`/api/encounters/${encounterId}/end`);
-      expect(res.status).toBe(200);
-      expect(res.body.status).toBe('ended');
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.status, 'ended');
     });
 
     it('should return 409 when sending message to ended encounter', async () => {
@@ -206,7 +207,7 @@ describe('Encounter Routes', () => {
         .post(`/api/encounters/${encounterId}/messages`)
         .send({ text: 'Hello?' });
 
-      expect(res.status).toBe(409);
+      assert.strictEqual(res.status, 409);
     });
   });
 });

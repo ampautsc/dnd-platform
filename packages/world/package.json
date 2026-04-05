@@ -9,7 +9,7 @@
     ".": "./src/index.js"
   },
   "scripts": {
-    "test": "node --test __tests__/**/*.test.js"
+    "test": "node --test '__tests__/**/*.test.js' '__tests__/*.test.js'"
   },
   "dependencies": {
     "@dnd-platform/content": "^0.1.0"

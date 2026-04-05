@@ -9,7 +9,8 @@
  * 5. JSON fields (memories) are serialized/deserialized transparently
  * 6. Conforms to the RelationshipRepository persistence adapter interface
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
 import { createRelationshipPersistence } from '../../src/services/RelationshipPersistence.js';
 import { initDatabase, closeDatabase } from '../../src/models/database.js';
 
@@ -31,7 +32,7 @@ describe('RelationshipPersistence', () => {
       const tables = db.prepare(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='relationships'"
       ).all();
-      expect(tables).toHaveLength(1);
+      assert.strictEqual(tables.length, 1);
     });
 
     it('should have the expected columns', () => {
@@ -62,8 +63,8 @@ describe('RelationshipPersistence', () => {
       });
 
       const all = persistence.loadAll();
-      expect(all).toHaveLength(1);
-      expect(all[0].recognitionTier).toBe('recognized');
+      assert.strictEqual(all.length, 1);
+      assert.strictEqual(all[0].recognitionTier, 'recognized');
     });
   });
 
@@ -101,13 +102,13 @@ describe('RelationshipPersistence', () => {
       persistence.save('player', 'old_mattock', sampleRelationship);
       const loaded = persistence.load('player', 'old_mattock');
 
-      expect(Array.isArray(loaded.memories)).toBe(true);
-      expect(loaded.memories).toHaveLength(2);
-      expect(loaded.memories[0].summary).toContain('boats');
+      assert.strictEqual(Array.isArray(loaded.memories), true);
+      assert.strictEqual(loaded.memories.length, 2);
+      assert.ok(loaded.memories[0].summary.includes('boats'));
     });
 
     it('should return null for unknown relationships', () => {
-      expect(persistence.load('nobody', 'unknown')).toBeNull();
+      assert.strictEqual(persistence.load('nobody', 'unknown'), null);
     });
 
     it('should handle null displayLabel', () => {
@@ -118,7 +119,7 @@ describe('RelationshipPersistence', () => {
         displayLabel: null,
       });
       const loaded = persistence.load('player', 'mira');
-      expect(loaded.displayLabel).toBeNull();
+      assert.strictEqual(loaded.displayLabel, null);
     });
 
     it('should handle empty memories array', () => {
@@ -129,7 +130,7 @@ describe('RelationshipPersistence', () => {
         memories: [],
       });
       const loaded = persistence.load('player', 'fen');
-      expect(loaded.memories).toEqual([]);
+      assert.deepStrictEqual(loaded.memories, []);
     });
   });
 
@@ -146,19 +147,19 @@ describe('RelationshipPersistence', () => {
       persistence.save('old_mattock', 'player', { subjectId: 'old_mattock', targetId: 'player', ...base });
 
       const all = persistence.loadAll();
-      expect(all).toHaveLength(3);
+      assert.strictEqual(all.length, 3);
     });
 
     it('should return empty array when no relationships exist', () => {
-      expect(persistence.loadAll()).toEqual([]);
+      assert.deepStrictEqual(persistence.loadAll(), []);
     });
   });
 
   describe('adapter interface compliance', () => {
     it('should have save, load, and loadAll methods', () => {
-      expect(typeof persistence.save).toBe('function');
-      expect(typeof persistence.load).toBe('function');
-      expect(typeof persistence.loadAll).toBe('function');
+      assert.strictEqual(typeof persistence.save, 'function');
+      assert.strictEqual(typeof persistence.load, 'function');
+      assert.strictEqual(typeof persistence.loadAll, 'function');
     });
   });
 });

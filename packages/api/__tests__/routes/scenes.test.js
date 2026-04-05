@@ -13,7 +13,8 @@
  * - GET /api/scenes — lists scenes
  * - Scene routes require auth (dev bypass auto-injects dev user)
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import supertest from 'supertest';
 import { createApp } from '../../src/app.js';
 import { createAuthService } from '../../src/services/AuthService.js';
@@ -67,21 +68,21 @@ describe('Scene Routes', () => {
       participants: makeParticipants(),
       worldContext: { location: 'Bottoms Up Tavern', timeOfDay: 'evening' },
     });
-    expect(res.status).toBe(201);
-    expect(res.body.id).toMatch(/^scene_/);
-    expect(res.body.status).toBe('pending');
-    expect(res.body.participants).toHaveLength(2);
+    assert.strictEqual(res.status, 201);
+    assert.match(res.body.id, /^scene_/);
+    assert.strictEqual(res.body.status, 'pending');
+    assert.strictEqual(res.body.participants.length, 2);
   });
 
   it('should return 400 for empty participants', async () => {
     const res = await request.post('/api/scenes').send({ participants: [] });
-    expect(res.status).toBe(400);
-    expect(res.body.code).toBe('INVALID_INPUT');
+    assert.strictEqual(res.status, 400);
+    assert.strictEqual(res.body.code, 'INVALID_INPUT');
   });
 
   it('should return 400 for missing participants', async () => {
     const res = await request.post('/api/scenes').send({});
-    expect(res.status).toBe(400);
+    assert.strictEqual(res.status, 400);
   });
 
   // ── POST /api/scenes/:id/start ────────────────────────────────
@@ -91,19 +92,19 @@ describe('Scene Routes', () => {
     const sceneId = create.body.id;
 
     const res = await request.post(`/api/scenes/${sceneId}/start`);
-    expect(res.status).toBe(200);
-    expect(res.body.status).toBe('active');
-    expect(res.body.round).toBe(1);
-    expect(res.body.initiativeOrder).toHaveLength(2);
-    expect(Object.keys(res.body.initiativeRolls)).toHaveLength(2);
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.status, 'active');
+    assert.strictEqual(res.body.round, 1);
+    assert.strictEqual(res.body.initiativeOrder.length, 2);
+    assert.strictEqual(Object.keys(res.body.initiativeRolls).length, 2);
     // Should include openingActions (may be empty if player goes first)
-    expect(res.body.openingActions).toBeDefined();
-    expect(Array.isArray(res.body.openingActions)).toBe(true);
+    assert.notStrictEqual(res.body.openingActions, undefined);
+    assert.strictEqual(Array.isArray(res.body.openingActions), true);
   });
 
   it('should return 404 for starting unknown scene', async () => {
     const res = await request.post('/api/scenes/scene_unknown/start');
-    expect(res.status).toBe(404);
+    assert.strictEqual(res.status, 404);
   });
 
   // ── GET /api/scenes/:id ───────────────────────────────────────
@@ -111,13 +112,13 @@ describe('Scene Routes', () => {
   it('should get scene state', async () => {
     const create = await request.post('/api/scenes').send({ participants: makeParticipants() });
     const res = await request.get(`/api/scenes/${create.body.id}`);
-    expect(res.status).toBe(200);
-    expect(res.body.id).toBe(create.body.id);
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.id, create.body.id);
   });
 
   it('should return 404 for unknown scene', async () => {
     const res = await request.get('/api/scenes/scene_nope');
-    expect(res.status).toBe(404);
+    assert.strictEqual(res.status, 404);
   });
 
   // ── POST /api/scenes/:id/action ───────────────────────────────
@@ -132,9 +133,9 @@ describe('Scene Routes', () => {
       content: 'Hello Mira!',
     });
 
-    expect(res.status).toBe(200);
-    expect(res.body.sceneState.transcript.length).toBeGreaterThanOrEqual(2); // player + NPC
-    expect(res.body.npcActions.length).toBeGreaterThanOrEqual(1);
+    assert.strictEqual(res.status, 200);
+    assert.ok(res.body.sceneState.transcript.length >= 2); // player + NPC
+    assert.ok(res.body.npcActions.length >= 1);
   });
 
   it('should return 409 for wrong participant turn', async () => {
@@ -147,8 +148,8 @@ describe('Scene Routes', () => {
       type: 'speech',
       content: 'Not my turn!',
     });
-    expect(res.status).toBe(409);
-    expect(res.body.code).toBe('NOT_YOUR_TURN');
+    assert.strictEqual(res.status, 409);
+    assert.strictEqual(res.body.code, 'NOT_YOUR_TURN');
   });
 
   // ── POST /api/scenes/:id/end ─────────────────────────────────
@@ -158,9 +159,9 @@ describe('Scene Routes', () => {
     await request.post(`/api/scenes/${create.body.id}/start`);
 
     const res = await request.post(`/api/scenes/${create.body.id}/end`).send({ reason: 'dm_ended' });
-    expect(res.status).toBe(200);
-    expect(res.body.status).toBe('ended');
-    expect(res.body.endReason).toBe('dm_ended');
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.status, 'ended');
+    assert.strictEqual(res.body.endReason, 'dm_ended');
   });
 
   // ── GET /api/scenes ───────────────────────────────────────────
@@ -170,8 +171,8 @@ describe('Scene Routes', () => {
     await request.post('/api/scenes').send({ participants: makeParticipants() });
 
     const res = await request.get('/api/scenes');
-    expect(res.status).toBe(200);
-    expect(res.body.scenes).toHaveLength(2);
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.scenes.length, 2);
   });
 
   // ── POST /api/scenes/at-location ──────────────────────────────
@@ -181,16 +182,16 @@ describe('Scene Routes', () => {
       const res = await request.post('/api/scenes/at-location').send({
         locationId: 'bottoms_up',
       });
-      expect(res.status).toBe(201);
-      expect(res.body.id).toMatch(/^scene_/);
-      expect(res.body.status).toBe('active');
-      expect(res.body.round).toBe(1);
-      expect(res.body.initiativeOrder).toBeDefined();
-      expect(res.body.initiativeOrder.length).toBeGreaterThanOrEqual(2); // player + at least 1 NPC
-      expect(res.body.participants.some(p => p.isPlayer)).toBe(true);
+      assert.strictEqual(res.status, 201);
+      assert.match(res.body.id, /^scene_/);
+      assert.strictEqual(res.body.status, 'active');
+      assert.strictEqual(res.body.round, 1);
+      assert.notStrictEqual(res.body.initiativeOrder, undefined);
+      assert.ok(res.body.initiativeOrder.length >= 2); // player + at least 1 NPC
+      assert.strictEqual(res.body.participants.some(p => p.isPlayer), true);
       // Should include openingActions for NPCs that went before the player
-      expect(res.body.openingActions).toBeDefined();
-      expect(Array.isArray(res.body.openingActions)).toBe(true);
+      assert.notStrictEqual(res.body.openingActions, undefined);
+      assert.strictEqual(Array.isArray(res.body.openingActions), true);
     });
 
     it('should include Bottoms Up regulars as participants', async () => {
@@ -200,10 +201,10 @@ describe('Scene Routes', () => {
       const location = getLocation('bottoms_up');
       const npcParticipants = res.body.participants.filter(p => !p.isPlayer);
       // Should have at least some of the regulars (some may not have NPC data)
-      expect(npcParticipants.length).toBeGreaterThanOrEqual(1);
+      assert.ok(npcParticipants.length >= 1);
       // Each NPC participant should have a templateKey from the regulars list
       for (const p of npcParticipants) {
-        expect(location.regulars).toContain(p.templateKey);
+        assert.ok(location.regulars.includes(p.templateKey));
       }
     });
 
@@ -211,21 +212,21 @@ describe('Scene Routes', () => {
       const res = await request.post('/api/scenes/at-location').send({
         locationId: 'bottoms_up',
       });
-      expect(res.body.worldContext).toBeDefined();
-      expect(res.body.worldContext.locationId).toBe('bottoms_up');
-      expect(res.body.worldContext.locationName).toBe('Bottoms Up');
+      assert.notStrictEqual(res.body.worldContext, undefined);
+      assert.strictEqual(res.body.worldContext.locationId, 'bottoms_up');
+      assert.strictEqual(res.body.worldContext.locationName, 'Bottoms Up');
     });
 
     it('should return 404 for unknown location', async () => {
       const res = await request.post('/api/scenes/at-location').send({
         locationId: 'nonexistent_place',
       });
-      expect(res.status).toBe(404);
+      assert.strictEqual(res.status, 404);
     });
 
     it('should return 400 when locationId is missing', async () => {
       const res = await request.post('/api/scenes/at-location').send({});
-      expect(res.status).toBe(400);
+      assert.strictEqual(res.status, 400);
     });
 
     it('should include player in the scene', async () => {
@@ -234,8 +235,8 @@ describe('Scene Routes', () => {
         playerName: 'Thorn',
       });
       const player = res.body.participants.find(p => p.isPlayer);
-      expect(player).toBeDefined();
-      expect(player.name).toBe('Thorn');
+      assert.notStrictEqual(player, undefined);
+      assert.strictEqual(player.name, 'Thorn');
     });
 
     it('should return a non-empty transcript containing a DM opening narration', async () => {
@@ -243,15 +244,15 @@ describe('Scene Routes', () => {
         locationId: 'bottoms_up',
         playerName: 'Thorn',
       });
-      expect(res.status).toBe(201);
-      expect(Array.isArray(res.body.transcript)).toBe(true);
-      expect(res.body.transcript.length).toBeGreaterThanOrEqual(1);
+      assert.strictEqual(res.status, 201);
+      assert.strictEqual(Array.isArray(res.body.transcript), true);
+      assert.ok(res.body.transcript.length >= 1);
       const openingEntry = res.body.transcript.find(
         e => e.participantId === 'dm' && e.type === 'narration',
       );
-      expect(openingEntry).toBeDefined();
-      expect(typeof openingEntry.content).toBe('string');
-      expect(openingEntry.content.length).toBeGreaterThan(0);
+      assert.notStrictEqual(openingEntry, undefined);
+      assert.strictEqual(typeof openingEntry.content, 'string');
+      assert.ok(openingEntry.content.length > 0);
     });
   });
 });
