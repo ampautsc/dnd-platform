@@ -101,7 +101,7 @@ export async function requestQuotaIncrease({ location, family = 'basicAFamily', 
 
   // Get subscription ID
   const account = await azJson('account', 'show');
-  const subId = account.id;
+  const subscriptionId = account.id;
 
   // Register the Quota resource provider (idempotent — safe to fail if already registered)
   try {
@@ -113,7 +113,7 @@ export async function requestQuotaIncrease({ location, family = 'basicAFamily', 
   }
 
   // Submit the quota increase request
-  const url = `https://management.azure.com/subscriptions/${subId}/providers/Microsoft.Compute/locations/${location}/providers/Microsoft.Quota/quotas/${family}?api-version=2023-02-01`;
+  const url = `https://management.azure.com/subscriptions/${subscriptionId}/providers/Microsoft.Compute/locations/${location}/providers/Microsoft.Quota/quotas/${family}?api-version=2023-02-01`;
   const body = JSON.stringify({
     properties: {
       limit: { limitObjectType: 'LimitValue', value: newLimit },
@@ -262,16 +262,16 @@ export async function upgradeAppServicePlan({ targetSku, resourceGroup } = {}) {
   // If upgrading from F1, enable WebSockets on gateway
   if (currentSku === 'F1') {
     const apps = await azJson('webapp', 'list', '--resource-group', rg);
-    const gwApp = apps.find(a => a.name.endsWith('-gw'));
-    if (gwApp) {
+    const gatewayApp = apps.find(a => a.name.endsWith('-gw'));
+    if (gatewayApp) {
       await az(
         'webapp', 'config', 'set',
-        '--name', gwApp.name,
+        '--name', gatewayApp.name,
         '--resource-group', rg,
         '--web-sockets-enabled', 'true',
       );
       result.webSocketsEnabled = true;
-      result.gatewayApp = gwApp.name;
+      result.gatewayApp = gatewayApp.name;
     }
   }
 
