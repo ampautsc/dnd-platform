@@ -81,8 +81,6 @@ jobs:
       - name: Create App Service Plan
         id: plan
         run: |
-          set +e  # We handle errors ourselves
-
           DESIRED_SKU="${{ inputs.sku }}"
           PLAN="${{ steps.names.outputs.plan }}"
           RG="${{ steps.names.outputs.rg }}"
@@ -111,8 +109,10 @@ jobs:
               return 2  # Unknown — try anyway
             fi
 
-            limit=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0].limit // 0")
-            current=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0].currentValue // 0")
+            local quota
+            quota=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0] // {}")
+            limit=$(echo "$quota" | jq '.limit // 0')
+            current=$(echo "$quota" | jq '.currentValue // 0')
             echo "Quota ($family): limit=$limit  used=$current  available=$((limit - current))"
 
             [ "$((limit - current))" -ge 1 ]
@@ -156,8 +156,12 @@ jobs:
             local sku=$1
             echo ""
             echo "🔧 Creating App Service Plan with --sku $sku ..."
-            az appservice plan create \
-              --name "$PLAN" --resource-group "$RG" --sku "$sku" --is-linux 2>/tmp/plan-error.txt
+            if az appservice plan create \
+              --name "$PLAN" --resource-group "$RG" --sku "$sku" --is-linux 2>/tmp/plan-error.txt; then
+              return 0
+            else
+              return 1
+            fi
           }
 
           # ═══════════════════════════════════════════════════════════════
@@ -169,16 +173,11 @@ jobs:
           # If the desired SKU needs quota, check it first
           if [ -n "$FAMILY" ]; then
             echo "Checking $DESIRED_SKU quota ($FAMILY) in $LOCATION..."
-            check_quota "$FAMILY"
-            qrc=$?
-
-            if [ $qrc -eq 1 ]; then
+            if ! check_quota "$FAMILY"; then
               echo ""
               echo "⚠️  Insufficient quota for $DESIRED_SKU."
               echo "   Attempting automatic quota increase request..."
-              request_quota_increase "$FAMILY"
-
-              if [ $? -eq 0 ]; then
+              if request_quota_increase "$FAMILY"; then
                 echo "✅ Quota increase approved — waiting 30s for propagation..."
                 sleep 30
               else
@@ -197,7 +196,7 @@ jobs:
 
           echo ""
           echo "❌ Plan creation with $DESIRED_SKU failed."
-          cat /tmp/plan-error.txt
+          cat /tmp/plan-error.txt || true
           echo ""
 
           # Attempt 2: fall back to F1 (Free — no quota needed)
@@ -206,7 +205,7 @@ jobs:
             if try_create_plan "F1"; then
               echo "✅ App Service Plan created with F1 (Free tier fallback)"
               echo "sku_used=F1" >> "$GITHUB_OUTPUT"
-              echo "fell_back=true" >> "$GITHUB_OUTPUT"
+              echo "fallback_used=true" >> "$GITHUB_OUTPUT"
 
               {
                 echo ""
@@ -230,7 +229,7 @@ jobs:
           fi
 
           echo "❌ All plan creation attempts failed."
-          cat /tmp/plan-error.txt
+          cat /tmp/plan-error.txt || true
           exit 1
 
       # Generate a strong JWT secret at provision time (never stored in plaintext)

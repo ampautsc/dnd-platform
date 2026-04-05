@@ -158,7 +158,7 @@ jobs:
             echo "| | Before | After |"
             echo "|---|---|---|"
             echo "| SKU | $CURRENT_SKU | $TARGET_SKU |"
-            echo "| WebSockets | $([ '$CURRENT_SKU' = 'F1' ] && echo '❌' || echo '✅') | ✅ |"
+            echo "| WebSockets | $([ "$CURRENT_SKU" = 'F1' ] && echo '❌' || echo '✅') | ✅ |"
             echo ""
             echo "Your API and Gateway are now running on **$TARGET_SKU**."
           } >> "$GITHUB_STEP_SUMMARY"
