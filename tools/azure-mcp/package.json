@@ -1,0 +1,15 @@
+{
+  "name": "azure-mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server for managing Azure infrastructure — quotas, App Service Plans, resource status",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test __tests__/azure-ops.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.0"
+  }
+}
