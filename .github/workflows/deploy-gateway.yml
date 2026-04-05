@@ -18,6 +18,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy Gateway to App Service
+    # Skip if the provision workflow hasn't run yet (variable not set)
+    if: vars.AZURE_GATEWAY_APP_NAME != ''
     permissions:
       contents: read
 

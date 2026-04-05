@@ -24,6 +24,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy API to App Service
+    # Skip if the provision workflow hasn't run yet (variable not set)
+    if: vars.AZURE_API_APP_NAME != ''
     permissions:
       contents: read
 

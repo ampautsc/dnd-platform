@@ -10,6 +10,6 @@
     "test": "node --test __tests__/plan-ops.test.mjs"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.1"
+    "@modelcontextprotocol/sdk": "^1.27.0"
   }
 }
