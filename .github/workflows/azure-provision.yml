@@ -14,11 +14,6 @@ name: Provision Azure Infrastructure
 #                        (Settings → Developer settings → Personal access tokens)
 
 on:
-  push:
-    branches:
-      - copilot/fix-deployment-pipeline-issues
-    paths:
-      - '.github/workflows/azure-provision.yml'
   workflow_dispatch:
     inputs:
       resource_prefix:
@@ -26,9 +21,9 @@ on:
         required: false
         default: 'dnd-platform'
       location:
-        description: 'Azure region'
+        description: 'Azure region (note: SWA is always created in eastus2 regardless of this value)'
         required: false
-        default: 'eastus'
+        default: 'eastus2'
       sku:
         description: 'App Service Plan SKU (B1 recommended — F1 free but no WebSockets)'
         required: false
@@ -380,7 +375,7 @@ jobs:
             --name "${{ steps.names.outputs.swa }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
             --backend-resource-id "$API_ID" \
-            --backend-region "${{ steps.plan.outputs.location_used || inputs.location || 'eastus' }}"
+            --backend-region "${{ steps.plan.outputs.location_used || inputs.location || 'eastus2' }}"
 
       # ── Store config in GitHub ────────────────────────────────────────────────
       # Secrets: sensitive values (tokens, keys)
