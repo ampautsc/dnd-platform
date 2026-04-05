@@ -1,0 +1,164 @@
+name: Manage Azure Infrastructure
+
+# Post-provision management workflow. Use this to:
+# - Check available compute quotas in your Azure subscription
+# - Request quota increases (e.g. Basic VMs for B1 App Service Plan)
+# - Upgrade the App Service Plan SKU (e.g. from F1 free to B1 paid)
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'What to do'
+        required: true
+        type: choice
+        options:
+          - check-quotas
+          - request-quota-increase
+          - upgrade-plan-sku
+      target_sku:
+        description: 'Target SKU (only for upgrade-plan-sku)'
+        required: false
+        default: 'B1'
+        type: choice
+        options:
+          - B1
+          - S1
+          - P1v3
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # ── Check Quotas ─────────────────────────────────────────────────
+      - name: Check compute quotas
+        if: inputs.action == 'check-quotas' || inputs.action == 'request-quota-increase'
+        run: |
+          # Detect location from existing resources, or default to eastus
+          LOCATION=$(az appservice plan list --query "[0].location" -o tsv 2>/dev/null)
+          LOCATION=${LOCATION:-eastus}
+          echo "Checking quotas in: $LOCATION"
+          echo ""
+
+          az vm list-usage --location "$LOCATION" -o table
+
+          # Also output a focused summary to the workflow step summary
+          {
+            echo "## Azure Compute Quotas ($LOCATION)"
+            echo ""
+            echo "| Family | Used | Limit | Available |"
+            echo "|---|---|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          az vm list-usage --location "$LOCATION" -o json | \
+            jq -r '.[] | select(.limit > 0 or (.name.value | test("basic|standard";"i"))) | "| \(.name.localizedValue) | \(.currentValue) | \(.limit) | \(.limit - .currentValue) |"' \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      # ── Request Quota Increase ───────────────────────────────────────
+      - name: Request quota increase
+        if: inputs.action == 'request-quota-increase'
+        run: |
+          SUB_ID=$(az account show --query id -o tsv)
+          LOCATION=$(az appservice plan list --query "[0].location" -o tsv 2>/dev/null)
+          LOCATION=${LOCATION:-eastus}
+
+          # Register the Quota provider
+          az provider register --namespace Microsoft.Quota 2>/dev/null || true
+          sleep 5
+
+          FAMILIES="basicAFamily standardDSv2Family standardDv3Family"
+
+          {
+            echo ""
+            echo "## Quota Increase Requests"
+            echo ""
+            echo "| Family | Result |"
+            echo "|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          for family in $FAMILIES; do
+            echo "Requesting increase for $family → 4 vCPUs..."
+            RESP=$(az rest --method put \
+              --url "https://management.azure.com/subscriptions/$SUB_ID/providers/Microsoft.Compute/locations/$LOCATION/providers/Microsoft.Quota/quotas/$family?api-version=2023-02-01" \
+              --body "{
+                \"properties\": {
+                  \"limit\": {\"limitObjectType\": \"LimitValue\", \"value\": 4},
+                  \"name\": {\"value\": \"$family\"}
+                }
+              }" 2>&1) || true
+
+            STATE=$(echo "$RESP" | jq -r '.properties.provisioningState // "failed"' 2>/dev/null || echo "failed")
+            echo "  → $STATE"
+            echo "| $family | $STATE |" >> "$GITHUB_STEP_SUMMARY"
+            echo ""
+          done
+
+          {
+            echo ""
+            echo "If any requests show **InProgress**, check the [Azure Quota portal](https://portal.azure.com/#view/Microsoft_Azure_Capacity/QuotaMenuBlade/~/myQuotas) for approval status."
+            echo ""
+            echo "Once approved, run this workflow again with **upgrade-plan-sku** to switch your App Service Plan to a paid tier."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ── Upgrade Plan SKU ─────────────────────────────────────────────
+      - name: Upgrade App Service Plan
+        if: inputs.action == 'upgrade-plan-sku'
+        run: |
+          PLAN=$(az appservice plan list --query "[0].name" -o tsv)
+          RG=$(az appservice plan list --query "[0].resourceGroup" -o tsv)
+
+          if [ -z "$PLAN" ] || [ -z "$RG" ]; then
+            echo "❌ No App Service Plan found. Run the provision workflow first."
+            exit 1
+          fi
+
+          CURRENT_SKU=$(az appservice plan show --name "$PLAN" --resource-group "$RG" --query "sku.name" -o tsv)
+          TARGET_SKU="${{ inputs.target_sku }}"
+
+          echo "Plan:        $PLAN"
+          echo "Resource Grp: $RG"
+          echo "Current SKU:  $CURRENT_SKU"
+          echo "Target SKU:   $TARGET_SKU"
+          echo ""
+
+          if [ "$CURRENT_SKU" = "$TARGET_SKU" ]; then
+            echo "✅ Plan is already running on $TARGET_SKU. Nothing to do."
+            echo "### ✅ Already on $TARGET_SKU" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          echo "Upgrading $PLAN from $CURRENT_SKU → $TARGET_SKU..."
+          az appservice plan update \
+            --name "$PLAN" \
+            --resource-group "$RG" \
+            --sku "$TARGET_SKU"
+
+          echo ""
+          echo "✅ Plan upgraded to $TARGET_SKU"
+
+          # Enable WebSockets on the gateway app now that we're on a paid tier
+          GW_APP=$(az webapp list --resource-group "$RG" --query "[?contains(name, 'gw')].name" -o tsv)
+          if [ -n "$GW_APP" ]; then
+            echo "Enabling WebSockets on gateway ($GW_APP)..."
+            az webapp config set --name "$GW_APP" --resource-group "$RG" --web-sockets-enabled true
+            echo "✅ WebSockets enabled on $GW_APP"
+          fi
+
+          {
+            echo "### ✅ App Service Plan Upgraded"
+            echo ""
+            echo "| | Before | After |"
+            echo "|---|---|---|"
+            echo "| SKU | $CURRENT_SKU | $TARGET_SKU |"
+            echo "| WebSockets | $([ '$CURRENT_SKU' = 'F1' ] && echo '❌' || echo '✅') | ✅ |"
+            echo ""
+            echo "Your API and Gateway are now running on **$TARGET_SKU**."
+          } >> "$GITHUB_STEP_SUMMARY"

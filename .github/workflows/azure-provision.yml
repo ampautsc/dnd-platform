@@ -24,6 +24,16 @@ on:
         description: 'Azure region'
         required: false
         default: 'eastus'
+      sku:
+        description: 'App Service Plan SKU (B1 recommended — F1 free but no WebSockets)'
+        required: false
+        default: 'B1'
+        type: choice
+        options:
+          - B1
+          - F1
+          - S1
+          - P1v3
       anthropic_api_key:
         description: 'Anthropic API key (optional — enables real LLM narration)'
         required: false
@@ -68,13 +78,160 @@ jobs:
             --name "${{ steps.names.outputs.rg }}" \
             --location "${{ inputs.location }}"
 
-      - name: Create App Service Plan (Linux B1)
+      - name: Create App Service Plan
+        id: plan
         run: |
-          az appservice plan create \
-            --name "${{ steps.names.outputs.plan }}" \
-            --resource-group "${{ steps.names.outputs.rg }}" \
-            --sku B1 \
-            --is-linux
+          set +e  # We handle errors ourselves
+
+          DESIRED_SKU="${{ inputs.sku }}"
+          PLAN="${{ steps.names.outputs.plan }}"
+          RG="${{ steps.names.outputs.rg }}"
+          LOCATION="${{ inputs.location }}"
+          SUB_ID=$(az account show --query id -o tsv)
+
+          # ── Quota family for each SKU tier ──
+          sku_to_family() {
+            case $1 in
+              B1|B2|B3) echo "basicAFamily" ;;
+              S1|S2|S3) echo "standardDSv2Family" ;;
+              P1v3|P2v3|P3v3) echo "standardDv3Family" ;;
+              *) echo "" ;;
+            esac
+          }
+
+          # ── Check quota availability for a VM family ──
+          check_quota() {
+            local family=$1
+            if [ -z "$family" ]; then return 0; fi  # Free tier needs no quota
+
+            local usage limit current
+            usage=$(az vm list-usage --location "$LOCATION" -o json 2>/dev/null)
+            if [ $? -ne 0 ]; then
+              echo "⚠️  Could not query VM quotas (permissions may be limited)"
+              return 2  # Unknown — try anyway
+            fi
+
+            limit=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0].limit // 0")
+            current=$(echo "$usage" | jq "[.[] | select(.name.value == \"$family\")] | .[0].currentValue // 0")
+            echo "Quota ($family): limit=$limit  used=$current  available=$((limit - current))"
+
+            [ "$((limit - current))" -ge 1 ]
+          }
+
+          # ── Request a quota increase via the Azure Quota REST API ──
+          request_quota_increase() {
+            local family=$1
+            echo "📝 Requesting quota increase for $family → 4 vCPUs..."
+
+            # Ensure the Quota resource provider is registered
+            az provider register --namespace Microsoft.Quota 2>/dev/null || true
+            sleep 5
+
+            az rest --method put \
+              --url "https://management.azure.com/subscriptions/$SUB_ID/providers/Microsoft.Compute/locations/$LOCATION/providers/Microsoft.Quota/quotas/$family?api-version=2023-02-01" \
+              --body "{
+                \"properties\": {
+                  \"limit\": {\"limitObjectType\": \"LimitValue\", \"value\": 4},
+                  \"name\": {\"value\": \"$family\"}
+                }
+              }" > /tmp/quota-response.json 2>&1
+
+            local rc=$?
+            if [ $rc -eq 0 ]; then
+              local state
+              state=$(jq -r '.properties.provisioningState // "unknown"' /tmp/quota-response.json 2>/dev/null)
+              echo "   Quota request state: $state"
+              if [ "$state" = "Succeeded" ] || [ "$state" = "Granting" ]; then
+                return 0
+              fi
+            else
+              echo "   Quota request failed (rc=$rc). This may require manual action."
+              cat /tmp/quota-response.json 2>/dev/null || true
+            fi
+            return 1
+          }
+
+          # ── Attempt plan creation with a given SKU ──
+          try_create_plan() {
+            local sku=$1
+            echo ""
+            echo "🔧 Creating App Service Plan with --sku $sku ..."
+            az appservice plan create \
+              --name "$PLAN" --resource-group "$RG" --sku "$sku" --is-linux 2>/tmp/plan-error.txt
+          }
+
+          # ═══════════════════════════════════════════════════════════════
+          # Main logic
+          # ═══════════════════════════════════════════════════════════════
+
+          FAMILY=$(sku_to_family "$DESIRED_SKU")
+
+          # If the desired SKU needs quota, check it first
+          if [ -n "$FAMILY" ]; then
+            echo "Checking $DESIRED_SKU quota ($FAMILY) in $LOCATION..."
+            check_quota "$FAMILY"
+            qrc=$?
+
+            if [ $qrc -eq 1 ]; then
+              echo ""
+              echo "⚠️  Insufficient quota for $DESIRED_SKU."
+              echo "   Attempting automatic quota increase request..."
+              request_quota_increase "$FAMILY"
+
+              if [ $? -eq 0 ]; then
+                echo "✅ Quota increase approved — waiting 30s for propagation..."
+                sleep 30
+              else
+                echo "⏳ Quota increase may need manual approval."
+                echo "   Will try to create the plan anyway."
+              fi
+            fi
+          fi
+
+          # Attempt 1: desired SKU
+          if try_create_plan "$DESIRED_SKU"; then
+            echo "✅ App Service Plan created with $DESIRED_SKU"
+            echo "sku_used=$DESIRED_SKU" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo ""
+          echo "❌ Plan creation with $DESIRED_SKU failed."
+          cat /tmp/plan-error.txt
+          echo ""
+
+          # Attempt 2: fall back to F1 (Free — no quota needed)
+          if [ "$DESIRED_SKU" != "F1" ]; then
+            echo "⚠️  Falling back to F1 (Free) tier..."
+            if try_create_plan "F1"; then
+              echo "✅ App Service Plan created with F1 (Free tier fallback)"
+              echo "sku_used=F1" >> "$GITHUB_OUTPUT"
+              echo "fell_back=true" >> "$GITHUB_OUTPUT"
+
+              {
+                echo ""
+                echo "### ⚠️  Running on Free Tier (F1)"
+                echo ""
+                echo "Your subscription does not have **Basic VM** quota in \`$LOCATION\`."
+                echo "The plan was created on the **Free (F1)** tier as a fallback."
+                echo ""
+                echo "**Limitations on F1:**"
+                echo "- ❌ No WebSocket support (Gateway real-time features will not work)"
+                echo "- ❌ 60 CPU minutes per day"
+                echo "- ❌ No custom domains or TLS bindings"
+                echo "- ❌ No always-on (apps sleep after inactivity)"
+                echo ""
+                echo "**To upgrade later:**"
+                echo "1. Request a quota increase: **Actions → Manage Azure Infrastructure → request-quota-increase**"
+                echo "2. Upgrade the plan: **Actions → Manage Azure Infrastructure → upgrade-plan-sku**"
+              } >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+          fi
+
+          echo "❌ All plan creation attempts failed."
+          cat /tmp/plan-error.txt
+          exit 1
 
       # Generate a strong JWT secret at provision time (never stored in plaintext)
       - name: Generate JWT secret
@@ -141,11 +298,17 @@ jobs:
 
       - name: Set Gateway startup command and enable WebSockets
         run: |
+          WEBSOCKETS="true"
+          if [ "${{ steps.plan.outputs.sku_used }}" = "F1" ]; then
+            WEBSOCKETS="false"
+            echo "⚠️  WebSockets disabled — not supported on Free (F1) tier"
+          fi
+
           az webapp config set \
             --name "${{ steps.names.outputs.gateway }}" \
             --resource-group "${{ steps.names.outputs.rg }}" \
             --startup-file "node packages/gateway/src/index.js" \
-            --web-sockets-enabled true
+            --web-sockets-enabled "$WEBSOCKETS"
 
       # ── Static Web App (client) ───────────────────────────────────────────────
 
@@ -229,14 +392,22 @@ jobs:
             --resource-group "${{ steps.names.outputs.rg }}" \
             --query defaultHostName -o tsv)
 
+          SKU_USED="${{ steps.plan.outputs.sku_used }}"
+
           {
             echo "## ✅ Azure Infrastructure Provisioned"
             echo ""
-            echo "| Service | URL |"
-            echo "|---|---|"
-            echo "| 🎮 Client | ${{ steps.swa.outputs.url }} |"
-            echo "| 🧩 API    | https://${API_HOST} |"
-            echo "| ⚡ Gateway | https://${GW_HOST} |"
+            echo "| Service | URL | Notes |"
+            echo "|---|---|---|"
+            echo "| 🎮 Client | ${{ steps.swa.outputs.url }} | |"
+            echo "| 🧩 API    | https://${API_HOST} | |"
+            if [ "$SKU_USED" = "F1" ]; then
+              echo "| ⚡ Gateway | https://${GW_HOST} | ⚠️ WebSockets disabled (F1 tier) |"
+            else
+              echo "| ⚡ Gateway | https://${GW_HOST} | ✅ WebSockets enabled |"
+            fi
+            echo ""
+            echo "**App Service Plan SKU:** $SKU_USED"
             echo ""
             echo "GitHub secrets and variables have been set automatically."
             echo ""
